@@ -1,12 +1,39 @@
 import React, {Component} from 'react';
 import './App.css';
-import { ArticleComponent } from "./components/Article";
+import {Article} from "./components/Article";
+import ArticleList from "./components/ArticleList";
 
 class App extends Component {
     prop = "inner property";
 
+    state = {
+        articles: []
+    };
+
     handleClick = (props, event) => {
-        console.log("click in App", props, event)
+        console.log("click in App from ArticleComponent", props, event)
+    };
+
+    componentDidMount() {
+        const getArticles = async function() {
+            return await fetch("http://localhost:3001/api/articles");
+        };
+
+        getArticles()
+            .then(res => res.json())
+            .then(articles => {
+                this.setState({
+                    articles
+                });
+            });
+    }
+
+    onRemove = (removedArticle) => {
+        const articles = this.state.articles.filter(article => removedArticle !== article);
+
+        this.setState({
+            articles
+        });
     };
 
     render() {
@@ -19,21 +46,18 @@ class App extends Component {
                     <p>
                         Edit <code>src/App.js</code> and save to reloads.
                     </p>
-                    <div>
-                        <ArticleComponent
-                            booleanProp={true}
-                            title="Article title"
-                            onClick={this.handleClick}
-                        />
-                    </div>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Article
+                        booleanProp={true}
+                        title="Article title"
+                        onClick={this.handleClick}
                     >
-                        Learn React
-                    </a>
+                        Main article
+                    </Article>
+
+                    <ArticleList
+                        onRemove={this.onRemove}
+                        articles={this.state.articles}
+                    />
                 </header>
             </div>
         );

@@ -5,13 +5,16 @@
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.3"
+    "react-scripts": "2.1.3",
+    "source-map-explorer": "^1.7.0"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "server":"nodemon ./server/server.js",
     "buildServer": "webpack-dev-server --open --entry /webpack-dev-server --output-path /dist --compress --content-base ./build --history-api-fallback"
   },
   "eslintConfig": {
@@ -24,6 +27,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10",
     "webpack-cli": "^3.2.1"
   }
 }

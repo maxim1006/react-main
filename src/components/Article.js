@@ -12,7 +12,7 @@ import React, {Component} from 'react';
     )
 }*/
 
-export class ArticleComponent extends Component {
+export class Article extends Component {
     // это расширенный синтаксис
     /*constructor(props) {
         super(props);
@@ -27,28 +27,30 @@ export class ArticleComponent extends Component {
         isOpen: true
     };
 
-    handleClick() {
-        this.props.onClick.bind(this, this.props);
+    handleClick = () => {
+        this.props.onClick.call(this, this.props);
         this.toggleArticle();
-    }
+    };
 
     toggleArticle() {
-        this.setState({
+        this.setState((state, props) => ({
             isOpen: !this.state.isOpen
-        })
+        }));
     }
 
     render() {
         const title = this.props.title;
         const content = this.state.isOpen ? <div className="content">{this.props.content || 'content'}</div> : '';
+        const openState = this.state.isOpen ? 'opened' : 'closed';
 
         return (
             <div className="article">
                 <div
-                    onClick={this.handleClick.bind(this)}
-                >{title}</div>
+                    onClick={this.handleClick}
+                >{title} {openState}</div>
 
                 {content}
+                {this.props.children}
             </div>
         )
     }
