@@ -1,0 +1,15 @@
+$color: #ccc;
+
+.content-projection {
+    padding: 20px;
+    border: 2px solid $color;
+    border-radius: 10px;
+
+    &+& {
+        margin-top: 20px;
+    }
+
+    &__action-panel {
+        display: flex;
+    }
+}

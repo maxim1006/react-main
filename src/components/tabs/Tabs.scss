@@ -1,0 +1,18 @@
+.tabs {
+    &__header {
+        display: flex;
+        margin-bottom: 20px;
+
+        &-item {
+            margin-right: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &._active {
+                background-color: #eef2ff;
+                border-bottom: 2px solid cornflowerblue;
+                cursor: default;
+            }
+        }
+    }
+}
