@@ -1,0 +1,29 @@
+.search-bar {
+    position: relative;
+
+    &__input {
+        border: none;
+        background-color: rgba(0,0,0,0);
+        min-width: 300px;
+        line-height: 20px;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+        outline: none;
+    }
+
+    &__focus {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        transition: all 0.3s ease-out;
+    }
+
+    &__input:focus + &__focus {
+        width: 100%;
+        background-color: cornflowerblue;
+    }
+
+}

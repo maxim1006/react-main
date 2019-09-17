@@ -55,3 +55,7 @@ export class Article extends Component {
         )
     }
 }
+
+Article.defaultProps = {
+    title: "Default article"
+};
