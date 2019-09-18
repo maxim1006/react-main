@@ -10,7 +10,7 @@ export class SearchListComponent extends Component {
                     className="search-list__item"
                     key={item.id}
                 >
-                    {item.text}
+                    {item.name} {item.age}
                 </li>
             );
         });

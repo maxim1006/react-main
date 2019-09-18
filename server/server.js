@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routers = require('./routers');
+const {articlesRouter, familyRouter} = require('./routers');
 
 const path = require('path');
 
@@ -21,7 +21,11 @@ const allowCrossDomain = (req, res, next) => {
 const appRouters = [
     {
         url: 'articles',
-        middleware: routers.articlesRouter
+        middleware: articlesRouter
+    },
+    {
+        url: 'family',
+        middleware: familyRouter
     }
 ];
 

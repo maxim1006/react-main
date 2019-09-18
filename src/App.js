@@ -9,6 +9,7 @@ import {LifecycleHooksComponent} from "./components/lifecycle-hooks/LifecycleHoo
 import {TabsComponent} from "./components/tabs/Tabs";
 import JsxFragment from "./components/jsx/JsxFragment";
 import {FormsComponent} from "./components/forms/Forms";
+import {RestApiComponent} from "./components/rest-api/RestApi";
 
 class App extends Component {
     state = {
@@ -45,6 +46,8 @@ class App extends Component {
                             <FormsComponent />
                         </div>
                         <div tabName="Components">
+                            <RestApiComponent/>
+
                             <LifecycleHooksComponent />
 
                             <ClassBasedComponent />

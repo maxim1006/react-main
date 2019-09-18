@@ -1,3 +1,4 @@
 const articlesRouter = require('./articles.router');
+const familyRouter = require('./family.router');
 
-module.exports = { articlesRouter };
+module.exports = { articlesRouter, familyRouter };
