@@ -42,9 +42,9 @@ export class RestApiComponent extends Component {
     render() {
         return (
             <ul>
-                {this.state.items.map(item => {
+                {this.state.items.map(({id, name, age}) => {
                     return (
-                        <li key={item.id}>{item.name} {item.age}</li>
+                        <li key={id}>{name} {age}</li>
                     );
                 })}
             </ul>

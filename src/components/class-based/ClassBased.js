@@ -32,13 +32,14 @@ export class ClassBasedComponent extends Component {
     // в случае если все кейсы надо обернуть в див с классом другим, все ифы выношу в хелпер метод и оборачиваю
     // возвращаемое значение
     render() {
+        const {latitude, longitude} = this.state;
         let position = "";
 
-        if (this.state.latitude) {
+        if (latitude) {
             position =
                 <div>
-                    latitude: {this.state.latitude} &nbsp;
-                    longitude: {this.state.longitude}
+                    latitude: {latitude} &nbsp;
+                    longitude: {longitude}
                 </div>
         } else {
             position = <div style={{

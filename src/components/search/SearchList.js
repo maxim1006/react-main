@@ -4,13 +4,13 @@ import './SearchList.scss';
 export class SearchListComponent extends Component {
 
     getSearchListBody() {
-        return this.props.items.map((item) => {
+        return this.props.items.map(({id, name, age}) => {
             return (
                 <li
                     className="search-list__item"
-                    key={item.id}
+                    key={id}
                 >
-                    {item.name} {item.age}
+                    {name} {age}
                 </li>
             );
         });

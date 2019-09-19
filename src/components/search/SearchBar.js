@@ -70,13 +70,14 @@ export class SearchBarComponent extends Component {
     // так как onChange это обертка надо onInput команда реакта советует использовать
     // onChange который срабатывает при каждом изменении каждого контрола
     render() {
-        console.log('render');
+        const {inputValue, checkboxValue, selectValue, textareaValue, radioValue, dateValue} = this.state;
+
         return (
             <form onSubmit={this.onFormSubmit}>
                 <div className="search-bar">
                 <input
                     className="search-bar__input"
-                    value={this.state.inputValue}
+                    value={inputValue}
                     onChange={this.onInputChange}
                     type="text"
                 />
@@ -86,11 +87,11 @@ export class SearchBarComponent extends Component {
                     className="search-bar__input"
                     onChange={this.onCheckboxChange}
                     type="checkbox"
-                    checked={this.state.checkboxValue}
+                    checked={checkboxValue}
                 />
                 <br/>
                 <select
-                    value={this.state.selectValue}
+                    value={selectValue}
                     onChange={this.onSelectChange}
                 >
                     <option value="1">option 1</option>
@@ -102,21 +103,21 @@ export class SearchBarComponent extends Component {
                     cols="30"
                     rows="10"
                     onChange={this.onTextareaChange}
-                    value={this.state.textareaValue}
+                    value={textareaValue}
                 />
                 <br/>
-                <input type="radio" name="test" value="1" checked={this.state.radioValue === '1'}
+                <input type="radio" name="test" value="1" checked={radioValue === '1'}
                        onChange={this.onRadioChange}/>radio 1
                 <br/>
-                <input type="radio" name="test" value="2" checked={this.state.radioValue === '2'}
+                <input type="radio" name="test" value="2" checked={radioValue === '2'}
                        onChange={this.onRadioChange}/>radio 2
                 <br/>
-                <input type="radio" name="test" value="3" checked={this.state.radioValue === '3'}
+                <input type="radio" name="test" value="3" checked={radioValue === '3'}
                        onChange={this.onRadioChange}/>radio 3
                 <br/>
                 <input
                     type="date"
-                    value={this.state.dateValue}
+                    value={dateValue}
                     onChange={this.onDateChange}
                 />
             </div>

@@ -8,7 +8,8 @@ export class FormsComponent extends Component {
 
     state = {
         items: [],
-        filteredItems: []
+        filteredItems: [],
+        isFamilyLoading: false,
     };
 
     cancelGetFamilyRequest = null;
@@ -38,7 +39,7 @@ export class FormsComponent extends Component {
             const filteredItems = items.slice();
 
             this.setState({
-                items, filteredItems
+                items, filteredItems, isFamilyLoading: true
             });
         } catch (e) {
             console.log('FormsComponent componentDidMount fetch(\'http://localhost:3001/api/articles\') error', e);
@@ -46,12 +47,12 @@ export class FormsComponent extends Component {
     }
 
     onInput = (event) => {
-        const filteredItems = this.state.items.filter(item => item.name.toLowerCase().includes(event.target.value.toLowerCase()));
+        const filteredItems = this.state.items.filter(({name}) => name.toLowerCase().includes(event.target.value.toLowerCase()));
         this.setState({ filteredItems });
     };
 
     render() {
-        return this.state.filteredItems.length
+        return this.state.isFamilyLoading
             ? this.renderContent()
             : this.renderLoader();
     }
