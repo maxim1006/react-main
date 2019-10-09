@@ -35,17 +35,13 @@ export class CommentListComponent extends Component {
             }
         ];
 
-        const comments = commentsData.map(({name, content, date, img, id}) => {
+        const comments = commentsData.map((comment, index) => {
             return <ContentProjectionComponent
-                key={id}
+                key={index}
                 projectFromProp={<ContentProjectionContentComponent content={faker.name.jobTitle()}
             />}>
                 <CommentComponent
-                    name={name}
-                    content={content}
-                    date={date}
-                    img={img}
-                    id={id}
+                    {...comment}
                 />
             </ContentProjectionComponent>;
         });
@@ -57,3 +53,18 @@ export class CommentListComponent extends Component {
         );
     }
 }
+
+// прикольное использование вместо
+// <CommentComponent
+//     name={name}
+//     content={content}
+//     date={date}
+//     img={img}
+//     id={id}
+// />
+
+// использую
+
+// <CommentComponent
+//     {...comment}
+// />

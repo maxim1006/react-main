@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ciustomAxios from "../../api/axios";
+import customAxios from "../../api/axios";
 
 export class RestApiComponent extends Component {
     state = {
@@ -24,10 +24,10 @@ export class RestApiComponent extends Component {
         // }
 
         // axios variant
-        this.cancelGetFamilyRequest = ciustomAxios.CancelToken.source();
+        this.cancelGetFamilyRequest = customAxios.CancelToken.source();
 
         try {
-            const {data: items} = await ciustomAxios.get('/family',{
+            const {data: items} = await customAxios.get('/family',{
                 cancelToken: this.cancelGetFamilyRequest.token
             });
 

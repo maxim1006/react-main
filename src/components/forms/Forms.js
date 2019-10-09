@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {SearchBarComponent} from "../search/SearchBar";
 import {SearchListComponent} from "../search/SearchList";
 import MaterialLoader from "../loader/MaterialLoader";
-import ciustomAxios from '../../api/axios';
+import customAxios from '../../api/axios';
 
 export class FormsComponent extends Component {
 
@@ -30,10 +30,10 @@ export class FormsComponent extends Component {
         // }
 
         // axios variant
-        this.cancelGetFamilyRequest = ciustomAxios.CancelToken.source();
+        this.cancelGetFamilyRequest = customAxios.CancelToken.source();
 
         try {
-            const {data: items} = await ciustomAxios.get('/family',{
+            const {data: items} = await customAxios.get('/family',{
                 cancelToken: this.cancelGetFamilyRequest.token
             });
             const filteredItems = items.slice();

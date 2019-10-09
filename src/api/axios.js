@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const ciustomAxios = axios.create({
+const customAxios = axios.create({
    baseURL: "http://localhost:3001/api",
     // headers: {}
 });
 
-ciustomAxios.CancelToken = axios.CancelToken;
-ciustomAxios.isCancel = axios.isCancel;
+customAxios.CancelToken = axios.CancelToken;
+customAxios.isCancel = axios.isCancel;
 
-export default ciustomAxios;
+export default customAxios;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './jsx-examples.css';
+import './JsxExamples.css';
 
 export default function JSXExampleComponent(props) {
     const buttonText = "Click me";

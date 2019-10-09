@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.scss';
-import JSXExampleComponent from "./components/jsx/jsx-examples";
+import './redux/concept/docs';
+import JSXExampleComponent from "./components/jsx/JsxExamples";
 import {CommentListComponent} from "./components/comment/CommentList";
 import {ClassBasedComponent} from "./components/class-based/ClassBased";
 import {LifecycleHooksComponent} from "./components/lifecycle-hooks/LifecycleHooks";
@@ -9,6 +10,8 @@ import JsxFragment from "./components/jsx/JsxFragment";
 import {FormsComponent} from "./components/forms/Forms";
 import {RestApiComponent} from "./components/rest-api/RestApi";
 import GridComponent from "./components/grid/Grid";
+import {ReduxComponent} from "./redux/concept/Redux";
+import {JsxListComponent} from "./components/jsx/JsxList";
 
 class App extends Component {
 
@@ -17,21 +20,25 @@ class App extends Component {
             <div className="app">
                 <main className="app__main">
                     <TabsComponent>
+                        <div tabName="Redux">
+                            <ReduxComponent/>
+                        </div>
                         <div tabName="Components">
                             <GridComponent/>
 
-                            {/*<RestApiComponent/>*/}
+                            <RestApiComponent/>
 
-                            {/*<LifecycleHooksComponent/>*/}
+                            <LifecycleHooksComponent/>
 
-                            {/*<ClassBasedComponent/>*/}
+                            <ClassBasedComponent/>
 
-                            {/*<CommentListComponent/>*/}
+                            <CommentListComponent/>
                         </div>
                         <div tabName="Forms">
                             <FormsComponent/>
                         </div>
                         <div tabName="JSX">
+                            <JsxListComponent/>
                             <JsxFragment
                                 prop1="prop1"
                                 prop2="prop2"
