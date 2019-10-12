@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MaterialLoaderComponent from "../loader/MaterialLoader";
 
 export class ClassBasedComponent extends Component {
+    id;
 
     state = {
         latitude: null,
@@ -13,20 +14,30 @@ export class ClassBasedComponent extends Component {
     };
 
     componentDidMount() {
+        const success = ({coords}) => {
+            this.setState((state, props) => ({
+                latitude: coords.latitude,
+                longitude: coords.longitude
+            }));
+        };
+
+        const error = e => {
+            console.log('Getting position error ', e);
+            this.setState((state, props) => ({
+                errorMessage: e.message
+            }));
+        };
+
         navigator.geolocation.getCurrentPosition(
-            ({coords}) => {
-                this.setState((state, props) => ({
-                    latitude: coords.latitude,
-                    longitude: coords.longitude
-                }));
-            },
-            e => {
-                console.log('Getting position error ', e);
-                this.setState((state, props) => ({
-                    errorMessage: e.message
-                }));
-            }
+            success,
+            error
         );
+
+        this.id = navigator.geolocation.watchPosition(success, error);
+    }
+
+    componentWillUnmount() {
+        navigator.geolocation.clearWatch(this.id);
     }
 
     // в случае если все кейсы надо обернуть в див с классом другим, все ифы выношу в хелпер метод и оборачиваю

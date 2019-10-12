@@ -11,7 +11,6 @@ export class DomRefImageComponent extends Component {
 
     componentDidMount() {
         this.imageRef.current.onload = () => {
-            console.log(this.imageRef.current.clientHeight/100);
             this.imageRef.current.style.gridRowEnd = 'span ' + this.imageRef.current.clientHeight;
         }
     }

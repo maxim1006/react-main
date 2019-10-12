@@ -81,7 +81,7 @@ const store = createStore(
 );
 
 // 5)
-// Создаю actions
+// Вызываю actions
 const action = createPolicy({
     name: "Max",
     amount: 31
