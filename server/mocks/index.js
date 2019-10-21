@@ -1,4 +1,3 @@
-const articles = require('./articles');
-const family = require('./family');
-
-module.exports = { articles, family };
+export * from "./articles";
+export * from "./family";
+export * from "./comments";

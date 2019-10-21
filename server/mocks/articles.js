@@ -1,4 +1,4 @@
-const articles = [
+export const articles = [
   {
     "id": "1",
     "title": "Article 1 from list",
@@ -16,4 +16,3 @@ const articles = [
   }
 ];
 
-module.exports = articles;

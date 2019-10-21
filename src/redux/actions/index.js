@@ -1,6 +1,2 @@
-export const selectSong = (song) => ({
-    type: 'SELECT_SONG',
-    payload: {
-        song
-    }
-});
+export * from "./songs";
+export * from "./post";

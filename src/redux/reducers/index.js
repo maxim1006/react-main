@@ -1,25 +1,10 @@
 import {combineReducers} from "redux";
+import * as fromSongs from "./songs";
 
-const songsReducer = () => [
-    {title: "Imagine dragons", duration: "4:05", likes: 100},
-    {title: "Animal instinct", duration: "4:13", likes: 110},
-    {title: "Daemons", duration: "3:45", likes: 120},
-    {title: "Radioactive", duration: "1:45", likes: 130},
-];
 
-const selectedSongReducer = (selectedSong = null, action) => {
-    switch (action.type) {
-        case 'SELECT_SONG': {
-            return action.payload;
-        }
-
-        default: {
-            return selectedSong;
-        }
-    }
-};
-
+// простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
+// будет нормальных редьюсеров, например combineReducers({replaceMe: () => 1})
 export default combineReducers({
-    songs: songsReducer,
-    selectedSong: selectedSongReducer,
+    songs: fromSongs.songsReducer,
+    selectedSong: fromSongs.selectedSongReducer,
 });

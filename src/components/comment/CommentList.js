@@ -1,45 +1,21 @@
 import React, {Component} from 'react';
 import CommentComponent from "./Comment";
-import faker from 'faker';
 import './CommentList.scss';
 import ContentProjectionContentComponent from "../content-projection/ContentProjectionContent";
 import ContentProjectionComponent from "../content-projection/ContentProjection";
+import customAxios from "../../api/axios";
 
 export class CommentListComponent extends Component {
+    state = {
+        comments: []
+    };
+
     render() {
-        const date1 = new Date().toLocaleDateString();
-        const date2 = new Date(new Date().setDate(new Date().getDate() - 1)).toLocaleDateString();
-        const date3 = new Date(new Date().setDate(new Date().getDate() - 2)).toLocaleDateString();
-
-        const commentsData = [
-            {
-                name: faker.name.firstName() + ' ' + faker.name.lastName(),
-                content: faker.lorem.sentence(),
-                date: date1,
-                img: faker.image.avatar(),
-                id: 1
-            },
-            {
-                name: faker.name.firstName() + ' ' + faker.name.lastName(),
-                content: faker.lorem.sentence(),
-                date: date2,
-                img: faker.image.avatar(),
-                id: 2
-            },
-            {
-                name: faker.name.firstName() + ' ' + faker.name.lastName(),
-                content: faker.lorem.sentence(),
-                date: date3,
-                img: '/images/icons/bell.svg',
-                id: 3
-            }
-        ];
-
-        const comments = commentsData.map((comment, index) => {
+        const comments = this.state.comments.map((comment, index) => {
             return <ContentProjectionComponent
                 key={index}
-                projectFromProp={<ContentProjectionContentComponent content={faker.name.jobTitle()}
-            />}>
+                projectFromProp={<ContentProjectionContentComponent content={comment.occupation}
+                />}>
                 <CommentComponent
                     {...comment}
                 />
@@ -51,6 +27,26 @@ export class CommentListComponent extends Component {
                 {comments}
             </ul>
         );
+    }
+
+    async componentDidMount() {
+        this.cancelGetCommentsRequest = customAxios.CancelToken.source();
+
+        try {
+            const {data: comments} = await customAxios.get('/comments', {
+                cancelToken: this.cancelGetCommentsRequest.token
+            });
+
+            this.setState({
+                comments
+            });
+        } catch (e) {
+            console.log("CommentListComponent get('/comments'... ", e);
+        }
+    }
+
+    componentWillUnmount() {
+        this.cancelGetCommentsRequest.cancel("CommentListComponent get('/comments'... canceled");
     }
 }
 

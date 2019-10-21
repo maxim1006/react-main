@@ -1,11 +1,9 @@
-const express = require('express');
-const articles = require('../mocks/articles');
+import * as express from  "express";
+import {articles} from "../mocks";
 
-const articlesRouter = express.Router();
+export const articlesRouter = express.Router();
 
 articlesRouter.get('/', (req, res) => {
     res.status(200).json(articles);
 });
-
-module.exports = articlesRouter;
 

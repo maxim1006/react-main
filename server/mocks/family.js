@@ -1,4 +1,4 @@
-const family = [
+export const family = [
     {
         "id": "1",
         "name": "Max",
@@ -24,5 +24,3 @@ const family = [
         "occupation": "infant",
     },
 ];
-
-module.exports = family;

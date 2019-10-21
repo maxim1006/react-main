@@ -1,7 +1,7 @@
-const express = require('express');
-const {family} = require('../mocks');
+import * as express from "express";
+import {family} from "../mocks";
 
-const familyRouter = express.Router();
+export const familyRouter = express.Router();
 
 familyRouter.get('/', (req, res) => {
     // тут делаю небольшую задержку для лоадера и cancel axios request
@@ -10,5 +10,4 @@ familyRouter.get('/', (req, res) => {
     }, 1000);
 });
 
-module.exports = familyRouter;
 

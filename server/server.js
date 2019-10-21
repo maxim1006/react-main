@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const {articlesRouter, familyRouter} = require('./routers');
+import express from 'express';
+import * as bodyParser from 'body-parser';
+import {articlesRouter, familyRouter, commentsRouter} from './routers';
 
 const path = require('path');
 
@@ -26,6 +26,10 @@ const appRouters = [
     {
         url: 'family',
         middleware: familyRouter
+    },
+    {
+        url: 'comments',
+        middleware: commentsRouter
     }
 ];
 
