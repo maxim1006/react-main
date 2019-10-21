@@ -12,7 +12,7 @@ export class ReduxComponent extends Component {
                 </div>
 
                 <div tabName="SongList">
-                    <SongList/>
+                    <SongList prop={'test'}/>
                 </div>
             </TabsComponent>
         );

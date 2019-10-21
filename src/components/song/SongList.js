@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Song from "./Song";
 import {connect} from "react-redux";
-import {selectSong} from "../../redux/actions";
+import {selectSong} from "../../store/actions";
 import SongDetails from "./SongDetails";
 
 class SongList extends Component {
@@ -43,6 +43,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     selectSong: (song) => {
+        // console.log(ownProps);
         dispatch(selectSong(song))
     }
 });

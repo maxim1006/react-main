@@ -1,8 +1,14 @@
+### docs
 https://reactjs.org/
 https://react-redux.js.org/
 
-
+### esm
 // npm i esm, чтобы express заработал в es6
+
+
+
+
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

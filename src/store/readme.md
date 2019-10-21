@@ -1,6 +1,20 @@
-*redux-thunk* - middleware for requests in redux
+### redux-thunk
+миддлвер, для работы с асинхронными запросами
+
+action creator => action => dispatch => middleware
+
+обычно action creator возвращает объект с экшеном, но redux-thunk позволяет возвратить не только объект но и функцию из action creator. В случае возврата функции redux-thunk вызовет ее, это все что он делает. На вход эта функция принимает dispatch, getState, которые контролируем и вызываем когда прошел запрос
 
 
+
+# reducers
+1) нельзя возвращать undefined (будет ошибка)
+2) Единественное что можно возвращать это результат взаимодействия state и action переданные в редьюсер
+3) pure functions. не мутировать возвращаемое значение
+
+
+
+### raw example
 ```typescript
 // 1)
 // Создаю action creator

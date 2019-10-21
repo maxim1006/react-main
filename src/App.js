@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.scss';
 // просто для примера инжекчу доки
-import './redux/example-from-docs';
+import './store/example-from-docs';
 import JSXExampleComponent from "./components/jsx/JsxExamples";
 import {CommentListComponent} from "./components/comment/CommentList";
 import {ClassBasedComponent} from "./components/class-based/ClassBased";
@@ -11,7 +11,7 @@ import JsxFragment from "./components/jsx/JsxFragment";
 import {FormsComponent} from "./components/forms/Forms";
 import {RestApiComponent} from "./components/rest-api/RestApi";
 import GridComponent from "./components/grid/Grid";
-import {ReduxComponent} from "./redux/Redux";
+import {ReduxComponent} from "./store/Redux";
 import {JsxListComponent} from "./components/jsx/JsxList";
 import {Parent} from "./components/parent/Parent";
 

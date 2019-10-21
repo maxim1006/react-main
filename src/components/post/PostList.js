@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import * as fromActions from "../../redux/actions";
+import * as fromActions from "../../store/actions";
 import {connect} from "react-redux";
 
 class PostList extends Component {

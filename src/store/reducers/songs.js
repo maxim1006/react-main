@@ -5,14 +5,18 @@ export const songsReducer = () => [
     {title: "Radioactive", duration: "1:45", likes: 130},
 ];
 
-export const selectedSongReducer = (selectedSong = null, action) => {
+
+
+const selectedSongReducerInitialState = null;
+
+export const selectedSongReducer = (state = selectedSongReducerInitialState, action) => {
     switch (action.type) {
         case 'SELECT_SONG': {
             return action.payload;
         }
 
         default: {
-            return selectedSong;
+            return state;
         }
     }
 };

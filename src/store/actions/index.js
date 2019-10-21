@@ -1,2 +1,2 @@
 export * from "./songs";
-export * from "./post";
+export * from "./posts";
