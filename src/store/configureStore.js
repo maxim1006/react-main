@@ -23,10 +23,11 @@ export default function configureStore() {
         ? composeWithDevTools(...enhancers)
         : thunk;
 
+    // Creates a Redux store that holds the state tree.
     const store = createStore(
         reducers,
         persistedState || initState,
-        // должен все engancers объединять в один, так как createStore может принимать только 1 аргумент enhancers
+        // должен все enhancers объединять в один, так как createStore может принимать только 1 аргумент enhancers
         composedEnhancers,
     );
 

@@ -1,19 +1,35 @@
 import React, {Component} from 'react';
-import * as fromActions from "../../store/actions";
+import {fetchPosts} from "../../store/actions";
 import {connect} from "react-redux";
+import Post from "./Post";
 
 class PostList extends Component {
     componentDidMount() {
         this.props.fetchPosts();
+
     }
 
     render() {
+        const {posts} = this.props;
+
         return (
-            <>
-                Hello Post
-            </>
+            <ul>
+                {
+                    posts.map((post, index) => {
+                        return (
+                            <li key={post.id}>
+                                <Post {...post} index={index} />
+                            </li>
+                        );
+                    })
+                }
+            </ul>
         );
     }
 }
 
-export default connect(null, {fetchPosts: fromActions.fetchPosts})(PostList);
+const mapStateToProps = (state, ownProps) => ({
+    posts: state.posts
+});
+
+export default connect(mapStateToProps, {fetchPosts})(PostList);

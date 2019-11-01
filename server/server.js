@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import {articlesRouter, familyRouter, commentsRouter, postsRouter} from './routers';
+import {articlesRouter, familyRouter, commentsRouter, postsRouter, frameworksRouter, usersRouter} from './routers';
 
 const path = require('path');
 
@@ -34,6 +34,14 @@ const appRouters = [
     {
         url: 'posts',
         middleware: postsRouter
+    },
+    {
+        url: 'frameworks',
+        middleware: frameworksRouter
+    },
+    {
+        url: 'users',
+        middleware: usersRouter
     }
 ];
 
