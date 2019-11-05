@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {fetchPosts} from "../../store/actions";
 import {connect} from "react-redux";
 import Post from "./Post";
+import PostUser from "./PostUser";
 
 class PostList extends Component {
     componentDidMount() {
         this.props.fetchPosts();
-
     }
 
     render() {
@@ -19,6 +19,7 @@ class PostList extends Component {
                         return (
                             <li key={post.id}>
                                 <Post {...post} index={index} />
+                                <PostUser userId={post.userId}/>
                             </li>
                         );
                     })

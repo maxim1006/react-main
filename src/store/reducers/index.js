@@ -2,6 +2,7 @@ import {combineReducers} from "redux";
 import * as fromSongs from "./songs";
 import * as fromPosts from "./posts";
 import * as fromFrameworks from "./frameworks";
+import * as fromUsers from "./users";
 
 
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
@@ -11,4 +12,5 @@ export default combineReducers({
     selectedSong: fromSongs.selectedSongReducer,
     posts: fromPosts.postsReducer,
     frameworks: fromFrameworks.frameworksReducer,
+    users: fromUsers.fetchUserReducer,
 });

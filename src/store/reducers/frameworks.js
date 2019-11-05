@@ -1,5 +1,3 @@
-import {convertArrayToObjById, convertObjToArrById} from "../../helpers/helpers";
-
 const initialState = [];
 
 export const frameworksReducer = (state = initialState, action) => {
@@ -10,11 +8,16 @@ export const frameworksReducer = (state = initialState, action) => {
 
         case "CHANGE_FRAMEWORK_STATUS": {
             const currentFramework = action.payload;
-            const entities = convertArrayToObjById(state);
 
-            entities[currentFramework.id] = {...currentFramework};
+            // вариант через преобразование в объект и обратно
+            // const entities = convertArrayToObjById(state);
+            // entities[currentFramework.id] = {...currentFramework};
+            // return convertObjToArrById(entities);
 
-            return convertObjToArrById(entities);
+            // вариант через массив
+            const index = state.indexOf(currentFramework);
+            state[index] = {...action.payload};
+            return [...state];
         }
 
         default: {
