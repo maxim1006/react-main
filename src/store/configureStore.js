@@ -1,6 +1,6 @@
 import thunk from "redux-thunk";
 import logger from "./middlewares/logger";
-import {applyMiddleware, createStore} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
 import monitorReducerEnhancer from "./enhancers/monitorReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import reducers from "./reducers";
@@ -21,7 +21,7 @@ export default function configureStore() {
     // нужно чтобы заработали дев тулы
     const composedEnhancers = process.env.NODE_ENV !== 'production'
         ? composeWithDevTools(...enhancers)
-        : thunk;
+        : compose(applyMiddleware(...[thunk]));
 
     // Creates a Redux store that holds the state tree.
     const store = createStore(

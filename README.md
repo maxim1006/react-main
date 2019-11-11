@@ -3,7 +3,13 @@ https://reactjs.org/
 https://react-redux.js.org/
 
 ### esm
-// npm i esm, чтобы express заработал в es6
+// npm i esm, чтобы express заработал в es6 для запуска nodemon -r esm ./server/server.js
+
+### Router
+react-router - main
+- dom
+- native
+- redux
 
 
 
