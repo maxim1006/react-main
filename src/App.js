@@ -18,9 +18,9 @@ class App extends Component {
         return (
             <div className="app">
                 <main className="app__main">
-                    <Suspense fallback={<MaterialLoaderComponent/>}>
-                        <BrowserRouter>
-                            <MainMenu/>
+                    <BrowserRouter>
+                        <MainMenu/>
+                        <Suspense fallback={<MaterialLoaderComponent/>}>
                             <Switch>
                                 <Route path="/" exact component={ReduxComponent}/>
                                 <Route path="/react" component={ReactPage}/>
@@ -28,8 +28,8 @@ class App extends Component {
                                     <NotFound/>
                                 </Route>
                             </Switch>
-                        </BrowserRouter>
-                    </Suspense>
+                        </Suspense>
+                    </BrowserRouter>
                 </main>
             </div>
         );
