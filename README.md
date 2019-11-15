@@ -1,6 +1,7 @@
 ### docs
 https://reactjs.org/
 https://react-redux.js.org/
+https://reacttraining.com/react-router
 
 ### esm
 // npm i esm, чтобы express заработал в es6 для запуска nodemon -r esm ./server/server.js

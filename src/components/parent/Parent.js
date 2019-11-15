@@ -22,8 +22,9 @@ export class Parent extends Component {
             <>
                 <div onBlur={this.onBlur}>
                     <input type="text"/>
-                    <ChildClass string={string} obj={obj} {...rest} />
-                    <ChildFunction obj={obj} {...rest} onClick={this.onClick} />
+                    {/*truthy без value значит truthy=true*/}
+                    <ChildClass truthy string={string} obj={obj} {...rest} />
+                    <ChildFunction truthy obj={obj} {...rest} onClick={this.onClick} />
                 </div>
             </>
         )
