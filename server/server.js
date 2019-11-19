@@ -2,8 +2,6 @@ import express from 'express';
 import * as bodyParser from 'body-parser';
 import {articlesRouter, familyRouter, commentsRouter, postsRouter, frameworksRouter, usersRouter} from './routers';
 
-const path = require('path');
-
 const app = express(),
       port = process.env.NODEJS_PORT || 3001,
       root =  '/api/';

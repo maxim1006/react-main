@@ -12,6 +12,7 @@ import RouterPage from "./pages/RouterPage";
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
 const LazyPage = React.lazy(() => import('./pages/LazyPage'));
+const StreamPage = React.lazy(() => import('./pages/StreamPage'));
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
                                 {to: "/", title: "Redux"},
                                 {to: "/react", title: "React"},
                                 {to: "/router", title: "Router"},
+                                {to: "/stream", title: "Stream"},
                                 {to: "/lazy", title: "Lazy"},
                                 {to: "/unknown", title: "Unknown"},
                             ]
@@ -35,6 +37,7 @@ class App extends Component {
                                 <Route path="/" exact component={ReduxComponent}/>
                                 <Route path="/react" component={ReactPage}/>
                                 <Route path="/router" component={RouterPage}/>
+                                <Route path="/stream" component={StreamPage}/>
                                 <Route path="/lazy" component={LazyPage}/>
                                 <Route path="*">
                                     <NotFound/>
@@ -49,3 +52,10 @@ class App extends Component {
 }
 
 export default App;
+
+
+// disable back navigation
+// window.history.pushState(null, null, window.location.href);
+// window.onpopstate = function() {
+//     window.history.go(1);
+// };

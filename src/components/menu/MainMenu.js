@@ -3,8 +3,8 @@ import React from 'react';
 import "./MainMenu.scss";
 
 export default function MainMenu({routes}) {
+
     if (Array.isArray(routes)) {
-        console.log(routes);
         return (
             <ul className="main-menu">
                 {
@@ -25,4 +25,5 @@ export default function MainMenu({routes}) {
             </p>
         );
     }
+
 }

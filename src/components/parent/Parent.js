@@ -25,6 +25,7 @@ export class Parent extends Component {
                     {/*truthy без value значит truthy=true*/}
                     <ChildClass truthy string={string} obj={obj} {...rest} />
                     <ChildFunction truthy obj={obj} {...rest} onClick={this.onClick} />
+                    <div onClick={this.onClick}>Cant click on Component itself but can on node</div>
                 </div>
             </>
         )
