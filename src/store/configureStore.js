@@ -26,6 +26,7 @@ export default function configureStore() {
     // Creates a Redux store that holds the state tree.
     const store = createStore(
         reducers,
+        // либо беру из локалстораджа либо инит
         persistedState || initState,
         // должен все enhancers объединять в один, так как createStore может принимать только 1 аргумент enhancers
         composedEnhancers,

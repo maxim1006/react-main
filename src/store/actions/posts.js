@@ -1,4 +1,5 @@
 import axios from "../../api/axios";
+import {FETCH_POSTS} from "./types";
 
 // dispatch и getState provided by redux-thunk
 // Тут с помощью redux-thunk получаю данные и кастомно вызываю диспатч с полученной датой
@@ -10,7 +11,7 @@ export const fetchPosts = () => async (dispatch, getState) => {
         const {data: posts} = await axios.get("posts");
 
         dispatch({
-            type: "FETCH_POSTS",
+            type: FETCH_POSTS,
             payload: posts
         });
     } catch (e) {

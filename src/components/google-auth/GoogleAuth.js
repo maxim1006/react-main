@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {signIn, signOut} from "../../store/actions/auth";
 
-export default class GoogleAuth extends Component {
-    state = {
-        isSignedIn: null
-    };
+class GoogleAuth extends Component {
+    // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!
+    // state = {
+    //     isSignedIn: null
+    // };
 
     componentDidMount() {
         window.gapi.load("client:auth2", () => {
@@ -16,7 +19,11 @@ export default class GoogleAuth extends Component {
 
                     this.auth.isSignedIn.listen(this.authStatusChange);
 
-                    this.setState({isSignedIn: this.auth.isSignedIn.get()});
+                    // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!
+                    // this.setState({isSignedIn: this.auth.isSignedIn.get()});
+
+                    // кидаю экшены в редакс на коллбек auth
+                    this.authStatusChange(this.auth.isSignedIn.get());
 
                     console.log("GoogleAuth gapi.client.init inited");
                 },
@@ -27,9 +34,15 @@ export default class GoogleAuth extends Component {
     }
 
     authStatusChange = (isSignedIn) => {
-        this.setState({
-            isSignedIn
-        });
+        // сохраняю в стейт
+        // логиню юзера по id
+        isSignedIn ? this.props.signIn(this.auth.currentUser.get().getId()) : this.props.signOut();
+
+        // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!
+        // this.setState({
+        //     isSignedIn
+        // });
+
         console.log("User auth status changed to: ", isSignedIn);
     };
 
@@ -56,7 +69,10 @@ export default class GoogleAuth extends Component {
     };
 
     render() {
-        const {isSignedIn} = this.state;
+        // const {isSignedIn} = this.state;
+
+        // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!
+        const {isSignedIn} = this.props;
 
         if (isSignedIn === null) {
             return "Auth is loading..."
@@ -74,3 +90,11 @@ export default class GoogleAuth extends Component {
         );
     }
 }
+
+
+const mapStateToProps = (state, ownProps) => ({
+    isSignedIn: state.auth.isSignedIn
+});
+
+
+export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth);

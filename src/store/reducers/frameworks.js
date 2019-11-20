@@ -1,12 +1,14 @@
+import {CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS} from "../actions/types";
+
 const initialState = [];
 
 export const frameworksReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "FETCH_FRAMEWORKS": {
+        case FETCH_FRAMEWORKS: {
             return action.payload;
         }
 
-        case "CHANGE_FRAMEWORK_STATUS": {
+        case CHANGE_FRAMEWORK_STATUS: {
             const currentFramework = action.payload;
 
             // вариант через преобразование в объект и обратно
