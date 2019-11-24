@@ -1,3 +1,7 @@
+### install app
+npx create-react-app my-app
+
+
 ### docs
 https://reactjs.org/
 https://react-redux.js.org/
