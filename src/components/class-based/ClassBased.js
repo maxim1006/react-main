@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MaterialLoaderComponent from "../loader/MaterialLoader";
 
-export class ClassBasedComponent extends Component {
+class ClassBasedComponent extends Component {
     id;
 
     state = {
@@ -44,11 +44,14 @@ export class ClassBasedComponent extends Component {
     // возвращаемое значение
     render() {
         const {latitude, longitude} = this.state;
+        const {defaultProp} = this.props;
+
         let position = "";
 
         if (latitude) {
             position =
                 <div>
+                    defaultProps: {defaultProp} <br/>
                     latitude: {latitude} &nbsp;
                     longitude: {longitude}
                 </div>
@@ -63,9 +66,18 @@ export class ClassBasedComponent extends Component {
                 alignItems: 'center',
                 justifyContent: 'center',
                 pointerEvents: 'none'
-            }}><MaterialLoaderComponent/></div>
+            }}>
+                defaultProps: {defaultProp}
+                <MaterialLoaderComponent/>
+            </div>
         }
 
         return position;
     }
 }
+
+ClassBasedComponent.defaultProps = {
+    defaultProp: "default prop"
+};
+
+export {ClassBasedComponent};

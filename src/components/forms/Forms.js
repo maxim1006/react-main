@@ -42,7 +42,7 @@ export class FormsComponent extends Component {
                 items, filteredItems, isFamilyLoading: true
             });
         } catch (e) {
-            console.log('FormsComponent componentDidMount fetch(\'http://localhost:3001/api/articles\') error', e);
+            console.log('FormsComponent componentDidMount fetch /family error', e);
         }
     }
 

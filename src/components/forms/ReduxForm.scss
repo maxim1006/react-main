@@ -1,0 +1,17 @@
+.redux-form {
+    &__field {
+        &+& {
+            margin-top: 30px;
+        }
+    }
+
+    &__input {
+        &._error {
+            border: 1px solid darkred;
+        }
+    }
+
+    &__error-message {
+        color: darkred;
+    }
+}

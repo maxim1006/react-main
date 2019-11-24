@@ -10,10 +10,14 @@ import {JsxListComponent} from "../components/jsx/JsxList";
 import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
+import ReduxForm from "../components/forms/ReduxForm";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
+            <div tabName="Redux Forms">
+                <ReduxForm/>
+            </div>
             <div tabName="Components">
                 <Parent/>
 
