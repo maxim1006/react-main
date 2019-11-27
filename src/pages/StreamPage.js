@@ -18,7 +18,7 @@ export default function StreamPage() {
 
             <GoogleAuth/>
 
-            <MainMenu routes={[
+            <MainMenu exact routes={[
                 {to: "/stream", title: "StreamList"},
                 {to: "/stream/create", title: "StreamCreate"},
                 {to: "/stream/delete", title: "StreamDelete"},
@@ -30,7 +30,7 @@ export default function StreamPage() {
                 <Route path="/stream" exact component={StreamList}/>
                 <Route path="/stream/create" exact component={StreamCreate}/>
                 <Route path="/stream/delete" exact component={StreamDelete}/>
-                <Route path="/stream/edit" exact component={StreamEdit}/>
+                <Route path="/stream/edit/:id" exact component={StreamEdit}/>
                 <Route path="/stream/show" exact component={StreamShow}/>
                 <Route path="/stream/*">
                     <NotFound>

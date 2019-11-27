@@ -124,3 +124,20 @@ store.dispatch(action4);
 
 // console.log(store.getState());
 ```
+
+
+### operations
+#### Delete
+return state.filter(el => el !== 'prop');
+
+const {[action.payload.id]: removed, ...newState} = state;
+return newState;
+
+#### add
+[...state, 'prop'];
+{...state, newProp: 'newValue'};
+
+### Update
+state.map(el => el === "oldProp" ? "newProp" : el);
+{...state, prop: 'newValue'}
+

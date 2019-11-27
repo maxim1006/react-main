@@ -24,7 +24,8 @@ class ReduxForm extends Component {
                     <input
                         autoComplete="off"
                         id={meta.form + input.name}
-                        type="text" {...input}
+                        type="text"
+                        {...input}
                         className={inputClassName}
                     />
                     <p className="redux-form__error-message">
@@ -33,7 +34,7 @@ class ReduxForm extends Component {
                 </div>
             </>
         );
-    }
+    };
 
     renderMandatory = (mandatory) => {
         return mandatory ? <sup style={{color: 'darkRed'}}>*</sup> : null;
@@ -46,12 +47,14 @@ class ReduxForm extends Component {
     render() {
         console.log("reduxForm props ", this.props);
 
+        const {handleSubmit, valid} = this.props;
+
         return (
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 {/*name - обязательное имя филда*/}
                 <Field name="title" component={this.renderInput} label={"Enter title"} mandatory/>
-                <Field name="desciption" component={this.renderInput} label={"Enter description"}/>
-                <button type="submit" disabled={!this.props.valid}>Submit</button>
+                <Field name="description" component={this.renderInput} label={"Enter description"}/>
+                <button type="submit" disabled={!valid}>Submit</button>
             </form>
         );
     }
@@ -75,6 +78,6 @@ const validate = (formValues) => {
 // после того как сконнектил этот компонент с формой у него появилась куча свойств
 export default reduxForm({
     // тут указываю название формы
-    form: "streamCreate",
+    form: "reduxFormSample",
     validate
 })(ReduxForm);

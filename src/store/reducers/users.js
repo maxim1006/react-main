@@ -2,7 +2,7 @@ import {FETCH_USER} from "../actions/types";
 
 const initialState = [];
 
-export const fetchUserReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_USER: {
             return [...state, action.payload];

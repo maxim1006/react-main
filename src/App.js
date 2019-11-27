@@ -3,11 +3,12 @@ import './App.scss';
 // просто для примера инжекчу доки
 import './store/example-from-docs';
 import {ReduxComponent} from "./store/Redux";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import MaterialLoaderComponent from "./components/loader/MaterialLoader";
 import NotFound from "./components/NotFound";
 import MainMenu from "./components/menu/MainMenu";
 import RouterPage from "./pages/RouterPage";
+import history from "./history";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
@@ -21,10 +22,13 @@ class App extends Component {
         return (
             <div className="app">
                 <main className="app__main">
-                    <BrowserRouter>
+                    {/*Если хочу иметь возможность кастомно переключать роуты из кода а не по кликам то
+                    меняю BrowserRouter, который не поддерживает свойство history={history} (кастомный объект
+                     history, а умеет только свой) на Router*/}
+                    <Router history={history}>
                         <MainMenu routes={
                             [
-                                {to: "/", title: "Redux"},
+                                {to: "/redux", title: "Redux"},
                                 {to: "/react", title: "React"},
                                 {to: "/router", title: "Router"},
                                 {to: "/stream", title: "Stream"},
@@ -34,7 +38,7 @@ class App extends Component {
                         }/>
                         <Suspense fallback={<MaterialLoaderComponent/>}>
                             <Switch>
-                                <Route path="/" exact component={ReduxComponent}/>
+                                <Route path="/redux" exact component={ReduxComponent}/>
                                 <Route path="/react" component={ReactPage}/>
                                 <Route path="/router" component={RouterPage}/>
                                 <Route path="/stream" component={StreamPage}/>
@@ -44,7 +48,7 @@ class App extends Component {
                                 </Route>
                             </Switch>
                         </Suspense>
-                    </BrowserRouter>
+                    </Router>
                 </main>
             </div>
         );

@@ -1,11 +1,12 @@
 import {combineReducers} from "redux";
-import {songsReducer as songs} from "./songs";
-import {selectedSongReducer as selectedSong} from "./selectSong";
-import {postsReducer as posts} from "./posts";
-import {frameworksReducer as frameworks} from "./frameworks";
-import {fetchUserReducer as users} from "./users";
-import {authReducer as auth} from "./auth";
-import {reducer as formReducer} from "redux-form";
+import {reducer as form} from "redux-form";
+import songs from "./songs";
+import selectedSong from "./selectSong";
+import posts from "./posts";
+import frameworks from "./frameworks";
+import users from "./users";
+import auth from "./auth";
+import streams from "./streams";
 
 
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
@@ -17,5 +18,6 @@ export default combineReducers({
     frameworks,
     users,
     auth,
-    form: formReducer
+    form,
+    streams
 });

@@ -1,19 +1,32 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import {articlesRouter, familyRouter, commentsRouter, postsRouter, frameworksRouter, usersRouter} from './routers';
+import {
+    articlesRouter,
+    commentsRouter,
+    familyRouter,
+    frameworksRouter,
+    postsRouter,
+    streamsRouter,
+    usersRouter
+} from './routers';
+
+// const cors = require('cors');
 
 const app = express(),
-      port = process.env.NODEJS_PORT || 3001,
-      root =  '/api/';
+    port = process.env.NODEJS_PORT || 3001,
+    root = '/api/';
 
-const allowCrossDomain = (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+// если так то не работает delete метод, по непонятной причине потом заработало
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Max-Age", 600);
     next();
-};
+});
 
-
+// поэтому использую middleware cors package
+// app.use(cors());
 
 // Add your mock router here
 const appRouters = [
@@ -40,12 +53,15 @@ const appRouters = [
     {
         url: 'users',
         middleware: usersRouter
+    },
+    {
+        url: 'streams',
+        middleware: streamsRouter
     }
 ];
 
-app.use(allowCrossDomain);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 
 appRouters.forEach(router => app.use(root + router.url, router.middleware));
 

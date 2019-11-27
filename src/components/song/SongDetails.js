@@ -23,7 +23,7 @@ function SongDetails({selectedSong}) {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     selectedSong: state.selectedSong
 });
 

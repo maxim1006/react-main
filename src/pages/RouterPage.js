@@ -20,7 +20,12 @@ export default function RouterPage() {
             ]}/>
 
             <Switch>
-                <Route path="/router" exact component={RouterExactRoute}/>
+
+                {/* Этот роутер закомментировал так как если раскоментить то он будет
+                    покажется сразу при переходе на /router как и RouterExactRoute
+                    это чисто для примера что такое exact
+                    <Route path="/router" exact component={RouterExactRoute}/>
+                */}
                 <Route path="/router/exact" exact component={RouterExactRoute}/>
                 <Route path="/router/route1" component={RouterRoute1}/>
                 <Route path="/router/lazy" component={RouterLazyRoute}/>

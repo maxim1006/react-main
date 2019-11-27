@@ -1,8 +1,8 @@
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import React from 'react';
 import "./MainMenu.scss";
 
-export default function MainMenu({routes}) {
+export default function MainMenu({routes, exact}) {
 
     if (Array.isArray(routes)) {
         return (
@@ -11,7 +11,15 @@ export default function MainMenu({routes}) {
                     routes.map((route, index) => {
                         return (
                             <li className="main-menu__item" key={index}>
-                                <Link to={route.to}>{route.title}</Link>
+                                <NavLink
+                                    exact={!!exact}
+                                    strict
+                                    activeClassName="_active"
+                                    className="main-menu__link"
+                                    to={route.to}
+                                >
+                                    {route.title}
+                                </NavLink>
                             </li>
                         );
                     })

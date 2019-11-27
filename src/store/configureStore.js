@@ -8,8 +8,7 @@ import {loadState, saveState} from "./localstorage";
 import {throttle} from "lodash";
 
 // для того чтобы кучу логики не хранить в index.js про стор, вынес в отдельный файл
-
-export default function configureStore() {
+function configureStore() {
     const initState = {};
     // забираю стор из локалстораджа
     const persistedState = loadState();
@@ -42,3 +41,7 @@ export default function configureStore() {
 
     return store
 }
+
+const store = configureStore();
+
+export default store;
