@@ -5,11 +5,15 @@ export default (state = {}, action) => {
         case CREATE_STREAM:
         case EDIT_STREAM:
         case FETCH_STREAM: {
-            return {...state, [action.payload.id]: action.payload};
+            if (action.payload.id) {
+                return {...state, [action.payload.id]: action.payload};
+            }
+
+            break;
         }
 
         case FETCH_STREAMS: {
-            return {...action.payload};
+            return {...state, ...action.payload};
         }
 
         case DELETE_STREAM: {

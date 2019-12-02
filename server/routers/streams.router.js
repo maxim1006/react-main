@@ -1,37 +1,79 @@
 import * as express from "express";
-import {uniqueId} from "lodash";
+import * as fsExtra from "fs-extra";
+import * as path from "path";
+import {generateUniqueId} from "../helpers/helpers";
 
-let streams = {};
+const rootDir = path.dirname(process.mainModule.filename);
+const streamsPath = path.join(rootDir, 'data', 'streams.json');
+
+
 
 export const streamsRouter = express.Router();
 
-streamsRouter.post('/', (req, res) => {
+streamsRouter.post('/', async (req, res) => {
     const {body} = req;
-    const uniqueStreamId = uniqueId("stream_");
+    const uniqueStreamId = generateUniqueId();
     const streamValue = {
         id: uniqueStreamId,
         ...body
     };
+
     const stream = {
         [uniqueStreamId]: streamValue
     };
 
-    streams[uniqueStreamId] = streamValue;
+    try {
+        let streams = await fsExtra.readJson(streamsPath);
+        streams[uniqueStreamId] = streamValue;
 
-    // 201 Created
-    res.status(201).json(stream);
+        await fsExtra.writeJson(streamsPath, streams);
+
+        // 201 Created
+        res.status(201).json(stream);
+    } catch (e) {
+        res.status(500).json([]);
+    }
 });
 
-streamsRouter.get('/', (req, res) => {
-    res.status(200).json(streams);
+
+
+streamsRouter.get('/', async (req, res) => {
+    try {
+        let streams = await fsExtra.readJson(streamsPath);
+        res.status(200).json(streams);
+    } catch (e) {
+        res.status(500).json({});
+    }
 });
 
-streamsRouter.delete('/', (req, res) => {
+
+
+streamsRouter.get('/:id', async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        let streams = await fsExtra.readJson(streamsPath);
+
+        res.status(200).json(streams[id]);
+    } catch (e) {
+        res.status(500).json({});
+    }
+});
+
+
+
+streamsRouter.delete('/', async (req, res) => {
     const {id} = req.query;
-    const {[id]: removed, ...newStreams} = streams;
 
-    streams = {...newStreams};
+    try {
+        let streams = await fsExtra.readJson(streamsPath);
+        const {[id]: removed, ...newStreams} = streams;
 
-    res.status(200).json(removed);
+        await fsExtra.writeJson(streamsPath, newStreams);
+
+        res.status(200).json(removed);
+    } catch (e) {
+        res.status(500).json({});
+    }
 });
 
