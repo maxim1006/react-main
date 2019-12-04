@@ -18,10 +18,6 @@ streamsRouter.post('/', async (req, res) => {
         ...body
     };
 
-    const stream = {
-        [uniqueStreamId]: streamValue
-    };
-
     try {
         let streams = await fsExtra.readJson(streamsPath);
         streams[uniqueStreamId] = streamValue;
@@ -29,9 +25,9 @@ streamsRouter.post('/', async (req, res) => {
         await fsExtra.writeJson(streamsPath, streams);
 
         // 201 Created
-        res.status(201).json(stream);
+        res.status(201).json(streamValue);
     } catch (e) {
-        res.status(500).json([]);
+        res.status(500).json({});
     }
 });
 
@@ -40,6 +36,7 @@ streamsRouter.post('/', async (req, res) => {
 streamsRouter.get('/', async (req, res) => {
     try {
         let streams = await fsExtra.readJson(streamsPath);
+
         res.status(200).json(streams);
     } catch (e) {
         res.status(500).json({});
@@ -77,3 +74,21 @@ streamsRouter.delete('/', async (req, res) => {
     }
 });
 
+
+
+streamsRouter.patch('/:id', async (req, res) => {
+    const {id} = req.params;
+    const {body} = req;
+
+    try {
+        const streams = await fsExtra.readJson(streamsPath);
+
+        streams[id] = {...streams[id], ...body};
+
+        await fsExtra.writeJson(streamsPath, streams);
+
+        res.status(200).json(streams[id]);
+    } catch (e) {
+        res.status(500).json({});
+    }
+});

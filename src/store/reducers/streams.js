@@ -9,7 +9,7 @@ export default (state = {}, action) => {
                 return {...state, [action.payload.id]: action.payload};
             }
 
-            break;
+            return state;
         }
 
         case FETCH_STREAMS: {

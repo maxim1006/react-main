@@ -25,7 +25,7 @@ class GoogleAuth extends Component {
                     // кидаю экшены в редакс на коллбек auth
                     this.authStatusChange(this.auth.isSignedIn.get());
 
-                    console.log("GoogleAuth gapi.client.init inited");
+                    // console.log("GoogleAuth gapi.client.init inited");
                 },
                 () => console.log("GoogleAuth gapi.client.init error")
             );
@@ -43,7 +43,7 @@ class GoogleAuth extends Component {
         //     isSignedIn
         // });
 
-        console.log("User auth status changed to: ", isSignedIn);
+        // console.log("User auth status changed to: ", isSignedIn);
     };
 
     signIn = async (e) => {

@@ -23,6 +23,7 @@ export const createStream = formValues => async (dispatch, getState) => {
 export const fetchStreams = _ => async dispatch => {
     try {
         const {data: streams} = await axios.get("/streams");
+
         dispatch({
             type: FETCH_STREAMS,
             payload: streams
@@ -47,12 +48,18 @@ export const fetchStream = id => async dispatch => {
 
 export const editStream = (id, formValues) => async dispatch => {
     try {
-        const {data: stream} = await axios.put(`/streams`, formValues);
+        // в делит для примера делаю в парам, тут для примера в url, лучше вообще делать в пут чтобы не
+        // получать лишний запрос options
+        // patch а не put так как пут обычно перезатирает все проперти кроме id
+        const {data: stream} = await axios.patch(`/streams/${id}`, formValues);
 
         dispatch({
             type: EDIT_STREAM,
             payload: stream
-        })
+        });
+
+        // после того как создал иду на /stream (это для примера)
+        history.push("/stream");
     } catch (e) {
         console.log("editStream get error ", e);
     }

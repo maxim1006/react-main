@@ -1,7 +1,5 @@
 import thunk from "redux-thunk";
-import logger from "./middlewares/logger";
 import {applyMiddleware, compose, createStore} from "redux";
-import monitorReducerEnhancer from "./enhancers/monitorReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import reducers from "./reducers";
 import {loadState, saveState} from "./localstorage";
@@ -13,9 +11,14 @@ function configureStore() {
     // забираю стор из локалстораджа
     const persistedState = loadState();
 
-    const middlewares = [thunk, logger];
+    // logger выводит в консоль все изменения стора, пока закомментирую чтобы не мешал
+    // const middlewares = [thunk, logger];
+    const middlewares = [thunk];
     const middlewareEnhancer = applyMiddleware(...middlewares);
-    const enhancers = [middlewareEnhancer, monitorReducerEnhancer];
+
+    // monitorReducerEnhancer - выводит время работы каждого редьюсера
+    // const enhancers = [middlewareEnhancer, monitorReducerEnhancer];
+    const enhancers = [middlewareEnhancer];
 
     // нужно чтобы заработали дев тулы
     const composedEnhancers = process.env.NODE_ENV !== 'production'

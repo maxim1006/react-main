@@ -4,7 +4,6 @@ import {Route, Switch} from "react-router-dom";
 import MainMenu from "../components/menu/MainMenu";
 import StreamList from "../components/stream/StreamList";
 import StreamCreate from "../components/stream/StreamCreate";
-import StreamDelete from "../components/stream/StreamDelete";
 import StreamShow from "../components/stream/StreamShow";
 import StreamEdit from "../components/stream/StreamEdit";
 import GoogleAuth from "../components/google-auth/GoogleAuth";
@@ -21,17 +20,15 @@ export default function StreamPage() {
             <MainMenu exact routes={[
                 {to: "/stream", title: "StreamList"},
                 {to: "/stream/create", title: "StreamCreate"},
-                {to: "/stream/delete", title: "StreamDelete"},
-                {to: "/stream/edit", title: "StreamEdit"},
-                {to: "/stream/show", title: "StreamShow"},
             ]}/>
 
+            {/*по умолчанию если роуты не обернуть в Switch в случае /stream/create покажется также /stream/:id, чтобы
+            этого избежать оборачиваю в Switch, покажется только первый подходящий роут*/}
             <Switch>
                 <Route path="/stream" exact component={StreamList}/>
                 <Route path="/stream/create" exact component={StreamCreate}/>
-                <Route path="/stream/delete" exact component={StreamDelete}/>
                 <Route path="/stream/edit/:id" exact component={StreamEdit}/>
-                <Route path="/stream/show" exact component={StreamShow}/>
+                <Route path="/stream/:id" exact component={StreamShow}/>
                 <Route path="/stream/*">
                     <NotFound>
                         Stream not found

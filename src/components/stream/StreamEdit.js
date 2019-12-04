@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {editStream, fetchStream} from "../../store/actions";
 import StreamForm from "./StreamForm";
+import {Link} from "react-router-dom";
 
 class StreamEdit extends Component {
     componentDidMount() {
@@ -15,11 +16,20 @@ class StreamEdit extends Component {
         // initialValues - это объект и в данном случае он равен stream
 
         if (stream) {
+            const {title, description} = stream;
+
             return (
-                <StreamForm
-                    initialValues={stream}
-                    onSubmit={this.onSubmit}
-                />
+                <>
+                    <h3>Edit stream</h3>
+                    <StreamForm
+                        initialValues={{title, description}}
+                        onSubmit={this.onSubmit.bind(this)}
+                    />
+
+                    <p>
+                        <Link to="/stream">Go to stream list -></Link>
+                    </p>
+                </>
             );
         } else {
             return (
@@ -29,8 +39,7 @@ class StreamEdit extends Component {
     }
 
     onSubmit = (formValues) => {
-        console.log(formValues);
-        this.props.editStream(formValues);
+        this.props.editStream(this.props.match.params.id, formValues);
     }
 }
 
@@ -42,7 +51,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchStream: (id) => {
         dispatch(fetchStream(id));
     },
-    editStream
+    editStream: (...args) => {
+        dispatch(editStream(...args));
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StreamEdit);

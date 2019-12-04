@@ -19,7 +19,7 @@ const app = express(),
 // если так то не работает delete метод, по непонятной причине потом заработало
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS, PATCH");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Max-Age", 600);
     next();
@@ -68,3 +68,19 @@ appRouters.forEach(router => app.use(root + router.url, router.middleware));
 app.listen(port, () => {
     console.log(`Mock server is listening on port ${port}`);
 });
+
+
+// firestore
+// try {
+//     const billingAccountSummary = await admin
+//         .firestore()
+//         .collection('billing-account-summary')
+//         .get();
+//
+//     // {"name":"billing account summary name","type":"external","balance":1000,"status":"enabled"}
+//
+//     return billingAccountSummary.docs[0].data();
+//
+// } catch (e) {
+//     throw new ApolloError(e);
+// }

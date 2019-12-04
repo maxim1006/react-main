@@ -1,7 +1,35 @@
-import React from "react";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {fetchStream, selectSong} from "../../store/actions";
+import {Link} from "react-router-dom";
 
-export default function StreamShow() {
-    return (
-        <div>StreamShow</div>
-    );
+class StreamShow extends Component {
+    componentDidMount() {
+        const {fetchStream, match} = this.props;
+
+        fetchStream(match.params.id);
+    }
+
+    render() {
+        const {stream} = this.props;
+
+        if (stream) {
+            return (
+                <>
+                    <h3>Stream show</h3>
+                    <p>Stream title: {stream.title}</p>
+                    <p>Stream description: {stream.description}</p>
+                    <Link to="/stream">Go to stream list</Link>
+                </>
+            );
+        } else {
+            return <div>...Loading</div>;
+        }
+    }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+    stream: state.streams[ownProps.match.params.id]
+});
+
+export default connect(mapStateToProps, {fetchStream})(StreamShow);

@@ -3,49 +3,65 @@ import {connect} from "react-redux";
 import {deleteStream, fetchStreams} from "../../store/actions";
 import Stream from "./Stream";
 import {Link} from "react-router-dom";
+import ModalPortal from "../portals/ModalPortal";
 
 class StreamList extends Component {
+    state = {
+        streamToDelete: null
+    };
+
     componentDidMount() {
         this.props.fetchStreams();
     }
 
     render() {
-        const {streams} = this.props;
-
         return (
             <>
-                <ul className="stream-list">
-                    {
-                        Object.entries(streams)
-                            .map(([id, stream]) => {
-                                return (
-                                    <li
-                                        key={id}
-                                        className="stream-list__item"
-                                    >
-                                        <Stream {...stream}/>
-
-                                        {this.renderControls(stream)}
-                                    </li>
-                                );
-                            })
-                    }
-                </ul>
-                <p>
-                    {this.renderCreateControls()}
-                </p>
+                {this.renderStreamList()}
+                {this.renderCreateControls()}
+                {this.renderDeleteModal()}
             </>
         );
     }
 
-    renderControls({userId, id}) {
-        const {currentUserId, deleteStream} = this.props;
+    renderStreamList() {
+        const {streams} = this.props;
+
+        return (
+            <ul className="stream-list">
+                {
+                    Object.entries(streams)
+                        .map(([id, stream]) => {
+                            return (
+                                <li
+                                    key={id}
+                                    className="stream-list__item"
+                                >
+                                    <Stream
+                                        {...stream}
+                                        title={<Link to={`/stream/${stream.id}`}>{stream.title}</Link>}
+                                    />
+
+
+
+                                    {this.renderControls(stream)}
+                                </li>
+                            );
+                        })
+                }
+            </ul>
+        );
+    }
+
+    renderControls(stream) {
+        const {currentUserId} = this.props;
+        const {userId, id} = stream;
 
         if (userId === currentUserId) {
             return (
                 <div className="stream-list__controls">
                     <Link to={`/stream/edit/${id}`}>Edit</Link>
-                    <button type="button" onClick={deleteStream.bind(null, id)}>Delete</button>
+                    <button type="button" onClick={this.showDeleteModal.bind(this, stream)}>Delete</button>
                 </div>
             );
         }
@@ -54,10 +70,52 @@ class StreamList extends Component {
     renderCreateControls() {
         if (this.props.auth) {
             return (
-                <Link to="/stream/create">Create stream -></Link>
+                <p>
+                    <Link to="/stream/create">Create stream -></Link>
+                </p>
             );
         }
     }
+
+    renderDeleteModal() {
+        const {streamToDelete: stream} = this.state;
+
+        if (stream) {
+            const controls = <>
+                <button type="button" onClick={this.onDelete.bind(this, stream)}>Delete</button>
+                <button type="button" onClick={this.hideDeleteModel}>Cancel</button>
+            </>;
+
+            return <ModalPortal
+                title="Are u sure u wanna delete this stream?"
+                controls={controls}
+            />
+        }
+    }
+
+    onDelete = (stream, event) => {
+        // console.log(stream);
+        // так могу достать эвент при bind(this, ...)
+        // console.log(event.target);
+
+        const {deleteStream} = this.props;
+
+        deleteStream(stream.id);
+
+        this.hideDeleteModel();
+    };
+
+    hideDeleteModel = () => {
+        this.setState({
+            streamToDelete: null
+        });
+    };
+
+    showDeleteModal = (stream) => {
+        this.setState({
+            streamToDelete: stream
+        });
+    };
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -66,9 +124,8 @@ const mapStateToProps = (state, ownProps) => ({
     auth: state.auth.isSignedIn,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+
+export default connect(mapStateToProps, {
     fetchStreams,
     deleteStream
-});
-
-export default connect(mapStateToProps, mapDispatchToProps())(StreamList);
+})(StreamList);
