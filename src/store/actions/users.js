@@ -1,4 +1,4 @@
-import axios from "../../api/axios";
+import axios from "../../common/api/axios";
 import {FETCH_USER, FETCH_USERS} from "./types";
 
 export const fetchUsers = () => async (dispatch, getState) => {

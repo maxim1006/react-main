@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetchStream, selectSong} from "../../store/actions";
+import {fetchStream} from "../../store/actions";
 import {Link} from "react-router-dom";
 
 class StreamShow extends Component {

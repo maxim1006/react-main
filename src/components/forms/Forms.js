@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {SearchBarComponent} from "../search/SearchBar";
 import {SearchListComponent} from "../search/SearchList";
 import MaterialLoader from "../loader/MaterialLoader";
-import customAxios from '../../api/axios';
+import customAxios from "../../common/api/axios";
 
 export class FormsComponent extends Component {
 

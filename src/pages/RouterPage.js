@@ -7,7 +7,7 @@ import RouterRoute1 from "../components/router/RouterRoute1";
 
 const RouterLazyRoute = React.lazy(() => import('../components/router/RouterLazyRoute'));
 
-export default function RouterPage() {
+export default () => {
     return (
         <>
             <h3>Router examples</h3>

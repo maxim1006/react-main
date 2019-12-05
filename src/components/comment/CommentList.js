@@ -3,7 +3,7 @@ import CommentComponent from "./Comment";
 import './CommentList.scss';
 import ContentProjectionContentComponent from "../content-projection/ContentProjectionContent";
 import ContentProjectionComponent from "../content-projection/ContentProjection";
-import customAxios from "../../api/axios";
+import customAxios from "../../common/api/axios";
 
 export class CommentListComponent extends Component {
     state = {
@@ -14,8 +14,8 @@ export class CommentListComponent extends Component {
         const comments = this.state.comments.map((comment, index) => {
             return <ContentProjectionComponent
                 key={index}
-                projectFromProp={<ContentProjectionContentComponent content={comment.occupation}
-                />}>
+                projectFromProp={<ContentProjectionContentComponent content={comment.occupation}/>}
+            >
                 <CommentComponent
                     {...comment}
                 />

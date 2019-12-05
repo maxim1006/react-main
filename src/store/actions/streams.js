@@ -1,4 +1,4 @@
-import axios from '../../api/axios';
+import axios from "../../common/api/axios";
 import {CREATE_STREAM, DELETE_STREAM, EDIT_STREAM, FETCH_STREAM, FETCH_STREAMS} from "./types";
 import history from "../../history";
 

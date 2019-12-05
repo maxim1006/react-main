@@ -1,10 +1,10 @@
 import React from 'react';
 import './ContentProjectionContent.scss';
 
-export default function ContentProjectionContentComponent(props) {
+export default ({content}) => {
     return (
         <div className="content-projection-content">
-            {props.content}
+            {content}
         </div>
     );
 }

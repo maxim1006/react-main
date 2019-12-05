@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import customAxios from "../../api/axios";
+import customAxios from "../../common/api/axios";
 
 export class RestApiComponent extends Component {
     state = {

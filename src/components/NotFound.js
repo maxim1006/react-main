@@ -1,9 +1,3 @@
 import React from 'react';
 
-export default function NotFound({children}) {
-    return (
-        <>
-            {children ? children : <div>Page not found</div>}
-        </>
-    );
-}
+export default ({children}) => children ? children : <div>Page not found</div>;

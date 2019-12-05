@@ -10,7 +10,7 @@ import GoogleAuth from "../components/google-auth/GoogleAuth";
 
 // const RouterLazyRoute = React.lazy(() => import('../components/router/RouterLazyRoute'));
 
-export default function StreamPage() {
+export default () => {
     return (
         <>
             <h3>Router examples</h3>

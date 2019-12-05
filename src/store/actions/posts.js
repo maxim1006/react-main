@@ -1,4 +1,4 @@
-import axios from "../../api/axios";
+import axios from "../../common/api/axios";
 import {FETCH_POSTS} from "./types";
 
 // dispatch и getState provided by redux-thunk

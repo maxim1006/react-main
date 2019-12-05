@@ -1,6 +1,6 @@
 import {fetchPosts} from "./posts";
 import {fetchUserById} from "./users";
-import {onlyUnique} from "../../helpers/helpers";
+import {onlyUnique} from "../../common/helpers/helpers";
 
 // пример общего экшена
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {

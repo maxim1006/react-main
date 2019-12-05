@@ -1,7 +1,7 @@
 import React from 'react';
 import './JsxExamples.css';
 
-export default function JSXExampleComponent(props) {
+export default () => {
     const buttonText = "Click me";
     const inlineStyles = { backgroundColor: '#e8f3e8', color: '#333' };
 

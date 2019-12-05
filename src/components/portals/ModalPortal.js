@@ -4,7 +4,7 @@ import "./ModalPortal.scss"
 
 // если в названии поставить [name].module.scss то соберется как css модуль а не просто jsка
 
-export default function ModalPortal({onCancel, onDelete, title, controls}) {
+export default ({title, controls}) => {
     // если передать 2м аргументом document.body, то этот портал перетрет все что есть в боди, поэтому
     // создаю див с id в index.html куда хочу рендерить этот портал
     return ReactDOM.createPortal(

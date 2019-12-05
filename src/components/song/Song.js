@@ -1,7 +1,7 @@
 import React from 'react';
 import './Song.scss';
 
-export default function Song({title, selected, onSelect}) {
+export default ({title, selected, onSelect}) => {
     const style = selected ? {backgroundColor: 'lightblue'} : null;
 
     return (

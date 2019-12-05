@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {fetchPostsAndUsers} from "../../store/actions";
-import {convertArrayToObjById} from "../../helpers/helpers";
+import {convertArrayToObjById} from "../../common/helpers/helpers";
 import "./PostsAndUsers.scss"
 
 class PostsAndUsers extends Component {

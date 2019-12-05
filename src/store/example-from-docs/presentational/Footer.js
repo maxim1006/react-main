@@ -2,7 +2,7 @@ import React from 'react';
 import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../actions';
 
-export default function Footer() {
+export default () => {
     return (
         <p>
             Show: <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>

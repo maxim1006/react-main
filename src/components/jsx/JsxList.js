@@ -1,4 +1,4 @@
-import customAxios from "../../api/axios";
+import customAxios from "../../common/api/axios";
 import React, {Component} from 'react';
 
 export class JsxListComponent extends Component {

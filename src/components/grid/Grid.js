@@ -2,7 +2,7 @@ import React from 'react';
 import './Grid.scss';
 import {DomRefImageComponent} from "../dom-ref/DomRefImage";
 
-export default function GridComponent(props) {
+export default () => {
     const images = [
         '/images/1.jpg',
         '/images/2.jpg',

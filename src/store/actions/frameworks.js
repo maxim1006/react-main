@@ -1,4 +1,4 @@
-import axios from "../../api/axios";
+import axios from "../../common/api/axios";
 import {CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS} from "./types";
 
 export const fetchFrameworks = async (dispatch, getState) => {

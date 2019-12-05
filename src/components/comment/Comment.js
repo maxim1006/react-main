@@ -1,7 +1,7 @@
 import React from 'react';
 import './Comment.scss';
 
-export default function CommentComponent({name, content, date, img, id}) {
+export default ({name, content, date, img, id}) => {
     return (
         <li className="comment">
             <div className="comment__col _margin-right-s">
