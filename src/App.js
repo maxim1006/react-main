@@ -9,6 +9,7 @@ import NotFound from "./components/NotFound";
 import MainMenu from "./components/menu/MainMenu";
 import RouterPage from "./pages/RouterPage";
 import history from "./history";
+import ContextTest from "./components/context/ContextTest";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
@@ -33,6 +34,7 @@ class App extends Component {
                                 {to: "/router", title: "Router"},
                                 {to: "/stream", title: "Stream"},
                                 {to: "/lazy", title: "Lazy"},
+                                {to: "/context", title: "Context"},
                                 {to: "/unknown", title: "Unknown"},
                             ]
                         }/>
@@ -43,6 +45,7 @@ class App extends Component {
                                 <Route path="/router" component={RouterPage}/>
                                 <Route path="/stream" component={StreamPage}/>
                                 <Route path="/lazy" component={LazyPage}/>
+                                <Route path="/context" component={ContextTest}/>
                                 <Route path="*">
                                     <NotFound/>
                                 </Route>
