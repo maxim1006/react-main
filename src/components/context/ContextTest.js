@@ -11,11 +11,11 @@ export default class ContextTest extends Component {
         return (
             <div className="context-test">
                 Select language:
-                <a className="context-test__link" href="#" onClick={this.onLanguageChange.bind(this, "en")}>en</a>
-                <a className="context-test__link" href="#" onClick={this.onLanguageChange.bind(this, "ru")}>ru</a>
+                <a className="context-test__link" href="/" onClick={this.onLanguageChange.bind(this, "en")}>en</a>
+                <a className="context-test__link" href="/" onClick={this.onLanguageChange.bind(this, "ru")}>ru</a>
 
                 <LanguageContext.Provider value={this.state.language}>
-                <ContextCreate/>
+                    <ContextCreate/>
                 </LanguageContext.Provider>
             </div>
         );

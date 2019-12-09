@@ -18,8 +18,23 @@ export default () => {
 //     render() {
 //         console.log(this.context);
 //
+//         const text = this.context === "en" ? "Submit" : "Подтвердить";
+//
 //         return (
-//             <button type="button">Submit</button>
+//             <button type="button">{text}</button>
 //         );
 //     }
 // }
+
+// вариант как делалось раньше через LanguageContext.Consumer
+// export default () => {
+//     return (
+//         <button type="button">
+//             <LanguageContext.Consumer>
+//                 {(value) => value === "en" ? "Submit" : "Подтвердить"}
+//             </LanguageContext.Consumer>
+//
+//         </button>
+//     );
+// }
+
