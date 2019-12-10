@@ -56,7 +56,7 @@ export class LifecycleHooksComponent extends Component {
     //         this.fetchData(this.props.userID);
     //     }
     // }
-    // Вызывается после render метода
+    // Вызывается после render метода (когда поменяется стейт у родителя), либо когда поменяется стейт у этого компонента
     // componentDidUpdate() will not be invoked if shouldComponentUpdate() returns false.
     componentDidUpdate() {
         console.log("componentDidUpdate");

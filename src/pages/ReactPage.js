@@ -11,6 +11,7 @@ import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
+import Imports from "../components/imports/Imports";
 
 export default function ReactPage() {
     return (
@@ -19,6 +20,8 @@ export default function ReactPage() {
                 <ReduxForm/>
             </div>
             <div tabName="Components">
+                <Imports/>
+
                 <Parent/>
 
                 <GridComponent/>

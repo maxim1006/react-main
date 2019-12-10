@@ -5,3 +5,4 @@ export * from './posts.router';
 export * from './frameworks.router';
 export * from './users.router';
 export * from './streams.router';
+export * from './hooks.router';

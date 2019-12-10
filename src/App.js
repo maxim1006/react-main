@@ -10,26 +10,25 @@ import MainMenu from "./components/menu/MainMenu";
 import RouterPage from "./pages/RouterPage";
 import history from "./history";
 import ContextTest from "./components/context/ContextTest";
-import ThemeContext from "./context/ThemeContext";
+import {ThemeContextStore} from "./components/theme/ThemeContextStore";
 import ThemeSelector from "./components/theme/ThemeSelector";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
 const LazyPage = React.lazy(() => import('./pages/LazyPage'));
 const StreamPage = React.lazy(() => import('./pages/StreamPage'));
+const HooksPage = React.lazy(() => import('./pages/HooksPage'));
 
 
 class App extends Component {
-    state = {
-        theme: "default"
-    };
+
 
     render() {
-        const {theme} = this.state;
-
         return (
-            <ThemeContext.Provider value={theme}>
-                <ThemeSelector onChange={this.onThemeChange} value={theme} />
+            <ThemeContextStore>
+                {/*Связываю ThemeContextStore с ThemeSelector через context*/}
+                <ThemeSelector/>
+
                 <div className="app">
                     <main className="app__main">
                         {/*Если хочу иметь возможность кастомно переключать роуты из кода а не по кликам то
@@ -44,14 +43,17 @@ class App extends Component {
                                     {to: "/stream", title: "Stream"},
                                     {to: "/lazy", title: "Lazy"},
                                     {to: "/context", title: "Context"},
+                                    {to: "/hooks", title: "Hooks"},
                                     {to: "/unknown", title: "Unknown"},
                                 ]
                             }/>
+                            {/*При переключении роутера будет показываться MaterialLoaderComponent, за это отвечает Suspense*/}
                             <Suspense fallback={<MaterialLoaderComponent/>}>
                                 <Switch>
                                     <Route path="/redux" exact component={ReduxComponent}/>
                                     <Route path="/react" component={ReactPage}/>
                                     <Route path="/router" component={RouterPage}/>
+                                    <Route path="/hooks" component={HooksPage}/>
                                     <Route path="/stream" component={StreamPage}/>
                                     <Route path="/lazy" component={LazyPage}/>
                                     <Route path="/context" component={ContextTest}/>
@@ -63,27 +65,8 @@ class App extends Component {
                         </Router>
                     </main>
                 </div>
-            </ThemeContext.Provider>
+            </ThemeContextStore>
         );
-    }
-
-    onThemeChange = (event) => {
-        const htmlElement = document.documentElement;
-        const theme = event.target.value;
-
-        switch (theme) {
-            case "default": {
-                htmlElement.classList.remove("theme1", "theme2");
-                break;
-            }
-
-            default: {
-                htmlElement.classList.remove("theme1", "theme2");
-                htmlElement.classList.add(theme);
-            }
-        }
-
-        this.setState({theme});
     }
 }
 
