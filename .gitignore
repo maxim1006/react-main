@@ -25,3 +25,7 @@ yarn-error.log*
 # security
 /admin
 /server/admin
+
+#editor
+/.idea
+.gitignore
