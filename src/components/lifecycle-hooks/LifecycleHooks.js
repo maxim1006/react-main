@@ -22,9 +22,11 @@ export class LifecycleHooksComponent extends Component {
         super(props);
         console.log("constructor");
 
-        // setTimeout(() => {this.setState((state, props) => ({prop: 1}))}, 1000);
-        // setTimeout(() => {this.setState((state, props) => ({prop: 1}))}, 2000);
-        // setTimeout(() => {this.setState((state, props) => ({prop: 3}))}, 3000);
+        // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
+        // через функцию это делаю
+        // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 1}))}, 1000);
+        // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 1}))}, 2000);
+        // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 3}))}, 3000);
 
         // При вызове forceUpdate вызовется:
         // render затем componentDidUpdate затем forceUpdate cb
@@ -58,7 +60,7 @@ export class LifecycleHooksComponent extends Component {
     // }
     // Вызывается после render метода (когда поменяется стейт у родителя), либо когда поменяется стейт у этого компонента
     // componentDidUpdate() will not be invoked if shouldComponentUpdate() returns false.
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         console.log("componentDidUpdate");
     }
 

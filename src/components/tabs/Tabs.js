@@ -58,7 +58,9 @@ export class TabsComponent extends Component {
     }
 
     onClick = (index) => {
-        this.setState((state, props) => ({
+        // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
+        // через функцию это делаю
+        this.setState((prevState, prevProps) => ({
             activeTab: index
         }));
     }

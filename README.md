@@ -1,28 +1,6 @@
 ### install app
 npx create-react-app my-app
 
-
-### docs
-https://reactjs.org/
-https://react-redux.js.org/
-https://reacttraining.com/react-router
-https://create-react-app.dev/
-
-### esm
-// npm i esm, чтобы express заработал в es6 для запуска nodemon -r esm ./server/server.js
-
-### Router
-react-router - main
-- dom
-- native
-- redux
-
-
-
-
-
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

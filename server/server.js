@@ -8,7 +8,8 @@ import {
     postsRouter,
     streamsRouter,
     usersRouter,
-    hooksRouter
+    hooksRouter,
+    monsterRouter
 } from './routers';
 
 // const cors = require('cors');
@@ -62,6 +63,10 @@ const appRouters = [
     {
         url: 'hooks',
         middleware: hooksRouter
+    },
+    {
+        url: 'monsters',
+        middleware: monsterRouter
     }
 ];
 

@@ -15,7 +15,9 @@ class ClassBasedComponent extends Component {
 
     componentDidMount() {
         const success = ({coords}) => {
-            this.setState((state, props) => ({
+            // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
+            // через функцию это делаю
+            this.setState((prevState, prevProps) => ({
                 latitude: coords.latitude,
                 longitude: coords.longitude
             }));
@@ -23,7 +25,9 @@ class ClassBasedComponent extends Component {
 
         const error = e => {
             console.log('Getting position error ', e);
-            this.setState((state, props) => ({
+            // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
+            // через функцию это делаю
+            this.setState((prevState, prevProps) => ({
                 errorMessage: e.message
             }));
         };
@@ -57,14 +61,7 @@ class ClassBasedComponent extends Component {
                 </div>
         } else {
             position = <div style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                position: "relative",
                 pointerEvents: 'none'
             }}>
                 defaultProps: {defaultProp}

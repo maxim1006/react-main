@@ -1,0 +1,12 @@
+.monster-search {
+    margin-bottom: 20px;
+
+    &__input {
+        height: 36px;
+        line-height: 36px;
+        font-size: 18px;
+        border: none;
+        border-bottom: 1px solid lightskyblue;
+        outline: none;
+    }
+}

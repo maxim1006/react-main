@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Link({ active, children, onClick }) {
+export default ({ active, children, onClick }) => {
     if (active) {
         return <span>{children}</span>
     }
