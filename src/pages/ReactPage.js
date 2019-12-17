@@ -23,18 +23,18 @@ export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="AsyncSetState">
-                    <AsyncSetState increaseNumber={1}/>
-                    <AsyncSetStateHooks increaseNumber={1}/>
-                </Component>
+                {/*<Component title="AsyncSetState">*/}
+                {/*    <AsyncSetState increaseNumber={1}/>*/}
+                {/*    <AsyncSetStateHooks increaseNumber={1}/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Monsters">*/}
                 {/*    <Monsters/>*/}
                 {/*</Component>*/}
 
-                {/*<Component title="Imports">*/}
-                {/*    <Imports/>*/}
-                {/*</Component>*/}
+                <Component title="Imports">
+                    <Imports/>
+                </Component>
 
                 {/*<Component title="Parent">*/}
                 {/*    <Parent/>*/}
@@ -48,9 +48,9 @@ export default function ReactPage() {
                 {/*    <RestApiComponent/>*/}
                 {/*</Component>*/}
 
-                <Component title="LifecycleHooksComponent">
-                    <LifecycleHooksComponent/>
-                </Component>
+                {/*<Component title="LifecycleHooksComponent">*/}
+                {/*    <LifecycleHooksComponent/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="ClassBasedComponent">*/}
                 {/*    <ClassBasedComponent/>*/}
