@@ -1,0 +1,35 @@
+@import "../../../../assets/styles/common.scss";
+
+.shop-menu-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    min-width: 30%;
+    height: 350px;
+    margin: 0 1% 2%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    background-position: center;
+    background-size: cover;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &__title {
+        @include font-bold-large;
+        font-size: 30px;
+        text-shadow: 0 0 10px yellow;
+    }
+
+    &__subtitle {
+        @include font-light-big;
+        text-shadow: 0 0 10px #ccc;
+    }
+}
+

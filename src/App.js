@@ -18,6 +18,7 @@ const ReactPage = React.lazy(() => import('./pages/ReactPage'));
 const LazyPage = React.lazy(() => import('./pages/LazyPage'));
 const StreamPage = React.lazy(() => import('./pages/StreamPage'));
 const HooksPage = React.lazy(() => import('./pages/HooksPage'));
+const ShopPage = React.lazy(() => import('./pages/ShopPage'));
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
                         <Router history={history}>
                             <MainMenu routes={
                                 [
+                                    {to: "/shop", title: "Shop"},
                                     {to: "/redux", title: "Redux"},
                                     {to: "/react", title: "React"},
                                     {to: "/router", title: "Router"},
@@ -49,7 +51,9 @@ class App extends Component {
                             }/>
                             {/*При переключении роутера будет показываться MaterialLoaderComponent, за это отвечает Suspense*/}
                             <Suspense fallback={<MaterialLoaderComponent/>}>
+                                {/*покажет только первый найденный роут*/}
                                 <Switch>
+                                    <Route path="/shop" component={ShopPage}/>
                                     <Route path="/redux" exact component={ReduxComponent}/>
                                     <Route path="/react" component={ReactPage}/>
                                     <Route path="/router" component={RouterPage}/>
@@ -58,7 +62,7 @@ class App extends Component {
                                     <Route path="/lazy" component={LazyPage}/>
                                     <Route path="/context" component={ContextTest}/>
                                     <Route path="*">
-                                        <NotFound/>
+                                        <NotFound history={history}/>
                                     </Route>
                                 </Switch>
                             </Suspense>

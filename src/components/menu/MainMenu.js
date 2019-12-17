@@ -11,6 +11,7 @@ export default ({routes, exact}) => {
                     routes.map((route, index) => {
                         return (
                             <li className="main-menu__item" key={index}>
+                                {/*тоже что и Link только с возможностью стилизации*/}
                                 <NavLink
                                     exact={!!exact}
                                     strict

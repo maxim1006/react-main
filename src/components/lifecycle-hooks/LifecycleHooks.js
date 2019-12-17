@@ -1,4 +1,5 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
+import {LifecycleParent} from "./LifecycleParent";
 
 // constructor
 // render
@@ -25,7 +26,7 @@ export class LifecycleHooksComponent extends Component {
         // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
         // через функцию это делаю
         // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 1}))}, 1000);
-        // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 1}))}, 2000);
+        // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 2}))}, 2000);
         // setTimeout(() => {this.setState((prevState, prevProps) => ({prop: 3}))}, 3000);
 
         // При вызове forceUpdate вызовется:
@@ -66,8 +67,11 @@ export class LifecycleHooksComponent extends Component {
 
     // если вызову shouldComponentUpdate и он вернет фолс, то componentDidUpdate вызываться не будет
     // чтобы вызвать насильно ;) вызываю this.forceUpdate(_ => console.log('forceUpdate'))
-    // shouldComponentUpdate() {
-    //     return false;
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if (nextState.prop === 1) {
+    //         this.forceUpdate((nextProps, nextState) => console.log('forceUpdate'));
+    //     }
+    //     return true;
     // }
 
     // clear everything
@@ -91,6 +95,8 @@ export class LifecycleHooksComponent extends Component {
     render() {
         console.log("render");
 
-        return "Lifecycle hooks";
+        return (
+            <LifecycleParent/>
+        );
     }
 }

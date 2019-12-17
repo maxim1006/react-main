@@ -28,45 +28,45 @@ export default function ReactPage() {
                     <AsyncSetStateHooks increaseNumber={1}/>
                 </Component>
 
-                <Component title="Monsters">
-                    <Monsters/>
-                </Component>
+                {/*<Component title="Monsters">*/}
+                {/*    <Monsters/>*/}
+                {/*</Component>*/}
 
-                <Component title="Imports">
-                    <Imports/>
-                </Component>
+                {/*<Component title="Imports">*/}
+                {/*    <Imports/>*/}
+                {/*</Component>*/}
 
-                <Component title="Parent">
-                    <Parent/>
-                </Component>
+                {/*<Component title="Parent">*/}
+                {/*    <Parent/>*/}
+                {/*</Component>*/}
 
-                <Component title="Grid">
-                    <Grid/>
-                </Component>
+                {/*<Component title="Grid">*/}
+                {/*    <Grid/>*/}
+                {/*</Component>*/}
 
-                <Component title="RestApiComponent">
-                    <RestApiComponent/>
-                </Component>
+                {/*<Component title="RestApiComponent">*/}
+                {/*    <RestApiComponent/>*/}
+                {/*</Component>*/}
 
                 <Component title="LifecycleHooksComponent">
                     <LifecycleHooksComponent/>
                 </Component>
 
-                <Component title="ClassBasedComponent">
-                    <ClassBasedComponent/>
-                </Component>
+                {/*<Component title="ClassBasedComponent">*/}
+                {/*    <ClassBasedComponent/>*/}
+                {/*</Component>*/}
 
-                <Component title="CommentListComponent">
-                    <CommentListComponent/>
-                </Component>
+                {/*<Component title="CommentListComponent">*/}
+                {/*    <CommentListComponent/>*/}
+                {/*</Component>*/}
 
-                <Component title="CommentListHooks">
-                    <CommentListHooks/>
-                </Component>
+                {/*<Component title="CommentListHooks">*/}
+                {/*    <CommentListHooks/>*/}
+                {/*</Component>*/}
 
-                <Component title="ClassBasedHooks">
-                    <ClassBasedHooks/>
-                </Component>
+                {/*<Component title="ClassBasedHooks">*/}
+                {/*    <ClassBasedHooks/>*/}
+                {/*</Component>*/}
             </div>
             <div tabName="Redux Forms">
                 <ReduxForm/>

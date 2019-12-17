@@ -18,7 +18,7 @@ export default () => {
                 {to: "/router/lazy", title: "RouterLazyRoute"},
                 {to: "/router/*", title: "RouterLazyNotFound"},
             ]}/>
-
+            {/*покажет только первый найденный роут*/}
             <Switch>
 
                 {/* Этот роутер закомментировал так как если раскоментить то он будет

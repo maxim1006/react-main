@@ -1,4 +1,4 @@
-export default () => "Example of dynamic importts from files";
+export default () => "Example of dynamic imports from files";
 
 (async() => {
     let data = await require("./data.js");

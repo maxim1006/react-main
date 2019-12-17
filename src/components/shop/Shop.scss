@@ -1,12 +1,9 @@
 @import "../../assets/styles/common.scss";
 
-.component {
-    margin-bottom: 60px;
+.shop {
+    width: 100%;
 
     &__title {
         margin-bottom: 20px;
-        color: $main-color;
-        text-align: center;
     }
-
 }
