@@ -14,4 +14,14 @@
         background-color: #fff;
         color: $primary-color;
     }
+
+    &._dark {
+        background-color: $main-color;
+        border-color: black;
+
+        &:hover {
+            background-color: #fff;
+            color: $main-color;
+        }
+    }
 }

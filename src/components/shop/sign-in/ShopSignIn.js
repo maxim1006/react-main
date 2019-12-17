@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ShopFormInput from "../form-input/ShopFormInput";
 import ShopButton from "../button/ShopButton";
 import "./ShopSignIn.scss";
+import {signInWithGoogle} from "../../../firebase/firebase.utils";
 
 export default class ShopSignIn extends Component {
     state = {
@@ -39,7 +40,8 @@ export default class ShopSignIn extends Component {
                         />
                     </div>
                     <div className="shop-sign-in__form-block">
-                        <ShopButton type="submit">Submit</ShopButton>
+                        <ShopButton type="submit">Sign in</ShopButton>
+                        {<ShopButton modifiers="_dark" onClick={signInWithGoogle}>Sign in with Google</ShopButton>}
                     </div>
                 </form>
             </div>

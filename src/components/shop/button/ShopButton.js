@@ -1,8 +1,8 @@
 import React from "react";
 import "./ShopButton.scss";
 
-export default ({children, ...restProps}) => (
-    <button className="shop-button" {...restProps}>
+export default ({children, modifiers="", ...restProps}) => (
+    <button className={`shop-button ${modifiers}`} {...restProps}>
         {children}
     </button>
 );

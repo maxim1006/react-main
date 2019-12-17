@@ -1,0 +1,13 @@
+.shop-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &__logo {
+        margin: 0 20px;
+    }
+
+    &__sign {
+        cursor: pointer;
+    }
+}
