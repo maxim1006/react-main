@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import MainMenu from "../components/menu/MainMenu";
 import {Route, Switch} from "react-router-dom";
 import ShopHome from "../components/shop/home/ShopHome";
@@ -6,20 +6,13 @@ import "../components/shop/Shop.scss";
 import ShopCollections from "../components/shop/collections/ShopCollections";
 import NotFound from "../components/NotFound";
 import SignInAndSignUp from "../components/shop/sign-in-and-sign-up/SignInAndSignUp";
-import {auth} from "../firebase/firebase.utils";
 import ShopHeader from "../components/shop/header/ShopHeader";
+import useLogin from "../components/hooks/useLogin";
 
 export default () => {
-    const [user, setUser] = useState(null);
+    const user = useLogin();
 
-    useEffect(() => {
-        // подписка на sign in через гугл
-        const authSubscription = auth.onAuthStateChanged(user => setUser(user));
-
-        return () => {
-            authSubscription();
-        }
-    }, []);
+    console.log(user);
 
     return (
         <div className="shop">

@@ -18,11 +18,16 @@ import ClassBasedHooks from "../components/class-based/ClassBasedHooks";
 import Component from "../components/component/Component";
 import AsyncSetState from "../components/async-set-state/AsyncSetState";
 import AsyncSetStateHooks from "../components/async-set-state/AsyncSetStateHooks";
+import FireStore from "../components/firestore/FireStore";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
+                <Component title="Firestore">
+                    <FireStore/>
+                </Component>
+
                 {/*<Component title="AsyncSetState">*/}
                 {/*    <AsyncSetState increaseNumber={1}/>*/}
                 {/*    <AsyncSetStateHooks increaseNumber={1}/>*/}
@@ -32,9 +37,9 @@ export default function ReactPage() {
                 {/*    <Monsters/>*/}
                 {/*</Component>*/}
 
-                <Component title="Imports">
-                    <Imports/>
-                </Component>
+                {/*<Component title="Imports">*/}
+                {/*    <Imports/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Parent">*/}
                 {/*    <Parent/>*/}

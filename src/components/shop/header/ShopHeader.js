@@ -14,7 +14,13 @@ export default ({user}) => (
         <div className="shop-header__sign">
             {
                 user ?
-                    <span onClick={() => auth.signOut()}>Sign Out</span> :
+                    <>
+                        <a href="/" onClick={(e) => {
+                            e.preventDefault();
+                            auth.signOut();
+                        }}>Sign Out</a>
+                        <div>User info ({JSON.stringify(user)})</div>
+                    </> :
                     <Link to="/shop/sign">Sign In</Link>
             }
         </div>
