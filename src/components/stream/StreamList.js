@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {deleteStream, fetchStreams} from "../../store/actions";
 import Stream from "./Stream";
 import {Link} from "react-router-dom";
-import ModalPortal from "../portals/ModalPortal";
+import ModalPortal from "../portals/modal/ModalPortal";
 
 class StreamList extends Component {
     state = {

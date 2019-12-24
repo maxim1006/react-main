@@ -7,9 +7,9 @@ import "./ShopHeader.scss";
 
 export default ({user}) => (
     <div className="shop-header">
-        <h2 className="shop-header__title">
+        <div className="shop-header__title">
             Shop
-        </h2>
+        </div>
         <Logo className="shop-header__logo"/>
         <div className="shop-header__sign">
             {

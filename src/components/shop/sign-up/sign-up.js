@@ -12,6 +12,8 @@ export default class ShopSignUp extends Component {
     };
 
     render() {
+        const {displayName, email, password, confirmPassword} = this.state;
+
         return (
             <div className="shop-sign-up">
                 <h3>Sign Up</h3>
@@ -20,10 +22,10 @@ export default class ShopSignUp extends Component {
                         label="Login"
                         autoComplete="username"
                         handleChange={this.handleChange}
-                        name="login"
+                        name="displayName"
                         id="shopSignUpLogin"
                         type="text"
-                        value={this.state.login}
+                        value={displayName}
                         required
                     />
 
@@ -33,7 +35,7 @@ export default class ShopSignUp extends Component {
                         name="email"
                         id="shopSignUpEmail"
                         type="email"
-                        value={this.state.email}
+                        value={email}
                         required
                     />
 
@@ -43,7 +45,7 @@ export default class ShopSignUp extends Component {
                         name="password"
                         id="shopSignUpPassword"
                         type="password"
-                        value={this.state.password}
+                        value={password}
                         required
                     />
 
@@ -53,7 +55,7 @@ export default class ShopSignUp extends Component {
                         name="confirmPassword"
                         id="shopSignUpConfirmPassword"
                         type="password"
-                        value={this.state.confirmPassword}
+                        value={confirmPassword}
                         required
                     />
 
@@ -63,7 +65,9 @@ export default class ShopSignUp extends Component {
         );
     }
 
-    handleSubmit = async () => {
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
         const {displayName, email, password, confirmPassword} = this.state;
 
         if (password !== confirmPassword) {
@@ -74,7 +78,7 @@ export default class ShopSignUp extends Component {
         try {
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
 
-            await createUserProfileDocument(user, displayName);
+            await createUserProfileDocument(user, {displayName});
 
             this.setState({
                 displayName: "",

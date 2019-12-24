@@ -12,17 +12,17 @@ import useLogin from "../components/hooks/useLogin";
 export default () => {
     const user = useLogin();
 
-    console.log(user);
-
     return (
         <div className="shop">
             <ShopHeader user={user}/>
 
-            <MainMenu exact routes={[
-                {to: "/shop", title: "Home"},
-                {to: "/shop/sign", title: "Sign"},
-                {to: "/shop/collections", title: "Collections"},
-            ]}/>
+            <div className="shop__menu">
+                <MainMenu exact routes={[
+                    {to: "/shop", title: "Home"},
+                    {to: "/shop/sign", title: "Sign"},
+                    {to: "/shop/collections", title: "Collections"},
+                ]}/>
+            </div>
 
             {/*покажет только первый найденный роут*/}
             {/*Только ShopHome будет иметь доступ к history, location и match* поэтому исползьую withRouter во внутренних компонентах */}
