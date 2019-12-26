@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
         }
 
         case SHOP_CART_TYPES.ADD_ITEM: {
-            const currentItems = initialState.cartItems;
+            const currentItems = state.cartItems;
             const newItem = action.payload;
 
             let currentItem = currentItems[newItem.id];
@@ -36,8 +36,34 @@ export default (state = initialState, action) => {
             }
         }
 
+        case SHOP_CART_TYPES.REMOVE_ITEMS: {
+            const {[action.payload.id]: removed, ...restItems} = state.cartItems;
+
+            return {
+                ...state,
+                cartItems: {...restItems}
+            }
+        }
+
+        case SHOP_CART_TYPES.REMOVE_ITEM: {
+            const currentCartItems = state.cartItems;
+            const currentCartItem = currentCartItems[action.payload.id];
+
+            currentCartItem.quantity -= 1;
+
+            if (currentCartItem.quantity < 0) {
+                currentCartItem.quantity = 0;
+            }
+
+            currentCartItems[action.payload.id] = {...currentCartItem};
+
+            return {
+                ...state,
+                cartItems: {...currentCartItems}
+            }
+        }
+
         default:
             return state;
-
     }
 }

@@ -10,6 +10,8 @@ import useLogin from "../components/hooks/useLogin";
 import {useDispatch} from "react-redux";
 import {shopSetCurrentUser} from "../store/actions";
 import ShopHeaderHooks from "../components/shop/header/ShopHeaderHooks";
+import ShopHeader from "../components/shop/header/ShopHeader";
+import ShopCheckout from "../components/shop/checkout/ShopCheckout";
 
 export default () => {
     const user = useLogin();
@@ -37,6 +39,7 @@ export default () => {
                 {/*render - это как стандартный рендер метод у компоненты*/}
                 <Route path="/shop/sign" render={() => user ? <Redirect to="/shop"/> : <SignInAndSignUp/>}/>
                 <Route path="/shop/collections" exact component={ShopCollections}/>
+                <Route path="/shop/checkout" exact component={ShopCheckout}/>
                 <Route path="/shop/*">
                     <NotFound>
                         Shop not found

@@ -6,16 +6,18 @@ import {auth} from "../../../firebase/firebase.utils";
 import {Link} from "react-router-dom";
 import "./ShopHeader.scss";
 import {useDispatch, useSelector} from "react-redux";
-import ShopCartDropdown from "../cart-dropdown/ShopCartDropdown";
 import {shopToggleDropdown} from "../../../store/actions";
 import MaterialLoaderComponent from "../../loader/MaterialLoader";
+import {selectShopCurrentUser} from "../../../store/selectors/shopUser";
+import {selectShopCartItems, selectShopCartQuantity, selectShopCartVisibleDropdown} from "../../../store/selectors";
+import ShopCartDropdownHooks from "../cart-dropdown/ShopCartDropdownHooks";
 
 export default () => {
 
     // аля mapStateToProps
-    const {currentUser: user} = useSelector(state => state.shopUser);
-    const {visibleDropdown} = useSelector(state => state.shopCart);
-    const {cartItems} = useSelector(state => state.shopCart);
+    const currentUser = useSelector(selectShopCurrentUser);
+    const visibleDropdown = useSelector(selectShopCartVisibleDropdown);
+    const cartQuantity = useSelector(selectShopCartQuantity);
 
     // так диспатчу если коллбек
     const dispatch = useDispatch();
@@ -23,8 +25,6 @@ export default () => {
         () => dispatch(shopToggleDropdown()),
         [dispatch]
     );
-
-    const cartQuantity = Object.values(cartItems).reduce((acc, {quantity}) => acc + quantity, 0);
 
     return (
         <div className="shop-header">
@@ -34,22 +34,22 @@ export default () => {
             <LogoIcon className="shop-header__logo"/>
             <div className="shop-header__sign">
                 {
-                    user === null ?
+                    currentUser === null ?
                         <MaterialLoaderComponent message="" customStyles={{width: '30px'}}/> :
-                        user ?
-                        <>
-                            <a href="/" onClick={(e) => {
-                                e.preventDefault();
-                                auth.signOut();
-                            }}>Sign Out</a>
-                        </> :
-                        <Link to="/shop/sign">Sign In</Link>
+                        currentUser ?
+                            <>
+                                <a href="/" onClick={(e) => {
+                                    e.preventDefault();
+                                    auth.signOut();
+                                }}>Sign Out</a>
+                            </> :
+                            <Link to="/shop/sign">Sign In</Link>
                 }
             </div>
             <div className="shop-header__cart">
                 <span className="shop-header__cart-count">{cartQuantity}</span>
                 <CartIcon className="shop-header__cart-icon" onClick={toggleDropdown}/>
-                {visibleDropdown && <ShopCartDropdown/>}
+                {visibleDropdown && <ShopCartDropdownHooks/>}
             </div>
         </div>
     )

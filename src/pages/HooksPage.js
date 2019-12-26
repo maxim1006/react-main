@@ -28,33 +28,3 @@ export default () => {
     );
 };
 
-/*
-
-useState - allow a functional component to use component-level state
-
-useEffect - allow a functional component to use lifecycle methods
-
-useContext - allow a functional component to use the context system
-
-useRef - allow a functional component to use the ref system
-
- */
-
-/*
-вызывается на каждый рендер компоненты
-useEffect(() => {
-        getHooks(resource)
-    });
-
-вызывется 1 раз
-useEffect(() => {
-        getHooks(resource)
-    }, []);
-
-вызывется каждый раз когда поменяется newElement (новый инстанс объекта, новое число и тд), либо изменится их количество,
-useEffect(() => {
-        getHooks(resource)
-    }, [newElement, newElement1]);
-
-
- */

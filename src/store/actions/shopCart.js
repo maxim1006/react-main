@@ -9,8 +9,13 @@ export const shopAddCartItem = (item) => ({
     payload: item
 });
 
+export const shopRemoveCartItems = (item) => ({
+    type: SHOP_CART_TYPES.REMOVE_ITEMS,
+    payload: item
+});
+
 export const shopRemoveCartItem = (item) => ({
-    type: SHOP_CART_TYPES.ADD_ITEM,
+    type: SHOP_CART_TYPES.REMOVE_ITEM,
     payload: item
 });
 

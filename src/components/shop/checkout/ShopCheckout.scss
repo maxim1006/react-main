@@ -1,0 +1,36 @@
+@import "../../../assets/styles/common";
+
+.shop-checkout {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $border-color-light;
+        @include font-bold;
+
+        &-item {
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3) {
+                width: 24%;
+                min-width: 24%;
+            }
+
+            &:nth-child(4),
+            &:nth-child(5) {
+                width: 14%;
+                min-width: 14%;
+            }
+
+            &:nth-child(5) {
+                text-align: right;
+            }
+        }
+    }
+
+    &__total {
+        margin-top: 20px;
+        text-align: right;
+        @include font-light-large;
+    }
+}

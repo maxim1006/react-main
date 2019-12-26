@@ -9,7 +9,9 @@ import {connect} from "react-redux";
 import ShopCartDropdown from "../cart-dropdown/ShopCartDropdown";
 import {shopToggleDropdown} from "../../../store/actions";
 import MaterialLoader from "../../loader/MaterialLoader";
-import {selectShopCartQuantity} from "../../../store/selectors";
+import {selectShopCartQuantity, selectShopCartVisibleDropdown} from "../../../store/selectors";
+import {selectShopCurrentUser} from "../../../store/selectors/shopUser";
+import {createStructuredSelector} from "reselect";
 
 const ShopHeader = ({shopToggleDropdown, visibleCartDropdown, user, cartQuantity}) => {
     return (
@@ -43,16 +45,21 @@ const ShopHeader = ({shopToggleDropdown, visibleCartDropdown, user, cartQuantity
     )
 };
 
+// могу записать так, но так как селекторы повторяются удобнее использовать createStructuredSelector
+// const mapStateToProps = (state, ownProps) => ({
+//     visibleCartDropdown: selectShopCartVisibleDropdown(state),
+//     // работа селекторов будет заметна если раскоментировать нижнюю строку, тогда пересчет будет проходить каждый раз когда
+//     // апдейтится стор, вместо того чтобы происходить когда нужна только часть стора отвечающая за cart
+//     cartQuantity: selectShopCartQuantity(state),
+//     // cartQuantity: Object.values(state.shopCart.cartItems).reduce((acc, {quantity}) => {console.log(123);return acc + quantity}, 0),
+//     user: selectShopCurrentUser(state)
+// });
 
-const mapStateToProps = (state, ownProps) => ({
-    visibleCartDropdown: state.shopCart.visibleDropdown,
-    // работа селекторов будет заметна если раскоментировать нижнюю строку, тогда пересчет будет проходить каждый раз когда
-    // апдейтится стор, вместо того чтобы происходить когда нужна только часть стора отвечающая за cart
-    cartQuantity: selectShopCartQuantity(state),
-    // cartQuantity: Object.values(state.shopCart.cartItems).reduce((acc, {quantity}) => {console.log(123);return acc + quantity}, 0),
-    user: state.shopUser.currentUser
+const mapStateToProps = createStructuredSelector({
+    visibleCartDropdown: selectShopCartVisibleDropdown,
+    cartQuantity: selectShopCartQuantity,
+    user: selectShopCurrentUser
 });
-
 
 export default connect(mapStateToProps, {
     shopToggleDropdown

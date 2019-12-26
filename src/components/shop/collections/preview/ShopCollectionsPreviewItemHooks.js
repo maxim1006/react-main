@@ -9,7 +9,7 @@ export default ({item}) => {
     const dispatch = useDispatch();
     const addCartItem = useCallback(
         () => dispatch(shopAddCartItem(item)),
-        [dispatch]
+        [dispatch, item]
     );
 
     return (

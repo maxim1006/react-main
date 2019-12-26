@@ -1,0 +1,37 @@
+@import "../../../../assets/styles/common";
+
+.shop-checkout-item {
+    display: flex;
+
+    &__block {
+        display: flex;
+        align-items: center;
+        padding: 30px 0;
+        border-bottom: 1px solid $border-color-light;
+        @include font-light-big;
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+            width: 24%;
+            min-width: 24%;
+        }
+
+        &:nth-child(4),
+        &:nth-child(5) {
+            width: 14%;
+            min-width: 14%;
+        }
+
+        &:nth-child(5) {
+            text-align: right;
+            cursor: pointer;
+            padding-right: 20px;
+        }
+    }
+    
+    &__arrow {
+        padding: 10px;
+        cursor: pointer;
+    }
+}

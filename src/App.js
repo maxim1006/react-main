@@ -11,6 +11,7 @@ import history from "./history";
 import ContextTest from "./components/context/ContextTest";
 import {ThemeContextStore} from "./components/theme/ThemeContextStore";
 import ThemeSelector from "./components/theme/ThemeSelector";
+import TestStore from "./components/test-store/TestStore";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));

@@ -1,5 +1,6 @@
 $main-color: var(--main-color, #333);
 $primary-color: var(--main-color, #70adff);
 $error-color: var(--error-color, #ff6a48);
-$border-color: var(--error-color, #000);
+$border-color: var(--border-color, #000);
+$border-color-light: var(--border-color-light, #ccc);
 
