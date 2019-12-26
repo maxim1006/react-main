@@ -1,6 +1,6 @@
 import React from "react";
-import ShopCollectionsPreviewItem from "./ShopCollectionsPreviewItem";
 import "./ShopCollectionsPreview.scss";
+import ShopCollectionsPreviewItemHooks from "./ShopCollectionsPreviewItemHooks";
 
 export default ({title, items}) => (
 
@@ -8,7 +8,8 @@ export default ({title, items}) => (
         <h3 className="collections-preview__title">{title}</h3>
         <ul className="collections-preview__items">
             {
-                items.map(item => <li className="collections-preview__item" key={item.id}><ShopCollectionsPreviewItem {...item}/></li>)
+                items.map(item => <li className="collections-preview__item" key={item.id}>
+                    <ShopCollectionsPreviewItemHooks item={item}/></li>)
             }
         </ul>
     </div>

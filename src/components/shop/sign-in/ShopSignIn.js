@@ -40,7 +40,7 @@ export default class ShopSignIn extends Component {
                         required
                     />
                     <ShopButton type="submit">Sign in</ShopButton>
-                    {<ShopButton modifiers="_dark" onClick={signInWithGoogle}>Sign in with Google</ShopButton>}
+                    {<ShopButton styleClass="_dark" onClick={signInWithGoogle}>Sign in with Google</ShopButton>}
                 </form>
 
                 {this.renderErrorNotification()}

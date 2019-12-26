@@ -21,3 +21,14 @@ export const FETCH_STREAMS = "FETCH_STREAMS";
 export const FETCH_STREAM = "FETCH_STREAM";
 export const DELETE_STREAM = "DELETE_STREAM";
 export const EDIT_STREAM = "EDIT_STREAM";
+
+
+export const SHOP_USER_TYPES = {
+    SET_CURRENT_USER: "SET_CURRENT_USER"
+};
+
+export const SHOP_CART_TYPES = {
+    TOGGLE_DROPDOWN: "TOGGLE_DROPDOWN",
+    ADD_ITEM: "ADD_ITEM",
+};
+

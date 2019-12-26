@@ -6,12 +6,11 @@
     &__image-wrapper {
         display: flex;
         position: relative;
-        cursor: pointer;
     }
 
     &__image {
-        width: 150px;
-        height: 150px;
+        width: 300px;
+        height: 350px;
         max-width: 100%;
     }
 
@@ -19,20 +18,33 @@
         opacity: 0;
         visibility: hidden;
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        width: 260px;
         height: 40px;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.9);
         transition: all 0.2s;
         @include font-regular-big;
         color: $main-color;
         text-align: center;
+        cursor: pointer;
+        outline: none;
 
         .#{$this}__image-wrapper:hover & {
             opacity: 1;
             visibility: visible;
         }
+
+        &:hover {
+            background-color: $main-color;
+            color: white;
+        }
+    }
+
+    &__price {
+        display: flex;
+        justify-content: space-between;
+        @include font-light-big;
     }
 }

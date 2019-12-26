@@ -6,7 +6,7 @@ export default ({name, content, date, img, id}) => {
         <li className="comment">
             <div className="comment__col _margin-right-s">
                 <div className="comment__image">
-                    <img src={img} alt="" className="comment__image-img"/>
+                    <img loading="lazy" src={img} alt="" className="comment__image-img"/>
                 </div>
             </div>
             <div className="comment__col">

@@ -1,7 +1,6 @@
 import React, {Component, Suspense} from 'react';
 import './App.scss';
 // просто для примера инжекчу доки
-import './store/example-from-docs';
 import {ReduxComponent} from "./store/Redux";
 import {Route, Router, Switch} from "react-router-dom";
 import MaterialLoaderComponent from "./components/loader/MaterialLoader";

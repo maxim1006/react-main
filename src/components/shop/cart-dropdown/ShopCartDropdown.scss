@@ -1,0 +1,23 @@
+@import "../../../assets/styles/common";
+
+.shop-cart-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 100;
+    max-height: 500px;
+    width: 200px;
+    border: 1px solid $border-color;
+    background-color: white;
+
+    &__list {
+        margin-bottom: 20px;
+        overflow: auto;
+    }
+
+    &__button {
+        margin: auto 20px 20px;
+    }
+}

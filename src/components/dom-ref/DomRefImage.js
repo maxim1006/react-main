@@ -21,6 +21,7 @@ export class DomRefImageComponent extends Component {
 
         return (
             <img
+                loading="lazy"
                 ref={this.imageRef}
                 alt={image}
                 className={className}

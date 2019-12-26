@@ -16,4 +16,26 @@
     &__sign {
         cursor: pointer;
     }
+
+    &__cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+
+        &-count {
+            position: absolute;
+            top: 58%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        &-icon {
+            width: 30px;
+        }
+    }
 }

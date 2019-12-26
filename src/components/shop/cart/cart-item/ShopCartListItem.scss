@@ -1,0 +1,18 @@
+.shop-cart-list-item {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+
+    &__image {
+        max-width: 100%;
+
+        &-wrapper {
+            width: 50px;
+            min-width: 50px;
+        }
+    }
+
+    &__info {
+        margin-left: 20px;
+    }
+}
