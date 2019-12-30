@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 
 const MenuItem =  ({title, subtitle = "Shop now", image, history, match, linkUrl}) => {
     const onClick = () => {
-        history.push(`${match.url}${linkUrl}`);
+        history.push(`${match.url}/collections${linkUrl}`);
     };
 
     return (

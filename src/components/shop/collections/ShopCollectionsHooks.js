@@ -3,6 +3,12 @@ import React from "react";
 import ShopCollectionsPreview from "./preview/ShopCollectionsPreview";
 
 export default () => (
-    shopData.map(item => <ShopCollectionsPreview key={item.id} {...item}/>)
+    shopData.map(item => {
+        const currentItem = {...item};
+        // in Preview show 4 items
+        currentItem["items"] = currentItem["items"].slice(0, 4);
+
+        return <ShopCollectionsPreview key={currentItem.id} {...currentItem}/>
+    })
 );
 

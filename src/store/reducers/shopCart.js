@@ -46,16 +46,16 @@ export default (state = initialState, action) => {
         }
 
         case SHOP_CART_TYPES.REMOVE_ITEM: {
-            const currentCartItems = state.cartItems;
+            let currentCartItems = state.cartItems;
             const currentCartItem = currentCartItems[action.payload.id];
 
             currentCartItem.quantity -= 1;
 
-            if (currentCartItem.quantity < 0) {
-                currentCartItem.quantity = 0;
+            if (currentCartItem.quantity <= 0) {
+                delete currentCartItems[action.payload.id];
+            } else {
+                currentCartItems[action.payload.id] = {...currentCartItem};
             }
-
-            currentCartItems[action.payload.id] = {...currentCartItem};
 
             return {
                 ...state,
