@@ -5,9 +5,9 @@ import {shopAddCartItem} from "../../../store/actions";
 import ShopCollectionItem from "./ShopCollectionItem";
 import "./ShopCollection.scss";
 
-export default memo(({match}) => {
+export default memo(({match, history, location}) => {
     const category = match.params.categoryId;
-    const {title, items} = shopData.filter(({routeName}) => routeName === category)[0];
+    const {title, items} = Object.values(shopData).find(({routeName}) => routeName === category);
 
     const dispatch = useDispatch();
     const onAddCartItem = useCallback((item) => _ => dispatch(shopAddCartItem(item)), [dispatch]);

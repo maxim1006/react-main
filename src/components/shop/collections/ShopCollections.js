@@ -5,7 +5,7 @@ import ShopCollectionsPreview from "./preview/ShopCollectionsPreview";
 export default class ShopCollections extends Component {
     render() {
         return (
-            shopData.map(item => {
+            Object.values(shopData).map(item => {
                 const currentItem = {...item};
                 // in Preview show 4 items
                 currentItem["items"] = currentItem["items"].slice(0, 4);
