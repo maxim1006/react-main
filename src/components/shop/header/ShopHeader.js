@@ -6,12 +6,12 @@ import {auth} from "../../../firebase/firebase.utils";
 import {Link} from "react-router-dom";
 import "./ShopHeader.scss";
 import {connect} from "react-redux";
-import ShopCartDropdown from "../cart-dropdown/ShopCartDropdown";
 import {shopToggleDropdown} from "../../../store/actions";
 import MaterialLoader from "../../loader/MaterialLoader";
 import {selectShopCartQuantity, selectShopCartVisibleDropdown} from "../../../store/selectors";
 import {selectShopCurrentUser} from "../../../store/selectors/shopUser";
 import {createStructuredSelector} from "reselect";
+import ShopCartDropdownHooks from "../cart-dropdown/ShopCartDropdownHooks";
 
 const ShopHeader = ({shopToggleDropdown, visibleCartDropdown, user, cartQuantity}) => {
     return (
@@ -39,7 +39,7 @@ const ShopHeader = ({shopToggleDropdown, visibleCartDropdown, user, cartQuantity
             <div className="shop-header__cart">
                 <span className="shop-header__cart-count">{cartQuantity}</span>
                 <CartIcon className="shop-header__cart-icon" onClick={shopToggleDropdown}/>
-                {visibleCartDropdown && <ShopCartDropdown/>}
+                {visibleCartDropdown && <ShopCartDropdownHooks/>}
             </div>
         </div>
     )

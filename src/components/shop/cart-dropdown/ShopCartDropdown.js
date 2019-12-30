@@ -1,23 +1,23 @@
 import React from "react";
 import ShopButton from "../button/ShopButton";
 import "./ShopCartDropdown.scss";
-import ShopCartList from "../cart/cart-list/ShopCartList";
 import {withRouter} from "react-router-dom";
 import connect from "react-redux/es/connect/connect";
 import {shopToggleDropdown} from "../../../store/actions";
+import ShopCartListHooks from "../cart/cart-list/ShopCartListHooks";
 
-const ShopCartDropdown =  ({history, dispatch}) => {
+const ShopCartDropdown = ({history, dispatch}) => {
     return (
         <div className="shop-cart-dropdown">
             <div className="shop-cart-dropdown__list">
-                <ShopCartList/>
+                <ShopCartListHooks/>
             </div>
             <div className="shop-cart-dropdown__button">
                 <ShopButton styleClass="_full-width"
-                    onClick={() => {
-                        history.push("/shop/checkout");
-                        dispatch(shopToggleDropdown());
-                    }}
+                            onClick={() => {
+                                history.push("/shop/checkout");
+                                dispatch(shopToggleDropdown());
+                            }}
                 >
                     Check out
                 </ShopButton>

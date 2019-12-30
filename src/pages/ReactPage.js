@@ -24,9 +24,9 @@ export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Firestore">
-                    <FireStore/>
-                </Component>
+                {/*<Component title="Firestore">*/}
+                {/*    <FireStore/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="AsyncSetState">*/}
                 {/*    <AsyncSetState increaseNumber={1}/>*/}

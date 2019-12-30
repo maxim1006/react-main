@@ -1,13 +1,12 @@
-import React, {useCallback} from "react";
+import React, {memo, useCallback} from "react";
 import ShopButton from "../button/ShopButton";
 import "./ShopCartDropdown.scss";
-import ShopCartList from "../cart/cart-list/ShopCartList";
 import {withRouter} from "react-router-dom";
 import {shopToggleDropdown} from "../../../store/actions";
 import {useDispatch} from "react-redux";
 import ShopCartListHooks from "../cart/cart-list/ShopCartListHooks";
 
-const ShopCartDropdown = ({history}) => {
+export default withRouter(memo(({history}) => {
     const dispatch = useDispatch();
     const toggleDropdown = useCallback(() => dispatch(shopToggleDropdown()),
         [dispatch]);
@@ -29,6 +28,4 @@ const ShopCartDropdown = ({history}) => {
             </div>
         </div>
     );
-};
-
-export default withRouter(ShopCartDropdown);
+}));

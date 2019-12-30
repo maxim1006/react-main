@@ -33,5 +33,6 @@
     &__arrow {
         padding: 10px;
         cursor: pointer;
+        user-select: none;
     }
 }

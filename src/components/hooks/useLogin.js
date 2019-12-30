@@ -26,7 +26,10 @@ export default () => {
         return () => {
             // unsubscribe
             authSubscription();
-            onSnapshotSubscription();
+
+            if (onSnapshotSubscription) {
+                onSnapshotSubscription();
+            }
         }
     }, []);
 

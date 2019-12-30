@@ -18,6 +18,11 @@ https://reactjs.org/docs/hooks-reference.html#usememo
 useMemo - invokes the provided function and caches its result.
 
 
+// из редакс хуков
+useSelector - на 1 селектор 1 конст
+useDispatch - диспатчу экшн
+
+
  */
 
 /*

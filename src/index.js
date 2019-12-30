@@ -19,3 +19,13 @@ render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+/*
+// пример использования redux-persist, но использую прямую запись в локал/сешшион сторадж
+<Provider store={persistedStore}>
+    <PersistGate loading={null} persistor={persistor}>
+        <App/>
+    </PersistGate>
+</Provider>
+ */

@@ -1,7 +1,7 @@
 import React, {Component, Suspense} from 'react';
 import './App.scss';
 // просто для примера инжекчу доки
-import {ReduxComponent} from "./store/Redux";
+import {ReduxComponent} from "./components/redux/Redux";
 import {Route, Router, Switch} from "react-router-dom";
 import MaterialLoaderComponent from "./components/loader/MaterialLoader";
 import NotFound from "./components/NotFound";
@@ -11,7 +11,6 @@ import history from "./history";
 import ContextTest from "./components/context/ContextTest";
 import {ThemeContextStore} from "./components/theme/ThemeContextStore";
 import ThemeSelector from "./components/theme/ThemeSelector";
-import TestStore from "./components/test-store/TestStore";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));

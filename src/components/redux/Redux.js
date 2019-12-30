@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import SongList from "../components/song/SongList";
-import PostList from "../components/post/PostList";
-import {TabsComponent} from "../components/tabs/Tabs";
-import FrameworkList from "../components/framework/FrameworkList";
-import PostsAndUsers from "../components/posts-and-users/PostsAndUsers";
+import {TabsComponent} from "../tabs/Tabs";
+import PostsAndUsers from "../posts-and-users/PostsAndUsers";
+import PostList from "../post/PostList";
+import SongList from "../song/SongList";
+import FrameworkList from "../framework/FrameworkList";
 
 export class ReduxComponent extends Component {
     render() {

@@ -8,7 +8,6 @@ class PostUser extends Component {
     }
 
     render() {
-        console.log(123);
         const user = this.props.user;
 
         if (!user) {
