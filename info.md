@@ -18,7 +18,7 @@ react-router - main
 - native
 - redux
 
-### deploy
+### deploy github pages
 NPM выполнит любую команду сперва с pre и только потом саму команду (пример, если сделать npm run deploy, то сперва выполнится predeploy)! Круто!
 
 1) npm i gh-pages --SD
@@ -29,3 +29,20 @@ NPM выполнит любую команду сперва с pre и тольк
         "deploy": "gh-pages -d build"
 ```
 4) npm run deploy
+
+### deploy heroku
+npm i -g heroku
+heroku login
+// создаю проект с билд настройкками реакт апп
+heroku create main-react --buildpack https://github.com/mars/create-react-app-buildpack.git
+git push heroku master
+
+#### heroku builds
+heroku plugins:install heroku-builds
+// посмотреть все текущие билды в приложении
+heroku builds -a main-react
+// завершить билды
+heroku builds:cancel -a main-react
+
+
+

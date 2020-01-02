@@ -29,8 +29,22 @@
     }
 
     &__total {
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        left: 0;
+        bottom: 0;
         margin-top: 20px;
         text-align: right;
         @include font-light-large;
+        font-size: 30px;
+        background-color: white;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: center;
+        @include font-light-large;
+        color: $error-color;
     }
 }

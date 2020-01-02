@@ -3,7 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectShopCartItems, selectShopCartTotal} from "../../../store/selectors";
 import "./ShopCheckout.scss";
 import ShopCheckoutItem from "./item/ShopCheckoutItem";
-import {shopAddCartItem, shopRemoveCartItem, shopRemoveCartItems} from "../../../store/actions";
+import {shopAddCartItem, shopClearCartItems, shopRemoveCartItem, shopRemoveCartItems} from "../../../store/actions";
+import ShopStripeButton from "../stripe/ShopStripeButton";
+import ShopButton from "../button/ShopButton";
 
 export default () => {
     // селекторы использую чтобы предотвратить пересчет в них стейта, а то будет каждый раз при ренедеренге компоненты пересчитываться логика в селекторе, а так только когда касается этого стейта
@@ -25,6 +27,8 @@ export default () => {
         (item) => () => dispatch(shopAddCartItem(item)),
         [dispatch]
     );
+
+    const onClearCart = useCallback(() => dispatch(shopClearCartItems()), [dispatch]);
 
     return (
         <div className="shop-checkout">
@@ -48,8 +52,16 @@ export default () => {
                     })
                 }
             </div>
+            <div className="shop-checkout__info">
+                *Please use following info for payments testing* <br/>
+                4242 4242 4242 4242 Exp.: 01/20 CVV: 123
+            </div>
+            <div className="shop-checkout__info">
+                <ShopButton onClick={onClearCart}>Clear cart</ShopButton>
+            </div>
             <div className="shop-checkout__total">
                 TOTAL: {shopTotal}
+                <ShopStripeButton price={shopTotal}/>
             </div>
         </div>
     );

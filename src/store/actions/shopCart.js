@@ -19,3 +19,6 @@ export const shopRemoveCartItem = (item) => ({
     payload: item
 });
 
+export const shopClearCartItems = () => ({
+    type: SHOP_CART_TYPES.CLEAR_ITEMS
+});

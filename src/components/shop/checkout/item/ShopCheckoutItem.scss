@@ -24,9 +24,9 @@
         }
 
         &:nth-child(5) {
-            text-align: right;
-            cursor: pointer;
-            padding-right: 20px;
+            justify-content: flex-end;
+            align-items: normal;
+            line-height: 44px;
         }
     }
     
@@ -34,5 +34,16 @@
         padding: 10px;
         cursor: pointer;
         user-select: none;
+    }
+
+    &__remove {
+        padding: 0 20px;
+        opacity: 0.4;
+        transition: opacity 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }
