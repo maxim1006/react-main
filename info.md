@@ -30,6 +30,7 @@ NPM выполнит любую команду сперва с pre и тольк
 ```
 4) npm run deploy
 
+когда деплою в гитхаб pages должен подставить в homepage в package.json, чтобы получить нормальные пути
 https://maxim1006.github.io/react-main
 
 ### deploy heroku
@@ -40,6 +41,8 @@ heroku create main-react --buildpack https://github.com/mars/create-react-app-bu
 git push heroku master
 
 #### heroku builds
+когда деплою в хероку должен подставить в homepage в package.json "./", чтобы получить нормальные пути
+
 heroku plugins:install heroku-builds
 // посмотреть все текущие билды в приложении
 heroku builds -a main-react
