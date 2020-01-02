@@ -2,7 +2,7 @@
     "name": "react-main",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://maxim1006.github.io/react-main",
+    "homepage": "/",
     "scripts": {
         "report": "source-map-explorer 'build/static/js/*.js'",
         "start": "react-scripts start",

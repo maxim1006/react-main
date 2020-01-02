@@ -30,6 +30,8 @@ NPM выполнит любую команду сперва с pre и тольк
 ```
 4) npm run deploy
 
+https://maxim1006.github.io/react-main
+
 ### deploy heroku
 npm i -g heroku
 heroku login
