@@ -31,11 +31,11 @@ export default class ShopSignIn extends Component {
                     />
                     <ShopFormInput
                         label="Password"
-                        autoComplete="current-password"
                         handleChange={this.handleChange}
                         name="password"
                         id="shopSignInPassword"
                         type="password"
+                        autoComplete="new-password"
                         value={this.state.password}
                         required
                     />

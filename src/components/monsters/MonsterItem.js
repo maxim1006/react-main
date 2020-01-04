@@ -1,3 +1,1 @@
-import React from "react";
-
-export default ({name}) => (<>{name}</>);
+export default ({name}) => ({name});

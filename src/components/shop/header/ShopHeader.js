@@ -41,6 +41,10 @@ const ShopHeader = ({shopToggleDropdown, visibleCartDropdown, user, cartQuantity
                 <CartIcon className="shop-header__cart-icon" onClick={shopToggleDropdown}/>
                 {visibleCartDropdown && <ShopCartDropdownHooks/>}
             </div>
+
+            <div className="shop-header__user">
+                {user.displayName}
+            </div>
         </div>
     )
 };

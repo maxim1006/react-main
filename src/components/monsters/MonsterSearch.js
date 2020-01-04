@@ -7,7 +7,7 @@ export default ({value, onChange}) => (
             type="text"
             className="monster-search__input"
             value={value}
-            onChange={onChange} type="text"
+            onChange={onChange}
             placeholder="find..."
         />
     </div>

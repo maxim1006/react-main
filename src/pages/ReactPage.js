@@ -5,20 +5,6 @@ import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
-import CommentListHooks from "../components/comment/CommentListHooks";
-import Monsters from "../components/monsters/Monsters";
-import Imports from "../components/imports/Imports";
-import {Parent} from "../components/parent/Parent";
-import Grid from "../components/grid/Grid";
-import {RestApiComponent} from "../components/rest-api/RestApi";
-import {LifecycleHooksComponent} from "../components/lifecycle-hooks/LifecycleHooks";
-import {ClassBasedComponent} from "../components/class-based/ClassBased";
-import {CommentListComponent} from "../components/comment/CommentList";
-import ClassBasedHooks from "../components/class-based/ClassBasedHooks";
-import Component from "../components/component/Component";
-import AsyncSetState from "../components/async-set-state/AsyncSetState";
-import AsyncSetStateHooks from "../components/async-set-state/AsyncSetStateHooks";
-import FireStore from "../components/firestore/FireStore";
 
 export default function ReactPage() {
     return (

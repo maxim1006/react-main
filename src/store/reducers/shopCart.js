@@ -14,6 +14,13 @@ export default (state = initialState, action) => {
             }
         }
 
+        case SHOP_CART_TYPES.CLOSE_DROPDOWN: {
+            return {
+                ...state,
+                visibleDropdown: false
+            }
+        }
+
         case SHOP_CART_TYPES.ADD_ITEM: {
             const currentItems = state.cartItems;
             const newItem = action.payload;

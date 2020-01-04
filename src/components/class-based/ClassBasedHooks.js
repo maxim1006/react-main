@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import MaterialLoaderComponent from "../loader/MaterialLoader";
 import useLocation from "../hooks/useLocation";
 

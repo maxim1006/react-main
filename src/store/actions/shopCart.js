@@ -4,6 +4,10 @@ export const shopToggleDropdown = () => ({
     type: SHOP_CART_TYPES.TOGGLE_DROPDOWN
 });
 
+export const shopCloseDropdown = () => ({
+    type: SHOP_CART_TYPES.CLOSE_DROPDOWN
+});
+
 export const shopAddCartItem = (item) => ({
     type: SHOP_CART_TYPES.ADD_ITEM,
     payload: item

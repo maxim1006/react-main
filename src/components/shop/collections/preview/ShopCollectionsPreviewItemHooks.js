@@ -19,7 +19,12 @@ export default ({item}) => {
                         onClick={addCartItem}
                 >Add to cart
                 </button>
-                <img loading="lazy" className="collections-preview-item__image" alt="shop preview item" src={imageUrl}/>
+                <img
+                    loading="lazy"
+                    className="collections-preview-item__image"
+                    alt="shop preview item"
+                    src={imageUrl}
+                />
             </div>
             <div className="collections-preview-item__price">
                 <div className="collections-preview-item__price-name">{name}</div>

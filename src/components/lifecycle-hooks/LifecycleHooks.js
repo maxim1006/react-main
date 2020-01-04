@@ -71,7 +71,7 @@ export class LifecycleHooksComponent extends Component {
     //     if (nextState.prop === 1) {
     //         this.forceUpdate((nextProps, nextState) => console.log('forceUpdate'));
     //     }
-    //     return true;
+    //     return false;
     // }
 
     // clear everything

@@ -8,8 +8,12 @@ export default memo(({onAddCartItem, imageUrl, name, price}) => (
                         onClick={onAddCartItem}
                 >Add to cart
                 </button>
-                <img loading="lazy" className="shop-collection-item__image" alt={name}
-                     src={imageUrl}/>
+                <img
+                    loading="lazy"
+                    className="shop-collection-item__image"
+                    alt={name}
+                    src={imageUrl}
+                />
             </div>
             <div className="shop-collection-item__price">
                 <div className="shop-collection-item__price-name">{name}</div>

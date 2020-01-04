@@ -13,7 +13,14 @@ const ShopCollectionPreviewItem = ({item, shopAddCartItem}) => {
                         onClick={() => {shopAddCartItem(item)}}
                 >Add to cart
                 </button>
-                <img loading="lazy" className="collections-preview-item__image" alt="shop preview item" src={imageUrl}/>
+                <img
+                    loading="lazy"
+                    width={300}
+                    height={350}
+                    className="collections-preview-item__image"
+                    alt="shop preview item"
+                    src={imageUrl}
+                />
             </div>
             <div className="collections-preview-item__price">
                 <div className="collections-preview-item__price-name">{name}</div>

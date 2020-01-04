@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useRef} from "react";
 // так импорчу свг
 import {ReactComponent as LogoIcon} from "../../../assets/icons/crown.svg";
 import {ReactComponent as CartIcon} from "../../../assets/icons/shopping-bag.svg";
@@ -6,14 +6,14 @@ import {auth} from "../../../firebase/firebase.utils";
 import {Link} from "react-router-dom";
 import "./ShopHeader.scss";
 import {useDispatch, useSelector} from "react-redux";
-import {shopToggleDropdown} from "../../../store/actions";
+import {shopCloseDropdown, shopToggleDropdown} from "../../../store/actions";
 import MaterialLoaderComponent from "../../loader/MaterialLoader";
 import {selectShopCurrentUser} from "../../../store/selectors/shopUser";
-import {selectShopCartItems, selectShopCartQuantity, selectShopCartVisibleDropdown} from "../../../store/selectors";
+import {selectShopCartQuantity, selectShopCartVisibleDropdown} from "../../../store/selectors";
 import ShopCartDropdownHooks from "../cart-dropdown/ShopCartDropdownHooks";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default () => {
-
     // аля mapStateToProps
     const currentUser = useSelector(selectShopCurrentUser);
     const visibleDropdown = useSelector(selectShopCartVisibleDropdown);
@@ -25,6 +25,10 @@ export default () => {
         () => dispatch(shopToggleDropdown()),
         [dispatch]
     );
+
+    const ref = useRef();
+
+    useClickOutside(ref, () => dispatch(shopCloseDropdown()));
 
     return (
         <div className="shop-header">
@@ -46,11 +50,16 @@ export default () => {
                             <Link to="/shop/sign">Sign In</Link>
                 }
             </div>
-            <div className="shop-header__cart">
+            <div className="shop-header__cart" ref={ref}>
                 <span className="shop-header__cart-count">{cartQuantity}</span>
                 <CartIcon className="shop-header__cart-icon" onClick={toggleDropdown}/>
                 {visibleDropdown && <ShopCartDropdownHooks/>}
             </div>
+            {currentUser &&
+            <div className="shop-header__user">
+                Hello: {currentUser.displayName}
+            </div>
+            }
         </div>
     )
 };

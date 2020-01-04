@@ -2,7 +2,6 @@ import React from "react";
 import NotFound from "../components/NotFound";
 import {Route, Switch} from "react-router-dom";
 import MainMenu from "../components/menu/MainMenu";
-import StreamList from "../components/stream/StreamList";
 import GoogleAuth from "../components/google-auth/GoogleAuth";
 import StreamCreateHooks from "../components/stream/StreamCreateHooks";
 import StreamEditHooks from "../components/stream/StreamEditHooks";

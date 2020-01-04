@@ -45,6 +45,7 @@ export default class ShopSignUp extends Component {
                         name="password"
                         id="shopSignUpPassword"
                         type="password"
+                        autoComplete="new-password"
                         value={password}
                         required
                     />
@@ -53,6 +54,7 @@ export default class ShopSignUp extends Component {
                         label="Confirm Password"
                         handleChange={this.handleChange}
                         name="confirmPassword"
+                        autoComplete="new-password"
                         id="shopSignUpConfirmPassword"
                         type="password"
                         value={confirmPassword}
