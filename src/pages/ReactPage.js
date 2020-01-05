@@ -5,11 +5,17 @@ import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
+import Component from "../components/component/Component";
+import StyledText from "../components/styled-component/StyledText";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
+                <Component title="Styled Components">
+                    <StyledText isActive>Styled text</StyledText>
+                </Component>
+
                 {/*<Component title="Firestore">*/}
                 {/*    <FireStore/>*/}
                 {/*</Component>*/}

@@ -1,20 +1,26 @@
 import React from "react";
 import "./ShopCollectionsPreview.scss";
-import ShopCollectionsPreviewItemHooks from "./ShopCollectionsPreviewItemHooks";
-import {Link, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import ShopCollectionsPreviewItemHooks from "./item/ShopCollectionsPreviewItemHooks";
+import {
+    StyledShopCollectionsPreview,
+    StyledShopCollectionsPreviewItem,
+    StyledShopCollectionsPreviewItems,
+    StyledShopCollectionsPreviewTitle
+} from "./StyledShopCollectionsPreview";
 
 export default withRouter(({title, items}) => (
-    <div className="collections-preview">
-        <h3 className="collections-preview__title">
-            <Link to={"collections/" + title.toLowerCase()}>{title}</Link>
-        </h3>
-        <ul className="collections-preview__items">
+    <StyledShopCollectionsPreview>
+        <StyledShopCollectionsPreviewTitle to={"collections/" + title.toLowerCase()}>
+            {title}
+        </StyledShopCollectionsPreviewTitle>
+        <StyledShopCollectionsPreviewItems>
             {
                 items.map(item =>
-                    <li className="collections-preview__item" key={item.id}>
+                    <StyledShopCollectionsPreviewItem key={item.id}>
                         <ShopCollectionsPreviewItemHooks item={item}/>
-                    </li>)
+                    </StyledShopCollectionsPreviewItem>)
             }
-        </ul>
-    </div>
+        </StyledShopCollectionsPreviewItems>
+    </StyledShopCollectionsPreview>
 ));

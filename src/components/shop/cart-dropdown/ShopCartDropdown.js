@@ -13,7 +13,7 @@ const ShopCartDropdown = ({history, dispatch}) => {
                 <ShopCartListHooks/>
             </div>
             <div className="shop-cart-dropdown__button">
-                <ShopButton styleClass="_full-width"
+                <ShopButton fullWidth
                             onClick={() => {
                                 history.push("/shop/checkout");
                                 dispatch(shopToggleDropdown());

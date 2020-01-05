@@ -1,26 +1,22 @@
-import React, {useCallback} from "react";
+import React from "react";
 import "./ShopCollectionsPreviewItem.scss";
-import {useDispatch} from "react-redux";
-import {shopAddCartItem} from "../../../../store/actions";
+import {connect} from "react-redux";
+import {shopAddCartItem} from "../../../../../store/actions";
 
-export default ({item}) => {
+const ShopCollectionPreviewItem = ({item, shopAddCartItem}) => {
     const {imageUrl, name, price} = item;
-
-    const dispatch = useDispatch();
-    const addCartItem = useCallback(
-        () => dispatch(shopAddCartItem(item)),
-        [dispatch, item]
-    );
 
     return (
         <div className="collections-preview-item">
             <div className="collections-preview-item__image-wrapper">
                 <button className="collections-preview-item__button"
-                        onClick={addCartItem}
+                        onClick={() => {shopAddCartItem(item)}}
                 >Add to cart
                 </button>
                 <img
                     loading="lazy"
+                    width={300}
+                    height={350}
                     className="collections-preview-item__image"
                     alt="shop preview item"
                     src={imageUrl}
@@ -33,3 +29,7 @@ export default ({item}) => {
         </div>
     )
 };
+
+export default connect(null, {
+    shopAddCartItem
+})(ShopCollectionPreviewItem);

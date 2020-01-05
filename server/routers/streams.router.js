@@ -51,7 +51,9 @@ streamsRouter.get('/:id', async (req, res) => {
     try {
         let streams = await fsExtra.readJson(streamsPath);
 
-        res.status(200).json(streams[id]);
+        setTimeout(() => {
+            res.status(200).json(streams[id]);
+        }, 2000);
     } catch (e) {
         res.status(500).json({});
     }

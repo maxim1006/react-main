@@ -1,6 +1,6 @@
 import React from "react";
-import "./ShopMenuItem.scss";
 import {withRouter} from "react-router-dom";
+import {StyledShopMenuItem, StyledShopMenuItemSubTitle, StyledShopMenuItemTitle} from "./StyledMenuItem";
 
 const MenuItem =  ({title, subtitle = "Shop now", image, history, match, linkUrl}) => {
     const onClick = () => {
@@ -8,17 +8,17 @@ const MenuItem =  ({title, subtitle = "Shop now", image, history, match, linkUrl
     };
 
     return (
-        <div className="shop-menu-item"
+        <StyledShopMenuItem
              onClick={onClick}
              style={{backgroundImage: `url(${image})`}}
         >
-            <div className="shop-menu-item__title">
+            <StyledShopMenuItemTitle>
                 {title}
-            </div>
-            <div className="shop-menu-item__subtitle">
+            </StyledShopMenuItemTitle>
+            <StyledShopMenuItemSubTitle>
                 {subtitle}
-            </div>
-        </div>
+            </StyledShopMenuItemSubTitle>
+        </StyledShopMenuItem>
     );
 };
 

@@ -2,8 +2,8 @@ import React, {memo, useCallback} from "react";
 import shopData from "../shop.data";
 import {useDispatch} from "react-redux";
 import {shopAddCartItem} from "../../../store/actions";
-import ShopCollectionItem from "./ShopCollectionItem";
-import "./ShopCollection.scss";
+import ShopCollectionItem from "./item/ShopCollectionItem";
+import {StyledShopCollectionItem, StyledShopCollectionItems, StyledShopCollectionTitle} from "./StyledShopCollection";
 
 export default memo(({match, history, location}) => {
     const category = match.params.categoryId;
@@ -14,18 +14,18 @@ export default memo(({match, history, location}) => {
 
     return (
         <div className="shop-collection">
-            <h3 className="shop-collection__title">
+            <StyledShopCollectionTitle>
                 {title}
-            </h3>
-            <ul className="shop-collection__items">
+            </StyledShopCollectionTitle>
+            <StyledShopCollectionItems>
                 {
                     items.map((item) => (
-                        <li className="shop-collection__item" key={item.id}>
+                        <StyledShopCollectionItem key={item.id}>
                             <ShopCollectionItem onAddCartItem={onAddCartItem(item)} {...item}/>
-                        </li>
+                        </StyledShopCollectionItem>
                     ))
                 }
-            </ul>
+            </StyledShopCollectionItems>
         </div>
     )
 });

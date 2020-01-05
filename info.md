@@ -18,6 +18,8 @@ react-router - main
 - native
 - redux
 
+
+
 ### deploy github pages
 NPM выполнит любую команду сперва с pre и только потом саму команду (пример, если сделать npm run deploy, то сперва выполнится predeploy)! Круто!
 
@@ -32,6 +34,8 @@ NPM выполнит любую команду сперва с pre и тольк
 
 когда деплою в гитхаб pages должен подставить в homepage в package.json, чтобы получить нормальные пути
 https://maxim1006.github.io/react-main
+
+
 
 ### deploy heroku
 npm i -g heroku
@@ -48,6 +52,50 @@ heroku plugins:install heroku-builds
 heroku builds -a main-react
 // завершить билды
 heroku builds:cancel -a main-react
+
+
+
+### Adjust CRA
+node_modules/react-scripts/config/webpack.config.js
+
+// Тут добавляю для "styled-components" babel config, чтобы в деве видеть имена компонент для удобства дебага
+// Process application JS with Babel.
+```js
+plugins: isEnvProduction ?
+                    [[
+                      require.resolve('babel-plugin-named-asset-import'),
+                      {
+                        loaderMap: {
+                          svg: {
+                            ReactComponent:
+                                '@svgr/webpack?-prettier,-svgo![path]',
+                          },
+                        },
+                      },
+                    ]] :
+                    [
+                  /*Start custom code*/
+                  [
+                    require.resolve("babel-plugin-styled-components"),
+                    {
+                      "displayName": true
+                    }
+                  ],
+                  /*End custom code*/
+                  [
+                    require.resolve('babel-plugin-named-asset-import'),
+                    {
+                      loaderMap: {
+                        svg: {
+                          ReactComponent:
+                            '@svgr/webpack?-prettier,-svgo![path]',
+                        },
+                      },
+                    },
+                  ],
+                ],
+```
+
 
 
 

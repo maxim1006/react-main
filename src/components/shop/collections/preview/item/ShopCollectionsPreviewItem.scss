@@ -1,7 +1,7 @@
-@import "../../../assets/styles/common.scss";
+@import "../../../../../assets/styles/common.scss";
 
-.shop-collection-item {
-    $this: shop-collection-item;
+.collections-preview-item {
+    $this: collections-preview-item;
 
     &__image-wrapper {
         display: flex;

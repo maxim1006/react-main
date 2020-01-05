@@ -33,9 +33,11 @@ export const fetchStreams = _ => async dispatch => {
     }
 };
 
-export const fetchStream = id => async dispatch => {
+export const fetchStream = (id, cancelToken) => async dispatch => {
     try {
-        const {data: stream} = await axios.get(`/streams/${id}`);
+        const {data: stream} = await axios.get(`/streams/${id}`, {
+            cancelToken
+        });
 
         dispatch({
             type: FETCH_STREAM,

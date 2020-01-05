@@ -17,7 +17,7 @@ export default withRouter(memo(({history}) => {
                 <ShopCartListHooks/>
             </div>
             <div className="shop-cart-dropdown__button">
-                <ShopButton styleClass="_full-width"
+                <ShopButton fullWidth
                             onClick={() => {
                                 history.push("/shop/checkout");
                                 toggleDropdown();
