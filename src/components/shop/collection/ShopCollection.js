@@ -6,7 +6,7 @@ import {StyledShopCollectionItem, StyledShopCollectionItems, StyledShopCollectio
 import MaterialLoader from "../../loader/MaterialLoader";
 
 export default memo(({match, history, location}) => {
-    const shopData = useSelector(state => state.shopData);
+    const shopData = useSelector(state => state.shopData.data);
     const categoryName = match.params.categoryId;
 
     let category;

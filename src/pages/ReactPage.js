@@ -6,7 +6,7 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import FirestoreFamily from "../components/firestore/family/FirestoreFamily";
+import FireStore from "../components/firestore/FireStore";
 
 export default function ReactPage() {
     return (
@@ -16,13 +16,13 @@ export default function ReactPage() {
                 {/*    <StyledText isActive>Styled text</StyledText>*/}
                 {/*</Component>*/}
 
-                <Component title="Firestore Family">
-                    <FirestoreFamily/>
-                </Component>
-
-                {/*<Component title="Firestore">*/}
-                {/*    <FireStore/>*/}
+                {/*<Component title="Firestore Family">*/}
+                {/*    <FirestoreFamily/>*/}
                 {/*</Component>*/}
+
+                <Component title="Firestore">
+                    <FireStore/>
+                </Component>
 
                 {/*<Component title="AsyncSetState">*/}
                 {/*    <AsyncSetState increaseNumber={1}/>*/}

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import MaterialLoader from "../../loader/MaterialLoader";
 
 export default () => {
-    const shopData = useSelector(state => state.shopData);
+    const shopData = useSelector(state => state.shopData.data);
 
     return shopData ?
         Object.values(shopData).map(item => {

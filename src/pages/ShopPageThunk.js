@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, {memo, useEffect} from "react";
 import MainMenu from "../components/menu/MainMenu";
 import {Redirect, Route, Switch} from "react-router-dom";
 import ShopHome from "../components/shop/home/ShopHome";
@@ -10,12 +10,22 @@ import ShopHeaderHooks from "../components/shop/header/ShopHeaderHooks";
 import ShopCheckout from "../components/shop/checkout/ShopCheckout";
 import ShopCollectionsHooks from "../components/shop/collections/ShopCollectionsHooks";
 import ShopCollection from "../components/shop/collection/ShopCollection";
-import useShopData from "../components/hooks/useShopData";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchShopDataThunkStart} from "../store/actions";
+import NotificationPortal from "../components/portals/notification/NotificationPortal";
 
+// Это чисто для примера thunk в action, или асинхронщина в useShopData
 export default memo(() => {
     useShopLogin();
-    useShopData();
+
+    const dispatchFetchShopData = useDispatch();
+
+    useEffect(() => {
+        dispatchFetchShopData(fetchShopDataThunkStart());
+    }, []);
+
+    const fetchShopDataError = useSelector(state => state.shopData.errorMessage);
+
 
     const user = useSelector(state => state.shopUser.currentUser);
 
@@ -47,6 +57,13 @@ export default memo(() => {
                     </NotFound>
                 </Route>
             </Switch>
+
+            {
+                fetchShopDataError &&
+                <NotificationPortal styleClass="_error">
+                    {fetchShopDataError}
+                </NotificationPortal>
+            }
         </div>
     );
 });

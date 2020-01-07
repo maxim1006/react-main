@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {firestore} from "../../firebase/firebase.utils";
 import {RouteNameMap} from "../shop/shop.data";
 import {useDispatch} from "react-redux";
@@ -11,7 +11,7 @@ export default () => {
         // получаю дату из fireStore
         const shopDataRef = firestore.collection("shopData");
 
-        shopDataRef.onSnapshot(async snapshot => {
+        const shopDataUnsubscribe = shopDataRef.onSnapshot(async snapshot => {
             const shopData = snapshot.docs.reduce((acc, doc) => {
                 const {title, items, id} = doc.data();
 
@@ -26,5 +26,9 @@ export default () => {
 
             dispatch(shopSetData(shopData));
         });
+
+        return () => {
+            shopDataUnsubscribe && shopDataUnsubscribe();
+        }
     }, []);
 }

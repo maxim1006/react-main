@@ -21,8 +21,6 @@ const ShopPage = React.lazy(() => import('./pages/ShopPage'));
 
 
 class App extends Component {
-
-
     render() {
         return (
             <ThemeContextStore>

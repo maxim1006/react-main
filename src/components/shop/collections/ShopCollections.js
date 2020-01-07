@@ -20,7 +20,7 @@ class ShopCollections extends Component {
 
 
 
-const mapStateToProps = (state, ownProps) => ({shopData: state.shopData});
+const mapStateToProps = (state, ownProps) => ({shopData: state.shopData.data});
 
 
 
