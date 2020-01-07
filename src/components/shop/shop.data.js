@@ -264,3 +264,11 @@ export default {
             ]
     }
 };
+
+export const RouteNameMap = new Map([
+    ['Hats', 'hats'],
+    ['Sneakers', 'sneakers'],
+    ['Womens', 'womens'],
+    ['Mens', 'mens'],
+    ['Jackets', 'jackets'],
+]);

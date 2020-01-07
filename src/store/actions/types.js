@@ -36,3 +36,7 @@ export const SHOP_CART_TYPES = {
     CLEAR_ITEMS: "CLEAR_ITEMS",
 };
 
+export const SHOP_DATA_TYPES = {
+    SET_DATA: "SET_DATA"
+};
+

@@ -44,6 +44,9 @@ heroku login
 heroku create main-react --buildpack https://github.com/mars/create-react-app-buildpack.git
 git push heroku master
 
+// тут приложение
+https://main-react.herokuapp.com/
+
 #### heroku builds
 когда деплою в хероку должен подставить в homepage в package.json "./", чтобы получить нормальные пути
 
@@ -97,5 +100,7 @@ plugins: isEnvProduction ?
 ```
 
 
+### JSON stub
+https://jsonplaceholder.typicode.com/
 
 

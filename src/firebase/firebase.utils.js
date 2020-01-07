@@ -26,13 +26,14 @@ provider.setCustomParameters({prompts: 'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 
-
+// Создаю юзера
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
 
     const userRef = firestore.doc(`users/${userAuth.uid}`);
     const snapshot = await userRef.get();
 
+    // так как snapshot всегда возвращается мы должны проверить существует ли он
     if (!snapshot.exists) {
         const {displayName, email} = userAuth;
         const createdAt = new Date();
@@ -56,3 +57,37 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 // если вдруг извне понадобится вся либа
 export default firebase;
+
+
+
+// создаю руками коллекцию для shop.data
+export const addShopCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+
+    // обычно необходимо добавлять по 1 объекту, но для того чтобы добавить пачкой использую batch
+    const batch = firestore.batch();
+
+    // пробегаюсь по объекту и записываю их в батч
+    Object.values(objectsToAdd).forEach(({title, items}) => {
+        const newDocRef = collectionRef.doc();
+
+        // добавляю православный id и к items
+        if (Array.isArray(items)) {
+            items = items.map(item => {
+                item["id"] = collectionRef.doc()["id"];
+                return item;
+            });
+        }
+
+        batch.set(newDocRef, {
+            title,
+            items,
+            id: newDocRef["id"]
+        });
+    });
+
+    // делаю реквест на запись batch
+    return await batch.commit();
+};
+
+// addShopCollectionAndDocuments("shopData", shopData);

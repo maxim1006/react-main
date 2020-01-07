@@ -5,11 +5,11 @@ import {
     commentsRouter,
     familyRouter,
     frameworksRouter,
+    hooksRouter,
+    monsterRouter,
     postsRouter,
     streamsRouter,
-    usersRouter,
-    hooksRouter,
-    monsterRouter
+    usersRouter
 } from './routers';
 
 // const cors = require('cors');
@@ -28,7 +28,13 @@ app.use(function (req, res, next) {
 });
 
 // поэтому использую middleware cors package
-// app.use(cors());
+// app.use(cors(
+// {
+//     origin: "*",
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     preflightContinue: false
+//   }
+//));
 
 // Add your mock router here
 const appRouters = [

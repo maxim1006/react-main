@@ -1,31 +1,39 @@
 import React, {memo, useCallback} from "react";
-import shopData from "../shop.data";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {shopAddCartItem} from "../../../store/actions";
 import ShopCollectionItem from "./item/ShopCollectionItem";
 import {StyledShopCollectionItem, StyledShopCollectionItems, StyledShopCollectionTitle} from "./StyledShopCollection";
+import MaterialLoader from "../../loader/MaterialLoader";
 
 export default memo(({match, history, location}) => {
-    const category = match.params.categoryId;
-    const {title, items} = Object.values(shopData).find(({routeName}) => routeName === category);
+    const shopData = useSelector(state => state.shopData);
+    const categoryName = match.params.categoryId;
+
+    let category;
+
+    if (shopData) {
+        category = Object.values(shopData).find(({routeName}) => routeName === categoryName);
+    }
 
     const dispatch = useDispatch();
     const onAddCartItem = useCallback((item) => _ => dispatch(shopAddCartItem(item)), [dispatch]);
 
     return (
+        shopData ?
         <div className="shop-collection">
             <StyledShopCollectionTitle>
-                {title}
+                {category.title}
             </StyledShopCollectionTitle>
             <StyledShopCollectionItems>
                 {
-                    items.map((item) => (
+                    category.items.map((item) => (
                         <StyledShopCollectionItem key={item.id}>
                             <ShopCollectionItem onAddCartItem={onAddCartItem(item)} {...item}/>
                         </StyledShopCollectionItem>
                     ))
                 }
             </StyledShopCollectionItems>
-        </div>
+        </div> :
+        <MaterialLoader/>
     )
 });

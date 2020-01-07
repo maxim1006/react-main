@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {memo, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectShopCartItems, selectShopCartTotal} from "../../../store/selectors";
 import "./ShopCheckout.scss";
@@ -7,7 +7,7 @@ import {shopAddCartItem, shopClearCartItems, shopRemoveCartItem, shopRemoveCartI
 import ShopStripeButton from "../stripe/ShopStripeButton";
 import ShopButton from "../button/ShopButton";
 
-export default () => {
+export default memo(() => {
     // селекторы использую чтобы предотвратить пересчет в них стейта, а то будет каждый раз при ренедеренге компоненты пересчитываться логика в селекторе, а так только когда касается этого стейта
     const shopTotal = useSelector(selectShopCartTotal);
     const cartItems = useSelector(selectShopCartItems);
@@ -65,4 +65,4 @@ export default () => {
             </div>
         </div>
     );
-}
+});

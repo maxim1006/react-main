@@ -1,9 +1,11 @@
-import shopData from "../shop.data";
 import React, {Component} from "react";
 import ShopCollectionsPreview from "./preview/ShopCollectionsPreview";
+import {connect} from "react-redux";
 
-export default class ShopCollections extends Component {
+class ShopCollections extends Component {
     render() {
+        const {shopData} = this.props;
+
         return (
             Object.values(shopData).map(item => {
                 const currentItem = {...item};
@@ -15,4 +17,12 @@ export default class ShopCollections extends Component {
         );
     }
 }
+
+
+
+const mapStateToProps = (state, ownProps) => ({shopData: state.shopData});
+
+
+
+export default connect(mapStateToProps)(ShopCollections);
 

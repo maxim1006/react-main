@@ -71,7 +71,7 @@ export default (state = initialState, action) => {
         }
 
         case SHOP_CART_TYPES.CLEAR_ITEMS: {
-            return initialState;
+            return {...initialState};
         }
 
         default:

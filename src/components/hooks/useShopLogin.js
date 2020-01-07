@@ -1,8 +1,10 @@
 import {auth, createUserProfileDocument} from "../../firebase/firebase.utils";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {shopSetCurrentUser} from "../../store/actions";
 
 export default () => {
-    const [user, setUser] = useState(null);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let onSnapshotSubscription;
@@ -12,14 +14,22 @@ export default () => {
             // тут провряю так как user может быть null когда sign out
             if (user) {
                 const userRef = await createUserProfileDocument(user);
+
+                // могу дату из userRef получить так
+                // const snapshot = await userRef.get();
+                // console.log(snapshot.data());
+
+                // а могу так, когда по какой-то причине snapshot у DocumentReference или CollectionReference
+                // поменяется сработает этот коллбек
                 onSnapshotSubscription = userRef.onSnapshot((snapshot) => {
-                    setUser({
+                    // аля mapDispatchToProps
+                    dispatch(shopSetCurrentUser({
                         id: snapshot.id,
                         ...snapshot.data()
-                    });
+                    }));
                 });
             } else {
-                setUser(false);
+                dispatch(shopSetCurrentUser(false));
             }
         });
 
@@ -32,6 +42,4 @@ export default () => {
             }
         }
     }, []);
-
-    return user;
 }

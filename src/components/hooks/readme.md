@@ -8,7 +8,6 @@ const [rows, setRows] = useState(createRows(props.count));
 const [rows, setRows] = useState(() => createRows(props.count));
 
 
-
 ## useEffect
 allow a functional component to use lifecycle methods
 
@@ -28,6 +27,7 @@ allow a functional component to use the ref system
 https://reactjs.org/docs/hooks-reference.html#usecallback
 It takes as an argument a function and returns a cached/memoized version of it
 Each function declared within a functional component’s scope must be memoized/cached with useCallback. If it references functions or other variables from the component scope it should list them in its dependency list.
+Использую чтобы мемоизироывать функцию которую прокидываю в чайлдовый компонент, чтобы каждый раз когда перерендеривается родитель ссылка на функцию не менялась и чайлд не перерендеривался
 
 
 

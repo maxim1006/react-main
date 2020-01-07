@@ -2,30 +2,62 @@
 import {firestore} from "../../firebase/firebase.utils";
 
 export default () => {
+    // documentRef returns documentSnapshot (свойства exists, data())
+    // collectionRef returns querySnapshot
+    //
+    // firestore всегда вернет объект, даже если в нем ничего нет
 
     (async () => {
-        const data = await firestore.collection("users").doc("Fe43bmvlRGjsGckD2cCi").collection("items").doc("DWrElWdcybAS717MdYl1");
-        const doc = await firestore.doc("/users/Fe43bmvlRGjsGckD2cCi/items/DWrElWdcybAS717MdYl1");
-        const collection = await firestore.collection("/users/Fe43bmvlRGjsGckD2cCi/items");
+        // могу делать запросы так, но удобнее в 1 строку
+        // const dataRef = firestore.collection("users").doc("Fe43bmvlRGjsGckD2cCi").collection("items").doc("DWrElWdcybAS717MdYl1");
+        const docRef = firestore.doc("/users/95F0cuAvdGNApLKtCspJlSdrfWe2");
+        const collectionRef = firestore.collection("/users");
 
-        console.log(data);
-        console.log(doc);
-        console.log(collection);
+        console.log("docRef ", docRef); // DocumentReference, has: set(), get(), update(), delete()
+        console.log("collectionRef ", collectionRef); // CollectionReference, has: add()
 
         // добавить коллекцию с рандомным id
+        // если в collectionRef.doc() передать аргумент, то это будет id
+        const newDoc = collectionRef.doc();
+        console.log("newDoc ", newDoc);
         // await collection.add({
         //     name: "Boots"
         // });
 
+
         // получаю данные документа
-        // const snapshot = await doc.get();
-        // console.log(snapshot.data());
+        const snapshot = await docRef.get(); // DocumentSnapshot, has: exists property для проверки существует ли такой документ
+        console.log("snapshot doc data ", snapshot.data()); // возвращаю объект с датой
 
         // получаю все доки из коллекции
-        // const querySnapshot = await collection.get();
-        // console.log(querySnapshot);
+        const querySnapshot = await collectionRef.get();  // CollectionSnapshot/QuerySnapshot
+        // можем проверить есть ли документы в querySnapshot c помощью querySnapshot.empty()
+        const querySnapshotDocsData = querySnapshot.docs.map((doc) => doc.data());
+        console.log("querySnapshotDocsData ", querySnapshotDocsData);
 
-        // querySnapshot.docs.forEach((doc) => console.log(doc.data()));
+        // получаю все доки из коллекции 2
+        collectionRef.onSnapshot(async snapshot => {
+            const data = snapshot.docs.map(doc => doc.data());
+            console.log("querySnapshotDocsData 2 ", data);
+        });
+
+        // записываю набор доков в коллекцию
+        const newCollectionRef = firestore.collection("family");
+        const newBatch = firestore.batch();
+        const names = ["Max", "Aliya", "Lili", "Alice"];
+        const ages = ["32", "33", "4", "0"];
+
+        [...Array(4)].forEach((i, index) => {
+            const newDoc = newCollectionRef.doc();
+
+            newBatch.set(newDoc, {
+                name: names[index],
+                age: ages[index]
+            });
+        });
+
+        // записать батч в firestore
+        // await newBatch.commit();
 
     })();
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {memo, useState} from 'react';
 import './Grid.scss';
-import {DomRefImageComponent} from "../dom-ref/DomRefImage";
+import DomRefImageHooks from "../dom-ref/DomRefImageHooks";
 
-export default () => {
+export default memo(() => {
     const images = [
         '/images/1.jpg',
         '/images/2.jpg',
@@ -14,15 +14,24 @@ export default () => {
         '/images/8.jpg',
     ];
 
-    function onLoad(height) {
-        console.log(height);
+    const [counter, setCounter] = useState(0);
+
+    function onLoad(e) {
+        console.log(e.target);
     }
 
     return (
-        <div className="grid">
-            {images.map((img, index) => {
-                return <DomRefImageComponent image={img} key={index} onLoad={onLoad}/>
-            })}
-        </div>
+        <>
+            <div onClick={_ => {
+                setCounter(counter + 1);
+                console.log(counter);
+            }}>click {counter}</div>
+            <div className="grid">
+                {images.map((img, index) => {
+                    // return <DomRefImageComponent image={img} key={index} onLoad={onLoad}/>
+                    return <DomRefImageHooks src={img} key={index} onLoad={onLoad}/>
+                })}
+            </div>
+        </>
     );
-}
+})
