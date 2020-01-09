@@ -1,8 +1,9 @@
 import React from "react";
-import useHooks from "./useHooks";
+import useHooks from "../useHooks";
 
-export default ({resource}) => {
-    const resources = useHooks(resource);
+export default () => {
+    // это чисто для примера, что супер удобно переиспользовать хуки
+    const resources = useHooks("posts");
 
     return (
         resources ?

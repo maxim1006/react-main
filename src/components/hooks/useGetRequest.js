@@ -1,7 +1,7 @@
 import customAxios from "../../common/api/axios";
 import {useEffect, useState} from "react";
 
-export default ({url}) => {
+export default ({url, cb}) => {
     const cancelRequest = customAxios.CancelToken.source();
     const [data, setData] = useState(null);
 
@@ -13,6 +13,7 @@ export default ({url}) => {
                 });
 
                 setData(data);
+                cb && cb(data);
             } catch (e) {
                 console.log(`Get request to ${url} error `, e);
             }

@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import {ChildClass} from "./ChildClass";
 import ChildFunction from "./ChildFunction";
 
+// Интересно что перерисовка состоится только если поменяю входной проперти, либо стейт (только через setState), при чем если менять другой стейт или проперти (не тот что в данном коллбеке на клик например) в методе render() то новое значение не применится пока не сделаю setState
+
 export class Parent extends Component {
     state = {
         inputValue: ""

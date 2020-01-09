@@ -1,15 +1,47 @@
 https://react-redux.js.org/next/api/hooks
 
+## General
+Если хочу использовать хук с условием то делаю это всегда внутри хука
+useEffect(function persistForm() {
+    if (name !== '') {
+        localStorage.setItem('formData', name);
+    }
+});
+
+
+
 ## useState
+Ровно как this.setState у Class компоненты
 allow a functional component to use component-level state. Если инит знаечение не простой объект, то чтобы не пересоздавать его на каждый ререндер передаю в useState
 вместо 
 const [rows, setRows] = useState(createRows(props.count));
 делаю
 const [rows, setRows] = useState(() => createRows(props.count));
+setRows тут типо как this.setState(rows: props.count)
+
+const [resource, setResource] = useState('posts');
+имена в хуках любые. Первое значение - кусок стейта, второе - setter function (типо setState в class based component)
+resource === this.state.resource, setResource === this.setState({resource: "posts"}) 
+
 
 
 ## useEffect
-allow a functional component to use lifecycle methods
+вызывается на каждый рендер компоненты
+useEffect(() => {
+        getHooks(resource)
+    });
+
+вызывется 1 раз
+useEffect(() => {
+        getHooks(resource)
+    }, []);
+
+вызывется каждый раз когда поменяется newElement (новый инстанс объекта, новое число и тд), либо изменится их количество,
+useEffect(() => {
+        getHooks(resource)
+    }, [newElement, newElement1]);
+
+Также в useEffect интересно, что если вызывается этот эффект каждый раз дергается функция очистки в нем (в случае если не передан второй аргумент), что удобно, см пример в useClickOutside
 
 
 
@@ -34,28 +66,6 @@ Each function declared within a functional component’s scope must be memoized/
 ## useMemo
 https://reactjs.org/docs/hooks-reference.html#usememo
 useMemo - invokes the provided function and caches its result.
-
-
-
-## useEffect
-вызывается на каждый рендер компоненты
-useEffect(() => {
-        getHooks(resource)
-    });
-
-вызывется 1 раз
-useEffect(() => {
-        getHooks(resource)
-    }, []);
-
-вызывется каждый раз когда поменяется newElement (новый инстанс объекта, новое число и тд), либо изменится их количество,
-useEffect(() => {
-        getHooks(resource)
-    }, [newElement, newElement1]);
-
-Также в useEffect интересно, что если вызывается этот эффект каждый раз дергается функция очистки в нем (в случае если не передан второй аргумент), что удобно, см пример в useClickOutside
-
-
 
 
 
