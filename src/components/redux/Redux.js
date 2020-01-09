@@ -9,16 +9,16 @@ export class ReduxComponent extends Component {
     render() {
         return (
             <TabsComponent>
+                <div tabName="SongList">
+                    <SongList prop={'test'}/>
+                </div>
+
                 <div tabName="PostsAndUsers">
                     <PostsAndUsers />
                 </div>
 
                 <div tabName="Post">
                     <PostList />
-                </div>
-
-                <div tabName="SongList">
-                    <SongList prop={'test'}/>
                 </div>
 
                 <div tabName="Frameworks">

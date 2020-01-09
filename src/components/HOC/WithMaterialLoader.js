@@ -1,5 +1,5 @@
-import MaterialLoader from "../components/loader/MaterialLoader";
 import React from "react";
+import MaterialLoader from "../loader/MaterialLoader";
 
 export default (WrappedComponent) => ({isLoading, ...restProps}) => (
     isLoading ?

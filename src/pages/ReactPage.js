@@ -5,18 +5,24 @@ import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
-import Component from "../components/component/Component";
-import RefHooks from "../components/ref/RefHooks";
-import RefClass from "../components/ref/RefClass";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Ref examples">
-                    <RefHooks/>
-                    <RefClass/>
-                </Component>
+                {/*<Component title="Container example">*/}
+                {/*    <ContainerClass/>*/}
+                {/*</Component>*/}
+
+                {/*<Component title="HOC">*/}
+                {/*    <HOCClass/>*/}
+                {/*    <HOCHooks/>*/}
+                {/*</Component>*/}
+
+                {/*<Component title="Ref examples">*/}
+                {/*    <RefHooks/>*/}
+                {/*    <RefClass/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Styled Components">*/}
                 {/*    <StyledText isActive>Styled text</StyledText>*/}

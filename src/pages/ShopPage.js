@@ -36,8 +36,8 @@ export default memo(() => {
                 <Route path="/shop" exact component={ShopHome}/>
 
                 {/*Если залогинился то при запросе на /shop/sign редирекчу на /shop*/}
-                {/*render - это как стандартный рендер метод у компоненты*/}
-                <Route path="/shop/sign" render={() => user ? <Redirect to="/shop"/> : <SignInAndSignUp/>}/>
+                {/*render - это как стандартный рендер метод у компоненты, поэтому могу использовать props*/}
+                <Route path="/shop/sign" render={(props) => user ? <Redirect to="/shop"/> : <SignInAndSignUp/>}/>
                 <Route path="/shop/collections" exact component={ShopCollectionsHooks}/>
                 <Route path="/shop/collections/:categoryId" exact component={ShopCollection}/>
                 <Route path="/shop/checkout" exact component={ShopCheckout}/>
