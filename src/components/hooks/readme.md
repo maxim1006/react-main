@@ -60,6 +60,18 @@ https://reactjs.org/docs/hooks-reference.html#usecallback
 It takes as an argument a function and returns a cached/memoized version of it
 Each function declared within a functional component’s scope must be memoized/cached with useCallback. If it references functions or other variables from the component scope it should list them in its dependency list.
 Использую чтобы мемоизироывать функцию которую прокидываю в чайлдовый компонент, чтобы каждый раз когда перерендеривается родитель ссылка на функцию не менялась и чайлд не перерендеривался
+example: 
+const Parent = ()=> {
+   const [a, setA] = useState(null);
+   const eventHandler = useCallback(()=> {
+      // A unique function instance is passed in to useCallback on every render, but
+      // eventHandler will be set to the first instance of this function
+      // (i.e. potentially an instance of the function that was passed to useCallback
+      // on a previous rendering) that was passed to useCallback
+      // for the current value of 'a'.
+      doSomethingWithA(a);
+   }, [a]);
+   return <Child onClick={eventHandler}/>
 
 
 

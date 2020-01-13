@@ -67,15 +67,16 @@ export class LifecycleHooksComponent extends Component {
 
     // если вызову shouldComponentUpdate и он вернет фолс, то componentDidUpdate вызываться не будет
     // чтобы вызвать насильно ;) вызываю this.forceUpdate(_ => console.log('forceUpdate'))
-    // shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextProps, nextState) {
     //     if (nextState.prop === 1) {
     //         this.forceUpdate((nextProps, nextState) => console.log('forceUpdate'));
     //     }
     // или проверяю изменилось ли проперти?
     // return nextProps.prop !== this.props.prop;
     // или всегда
-    //     return false;
-    // }
+        console.log(123);
+        return false;
+    }
 
     // clear everything
     componentWillUnmount() {

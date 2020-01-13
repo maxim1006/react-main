@@ -6,7 +6,7 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import {Parent} from "../components/parent/Parent";
+import {LifecycleHooksComponent} from "../components/lifecycle-hooks/LifecycleHooks";
 
 export default function ReactPage() {
     return (
@@ -51,9 +51,9 @@ export default function ReactPage() {
                 {/*    <Imports/>*/}
                 {/*</Component>*/}
 
-                <Component title="Parent">
-                    <Parent/>
-                </Component>
+                {/*<Component title="Parent">*/}
+                {/*    <Parent/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Grid">*/}
                 {/*    <Grid/>*/}
@@ -63,9 +63,9 @@ export default function ReactPage() {
                 {/*    <RestApiComponent/>*/}
                 {/*</Component>*/}
 
-                {/*<Component title="LifecycleHooksComponent">*/}
-                {/*    <LifecycleHooksComponent/>*/}
-                {/*</Component>*/}
+                <Component title="LifecycleHooksComponent">
+                    <LifecycleHooksComponent/>
+                </Component>
 
                 {/*<Component title="ClassBasedComponent">*/}
                 {/*    <ClassBasedComponent/>*/}

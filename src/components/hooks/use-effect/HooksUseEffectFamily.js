@@ -1,10 +1,12 @@
-import React, {memo, useState} from "react";
+import React, {memo, useCallback, useState} from "react";
 import useGetRequest from "../useGetRequest";
 import MaterialLoader from "../../loader/MaterialLoader";
 
 export default memo(() => {
     const [searchValue, setSearchValue] = useState("");
     const [filteredSearchList, setFilteredSearchList] = useState([]);
+
+    // тут использую useEffect внутри (как componentDidMount)
     const familyData = useGetRequest({
         url: "/family",
         cb: (data) => {setFilteredSearchList(data)}
@@ -12,7 +14,7 @@ export default memo(() => {
 
     let filteredFamilyList = [];
 
-    const onSearch = (e) => {
+    const onSearch = useCallback((e) => {
         const value = e.target.value;
 
         filteredFamilyList = familyData.filter(({name}) => {
@@ -21,7 +23,7 @@ export default memo(() => {
 
         setFilteredSearchList(filteredFamilyList);
         setSearchValue(value);
-    };
+    }, [familyData]);
 
     return (
         <>

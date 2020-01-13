@@ -1,16 +1,18 @@
-import React from "react";
+import React, {memo} from "react";
 import "./ShopFormInput.scss";
 
-export default ({handleChange, label, ...restProps}) => (
-    <div className="shop-form-input">
-        {
-            label ?
-                <label htmlFor={restProps.id}>{label}</label> :
-                null
-        }
-        <input
-            onChange={handleChange}
-            {...restProps}
-        />
-    </div>
-);
+export default memo(({handleChange, label, ...restProps}) => {
+    return (
+        <div className="shop-form-input">
+            {
+                label ?
+                    <label htmlFor={restProps.id}>{label}</label> :
+                    null
+            }
+            <input
+                onChange={handleChange}
+                {...restProps}
+            />
+        </div>
+    );
+});

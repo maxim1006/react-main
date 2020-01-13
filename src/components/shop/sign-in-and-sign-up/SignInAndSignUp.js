@@ -1,11 +1,11 @@
 import React from "react";
-import ShopSignIn from "../sign-in/ShopSignIn";
-import ShopSignUp from "../sign-up/sign-up";
 import "./SignInAndSignUp.scss";
+import ShopSignUpHooks from "../sign-up/ShopSignUpHooks";
+import ShopSignInHooks from "../sign-in/ShopSignInHooks";
 
 export default () => (
     <div className="sign-in-and-sign-up">
-        <ShopSignIn/>
-        <ShopSignUp/>
+        <ShopSignInHooks/>
+        <ShopSignUpHooks/>
     </div>
 );
