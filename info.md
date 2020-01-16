@@ -37,27 +37,6 @@ https://maxim1006.github.io/react-main
 
 
 
-### deploy heroku
-npm i -g heroku
-heroku login
-// создаю проект с билд настройкками реакт апп
-heroku create main-react --buildpack https://github.com/mars/create-react-app-buildpack.git
-git push heroku master
-
-// тут приложение
-https://main-react.herokuapp.com/
-
-#### heroku builds
-когда деплою в хероку должен подставить в homepage в package.json "./", чтобы получить нормальные пути
-
-heroku plugins:install heroku-builds
-// посмотреть все текущие билды в приложении
-heroku builds -a main-react
-// завершить билды
-heroku builds:cancel -a main-react
-
-
-
 ### Adjust CRA
 node_modules/react-scripts/config/webpack.config.js
 
