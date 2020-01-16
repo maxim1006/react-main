@@ -6,12 +6,18 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import {LifecycleHooksComponent} from "../components/lifecycle-hooks/LifecycleHooks";
+import FamilyFetch from "../components/family/fetch/FamilyFetch";
+import AxiosFamily from "../components/family/axios/AxiosFamily";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
+                <Component title="Family fetch">
+                    <AxiosFamily/>
+                    <FamilyFetch/>
+                </Component>
+
                 {/*<Component title="Container example">*/}
                 {/*    <ContainerClass/>*/}
                 {/*</Component>*/}
@@ -63,9 +69,9 @@ export default function ReactPage() {
                 {/*    <RestApiComponent/>*/}
                 {/*</Component>*/}
 
-                <Component title="LifecycleHooksComponent">
-                    <LifecycleHooksComponent/>
-                </Component>
+                {/*<Component title="LifecycleHooksComponent">*/}
+                {/*    <LifecycleHooksComponent/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="ClassBasedComponent">*/}
                 {/*    <ClassBasedComponent/>*/}
