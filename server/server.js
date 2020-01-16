@@ -15,7 +15,7 @@ import {
 // const cors = require('cors');
 
 const app = express(),
-    port = process.env.NODEJS_PORT || 3001,
+    port = process.env.PORT || 3001,
     root = '/api/';
 
 // если так то не работает delete метод, по непонятной причине потом заработало
@@ -27,7 +27,12 @@ app.use(function (req, res, next) {
     next();
 });
 
-// поэтому использую middleware cors package
+// Передаю в переменнные окружения значения из .env с помощью dotenv нпм пакета
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+// использую middleware cors package
 // app.use(cors(
 // {
 //     origin: "*",

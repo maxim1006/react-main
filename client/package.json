@@ -12,7 +12,10 @@
         "server": "nodemon -r esm ./server/server.js",
         "build:server": "webpack-dev-server --open --entry /webpack-dev-server --output-path /dist --compress --content-base ./build --history-api-fallback",
         "build:serve": "cd ./build && ws --spa index.html --compress --open --static.maxage -1",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d build",
+        "prelog": "NODE_ENV=prelog node ./logs.js",
+        "log": "node ./logs.js",
+        "postlog": "NODE_ENV=postlog node ./logs.js"
     },
     "eslintConfig": {
         "extends": "react-app"
