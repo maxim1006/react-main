@@ -78,6 +78,8 @@ plugins: isEnvProduction ?
                 ],
 ```
 
+"proxy": "http://localhost:3001" in client/package.json - говорю CRA проксировать все запросы за данными (api request) на 3001 порт
+
 
 ### JSON stub
 https://jsonplaceholder.typicode.com/

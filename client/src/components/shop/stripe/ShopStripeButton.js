@@ -1,13 +1,27 @@
 import React, {memo, useCallback} from "react";
 import StripeCheckout from 'react-stripe-checkout';
 import {publishKey} from "../../../stripe/stripe.utils";
+import axios from "axios";
 
 export default memo(({price}) => {
     const stripePrice = price * 100; // в страйп все цены в центах
 
-    const onToken = useCallback((token) => {
+    const onToken = useCallback(token => {
         console.log(token);
-        alert("Payment successful");
+        // alert("Payment successful");
+
+        // тут использую просто axios чтобы добавить payment к любому роуту из которого делается этот запрос
+        axios({
+            url: "/api/payment",
+            method: "post",
+            data: {
+                amount: stripePrice,
+                token
+            }
+        }).then(
+            _ => console.log("stripe payment success"),
+            e => console.log("stripe payment error ", e)
+        );
     }, []);
 
     return (

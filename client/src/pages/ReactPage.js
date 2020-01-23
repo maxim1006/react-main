@@ -6,17 +6,20 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import FamilyFetch from "../components/family/fetch/FamilyFetch";
-import AxiosFamily from "../components/family/axios/AxiosFamily";
+import Skills from "../components/skills/Skills";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Family fetch">
-                    <AxiosFamily/>
-                    <FamilyFetch/>
+                <Component title="Skills">
+                    <Skills/>
                 </Component>
+
+                {/*<Component title="Family fetch">*/}
+                {/*    <AxiosFamily/>*/}
+                {/*    <FamilyFetch/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Container example">*/}
                 {/*    <ContainerClass/>*/}

@@ -8,5 +8,6 @@ export * from "./streams";
 export * from "./shopUser";
 export * from "./shopCart";
 export * from "./shopData";
+export * from "./skills";
 
 

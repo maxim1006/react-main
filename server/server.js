@@ -1,5 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
+import * as path from "path";
+
 import {
     articlesRouter,
     commentsRouter,
@@ -9,14 +11,16 @@ import {
     monsterRouter,
     postsRouter,
     streamsRouter,
-    usersRouter
+    usersRouter,
+    paymentRouter,
 } from './routers';
 
 // const cors = require('cors');
 
 const app = express(),
     port = process.env.PORT || 3001,
-    root = '/api/';
+    root = '/api/',
+    isProduction = process.env.NODE_ENV === "production";
 
 // если так то не работает delete метод, по непонятной причине потом заработало
 app.use(function (req, res, next) {
@@ -28,7 +32,7 @@ app.use(function (req, res, next) {
 });
 
 // Передаю в переменнные окружения значения из .env с помощью dotenv нпм пакета
-if (process.env.NODE_ENV !== "production") {
+if (!isProduction) {
     require('dotenv').config();
 }
 
@@ -78,15 +82,31 @@ const appRouters = [
     {
         url: 'monsters',
         middleware: monsterRouter
+    },
+    {
+        url: 'payment',
+        middleware: paymentRouter
     }
 ];
 
+// автоматом все запросы приходят с боди json (аля fetch => data.json())
 app.use(bodyParser.json());
+// проверка что url не содержат лишних символов пробелов и тд
 app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 
 appRouters.forEach(router => app.use(root + router.url, router.middleware));
 
-app.listen(port, () => {
+// сервлю статические файлы
+if (isProduction) {
+    app.use(express.static(path.join(__dirname, "../client/build")));
+
+    app.get("*", (req, res) => {
+        res.send(path.join(__dirname, '../client/build', 'index.html'));
+    });
+}
+
+app.listen(port, (error) => {
+    if (error) throw error;
     console.log(`Mock server is listening on port ${port}`);
 });
 

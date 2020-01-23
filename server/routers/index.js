@@ -7,3 +7,4 @@ export * from './users.router';
 export * from './streams.router';
 export * from './hooks.router';
 export * from './monsters.router';
+export * from './payment.router';

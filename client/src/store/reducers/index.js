@@ -10,6 +10,7 @@ import streams from "./streams";
 import shopUser from "./shopUser";
 import shopCart from "./shopCart";
 import shopData from "./shopData";
+import skills from "./skills";
 
 
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
@@ -25,5 +26,6 @@ export default combineReducers({
     streams,
     shopUser,
     shopCart,
-    shopData
+    shopData,
+    skills,
 });

@@ -17,14 +17,14 @@ heroku create (затем git remote -v чтобы посмотреть что �
 // посмотреть все свои apps 
 heroku apps
 
-// присоединить свое приложение к хероку
+// присоединить свое приложение к хероку, те прилинковываю обычный проект с гит к аккаунту в хероку в конкретное приложение
 heroku git:remote -a <PASTE_YOUR_APP_NAME_HERE>
 
-// посмотреть все buildpacks
-heroku buildpacks
+// проверить удаленные ветки
+git remote (получу heroku и origin)
 
-// удалить buildpack
-heroku buildpacks:remove mars/create-react-app-buildpack
+// запушить в хероку
+git push heroku master
 
 // добавить серкретный ключ
 heroku config:set STRIPE_SECRET_KEY=<YOUR_STRIPE_SECRET_KEY>
@@ -37,6 +37,12 @@ heroku open
 #### heroku builds
 когда деплою в хероку должен подставить в homepage в package.json "./", чтобы получить нормальные пути
 
+// посмотреть все buildpacks
+heroku buildpacks
+
+// удалить buildpack (на примере CRA)
+heroku buildpacks:remove https://github.com/mars/create-react-app-buildpack.git
+
 // инсталлю плагины для хероку билдов
 heroku plugins:install heroku-builds
 
@@ -48,3 +54,6 @@ git push heroku master
 
 // завершить билды
 heroku builds:cancel -a main-react
+
+
+heroku buildpacks:remove https://github.com/mars/create-react-app-buildpack.git
