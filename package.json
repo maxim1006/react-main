@@ -2,7 +2,7 @@
     "name": "react-main",
     "version": "0.1.0",
     "engines": {
-        "node": "13.3.0",
+        "node": "13.7.0",
         "npm": "6.13.1"
     },
     "private": true,
@@ -11,7 +11,7 @@
         "server": "nodemon -r esm ./server/server.js",
         "server:prod": "NODE_ENV=production nodemon -r esm ./server/server.js",
         "build": "cd ./client && npm run build",
-        "start": "node -r esm ./server/server.js",
+        "start": "node ./server/server.js",
         "heroku-postbuild": "cd ./client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
     },
     "dependencies": {
