@@ -55,5 +55,10 @@ git push heroku master
 // завершить билды
 heroku builds:cancel -a main-react
 
+// добавить .env в хероку
+heroku config:set STRIPE_SECRET_KEY=
 
-heroku buildpacks:remove https://github.com/mars/create-react-app-buildpack.git
+
+
+### logs
+heroku logs --tail
