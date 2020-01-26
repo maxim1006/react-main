@@ -8,9 +8,8 @@ import NotFound from "./components/NotFound";
 import MainMenu from "./components/menu/MainMenu";
 import RouterPage from "./pages/RouterPage";
 import history from "./history";
-import ContextTest from "./components/context/ContextTest";
-import {ThemeContextStore} from "./components/theme/ThemeContextStore";
-import ThemeSelector from "./components/theme/ThemeSelector";
+import GeneralInfo from "./components/general-info/GeneralInfo";
+import ContextGeneralInfo from "./components/context/ContextGeneralInfo";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
@@ -18,14 +17,14 @@ const LazyPage = React.lazy(() => import('./pages/LazyPage'));
 const StreamPage = React.lazy(() => import('./pages/StreamPage'));
 const HooksPage = React.lazy(() => import('./pages/HooksPage'));
 const ShopPage = React.lazy(() => import('./pages/ShopPage'));
+const ContextPage = React.lazy(() => import('./pages/ContextPage'));
 
 
 class App extends Component {
     render() {
         return (
-            <ThemeContextStore>
-                {/*Связываю ThemeContextStore с ThemeSelector через context*/}
-                <ThemeSelector/>
+            <ContextGeneralInfo>
+                <GeneralInfo/>
 
                 <div className="app">
                     <main className="app__main">
@@ -57,7 +56,7 @@ class App extends Component {
                                     <Route path="/hooks" component={HooksPage}/>
                                     <Route path="/stream" component={StreamPage}/>
                                     <Route path="/lazy" component={LazyPage}/>
-                                    <Route path="/context" component={ContextTest}/>
+                                    <Route path="/context" component={ContextPage}/>
                                     <Route path="*">
                                         <NotFound history={history}/>
                                     </Route>
@@ -66,7 +65,7 @@ class App extends Component {
                         </Router>
                     </main>
                 </div>
-            </ThemeContextStore>
+            </ContextGeneralInfo>
         );
     }
 }

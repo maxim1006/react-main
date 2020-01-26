@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import "./ContextTest.scss";
 import ContextCreate from "./ContextCreate";
-import LanguageContext from "../../context/LanguageContext";
+import LanguageContext from "../../../context/LanguageContext";
 
 export default class ContextTest extends Component {
     state = {
