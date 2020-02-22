@@ -1,7 +1,5 @@
 import React, {Component, Suspense} from 'react';
 import './App.scss';
-// просто для примера инжекчу доки
-import {ReduxComponent} from "./components/redux/Redux";
 import {Route, Router, Switch} from "react-router-dom";
 import MaterialLoaderComponent from "./components/loader/MaterialLoader";
 import NotFound from "./components/NotFound";
@@ -18,6 +16,7 @@ const StreamPage = React.lazy(() => import('./pages/StreamPage'));
 const HooksPage = React.lazy(() => import('./pages/HooksPage'));
 const ShopPage = React.lazy(() => import('./pages/ShopPage'));
 const ContextPage = React.lazy(() => import('./pages/ContextPage'));
+const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
 
 
 class App extends Component {
@@ -50,7 +49,7 @@ class App extends Component {
                                 {/*покажет только первый найденный роут*/}
                                 <Switch>
                                     <Route path="/shop" component={ShopPage}/>
-                                    <Route path="/redux" exact component={ReduxComponent}/>
+                                    <Route path="/redux" component={ReduxPage}/>
                                     <Route path="/react" component={ReactPage}/>
                                     <Route path="/router" component={RouterPage}/>
                                     <Route path="/hooks" component={HooksPage}/>

@@ -4,7 +4,7 @@ import {ReactComponent as LogoIcon} from "../../../assets/icons/crown.svg";
 import {ReactComponent as CartIcon} from "../../../assets/icons/shopping-bag.svg";
 import {auth} from "../../../firebase/firebase.utils";
 import {Link} from "react-router-dom";
-import "./ShopHeader.scss";
+import "./ShopHeader.scss"; 
 import {connect} from "react-redux";
 import {shopToggleDropdown} from "../../../store/actions";
 import MaterialLoader from "../../loader/MaterialLoader";

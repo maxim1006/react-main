@@ -46,7 +46,7 @@ class PostsAndUsers extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     posts: state.posts,
-    users: convertArrayToObjById(state.users)
+    users: state.users.users
 });
 
 export default connect(mapStateToProps, {

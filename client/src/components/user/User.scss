@@ -1,0 +1,11 @@
+@import "../../assets/styles/common";
+
+.user {
+    color: $main-color;
+
+    &__label {
+        margin-right: 5px;
+        font-size: 12px;
+        color: $light-color;
+    }
+}

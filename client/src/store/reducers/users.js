@@ -1,12 +1,50 @@
-import {FETCH_USER} from "../actions/types";
+import {USER_TYPES} from "../actions/types";
 
-const initialState = [];
+const initialState = {
+    users: {},
+    isLoadingUsers: false,
+    isLoadingUser: false,
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_USER: {
-            return [...state, action.payload];
+        case USER_TYPES.FETCH_USER_START: {
+            return {...state, isLoadingUser: true};
         }
+
+        case USER_TYPES.FETCH_USER_SUCCESS: {
+            const newUsers = {...state.users, [action.payload.id]: action.payload};
+
+            return {
+                ...state,
+                users: newUsers,
+                isLoadingUser: false
+            };
+        }
+
+
+        case USER_TYPES.FETCH_USER_ERROR: {
+            return {...state, isLoadingUser: false};
+        }
+
+        case USER_TYPES.FETCH_USERS_START: {
+            return {...state, isLoadingUsers: true};
+        }
+
+        case USER_TYPES.FETCH_USERS_SUCCESS: {
+            const newUsers = {...state.users, ...action.payload};
+
+            return {
+                ...state,
+                users: newUsers,
+                isLoadingUsers: false
+            };
+        }
+
+        case USER_TYPES.FETCH_USERS_ERROR: {
+            return {...state, isLoadingUsers: false};
+        }
+
         default: {
             return state;
         }

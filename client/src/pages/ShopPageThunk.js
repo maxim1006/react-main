@@ -11,7 +11,7 @@ import ShopCheckout from "../components/shop/checkout/ShopCheckout";
 import ShopCollectionsHooks from "../components/shop/collections/ShopCollectionsHooks";
 import ShopCollection from "../components/shop/collection/ShopCollection";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchShopDataThunkStart} from "../store/actions";
+import {fetchShopDataThunk} from "../store/actions";
 import NotificationPortal from "../components/portals/notification/NotificationPortal";
 
 // Это чисто для примера thunk в action, или асинхронщина в useShopData
@@ -21,7 +21,7 @@ export default memo(() => {
     const dispatchFetchShopData = useDispatch();
 
     useEffect(() => {
-        dispatchFetchShopData(fetchShopDataThunkStart());
+        dispatchFetchShopData(fetchShopDataThunk());
     }, []);
 
     const fetchShopDataError = useSelector(state => state.shopData.errorMessage);

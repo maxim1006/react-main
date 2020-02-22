@@ -6,5 +6,6 @@ export * from "./shopCart";
 export * from "./shopUser";
 export * from "./streams";
 export * from "./auth";
+export * from "./users";
 
 

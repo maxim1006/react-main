@@ -9,7 +9,7 @@ export const shopSetData = (payload) => ({
 });
 
 // тут тоже самое только асинхронно через thunks
-export const fetchShopDataThunkStart = () => async (dispatch, getState) => {
+export const fetchShopDataThunk = () => async (dispatch, getState) => {
     dispatch({
         type: SHOP_DATA_TYPES.FETCH_DATA_THUNK_START
     });
