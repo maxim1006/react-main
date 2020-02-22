@@ -5,7 +5,7 @@ import SongList from "../song/SongList";
 import FrameworkList from "../framework/FrameworkList";
 import MainMenu from "../menu/MainMenu";
 import {Route, Switch} from "react-router-dom";
-import UserList from "../user/UserList";
+import UserListHooks from "../user/UserListHooks";
 
 export class ReduxComponent extends Component {
     render() {
@@ -24,7 +24,7 @@ export class ReduxComponent extends Component {
                     <Route path="/redux/posts-and-users" exact component={PostsAndUsers}/>
                     <Route path="/redux/post-list" exact component={PostList}/>
                     <Route path="/redux/framework-list" exact component={FrameworkList}/>
-                    <Route path="/redux/user-list" exact component={UserList}/>
+                    <Route path="/redux/user-list" exact component={UserListHooks}/>
                 </Switch>
             </>
         );
