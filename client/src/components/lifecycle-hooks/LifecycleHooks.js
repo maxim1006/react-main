@@ -48,7 +48,7 @@ export class LifecycleHooksComponent extends Component {
         console.log("componentDidMount");
     }
 
-    // Использую если необходимо апдейтить стейт на основе изменений дома, обязательно с условием см ниже
+    // Использую если необходимо апдейтить стейт на основе изменений входных пропертей компонента, обязательно с условием см ниже
     // Либо когда надо делать запросы на сервер при изменении входных пропертей, обязательно с условием см ниже
     // Use this as an opportunity to operate on the DOM when the component has been updated.
     // This is also a good place to do network requests as long as you compare the current props to previous props
