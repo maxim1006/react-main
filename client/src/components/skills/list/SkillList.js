@@ -1,36 +1,63 @@
-import React, {memo} from "react";
+import React, {memo, useEffect} from "react";
 import {connect} from "react-redux";
+import {changeSkillStatus, fetchSkills, removeSkill} from "../../../store/actions";
 import SkillsItem from "../item/SkillsItem";
-import {changeSkillStatus, removeSkill} from "../../../store/actions";
+import customAxios from "../../../common/api/axios";
+import MaterialLoaderComponent from "../../loader/MaterialLoader";
+import "./SkillList.scss";
 
-const SkillList = memo(({items, removeItem, onStatusChange}) => (
-    <ul className="skills-list">
-        {Object.values(items).map(item => (
-            <li key={item.id}>
-                <SkillsItem {...item} />
+const SkillList = memo(({isLoading, items, removeItem, onStatusChange, fetchSkills}) => {
+    let cancelFetchSkillRequest = customAxios.CancelToken.source();
+    let cancelRemoveSkillRequest = customAxios.CancelToken.source();
 
-                {/*UTF-8 dingbats*/}
-                <span onClick={_ => removeItem(item)}>&#10008;</span>
+    useEffect(() => {
+        fetchSkills(cancelFetchSkillRequest);
 
-                <input
-                    type="checkbox"
-                    checked={item.status === "done"}
-                    ref={el => el && (el.indeterminate = item.status === "in progress")}
-                    onChange={_ => onStatusChange(item)}
-                />
-            </li>
-        ))}
-    </ul>
-));
+        return () => {
+            cancelFetchSkillRequest.cancel("SkillList fetch canceled");
+            cancelRemoveSkillRequest.cancel("SkillList remove canceled");
+        }
+    }, []);
+
+    return (
+        <div className="skill-list">
+            {
+                isLoading
+                ? <MaterialLoaderComponent/>
+                : <ul className="skills-list">
+                    {Object.values(items).map(item => (
+                        <li key={item.id}>
+                            <SkillsItem {...item} />
+
+                            {/*UTF-8 dingbats*/}
+                            <span onClick={_ => removeItem(item, cancelRemoveSkillRequest)}>&#10008;</span>
+
+                            <input
+                                type="checkbox"
+                                checked={item.status === "done"}
+                                ref={el => el && (el.indeterminate = item.status === "in progress")}
+                                onChange={_ => onStatusChange(item)}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            }
+        </div>
+    );
+});
 
 
 const mapStateToProps = (state, ownProps) => ({
-    items: state.skills.items
+    items: state.skills.items,
+    isLoading: state.skills.isLoading,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    removeItem: (item) => {
-        dispatch(removeSkill(item))
+    fetchSkills: (cancelFetchSkillRequest) => {
+        dispatch(fetchSkills(cancelFetchSkillRequest.token))
+    },
+    removeItem: (item, cancelRemoveSkillRequest) => {
+        dispatch(removeSkill(item, cancelRemoveSkillRequest.token))
     },
     onStatusChange: (item) => {
         dispatch(changeSkillStatus(item))

@@ -10,7 +10,7 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
-        case SKILL_TYPES.FETCH_SKILLS: {
+        case SKILL_TYPES.FETCH_SKILLS_START: {
             return {...state, isLoading: true}
         }
 
@@ -26,7 +26,7 @@ export default (state = initState, action) => {
             return {...state, searchValue: action.payload}
         }
 
-        case SKILL_TYPES.ADD_SKILL: {
+        case SKILL_TYPES.ADD_SKILL_START: {
             return {...state, isLoading: true}
         }
 
@@ -40,7 +40,7 @@ export default (state = initState, action) => {
             }
         }
 
-        case SKILL_TYPES.REMOVE_SKILL: {
+        case SKILL_TYPES.REMOVE_SKILL_START: {
             return {...state, isLoading: true}
         }
 

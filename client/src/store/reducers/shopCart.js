@@ -59,7 +59,8 @@ export default (state = initialState, action) => {
             currentCartItem.quantity -= 1;
 
             if (currentCartItem.quantity <= 0) {
-                delete currentCartItems[action.payload.id];
+                const {[action.payload.id]: removed, ...rest} = currentCartItems;
+                currentCartItems = rest;
             } else {
                 currentCartItems[action.payload.id] = {...currentCartItem};
             }
@@ -71,7 +72,10 @@ export default (state = initialState, action) => {
         }
 
         case SHOP_CART_TYPES.CLEAR_ITEMS: {
-            return {...initialState};
+            return {
+                visibleDropdown: null,
+                cartItems: {}
+            };
         }
 
         default:

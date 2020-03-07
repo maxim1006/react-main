@@ -136,6 +136,9 @@ return state.filter(el => el !== 'prop');
 
 const {[action.payload.id]: removed, ...newState} = state;
 return newState;
+или так
+const newState = {...state};
+delete newState[action.payload.id]
 
 #### add
 [...state, 'prop'];

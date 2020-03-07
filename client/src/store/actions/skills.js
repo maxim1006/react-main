@@ -6,7 +6,7 @@ import {isFunction} from "../../common/helpers/helpers";
 
 export const fetchSkills = (cancelToken, cb) => async dispatch => {
     dispatch({
-        type: SKILL_TYPES.FETCH_SKILLS
+        type: SKILL_TYPES.FETCH_SKILLS_START
     });
 
     try {
@@ -18,9 +18,7 @@ export const fetchSkills = (cancelToken, cb) => async dispatch => {
 
         dispatch({
             type: SKILL_TYPES.FETCH_SKILLS_SUCCESS,
-            payload: {
-                items
-            }
+            payload: items
         });
     } catch ({message}) {
         dispatch({
@@ -36,22 +34,19 @@ export const fetchSkills = (cancelToken, cb) => async dispatch => {
 
 export const addSkill = (name, cancelToken, cb) => async dispatch => {
     dispatch({
-        type: SKILL_TYPES.ADD_SKILL
+        type: SKILL_TYPES.ADD_SKILL_START
     });
 
     try {
         const {data: item} = await customAxios.put("/skills", {
             name,
-            cancelToken
-        });
+        }, {cancelToken});
 
         isFunction(cb) && cb(item);
 
         dispatch({
             type: SKILL_TYPES.ADD_SKILL_SUCCESS,
-            payload: {
-                item
-            }
+            payload: item
         });
     } catch ({message}) {
         dispatch({
@@ -67,22 +62,19 @@ export const addSkill = (name, cancelToken, cb) => async dispatch => {
 
 export const removeSkill = (skill, cancelToken, cb) => async dispatch => {
     dispatch({
-        type: SKILL_TYPES.REMOVE_SKILL
+        type: SKILL_TYPES.REMOVE_SKILL_START
     });
 
     try {
         const {data: item} = await customAxios.delete("/skills", {
-            cancelToken,
             params: {id: skill.id}
-        });
+        }, {cancelToken});
 
         isFunction(cb) && cb(item);
 
         dispatch({
             type: SKILL_TYPES.REMOVE_SKILL_SUCCESS,
-            payload: {
-                item
-            }
+            payload: item
         });
     } catch ({message}) {
         dispatch({
@@ -103,17 +95,14 @@ export const changeSkillStatus = (skill, cancelToken, cb) => async dispatch => {
 
     try {
         const {data: item} = await customAxios.post("/skills", {
-            cancelToken,
             params: {id: skill.id}
-        });
+        }, {cancelToken});
 
         isFunction(cb) && cb(item);
 
         dispatch({
             type: SKILL_TYPES.CHANGE_SKILL_STATUS_SUCCESS,
-            payload: {
-                item
-            }
+            payload: item
         });
     } catch ({message}) {
         dispatch({

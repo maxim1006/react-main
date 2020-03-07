@@ -9,10 +9,11 @@ import {
     frameworksRouter,
     hooksRouter,
     monsterRouter,
+    paymentRouter,
     postsRouter,
+    skillsRouter,
     streamsRouter,
     usersRouter,
-    paymentRouter,
 } from './routers';
 
 // const cors = require('cors');
@@ -86,6 +87,10 @@ const appRouters = [
     {
         url: 'payment',
         middleware: paymentRouter
+    },
+    {
+        url: 'skills',
+        middleware: skillsRouter
     }
 ];
 
