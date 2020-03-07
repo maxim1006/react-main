@@ -16,7 +16,6 @@ skillsRouter.get("/", async (req, res) => {
 
         res.status(200).json(skills);
     } catch (error) {
-        console.log();
         res.status(500).json({
             error: error.message
         });

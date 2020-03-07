@@ -23,7 +23,7 @@ const SkillList = memo(({isLoading, items, removeItem, onStatusChange, fetchSkil
         <div className="skill-list">
             {
                 isLoading
-                ? <MaterialLoaderComponent/>
+                ? <MaterialLoaderComponent delay={300}/>
                 : <ul className="skills-list">
                     {Object.values(items).map(item => (
                         <li key={item.id}>
