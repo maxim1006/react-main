@@ -36,3 +36,6 @@ yarn-error.log*
 #firebase
 #/src/firebase
 #/src/stripe
+
+#server data
+/server/data
