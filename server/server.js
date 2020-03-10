@@ -1,7 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from "path";
-
+import {ApolloServer} from 'apollo-server-express';
 import {
     articlesRouter,
     commentsRouter,
@@ -15,11 +15,14 @@ import {
     streamsRouter,
     usersRouter,
 } from './routers';
+import schema from "./gql/schema";
+import resolvers from "./gql/resolvers";
 
 // const cors = require('cors');
 
 const app = express(),
     port = process.env.PORT || 3001,
+    gqlPport = process.env.GQL_PORT || 3002,
     root = '/api/',
     isProduction = process.env.NODE_ENV === "production";
 
@@ -109,6 +112,26 @@ if (isProduction) {
         res.send(path.join(__dirname, '../client/build', 'index.html'));
     });
 }
+
+
+// настраиваю gql
+const server = new ApolloServer({
+    typeDefs: schema,
+    resolvers,
+    playground: !isProduction,
+    // disable preflight request
+    cors: {
+        maxAge: 600
+    }
+});
+
+server.applyMiddleware({ app });
+
+// тут playground
+// console.log(server.graphqlPath); // http://localhost:3001/graphql
+
+
+
 
 app.listen(port, (error) => {
     if (error) throw error;
