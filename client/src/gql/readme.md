@@ -16,8 +16,23 @@ type Collection {
 ## Queries
 
 ### Простой запрос
+
 query {
-  collections {
+    payments {
+        name
+    }
+}
+
+
+### Запрос с параметром
+query DroidById($id: ID!) {
+  droid(id: $id) {
+    name
+  }
+}
+
+query($id: ID!) {
+  collection(id: $id) {
     id,
     title,
     items {
@@ -27,20 +42,7 @@ query {
   }
 }
 
-### Запрос с параметром
-query DroidById($id: ID!) {
-  droid(id: $id) {
-    name
-  }
-}
-
+// в вэриаблах в плейграунде
 {
-  customerAccount(customerId: "9155364650313629862") {
-    zipCode
-  }
-  billingAccount (accountId: "9155364650313629862") {
-  	accountBalanceValue
-  }
+  "id": 2
 }
-
-
