@@ -9,3 +9,4 @@ export * from './hooks.router';
 export * from './monsters.router';
 export * from './payment.router';
 export * from './skills.router';
+export * from './doors.router';

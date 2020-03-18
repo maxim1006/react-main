@@ -5,6 +5,7 @@ import {ApolloServer} from 'apollo-server-express';
 import {
     articlesRouter,
     commentsRouter,
+    doorsRouter,
     familyRouter,
     frameworksRouter,
     hooksRouter,
@@ -17,6 +18,7 @@ import {
 } from './routers';
 import schema from "./gql/schema";
 import resolvers from "./gql/resolvers";
+import "./db/db.js";
 
 // const cors = require('cors');
 
@@ -94,6 +96,10 @@ const appRouters = [
     {
         url: 'skills',
         middleware: skillsRouter
+    },
+    {
+        url: 'doors',
+        middleware: doorsRouter
     }
 ];
 
@@ -125,17 +131,16 @@ const server = new ApolloServer({
     }
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({app});
 
 // тут playground
 // console.log(server.graphqlPath); // http://localhost:3001/graphql
 
 
-
-
 app.listen(port, (error) => {
     if (error) throw error;
     console.log(`Mock server is listening on port ${port}`);
+    console.log("ApolloServer on http://localhost:3001/graphql");
 });
 
 

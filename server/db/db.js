@@ -1,0 +1,17 @@
+import mongoose from "mongoose";
+import {createDoors} from "./models/doors";
+
+// подключаюсь к базе данных, если ее нет создасться на лету
+mongoose.connect('mongodb://localhost:27017/reactDB', {useNewUrlParser: true, useUnifiedTopology: true});
+
+const db = mongoose.connection;
+
+db.on("error", e => console.error("connection error ", e));
+db.once("open", e => console.log("Database reactDB connected on port 27017"));
+
+// для примера создаю коллекцию дверей
+// предварительно проверив что дверей еще нет, если есть то не создаю
+createDoors();
+
+
+
