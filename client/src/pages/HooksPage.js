@@ -1,15 +1,19 @@
 import React, {memo} from "react";
 import Component from "../components/component/Component";
-import UseReducerHook from "../components/hooks/use-reducer/UseReducerHook";
+import UseMemoHook from "../components/hooks/use-memo/UseMemoHook";
 
 export default memo(() => {
     return (
         <>
-            <Component title="ref">
-                <UseReducerHook/>
+            <Component title="UseMemoHook">
+                <UseMemoHook/>
             </Component>
 
-            {/*<Component title="ref">*/}
+            {/*<Component title="UseReducerHook">*/}
+            {/*    <UseReducerHook/>*/}
+            {/*</Component>*/}
+
+            {/*<Component title="UseRefHook">*/}
             {/*    <UseRefHook/>*/}
             {/*</Component>*/}
 
