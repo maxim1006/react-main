@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Children} from 'react';
 import './Tabs.scss'
 
 export class TabsComponent extends Component {
@@ -7,41 +7,17 @@ export class TabsComponent extends Component {
     };
 
     render() {
-        let tabsHeader;
-        let tabsBody;
+        const children = this.props.children;
 
-        if (this.props.children) {
+        if (children) {
 
-            // get header
-            tabsHeader = this.props.children.map((child, index) => {
-                return (
-                    <div
-                        onClick={this.onClick.bind(this, index)}
-                        key={index}
-                        className={
-                            "tabs__header-item" +
-                            (index === this.state.activeTab ? ' _active' : '')
-                        }
-                    >
-                        {child.props.tabName}
-                    </div>
-                );
-            });
+            let tabsHeader = [];
+            let tabsBody = [];
 
-            // get body
-            tabsBody = this.props.children.map((child, index) => {
-                if (index === this.state.activeTab) {
-                    return (
-                        <div
-                            className="tabs__content-item"
-                            key={index}
-                        >
-                            {child.props.children}
-                        </div>
-                    );
-                } else {
-                    return "";
-                }
+            // вспомогательная функция для работы с чайлдами
+            Children.map(children,(child, index) => {
+                tabsHeader.push(this.getTabsHeaderView(child, index));
+                tabsBody.push(this.getTabsBody(child, index));
             });
 
             return (
@@ -54,6 +30,36 @@ export class TabsComponent extends Component {
                     </div>
                 </div>
             );
+        }
+    }
+
+    getTabsHeaderView(child, index) {
+        return (
+            <div
+                onClick={this.onClick.bind(this, index)}
+                key={index}
+                className={
+                    "tabs__header-item" +
+                    (index === this.state.activeTab ? ' _active' : '')
+                }
+            >
+                {child.props.tabName}
+            </div>
+        );
+    }
+
+    getTabsBody(child, index) {
+        if (index === this.state.activeTab) {
+            return (
+                <div
+                    className="tabs__content-item"
+                    key={index}
+                >
+                    {child.props.children}
+                </div>
+            );
+        } else {
+            return "";
         }
     }
 
