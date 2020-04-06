@@ -8,6 +8,7 @@ import RouterPage from "./pages/RouterPage";
 import history from "./history";
 import GeneralInfo from "./components/general-info/GeneralInfo";
 import ContextGeneralInfo from "./components/context/ContextGeneralInfo";
+import FetchCanvas from "./components/fetch/canvas/fetch-canvas.component";
 
 
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));

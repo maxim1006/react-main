@@ -7,6 +7,7 @@ import {
     commentsRouter,
     doorsRouter,
     familyRouter,
+    fetchRouter,
     frameworksRouter,
     hooksRouter,
     monsterRouter,
@@ -100,6 +101,10 @@ const appRouters = [
     {
         url: 'doors',
         middleware: doorsRouter
+    },
+    {
+        url: 'fetch',
+        middleware: fetchRouter
     }
 ];
 

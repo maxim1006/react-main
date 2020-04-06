@@ -1,0 +1,54 @@
+import * as express from "express";
+import getRawBody from "raw-body";
+import {family} from "../mocks";
+import * as fs from "fs";
+import * as path from "path";
+
+export const fetchRouter = express.Router();
+
+fetchRouter.get('/', (req, res) => {
+    // тут делаю небольшую задержку для лоадера и cancel fetch request
+    setTimeout(() => {
+        res.status(200).json(family);
+    }, 1000);
+});
+
+fetchRouter.post('/post', async (req, res) => {
+    const {body} = req;
+
+    try {
+        res.status(200).json({message: "Hello Max!"});
+    } catch (e) {
+        res.status(500).json({});
+    }
+});
+
+fetchRouter.post('/canvas', async (req, res) => {
+
+    // обычным способ блоб не получить поэтому использую этот модуль
+    let body = await getRawBody(req, {
+        limit: '1mb'
+    });
+
+    const rootDir = path.dirname(process.mainModule.filename);
+    const canvasPath = path.join(rootDir, 'saved');
+    // вытаскиваю query из запроса типа http://localhost:3001/api/fetch/canvas?name=asdasd
+    const { name } = req.query;
+
+    if (!fs.existsSync(canvasPath)) {
+        fs.mkdirSync(canvasPath);
+    }
+
+    const canvasFilePath = path.join(rootDir, 'saved', `${name}.png`);
+
+    await fs.createWriteStream(canvasFilePath).write(body);
+
+    try {
+        res.status(200).json({size: body.length});
+    } catch (e) {
+        res.status(500).json({});
+    }
+});
+
+
+
