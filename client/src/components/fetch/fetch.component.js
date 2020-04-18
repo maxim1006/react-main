@@ -1,49 +1,15 @@
-import React, {memo, useEffect, useState} from "react";
+import React, {memo} from "react";
 import MaterialLoader from "../loader/MaterialLoader";
 import "./fetch.component.scss";
 import FetchCanvas from "./canvas/fetch-canvas.component";
+import useFetchGet from "./useFetchGet";
+import useFetchPost from "./useFetchPost";
 
 export default memo(() => {
-    const [data, setData] = useState(null);
-    let [controller, setController] = useState(null);
+    const {data, setController, controller} = useFetchGet();
+    const {data: postData, setController: setPostController, controller: postController} = useFetchPost();
 
-    const fetchUrl = "/api/fetch";
-
-    useEffect(() => {
-        (async () => {
-            if (!controller) {
-                // dont run on initial render
-                return;
-            }
-
-            setData(null);
-
-            try {
-                const data = await fetch(fetchUrl, {signal: controller.signal});
-                const jsonData = await data.json();
-                setData(jsonData);
-            } catch (e) {
-                console.log("fetch component fetch error ", e);
-            }
-        })();
-
-        return () => controller && controller.abort();
-    }, [controller]);
-
-    const fetchPost = async () => {
-        let response = await fetch('http://localhost:3001/api/fetch/post', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-                message: "Howdy stranger!"
-            })
-        });
-
-        let result = await response.json();
-        console.log("fetchPost result ", result);
-    };
+    console.log(data);
 
     return (
         <>
@@ -60,10 +26,12 @@ export default memo(() => {
             }
 
             <h3 className="fetch__header">Fetch post</h3>
-            <button type="button" onClick={() => fetchPost()}>fetch post</button>
-
+            <button type="button" onClick={() => setPostController(new AbortController())}>fetch post</button>
+            {
+                postData ? postData.message : postController && "Loading post data..."
+            }
             <h3 className="fetch__header">Fetch canvas</h3>
-            <FetchCanvas />
+            <FetchCanvas/>
         </>
     );
 });

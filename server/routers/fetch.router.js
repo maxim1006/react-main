@@ -17,7 +17,9 @@ fetchRouter.post('/post', async (req, res) => {
     const {body} = req;
 
     try {
-        res.status(200).json({message: "Hello Max!"});
+        setTimeout(() => {
+            res.status(200).json({message: "Hello Max!"});
+        }, 1000);
     } catch (e) {
         res.status(500).json({});
     }

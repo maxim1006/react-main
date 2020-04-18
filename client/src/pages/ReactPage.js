@@ -6,15 +6,19 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import Fetch from "../components/fetch/fetch.component";
+import ArrayComponent from "../components/array/array.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Fetch">
-                    <Fetch/>
+                <Component title="Array">
+                    <ArrayComponent/>
                 </Component>
+
+                {/*<Component title="Fetch">*/}
+                {/*    <Fetch/>*/}
+                {/*</Component>*/}
                 {/*<Component title="Skills">*/}
                 {/*    <Skills/>*/}
                 {/*</Component>*/}
