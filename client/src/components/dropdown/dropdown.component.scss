@@ -23,11 +23,11 @@
         // &-exit-active {}
 
         &-enter {
-            transform: translateX(-110%);
+            transform: translate3d(-110%, 0, 0);
         }
 
         &-enter-active {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
             transition: transform 500ms ease;
         }
 
@@ -36,7 +36,7 @@
         }
 
         &-exit-active {
-            transform: translateX(-110%);
+            transform: translate3d(-110%, 0, 0);
             transition: transform 500ms ease;
         }
 
@@ -44,11 +44,11 @@
             width: 100%;
 
             &-enter {
-                transform: translateX(110%);
+                transform: translate3d(110%, 0, 0);
             }
 
             &-enter-active {
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
                 transition: transform 500ms ease;
             }
 
@@ -57,7 +57,7 @@
             }
 
             &-exit-active {
-                transform: translateX(110%);
+                transform: translate3d(110%, 0, 0);
                 transition: transform 500ms ease;
             }
         }

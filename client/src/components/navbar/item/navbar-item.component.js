@@ -10,17 +10,20 @@ const NavBarItem = memo((props) => {
             <a href="#" className="navbar-item__link" onClick={() => setOpen(!open)}>
                 {props.icon}
             </a>
-
-            <CSSTransition
-                in={open}
-                classNames="navbar-item__dropdown"
-                unmountOnExit
-                timeout={300}
-            >
-                <div className="navbar-item__dropdown">
-                    {props.children}
-                </div>
-            </CSSTransition>
+            {
+                props.children ?
+                    <CSSTransition
+                        in={open}
+                        classNames="navbar-item__dropdown"
+                        unmountOnExit
+                        timeout={300}
+                    >
+                        <div className="navbar-item__dropdown">
+                            {props.children}
+                        </div>
+                    </CSSTransition>
+                    : null
+            }
         </li>
     );
 });
