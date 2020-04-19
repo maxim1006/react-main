@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 import {createDoors} from "./models/doors";
+import {config as dotenvConfig} from "dotenv";
+
+dotenvConfig();
 
 // подключаюсь к базе данных, если ее нет создасться на лету
-mongoose.connect('mongodb://localhost:27017/reactDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/reactDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 

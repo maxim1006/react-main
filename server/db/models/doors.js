@@ -12,7 +12,7 @@ export const Doors = mongoose.model("Door", {
 export const createDoors = async () => {
 
     // удаляю все двери
-    // await Door.deleteMany({}).exec();
+    // await Doors.deleteMany({}).exec();
 
     // считаю количество созданных дверей
     const existingDoorsCount = await Doors.estimatedDocumentCount();
@@ -57,7 +57,7 @@ export const createDoors = async () => {
         console.log("automaticDoor save error ", e);
     }
 
-    // Automatic
+    // Basic
     const basicDoor = new Doors({
         w: 20,
         h: 40,
