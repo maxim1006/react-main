@@ -6,16 +6,19 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import DangerouslySetInnerHTML
-    from "../components/dangerously-set-inner-html/dangerously-set-inner-html.component";
+import NavBar from "../components/navbar/navbar.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Insert HTML">
-                    <DangerouslySetInnerHTML/>
+                <Component title="Dropdown Menu">
+                    <NavBar/>
                 </Component>
+
+                {/*<Component title="Insert HTML">*/}
+                {/*    <DangerouslySetInnerHTML/>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Array">*/}
                 {/*    <ArrayComponent/>*/}

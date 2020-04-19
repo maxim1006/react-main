@@ -1,0 +1,65 @@
+@import "../../assets/styles/common.scss";
+
+.dropdown {
+    display: flex;
+    width: 300px;
+    transform: translateX(-45%);
+    background-color: $bg-color;
+    border: 1px solid #474a4d;
+    border-radius: 8px;
+    padding: 16px;
+    overflow: hidden;
+
+    &__items {
+        width: 100%;
+        // эти классы добавляет CSSTransition
+        // в начале
+        // &-enter {}
+        // после таймаута
+        // &-enter-active {}
+        // в начале ухода
+        // &-exit {}
+        // после таймаута ухода
+        // &-exit-active {}
+
+        &-enter {
+            transform: translateX(-110%);
+        }
+
+        &-enter-active {
+            transform: translateX(0);
+            transition: transform 500ms ease;
+        }
+
+        &-exit {
+            position: absolute;
+        }
+
+        &-exit-active {
+            transform: translateX(-110%);
+            transition: transform 500ms ease;
+        }
+
+        &-second {
+            width: 100%;
+
+            &-enter {
+                transform: translateX(110%);
+            }
+
+            &-enter-active {
+                transform: translateX(0);
+                transition: transform 500ms ease;
+            }
+
+            &-exit {
+                position: absolute;
+            }
+
+            &-exit-active {
+                transform: translateX(110%);
+                transition: transform 500ms ease;
+            }
+        }
+    }
+}

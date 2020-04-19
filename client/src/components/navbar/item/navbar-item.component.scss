@@ -1,0 +1,56 @@
+@import "../../../assets/styles/common.scss";
+
+.navbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #484a4d;
+        transition: filter 300ms;
+
+        &:hover {
+            filter: brightness(1.2);
+        }
+
+        &>:first-child {
+            fill: #fff;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: 58px;
+
+         &-enter {
+             opacity: 0;
+             transform: translateY(30px);
+         }
+
+         &-enter-active {
+             opacity: 1;
+             transform: translateY(0);
+             transition: all 300ms;
+         }
+
+         &-exit {
+             opacity: 1;
+             transform: translateY(0);
+         }
+
+         &-exit-active {
+             opacity: 0;
+             transform: translateY(30px);
+             transition: all 300ms;
+         }
+    }
+}

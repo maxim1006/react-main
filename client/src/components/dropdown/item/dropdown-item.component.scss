@@ -1,0 +1,26 @@
+@import "../../../assets/styles/common.scss";
+
+.dropdown-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: background 300ms;
+    padding: 8px;
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #525357;
+    }
+
+    &__icon {
+        margin-right: 10px;
+
+        &>:first-child {
+            fill: #fff;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
