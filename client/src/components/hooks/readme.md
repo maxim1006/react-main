@@ -17,7 +17,7 @@ allow a functional component to use component-level state. Если инит з�
 const [rows, setRows] = useState(createRows(props.count));
 делаю
 const [rows, setRows] = useState(() => createRows(props.count));
-setRows тут типо как this.setState(rows: props.count)
+setRows тут типо как this.setState({rows: props.count})
 
 const [resource, setResource] = useState('posts');
 имена в хуках любые. Первое значение - кусок стейта, второе - setter function (типо setState в class based component)

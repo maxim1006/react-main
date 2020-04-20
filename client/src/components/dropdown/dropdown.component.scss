@@ -9,6 +9,7 @@
     border-radius: 8px;
     padding: 16px;
     overflow: hidden;
+    transition: height 0.3s;
 
     &__items {
         width: 100%;
@@ -23,6 +24,7 @@
         // &-exit-active {}
 
         &-enter {
+            position: absolute;
             transform: translate3d(-110%, 0, 0);
         }
 
@@ -44,6 +46,7 @@
             width: 100%;
 
             &-enter {
+                position: absolute;
                 transform: translate3d(110%, 0, 0);
             }
 

@@ -7,15 +7,26 @@ import {CSSTransition} from "react-transition-group";
 
 const Dropdown = memo((props) => {
     const [activeMenu, setActiveMenu] = useState("main");
+    const [height, setHeight] = useState();
+
+    function calcHeight(el) {
+        setHeight(el.offsetHeight);
+    }
 
     //unmountOnExit - удаляет чайлдов если не активны
     return (
-        <div className="dropdown">
+        <div className="dropdown" style={{height: height + 32 + "px"}}>
             <CSSTransition
                 in={activeMenu === "main"}
                 unmountOnExit
                 timeout={300}
                 classNames="dropdown__items"
+                onEnter={(el) => {calcHeight(el); console.log("onEnter className", el.className)}}
+                onEntering={(el) => {console.log("onEntering className", el.className)}}
+                onEntered={(el) => {console.log("onEntered className", el.className)}}
+                onExit={(el) => {console.log("onExit className", el.className)}}
+                onExiting={(el) => {console.log("onExiting className", el.className)}}
+                onExited={(el) => {console.log("onExited className", el.className)}}
             >
                 <div className="dropdown__items">
                     <DropdownItem leftIcon={<UserIcon/>}>My profile</DropdownItem>
@@ -31,6 +42,7 @@ const Dropdown = memo((props) => {
                 unmountOnExit
                 timeout={300}
                 classNames="dropdown__items-second"
+                onEnter={(el) => {calcHeight(el); console.log("onEnter className", el.className)}}
             >
                 <div className="dropdown__items-second">
                     <DropdownItem leftIcon={<UserIcon/>}>My profile</DropdownItem>
