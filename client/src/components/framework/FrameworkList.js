@@ -36,6 +36,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+    // обращаю внимание что тут fetchFrameworks а не fetchFrameworks(), тем самым могу в action не писать
+    // доп функцию обертку
     fetchFrameworks: () => dispatch(fromActions.fetchFrameworks),
     changeFrameworkStatus: (framework) => {
         switch (framework.progress) {

@@ -4,7 +4,9 @@ export default memo(() => {
 
     let [counter, setCounter] = useState(0);
 
-    const decrease = () => setCounter(--counter);
+    // можно использовать как функцию аля как в setSate((prevState) => ...)
+    const decrease = () => setCounter((prevCounter) => --prevCounter);
+    // можно просто сетить значение
     const increase = () => setCounter(++counter);
 
     return (

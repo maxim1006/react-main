@@ -5,20 +5,16 @@ import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
-import Component from "../components/component/Component";
-import {ErrorBoundary} from "../components/error-boundary/error-boundary.component";
-import {ErrorBoundaryError} from "../components/error-boundary/error-boundary-error.component";
-import {LifecycleHooksComponent} from "../components/lifecycle-hooks/LifecycleHooks";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Error boundary">
-                    <ErrorBoundary>
-                        <ErrorBoundaryError/>
-                    </ErrorBoundary>
-                </Component>
+                {/*<Component title="Error boundary">*/}
+                {/*    <ErrorBoundary>*/}
+                {/*        <ErrorBoundaryError/>*/}
+                {/*    </ErrorBoundary>*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Dropdown Menu">*/}
                 {/*    <NavBar/>*/}
