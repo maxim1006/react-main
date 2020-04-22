@@ -16,9 +16,10 @@
     },
     "dependencies": {
         "@types/jest": "^25.2.1",
-        "@types/node": "^13.11.0",
-        "@types/react": "^16.9.32",
+        "@types/node": "^13.13.2",
+        "@types/react": "^16.9.34",
         "@types/react-dom": "^16.9.6",
+        "@types/react-router-dom": "^5.1.4",
         "apollo-server": "^2.11.0",
         "apollo-server-express": "^2.11.0",
         "body-parser": "^1.18.3",

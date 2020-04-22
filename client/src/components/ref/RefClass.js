@@ -13,7 +13,12 @@ export default class RefClass extends PureComponent {
 
         const {data} = this.state;
 
+        // либо использую через React.createRef();
         this.containerRef = React.createRef();
+
+        // либо через функцию (см в render) <div ref={el => this.functionalRefDiv = el}>Functional ref</div>
+        this.functionalRefDiv = null;
+
         this.refContainers = data.map(_ => React.createRef());
     }
 
@@ -44,6 +49,7 @@ export default class RefClass extends PureComponent {
                         </StyledRefBlock>
                     ))}
                 </StyledRef>
+                <div ref={el => this.functionalRefDiv = el}>Functional ref</div>
             </>
         );
     }

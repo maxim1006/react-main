@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import './MaterialLoader.scss';
 
-export default function MaterialLoaderComponent({customStyles, message, delay = 0}) {
+export interface IMaterialLoaderProps {
+    customStyles?: {[key: string]: string};
+    message?: string;
+    delay?: number;
+}
+
+export default function MaterialLoaderComponent({customStyles, message, delay = 0}: IMaterialLoaderProps) {
     const [visible, setVisible] = useState(false);
-    let timeoutId;
+    let timeoutId: number;
 
     useEffect(() => {
         if (delay) {

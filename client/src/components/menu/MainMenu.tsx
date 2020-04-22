@@ -2,7 +2,12 @@ import {NavLink} from "react-router-dom";
 import React from 'react';
 import "./MainMenu.scss";
 
-export default ({routes, exact}) => {
+export interface IMainMenuProps {
+    routes: {to: string; title: string}[];
+    exact?: boolean;
+}
+
+export default ({routes, exact}: IMainMenuProps) => {
 
     if (Array.isArray(routes)) {
         return (
