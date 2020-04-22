@@ -5,11 +5,23 @@ import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
+import Component from "../components/component/Component";
+import CountupWrapper from "../components/countup/countup.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
+                <Component title="Count up">
+                    <CountupWrapper />
+                </Component>
+
+                {/*<Component title="Error boundary">*/}
+                {/*    <ErrorBoundary>*/}
+                {/*        <ErrorBoundaryError/>*/}
+                {/*    </ErrorBoundary>*/}
+                {/*</Component>*/}
+
                 {/*<Component title="Error boundary">*/}
                 {/*    <ErrorBoundary>*/}
                 {/*        <ErrorBoundaryError/>*/}

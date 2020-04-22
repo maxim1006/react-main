@@ -56,9 +56,7 @@ const App: React.FC = () => {
                                 <Route path="/lazy" component={LazyPage}/>
                                 <Route path="/context" component={ContextPage}/>
                                 <Route path="*">
-                                    <NotFound>
-                                        <MaterialLoaderComponent />
-                                    </NotFound>
+                                    <NotFound />
                                 </Route>
                             </Switch>
                         </Suspense>
