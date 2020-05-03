@@ -11,6 +11,7 @@ import shopUser from "./shopUser";
 import shopCart from "./shopCart";
 import shopData from "./shopData";
 import skills from "./skills";
+import abramovCounter from "./abramovCounter";
 
 
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
@@ -28,4 +29,5 @@ export default combineReducers({
     shopCart,
     shopData,
     skills,
+    abramovCounter
 });
