@@ -87,10 +87,12 @@ const ourDepartments = combineReducers({
 // Создаю стор, который содержит всю дату
 const store = createStore(
     ourDepartments,
+    {},
     // включаю дев тулы
-    process.env.NODE_ENV !== 'production'
-    && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        process.env.NODE_ENV !== 'production'
+        && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
 
 // 5)
 // Вызываю actions
@@ -141,7 +143,7 @@ return state.filter(el => el !== 'prop');
 
 const {[action.payload.id]: removed, ...newState} = state;
 return newState;
-или так
+или так (лучше не делать так как delete не удаляет пропертю из прототайпа)
 const newState = {...state};
 delete newState[action.payload.id]
 

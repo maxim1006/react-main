@@ -6,13 +6,17 @@ import FrameworkList from "../framework/FrameworkList";
 import MainMenu from "../menu/MainMenu";
 import {Route, Switch} from "react-router-dom";
 import UserListHooks from "../user/UserListHooks";
+import Counters from "../counter/counters.component";
+import Todos from "../todo/todos.component";
 
 export class ReduxComponent extends Component {
     render() {
         return (
             <>
                 <MainMenu exact routes={[
-                    {to: "/redux", title: "SongList"},
+                    {to: "/redux", title: "Todos"},
+                    {to: "/redux/counters", title: "Counters"},
+                    {to: "/redux/song-list", title: "SongList"},
                     {to: "/redux/posts-and-users", title: "PostsAndUsers"},
                     {to: "/redux/post-list", title: "PostList"},
                     {to: "/redux/framework-list", title: "FrameworkList"},
@@ -20,7 +24,9 @@ export class ReduxComponent extends Component {
                 ]}/>
 
                 <Switch>
-                    <Route path="/redux" exact component={SongList}/>
+                    <Route path="/redux" exact component={Todos}/>
+                    <Route path="/redux/counters" exact component={Counters}/>
+                    <Route path="/redux/song-list" exact component={SongList}/>
                     <Route path="/redux/posts-and-users" exact component={PostsAndUsers}/>
                     <Route path="/redux/post-list" exact component={PostList}/>
                     <Route path="/redux/framework-list" exact component={FrameworkList}/>

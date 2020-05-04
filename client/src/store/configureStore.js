@@ -23,9 +23,13 @@ function configureStore() {
     const enhancers = [middlewareEnhancer];
 
     // нужно чтобы заработали дев тулы
-    const composedEnhancers = process.env.NODE_ENV !== 'production'
-        ? composeWithDevTools(...enhancers)
-        : compose(applyMiddleware(...[thunk]));
+    // const composedEnhancers = process.env.NODE_ENV !== 'production'
+    //     ? composeWithDevTools(...enhancers)
+    //     : compose(applyMiddleware(...[thunk]));
+
+    // это для проверки кастомных сторов к примеру в todos и counter, 2 раза нельзя объявлять девтулы поэтому раскомменть
+    // это если нужно в тех сторах включить дев тулы
+    const composedEnhancers = compose(applyMiddleware(...[thunk]));
 
     // Creates a Redux store that holds the state tree.
     const store = createStore(
