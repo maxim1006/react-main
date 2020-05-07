@@ -1,17 +1,10 @@
-import React, {memo, useEffect, useState} from "react";
+import React, {memo} from "react";
 import {store, toggleCompleteTodoActionCreator} from "./todo-store.component";
 import TodoList from "./todo-list.component";
+import useTodoState from "./use-todo-state";
 
 const TodoListContainer = () => {
-    const [state, setState] = useState(store.getState());
-
-    useEffect(() => {
-        const storeUnsubscribe = store.subscribe(() => {
-            setState(store.getState());
-        });
-
-        return () => storeUnsubscribe();
-    }, []);
+    const state = useTodoState();
 
     return (
         <>

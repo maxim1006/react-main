@@ -20,7 +20,7 @@ const ToDoFilterLinks = ({currentFilter, onClick}: IToDoFilterLinksProps) => {
             {getTodoLinkView("All")}
             {getTodoLinkView("Completed")}
             {getTodoLinkView("Active")}
-            Current filter: <b>currentFilter</b>
+            Current filter: <b>{currentFilter}</b>
         </div>
     );
 };

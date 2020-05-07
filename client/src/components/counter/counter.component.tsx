@@ -2,13 +2,13 @@ import React, {memo} from "react";
 import {connect} from "react-redux";
 import {decrementCounter, incrementCounter} from "../../store/actions";
 
-export interface ICounterProps {
+export type CounterProps = {
     children?: any;
     counter?: number;
     dispatch: any;
 }
 
-const Counter = memo(({counter, dispatch}: ICounterProps) => {
+const Counter = memo(({counter, dispatch}: CounterProps) => {
     return (
         <div className="counter">
             <div className="counter__value">

@@ -1,17 +1,10 @@
 import React, {memo, useEffect, useState} from "react";
 import {setVisibilityFilterActionCreator, store} from "./todo-store.component";
 import ToDoFilterLinks from "./todo-filter-links.component";
+import useTodoState from "./use-todo-state";
 
 const TodoFilterLinksContainer = () => {
-    const [state, setState] = useState(store.getState());
-
-    useEffect(() => {
-        const storeUnsubscribe = store.subscribe(() => {
-            setState(store.getState());
-        });
-
-        return () => storeUnsubscribe();
-    }, []);
+    const state = useTodoState();
 
     return (
         <>

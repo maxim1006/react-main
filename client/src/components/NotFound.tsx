@@ -1,8 +1,8 @@
 import React from 'react';
 
-export interface INotFoundProps {
+export type NotFoundProps = {
     children?: any;
 }
 
-export default ({children}: INotFoundProps) => children ? children : <div>Page not found</div>;
+export default ({children}: NotFoundProps) => children ? children : <div>Page not found</div>;
 

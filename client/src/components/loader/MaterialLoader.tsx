@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './MaterialLoader.scss';
 
-export interface IMaterialLoaderProps {
+export type MaterialLoaderProps = {
     customStyles?: {[key: string]: string};
     message?: string;
     delay?: number;
 }
 
-export default function MaterialLoaderComponent({customStyles, message, delay = 0}: IMaterialLoaderProps) {
+export default function MaterialLoaderComponent({customStyles, message, delay = 0}: MaterialLoaderProps) {
     const [visible, setVisible] = useState(false);
     let timeoutId: number;
 

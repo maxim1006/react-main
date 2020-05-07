@@ -5,6 +5,8 @@ import {generateUniqueId} from "../../common/helpers/helpers";
 import TodoHeaderContainer from "./todo-header-container.component";
 import TodoFilterLinksContainer from "./todo-filter-links-container.component";
 import TodoListContainer from "./todo-list-container.component";
+import TodoStoreContext from "./todo-store.context";
+import useTodoState from "./use-todo-state";
 
 
 export interface ITodo {
@@ -108,12 +110,16 @@ export const store = createStore(
 );
 
 
-const TodoStore: React.FC = () => (
-    <>
-        <TodoHeaderContainer/>
-        <TodoFilterLinksContainer/>
-        <TodoListContainer/>
-    </>
-);
+const TodoStore: React.FC = () => {
+    const state = useTodoState();
+
+    return (
+        <TodoStoreContext.Provider value={{value: state}}>
+            <TodoHeaderContainer/>
+            <TodoFilterLinksContainer/>
+            <TodoListContainer/>
+        </TodoStoreContext.Provider>
+    );
+};
 
 export default memo(TodoStore);

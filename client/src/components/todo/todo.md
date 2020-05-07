@@ -16,3 +16,7 @@
 - TodoHeaderContainer
 - TodoFilterLinksContainer
 - TodoListContainer
+
+4) вынес useTodoState и инжекчу его в container layer components
+
+5) сделать пример с context

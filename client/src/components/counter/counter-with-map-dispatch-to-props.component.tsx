@@ -2,13 +2,13 @@ import React, {memo} from "react";
 import {connect} from "react-redux";
 import {decrementCounter, incrementCounter} from "../../store/actions";
 
-export interface ICounterProps {
+export type CounterProps = {
     counter?: number;
     incrementCounter: any;
     decrementCounter: any;
 }
 
-const CounterWithMapDispatchToProps = ({counter, incrementCounter, decrementCounter}: ICounterProps) => {
+const CounterWithMapDispatchToProps = ({counter, incrementCounter, decrementCounter}: CounterProps) => {
     return (
         <div className="counter">
             <div className="counter__value">
