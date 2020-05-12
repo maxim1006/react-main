@@ -1,11 +1,10 @@
-import React, {memo} from "react";
+import React, {Component, memo} from "react";
 import {TODOS_TYPES} from "../../store/actions/types";
 import {createStore} from "redux";
 import {generateUniqueId} from "../../common/helpers/helpers";
 import TodoHeaderContainer from "./todo-header-container.component";
 import TodoFilterLinksContainer from "./todo-filter-links-container.component";
 import TodoListContainer from "./todo-list-container.component";
-import TodoStoreContext from "./todo-store.context";
 import useTodoState from "./use-todo-state";
 
 
@@ -102,6 +101,7 @@ export const addTodoActionCreator = (name: string) => ({
 
 // Store
 // имплементация createStore в counter-store.component.tsx
+// Также тут включаю девтулы с редаксом, но при этом надо отключить тут client/src/store/configureStore.js
 export const store = createStore(
     todoAppReducer,
     initState,
@@ -109,16 +109,27 @@ export const store = createStore(
     (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-
-const TodoStore: React.FC = () => {
+// создаю контекст, добавил as any чтобы не падали ошибки тайпскрипт при пустом стейте
+export const TodosStoreReactContext = React.createContext({store, state: {}}) as any;
+// создаю компонент с контекстом и изменением его вэлью (Provider также как в редакс оборачиваю)
+export const Provider = ({children, store}: any) => {
+    // каждый раз когда будет меняться этот стейт внутренние компоненты завязанные на него будут ререндериться
     const state = useTodoState();
 
     return (
-        <TodoStoreContext.Provider value={{value: state}}>
+        <TodosStoreReactContext.Provider value={{store, state}}>
+            {children}
+        </TodosStoreReactContext.Provider>
+    );
+};
+
+const TodoStore: React.FC = () => {
+    return (
+        <Provider store={store}>
             <TodoHeaderContainer/>
             <TodoFilterLinksContainer/>
             <TodoListContainer/>
-        </TodoStoreContext.Provider>
+        </Provider>
     );
 };
 

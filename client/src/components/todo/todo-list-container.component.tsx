@@ -1,10 +1,9 @@
-import React, {memo} from "react";
-import {store, toggleCompleteTodoActionCreator} from "./todo-store.component";
+import React, {memo, useContext} from "react";
+import {TodosStoreReactContext, toggleCompleteTodoActionCreator} from "./todo-store.component";
 import TodoList from "./todo-list.component";
-import useTodoState from "./use-todo-state";
 
 const TodoListContainer = () => {
-    const state = useTodoState();
+    const {store, state} = useContext(TodosStoreReactContext);
 
     return (
         <>

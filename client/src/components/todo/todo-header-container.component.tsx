@@ -1,8 +1,10 @@
-import React, {memo} from "react";
-import {addTodoActionCreator, store} from "./todo-store.component";
+import React, {memo, useContext} from "react";
+import {addTodoActionCreator, TodosStoreReactContext} from "./todo-store.component";
 import TodoHeader from "./todo-header.component";
 
 const TodoHeaderContainer = () => {
+    const {store} = useContext(TodosStoreReactContext);
+
     return (
         <>
             {/*Это container layer component*/}

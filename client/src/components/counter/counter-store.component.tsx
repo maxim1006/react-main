@@ -31,7 +31,7 @@ const createStore = (reducer: Function) => {
 }
 
 // Reducer
-const counter = (state = 0, action: {type: string}) => {
+const counterReducer = (state = 0, action: {type: string}) => {
     switch (action.type) {
         case COUNTER_TYPES.INCREMENT: {
             return ++state;
@@ -47,7 +47,7 @@ const counter = (state = 0, action: {type: string}) => {
 };
 
 // Create store
-const store = createStore(counter);
+const store = createStore(counterReducer);
 
 const CounterStore: React.FC = () => {
     const [value, setValue] = useState(store.getState());
