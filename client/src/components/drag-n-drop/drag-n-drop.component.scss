@@ -1,0 +1,9 @@
+@import "../../assets/styles/common.scss";
+
+.drag-n-drop {
+    &__element {
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+    }
+}

@@ -6,15 +6,19 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import {TabsComponent} from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import CountupWrapper from "../components/countup/countup.component";
+import DragNDrop from "../components/drag-n-drop/drag-n-drop.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Count up">
-                    <CountupWrapper />
+                <Component title="Drag'n'drop">
+                    <DragNDrop/>
                 </Component>
+
+                {/*<Component title="Count up">*/}
+                {/*    <CountupWrapper />*/}
+                {/*</Component>*/}
 
                 {/*<Component title="Error boundary">*/}
                 {/*    <ErrorBoundary>*/}
