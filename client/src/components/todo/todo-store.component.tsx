@@ -1,18 +1,12 @@
-import React, {Component, memo} from "react";
-import {TODOS_TYPES} from "../../store/actions/types";
+import React, {memo} from "react";
 import {createStore} from "redux";
 import {generateUniqueId} from "../../common/helpers/helpers";
-import TodoHeaderContainer from "./todo-header-container.component";
-import TodoFilterLinksContainer from "./todo-filter-links-container.component";
-import TodoListContainer from "./todo-list-container.component";
-import useTodoState from "./use-todo-state";
-
-
-export interface ITodo {
-    name?: string;
-    completed: boolean;
-    id: string;
-}
+import TodoFilterLinksConnectedContainer from "./containers/todo-filter-links-connected-container.component";
+import {Provider} from "react-redux";
+import TodoListConnectedContainer from "./containers/todo-list-connected-container.component";
+import TodoHeaderConnectedContainer from "./containers/todo-header-connected-container.component";
+import {ITodo} from "./models/todo.model";
+import {TODOS_TYPES, VISIBILITY_FILTER_TYPES} from "./store/actions";
 
 // Init states
 const initState = {
@@ -28,7 +22,7 @@ const initState = {
 // использую паттерн комбинации редюсеров в один большой todoAppReducer
 const todosReducer = (state: any = initState.todos, action: { type?: string, payload?: ITodo }) => {
     switch (action.type) {
-        case TODOS_TYPES.TOGGLE_COMPLETE: {
+        case TODOS_TYPES.TOGGLE: {
             const {id, completed}: ITodo = action.payload as ITodo;
 
             return state.map((todo: ITodo) => todo.id === id ? {...todo, completed: !completed} : todo);
@@ -48,7 +42,7 @@ const todosReducer = (state: any = initState.todos, action: { type?: string, pay
 
 const visibilityFilterReducer = (state = initState.visibilityFilter, action: { type: string; payload: string }) => {
     switch (action.type) {
-        case TODOS_TYPES.SET_VISIBILITY_FILTER: {
+        case VISIBILITY_FILTER_TYPES.SET: {
             return action.payload;
         }
 
@@ -78,14 +72,14 @@ const todoAppReducer = combineReducers({
 
 // Action creators
 export const toggleCompleteTodoActionCreator = (id: string, completed: boolean) => ({
-    type: TODOS_TYPES.TOGGLE_COMPLETE,
+    type: TODOS_TYPES.TOGGLE,
     payload: {
         id, completed
     }
 });
 
 export const setVisibilityFilterActionCreator = (filter: string) => ({
-    type: TODOS_TYPES.SET_VISIBILITY_FILTER,
+    type: VISIBILITY_FILTER_TYPES.SET,
     payload: filter
 });
 
@@ -112,23 +106,25 @@ export const store = createStore(
 // создаю контекст, добавил as any чтобы не падали ошибки тайпскрипт при пустом стейте
 export const TodosStoreReactContext = React.createContext({store, state: {}}) as any;
 // создаю компонент с контекстом и изменением его вэлью (Provider также как в редакс оборачиваю)
-export const Provider = ({children, store}: any) => {
-    // каждый раз когда будет меняться этот стейт внутренние компоненты завязанные на него будут ререндериться
-    const state = useTodoState();
-
-    return (
-        <TodosStoreReactContext.Provider value={{store, state}}>
-            {children}
-        </TodosStoreReactContext.Provider>
-    );
-};
+// export const Provider = ({children, store}: any) => {
+//     // каждый раз когда будет меняться этот стейт внутренние компоненты завязанные на него будут ререндериться
+//     const state = useTodoState();
+//
+//     return (
+//         <TodosStoreReactContext.Provider value={{store, state}}>
+//             {children}
+//         </TodosStoreReactContext.Provider>
+//     );
+// };
 
 const TodoStore: React.FC = () => {
     return (
+        // Если буду использовать провайдер выше то не получу connect из редакса, а смогу забирать только через
+        // контекст стейт, поэтому использую из редакса чтобы продолжить примеры с connect
         <Provider store={store}>
-            <TodoHeaderContainer/>
-            <TodoFilterLinksContainer/>
-            <TodoListContainer/>
+            <TodoHeaderConnectedContainer/>
+            <TodoFilterLinksConnectedContainer/>
+            <TodoListConnectedContainer/>
         </Provider>
     );
 };

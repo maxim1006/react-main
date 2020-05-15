@@ -1,6 +1,6 @@
 import React, {memo, useContext} from "react";
-import {TodosStoreReactContext, toggleCompleteTodoActionCreator} from "./todo-store.component";
-import TodoList from "./todo-list.component";
+import {TodosStoreReactContext, toggleCompleteTodoActionCreator} from "../todo-store.component";
+import TodoList from "../components/todo-list.component";
 
 const TodoListContainer = () => {
     const {store, state} = useContext(TodosStoreReactContext);

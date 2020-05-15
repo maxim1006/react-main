@@ -19,4 +19,16 @@
 
 4) вынес useTodoState и инжекчу его в container layer components
 
-5) сделать пример с context
+5) получаю стейт и стор из контекста обернув все в <Provider store={store}>
+как в редакс
+
+6) Делаю дубликаты контейнеров но вместо контекста использую коннект
+
+7) Выношу в стор всю структуру и вместо <TodoStore /> в `client/src/components/todo/todos.component.tsx` делаю 
+```js
+<Provider store={store}>
+    <TodoHeaderConnectedContainer/>
+    <TodoFilterLinksConnectedContainer/>
+    <TodoListConnectedContainer/>
+</Provider>
+```

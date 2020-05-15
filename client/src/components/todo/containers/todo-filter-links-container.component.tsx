@@ -1,6 +1,6 @@
 import React, {memo, useContext} from "react";
-import {setVisibilityFilterActionCreator, TodosStoreReactContext} from "./todo-store.component";
-import ToDoFilterLinks from "./todo-filter-links.component";
+import {setVisibilityFilterActionCreator, TodosStoreReactContext} from "../todo-store.component";
+import ToDoFilterLinks from "../components/todo-filter-links.component";
 
 const TodoFilterLinksContainer = () => {
     const {store, state} = useContext(TodosStoreReactContext);

@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import Todo from "./todo.component";
-import {ITodo} from "./todo-store.component";
+import {ITodo} from "../models/todo.model";
 
 export interface ITodoListProps {
     currentFilter: string;
