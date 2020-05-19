@@ -1,7 +1,7 @@
 import React from "react";
-import "./ShopCartListItem.scss"
+import "./ShopCartListItem.scss";
 
-export default ({item: {imageUrl, name, price, quantity}}) => (
+export default ({ item: { imageUrl, name, price, quantity } }) => (
     <div className="shop-cart-list-item">
         <div className="shop-cart-list-item__image-wrapper">
             <img
@@ -13,8 +13,9 @@ export default ({item: {imageUrl, name, price, quantity}}) => (
         </div>
         <div className="shop-cart-list-item__info">
             <div className="shop-cart-list-item__name">{name}</div>
-            <span className="shop-cart-list-item__price-and-quantity">{quantity} x {price}</span>
+            <span className="shop-cart-list-item__price-and-quantity">
+                {quantity} x{price}
+            </span>
         </div>
     </div>
 );
-

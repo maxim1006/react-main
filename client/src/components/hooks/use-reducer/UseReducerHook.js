@@ -1,4 +1,4 @@
-import React, {memo, useReducer} from "react";
+import React, { memo, useReducer } from "react";
 import MaterialLoader from "../../loader/MaterialLoader";
 import useGetRequest from "../useGetRequest";
 
@@ -13,14 +13,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 family: action.payload
-            }
+            };
         }
 
         case "SET_SEARCH_QUERY": {
             return {
                 ...state,
                 searchQuery: action.payload
-            }
+            };
         }
 
         default: {
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-const setFamilyAction = (family) => ({
+const setFamilyAction = family => ({
     type: "SET_FAMILY",
     payload: family
 });
@@ -39,38 +39,49 @@ const setSearchQueryAction = (searchQuery = "") => ({
     payload: searchQuery
 });
 
-
 export default memo(() => {
     let filteredFamily;
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    const {family, searchQuery} = state;
+    const { family, searchQuery } = state;
 
     useGetRequest({
         url: "family",
-        cb: (data) => dispatch(setFamilyAction(data))
+        cb: data => dispatch(setFamilyAction(data))
     });
 
-    filteredFamily = family &&
-        family
-            .filter(({name}) => name.trim().toLowerCase().includes(searchQuery.trim().toLowerCase()));
+    filteredFamily =
+        family &&
+        family.filter(({ name }) =>
+            name
+                .trim()
+                .toLowerCase()
+                .includes(searchQuery.trim().toLowerCase())
+        );
 
     return (
         <div className="use-reducer-hook">
             <div>
                 <input
                     value={searchQuery}
-                    onChange={e => dispatch(setSearchQueryAction(e.target.value))}
+                    onChange={e =>
+                        dispatch(setSearchQueryAction(e.target.value))
+                    }
                     type="text"
                 />
             </div>
-            {
-                filteredFamily ?
-                    <ul>
-                        {filteredFamily.map(({name, age, id}) => <li key={id}>{name}: {age}</li>)}
-                    </ul>
-                    : <MaterialLoader/>
-            }
+            {filteredFamily ? (
+                <ul>
+                    {filteredFamily.map(({ name, age, id }) => (
+                        <li key={id}>
+                            {name}
+:{age}
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <MaterialLoader />
+            )}
         </div>
     );
 });

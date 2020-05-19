@@ -1,16 +1,21 @@
-import React, {memo, useEffect, useRef} from "react";
+import React, { memo, useEffect, useRef } from "react";
 import "./drag-n-drop.component.scss";
 
 const DragNDrop = () => {
     const dragRef = useRef<HTMLDivElement>(null!);
     const dragParentRef = useRef<HTMLDivElement>(null!);
-    let isDraggerDragged: boolean,
-        startX: number,
-        startY: number,
-        startOffsetX: number,
-        startOffsetY: number,
-        startDragElementBCR: {left: number, top: number, width: number; height: number },
-        documentElementInfo: {width: number, height: number};
+    let isDraggerDragged: boolean;
+    let startX: number;
+    let startY: number;
+    let startOffsetX: number;
+    let startOffsetY: number;
+    let startDragElementBCR: {
+        left: number;
+        top: number;
+        width: number;
+        height: number;
+    };
+    let documentElementInfo: { width: number; height: number };
 
     const onDragStart = (e: any) => {
         e.preventDefault();
@@ -31,13 +36,17 @@ const DragNDrop = () => {
         startOffsetX = startDragElementBCR.left - dragParentElementBCR.left;
         startOffsetY = startDragElementBCR.top - dragParentElementBCR.top;
 
-        const {clientHeight: height, clientWidth: width} = document.documentElement;
-        documentElementInfo = {width, height}
-    }
+        const {
+            clientHeight: height,
+            clientWidth: width
+        } = document.documentElement;
+        documentElementInfo = { width, height };
+    };
 
     const onDrag = (e: any) => {
         if (isDraggerDragged) {
-            let diffX, diffY;
+            let diffX;
+            let diffY;
 
             if (e.touches) {
                 diffX = e.touches[0].pageX - startX;
@@ -47,7 +56,8 @@ const DragNDrop = () => {
                 diffY = e.pageY - startY;
             }
 
-            let resultX, resultY;
+            let resultX;
+            let resultY;
 
             resultX = diffX + startOffsetX;
             resultY = diffY + startOffsetY;
@@ -65,48 +75,48 @@ const DragNDrop = () => {
             // TODO bottom border
             // TODO top border
 
-
             // limit dragged element by document view
-            console.log("e.pageY ",  e.pageY);
-            console.log("diffY ",  diffY);
-            console.log("startOffsetY ",  startOffsetY);
-            console.log("resultY ",  resultY);
-            console.log(startDragElementBCR);
-            console.log("documentElementInfo ", documentElementInfo);
+            // console.log("e.pageY ", e.pageY);
+            // console.log("diffY ", diffY);
+            // console.log("startOffsetY ", startOffsetY);
+            // console.log("resultY ", resultY);
+            // console.log(startDragElementBCR);
+            // console.log("documentElementInfo ", documentElementInfo);
 
             // console.log(dragElementBCR.top > 0);
             // console.log(dragElementBCR.left > 0);
             // console.log(dragElementBCR.right - clientWidth < 0);
             // console.log(dragElementBCR.bottom - clientHeight < 0);
 
-            dragRef.current.style.transform = `translate3d(${resultX + "px"}, ${resultY + "px"}, 0)`;
+            dragRef.current.style.transform = `translate3d(${`${resultX}px`}, ${`${resultY}px`}, 0)`;
         }
-    }
+    };
 
     const onDragEnd = () => {
         isDraggerDragged = false;
-    }
+    };
 
     useEffect(() => {
         const dragElement = dragRef.current;
+        console.log("drag useEffect");
 
-        dragElement.addEventListener('mousedown', onDragStart);
-        document.addEventListener('mousemove', onDrag);
-        document.addEventListener('mouseup', onDragEnd);
+        dragElement.addEventListener("mousedown", onDragStart);
+        document.addEventListener("mousemove", onDrag);
+        document.addEventListener("mouseup", onDragEnd);
 
-        dragElement.addEventListener('touchstart', onDragStart);
-        dragElement.addEventListener('touchmove', onDrag);
-        dragElement.addEventListener('touchend', onDragEnd);
+        dragElement.addEventListener("touchstart", onDragStart);
+        dragElement.addEventListener("touchmove", onDrag);
+        dragElement.addEventListener("touchend", onDragEnd);
 
         return () => {
-            dragElement.removeEventListener('mousedown', onDragStart);
-            document.removeEventListener('mousemove', onDrag);
-            document.removeEventListener('mouseup', onDragEnd);
+            dragElement.removeEventListener("mousedown", onDragStart);
+            document.removeEventListener("mousemove", onDrag);
+            document.removeEventListener("mouseup", onDragEnd);
 
-            dragElement.removeEventListener('touchstart', onDragStart);
-            dragElement.removeEventListener('touchmove', onDrag);
-            dragElement.removeEventListener('touchend', onDragEnd);
-        }
+            dragElement.removeEventListener("touchstart", onDragStart);
+            dragElement.removeEventListener("touchmove", onDrag);
+            dragElement.removeEventListener("touchend", onDragEnd);
+        };
     }, []);
 
     return (

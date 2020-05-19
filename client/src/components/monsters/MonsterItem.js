@@ -1,1 +1,1 @@
-export default ({name}) => ({name});
+export default ({ name }) => ({ name });

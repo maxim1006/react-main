@@ -1,4 +1,4 @@
-import React, {memo, useMemo, useState} from "react";
+import React, { memo, useMemo, useState } from "react";
 
 export default memo(() => {
     const [counter, setCounter] = useState(0);
@@ -19,5 +19,5 @@ export default memo(() => {
 // helper
 // вызовется только 1 раз при инициализации
 function getSum(num) {
-    return num += num;
+    return (num += num);
 }

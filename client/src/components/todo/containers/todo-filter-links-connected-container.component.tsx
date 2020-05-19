@@ -1,18 +1,18 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
+import { connect } from "react-redux";
 import ToDoFilterLinks from "../components/todo-filter-links.component";
-import {connect} from "react-redux";
-import {setVisibilityFilter} from "../store";
+import { setVisibilityFilter } from "../store";
 
 type TodoFilterLinksContainerProps = {
     visibilityFilter: string;
     onClick: (filterType: string) => void;
-}
+};
 
-const TodoFilterLinksConnectedContainer = ({visibilityFilter, onClick}: TodoFilterLinksContainerProps) => (
-    <ToDoFilterLinks
-        currentFilter={visibilityFilter}
-        onClick={onClick}
-    />
+const TodoFilterLinksConnectedContainer = ({
+    visibilityFilter,
+    onClick
+}: TodoFilterLinksContainerProps) => (
+    <ToDoFilterLinks currentFilter={visibilityFilter} onClick={onClick} />
 );
 
 const mapStateToProps = (state: any) => ({
@@ -21,8 +21,11 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
     onClick: (filterType: string) => {
-        dispatch(setVisibilityFilter(filterType))
+        dispatch(setVisibilityFilter(filterType));
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(memo(TodoFilterLinksConnectedContainer));
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(memo(TodoFilterLinksConnectedContainer));

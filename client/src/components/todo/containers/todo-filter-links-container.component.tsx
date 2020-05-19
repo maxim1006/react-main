@@ -1,16 +1,21 @@
-import React, {memo, useContext} from "react";
-import {setVisibilityFilterActionCreator, TodosStoreReactContext} from "../todo-store.component";
+import React, { memo, useContext } from "react";
+import {
+    setVisibilityFilterActionCreator,
+    TodosStoreReactContext
+} from "../todo-store.component";
 import ToDoFilterLinks from "../components/todo-filter-links.component";
 
 const TodoFilterLinksContainer = () => {
-    const {store, state} = useContext(TodosStoreReactContext);
+    const { store, state } = useContext(TodosStoreReactContext);
 
     return (
         <>
-            {/*Это container layer component*/}
+            {/* Это container layer component*/}
             <ToDoFilterLinks
                 currentFilter={state.visibilityFilter}
-                onClick={(filterType) => store.dispatch(setVisibilityFilterActionCreator(filterType))}
+                onClick={filterType =>
+                    store.dispatch(setVisibilityFilterActionCreator(filterType))
+                }
             />
         </>
     );

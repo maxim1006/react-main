@@ -1,42 +1,38 @@
-import React, {Component} from "react";
-import {Field, reduxForm, reset} from "redux-form";
+import React, { Component } from "react";
+import { Field, reduxForm, reset } from "redux-form";
 
 class StreamForm extends Component {
     render() {
-        const {handleSubmit, valid} = this.props;
+        const { handleSubmit, valid } = this.props;
 
         return (
-            <form
-                onSubmit={handleSubmit(this.onSubmit)}
-            >
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 <Field
                     component={this.renderTextField}
                     name="title"
-                    label={"Enter title"}
+                    label="Enter title"
                     mandatory
                 />
                 <Field
                     component={this.renderMemoField}
                     name="description"
-                    label={"Enter description"}
+                    label="Enter description"
                     mandatory={false}
                 />
-                <button
-                    type="submit"
-                    disabled={!valid}
-                >Submit
+                <button type="submit" disabled={!valid}>
+                    Submit
                 </button>
             </form>
         );
     }
 
-    onSubmit = (formValues) => {
+    onSubmit = formValues => {
         this.props.onSubmit(formValues);
         // clear form fields
         this.props.dispatch(reset("streamCreate"));
     };
 
-    renderTextField = ({input, meta, label, mandatory}) => {
+    renderTextField = ({ input, meta, label, mandatory }) => {
         // input и meta - это набор свойств от redux-form для полей, прикольно что input даже initialValue есть
         // input - инфаа об инпуте
         // meta - метаинфа о филде
@@ -54,32 +50,24 @@ class StreamForm extends Component {
                     id={meta.form + input.name}
                     {...input}
                 />
-                <p style={{color: "red"}}>
-                    {meta.visited && meta.error}
-                </p>
+                <p style={{ color: "red" }}>{meta.visited && meta.error}</p>
             </>
         );
     };
 
-    renderMemoField = ({input, meta, label, mandatory}) => {
+    renderMemoField = ({ input, meta, label, mandatory }) => {
         return (
             <>
                 <label htmlFor={meta.form + input.name}>
                     {label}
                     {mandatory && <sup>*</sup>}
                 </label>
-                <textarea
-                    id={meta.form + input.name}
-                    {...input}
-                />
-                <p style={{color: "red"}}>
-                    {meta.touched && meta.error}
-                </p>
+                <textarea id={meta.form + input.name} {...input} />
+                <p style={{ color: "red" }}>{meta.touched && meta.error}</p>
             </>
         );
     };
 }
-
 
 function validate(formValues) {
     const errors = {};
@@ -95,4 +83,3 @@ export default reduxForm({
     form: "streamForm",
     validate
 })(StreamForm);
-

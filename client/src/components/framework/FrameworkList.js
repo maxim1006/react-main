@@ -1,33 +1,30 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Framework from "./Framework";
-import {connect} from "react-redux";
-import * as fromActions from "../../store/actions"
+import * as fromActions from "../../store/actions";
 
 class FrameworkList extends Component {
     componentDidMount() {
         this.props.fetchFrameworks();
     }
 
-    render() {
-        return (
-            <ul>
-                {this.getFrameworkList()}
-            </ul>
-        );
+    getFrameworkList() {
+        const { frameworks, changeFrameworkStatus } = this.props;
+
+        return frameworks.map((framework, index) => {
+            return (
+                <li key={index}>
+                    <Framework
+                        onChange={changeFrameworkStatus.bind(this, framework)}
+                        {...framework}
+                    />
+                </li>
+            );
+        });
     }
 
-    getFrameworkList() {
-        const {frameworks, changeFrameworkStatus} = this.props;
-
-        return (
-            frameworks.map((framework, index) => {
-                return (
-                    <li key={index}>
-                        <Framework onChange={changeFrameworkStatus.bind(this, framework)} {...framework} />
-                    </li>
-                );
-            })
-        );
+    render() {
+        return <ul>{this.getFrameworkList()}</ul>;
     }
 }
 
@@ -39,7 +36,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     // обращаю внимание что тут fetchFrameworks а не fetchFrameworks(), тем самым могу в action не писать
     // доп функцию обертку
     fetchFrameworks: () => dispatch(fromActions.fetchFrameworks),
-    changeFrameworkStatus: (framework) => {
+    changeFrameworkStatus: framework => {
         switch (framework.progress) {
             case "done": {
                 framework.progress = null;
@@ -55,8 +52,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             }
         }
 
-        dispatch(fromActions.changeFrameworkStatus(framework))
-    },
+        dispatch(fromActions.changeFrameworkStatus(framework));
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FrameworkList);

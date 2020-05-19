@@ -1,8 +1,6 @@
-import {SKILL_TYPES} from "./types";
+import { SKILL_TYPES } from "./types";
 import customAxios from "../../common/api/axios";
-import {isFunction} from "../../common/helpers/helpers";
-
-
+import { isFunction } from "../../common/helpers/helpers";
 
 export const fetchSkills = (cancelToken, cb) => async dispatch => {
     dispatch({
@@ -10,7 +8,7 @@ export const fetchSkills = (cancelToken, cb) => async dispatch => {
     });
 
     try {
-        const {data: items} = await customAxios.get("/skills", {
+        const { data: items } = await customAxios.get("/skills", {
             cancelToken
         });
 
@@ -20,7 +18,7 @@ export const fetchSkills = (cancelToken, cb) => async dispatch => {
             type: SKILL_TYPES.FETCH_SKILLS_SUCCESS,
             payload: items
         });
-    } catch ({message}) {
+    } catch ({ message }) {
         dispatch({
             type: SKILL_TYPES.FETCH_SKILLS_ERROR,
             payload: {
@@ -38,9 +36,13 @@ export const addSkill = (name, cancelToken, cb) => async dispatch => {
     });
 
     try {
-        const {data: item} = await customAxios.put("/skills", {
-            name,
-        }, {cancelToken});
+        const { data: item } = await customAxios.put(
+            "/skills",
+            {
+                name
+            },
+            { cancelToken }
+        );
 
         isFunction(cb) && cb(item);
 
@@ -48,7 +50,7 @@ export const addSkill = (name, cancelToken, cb) => async dispatch => {
             type: SKILL_TYPES.ADD_SKILL_SUCCESS,
             payload: item
         });
-    } catch ({message}) {
+    } catch ({ message }) {
         dispatch({
             type: SKILL_TYPES.ADD_SKILL_ERROR,
             payload: {
@@ -66,9 +68,13 @@ export const removeSkill = (skill, cancelToken, cb) => async dispatch => {
     });
 
     try {
-        const {data: item} = await customAxios.delete("/skills", {
-            params: {id: skill.id}
-        }, {cancelToken});
+        const { data: item } = await customAxios.delete(
+            "/skills",
+            {
+                params: { id: skill.id }
+            },
+            { cancelToken }
+        );
 
         isFunction(cb) && cb(item);
 
@@ -76,7 +82,7 @@ export const removeSkill = (skill, cancelToken, cb) => async dispatch => {
             type: SKILL_TYPES.REMOVE_SKILL_SUCCESS,
             payload: item
         });
-    } catch ({message}) {
+    } catch ({ message }) {
         dispatch({
             type: SKILL_TYPES.REMOVE_SKILL_ERROR,
             payload: {
@@ -94,9 +100,13 @@ export const changeSkillStatus = (skill, cancelToken, cb) => async dispatch => {
     });
 
     try {
-        const {data: item} = await customAxios.post("/skills", {
-            params: {id: skill.id}
-        }, {cancelToken});
+        const { data: item } = await customAxios.post(
+            "/skills",
+            {
+                params: { id: skill.id }
+            },
+            { cancelToken }
+        );
 
         isFunction(cb) && cb(item);
 
@@ -104,7 +114,7 @@ export const changeSkillStatus = (skill, cancelToken, cb) => async dispatch => {
             type: SKILL_TYPES.CHANGE_SKILL_STATUS_SUCCESS,
             payload: item
         });
-    } catch ({message}) {
+    } catch ({ message }) {
         dispatch({
             type: SKILL_TYPES.CHANGE_SKILL_STATUS_ERROR,
             payload: {
@@ -116,12 +126,12 @@ export const changeSkillStatus = (skill, cancelToken, cb) => async dispatch => {
     }
 };
 
-export const changeSkillSearchValue = (value) => ({
+export const changeSkillSearchValue = value => ({
     type: SKILL_TYPES.SEARCH_SKILL,
     payload: value
 });
 
-export const changeSkillFilterValue = (filterValue) => ({
+export const changeSkillFilterValue = filterValue => ({
     type: SKILL_TYPES.CHANGE_FILTER_VALUE,
     payload: filterValue
 });

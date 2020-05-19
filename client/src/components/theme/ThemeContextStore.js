@@ -1,5 +1,5 @@
+import React, { Component } from "react";
 import ThemeContext from "../../context/ThemeContext";
-import React, {Component} from "react";
 
 export class ThemeContextStore extends Component {
     state = {
@@ -8,13 +8,15 @@ export class ThemeContextStore extends Component {
 
     render() {
         return (
-            <ThemeContext.Provider value={{...this.state, onThemeChange: this.onThemeChange}}>
+            <ThemeContext.Provider
+                value={{ ...this.state, onThemeChange: this.onThemeChange }}
+            >
                 {this.props.children}
             </ThemeContext.Provider>
         );
     }
 
-    onThemeChange = (event) => {
+    onThemeChange = event => {
         const htmlElement = document.documentElement;
         const theme = event.target.value;
 
@@ -30,6 +32,6 @@ export class ThemeContextStore extends Component {
             }
         }
 
-        this.setState({theme});
-    }
+        this.setState({ theme });
+    };
 }

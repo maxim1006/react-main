@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import ThemeContext from "../../context/ThemeContext";
 
 export default () => {
-    const {theme, onThemeChange} = useContext(ThemeContext);
+    const { theme, onThemeChange } = useContext(ThemeContext);
 
     return (
         <select value={theme} onChange={onThemeChange}>
@@ -11,4 +11,4 @@ export default () => {
             <option value="theme2">theme2</option>
         </select>
     );
-}
+};

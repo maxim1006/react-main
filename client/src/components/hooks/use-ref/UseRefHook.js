@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef} from "react";
+import React, { memo, useEffect, useRef } from "react";
 
 export default memo(() => {
     const ref = useRef();
@@ -22,5 +22,4 @@ export default memo(() => {
             <div ref={ref1}>Div creatRef ref</div>
         </>
     );
-
 });

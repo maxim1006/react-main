@@ -1,13 +1,13 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import CounterStore from "./counter-store.component";
 
 const Counters: React.FC = () => {
     return (
         <>
-            <CounterStore/>
-            {/*<Counter/>*/}
-            {/*<CounterWithMapDispatchToProps/>*/}
-            {/*<CounterWithMapDispatchToPropsFunc/>*/}
+            <CounterStore />
+            {/* <Counter/>*/}
+            {/* <CounterWithMapDispatchToProps/>*/}
+            {/* <CounterWithMapDispatchToPropsFunc/>*/}
         </>
     );
 };

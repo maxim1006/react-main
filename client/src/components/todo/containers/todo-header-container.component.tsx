@@ -1,15 +1,18 @@
-import React, {memo, useContext} from "react";
-import {addTodoActionCreator, TodosStoreReactContext} from "../todo-store.component";
+import React, { memo, useContext } from "react";
+import {
+    addTodoActionCreator,
+    TodosStoreReactContext
+} from "../todo-store.component";
 import TodoHeader from "../components/todo-header.component";
 
 const TodoHeaderContainer = () => {
-    const {store} = useContext(TodosStoreReactContext);
+    const { store } = useContext(TodosStoreReactContext);
 
     return (
         <>
-            {/*Это container layer component*/}
+            {/* Это container layer component*/}
             <TodoHeader
-                onClick={(currentValue) => {
+                onClick={currentValue => {
                     store.dispatch(addTodoActionCreator(currentValue));
                 }}
             />

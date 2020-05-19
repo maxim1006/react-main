@@ -1,11 +1,11 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
+import { connect } from "react-redux";
 import TodoHeader from "../components/todo-header.component";
-import {connect} from "react-redux";
-import {addTodo} from "../store";
+import { addTodo } from "../store";
 
-const TodoHeaderConnectedContainer = ({dispatch}: any) => (
+const TodoHeaderConnectedContainer = ({ dispatch }: any) => (
     <TodoHeader
-        onClick={(currentValue) => {
+        onClick={currentValue => {
             dispatch(addTodo(currentValue));
         }}
     />

@@ -1,11 +1,11 @@
 import thunk from "redux-thunk";
-import {applyMiddleware, compose, createStore} from "redux";
-import {composeWithDevTools} from "redux-devtools-extension";
+import { applyMiddleware, compose, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { throttle } from "lodash";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist"; // defaults to localStorage for web
+import { loadState, saveState } from "./session-storage";
 import reducers from "./reducers";
-import {loadState, saveState} from "./session-storage";
-import {throttle} from "lodash";
-import storage from 'redux-persist/lib/storage'
-import {persistReducer, persistStore} from "redux-persist"; // defaults to localStorage for web
 
 // для того чтобы кучу логики не хранить в index.js про стор, вынес в отдельный файл
 function configureStore() {
@@ -37,27 +37,28 @@ function configureStore() {
         // либо беру из локалстораджа либо инит
         persistedState || initState,
         // должен все enhancers объединять в один, так как createStore может принимать только 1 аргумент enhancers
-        composedEnhancers,
+        composedEnhancers
     );
 
     // throttle чтобы часто не вызывать дорогую JSON.parse хотябы 1 раз в секунду
-    store.subscribe(throttle(() => {
-        const state = store.getState();
+    store.subscribe(
+        throttle(() => {
+            const state = store.getState();
 
-        saveState({
-            // сохраняю только дату которую получил с бе но не сохраняю вью дату
-            songs: state.songs,
-            shopCart: state.shopCart
-        });
-    }, 1000));
+            saveState({
+                // сохраняю только дату которую получил с бе но не сохраняю вью дату
+                songs: state.songs,
+                shopCart: state.shopCart
+            });
+        }, 1000)
+    );
 
-    return store
+    return store;
 }
-
 
 // как альтернатива прямой записи в session и local storage, но на мой взгляд чище то что Дэн Абрамов предложил через сабскрайб, см выше
 const persistConfig = {
-    key: 'root',
+    key: "root",
     storage,
     whitelist: ["shopCart"]
 };
@@ -67,9 +68,7 @@ const persistedStore = createStore(persistedReducer);
 const persistor = persistStore(persistedStore);
 
 export { persistedStore, persistor };
-/////////////////////////////
-
-
+/// //////////////////////////
 
 const store = configureStore();
 

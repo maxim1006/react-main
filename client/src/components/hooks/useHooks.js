@@ -1,15 +1,18 @@
+import { useState, useEffect } from "react";
 import customAxios from "../../common/api/axios";
-import {useState, useEffect} from "react";
 
-export default (resource) => {
+export default resource => {
     const cancelHooksRequest = customAxios.CancelToken.source();
     const [resources, setResources] = useState([]);
 
-    const getHooks = async (resource) => {
+    const getHooks = async resource => {
         try {
-            const {data: resources} = await customAxios.get(`/hooks/${resource}`, {
-                cancelToken: cancelHooksRequest.token
-            });
+            const { data: resources } = await customAxios.get(
+                `/hooks/${resource}`,
+                {
+                    cancelToken: cancelHooksRequest.token
+                }
+            );
 
             setResources(resources);
         } catch (e) {
@@ -27,9 +30,11 @@ export default (resource) => {
         getHooks(resource);
 
         return () => {
-            cancelHooksRequest.cancel("HooksListClass get('/hooks'... canceled");
-        }
+            cancelHooksRequest.cancel(
+                "HooksListClass get('/hooks'... canceled"
+            );
+        };
     }, [resource]);
 
     return resources;
-}
+};

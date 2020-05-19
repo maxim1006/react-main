@@ -1,6 +1,9 @@
-import {StyledMainColor, StyledPrimaryColor} from "../../styled-component/StylesColors";
-import styled, {css} from "styled-components";
-import {StyledFontLightBig} from "../../styled-component/mixins/SyledFonts";
+import styled, { css } from "styled-components";
+import {
+    StyledMainColor,
+    StyledPrimaryColor
+} from "../../styled-component/StylesColors";
+import { StyledFontLightBig } from "../../styled-component/mixins/SyledFonts";
 
 const shopButtonDark = css`
     background-color: ${StyledMainColor};
@@ -47,4 +50,3 @@ export const StyledShopButton = styled.button`
     
     ${getButtonStyles}
 `;
-

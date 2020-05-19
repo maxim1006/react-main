@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Song from "./Song";
-import {connect} from "react-redux";
-import {selectSong} from "../../store/actions";
+import { selectSong } from "../../store/actions";
 import SongDetails from "./SongDetails";
 
 class SongList extends Component {
@@ -12,23 +12,27 @@ class SongList extends Component {
         return (
             <>
                 <h3>Songs:</h3>
-                <ul className={'song-list'}>
-                    {this.getSongsList()}
-                </ul>
+                <ul className="song-list">{this.getSongsList()}</ul>
                 <SongDetails />
             </>
         );
     }
 
     getSongsList() {
-        const {songs, selectedSong, selectSong} = this.props;
+        const { songs, selectedSong, selectSong } = this.props;
 
         return songs.map((song, index) => {
-            const isSelected = selectedSong ? selectedSong.song.title === song.title : null;
+            const isSelected = selectedSong
+                ? selectedSong.song.title === song.title
+                : null;
 
             return (
                 <li key={index}>
-                    <Song {...song} selected={isSelected} onSelect={selectSong.bind(this, song)} />
+                    <Song
+                        {...song}
+                        selected={isSelected}
+                        onSelect={selectSong.bind(this, song)}
+                    />
                 </li>
             );
         });
@@ -42,9 +46,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    selectSong: (song) => {
+    selectSong: song => {
         // console.log(ownProps);
-        dispatch(selectSong(song))
+        dispatch(selectSong(song));
     }
 });
 

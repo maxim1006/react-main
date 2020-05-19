@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import {StyledFontLightBig, StyledFontRegularBig} from "../../../styled-component/mixins/SyledFonts";
-import {StyledMainColor} from "../../../styled-component/StylesColors";
+import {
+    StyledFontLightBig,
+    StyledFontRegularBig
+} from "../../../styled-component/mixins/SyledFonts";
+import { StyledMainColor } from "../../../styled-component/StylesColors";
 
 export const StyledShopCollectionItem = styled.div``;
 
@@ -13,7 +16,7 @@ export const StyledShopCollectionItemImage = styled.img`
     width: 300px;
     height: 350px;
     max-width: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 `;
 

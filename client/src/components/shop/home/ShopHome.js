@@ -37,7 +37,7 @@ export default () => {
 
     return (
         <div className="shop-home">
-            <ShopMenu items={items}/>
+            <ShopMenu items={items} />
         </div>
     );
 };

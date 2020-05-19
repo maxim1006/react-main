@@ -1,9 +1,13 @@
-import React, {memo, useContext} from "react";
+import React, { memo, useContext } from "react";
 import GeneralInfoContext from "../../context/GeneralInfoContext";
-import {StyledGeneralInfo, StyledGeneralInfoList, StyledGeneralInfoListItem} from "./StyledGeneralInfo";
+import {
+    StyledGeneralInfo,
+    StyledGeneralInfoList,
+    StyledGeneralInfoListItem
+} from "./StyledGeneralInfo";
 
 export default memo(() => {
-    const {device, browser} = useContext(GeneralInfoContext);
+    const { device, browser } = useContext(GeneralInfoContext);
 
     return (
         <StyledGeneralInfo>
@@ -17,4 +21,4 @@ export default memo(() => {
             </StyledGeneralInfoList>
         </StyledGeneralInfo>
     );
-})
+});

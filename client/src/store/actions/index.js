@@ -10,5 +10,3 @@ export * from "./shopCart";
 export * from "./shopData";
 export * from "./skills";
 export * from "./counter";
-
-

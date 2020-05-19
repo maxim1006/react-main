@@ -1,4 +1,4 @@
-import {SHOP_CART_TYPES} from "../actions/types";
+import { SHOP_CART_TYPES } from "../actions/types";
 
 const initialState = {
     visibleDropdown: null,
@@ -11,14 +11,14 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 visibleDropdown: !state.visibleDropdown
-            }
+            };
         }
 
         case SHOP_CART_TYPES.CLOSE_DROPDOWN: {
             return {
                 ...state,
                 visibleDropdown: false
-            }
+            };
         }
 
         case SHOP_CART_TYPES.ADD_ITEM: {
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
 
             if (currentItem) {
                 currentItem.quantity += 1;
-                currentItem = {...currentItem};
+                currentItem = { ...currentItem };
             } else {
                 currentItems[newItem.id] = {
                     ...newItem,
@@ -39,17 +39,20 @@ export default (state = initialState, action) => {
 
             return {
                 ...state,
-                cartItems: {...currentItems}
-            }
+                cartItems: { ...currentItems }
+            };
         }
 
         case SHOP_CART_TYPES.REMOVE_ITEMS: {
-            const {[action.payload.id]: removed, ...restItems} = state.cartItems;
+            const {
+                [action.payload.id]: removed,
+                ...restItems
+            } = state.cartItems;
 
             return {
                 ...state,
-                cartItems: {...restItems}
-            }
+                cartItems: { ...restItems }
+            };
         }
 
         case SHOP_CART_TYPES.REMOVE_ITEM: {
@@ -59,16 +62,19 @@ export default (state = initialState, action) => {
             currentCartItem.quantity -= 1;
 
             if (currentCartItem.quantity <= 0) {
-                const {[action.payload.id]: removed, ...rest} = currentCartItems;
+                const {
+                    [action.payload.id]: removed,
+                    ...rest
+                } = currentCartItems;
                 currentCartItems = rest;
             } else {
-                currentCartItems[action.payload.id] = {...currentCartItem};
+                currentCartItems[action.payload.id] = { ...currentCartItem };
             }
 
             return {
                 ...state,
-                cartItems: {...currentCartItems}
-            }
+                cartItems: { ...currentCartItems }
+            };
         }
 
         case SHOP_CART_TYPES.CLEAR_ITEMS: {
@@ -81,4 +87,4 @@ export default (state = initialState, action) => {
         default:
             return state;
     }
-}
+};

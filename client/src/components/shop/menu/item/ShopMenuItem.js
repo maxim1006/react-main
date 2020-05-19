@@ -1,23 +1,30 @@
 import React from "react";
-import {withRouter} from "react-router-dom";
-import {StyledShopMenuItem, StyledShopMenuItemSubTitle, StyledShopMenuItemTitle} from "./StyledMenuItem";
+import { withRouter } from "react-router-dom";
+import {
+    StyledShopMenuItem,
+    StyledShopMenuItemSubTitle,
+    StyledShopMenuItemTitle
+} from "./StyledMenuItem";
 
-const MenuItem =  ({title, subtitle = "Shop now", image, history, match, linkUrl}) => {
+const MenuItem = ({
+    title,
+    subtitle = "Shop now",
+    image,
+    history,
+    match,
+    linkUrl
+}) => {
     const onClick = () => {
         history.push(`${match.url}/collections${linkUrl}`);
     };
 
     return (
         <StyledShopMenuItem
-             onClick={onClick}
-             style={{backgroundImage: `url(${image})`}}
+            onClick={onClick}
+            style={{ backgroundImage: `url(${image})` }}
         >
-            <StyledShopMenuItemTitle>
-                {title}
-            </StyledShopMenuItemTitle>
-            <StyledShopMenuItemSubTitle>
-                {subtitle}
-            </StyledShopMenuItemSubTitle>
+            <StyledShopMenuItemTitle>{title}</StyledShopMenuItemTitle>
+            <StyledShopMenuItemSubTitle>{subtitle}</StyledShopMenuItemSubTitle>
         </StyledShopMenuItem>
     );
 };

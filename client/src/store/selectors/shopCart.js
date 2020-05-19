@@ -1,4 +1,4 @@
-import {createSelector} from "reselect";
+import { createSelector } from "reselect";
 
 const selectShopCart = state => state.shopCart;
 
@@ -10,7 +10,11 @@ export const selectShopCartItems = createSelector(
 
 export const selectShopCartQuantity = createSelector(
     [selectShopCartItems],
-    cartItems => Object.values(cartItems).reduce((acc, {quantity}) => acc + quantity, 0),
+    cartItems =>
+        Object.values(cartItems).reduce(
+            (acc, { quantity }) => acc + quantity,
+            0
+        )
 );
 
 export const selectShopCartVisibleDropdown = createSelector(
@@ -20,7 +24,9 @@ export const selectShopCartVisibleDropdown = createSelector(
 
 export const selectShopCartTotal = createSelector(
     [selectShopCartItems],
-    cartItems => Object.values(cartItems).reduce((acc, {quantity, price}) => acc + quantity * price, 0),
+    cartItems =>
+        Object.values(cartItems).reduce(
+            (acc, { quantity, price }) => acc + quantity * price,
+            0
+        )
 );
-
-

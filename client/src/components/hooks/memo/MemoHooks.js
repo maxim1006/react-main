@@ -1,15 +1,24 @@
-import React, {memo, useCallback, useState} from "react";
+import React, { memo, useCallback, useState } from "react";
 
-const Child = memo(({prop, onClick}) => {
+const Child = memo(({ prop, onClick }) => {
     console.log("Child rerender");
-    return <div onClick={onClick}>Child counter: {prop}</div>
+    return (
+        <div onClick={onClick}>
+            Child counter:
+            {prop}
+        </div>
+    );
 });
 
-const Child1 = memo(({prop, onClick}) => {
+const Child1 = memo(({ prop, onClick }) => {
     console.log("Child 1 rerender");
-    return <div onClick={onClick}>Child counter: {prop}</div>
+    return (
+        <div onClick={onClick}>
+            Child counter:
+            {prop}
+        </div>
+    );
 });
-
 
 export default memo(() => {
     let [clickCounter, setClickCounter] = useState(0);
@@ -23,8 +32,12 @@ export default memo(() => {
 
     return (
         <>
-            <div onClick={onChildClick}><Child prop={clickCounter}/></div>
-            <div onClick={onChildClick1}><Child1 prop={clickCounter1}/></div>
+            <div onClick={onChildClick}>
+                <Child prop={clickCounter} />
+            </div>
+            <div onClick={onChildClick1}>
+                <Child1 prop={clickCounter1} />
+            </div>
         </>
-    )
+    );
 });

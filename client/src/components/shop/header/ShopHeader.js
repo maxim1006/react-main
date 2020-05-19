@@ -1,52 +1,64 @@
 import React from "react";
 // так импорчу свг
-import {ReactComponent as LogoIcon} from "../../../assets/icons/crown.svg";
-import {ReactComponent as CartIcon} from "../../../assets/icons/shopping-bag.svg";
-import {auth} from "../../../firebase/firebase.utils";
-import {Link} from "react-router-dom";
-import "./ShopHeader.scss"; 
-import {connect} from "react-redux";
-import {shopToggleDropdown} from "../../../store/actions";
+import { Link } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+import { ReactComponent as LogoIcon } from "../../../assets/icons/crown.svg";
+import { ReactComponent as CartIcon } from "../../../assets/icons/shopping-bag.svg";
+import { auth } from "../../../firebase/firebase.utils";
+import "./ShopHeader.scss";
+import { connect } from "react-redux";
+import { shopToggleDropdown } from "../../../store/actions";
 import MaterialLoader from "../../loader/MaterialLoader";
-import {selectShopCartQuantity, selectShopCartVisibleDropdown} from "../../../store/selectors";
-import {selectShopCurrentUser} from "../../../store/selectors/shopUser";
-import {createStructuredSelector} from "reselect";
+import {
+    selectShopCartQuantity,
+    selectShopCartVisibleDropdown
+} from "../../../store/selectors";
+import { selectShopCurrentUser } from "../../../store/selectors/shopUser";
 import ShopCartDropdownHooks from "../cart-dropdown/ShopCartDropdownHooks";
 
-const ShopHeader = ({shopToggleDropdown, visibleCartDropdown, user, cartQuantity}) => {
+const ShopHeader = ({
+    shopToggleDropdown,
+    visibleCartDropdown,
+    user,
+    cartQuantity
+}) => {
     return (
         <div className="shop-header">
-            <div className="shop-header__title">
-                Shop
-            </div>
-            <LogoIcon className="shop-header__logo"/>
+            <div className="shop-header__title">Shop</div>
+            <LogoIcon className="shop-header__logo" />
 
             <div className="shop-header__sign">
-                {
-                    user === null ?
-                        <MaterialLoader/> :
-                        user ?
-                            <>
-                                <a href="/" onClick={(e) => {
-                                    e.preventDefault();
-                                    auth.signOut();
-                                }}>Sign Out</a>
-                            </> :
-                            <Link to="/shop/sign">Sign In</Link>
-                }
+                {user === null ? (
+                    <MaterialLoader />
+                ) : user ? (
+                    <>
+                        <a
+                            href="/"
+                            onClick={e => {
+                                e.preventDefault();
+                                auth.signOut();
+                            }}
+                        >
+                            Sign Out
+                        </a>
+                    </>
+                ) : (
+                    <Link to="/shop/sign">Sign In</Link>
+                )}
             </div>
 
             <div className="shop-header__cart">
                 <span className="shop-header__cart-count">{cartQuantity}</span>
-                <CartIcon className="shop-header__cart-icon" onClick={shopToggleDropdown}/>
-                {visibleCartDropdown && <ShopCartDropdownHooks/>}
+                <CartIcon
+                    className="shop-header__cart-icon"
+                    onClick={shopToggleDropdown}
+                />
+                {visibleCartDropdown && <ShopCartDropdownHooks />}
             </div>
 
-            <div className="shop-header__user">
-                {user.displayName}
-            </div>
+            <div className="shop-header__user">{user.displayName}</div>
         </div>
-    )
+    );
 };
 
 // могу записать так, но так как селекторы повторяются удобнее использовать createStructuredSelector

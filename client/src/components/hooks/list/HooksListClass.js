@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import customAxios from "../../common/api/axios";
 
 export default class extends Component {
@@ -7,32 +7,36 @@ export default class extends Component {
     };
 
     componentDidMount() {
-        this.getHooks()
+        this.getHooks();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         // обязатльно ставлю условие, так как при изменении стейта как внешнего так и этого компонента
         // будет вызываться componentDidUpdate
         if (prevProps.resource !== this.props.resource) {
-            this.getHooks()
+            this.getHooks();
         }
     }
 
     componentWillUnmount() {
-        this.cancelHooksRequest.cancel("HooksListClass get('/hooks'... canceled");
+        this.cancelHooksRequest.cancel(
+            "HooksListClass get('/hooks'... canceled"
+        );
     }
 
     render() {
-        const {list} = this.state;
+        const { list } = this.state;
 
-        return (
-            list ?
-                <ul className="hooks-list">
-                    {list.map(({title}, index) => <li className="hooks-list__item" key={index}>{title}</li>)}
-                </ul> :
-                <p>
-                    "no items"
-                </p>
+        return list ? (
+            <ul className="hooks-list">
+                {list.map(({ title }, index) => (
+                    <li className="hooks-list__item" key={index}>
+                        {title}
+                    </li>
+                ))}
+            </ul>
+        ) : (
+            <p>"no items"</p>
         );
     }
 
@@ -44,9 +48,12 @@ export default class extends Component {
         this.cancelHooksRequest = customAxios.CancelToken.source();
 
         try {
-            const {data: list} = await customAxios.get(`/hooks/${this.props.resource}`, {
-                cancelToken: this.cancelHooksRequest.token
-            });
+            const { data: list } = await customAxios.get(
+                `/hooks/${this.props.resource}`,
+                {
+                    cancelToken: this.cancelHooksRequest.token
+                }
+            );
 
             this.setState({
                 list
@@ -57,6 +64,8 @@ export default class extends Component {
     };
 
     cancelGetHooks = () => {
-        this.cancelHooksRequest.cancel("HooksListClass get('/hooks'... canceled");
-    }
+        this.cancelHooksRequest.cancel(
+            "HooksListClass get('/hooks'... canceled"
+        );
+    };
 }

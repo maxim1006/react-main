@@ -1,4 +1,4 @@
-import {SHOP_DATA_TYPES} from "../actions/types";
+import { SHOP_DATA_TYPES } from "../actions/types";
 
 const initialState = {
     data: null,
@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
                 data: action.payload,
                 isLoading: false,
                 errorMessage: undefined
-            }
+            };
         }
 
         case SHOP_DATA_TYPES.FETCH_DATA_THUNK_START: {
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
                 ...state,
                 isLoading: true,
                 errorMessage: undefined
-            }
+            };
         }
 
         case SHOP_DATA_TYPES.FETCH_DATA_THUNK_ERROR: {
@@ -31,11 +31,11 @@ export default (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 errorMessage: action.payload
-            }
+            };
         }
 
         default: {
             return state;
         }
     }
-}
+};

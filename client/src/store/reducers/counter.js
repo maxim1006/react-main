@@ -1,4 +1,4 @@
-import {COUNTER_TYPES} from "../actions/types";
+import { COUNTER_TYPES } from "../actions/types";
 
 const initState = 0;
 
@@ -15,4 +15,4 @@ export default (state = initState, action) => {
         default:
             return state;
     }
-}
+};

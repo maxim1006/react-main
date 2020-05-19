@@ -1,9 +1,9 @@
-import React, {memo, useCallback} from "react";
-import StripeCheckout from 'react-stripe-checkout';
-import {publishKey} from "../../../stripe/stripe.utils";
+import React, { memo, useCallback } from "react";
+import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
+import { publishKey } from "../../../stripe/stripe.utils";
 
-export default memo(({price}) => {
+export default memo(({ price }) => {
     const stripePrice = price * 100; // в страйп все цены в центах
 
     const onToken = useCallback(token => {
@@ -38,5 +38,5 @@ export default memo(({price}) => {
                 token={onToken}
             />
         </div>
-    )
+    );
 });

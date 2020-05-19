@@ -1,7 +1,7 @@
-import {auth, createUserProfileDocument} from "../../firebase/firebase.utils";
-import {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {shopSetCurrentUser} from "../../store/actions";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import { shopSetCurrentUser } from "../../store/actions";
 
 export default () => {
     const dispatch = useDispatch();
@@ -21,12 +21,14 @@ export default () => {
 
                 // а могу так, когда по какой-то причине snapshot у DocumentReference или CollectionReference
                 // поменяется сработает этот коллбек
-                onSnapshotSubscription = userRef.onSnapshot((snapshot) => {
+                onSnapshotSubscription = userRef.onSnapshot(snapshot => {
                     // аля mapDispatchToProps
-                    dispatch(shopSetCurrentUser({
-                        id: snapshot.id,
-                        ...snapshot.data()
-                    }));
+                    dispatch(
+                        shopSetCurrentUser({
+                            id: snapshot.id,
+                            ...snapshot.data()
+                        })
+                    );
                 });
             } else {
                 dispatch(shopSetCurrentUser(false));
@@ -40,6 +42,6 @@ export default () => {
             if (onSnapshotSubscription) {
                 onSnapshotSubscription();
             }
-        }
+        };
     }, []);
-}
+};

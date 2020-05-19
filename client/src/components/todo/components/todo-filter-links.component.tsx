@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import ToDoFilterLink from "./todo-filter-link.component";
 
 export interface IToDoFilterLinksProps {
@@ -6,13 +6,19 @@ export interface IToDoFilterLinksProps {
     onClick: (filterType: string) => void;
 }
 
-const ToDoFilterLinks = ({currentFilter, onClick}: IToDoFilterLinksProps) => {
-    const getTodoLinkView = (filterType: string) => (
-        currentFilter === filterType ?
-            <span>{filterType}</span> :
+const ToDoFilterLinks = ({ currentFilter, onClick }: IToDoFilterLinksProps) => {
+    const getTodoLinkView = (filterType: string) =>
+        currentFilter === filterType ? (
+            <span>{filterType}</span>
+        ) : (
             <ToDoFilterLink
-                onClick={() => {onClick(filterType)}}>{filterType}</ToDoFilterLink>
-    );
+                onClick={() => {
+                    onClick(filterType);
+                }}
+            >
+                {filterType}
+            </ToDoFilterLink>
+        );
 
     return (
         <div>

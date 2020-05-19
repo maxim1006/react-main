@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {LifecycleParent} from "./LifecycleParent";
+import React, { Component } from "react";
+import { LifecycleParent } from "./LifecycleParent";
 
 // constructor
 // render
 // componentDidMount
 
 export class LifecycleHooksComponent extends Component {
-    state= {
+    state = {
         prop: null
     };
 
@@ -68,12 +68,12 @@ export class LifecycleHooksComponent extends Component {
     // если вызову shouldComponentUpdate и он вернет фолс, то componentDidUpdate вызываться не будет
     // чтобы вызвать насильно ;) вызываю this.forceUpdate(_ => console.log('forceUpdate'))
     shouldComponentUpdate(nextProps, nextState) {
-    //     if (nextState.prop === 1) {
-    //         this.forceUpdate((nextProps, nextState) => console.log('forceUpdate'));
-    //     }
-    // или проверяю изменилось ли проперти?
-    // return nextProps.prop !== this.props.prop;
-    // или всегда
+        //     if (nextState.prop === 1) {
+        //         this.forceUpdate((nextProps, nextState) => console.log('forceUpdate'));
+        //     }
+        // или проверяю изменилось ли проперти?
+        // return nextProps.prop !== this.props.prop;
+        // или всегда
         console.log(123);
         return false;
     }
@@ -99,8 +99,6 @@ export class LifecycleHooksComponent extends Component {
     render() {
         console.log("render");
 
-        return (
-            <LifecycleParent/>
-        );
+        return <LifecycleParent />;
     }
 }

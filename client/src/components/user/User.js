@@ -1,8 +1,8 @@
-import {memo} from "react";
-import React from "react";
+import React, { memo } from "react";
+
 import "./User.scss";
 
-export default memo(({name, occupation}) => {
+export default memo(({ name, occupation }) => {
     return (
         <div className="user">
             <span className="user__label">Name: </span>
@@ -11,5 +11,5 @@ export default memo(({name, occupation}) => {
             <span className="user__label">Occupation:</span>
             <span className="user__value">{occupation}</span>
         </div>
-    )
+    );
 });

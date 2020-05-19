@@ -1,5 +1,5 @@
-import React, {Component, Children} from 'react';
-import './Tabs.scss'
+import React, { Component, Children } from "react";
+import "./Tabs.scss";
 
 export class TabsComponent extends Component {
     state = {
@@ -7,27 +7,22 @@ export class TabsComponent extends Component {
     };
 
     render() {
-        const children = this.props.children;
+        const { children } = this.props;
 
         if (children) {
-
-            let tabsHeader = [];
-            let tabsBody = [];
+            const tabsHeader = [];
+            const tabsBody = [];
 
             // вспомогательная функция для работы с чайлдами
-            Children.map(children,(child, index) => {
+            Children.map(children, (child, index) => {
                 tabsHeader.push(this.getTabsHeaderView(child, index));
                 tabsBody.push(this.getTabsBody(child, index));
             });
 
             return (
                 <div className="tabs">
-                    <div className="tabs__header">
-                        {tabsHeader}
-                    </div>
-                    <div className="tabs__content">
-                        {tabsBody}
-                    </div>
+                    <div className="tabs__header">{tabsHeader}</div>
+                    <div className="tabs__content">{tabsBody}</div>
                 </div>
             );
         }
@@ -38,10 +33,9 @@ export class TabsComponent extends Component {
             <div
                 onClick={this.onClick.bind(this, index)}
                 key={index}
-                className={
-                    "tabs__header-item" +
-                    (index === this.state.activeTab ? ' _active' : '')
-                }
+                className={`tabs__header-item${
+                    index === this.state.activeTab ? " _active" : ""
+                }`}
             >
                 {child.props.tabName}
             </div>
@@ -51,24 +45,19 @@ export class TabsComponent extends Component {
     getTabsBody(child, index) {
         if (index === this.state.activeTab) {
             return (
-                <div
-                    className="tabs__content-item"
-                    key={index}
-                >
+                <div className="tabs__content-item" key={index}>
                     {child.props.children}
                 </div>
             );
-        } else {
-            return "";
         }
+        return "";
     }
 
-    onClick = (index) => {
+    onClick = index => {
         // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
         // через функцию это делаю
         this.setState((prevState, prevProps) => ({
             activeTab: index
         }));
-    }
-
+    };
 }

@@ -5,7 +5,7 @@ import ShopSignInHooks from "../sign-in/ShopSignInHooks";
 
 export default () => (
     <div className="sign-in-and-sign-up">
-        <ShopSignInHooks/>
-        <ShopSignUpHooks/>
+        <ShopSignInHooks />
+        <ShopSignUpHooks />
     </div>
 );

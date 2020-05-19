@@ -13,18 +13,18 @@ const CountupWrapper: React.FC = () => {
                 decimal=","
                 prefix="EUR "
                 suffix=" left"
-                onEnd={() => console.log('Ended! 👏')}
-                onStart={() => console.log('Started! 💨')}
+                onEnd={() => console.log("Ended! 👏")}
+                onStart={() => console.log("Started! 💨")}
             >
-                {({countUpRef, start}) => (
+                {({ countUpRef, start }) => (
                     <div>
-                        <span ref={countUpRef}/>
+                        <span ref={countUpRef} />
                         <button onClick={start}>Start</button>
                     </div>
                 )}
             </CountUp>
         </>
     );
-}
+};
 
 export default CountupWrapper;

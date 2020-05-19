@@ -10,6 +10,4 @@ export const StyledGeneralInfoList = styled.ul`
     list-style: none;
 `;
 
-export const StyledGeneralInfoListItem = styled.li`
-`;
-
+export const StyledGeneralInfoListItem = styled.li``;

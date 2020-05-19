@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {fetchUserById} from "../../store/actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchUserById } from "../../store/actions";
 
 class PostUser extends Component {
     componentDidMount() {
@@ -8,13 +8,13 @@ class PostUser extends Component {
     }
 
     render() {
-        const user = this.props.user;
+        const { user } = this.props;
 
         if (!user) {
             return null;
         }
 
-        const {name} = user;
+        const { name } = user;
 
         return (
             <div>
@@ -22,16 +22,13 @@ class PostUser extends Component {
             </div>
         );
     }
-
 }
 
-const mapStateToProps = (state, {userId}) => ({
+const mapStateToProps = (state, { userId }) => ({
     user: findUser(state, userId)
 });
 
-export default connect(mapStateToProps, {fetchUserById})(PostUser);
-
-
+export default connect(mapStateToProps, { fetchUserById })(PostUser);
 
 // Helpers
 function findUser(state, userId) {

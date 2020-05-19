@@ -1,9 +1,17 @@
-import React, {memo, useCallback} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {selectShopCartItems, selectShopCartTotal} from "../../../store/selectors";
+import React, { memo, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    selectShopCartItems,
+    selectShopCartTotal
+} from "../../../store/selectors";
 import "./ShopCheckout.scss";
 import ShopCheckoutItem from "./item/ShopCheckoutItem";
-import {shopAddCartItem, shopClearCartItems, shopRemoveCartItem, shopRemoveCartItems} from "../../../store/actions";
+import {
+    shopAddCartItem,
+    shopClearCartItems,
+    shopRemoveCartItem,
+    shopRemoveCartItems
+} from "../../../store/actions";
 import ShopStripeButton from "../stripe/ShopStripeButton";
 import ShopButton from "../button/ShopButton";
 
@@ -14,21 +22,23 @@ export default memo(() => {
     const dispatch = useDispatch();
 
     const onRemove = useCallback(
-        (item) => () => dispatch(shopRemoveCartItems(item)),
+        item => () => dispatch(shopRemoveCartItems(item)),
         [dispatch]
-        );
+    );
 
     const onRemoveItem = useCallback(
-        (item) => () => dispatch(shopRemoveCartItem(item)),
+        item => () => dispatch(shopRemoveCartItem(item)),
         [dispatch]
     );
 
     const onAddItem = useCallback(
-        (item) => () => dispatch(shopAddCartItem(item)),
+        item => () => dispatch(shopAddCartItem(item)),
         [dispatch]
     );
 
-    const onClearCart = useCallback(() => dispatch(shopClearCartItems()), [dispatch]);
+    const onClearCart = useCallback(() => dispatch(shopClearCartItems()), [
+        dispatch
+    ]);
 
     return (
         <div className="shop-checkout">
@@ -40,28 +50,30 @@ export default memo(() => {
                 <div className="shop-checkout__header-item">Remove</div>
             </div>
             <div className="shop-checkout__items">
-                {
-                    Object.entries(cartItems).map(([id, item]) => {
-                        return <ShopCheckoutItem
+                {Object.entries(cartItems).map(([id, item]) => {
+                    return (
+                        <ShopCheckoutItem
                             key={id}
                             {...item}
                             onRemove={onRemove(item)}
                             onRemoveItem={onRemoveItem(item)}
                             onAddItem={onAddItem(item)}
                         />
-                    })
-                }
+                    );
+                })}
             </div>
             <div className="shop-checkout__info">
-                *Please use following info for payments testing* <br/>
+                *Please use following info for payments testing*
+                <br />
                 4242 4242 4242 4242 Exp.: 01/20 CVV: 123
             </div>
             <div className="shop-checkout__info">
                 <ShopButton onClick={onClearCart}>Clear cart</ShopButton>
             </div>
             <div className="shop-checkout__total">
-                TOTAL: {shopTotal}
-                <ShopStripeButton price={shopTotal}/>
+                TOTAL:
+                {shopTotal}
+                <ShopStripeButton price={shopTotal} />
             </div>
         </div>
     );

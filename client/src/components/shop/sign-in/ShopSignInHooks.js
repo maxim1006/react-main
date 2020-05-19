@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ShopFormInput from "../form-input/ShopFormInput";
 import ShopButton from "../button/ShopButton";
 import "./ShopSignIn.scss";
-import {auth, signInWithGoogle} from "../../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../../firebase/firebase.utils";
 import NotificationPortal from "../../portals/notification/NotificationPortal";
 
 export default () => {
@@ -14,15 +14,15 @@ export default () => {
         error: ""
     });
 
-    const {email, password, error} = signInState;
+    const { email, password, error } = signInState;
 
     useEffect(() => {
         return () => {
             clearNotificationError(notificationErrorTimeout);
-        }
+        };
     }, []);
 
-    const onSubmit = async (e) => {
+    const onSubmit = async e => {
         e.preventDefault();
 
         try {
@@ -46,8 +46,8 @@ export default () => {
         }
     };
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
+    const handleChange = e => {
+        const { name, value } = e.target;
 
         setSignInState({
             ...signInState,
@@ -58,16 +58,18 @@ export default () => {
     const renderErrorNotification = () => {
         if (error) {
             notificationErrorTimeout = setTimeout(() => {
-                clearNotificationError()
+                clearNotificationError();
             }, 3000);
         }
 
-        return error ?
-            <NotificationPortal styleClass="_error" onClose={clearNotificationError}>
+        return error ? (
+            <NotificationPortal
+                styleClass="_error"
+                onClose={clearNotificationError}
+            >
                 {error}
             </NotificationPortal>
-            :
-            null;
+        ) : null;
     };
 
     const clearNotificationError = () => {
@@ -104,10 +106,12 @@ export default () => {
                     required
                 />
                 <ShopButton type="submit">Sign in</ShopButton>
-                <ShopButton dark onClick={signInWithGoogle}>Sign in with Google</ShopButton>
+                <ShopButton dark onClick={signInWithGoogle}>
+                    Sign in with Google
+                </ShopButton>
             </form>
 
             {renderErrorNotification()}
         </div>
     );
-}
+};

@@ -1,9 +1,9 @@
-import React from 'react';
-import {FormsComponent} from "../components/forms/Forms";
-import {JsxListComponent} from "../components/jsx/JsxList";
+import React, { useState } from "react";
+import { FormsComponent } from "../components/forms/Forms";
+import { JsxListComponent } from "../components/jsx/JsxList";
 import JsxFragment from "../components/jsx/JsxFragment";
 import JSXExampleComponent from "../components/jsx/JsxExamples";
-import {TabsComponent} from "../components/tabs/Tabs";
+import { TabsComponent } from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
 import DragNDrop from "../components/drag-n-drop/drag-n-drop.component";
@@ -13,135 +13,132 @@ export default function ReactPage() {
         <TabsComponent>
             <div tabName="Components">
                 <Component title="Drag'n'drop">
-                    <DragNDrop/>
+                    <DragNDrop />
                 </Component>
 
-                {/*<Component title="Count up">*/}
+                {/* <Component title="Count up">*/}
                 {/*    <CountupWrapper />*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Error boundary">*/}
+                {/* <Component title="Error boundary">*/}
                 {/*    <ErrorBoundary>*/}
                 {/*        <ErrorBoundaryError/>*/}
                 {/*    </ErrorBoundary>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Error boundary">*/}
+                {/* <Component title="Error boundary">*/}
                 {/*    <ErrorBoundary>*/}
                 {/*        <ErrorBoundaryError/>*/}
                 {/*    </ErrorBoundary>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Dropdown Menu">*/}
+                {/* <Component title="Dropdown Menu">*/}
                 {/*    <NavBar/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Insert HTML">*/}
+                {/* <Component title="Insert HTML">*/}
                 {/*    <DangerouslySetInnerHTML/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Array">*/}
+                {/* <Component title="Array">*/}
                 {/*    <ArrayComponent/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Fetch">*/}
+                {/* <Component title="Fetch">*/}
                 {/*    <Fetch/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Skills">*/}
+                {/* <Component title="Skills">*/}
                 {/*    <Skills/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Family fetch">*/}
+                {/* <Component title="Family fetch">*/}
                 {/*    <AxiosFamily/>*/}
                 {/*    <FamilyFetch/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Container example">*/}
+                {/* <Component title="Container example">*/}
                 {/*    <ContainerClass/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="HOC">*/}
+                {/* <Component title="HOC">*/}
                 {/*    <HOCClass/>*/}
                 {/*    <HOCHooks/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Ref examples">*/}
+                {/* <Component title="Ref examples">*/}
                 {/*    <RefHooks/>*/}
                 {/*    <RefClass/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Styled Components">*/}
+                {/* <Component title="Styled Components">*/}
                 {/*    <StyledText isActive>Styled text</StyledText>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Firestore Family">*/}
+                {/* <Component title="Firestore Family">*/}
                 {/*    <FirestoreFamily/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Firestore">*/}
+                {/* <Component title="Firestore">*/}
                 {/*    <FireStore/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="AsyncSetState">*/}
+                {/* <Component title="AsyncSetState">*/}
                 {/*    <AsyncSetState increaseNumber={1}/>*/}
                 {/*    <AsyncSetStateHooks increaseNumber={1}/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Monsters">*/}
+                {/* <Component title="Monsters">*/}
                 {/*    <Monsters/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Imports">*/}
+                {/* <Component title="Imports">*/}
                 {/*    <Imports/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Parent">*/}
+                {/* <Component title="Parent">*/}
                 {/*    <Parent/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="Grid">*/}
+                {/* <Component title="Grid">*/}
                 {/*    <Grid/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="RestApiComponent">*/}
+                {/* <Component title="RestApiComponent">*/}
                 {/*    <RestApiComponent/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="LifecycleHooksComponent">*/}
+                {/* <Component title="LifecycleHooksComponent">*/}
                 {/*    <LifecycleHooksComponent/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="ClassBasedComponent">*/}
+                {/* <Component title="ClassBasedComponent">*/}
                 {/*    <ClassBasedComponent/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="CommentListComponent">*/}
+                {/* <Component title="CommentListComponent">*/}
                 {/*    <CommentListComponent/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="CommentListHooks">*/}
+                {/* <Component title="CommentListHooks">*/}
                 {/*    <CommentListHooks/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="ClassBasedHooks">*/}
+                {/* <Component title="ClassBasedHooks">*/}
                 {/*    <ClassBasedHooks/>*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
             </div>
             <div tabName="Redux Forms">
-                <ReduxForm/>
+                <ReduxForm />
             </div>
             <div tabName="Forms">
-                <FormsComponent/>
+                <FormsComponent />
             </div>
             <div tabName="JSX">
-                <JsxListComponent/>
-                <JsxFragment
-                    prop1="prop1"
-                    prop2="prop2"
-                />
-                <JSXExampleComponent/>
+                <JsxListComponent />
+                <JsxFragment prop1="prop1" prop2="prop2" />
+                <JSXExampleComponent />
             </div>
         </TabsComponent>
-    )
+    );
 }

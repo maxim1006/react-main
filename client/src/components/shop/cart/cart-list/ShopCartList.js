@@ -1,27 +1,21 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import ShopCartListItem from "../cart-item/ShopCartListItem";
-import {selectShopCartItems} from "../../../../store/selectors";
-import {createStructuredSelector} from "reselect";
+import { selectShopCartItems } from "../../../../store/selectors";
 import "./ShopCartList.scss";
 
-const ShopCartList = ({cartItems}) => {
-    return (
-        Object.entries(cartItems).length ?
-            <ul className="shop-cart-list">
-                {
-                    Object.entries(cartItems).map(([id, item]) => (
-                        <li className="shop-cart-list__item-wrapper" key={id}>
-                            <ShopCartListItem item={item}/>
-                        </li>
-                    ))
-                }
-            </ul>
-            :
-            <div className="shop-cart-list__empty">
-                "No items"
-            </div>
-
+const ShopCartList = ({ cartItems }) => {
+    return Object.entries(cartItems).length ? (
+        <ul className="shop-cart-list">
+            {Object.entries(cartItems).map(([id, item]) => (
+                <li className="shop-cart-list__item-wrapper" key={id}>
+                    <ShopCartListItem item={item} />
+                </li>
+            ))}
+        </ul>
+    ) : (
+        <div className="shop-cart-list__empty">"No items"</div>
     );
 };
 
@@ -34,6 +28,5 @@ const ShopCartList = ({cartItems}) => {
 const mapStateToProps = createStructuredSelector({
     cartItems: selectShopCartItems
 });
-
 
 export default connect(mapStateToProps)(ShopCartList);

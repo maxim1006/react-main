@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {store} from "./todo-store.component";
+import { useEffect, useState } from "react";
+import { store } from "./todo-store.component";
 
 export default () => {
     const [state, setState] = useState(store.getState());
@@ -13,5 +13,4 @@ export default () => {
     }, []);
 
     return state;
-}
-
+};

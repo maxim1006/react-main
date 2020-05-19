@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import './DomRefImage.scss';
+import React, { Component } from "react";
+import "./DomRefImage.scss";
 
 export class DomRefImageComponent extends Component {
     constructor(props) {
@@ -11,13 +11,13 @@ export class DomRefImageComponent extends Component {
 
     componentDidMount() {
         this.imageRef.current.onload = () => {
-            this.imageRef.current.style.gridRowEnd = 'span ' + this.imageRef.current.clientHeight;
-        }
+            this.imageRef.current.style.gridRowEnd = `span ${this.imageRef.current.clientHeight}`;
+        };
     }
 
     render() {
-        const {styleClass, image} = this.props;
-        const className = `dom-ref-image ${styleClass || ''}`;
+        const { styleClass, image } = this.props;
+        const className = `dom-ref-image ${styleClass || ""}`;
 
         return (
             <img

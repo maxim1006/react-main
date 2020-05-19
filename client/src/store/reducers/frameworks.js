@@ -1,4 +1,4 @@
-import {CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS} from "../actions/types";
+import { CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS } from "../actions/types";
 
 const initialState = [];
 
@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
 
             // вариант через массив
             const index = state.indexOf(currentFramework);
-            state[index] = {...action.payload};
+            state[index] = { ...action.payload };
             return [...state];
         }
 

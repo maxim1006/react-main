@@ -1,10 +1,11 @@
-import {TODOS_TYPES} from "./types";
-import {generateUniqueId} from "../../../../common/helpers/helpers";
+import { TODOS_TYPES } from "./types";
+import { generateUniqueId } from "../../../../common/helpers/helpers";
 
 export const toggleTodo = (id: string, completed: boolean) => ({
     type: TODOS_TYPES.TOGGLE,
     payload: {
-        id, completed
+        id,
+        completed
     }
 });
 

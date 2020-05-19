@@ -1,18 +1,21 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ShopFormInput from "../form-input/ShopFormInput";
 import ShopButton from "../button/ShopButton";
-import {auth, createUserProfileDocument} from "../../../firebase/firebase.utils";
+import {
+    auth,
+    createUserProfileDocument
+} from "../../../firebase/firebase.utils";
 
 export default class ShopSignUp extends Component {
     state = {
         displayName: "",
         email: "",
         password: "",
-        confirmPassword: "",
+        confirmPassword: ""
     };
 
     render() {
-        const {displayName, email, password, confirmPassword} = this.state;
+        const { displayName, email, password, confirmPassword } = this.state;
 
         return (
             <div className="shop-sign-up">
@@ -67,10 +70,10 @@ export default class ShopSignUp extends Component {
         );
     }
 
-    handleSubmit = async (e) => {
+    handleSubmit = async e => {
         e.preventDefault();
 
-        const {displayName, email, password, confirmPassword} = this.state;
+        const { displayName, email, password, confirmPassword } = this.state;
 
         if (password !== confirmPassword) {
             alert("Passwords don't match");
@@ -78,15 +81,18 @@ export default class ShopSignUp extends Component {
         }
 
         try {
-            const {user} = await auth.createUserWithEmailAndPassword(email, password);
+            const { user } = await auth.createUserWithEmailAndPassword(
+                email,
+                password
+            );
 
-            await createUserProfileDocument(user, {displayName});
+            await createUserProfileDocument(user, { displayName });
 
             this.setState({
                 displayName: "",
                 email: "",
                 password: "",
-                confirmPassword: "",
+                confirmPassword: ""
             });
         } catch (e) {
             console.log("Sign Up handleSubmit error ", e.message);
@@ -94,9 +100,8 @@ export default class ShopSignUp extends Component {
     };
 
     handleChange = event => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
 
-        this.setState({[name]: value});
-    }
-
+        this.setState({ [name]: value });
+    };
 }

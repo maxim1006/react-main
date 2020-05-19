@@ -1,6 +1,6 @@
-import {debounce, getDevice} from "../../common/helpers/helpers";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Bowser from "bowser";
+import { debounce, getDevice } from "../../common/helpers/helpers";
 
 export default () => {
     const [device, setDevice] = useState(null);
@@ -29,5 +29,5 @@ export default () => {
         };
     }, []);
 
-    return {device, browser};
-}
+    return { device, browser };
+};

@@ -1,7 +1,7 @@
 import React from "react";
-import "./MonsterSearch.scss"
+import "./MonsterSearch.scss";
 
-export default ({value, onChange}) => (
+export default ({ value, onChange }) => (
     <div className="monster-search">
         <input
             type="text"

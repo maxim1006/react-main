@@ -1,9 +1,9 @@
-import {SHOP_DATA_TYPES} from "./types";
-import {firestore} from "../../firebase/firebase.utils";
-import {RouteNameMap} from "../../components/shop/shop.data";
+import { SHOP_DATA_TYPES } from "./types";
+import { firestore } from "../../firebase/firebase.utils";
+import { RouteNameMap } from "../../components/shop/shop.data";
 
 // тут синхронно так как в shopPage получаю данные через хуки из useShopData
-export const shopSetData = (payload) => ({
+export const shopSetData = payload => ({
     type: SHOP_DATA_TYPES.SET_DATA,
     payload
 });
@@ -19,26 +19,27 @@ export const fetchShopDataThunk = () => async (dispatch, getState) => {
         const shopDataSnapshot = await shopDataRef.get();
 
         const shopData = shopDataSnapshot.docs.reduce((acc, doc) => {
-            const {title, items, id} = doc.data();
+            const { title, items, id } = doc.data();
 
             return {
                 ...acc,
                 [id]: {
-                    title, items, id,
+                    title,
+                    items,
+                    id,
                     routeName: RouteNameMap.get(title)
                 }
-            }
+            };
         }, {});
 
         dispatch({
             type: SHOP_DATA_TYPES.FETCH_DATA_THUNK_SUCCESS,
             payload: shopData
         });
-    } catch ({message}) {
+    } catch ({ message }) {
         dispatch({
             type: SHOP_DATA_TYPES.FETCH_DATA_THUNK_ERROR,
             payload: message
         });
     }
-
 };

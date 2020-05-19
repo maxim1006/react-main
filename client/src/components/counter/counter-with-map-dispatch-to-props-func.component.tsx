@@ -1,22 +1,31 @@
-import React, {memo} from "react";
-import {connect} from "react-redux";
-import {decrementCounter, incrementCounter} from "../../store/actions";
+import React, { memo } from "react";
+import { connect } from "react-redux";
+import { decrementCounter, incrementCounter } from "../../store/actions";
 
 export type CounterProps = {
     counter?: number;
     incrementCounter: any;
     decrementCounter: any;
-}
+};
 
-const CounterWithMapDispatchToPropsFunc = ({counter, incrementCounter, decrementCounter}: CounterProps) => {
+const CounterWithMapDispatchToPropsFunc = ({
+    counter,
+    incrementCounter,
+    decrementCounter
+}: CounterProps) => {
     return (
         <div className="counter">
             <div className="counter__value">
-                Value: {counter}
+                Value:
+                {counter}
             </div>
             <div className="counter__controls">
-                <button type="button" onClick={incrementCounter}>Increment</button>
-                <button type="button" onClick={decrementCounter}>Decrement</button>
+                <button type="button" onClick={incrementCounter}>
+                    Increment
+                </button>
+                <button type="button" onClick={decrementCounter}>
+                    Decrement
+                </button>
             </div>
         </div>
     );
@@ -28,7 +37,10 @@ const mapStateToProps = (state: any, ownProps: any) => ({
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
     incrementCounter: () => dispatch(incrementCounter()),
-    decrementCounter: () => dispatch(decrementCounter()),
+    decrementCounter: () => dispatch(decrementCounter())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(memo(CounterWithMapDispatchToPropsFunc));
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(memo(CounterWithMapDispatchToPropsFunc));

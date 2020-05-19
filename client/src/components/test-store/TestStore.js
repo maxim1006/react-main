@@ -1,5 +1,5 @@
 // Просто для примера
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import React from "react";
 
 const testIncrease = () => ({
@@ -25,7 +25,7 @@ export const testStore = (state = 0, action) => {
     }
 };
 
-const testComponent = ({testStore, testDecrease, testIncrease}) => {
+const testComponent = ({ testStore, testDecrease, testIncrease }) => {
     return (
         <>
             <span onClick={testDecrease}>decrease</span>
@@ -36,8 +36,8 @@ const testComponent = ({testStore, testDecrease, testIncrease}) => {
 };
 
 export default connect(
-    (state) => ({
+    state => ({
         // testStore: state.testStore
     }),
-    {testIncrease, testDecrease}
+    { testIncrease, testDecrease }
 )(testComponent);

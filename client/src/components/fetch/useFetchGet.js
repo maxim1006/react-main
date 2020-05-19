@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default () => {
     const [data, setData] = useState(null);
-    let [controller, setController] = useState(null);
+    const [controller, setController] = useState(null);
 
     const fetchUrl = "/api/fetch";
 
@@ -16,7 +16,9 @@ export default () => {
             setData(null);
 
             try {
-                const data = await fetch(fetchUrl, {signal: controller.signal});
+                const data = await fetch(fetchUrl, {
+                    signal: controller.signal
+                });
                 const jsonData = await data.json();
                 setData(jsonData);
             } catch (e) {
@@ -32,4 +34,4 @@ export default () => {
         setController,
         controller
     };
-}
+};

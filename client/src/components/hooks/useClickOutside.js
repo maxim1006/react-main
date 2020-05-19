@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 export default (ref, cb) => {
     const handleClick = e => {

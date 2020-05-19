@@ -1,5 +1,5 @@
+import React, { Component } from "react";
 import customAxios from "../../common/api/axios";
-import React, {Component} from 'react';
 
 export class JsxListComponent extends Component {
     state = {
@@ -10,7 +10,7 @@ export class JsxListComponent extends Component {
         this.cancelGetFamilyRequest = customAxios.CancelToken.source();
 
         try {
-            const {data: family} = await customAxios.get('/family',{
+            const { data: family } = await customAxios.get("/family", {
                 cancelToken: this.cancelGetFamilyRequest.token
             });
 
@@ -23,23 +23,26 @@ export class JsxListComponent extends Component {
     }
 
     componentWillUnmount() {
-        this.cancelGetFamilyRequest.cancel("JsxListComponent get('/family'... canceled");
+        this.cancelGetFamilyRequest.cancel(
+            "JsxListComponent get('/family'... canceled"
+        );
     }
 
     // Тут классный пример деструктуризации входных свойств
     render() {
         return (
             <ul>
-            {
-                this.state.family.map(member => <li key={member.id}><FamilyMember {...member}/></li>)
-            }
+                {this.state.family.map(member => (
+                    <li key={member.id}>
+                        <FamilyMember {...member} />
+                    </li>
+                ))}
             </ul>
         );
     }
-
 }
 
-function FamilyMember({name, age, occupation}) {
+function FamilyMember({ name, age, occupation }) {
     return (
         <>
             Name: {name}, age: {age}, occupation: {occupation}

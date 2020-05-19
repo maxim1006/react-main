@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 import LanguageContext from "../../../context/LanguageContext";
 
 export default () => {
@@ -8,7 +8,7 @@ export default () => {
     return (
         <p>
             <label htmlFor="contextFieldName">{label}</label>
-            <input type="text" id="contextFieldName"/>
+            <input type="text" id="contextFieldName" />
         </p>
     );
-}
+};

@@ -1,22 +1,33 @@
-import React, {memo} from "react";
-import {connect} from "react-redux";
-import {decrementCounter, incrementCounter} from "../../store/actions";
+import React, { memo } from "react";
+import { connect } from "react-redux";
+import { decrementCounter, incrementCounter } from "../../store/actions";
 
 export type CounterProps = {
     children?: any;
     counter?: number;
     dispatch: any;
-}
+};
 
-const Counter = memo(({counter, dispatch}: CounterProps) => {
+const Counter = memo(({ counter, dispatch }: CounterProps) => {
     return (
         <div className="counter">
             <div className="counter__value">
-                Value: {counter}
+                Value:
+                {counter}
             </div>
             <div className="counter__controls">
-                <button type="button" onClick={() => dispatch(incrementCounter())}>Increment</button>
-                <button type="button" onClick={() => dispatch(decrementCounter())}>Decrement</button>
+                <button
+                    type="button"
+                    onClick={() => dispatch(incrementCounter())}
+                >
+                    Increment
+                </button>
+                <button
+                    type="button"
+                    onClick={() => dispatch(decrementCounter())}
+                >
+                    Decrement
+                </button>
             </div>
         </div>
     );

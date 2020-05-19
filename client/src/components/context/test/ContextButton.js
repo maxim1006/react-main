@@ -1,15 +1,12 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 import LanguageContext from "../../../context/LanguageContext";
 
 export default () => {
     const language = useContext(LanguageContext);
     const text = language === "en" ? "Submit" : "Подтвердить";
 
-    return (
-        <button type="button">{text}</button>
-    );
-}
-
+    return <button type="button">{text}</button>;
+};
 
 // раньше надо было делать через класс или consumer но с 16.8 можно использовать useContext
 // export default class ContextButton extends Component {
@@ -37,4 +34,3 @@ export default () => {
 //         </button>
 //     );
 // }
-

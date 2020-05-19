@@ -1,19 +1,22 @@
-import React, {useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 import ShopFormInput from "../form-input/ShopFormInput";
 import ShopButton from "../button/ShopButton";
-import {auth, createUserProfileDocument} from "../../../firebase/firebase.utils";
+import {
+    auth,
+    createUserProfileDocument
+} from "../../../firebase/firebase.utils";
 
 export default () => {
     const [signUpState, setSignUpState] = useState({
         displayName: "",
         email: "",
         password: "",
-        confirmPassword: "",
+        confirmPassword: ""
     });
 
-    const {displayName, email, password, confirmPassword} = signUpState;
+    const { displayName, email, password, confirmPassword } = signUpState;
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
@@ -22,26 +25,32 @@ export default () => {
         }
 
         try {
-            const {user} = await auth.createUserWithEmailAndPassword(email, password);
+            const { user } = await auth.createUserWithEmailAndPassword(
+                email,
+                password
+            );
 
-            await createUserProfileDocument(user, {displayName});
+            await createUserProfileDocument(user, { displayName });
 
             setSignUpState({
                 displayName: "",
                 email: "",
                 password: "",
-                confirmPassword: "",
+                confirmPassword: ""
             });
         } catch (e) {
             console.log("Sign Up handleSubmit error ", e.message);
         }
     };
 
-    const handleChange = useCallback(event => {
-        const {name, value} = event.target;
+    const handleChange = useCallback(
+        event => {
+            const { name, value } = event.target;
 
-        setSignUpState({...signUpState, [name]: value});
-    }, [displayName, email, password, confirmPassword]);
+            setSignUpState({ ...signUpState, [name]: value });
+        },
+        [displayName, email, password, confirmPassword]
+    );
 
     return (
         <div className="shop-sign-up">
@@ -94,4 +103,4 @@ export default () => {
             </form>
         </div>
     );
-}
+};

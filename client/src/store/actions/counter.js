@@ -1,4 +1,4 @@
-import {COUNTER_TYPES} from "./types";
+import { COUNTER_TYPES } from "./types";
 
 export const incrementCounter = () => ({
     type: COUNTER_TYPES.INCREMENT

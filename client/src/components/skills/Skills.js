@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import SkillList from "./list/SkillList";
 import SkillControls from "./controls/SkillControls";
 import SkillSearch from "./search/SkillSearch";
@@ -25,5 +25,5 @@ export default memo(() => {
 
             <SkillControls />
         </div>
-    )
+    );
 });

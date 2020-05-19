@@ -3,24 +3,31 @@ import MaterialLoaderComponent from "../loader/MaterialLoader";
 import useLocation from "../hooks/useLocation";
 
 export default () => {
-    const {latitude, longitude, errorMessage} = useLocation();
+    const { latitude, longitude, errorMessage } = useLocation();
 
     let position = "";
 
     if (latitude) {
-        position =
+        position = (
             <div>
-                latitude: {latitude}
-                longitude: {longitude}
+                latitude:
+                {latitude}
+                longitude:
+                {longitude}
             </div>
+        );
     } else {
-        position = <div style={{
-            position: "relaive",
-            pointerEvents: 'none'
-        }}>
-            {errorMessage ? errorMessage : <MaterialLoaderComponent/>}
-        </div>
+        position = (
+            <div
+                style={{
+                    position: "relaive",
+                    pointerEvents: "none"
+                }}
+            >
+                {errorMessage || <MaterialLoaderComponent />}
+            </div>
+        );
     }
 
     return position;
-}
+};

@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {editStream, fetchStream} from "../../store/actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { editStream, fetchStream } from "../../store/actions";
 import StreamForm from "./StreamForm";
-import {Link} from "react-router-dom";
 
 class StreamEdit extends Component {
     componentDidMount() {
@@ -11,36 +11,33 @@ class StreamEdit extends Component {
     }
 
     render() {
-        const {stream} = this.props;
+        const { stream } = this.props;
         // initialValues - это спец свойство redux form, сразу подставятся в инпуты
         // initialValues - это объект и в данном случае он равен stream
 
         if (stream) {
-            const {title, description} = stream;
+            const { title, description } = stream;
 
             return (
                 <>
                     <h3>Edit stream</h3>
                     <StreamForm
-                        initialValues={{title, description}}
+                        initialValues={{ title, description }}
                         onSubmit={this.onSubmit.bind(this)}
                     />
 
                     <p>
-                        <Link to="/stream">Go to stream list -></Link>
+                        <Link to="/stream">Go to stream list -&gt;</Link>
                     </p>
                 </>
             );
-        } else {
-            return (
-                <div>...Loading</div>
-            );
         }
+        return <div>...Loading</div>;
     }
 
-    onSubmit = (formValues) => {
+    onSubmit = formValues => {
         this.props.editStream(this.props.match.params.id, formValues);
-    }
+    };
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -48,7 +45,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    fetchStream: (id) => {
+    fetchStream: id => {
         dispatch(fetchStream(id));
     },
     editStream: (...args) => {

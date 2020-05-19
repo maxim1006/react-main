@@ -1,6 +1,6 @@
-import React, {useCallback} from "react";
-import {useDispatch} from "react-redux";
-import {shopAddCartItem} from "../../../../../store/actions";
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { shopAddCartItem } from "../../../../../store/actions";
 import {
     StyledShopCollectionsPreviewItem,
     StyledShopCollectionsPreviewItemButton,
@@ -11,21 +11,20 @@ import {
     StyledShopCollectionsPreviewItemPriceValue
 } from "./StyledShopCollectionsPreviewItem";
 
-export default ({item}) => {
-    const {imageUrl, name, price} = item;
+export default ({ item }) => {
+    const { imageUrl, name, price } = item;
 
     const dispatch = useDispatch();
-    const addCartItem = useCallback(
-        () => dispatch(shopAddCartItem(item)),
-        [dispatch, item]
-    );
+    const addCartItem = useCallback(() => dispatch(shopAddCartItem(item)), [
+        dispatch,
+        item
+    ]);
 
     return (
         <StyledShopCollectionsPreviewItem>
             <StyledShopCollectionsPreviewItemImageWrapper>
-                <StyledShopCollectionsPreviewItemButton
-                    onClick={addCartItem}
-                >Add to cart
+                <StyledShopCollectionsPreviewItemButton onClick={addCartItem}>
+                    Add to cart
                 </StyledShopCollectionsPreviewItemButton>
                 <StyledShopCollectionsPreviewItemImage
                     loading="lazy"
@@ -34,10 +33,14 @@ export default ({item}) => {
                 />
             </StyledShopCollectionsPreviewItemImageWrapper>
             <StyledShopCollectionsPreviewItemPrice>
-                <StyledShopCollectionsPreviewItemPriceName>{name}</StyledShopCollectionsPreviewItemPriceName>
-                {/*Пример как сделать любой селектор из styled component, вместо слеектора могу передать любой компонент*/}
-                <StyledShopCollectionsPreviewItemPriceValue as='span'>{price}</StyledShopCollectionsPreviewItemPriceValue>
+                <StyledShopCollectionsPreviewItemPriceName>
+                    {name}
+                </StyledShopCollectionsPreviewItemPriceName>
+                {/* Пример как сделать любой селектор из styled component, вместо слеектора могу передать любой компонент*/}
+                <StyledShopCollectionsPreviewItemPriceValue as="span">
+                    {price}
+                </StyledShopCollectionsPreviewItemPriceValue>
             </StyledShopCollectionsPreviewItemPrice>
         </StyledShopCollectionsPreviewItem>
-    )
+    );
 };

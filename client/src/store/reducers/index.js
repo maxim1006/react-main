@@ -1,5 +1,5 @@
-import {combineReducers} from "redux";
-import {reducer as form} from "redux-form";
+import { combineReducers } from "redux";
+import { reducer as form } from "redux-form";
 import songs from "./songs";
 import selectedSong from "./selectSong";
 import posts from "./posts";
@@ -12,7 +12,6 @@ import shopCart from "./shopCart";
 import shopData from "./shopData";
 import skills from "./skills";
 import counter from "./counter";
-
 
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
 // будет нормальных редьюсеров, например combineReducers({replaceMe: () => 1})

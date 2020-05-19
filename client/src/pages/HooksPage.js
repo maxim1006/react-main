@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import Component from "../components/component/Component";
 import HooksUseStateFamily from "../components/hooks/use-state/HooksUseStateFamily";
 import HooksUseStateCounter from "../components/hooks/use-state/HooksUseStateCounter";
@@ -6,39 +6,38 @@ import HooksUseStateCounter from "../components/hooks/use-state/HooksUseStateCou
 export default memo(() => {
     return (
         <>
-            {/*<Component title="UseMemoHook">*/}
+            {/* <Component title="UseMemoHook">*/}
             {/*    <UseMemoHook/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
 
-            {/*<Component title="UseReducerHook">*/}
+            {/* <Component title="UseReducerHook">*/}
             {/*    <UseReducerHook/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
 
-            {/*<Component title="UseRefHook">*/}
+            {/* <Component title="UseRefHook">*/}
             {/*    <UseRefHook/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
 
-            {/*<Component title="memo">*/}
+            {/* <Component title="memo">*/}
             {/*    <MemoHooks/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
 
-            {/*<Component title="useCallback">*/}
+            {/* <Component title="useCallback">*/}
             {/*    <UseCallbackHooks/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
 
-            {/*<Component title="useEffect">*/}
+            {/* <Component title="useEffect">*/}
             {/*    <HooksUseEffectFamily/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
 
             <Component title="useState">
-                <HooksUseStateFamily/>
-                <HooksUseStateCounter/>
+                <HooksUseStateFamily />
+                <HooksUseStateCounter />
             </Component>
 
-            {/*<Component title="Posts and Todos">*/}
+            {/* <Component title="Posts and Todos">*/}
             {/*    <HooksPostsAndTodos/>*/}
-            {/*</Component>*/}
+            {/* </Component>*/}
         </>
     );
 });
-
