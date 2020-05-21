@@ -1,0 +1,51 @@
+import React, { memo, useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchTodoPlans, store } from "../store";
+import TodoPlans from "../components/plans/todo-plans.component";
+import { TodosAppState } from "../store/state";
+import { ISimpleMap } from "../../../models/simple-map.model";
+import { IPlan } from "../../../models/plan.model";
+import MaterialLoader from "../../loader/MaterialLoader";
+import customAxios from "../../../common/api/axios";
+import { CancelTokenSource } from "axios";
+
+const TodoPlansConnectedContainer = ({
+    plans,
+    isLoading,
+    fetchTodoPlans
+}: {
+    plans: ISimpleMap<IPlan>;
+    isLoading: boolean;
+    fetchTodoPlans: (cancelToken: CancelTokenSource) => void;
+}) => {
+    const cancelRemoveSkillRequest = customAxios.CancelToken.source() as CancelTokenSource;
+
+    useEffect(() => {
+        fetchTodoPlans(cancelRemoveSkillRequest);
+
+        return () =>
+            cancelRemoveSkillRequest.cancel(
+                "TodoPlansConnectedContainer fetchTodoPlans canceled"
+            );
+    }, []);
+
+    return isLoading ? <MaterialLoader /> : <TodoPlans plans={plans} />;
+};
+
+const mapStateToProps = (state: TodosAppState) => {
+    return {
+        plans: state.plans.plans,
+        isLoading: state.plans.isLoading
+    };
+};
+
+const mapDispatchToProps = (dispatch: typeof store.dispatch) => ({
+    fetchTodoPlans: (cancelFetchSkillRequest: any) => {
+        dispatch(fetchTodoPlans(cancelFetchSkillRequest.token) as any);
+    }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(memo(TodoPlansConnectedContainer));

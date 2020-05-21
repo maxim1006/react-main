@@ -9,21 +9,24 @@ import { TODOS_TYPES, VISIBILITY_FILTER_TYPES } from "./store/actions";
 import { ITodo } from "../../models/todo.model";
 
 // Init states
-const initState = {
+const initStateTodos = {
     todos: [
         {
             name: "deeply learn redux",
             completed: false,
             id: generateUniqueId()
         }
-    ],
+    ]
+};
+
+const initStateVisibilityFilter = {
     visibilityFilter: "All"
 };
 
 // Reducers
 // использую паттерн комбинации редюсеров в один большой todoAppReducer
 const todosReducer = (
-    state: any = initState.todos,
+    state: any = initStateTodos,
     action: { type?: string; payload?: ITodo }
 ) => {
     switch (action.type) {
@@ -45,7 +48,7 @@ const todosReducer = (
 };
 
 const visibilityFilterReducer = (
-    state = initState.visibilityFilter,
+    state = initStateVisibilityFilter,
     action: { type: string; payload: string }
 ) => {
     switch (action.type) {
@@ -107,7 +110,7 @@ export const addTodoActionCreator = (name: string) => ({
 // Также тут включаю девтулы с редаксом, но при этом надо отключить тут client/src/store/configureStore.js
 export const store = createStore(
     todoAppReducer,
-    initState,
+    {},
     (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
         (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );

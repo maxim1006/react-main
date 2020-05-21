@@ -2,6 +2,7 @@ import { generateUniqueId } from "../../../../common/helpers/helpers";
 import { TODOS_TYPES } from "../actions";
 import { TodosState } from "../state";
 import { ITodo } from "../../../../models/todo.model";
+import { TodoActionTypes } from "../actions/todo.action-type";
 
 const initState: TodosState = [
     {
@@ -11,10 +12,7 @@ const initState: TodosState = [
     }
 ];
 
-export default (
-    state = initState,
-    action: { type?: string; payload?: ITodo }
-) => {
+export default (state = initState, action: TodoActionTypes) => {
     switch (action.type) {
         case TODOS_TYPES.TOGGLE: {
             const { id, completed }: ITodo = action.payload as ITodo;

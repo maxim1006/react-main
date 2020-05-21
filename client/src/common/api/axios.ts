@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const customAxios = axios.create({
+const customAxios: any = axios.create({
     baseURL: "http://localhost:3001/api"
     // headers: {}
 });

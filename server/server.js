@@ -1,7 +1,7 @@
-import express from 'express';
-import * as bodyParser from 'body-parser';
+import express from "express";
+import * as bodyParser from "body-parser";
 import * as path from "path";
-import {ApolloServer} from 'apollo-server-express';
+import { ApolloServer } from "apollo-server-express";
 import {
     articlesRouter,
     commentsRouter,
@@ -16,7 +16,8 @@ import {
     skillsRouter,
     streamsRouter,
     usersRouter,
-} from './routers';
+    plansRouter
+} from "./routers";
 import schema from "./gql/schema";
 import resolvers from "./gql/resolvers";
 import "./db/db.js";
@@ -26,21 +27,27 @@ import "./db/db.js";
 const app = express(),
     port = process.env.PORT || 3001,
     gqlPport = process.env.GQL_PORT || 3002,
-    root = '/api/',
+    root = "/api/",
     isProduction = process.env.NODE_ENV === "production";
 
 // если так то не работает delete метод, по непонятной причине потом заработало
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS, PATCH");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET, PUT, POST, DELETE, OPTIONS, PATCH"
+    );
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
     res.header("Access-Control-Max-Age", 600);
     next();
 });
 
 // Передаю в переменнные окружения значения из .env с помощью dotenv нпм пакета
 if (!isProduction) {
-    require('dotenv').config();
+    require("dotenv").config();
 }
 
 // использую middleware cors package
@@ -55,63 +62,67 @@ if (!isProduction) {
 // Add your mock router here
 const appRouters = [
     {
-        url: 'articles',
+        url: "articles",
         middleware: articlesRouter
     },
     {
-        url: 'family',
+        url: "family",
         middleware: familyRouter
     },
     {
-        url: 'comments',
+        url: "comments",
         middleware: commentsRouter
     },
     {
-        url: 'posts',
+        url: "posts",
         middleware: postsRouter
     },
     {
-        url: 'frameworks',
+        url: "frameworks",
         middleware: frameworksRouter
     },
     {
-        url: 'users',
+        url: "users",
         middleware: usersRouter
     },
     {
-        url: 'streams',
+        url: "streams",
         middleware: streamsRouter
     },
     {
-        url: 'hooks',
+        url: "hooks",
         middleware: hooksRouter
     },
     {
-        url: 'monsters',
+        url: "monsters",
         middleware: monsterRouter
     },
     {
-        url: 'payment',
+        url: "payment",
         middleware: paymentRouter
     },
     {
-        url: 'skills',
+        url: "skills",
         middleware: skillsRouter
     },
     {
-        url: 'doors',
+        url: "doors",
         middleware: doorsRouter
     },
     {
-        url: 'fetch',
+        url: "fetch",
         middleware: fetchRouter
+    },
+    {
+        url: "plans",
+        middleware: plansRouter
     }
 ];
 
 // автоматом все запросы приходят с боди json (аля fetch => data.json())
 app.use(bodyParser.json());
 // проверка что url не содержат лишних символов пробелов и тд
-app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 appRouters.forEach(router => app.use(root + router.url, router.middleware));
 
@@ -120,10 +131,9 @@ if (isProduction) {
     app.use(express.static(path.join(__dirname, "../client/build")));
 
     app.get("*", (req, res) => {
-        res.send(path.join(__dirname, '../client/build', 'index.html'));
+        res.send(path.join(__dirname, "../client/build", "index.html"));
     });
 }
-
 
 // настраиваю gql
 const server = new ApolloServer({
@@ -136,18 +146,16 @@ const server = new ApolloServer({
     }
 });
 
-server.applyMiddleware({app});
+server.applyMiddleware({ app });
 
 // тут playground
 // console.log(server.graphqlPath); // http://localhost:3001/graphql
 
-
-app.listen(port, (error) => {
+app.listen(port, error => {
     if (error) throw error;
     console.log(`Mock server is listening on port ${port}`);
     console.log("ApolloServer on http://localhost:3001/graphql");
 });
-
 
 // firestore
 // try {
