@@ -1,8 +1,10 @@
 import React, { memo } from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import TodoList from "../components/todo-list.component";
-import { ITodo } from "../models/todo.model";
-import { toggleTodo } from "../store";
+import { selectTodos, selectVisibilityFilter, toggleTodo } from "../store";
+import { TodosAppState } from "../store/state";
+import { ITodo } from "../../../models/todo.model";
 
 export type TodoListContainerProps = {
     todos: ITodo[];
@@ -22,9 +24,25 @@ const TodoListConnectedContainer = ({
     />
 );
 
-const mapStateToProps = (state: any) => ({
-    todos: state.todos,
-    visibilityFilter: state.visibilityFilter
+// базовый вариант
+// const mapStateToProps = (state: any) => ({
+//     todos: state.todos,
+//     visibilityFilter: state.visibilityFilter
+// });
+
+// тоже но с селекторами
+// const mapStateToProps = (state: any) => ({
+//     todos: selectTodos(state),
+//     visibilityFilter: selectVisibilityFilter(state)
+// });
+
+// тоже но с createStructuredSelector
+const mapStateToProps = createStructuredSelector<
+    TodosAppState,
+    { todos: ITodo[]; visibilityFilter: string }
+>({
+    todos: selectTodos,
+    visibilityFilter: selectVisibilityFilter
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

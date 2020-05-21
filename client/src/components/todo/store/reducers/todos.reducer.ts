@@ -1,8 +1,9 @@
 import { generateUniqueId } from "../../../../common/helpers/helpers";
-import { ITodo } from "../../models/todo.model";
 import { TODOS_TYPES } from "../actions";
+import { TodosState } from "../state";
+import { ITodo } from "../../../../models/todo.model";
 
-const initState = [
+const initState: TodosState = [
     {
         name: "deeply learn redux",
         completed: false,
@@ -11,7 +12,7 @@ const initState = [
 ];
 
 export default (
-    state: any = initState,
+    state = initState,
     action: { type?: string; payload?: ITodo }
 ) => {
     switch (action.type) {

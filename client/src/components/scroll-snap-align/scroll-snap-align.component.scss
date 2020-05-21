@@ -1,0 +1,43 @@
+@import "../../assets/styles/common.scss";
+
+.scroll-snap-align {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border: 1px solid;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: both mandatory;
+    scroll-snap-points-y: repeat(400px);
+    scroll-snap-points-x: repeat(400px);
+
+    &__item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 400px;
+        margin: 50px 0;
+        scroll-snap-stop: normal;
+        scroll-snap-align: start;
+
+        &._align-start {
+            background-color: green;
+        }
+
+        &._align-end {
+            background-color: orange;
+        }
+
+        &._align-center {
+            background-color: blue;
+        }
+
+        &._align-none {
+            background-color: red;
+        }
+    }
+
+}
+

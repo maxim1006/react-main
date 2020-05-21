@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FormsComponent } from "../components/forms/Forms";
 import { JsxListComponent } from "../components/jsx/JsxList";
 import JsxFragment from "../components/jsx/JsxFragment";
@@ -6,15 +6,19 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import { TabsComponent } from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import DragNDrop from "../components/drag-n-drop/drag-n-drop.component";
+import ScrollSnapAlign from "../components/scroll-snap-align/scroll-snap-align.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Drag'n'drop">
-                    <DragNDrop />
+                <Component title="Scroll snap align">
+                    <ScrollSnapAlign />
                 </Component>
+
+                {/* <Component title="Drag'n'drop">*/}
+                {/*    <DragNDrop />*/}
+                {/* </Component>*/}
 
                 {/* <Component title="Count up">*/}
                 {/*    <CountupWrapper />*/}

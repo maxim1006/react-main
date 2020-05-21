@@ -3,7 +3,6 @@
 ##  Libraries docs
 * [React](https://en.reactjs.org/docs/getting-started.html)
 * [Redux](https://redux.js.org/introduction/getting-started)
-* [Ant Design](https://ant.design/)
 * [Styled components](https://styled-components.com/docs)
 * [Redux-saga](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html)
 * [Stomp-js](https://stomp-js.github.io/api-docs/latest/index.html)

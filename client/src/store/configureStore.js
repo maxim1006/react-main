@@ -1,6 +1,5 @@
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
 import { throttle } from "lodash";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist"; // defaults to localStorage for web
@@ -15,19 +14,20 @@ function configureStore() {
 
     // logger выводит в консоль все изменения стора, пока закомментирую чтобы не мешал
     // const middlewares = [thunk, logger];
-    const middlewares = [thunk];
-    const middlewareEnhancer = applyMiddleware(...middlewares);
+    // const middlewares = [thunk];
+    // const middlewareEnhancer = applyMiddleware(...middlewares);
 
     // monitorReducerEnhancer - выводит время работы каждого редьюсера
     // const enhancers = [middlewareEnhancer, monitorReducerEnhancer];
-    const enhancers = [middlewareEnhancer];
+    // const enhancers = [middlewareEnhancer];
 
     // нужно чтобы заработали дев тулы
     // const composedEnhancers = process.env.NODE_ENV !== 'production'
     //     ? composeWithDevTools(...enhancers)
     //     : compose(applyMiddleware(...[thunk]));
 
-    // это для проверки кастомных сторов к примеру в todos и counter, 2 раза нельзя объявлять девтулы поэтому раскомменть
+    // это для проверки кастомных сторов к примеру в todos и counter,
+    // 2 раза нельзя объявлять девтулы поэтому раскомменть
     // это если нужно в тех сторах включить дев тулы
     const composedEnhancers = compose(applyMiddleware(...[thunk]));
 
@@ -56,7 +56,8 @@ function configureStore() {
     return store;
 }
 
-// как альтернатива прямой записи в session и local storage, но на мой взгляд чище то что Дэн Абрамов предложил через сабскрайб, см выше
+// как альтернатива прямой записи в session и local storage,
+// но на мой взгляд чище то что Дэн Абрамов предложил через сабскрайб, см выше
 const persistConfig = {
     key: "root",
     storage,

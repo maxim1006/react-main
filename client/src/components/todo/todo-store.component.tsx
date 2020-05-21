@@ -5,8 +5,8 @@ import { generateUniqueId } from "../../common/helpers/helpers";
 import TodoFilterLinksConnectedContainer from "./containers/todo-filter-links-connected-container.component";
 import TodoListConnectedContainer from "./containers/todo-list-connected-container.component";
 import TodoHeaderConnectedContainer from "./containers/todo-header-connected-container.component";
-import { ITodo } from "./models/todo.model";
 import { TODOS_TYPES, VISIBILITY_FILTER_TYPES } from "./store/actions";
+import { ITodo } from "../../models/todo.model";
 
 // Init states
 const initState = {

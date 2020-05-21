@@ -1,6 +1,7 @@
 import { VISIBILITY_FILTER_TYPES } from "../actions";
+import { VisibilityFilterState } from "../state/visibility-filter.state";
 
-const initState = "All";
+const initState: VisibilityFilterState = "All";
 
 export default (
     state = initState,

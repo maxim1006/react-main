@@ -4,5 +4,5 @@ export const TODOS_TYPES = {
 };
 
 export const VISIBILITY_FILTER_TYPES = {
-    SET: "[Todos] Set visibility filter"
+    SET: "[Visibility filter] Set visibility filter"
 };

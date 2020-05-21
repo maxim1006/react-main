@@ -1,6 +1,6 @@
 ### redux principles
 1) State - один большущий объект на любое приложение
-2) State is readonly, moify it only via actions (объект с type пропертей)
+2) State is readonly, modify it only via actions (объект с type пропертей)
 3) Редьюсер - pure function (при одинаковых аргументах - одинаковый результат) (не делает рест апи коллов, не мутирует объекты и массивы, а возвращает новые) возвращает next state
 4) Роль container layer component сделать connect presentational layer component to store
 
