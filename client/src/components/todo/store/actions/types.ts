@@ -1,14 +1,14 @@
 export const TODOS_TYPES = {
-    ADD: "[Todos] Add Todo",
-    TOGGLE: "[Todos] Toggle Todo"
+    ADD: "[TodoHeaderContainer] Add Todo",
+    TOGGLE: "[TodoListContainer] Toggle Todo"
 };
 
 export const VISIBILITY_FILTER_TYPES = {
-    SET: "[Visibility filter] Set visibility filter"
+    SET: "[TodoFilterLinksContainer] Set visibility filter"
 };
 
 export const PLANS_TYPES = {
-    FETCH_START: "[Todos plans] Fetch start",
-    FETCH_SUCCESS: "[Todos plans] Fetch success",
-    FETCH_ERROR: "[Todos plans] Fetch error"
+    FETCH_START: "[TodoPlansConnectedContainer] Fetch start",
+    FETCH_SUCCESS: "[TodoPlansConnectedContainer] Fetch success",
+    FETCH_ERROR: "[TodoPlansConnectedContainer] Fetch error"
 };

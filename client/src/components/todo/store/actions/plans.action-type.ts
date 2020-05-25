@@ -10,9 +10,7 @@ interface FetchPlans {
 
 interface FetchPlansSuccess {
     type: typeof PLANS_TYPES.FETCH_SUCCESS;
-    payload: {
-        plans: IPlans;
-    };
+    payload: IPlans;
 }
 
 interface FetchPlansError {

@@ -21,7 +21,7 @@
         "node": true
     },
     "parserOptions": {
-        "project": "./tsconfig.json",
+        "project": "./client/tsconfig.json",
         "tsconfigRootDir": "./",
         "ecmaVersion": 6,
         "sourceType": "module",

@@ -1,8 +1,6 @@
 import { PLANS_TYPES } from "../actions";
 import { PlansState } from "../state";
 import { PlansActionTypes } from "../actions/plans.action-type";
-import { IPlans } from "../../../../models/plans.model";
-import { IError } from "../../../../models/error.model";
 
 const initState: PlansState = {
     isLoading: false,
@@ -19,12 +17,12 @@ export default (state = initState, action: PlansActionTypes): PlansState => {
         }
 
         case PLANS_TYPES.FETCH_SUCCESS: {
-            const { plans }: IPlans = action.payload;
+            const { plans } = action.payload;
             return { ...state, plans, isLoading: false };
         }
 
         case PLANS_TYPES.FETCH_ERROR: {
-            const { error }: IError = action.payload;
+            const { error } = action.payload;
             return { ...state, error, isLoading: false };
         }
 
