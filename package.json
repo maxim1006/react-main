@@ -14,8 +14,8 @@
         "start": "node -r esm ./server/server.js",
         "heroku-postbuild": "cd ./client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
         "precommit": "lint-staged",
-        "lint": "eslint ./client/src --ext .ts,.tsx,.js,.jsx ./src/",
-        "lint:fix": "eslint ./client/src --ext .ts,.tsx,.js,.jsx ./src/ --fix"
+        "lint": "eslint ./client/src --ext .ts,.tsx,.js,.jsx",
+        "lint:fix": "eslint ./client/src --ext .ts,.tsx,.js,.jsx --fix"
     },
     "husky": {
         "hooks": {
