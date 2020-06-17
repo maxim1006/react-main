@@ -4,18 +4,18 @@ import { generateUniqueId } from "../../common/helpers/helpers";
 
 const MouseoverMouseleave: React.FC = () => {
     let currentElem: HTMLElement | null = null;
-    const tableRef = useRef();
+    const tableRef = useRef<HTMLTableElement>(null!);
 
     useEffect(() => {
-        const tableElement: HTMLTableElement = tableRef.current;
+        const tableElement = tableRef.current;
 
-        tableElement.onmouseover = (event: MouseEvent) => {
+        tableElement.onmouseover = (event: Event) => {
             // перед тем, как войти на следующий элемент, курсор всегда покидает предыдущий
             // если currentElem есть, то мы ещё не ушли с предыдущего <td>,
             // это переход внутри - игнорируем такое событие
             if (currentElem) return;
 
-            const target = event.target.closest("td");
+            const target = (event.target as Element).closest("td");
 
             // переход не на <td> - игнорировать
             if (!target) return;
@@ -29,14 +29,14 @@ const MouseoverMouseleave: React.FC = () => {
             target.style.background = "pink";
         };
 
-        tableElement.onmouseout = event => {
+        tableElement.onmouseout = (event: MouseEvent) => {
             // если мы вне <td>, то игнорируем уход мыши
             // это какой-то переход внутри таблицы, но вне <td>,
             // например с <tr> на другой <tr>
             if (!currentElem) return;
 
             // мы покидаем элемент – но куда? Возможно, на потомка?
-            let { relatedTarget }: {} = event;
+            let { relatedTarget }: any = event;
 
             while (relatedTarget) {
                 // поднимаемся по дереву элементов и проверяем – внутри ли мы currentElem или нет

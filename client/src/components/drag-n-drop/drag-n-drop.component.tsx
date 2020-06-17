@@ -15,6 +15,7 @@ const DragNDrop = () => {
         width: number;
         height: number;
     };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let documentElementInfo: { width: number; height: number };
 
     const onDragStart = (e: any) => {
@@ -40,6 +41,7 @@ const DragNDrop = () => {
             clientHeight: height,
             clientWidth: width
         } = document.documentElement;
+
         documentElementInfo = { width, height };
     };
 
@@ -98,7 +100,7 @@ const DragNDrop = () => {
 
     useEffect(() => {
         const dragElement = dragRef.current;
-        console.log("drag useEffect");
+        // console.log("drag useEffect");
 
         dragElement.addEventListener("mousedown", onDragStart);
         document.addEventListener("mousemove", onDrag);
