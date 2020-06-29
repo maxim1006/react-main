@@ -1,5 +1,7 @@
 import React, { memo, useState } from "react";
 
+// Стейт сохраняется в течение жизни компоненты. Каждое изменение стейта триггерит перезапуск функции компонента.
+
 export default memo(() => {
     let [counter, setCounter] = useState(0);
 

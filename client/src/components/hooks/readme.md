@@ -23,6 +23,8 @@ const [resource, setResource] = useState('posts');
 имена в хуках любые. Первое значение - кусок стейта, второе - setter function (типо setState в class based component)
 resource === this.state.resource, setResource === this.setState({resource: "posts"}) 
 
+Стейт сохраняется в течение жизни компоненты. Каждое изменение стейта триггерит перезапуск функции компонента.
+
 
 
 ## useEffect
