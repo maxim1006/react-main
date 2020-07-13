@@ -1,3 +1,6 @@
+###
+Примеры смотри тут client/src/components/todo
+
 ### redux principles
 1) State - один большущий объект на любое приложение
 2) State is readonly, modify it only via actions (объект с type пропертей)

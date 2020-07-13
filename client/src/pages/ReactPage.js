@@ -6,15 +6,19 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import { TabsComponent } from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import MouseoverMouseleave from "../components/mouseover-mouseleave/mouseover-mouseleave.component";
+import Performance from "../components/performance/performance.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="Mouseover mouseleave">
-                    <MouseoverMouseleave />
+                <Component title="Performance">
+                    <Performance />
                 </Component>
+
+                {/* <Component title="Mouseover mouseleave"> */}
+                {/*    <MouseoverMouseleave />*/}
+                {/* </Component> */}
 
                 {/* <Component title="Scroll snap align">*/}
                 {/*    <ScrollSnapAlign />*/}

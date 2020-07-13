@@ -88,6 +88,8 @@ const Parent = ()=> {
 ## useMemo
 https://reactjs.org/docs/hooks-reference.html#usememo
 useMemo - invokes the provided function and caches its result.
+// useMemo - кеширую сложные вычисления, функция expensiveFunc вызовется только 1 раз при инициализации. Дальше при
+// изменении стейта будет вызываться функция без useMemo, а мемоизировванная не будет
 
 
 

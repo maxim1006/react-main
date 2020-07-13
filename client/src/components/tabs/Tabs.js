@@ -6,6 +6,14 @@ export class TabsComponent extends Component {
         activeTab: 0
     };
 
+    componentDidMount() {
+        const { activeTab } = this.props;
+
+        if (activeTab !== undefined) {
+            this.setState({ activeTab });
+        }
+    }
+
     render() {
         const { children } = this.props;
 
@@ -33,9 +41,7 @@ export class TabsComponent extends Component {
             <div
                 onClick={this.onClick.bind(this, index)}
                 key={index}
-                className={`tabs__header-item${
-                    index === this.state.activeTab ? " _active" : ""
-                }`}
+                className={`tabs__header-item${index === this.state.activeTab ? " _active" : ""}`}
             >
                 {child.props.tabName}
             </div>
