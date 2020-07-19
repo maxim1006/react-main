@@ -14,8 +14,9 @@ export const loadTranslations = async () => {
         Object.keys(i18n.translations)
             .filter(key => key !== i18n.defaultLocale)
             .map(async locale => {
-                const { default: data } = await import(`../../i18n/translations/locales/${locale}.json`);
-                console.log(data);
+                const { default: data } = await import(
+                    /* webpackPrefetch: true */ `../../i18n/translations/locales/${locale}.json`
+                );
                 i18n.translations[locale] = {
                     ...i18n.translations[locale],
                     ...data
