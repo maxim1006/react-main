@@ -1,0 +1,8 @@
+{
+  "browse": "browse",
+  "cancel": "cancel",
+  "clear": "clear",
+  "complex": {
+      "prop": "complex {{count}}"
+  }
+}

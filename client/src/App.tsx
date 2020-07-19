@@ -16,6 +16,7 @@ const HooksPage = React.lazy(() => import("./pages/HooksPage"));
 const ShopPage = React.lazy(() => import("./pages/ShopPage"));
 const ContextPage = React.lazy(() => import("./pages/ContextPage"));
 const ReduxPage = React.lazy(() => import("./pages/ReduxPage"));
+const IntlPage = React.lazy(() => import("./pages/IntlPage"));
 
 const App: React.FC = () => {
     return (
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                                 { to: "/lazy", title: "Lazy" },
                                 { to: "/context", title: "Context" },
                                 { to: "/hooks", title: "Hooks" },
+                                { to: "/intl", title: "Intl" },
                                 { to: "/unknown", title: "Unknown" }
                             ]}
                         />
@@ -52,10 +54,8 @@ const App: React.FC = () => {
                                 <Route path="/hooks" component={HooksPage} />
                                 <Route path="/stream" component={StreamPage} />
                                 <Route path="/lazy" component={LazyPage} />
-                                <Route
-                                    path="/context"
-                                    component={ContextPage}
-                                />
+                                <Route path="/context" component={ContextPage} />
+                                <Route path="/intl" component={IntlPage} />
                                 <Route path="*">
                                     <NotFound />
                                 </Route>
