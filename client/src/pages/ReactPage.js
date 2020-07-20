@@ -7,6 +7,7 @@ import { TabsComponent } from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
 import Performance from "../components/performance/performance.component";
+import GetRequestHookOnCbComponent from "../components/get-request-hook-on-cb/get-request-hook-on-cb.component";
 
 export default function ReactPage() {
     return (
@@ -15,6 +16,14 @@ export default function ReactPage() {
                 <Component title="Performance">
                     <Performance />
                 </Component>
+
+                {/* <Component title="Hook axios get on callback"> */}
+                {/*    <GetRequestHookOnCbComponent />*/}
+                {/* </Component> */}
+
+                {/* <Component title="CSS Modules"> */}
+                {/*    <CssModuleComponent />*/}
+                {/* </Component> */}
 
                 {/* <Component title="Mouseover mouseleave"> */}
                 {/*    <MouseoverMouseleave />*/}
