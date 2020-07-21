@@ -1,6 +1,10 @@
 https://react-redux.js.org/next/api/hooks
 
-## General
+## `Rules`
+- Only call Hooks at the top level. Don’t call Hooks inside loops, conditions, or nested functions.
+- Only call Hooks from React function components. Don’t call Hooks from regular JavaScript functions.
+
+## `General`
 Если хочу использовать хук с условием то делаю это всегда внутри хука
 useEffect(function persistForm() {
     if (name !== '') {
@@ -10,7 +14,7 @@ useEffect(function persistForm() {
 
 
 
-## useState
+## `useState`
 Ровно как this.setState у Class компоненты
 allow a functional component to use component-level state. Если инит знаечение не простой объект, то чтобы не пересоздавать его на каждый ререндер передаю в useState
 вместо 
