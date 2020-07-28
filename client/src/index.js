@@ -1,15 +1,21 @@
 import React from "react";
 import { render } from "react-dom";
+import { ConnectedRouter } from "connected-react-router";
 import "./index.css";
 import { Provider } from "react-redux";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store/configureStore";
+import history from "./history";
 
 // обычно с редаксом
 render(
     <Provider store={store}>
-        <App />
+        {/* Могу использовать обычный роутер как выше, могу тот с которым работаю в редакс,
+        сейчас работатет только с history: "^4.10.1"*/}
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
     </Provider>,
     document.getElementById("root")
 );
