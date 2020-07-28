@@ -7,12 +7,16 @@ import { TabsComponent } from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
 import Performance from "../components/performance/performance.component";
-import GetRequestHookOnCbComponent from "../components/get-request-hook-on-cb/get-request-hook-on-cb.component";
+import TipsComponent from "../components/tips/tips.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
+                <Component title="JS tips">
+                    <TipsComponent />
+                </Component>
+
                 <Component title="Performance">
                     <Performance />
                 </Component>
