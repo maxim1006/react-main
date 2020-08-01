@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default ({ url, controller }) => {
+export default ({ url, controller }: { url: string; controller?: any }) => {
     const [data, setData] = useState(null);
 
     useEffect(() => {

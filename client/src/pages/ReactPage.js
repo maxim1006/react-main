@@ -13,13 +13,13 @@ export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
-                <Component title="JS tips">
-                    <TipsComponent />
-                </Component>
-
                 <Component title="Performance">
                     <Performance />
                 </Component>
+
+                {/* <Component title="JS tips"> */}
+                {/*  <TipsComponent />*/}
+                {/* </Component> */}
 
                 {/* <Component title="Hook axios get on callback"> */}
                 {/*    <GetRequestHookOnCbComponent />*/}

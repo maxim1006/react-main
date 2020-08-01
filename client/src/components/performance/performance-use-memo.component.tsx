@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { memo, useMemo, useState } from "react";
 
 // useMemo - кеширую сложные вычисления, функция expensiveFunc вызовется только 1 раз при инициализации. Дальше при
