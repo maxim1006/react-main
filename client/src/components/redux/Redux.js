@@ -8,6 +8,7 @@ import MainMenu from "../menu/MainMenu";
 import UserListHooks from "../user/UserListHooks";
 import Counters from "../counter/counters.component";
 import Todos from "../todo/todos.component";
+import ReduxSaga from "../redux-saga/reddux-saga.component";
 
 export class ReduxComponent extends Component {
     render() {
@@ -16,7 +17,8 @@ export class ReduxComponent extends Component {
                 <MainMenu
                     exact
                     routes={[
-                        { to: "/redux", title: "Todos" },
+                        { to: "/redux", title: "Sagas" },
+                        { to: "/redux/todos", title: "Todos" },
                         { to: "/redux/counters", title: "Counters" },
                         { to: "/redux/song-list", title: "SongList" },
                         {
@@ -30,25 +32,14 @@ export class ReduxComponent extends Component {
                 />
 
                 <Switch>
-                    <Route path="/redux" exact component={Todos} />
+                    <Route path="/redux" exact component={ReduxSaga} />
+                    <Route path="/redux/todos" exact component={Todos} />
                     <Route path="/redux/counters" exact component={Counters} />
                     <Route path="/redux/song-list" exact component={SongList} />
-                    <Route
-                        path="/redux/posts-and-users"
-                        exact
-                        component={PostsAndUsers}
-                    />
+                    <Route path="/redux/posts-and-users" exact component={PostsAndUsers} />
                     <Route path="/redux/post-list" exact component={PostList} />
-                    <Route
-                        path="/redux/framework-list"
-                        exact
-                        component={FrameworkList}
-                    />
-                    <Route
-                        path="/redux/user-list"
-                        exact
-                        component={UserListHooks}
-                    />
+                    <Route path="/redux/framework-list" exact component={FrameworkList} />
+                    <Route path="/redux/user-list" exact component={UserListHooks} />
                 </Switch>
             </>
         );

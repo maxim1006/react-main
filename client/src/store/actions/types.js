@@ -64,3 +64,9 @@ export const COUNTER_TYPES = {
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT"
 };
+
+export const SAGA_TYPES = {
+    GET_USER_START: "[ReduxSagaIntroComponent] Start get user",
+    GET_USER_SUCCESS: "[User saga] Get user success",
+    GET_USER_ERROR: "[User saga] Get user error"
+};
