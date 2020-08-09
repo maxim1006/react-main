@@ -96,6 +96,13 @@ useMemo - invokes the provided function and caches its result.
 // изменении стейта будет вызываться функция без useMemo, а мемоизировванная не будет
 
 
+# useLayoutEffect
+The signature is identical to useEffect, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside useLayoutEffect will be flushed synchronously, before the browser has a chance to paint.
+
+Prefer the standard useEffect when possible to avoid blocking visual updates.
+
+ Only after the browser has painted the DOM change(s) is the useEffect function fired.
+ Unlike useEffect, the function passed to the useLayoutEffect Hook is fired synchronously after all DOM mutations.
 
 
 

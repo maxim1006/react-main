@@ -2,10 +2,15 @@ import React, { memo } from "react";
 import Component from "../components/component/Component";
 import HooksUseStateFamily from "../components/hooks/use-state/HooksUseStateFamily";
 import HooksUseStateCounter from "../components/hooks/use-state/HooksUseStateCounter";
+import UseLayoutEffectComponent from "../components/hooks/use-layout-effect/use-layout-effect.component";
 
-export default memo(() => {
+const HooksPage = () => {
     return (
         <>
+            <Component title="UseLayoutEffectComponent">
+                <UseLayoutEffectComponent />
+            </Component>
+
             {/* <Component title="UseMemoHook">*/}
             {/*    <UseMemoHook/>*/}
             {/* </Component>*/}
@@ -40,4 +45,6 @@ export default memo(() => {
             {/* </Component>*/}
         </>
     );
-});
+};
+
+export default memo(HooksPage);
