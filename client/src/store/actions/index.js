@@ -11,3 +11,4 @@ export * from "./shopData";
 export * from "./skills";
 export * from "./counter";
 export * from "./saga";
+export * from "./family";

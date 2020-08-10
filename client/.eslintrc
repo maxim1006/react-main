@@ -21,7 +21,7 @@
         "node": true
     },
     "parserOptions": {
-        "project": "./client/tsconfig.json",
+        "project": "./tsconfig.json",
         "tsconfigRootDir": "./",
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -36,7 +36,7 @@
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "linebreak-style": 0,
         "no-duplicate-imports": "warn",
-        "no-console": ["error", { "allow": ["warn", "error"] }],
+//        "no-console": ["error", { "allow": ["warn", "error"] }],
         "no-return-assign": [
             "error",
             "except-parens"

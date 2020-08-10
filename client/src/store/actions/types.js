@@ -66,7 +66,13 @@ export const COUNTER_TYPES = {
 };
 
 export const SAGA_TYPES = {
-    GET_USER_START: "[ReduxSagaIntroComponent] Start get user",
+    GET_USER_START: "[ReduxSagaIntroComponent] Get user start",
     GET_USER_SUCCESS: "[User saga] Get user success",
     GET_USER_ERROR: "[User saga] Get user error"
+};
+
+export const FAMILY_TYPES = {
+    GET_FAMILY_START: "[Api] Get family start",
+    GET_FAMILY_SUCCESS: "[Api] Get family success",
+    GET_FAMILY_ERROR: "[Api] Get family error"
 };

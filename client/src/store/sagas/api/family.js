@@ -1,8 +1,8 @@
 import customAxios from "../../../common/api/axios";
 
-export async function getUserApi() {
+export async function getFamilyApi() {
     try {
-        const { data } = await customAxios.get("users");
+        const { data } = await customAxios.get("family");
 
         return data;
     } catch (error) {

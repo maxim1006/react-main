@@ -1,13 +1,13 @@
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
 import { throttle } from "lodash";
-import storage from "redux-persist/lib/storage";
 import { routerMiddleware } from "connected-react-router";
-import { persistReducer, persistStore } from "redux-persist"; // defaults to localStorage for web
 import history from "../history";
 import { loadState, saveState } from "./session-storage";
 import createRootReducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./sagas";
 
 const initState = {};
 // забираю стор из локалстораджа
@@ -15,20 +15,20 @@ const persistedState = loadState();
 
 // для того чтобы кучу логики не хранить в index.js про стор, вынес в отдельный файл
 function configureStore(preloadedState) {
+    // Sagas
+    const sagaMiddleware = createSagaMiddleware();
+
     // logger выводит в консоль все изменения стора, пока закомментирую чтобы не мешал
     // const middlewares = [thunk, logger];
-    const middlewares = [thunk];
+    const middlewares = [sagaMiddleware, thunk, routerMiddleware(history)];
     const middlewareEnhancer = applyMiddleware(...middlewares);
 
     // monitorReducerEnhancer - выводит время работы каждого редьюсера
     // const enhancers = [middlewareEnhancer, monitorReducerEnhancer];
-    const enhancers = [middlewareEnhancer];
 
     // нужно чтобы заработали дев тулы
     const composedEnhancers =
-        process.env.NODE_ENV !== "production"
-            ? composeWithDevTools(...enhancers)
-            : compose(applyMiddleware(...[thunk, routerMiddleware(history)]));
+        process.env.NODE_ENV !== "production" ? composeWithDevTools(middlewareEnhancer) : compose(middlewareEnhancer);
 
     // это для проверки кастомных сторов к примеру в todos и counter,
     // 2 раза нельзя объявлять девтулы поэтому раскомменть
@@ -42,6 +42,9 @@ function configureStore(preloadedState) {
         // должен все enhancers объединять в один, так как createStore может принимать только 1 аргумент enhancers
         composedEnhancers
     );
+
+    // run saga
+    sagaMiddleware.run(rootSaga);
 
     // throttle чтобы часто не вызывать дорогую JSON.parse хотябы 1 раз в секунду
     store.subscribe(

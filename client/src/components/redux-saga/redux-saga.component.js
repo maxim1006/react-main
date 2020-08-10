@@ -1,14 +1,17 @@
 import React, { memo } from "react";
 import { TabsComponent } from "../tabs/Tabs";
-import PerformanceUseMemo from "../performance/performance-use-memo.component";
 import ReduxSagaIntroComponent from "./intro/redux-saga-intro.component";
+import FamilySagaComponent from "./family/family-saga.component";
 
 const ReduxSaga = () => {
     return (
         <>
-            <TabsComponent>
+            <TabsComponent activeTab={1}>
                 <div tabName="Intro">
                     <ReduxSagaIntroComponent />
+                </div>
+                <div tabName="Family">
+                    <FamilySagaComponent />
                 </div>
             </TabsComponent>
         </>

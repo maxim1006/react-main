@@ -8,7 +8,7 @@ import MainMenu from "../menu/MainMenu";
 import UserListHooks from "../user/UserListHooks";
 import Counters from "../counter/counters.component";
 import Todos from "../todo/todos.component";
-import ReduxSaga from "../redux-saga/reddux-saga.component";
+import ReduxSaga from "../redux-saga/redux-saga.component";
 
 export class ReduxComponent extends Component {
     render() {

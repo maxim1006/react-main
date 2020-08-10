@@ -13,6 +13,7 @@ import shopCart from "./shopCart";
 import shopData from "./shopData";
 import skills from "./skills";
 import counter from "./counter";
+import saga from "./saga";
 
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
 // будет нормальных редьюсеров, например combineReducers({replaceMe: () => 1})
@@ -33,7 +34,8 @@ const createRootReducer = history =>
         shopCart,
         shopData,
         skills,
-        counter
+        counter,
+        saga
     });
 
 export default createRootReducer;
