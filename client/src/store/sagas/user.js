@@ -1,14 +1,17 @@
-import { call, put, takeEvery, select } from "redux-saga/effects";
+import { call, put, takeEvery, select, takeLatest, cancel, cancelled } from "redux-saga/effects";
 import { SAGA_TYPES } from "../actions/types";
 import { getUserApi } from "./api/user";
+import customAxios from "../../common/api/axios";
 
 // worker Saga: will be fired on sagaGetUserStartAction actions
 function* getUser(action) {
+    const cancelToken = customAxios.CancelToken.source();
     // могу получить стейт
     // const state = yield select();
-    // console.log("state after", state);
+    // console.log("state ", state);
     try {
-        const user = yield call(getUserApi, action.payload);
+        // yield cancel(getUserApi);
+        const user = yield call(getUserApi, { payload: action.payload, cancelToken });
 
         // это типо диспатч в сагах
         yield put({
@@ -17,6 +20,10 @@ function* getUser(action) {
         });
     } catch (e) {
         yield put({ type: SAGA_TYPES.GET_USER_ERROR, message: e.message });
+    } finally {
+        if (yield cancelled()) {
+            cancelToken.cancel("getUser saga canceled");
+        }
     }
 }
 
@@ -26,7 +33,7 @@ function* getUser(action) {
   Это называется watcher saga которая следит за указанным экшеном
 */
 function* userSaga() {
-    yield takeEvery(SAGA_TYPES.GET_USER_START, getUser);
+    yield takeLatest(SAGA_TYPES.GET_USER_START, getUser);
 }
 
 /*

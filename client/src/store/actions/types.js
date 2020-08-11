@@ -68,7 +68,10 @@ export const COUNTER_TYPES = {
 export const SAGA_TYPES = {
     GET_USER_START: "[ReduxSagaIntroComponent] Get user start",
     GET_USER_SUCCESS: "[User saga] Get user success",
-    GET_USER_ERROR: "[User saga] Get user error"
+    GET_USER_ERROR: "[User saga] Get user error",
+    INCREMENT_COUNTER: "[SagaCounterComponent] Increment counter",
+    INCREMENT_AFTER_DELAY_COUNTER: "[SagaCounterComponent] Increment after delay counter",
+    DECREMENT_COUNTER: "[SagaCounterComponent] Decrement counter"
 };
 
 export const FAMILY_TYPES = {

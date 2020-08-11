@@ -1,8 +1,8 @@
 import customAxios from "../../../common/api/axios";
 
-export async function getUserApi() {
+export async function getUserApi({ payload, cancelToken }) {
     try {
-        const { data } = await customAxios.get("users");
+        const { data } = await customAxios.get("users", { cancelToken: cancelToken.token });
 
         return data;
     } catch (error) {

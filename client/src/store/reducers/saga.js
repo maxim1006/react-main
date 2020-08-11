@@ -4,7 +4,8 @@ const initState = {
     loading: false,
     entities: {
         users: []
-    }
+    },
+    counter: 0
 };
 
 export default (state = initState, action) => {
@@ -30,6 +31,25 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 loading: false
+            };
+        }
+
+        case SAGA_TYPES.INCREMENT_AFTER_DELAY_COUNTER:
+        case SAGA_TYPES.INCREMENT_COUNTER: {
+            const counter = state.counter + 1;
+
+            return {
+                ...state,
+                counter
+            };
+        }
+
+        case SAGA_TYPES.DECREMENT_COUNTER: {
+            const counter = state.counter - 1;
+
+            return {
+                ...state,
+                counter
             };
         }
 

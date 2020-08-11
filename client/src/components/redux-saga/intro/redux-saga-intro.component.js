@@ -13,7 +13,8 @@ const ReduxSagaIntroComponent = () => {
                 Get user
             </button>
             {users.loading && <MaterialLoaderComponent />}
-            {users?.entities?.users?.length &&
+            {!users.loading &&
+                users?.entities?.users?.length &&
                 users?.entities?.users.map(({ id, name }) => {
                     return <div key={id}>{name}</div>;
                 })}

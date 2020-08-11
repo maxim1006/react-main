@@ -5,11 +5,11 @@ import { getFamilyAction } from "../../../store/actions";
 const FamilySagaComponent = () => {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getFamilyAction());
-    }, []);
-
-    return <>FamilySagaComponent</>;
+    return (
+        <button type="button" onClick={() => dispatch(getFamilyAction())}>
+            Get family
+        </button>
+    );
 };
 
 export default memo(FamilySagaComponent);

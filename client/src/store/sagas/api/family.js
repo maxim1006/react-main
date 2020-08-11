@@ -1,8 +1,8 @@
 import customAxios from "../../../common/api/axios";
 
-export async function getFamilyApi() {
+export async function getFamilyApi({ payload, cancelToken }) {
     try {
-        const { data } = await customAxios.get("family");
+        const { data } = await customAxios.get("family", { cancelToken: cancelToken.token });
 
         return data;
     } catch (error) {
