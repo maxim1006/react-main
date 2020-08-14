@@ -6,16 +6,19 @@ import JSXExampleComponent from "../components/jsx/JsxExamples";
 import { TabsComponent } from "../components/tabs/Tabs";
 import ReduxForm from "../components/forms/ReduxForm";
 import Component from "../components/component/Component";
-import Performance from "../components/performance/performance.component";
-import TipsComponent from "../components/tips/tips.component";
+import UploadComponent from "../components/upload/upload.component";
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="Components">
                 <Component title="Performance">
-                    <Performance />
+                    <UploadComponent />
                 </Component>
+
+                {/* <Component title="Performance"> */}
+                {/*    <Performance />*/}
+                {/* </Component> */}
 
                 {/* <Component title="JS tips"> */}
                 {/*  <TipsComponent />*/}
