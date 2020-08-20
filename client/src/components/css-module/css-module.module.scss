@@ -1,3 +1,7 @@
 .cssModule {
     color: green;
 }
+
+:export {
+    exportedValue: 16px;
+}
