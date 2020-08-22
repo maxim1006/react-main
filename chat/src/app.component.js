@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Button from "@material-ui/core/Button";
 import "./index.css";
-import ChatComponent from "./chat.component";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import ChatComponent from "./components/chat/chat.component";
 
 const client = new ApolloClient({
     uri: "http://localhost:3001/graphql",
