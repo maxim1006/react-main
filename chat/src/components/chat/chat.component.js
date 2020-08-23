@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import "./chat.component.css";
 import TextField from "@material-ui/core/TextField";
@@ -15,6 +15,7 @@ const GQL_MESSAGES_QUERY = gql`
 
 const ChatComponent = () => {
     const { loading, error, data } = useQuery(GQL_MESSAGES_QUERY);
+    const [state, setState] = useState({ user: "Max", content: "" });
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
