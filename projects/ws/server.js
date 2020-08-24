@@ -21,6 +21,7 @@ function accept(req, res) {
 }
 
 function onConnect(ws) {
+    console.log('new user connected');
     ws.on('message', function(message) {
         console.log('message ', message);
         let { name } = JSON.parse(message);
