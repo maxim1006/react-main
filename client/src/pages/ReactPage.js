@@ -1,20 +1,24 @@
-import React from "react";
-import { FormsComponent } from "../components/forms/Forms";
-import { JsxListComponent } from "../components/jsx/JsxList";
-import JsxFragment from "../components/jsx/JsxFragment";
-import JSXExampleComponent from "../components/jsx/JsxExamples";
-import { TabsComponent } from "../components/tabs/Tabs";
-import ReduxForm from "../components/forms/ReduxForm";
-import Component from "../components/component/Component";
-import UploadComponent from "../components/upload/upload.component";
+import React from 'react';
+import { FormsComponent } from '../components/forms/Forms';
+import { JsxListComponent } from '../components/jsx/JsxList';
+import JsxFragment from '../components/jsx/JsxFragment';
+import JSXExampleComponent from '../components/jsx/JsxExamples';
+import { TabsComponent } from '../components/tabs/Tabs';
+import ReduxForm from '../components/forms/ReduxForm';
+import Component from '../components/component/Component';
+import BroadcastComponent from '../components/broadcast/broadcast.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
-            <div tabName="Components">
+            <div tabName="BroadcastComponent">
                 <Component title="Performance">
-                    <UploadComponent />
+                    <BroadcastComponent />
                 </Component>
+
+                {/* <Component title="Performance"> */}
+                {/*    <UploadComponent />*/}
+                {/* </Component> */}
 
                 {/* <Component title="Performance"> */}
                 {/*    <Performance />*/}
