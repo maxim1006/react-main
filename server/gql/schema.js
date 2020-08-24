@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 // олисываю типы данных, которые получаю в resolvers
 const typeDefs = gql`
@@ -36,6 +36,11 @@ const typeDefs = gql`
 
     type Mutation {
         postMessage(user: String!, content: String!): ID!
+    }
+
+    #    ws подписка слушаю в resolvers
+    type Subscription {
+        messages: [Message!]
     }
 `;
 

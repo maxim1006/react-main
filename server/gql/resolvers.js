@@ -1,6 +1,9 @@
-import collections from "../mocks/collections";
+import collections from '../mocks/collections';
+import { PubSub } from 'apollo-server';
 
 const messages = [];
+const MESSAGE_ADDED = 'MESSAGE_ADDED';
+export const pubsub = new PubSub();
 
 // как получаю данные
 const resolvers = {
@@ -8,7 +11,7 @@ const resolvers = {
         async payments(root, args) {
             return [
                 {
-                    name: "Payment1"
+                    name: 'Payment1'
                 }
             ];
         },
@@ -27,15 +30,42 @@ const resolvers = {
             const id = messages.length;
 
             messages.push({ id, user, content });
-
+            pubsub.publish(MESSAGE_ADDED, { messages });
             return id;
+        }
+    },
+    Subscription: {
+        messages: {
+            // Additional event labels can be passed to asyncIterator creation
+            subscribe: (parent, args) => {
+                // при подписке на канал сразу кидаю сообщения
+                setTimeout(() => {
+                    pubsub.publish(MESSAGE_ADDED, { messages });
+                }, 0);
+                return pubsub.asyncIterator([MESSAGE_ADDED]);
+            }
         }
     }
 };
 
 export default resolvers;
 
-// Mutation example
+// query {
+//     messages {
+//         content
+//         id
+//         user
+//     }
+// }
+
 // mutation {
 //     postMessage(user: "Max", content: "Hello")
+// }
+
+// subscription {
+//     messages {
+//         id
+//         user
+//         content
+//     }
 // }

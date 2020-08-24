@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat ws</title>
+</head>
+<body>
+    <!-- форма сообщений -->
+    <form name="publish">
+        <input type="text" name="message">
+        <input type="submit" value="Отправить">
+    </form>
+
+    <!-- div с сообщениями -->
+    <div id="messages"></div>
+
+    <script>
+          let socket = new WebSocket("ws://localhost:8080", ["soap", "wamp"]);
+
+          // отправка сообщения из формы
+          document.forms.publish.onsubmit = function() {
+            let outgoingMessage = this.message.value;
+
+            socket.send(outgoingMessage);
+            return false;
+          };
+
+          // получение сообщения - отобразить данные в div#messages
+          socket.onmessage = function(event) {
+            console.log(event.data);
+            const messagesData = event.data;
+            const messages = JSON.parse(messagesData);
+
+            document.getElementById('messages').innerHTML = "";
+
+            for (let message of messages) {
+              let messageElem = document.createElement('div');
+              messageElem.textContent = message;
+              document.getElementById('messages').prepend(messageElem);
+            }
+          }
+    </script>
+</body>
+</html>
