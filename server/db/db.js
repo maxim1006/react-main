@@ -16,7 +16,8 @@ mongoose.connect('mongodb://localhost:27017/reactDB', { useNewUrlParser: true, u
 
 const db = mongoose.connection;
 
-db.on('error', e => console.error('connection error ', e));
+// закомментировал чтобы не захломляло лог
+// db.on('error', e => console.error('connection error ', e));
 db.once('open', e => console.log('Database reactDB connected on port 27017'));
 
 // для примера создаю коллекцию дверей
