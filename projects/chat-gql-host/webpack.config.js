@@ -3,7 +3,7 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 
 module.exports = {
     output: {
-        publicPath: 'http://localhost:8080/'
+        publicPath: 'http://localhost:8081/'
     },
 
     resolve: {
@@ -11,7 +11,7 @@ module.exports = {
     },
 
     devServer: {
-        port: 8080
+        port: 8081
     },
 
     module: {
@@ -31,15 +31,12 @@ module.exports = {
     },
 
     plugins: [
-        // remoteEntry.js - файл с добавкой от ModuleFederationPlugin
         new ModuleFederationPlugin({
-            name: 'chatGql',
-            library: { type: 'var', name: 'chatGql' },
+            name: 'chatGqlHost',
+            library: { type: 'var', name: 'chatGqlHost' },
             filename: 'remoteEntry.js',
-            remotes: {},
-            exposes: {
-                './ChatGql': './src/components/chat/chat.component'
-            },
+            remotes: { chatGql: 'chatGql' },
+            exposes: {},
             shared: require('./package.json').dependencies
         }),
         new HtmlWebPackPlugin({

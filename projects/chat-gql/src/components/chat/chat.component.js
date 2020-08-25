@@ -1,8 +1,22 @@
 import React, { memo, useState } from 'react';
-import { gql, useMutation, useSubscription } from '@apollo/client';
+import { ApolloClient, ApolloProvider, gql, InMemoryCache, useMutation, useSubscription } from '@apollo/client';
 import './chat.component.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { WebSocketLink } from '@apollo/client/link/ws';
+
+const wsLink = new WebSocketLink({
+    uri: `ws://localhost:3001/graphql`,
+    options: {
+        reconnect: true
+    }
+});
+
+const client = new ApolloClient({
+    link: wsLink,
+    uri: 'http://localhost:3001/graphql',
+    cache: new InMemoryCache()
+});
 
 const GET_MESSAGES_QUERY = gql`
     subscription {
@@ -67,4 +81,8 @@ const ChatComponent = () => {
     );
 };
 
-export default memo(ChatComponent);
+export default memo(() => (
+    <ApolloProvider client={client}>
+        <ChatComponent />
+    </ApolloProvider>
+));
