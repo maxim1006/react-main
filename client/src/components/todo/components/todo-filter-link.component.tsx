@@ -1,18 +1,14 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
 export type ToDoFilterLinkProps = {
     children?: any;
     onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
-const ToDoFilterLink = ({
-    children,
-    onClick,
-    ...rest
-}: ToDoFilterLinkProps) => (
+const ToDoFilterLink = ({ children, onClick, ...rest }: ToDoFilterLinkProps) => (
     <a
         {...rest}
-        href="#"
+        href="/"
         onClick={e => {
             e.preventDefault();
             onClick(e);

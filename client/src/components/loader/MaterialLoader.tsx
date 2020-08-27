@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./MaterialLoader.scss";
+import React, { useEffect, useState } from 'react';
+import './MaterialLoader.scss';
 
 export type MaterialLoaderProps = {
     customStyles?: { [key: string]: string };
@@ -7,11 +7,7 @@ export type MaterialLoaderProps = {
     delay?: number;
 };
 
-export default function MaterialLoaderComponent({
-    customStyles,
-    message,
-    delay = 0
-}: MaterialLoaderProps) {
+export default function MaterialLoaderComponent({ customStyles, message, delay = 0 }: MaterialLoaderProps) {
     const [visible, setVisible] = useState(false);
     let timeoutId: number;
 
@@ -51,5 +47,5 @@ export default function MaterialLoaderComponent({
 
 // Так задаю дефолтные проперти для компоненты (класса или функции)
 MaterialLoaderComponent.defaultProps = {
-    message: "Loading..."
+    message: 'Loading...'
 };

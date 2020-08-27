@@ -12,7 +12,7 @@ export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="BroadcastComponent">
+                <Component title="ExamplesComponent">
                     <ExamplesComponent />
                 </Component>
 
