@@ -1,8 +1,8 @@
-import { FAMILY_TYPES } from "../actions/types";
-import { takeLatest, call, put, cancelled, all } from "redux-saga/effects";
-import { getFamilyApi } from "./api/family";
-import { getFamilyErrorAction, getFamilySuccessAction } from "../actions";
-import customAxios from "../../common/api/axios";
+import { FAMILY_TYPES } from '../actions/types';
+import { call, cancelled, put, takeLatest } from 'redux-saga/effects';
+import { getFamilyApi } from './api/family';
+import { getFamilyErrorAction, getFamilySuccessAction } from '../actions';
+import customAxios from '../../common/api/axios';
 
 function* getFamily(action) {
     const cancelToken = customAxios.CancelToken.source();
@@ -15,7 +15,7 @@ function* getFamily(action) {
         yield put(getFamilyErrorAction(e));
     } finally {
         if (yield cancelled()) {
-            cancelToken.cancel("Saga getFamily cancelled");
+            cancelToken.cancel('Saga getFamily cancelled');
         }
     }
 }

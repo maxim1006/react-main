@@ -1,5 +1,5 @@
-import { take, takeEvery, delay, put, takeLatest, all, call } from "redux-saga/effects";
-import { SAGA_TYPES } from "../actions/types";
+import { all, delay, takeLatest } from 'redux-saga/effects';
+import { SAGA_TYPES } from '../actions/types';
 
 // take
 // export function* incrementSaga() {
@@ -54,7 +54,7 @@ import { SAGA_TYPES } from "../actions/types";
 // all
 function* task() {
     yield delay(2000);
-    console.log("task after delay");
+    console.log('task after delay');
 }
 
 // последовательно

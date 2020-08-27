@@ -1,7 +1,7 @@
-import { call, put, takeEvery, select, takeLatest, cancel, cancelled } from "redux-saga/effects";
-import { SAGA_TYPES } from "../actions/types";
-import { getUserApi } from "./api/user";
-import customAxios from "../../common/api/axios";
+import { call, cancelled, put, takeLatest } from 'redux-saga/effects';
+import { SAGA_TYPES } from '../actions/types';
+import { getUserApi } from './api/user';
+import customAxios from '../../common/api/axios';
 
 // worker Saga: will be fired on sagaGetUserStartAction actions
 function* getUser(action) {
@@ -22,7 +22,7 @@ function* getUser(action) {
         yield put({ type: SAGA_TYPES.GET_USER_ERROR, message: e.message });
     } finally {
         if (yield cancelled()) {
-            cancelToken.cancel("getUser saga canceled");
+            cancelToken.cancel('getUser saga canceled');
         }
     }
 }

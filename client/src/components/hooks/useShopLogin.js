@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-import { shopSetCurrentUser } from "../../store/actions";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { shopSetCurrentUser } from '../../store/actions';
 
 export default () => {
     const dispatch = useDispatch();
@@ -43,5 +43,5 @@ export default () => {
                 onSnapshotSubscription();
             }
         };
-    }, []);
+    }, [dispatch]);
 };

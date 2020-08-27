@@ -1,17 +1,14 @@
-import React, { useCallback, useState } from "react";
-import ShopFormInput from "../form-input/ShopFormInput";
-import ShopButton from "../button/ShopButton";
-import {
-    auth,
-    createUserProfileDocument
-} from "../../../firebase/firebase.utils";
+import React, { useCallback, useState } from 'react';
+import ShopFormInput from '../form-input/ShopFormInput';
+import ShopButton from '../button/ShopButton';
+import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils';
 
 export default () => {
     const [signUpState, setSignUpState] = useState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
     });
 
     const { displayName, email, password, confirmPassword } = signUpState;
@@ -25,21 +22,18 @@ export default () => {
         }
 
         try {
-            const { user } = await auth.createUserWithEmailAndPassword(
-                email,
-                password
-            );
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
             await createUserProfileDocument(user, { displayName });
 
             setSignUpState({
-                displayName: "",
-                email: "",
-                password: "",
-                confirmPassword: ""
+                displayName: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
             });
         } catch (e) {
-            console.log("Sign Up handleSubmit error ", e.message);
+            console.log('Sign Up handleSubmit error ', e.message);
         }
     };
 
@@ -49,7 +43,7 @@ export default () => {
 
             setSignUpState({ ...signUpState, [name]: value });
         },
-        [displayName, email, password, confirmPassword]
+        [signUpState]
     );
 
     return (

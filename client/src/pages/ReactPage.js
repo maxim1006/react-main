@@ -6,15 +6,19 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import BroadcastComponent from '../components/broadcast/broadcast.component';
+import ExamplesComponent from '../components/examples/examples.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
-            <div tabName="BroadcastComponent">
-                <Component title="Performance">
-                    <BroadcastComponent />
+            <div tabName="React">
+                <Component title="BroadcastComponent">
+                    <ExamplesComponent />
                 </Component>
+
+                {/* <Component title="BroadcastComponent">*/}
+                {/*    <BroadcastComponent />*/}
+                {/* </Component>*/}
 
                 {/* <Component title="Performance"> */}
                 {/*    <UploadComponent />*/}
