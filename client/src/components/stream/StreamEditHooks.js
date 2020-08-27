@@ -1,9 +1,9 @@
-import React, { memo, useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { editStream, fetchStream } from "../../store/actions";
-import StreamForm from "./StreamForm";
-import customAxios from "../../common/api/axios";
+import React, { memo, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { editStream, fetchStream } from '../../store/actions';
+import StreamForm from './StreamForm';
+import customAxios from '../../common/api/axios';
 
 export default memo(({ match }) => {
     const dispatch = useDispatch();
@@ -16,12 +16,12 @@ export default memo(({ match }) => {
         return () => {
             cancelToken.cancel(`Cancel fetchStream ${match.params.id}`);
         };
-    }, []);
+    }, [dispatch, match.params.id]);
 
-    const onSubmit = useCallback(
-        formValues => dispatch(editStream(match.params.id, formValues)),
-        [dispatch]
-    );
+    const onSubmit = useCallback(formValues => dispatch(editStream(match.params.id, formValues)), [
+        dispatch,
+        match.params.id
+    ]);
 
     if (stream) {
         const { title, description } = stream;
@@ -29,10 +29,7 @@ export default memo(({ match }) => {
         return (
             <>
                 <h3>Edit stream</h3>
-                <StreamForm
-                    initialValues={{ title, description }}
-                    onSubmit={onSubmit}
-                />
+                <StreamForm initialValues={{ title, description }} onSubmit={onSubmit} />
 
                 <p>
                     <Link to="/stream">Go to stream list -&gt;</Link>

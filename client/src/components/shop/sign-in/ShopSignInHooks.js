@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from "react";
-import ShopFormInput from "../form-input/ShopFormInput";
-import ShopButton from "../button/ShopButton";
-import "./ShopSignIn.scss";
-import { auth, signInWithGoogle } from "../../../firebase/firebase.utils";
-import NotificationPortal from "../../portals/notification/NotificationPortal";
+import React, { useCallback, useEffect, useState } from 'react';
+import ShopFormInput from '../form-input/ShopFormInput';
+import ShopButton from '../button/ShopButton';
+import './ShopSignIn.scss';
+import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
+import NotificationPortal from '../../portals/notification/NotificationPortal';
 
 export default () => {
     let notificationErrorTimeout;
 
     const [signInState, setSignInState] = useState({
-        email: "",
-        password: "",
-        error: ""
+        email: '',
+        password: '',
+        error: ''
     });
+
+    const clearNotificationError = useCallback(() => {
+        setSignInState({
+            ...signInState,
+            error: null
+        });
+
+        clearTimeout(notificationErrorTimeout);
+    }, [notificationErrorTimeout, signInState]);
 
     const { email, password, error } = signInState;
 
@@ -20,7 +29,7 @@ export default () => {
         return () => {
             clearNotificationError(notificationErrorTimeout);
         };
-    }, []);
+    }, [clearNotificationError, notificationErrorTimeout]);
 
     const onSubmit = async e => {
         e.preventDefault();
@@ -33,8 +42,8 @@ export default () => {
 
             setSignInState({
                 ...signInState,
-                email: "",
-                password: ""
+                email: '',
+                password: ''
             });
         } catch (e) {
             setSignInState({
@@ -42,7 +51,7 @@ export default () => {
                 error: e.message
             });
 
-            console.log("Shop SignIn onSubmit error ", e);
+            console.log('Shop SignIn onSubmit error ', e);
         }
     };
 
@@ -63,22 +72,10 @@ export default () => {
         }
 
         return error ? (
-            <NotificationPortal
-                styleClass="_error"
-                onClose={clearNotificationError}
-            >
+            <NotificationPortal styleClass="_error" onClose={clearNotificationError}>
                 {error}
             </NotificationPortal>
         ) : null;
-    };
-
-    const clearNotificationError = () => {
-        setSignInState({
-            ...signInState,
-            error: null
-        });
-
-        clearTimeout(notificationErrorTimeout);
     };
 
     return (

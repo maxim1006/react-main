@@ -9,9 +9,9 @@ export type MaterialLoaderProps = {
 
 export default function MaterialLoaderComponent({ customStyles, message, delay = 0 }: MaterialLoaderProps) {
     const [visible, setVisible] = useState(false);
-    let timeoutId: number;
 
     useEffect(() => {
+        let timeoutId: number;
         if (delay) {
             timeoutId = setTimeout(() => {
                 setVisible(true);

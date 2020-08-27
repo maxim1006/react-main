@@ -1,11 +1,11 @@
-import React, { memo, useEffect, useState } from "react";
-import { IntlProvider } from "react-intl";
-import translations from "../../i18n/translations/translations";
-import ReactIntlChild from "./react-intl-child.component";
+import React, { memo, useState } from 'react';
+import { IntlProvider } from 'react-intl';
+import translations from '../../i18n/translations/translations';
+import ReactIntlChild from './react-intl-child.component';
 
-const RU = "ru";
-const EN = "en";
-const LOCALE = "locale";
+const RU = 'ru';
+const EN = 'en';
+const LOCALE = 'locale';
 
 const getFromLocalStorage = (itemName: any) => JSON.parse(localStorage.getItem(itemName) as string);
 // const setToLocalStorage = (itemName, value) => localStorage.setItem(itemName, JSON.stringify(value));

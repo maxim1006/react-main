@@ -18,13 +18,13 @@ const TodoPlansConnectedContainer = ({
     isLoading: boolean;
     fetchTodoPlans: (cancelToken: CancelTokenSource) => void;
 }) => {
-    const cancelRemoveSkillRequest = customAxios.CancelToken.source() as CancelTokenSource;
-
     useEffect(() => {
+        const cancelRemoveSkillRequest = customAxios.CancelToken.source() as CancelTokenSource;
+
         fetchTodoPlans(cancelRemoveSkillRequest);
 
         return () => cancelRemoveSkillRequest.cancel('TodoPlansConnectedContainer fetchTodoPlans canceled');
-    }, []);
+    }, [fetchTodoPlans]);
 
     return isLoading ? <MaterialLoader /> : <TodoPlans plans={plans} />;
 };
