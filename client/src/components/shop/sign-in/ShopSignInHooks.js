@@ -15,13 +15,13 @@ export default () => {
     });
 
     const clearNotificationError = useCallback(() => {
-        setSignInState({
-            ...signInState,
+        setSignInState(currentSignInState => ({
+            ...currentSignInState,
             error: null
-        });
+        }));
 
         clearTimeout(notificationErrorTimeout);
-    }, [notificationErrorTimeout, signInState]);
+    }, [notificationErrorTimeout]);
 
     const { email, password, error } = signInState;
 
