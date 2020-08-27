@@ -1,3 +1,3 @@
-export interface ISimpleMap<T> {
+export interface SimpleMap<T> {
     [key: string]: T;
 }

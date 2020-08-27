@@ -6,6 +6,8 @@
     "proxy": "http://localhost:3001",
     "scripts": {
         "report": "source-map-explorer 'build/static/js/*.js'",
+        "report+": "node ./dev-helpers/webpack-bundle-analyzer.dev-helper.js",
+        "moment": "node ./dev-helpers/moment.dev-helper.js",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
@@ -54,7 +56,8 @@
         "redux-thunk": "^2.3.0",
         "reselect": "^4.0.0",
         "styled-components": "^4.4.1",
-        "typescript": "^3.8.3"
+        "typescript": "^3.8.3",
+        "webpack-bundle-analyzer": "^3.8.0"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^2.33.0",
