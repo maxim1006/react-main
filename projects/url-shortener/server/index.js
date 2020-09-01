@@ -58,7 +58,12 @@ const urlsSchema = new mongoose.Schema({
 // создаю модель (всегда будет lowerCase)
 const UrlsDbModel = mongoose.model('urls', urlsSchema);
 
-app.use(helmet());
+app.use(
+    helmet({
+        // чтобы не ругался на cdn и разрешил eval
+        contentSecurityPolicy: false
+    })
+);
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
@@ -69,10 +74,10 @@ app.use(express.static('./public'));
 app.get('/:id', async (req, res) => {
     const { id: slug } = req.params;
     try {
-        const { url } = await UrlsDbModel.findOne({ slug }).exec();
+        const url = await UrlsDbModel.findOne({ slug }).exec();
 
         if (url) {
-            res.redirect(url);
+            res.redirect(url.url);
         }
 
         res.redirect(`/?error=${slug} not found`);

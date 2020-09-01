@@ -14,6 +14,22 @@
     <h1>URL shortener</h1>
 </header>
 
+<main id="app">
+    <form @submit.prevent="createUrl()">
+        <label for="slug">slug</label>
+        <input v-model="slug" type="text" name="slug" id="slug">
+        <label for="url">url</label>
+        <input v-model="url" type="text" name="url" id="url">
+        <button type="submit">Create</button>
+    </form>
+    <pre v-if="created">
+        {{JSON.stringify(created, null, 2)}}
+    </pre>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./app.js"></script>
 
 </body>
 </html>
