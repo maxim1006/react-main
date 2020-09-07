@@ -1,0 +1,45 @@
+POST http://localhost:1338/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "name": "Max"
+}
+
+<> 2020-09-07T033048.200.json
+
+###
+POST http://localhost:1338/token
+Accept: application/json
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF4IiwiaWF0IjoxNTk5NDgxNDQ0fQ.GxzgJM-iP8kbaWKlIkUBBovUChX0jx7laUShHOul6d8"
+}
+
+<> 2020-09-07T034052.403.json
+<> 2020-09-07T034048.403.json
+
+###
+DELETE http://localhost:1338/logout
+Accept: */*
+Accept: application/json
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF4IiwiaWF0IjoxNTk5NDgxODQ4fQ.vjCAyAhCFRPiQUtZFIvczJCi2yOyRyKHL2aOFLMhRiI"
+}
+
+<> 2020-09-07T033923.201.json
+<> 2020-09-07T033904.200.json
+<> 2020-09-07T033805.200.json
+<> 2020-09-07T033652.200.json
+
+###
+GET http://localhost:1337/family
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF4IiwiaWF0IjoxNTk5NDgyNTYzLCJleHAiOjE1OTk0ODI1ODN9.I1ZBw-peleSlUHCqZEymjQRibGFzu8vuAepfQcszlqQ
+
+###
+
