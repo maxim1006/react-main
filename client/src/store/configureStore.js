@@ -1,13 +1,13 @@
-import thunk from "redux-thunk";
-import { applyMiddleware, compose, createStore } from "redux";
-import { throttle } from "lodash";
-import { routerMiddleware } from "connected-react-router";
-import history from "../history";
-import { loadState, saveState } from "./session-storage";
-import createRootReducer from "./reducers";
-import { composeWithDevTools } from "redux-devtools-extension";
-import createSagaMiddleware from "redux-saga";
-import rootSaga from "./sagas";
+import thunk from 'redux-thunk';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { throttle } from 'lodash';
+import { routerMiddleware } from 'connected-react-router';
+import history from '../history';
+import { loadState, saveState } from './session-storage';
+import createRootReducer from './reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 
 const initState = {};
 // забираю стор из локалстораджа
@@ -27,13 +27,13 @@ function configureStore(preloadedState) {
     // const enhancers = [middlewareEnhancer, monitorReducerEnhancer];
 
     // нужно чтобы заработали дев тулы
-    const composedEnhancers =
-        process.env.NODE_ENV !== "production" ? composeWithDevTools(middlewareEnhancer) : compose(middlewareEnhancer);
+    // const composedEnhancers =
+    //     process.env.NODE_ENV !== 'production' ? composeWithDevTools(middlewareEnhancer) : compose(middlewareEnhancer);
 
-    // это для проверки кастомных сторов к примеру в todos и counter,
+    // это для проверки кастомных сторов к примеру в todos и counter или в client/src/redux-toolkit,
     // 2 раза нельзя объявлять девтулы поэтому раскомменть
     // это если нужно в тех сторах включить дев тулы
-    // const composedEnhancers = compose(applyMiddleware(...[thunk, routerMiddleware(history)]));
+    const composedEnhancers = compose(middlewareEnhancer);
 
     // Creates a Redux store that holds the state tree.
     const store = createStore(
