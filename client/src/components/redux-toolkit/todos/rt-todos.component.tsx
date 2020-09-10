@@ -4,12 +4,7 @@ import { rtAddTodo, rtToggleTodo } from '../../../redux-toolkit/rt-slices/rt-tod
 import { rtSetVisibilityFilter, rtVisibilityFilters } from '../../../redux-toolkit/rt-slices/rt-visibility-filters';
 import { selectRtVisibleTodos } from '../../../redux-toolkit/rt-selectors';
 import { RtRootState } from '../../../redux-toolkit/rt-configureStore';
-
-interface TodoModel {
-    completed: boolean;
-    id: number;
-    text: string;
-}
+import { TodoModel } from '../../../redux-toolkit/models/todo.model';
 
 const RtTodos = () => {
     const dispatch = useDispatch();

@@ -1,8 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { rtVisibilityFilters } from '../rt-slices/rt-visibility-filters';
+import { RtRootState } from '../rt-configureStore';
 
-const selectTodos = state => state.todos;
-const selectVisibilityFilter = state => state.visibilityFilter;
+const selectTodos = (state: RtRootState) => state.todos;
+const selectVisibilityFilter = (state: RtRootState) => state.visibilityFilter;
 
 export const selectRtVisibleTodos = createSelector([selectTodos, selectVisibilityFilter], (todos, visibilityFilter) => {
     switch (visibilityFilter) {

@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import rootReducer from './rt-slices';
 
 // автоматически подцепляет дев тулы
@@ -21,5 +21,8 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 }
 
 export type RtRootState = ReturnType<typeof rootReducer>;
+
+// так как часто использую сразу вынесу сюда чтобы не копи пастить
+export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
 
 export default RtStore;

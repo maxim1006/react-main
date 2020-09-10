@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TodoModel } from '../models/todo.model';
 
 export const rtVisibilityFilters = {
     SHOW_ALL: 'SHOW_ALL',
@@ -10,7 +11,7 @@ const rtVisibilityFilterSlice = createSlice({
     name: 'visibilityFilter',
     initialState: rtVisibilityFilters.SHOW_ALL,
     reducers: {
-        rtSetVisibilityFilter: (state, action) => action.payload
+        rtSetVisibilityFilter: (state, { payload }: PayloadAction<string>) => payload
     }
 });
 
