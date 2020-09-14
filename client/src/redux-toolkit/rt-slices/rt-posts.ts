@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PostModel } from '../models/posts.model';
-import { RtAppThunk } from '../rt-configureStore';
+import { RtAppThunk, RtRootState } from '../rt-configureStore';
 import customAxios from '../../common/api/axios';
 
 interface PostsStateModel {

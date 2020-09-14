@@ -1,5 +1,7 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { Action, configureStore, getDefaultMiddleware, ThunkAction } from '@reduxjs/toolkit';
 import rootReducer from './rt-slices';
+import { reduxBatch } from '@manaflair/redux-batch';
+import logger from 'redux-logger';
 
 // автоматически подцепляет дев тулы
 
@@ -8,9 +10,17 @@ import rootReducer from './rt-slices';
 //     reducer: RtCounterReducer
 // });
 
+const middleware = [...getDefaultMiddleware(), logger];
+
+const preloadedState = {};
+
 // через слайсы
 const RtStore = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware,
+    preloadedState,
+    devTools: process.env.NODE_ENV !== 'production',
+    enhancers: [reduxBatch]
 });
 
 if (process.env.NODE_ENV === 'development' && module.hot) {

@@ -12,7 +12,6 @@ const RtPosts = () => {
         (async () => {
             //  пример thunk возвращает промис с результатом запроса, круто чтобы чейнинг использовать !!!
             const posts = await dispatch(rtFetchPostsAction());
-            console.log(posts);
         })();
     }, [dispatch]);
 
