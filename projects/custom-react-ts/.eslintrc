@@ -1,0 +1,47 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
+    ],
+    "plugins": [
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jest": true,
+        "node": true
+    },
+    "rules": {
+        "strict": 0,
+        "prettier/prettier": ["warn"],
+        "max-len": ["error", { "code": 120 }],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "linebreak-style": 0,
+        "no-duplicate-imports": "warn",
+//        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-return-assign": [
+            "error",
+            "except-parens"
+        ]
+    },
+    "globals": {
+        "window": true,
+        "document": true,
+        "localStorage": true,
+        "FormData": true,
+        "FileReader": true,
+        "Blob": true,
+        "navigator": true
+    }
+}
