@@ -83,7 +83,7 @@ export const isLocalStorageEnabled = () => {
         // browser specific checks if local storage was exceeded
         if (
             e.name === 'QUATA_EXCEEDED_ERR' || // Chrome
-            e.name === 'NS_ERROR_DOM_QUATA_REACHED' //Firefox/Safari
+            e.name === 'NS_ERROR_DOM_QUATA_REACHED' // Firefox/Safari
         ) {
             // local storage is full
             return 'full';
