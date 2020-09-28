@@ -1,0 +1,59 @@
+{
+  "name": "react-lib-rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "module": "./build/index.es.js",
+  "peerDependencies": {
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "start-storybook -p 6006",
+    "build:storybook": "build-storybook",
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-links": "^6.0.21",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^6.0.21",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@types/testing-library__react": "^10.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.0",
+    "fork-ts-checker-webpack-plugin": "^5.2.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "react-is": "^16.13.1",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "ts-jest": "^26.4.0",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@storybook/addon-a11y": "^6.0.21",
+    "@storybook/addon-docs": "^6.0.21",
+    "antd": "^4.6.5",
+    "styled-components": "^5.2.0"
+  }
+}

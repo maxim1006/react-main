@@ -9,4 +9,5 @@ JWT (json web token использую вместо sessionId) - только д
 3) могу дернуть рефреш токен и снова получить access token
 4) могу удалить рефреш токен и тогда не смогу получить access token 
 
+// рандомный id из ноды
 node -> require("crypto").randomBytes(64).toString('hex')
