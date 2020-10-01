@@ -17,9 +17,9 @@ export default function ReactPage() {
                 {/*    <VminGrid />*/}
                 {/*</Component>*/}
 
-                <Component title="ExamplesComponent">
-                    <ExamplesComponent />
-                </Component>
+                {/*<Component title="ExamplesComponent">*/}
+                {/*    <ExamplesComponent />*/}
+                {/*</Component>*/}
 
                 {/* <Component title="BroadcastComponent">*/}
                 {/*    <BroadcastComponent />*/}
