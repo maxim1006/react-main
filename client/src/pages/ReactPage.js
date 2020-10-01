@@ -6,15 +6,19 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import ExamplesComponent from '../components/examples/examples.component';
+import VminGrid from '../components/grid/vmin/vmin-grid.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
                 <Component title="ExamplesComponent">
-                    <ExamplesComponent />
+                    <VminGrid />
                 </Component>
+
+                {/* <Component title="ExamplesComponent"> */}
+                {/*    <ExamplesComponent />*/}
+                {/* </Component> */}
 
                 {/* <Component title="BroadcastComponent">*/}
                 {/*    <BroadcastComponent />*/}

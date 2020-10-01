@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { Button } from './Button';
-import { Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
+import { Button } from '../components';
+import { ButtonProps } from '../components/button/Button';
 
 export default {
     title: 'Example/Button',
@@ -11,7 +11,7 @@ export default {
     },
 } as Meta;
 
-const Template = args => <Button {...args} />;
+const Template: Story<ButtonProps> = args => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
