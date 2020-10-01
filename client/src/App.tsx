@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import './App.scss';
 import { Route, Switch } from 'react-router-dom';
 import MaterialLoaderComponent from './components/loader/MaterialLoader';
@@ -45,7 +45,7 @@ const App: React.FC = () => {
                             { to: '/context', title: 'Context' },
                             { to: '/hooks', title: 'Hooks' },
                             { to: '/intl', title: 'Intl' },
-                            { to: '/unknown', title: 'Unknown' }
+                            { to: '/unknown', title: 'Unknown' },
                         ]}
                     />
                     {/* При переключении роутера будет показываться MaterialLoaderComponent, за это отвечает Suspense*/}
