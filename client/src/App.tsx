@@ -18,6 +18,7 @@ const ContextPage = React.lazy(() => import('./pages/ContextPage'));
 const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
 const IntlPage = React.lazy(() => import('./pages/IntlPage'));
 const ProReactPage = React.lazy(() => import('./pages/pro-react/pro-react.page'));
+const TypescriptPage = React.lazy(() => import('./pages/typescript/typescript.page'));
 
 const App: React.FC = () => {
     return (
@@ -34,6 +35,7 @@ const App: React.FC = () => {
                     {/* <Router history={history}> */}
                     <MainMenu
                         routes={[
+                            { to: '/typescript', title: 'Typescript' },
                             { to: '/rt', title: 'Redux Toolkit' },
                             { to: '/pro-react', title: 'Pro react' },
                             { to: '/shop', title: 'Shop' },
@@ -52,6 +54,7 @@ const App: React.FC = () => {
                     <Suspense fallback={<MaterialLoaderComponent />}>
                         {/* покажет только первый найденный роут*/}
                         <Switch>
+                            <Route path="/typescript" component={TypescriptPage} />
                             <Route path="/rt" component={ReduxToolkit} />
                             <Route path="/pro-react" component={ProReactPage} />
                             <Route path="/shop" component={ShopPage} />

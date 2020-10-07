@@ -11,8 +11,13 @@ declare module '*.less' {
     export = resource;
 }
 
+// declaration.d.ts
+// anywhere in your project, NOT the same name as any of your .ts/tsx files
+// declare module "*.png";
+
 declare global {
     interface Window {
         initialStore: Record<string, string>;
+        customProp?: string;
     }
 }

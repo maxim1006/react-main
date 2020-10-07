@@ -47,6 +47,7 @@
                 "allowTernary": true
             }
         ],
+        "@typescript-eslint/no-empty-interface": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/prefer-stateless-function": "off",

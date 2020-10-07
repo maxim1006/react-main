@@ -104,6 +104,9 @@ Prefer the standard useEffect when possible to avoid blocking visual updates.
 
  Only after the browser has painted the DOM change(s) is the useEffect function fired.
  Unlike useEffect, the function passed to the useLayoutEffect Hook is fired synchronously after all DOM mutations.
+ 
+ 
+ # useImperativeHandle https://reactjs.org/docs/hooks-reference.html#useimperativehandle
 
 
 

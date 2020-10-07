@@ -1,13 +1,13 @@
-import { PLANS_TYPES } from "../actions";
-import { PlansState } from "../state";
-import { PlansActionTypes } from "../actions/plans.action-type";
+import { PLANS_TYPES } from '../actions';
+import { PlansState } from '../state';
+import { PlansActionTypes } from '../actions/plans.action-type';
 
 const initState: PlansState = {
     isLoading: false,
     error: {
-        message: ""
+        message: '',
     },
-    plans: {}
+    plans: {},
 };
 
 export default (state = initState, action: PlansActionTypes): PlansState => {

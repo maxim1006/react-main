@@ -43,3 +43,8 @@ Else
    sort left half of items 
    sort right half of items 
    merge sorted halves (взять минимальный элемент из списка который был разделен с помощью мерж сорта (а мы делили на списки минимальных размеров к примеру лист из 8 элементов поделили на 8 листов с размером 1) и поставить перед большим списком и смержить)
+
+### [Quick sort](https://stackoverflow.com/questions/234683/javascript-array-sort-implementation)
+ In Chrome's v8 source code, as of today, it uses QuickSort and InsertionSort, for smaller arrays.
+
+V8 Engine Source
