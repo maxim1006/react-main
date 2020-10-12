@@ -8,6 +8,7 @@
     "private": true,
     "scripts": {
         "client": "cd client && npm start",
+        "client:install": "cd client && npm i && cd ../",
         "chat": "cd chat && npm start",
         "server": "nodemon -r esm ./server/server.js",
         "server:prod": "NODE_ENV=production nodemon -r esm ./server/server.js",
