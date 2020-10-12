@@ -27,5 +27,4 @@ jobs:
 #     - run: npm ci
     - run: npm run client:install
     - run: npm run build --if-present
-    - run: npm run deploy
 #     - run: npm test
