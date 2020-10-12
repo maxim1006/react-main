@@ -7,7 +7,7 @@
 //     a: "1"
 // };
 
-const obj = {
+export const obj = {
     name: 'Max',
     age: 30,
 };
