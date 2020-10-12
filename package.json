@@ -5,7 +5,7 @@
         "node": "13.7.0",
         "npm": "6.13.1"
     },
-    "homepage": "https://maxim1006.github.io",
+    "homepage": "https://maxim1006.github.io/react-main",
     "private": true,
     "scripts": {
         "client": "cd client && npm start",

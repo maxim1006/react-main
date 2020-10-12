@@ -1,21 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store/configureStore';
 import history from './history';
+import { HashRouter } from 'react-router-dom';
 
 // обычно с редаксом
 render(
     <Provider store={store}>
         {/* Могу использовать обычный роутер как выше, могу тот с которым работаю в редакс,
         сейчас работатет только с history: "^4.10.1"*/}
-        <ConnectedRouter history={history}>
+        <HashRouter history={history}>
             <App />
-        </ConnectedRouter>
+        </HashRouter>
     </Provider>,
     document.getElementById('root')
 );
