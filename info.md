@@ -101,3 +101,8 @@ https://jsonplaceholder.typicode.com/
 // sudo ./svc.sh install
 // sudo ./svc.sh start
 
+jobs:
+  build:
+
+    runs-on: self-hosted // если хочу у себя на компе хостить
+
