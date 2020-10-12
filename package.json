@@ -52,10 +52,10 @@
         "node-fetch": "^2.6.0",
         "raw-body": "^2.4.1",
         "stripe": "6.28.0",
-        "typescript": "^3.8.3"
+        "typescript": "^3.8.3",
+        "gh-pages": "^3.1.0"
     },
     "devDependencies": {
-        "gh-pages": "^3.1.0",
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1"
     }
