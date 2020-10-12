@@ -94,3 +94,10 @@ https://jsonplaceholder.typicode.com/
 - когда перерендерился родитель
 
 
+### github actions
+в папке actions-runner в которой создал раннер для гитхаба запускаю ./run.sh
+
+// чтобы сделать чтобы раннеры работали даже без кастомного процесса
+// sudo ./svc.sh install
+// sudo ./svc.sh start
+
