@@ -5,7 +5,6 @@ import { routerMiddleware } from 'connected-react-router';
 import history from '../history';
 import { loadState, saveState } from './session-storage';
 import createRootReducer from './reducers';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 
@@ -54,7 +53,7 @@ function configureStore(preloadedState) {
             saveState({
                 // сохраняю только дату которую получил с бе но не сохраняю вью дату
                 songs: state.songs,
-                shopCart: state.shopCart
+                shopCart: state.shopCart,
             });
         }, 1000)
     );

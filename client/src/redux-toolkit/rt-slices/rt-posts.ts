@@ -1,6 +1,6 @@
-import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PostModel } from '../models/posts.model';
-import { RtAppThunk, RtRootState } from '../rt-configureStore';
+import { RtAppThunk } from '../rt-configureStore';
 import customAxios from '../../common/api/axios';
 
 interface PostsStateModel {
@@ -11,7 +11,7 @@ interface PostsStateModel {
 
 const initialState: PostsStateModel = {
     loading: false,
-    entities: []
+    entities: [],
 };
 
 const rtPostsSlice = createSlice({
@@ -23,8 +23,8 @@ const rtPostsSlice = createSlice({
         },
         fetchPostsError(state, { payload }: PayloadAction<Error>) {
             state.error = payload;
-        }
-    }
+        },
+    },
 });
 
 export const { fetchPostsSuccess, fetchPostsError } = rtPostsSlice.actions;

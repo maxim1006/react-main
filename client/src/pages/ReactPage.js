@@ -5,9 +5,6 @@ import JsxFragment from '../components/jsx/JsxFragment';
 import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
-import Component from '../components/component/Component';
-import VminGrid from '../components/grid/vmin/vmin-grid.component';
-import ExamplesComponent from '../components/examples/examples.component';
 
 export default function ReactPage() {
     return (

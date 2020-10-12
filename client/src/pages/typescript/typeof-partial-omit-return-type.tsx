@@ -21,6 +21,7 @@ export const o2: Partial<typeof o> = {
 // and optionally Omit any overlapping types
 type ButtonProps = React.ComponentProps<typeof ButtonBase>; // no problem! grab your own!
 type AlertButtonProps = Omit<ButtonProps, 'onClick'>; // modify
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AlertButton: React.FC<AlertButtonProps> = props => <ButtonBase onClick={() => alert('hello')} {...props} />;
 
 // You may also use ComponentPropsWithoutRef (instead of ComponentProps)

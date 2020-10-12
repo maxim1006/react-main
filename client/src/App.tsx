@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import './App.scss';
 import { Route, Switch } from 'react-router-dom';
 import MaterialLoaderComponent from './components/loader/MaterialLoader';

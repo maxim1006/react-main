@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import Component from '../components/component/Component';
 import HooksUseStateFamily from '../components/hooks/use-state/HooksUseStateFamily';
 import HooksUseStateCounter from '../components/hooks/use-state/HooksUseStateCounter';
-import UseLayoutEffectComponent from '../components/hooks/use-layout-effect/use-layout-effect.component';
 import UseMemoHook from '../components/hooks/use-memo/UseMemoHook';
 
 const HooksPage = () => {

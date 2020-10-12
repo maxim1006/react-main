@@ -6,7 +6,7 @@ export default memo(() => {
     const [counter, setCounter] = useState(0);
 
     // функция getSum вызовется только 1 раз, если не добавить во второй параметр (массив) что-то
-    const sum = useMemo(() => getSum(counter), []);
+    const sum = useMemo(() => getSum(counter), [counter]);
     const newCounter = counter + 1;
 
     // второе использование для кеширования объекта

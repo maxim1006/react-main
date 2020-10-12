@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import TypescriptReducerHooks from './reducer/typescript-reducer-hooks.component';
 
 interface UserModel {
@@ -6,7 +6,7 @@ interface UserModel {
 }
 
 const TypescriptHooks = () => {
-    const [user, setUser] = useState<UserModel | null>(null);
+    // const [user, setUser] = useState<UserModel | null>(null);
 
     /* null! is a non-null assertion operator (the !).
     null! is a non-null assertion operator (the !).
