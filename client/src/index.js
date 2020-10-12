@@ -13,6 +13,7 @@ render(
     <Provider store={store}>
         {/* Могу использовать обычный роутер как выше, могу тот с которым работаю в редакс,
         сейчас работатет только с history: "^4.10.1"*/}
+        {/*<ConnectedRouter history={history}>*/}
         <HashRouter history={history}>
             <App />
         </HashRouter>
@@ -27,7 +28,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.register();
+serviceWorker.unregister();
 
 /*
 // пример использования redux-persist, но использую прямую запись в локал/сешшион сторадж
