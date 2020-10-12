@@ -19,7 +19,10 @@
     "no-duplicate-imports": "error",
     "no-console": "off",
     "no-return-assign": ["error", "except-parens"],
-    "@typescript-eslint/no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "@typescript-eslint/no-unused-expressions": ["error", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prefer-stateless-function": "off",
@@ -33,11 +36,15 @@
     "react/jsx-curly-newline": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
-    "spaced-comment": ["error", "always", { "markers": ["/"] }],
+    "spaced-comment": ["error", "always", {
+      "markers": ["/"]
+    }],
     "react/prop-types": "off",
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/quotes": "off",
     "no-underscore-dangle": "off",
-    "import/no-named-as-default": "off"
+    "import/no-named-as-default": "off",
+    "import/no-cycle": "off",
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }

@@ -8,47 +8,58 @@ import visualizer from 'rollup-plugin-visualizer';
 import babel from 'rollup-plugin-babel';
 import svgr from '@svgr/rollup';
 import url from '@rollup/plugin-url';
-import replace from '@rollup/plugin-replace';
+// import replace from '@rollup/plugin-replace';
 
-import pkg from './package.json';
+const packageJson = require('./package.json');
 
 export default {
     input: 'src/components/index.ts',
-    external: ['react', 'react-dom', 'prop-types', 'antd', 'styled-components', 'antd/lib/dropdown'],
+    // without antd/lib/dropdown -> antd is included in the final bundle
+    external: ['react', 'react-dom', 'antd', 'styled-components', 'antd/lib/dropdown'],
     output: [
         {
-            file: pkg.main,
+            file: packageJson.main,
             format: 'cjs',
-            exports: 'named',
-            sourcemap: true,
+            sourcemap: true
         },
         {
-            file: pkg.module,
-            format: 'es',
-            exports: 'named',
-            sourcemap: true,
-        },
+            file: packageJson.module,
+            format: 'esm',
+            sourcemap: true
+        }
     ],
     plugins: [
-        peerDepsExternal(),
-        // replace({ '\n    ': '', '    ': '', delimiters: ['', ''] }),
         resolve(),
-        commonjs(),
-        typescript(),
-        postcss({
-            modules: true,
-        }),
+        peerDepsExternal(),
         babel({
-            exclude: 'node_modules/**',
-            transpileTemplateLiterals: false,
+            exclude: ['node_modules/**'],
+            plugins: [
+                [
+                    'babel-plugin-styled-components',
+                    {
+                        minify: true,
+                        transpileTemplateLiterals: false
+                    }
+                ]
+            ]
+        }),
+        commonjs(),
+        typescript({
+            useTsconfigDeclarationDir: true,
+            tsconfig: 'tsconfig.prod.json'
+        }),
+        postcss({
+            extract: false,
+            modules: true,
+            use: ['less']
         }),
         url(),
         svgr(),
         terser({
             compress: {
-                passes: 2,
-            },
+                passes: 2
+            }
         }),
-        visualizer(),
-    ],
+        visualizer()
+    ]
 };
