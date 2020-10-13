@@ -12,6 +12,8 @@ export const obj = {
     age: 30,
 };
 
+let b: keyof typeof obj = 'name'; // let b: "name" | "age
+
 // как пример превращения этой функции в функцию с generics
 // function getProperty(obj: object, key: string) {
 //     return obj[key];
