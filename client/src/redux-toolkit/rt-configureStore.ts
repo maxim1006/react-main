@@ -2,6 +2,8 @@ import { Action, configureStore, getDefaultMiddleware, ThunkAction } from '@redu
 import rootReducer from './rt-slices';
 import { reduxBatch } from '@manaflair/redux-batch';
 import logger from 'redux-logger';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // автоматически подцепляет дев тулы
 
@@ -10,18 +12,45 @@ import logger from 'redux-logger';
 //     reducer: RtCounterReducer
 // });
 
-const middleware = [...getDefaultMiddleware(), logger];
-
+// const middleware = [...getDefaultMiddleware(), logger];
+//
 const preloadedState = {};
 
-// через слайсы
+const persistConfig = {
+    key: 'root',
+    version: 1,
+    storage,
+    // по умолчанию в локалсторадж складывает все, тут указываю что конкретно, также есть blackList
+    whitelist: ['todos'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const RtStore = configureStore({
-    reducer: rootReducer,
-    middleware,
+    reducer: persistedReducer,
+    middleware: [
+        ...getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
+        logger,
+    ],
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
-    enhancers: [reduxBatch]
+    enhancers: [reduxBatch],
 });
+
+export const RtPersistor = persistStore(RtStore);
+
+// через слайсы без persist
+// const RtStore = configureStore({
+//     reducer: rootReducer,
+//     middleware,
+//     preloadedState,
+//     devTools: process.env.NODE_ENV !== 'production',
+//     enhancers: [reduxBatch],
+// });
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('./rt-slices', () => {
