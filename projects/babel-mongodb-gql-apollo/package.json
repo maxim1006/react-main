@@ -1,0 +1,30 @@
+{
+  "name": "babel-mongodb-gql-apollo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Max Maximov",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-prettier": "^3.1.4"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.7.36",
+    "apollo-server-express": "^2.18.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.12.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "mongoose": "^5.10.10",
+    "prettier": "^2.1.2"
+  }
+}
