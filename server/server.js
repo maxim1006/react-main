@@ -16,7 +16,7 @@ import {
     skillsRouter,
     streamsRouter,
     usersRouter,
-    plansRouter
+    plansRouter,
 } from './routers';
 import schema from './gql/schema';
 import resolvers from './gql/resolvers';
@@ -39,6 +39,9 @@ app.use(function(req, res, next) {
     next();
 });
 
+// Custom variables
+// console.log(process.argv[2]); // --my-custom-var=123
+
 // Передаю в переменнные окружения значения из .env с помощью dotenv нпм пакета
 if (!isProduction) {
     require('dotenv').config();
@@ -57,60 +60,60 @@ if (!isProduction) {
 const appRouters = [
     {
         url: 'articles',
-        middleware: articlesRouter
+        middleware: articlesRouter,
     },
     {
         url: 'family',
-        middleware: familyRouter
+        middleware: familyRouter,
     },
     {
         url: 'comments',
-        middleware: commentsRouter
+        middleware: commentsRouter,
     },
     {
         url: 'posts',
-        middleware: postsRouter
+        middleware: postsRouter,
     },
     {
         url: 'frameworks',
-        middleware: frameworksRouter
+        middleware: frameworksRouter,
     },
     {
         url: 'users',
-        middleware: usersRouter
+        middleware: usersRouter,
     },
     {
         url: 'streams',
-        middleware: streamsRouter
+        middleware: streamsRouter,
     },
     {
         url: 'hooks',
-        middleware: hooksRouter
+        middleware: hooksRouter,
     },
     {
         url: 'monsters',
-        middleware: monsterRouter
+        middleware: monsterRouter,
     },
     {
         url: 'payment',
-        middleware: paymentRouter
+        middleware: paymentRouter,
     },
     {
         url: 'skills',
-        middleware: skillsRouter
+        middleware: skillsRouter,
     },
     {
         url: 'doors',
-        middleware: doorsRouter
+        middleware: doorsRouter,
     },
     {
         url: 'fetch',
-        middleware: fetchRouter
+        middleware: fetchRouter,
     },
     {
         url: 'plans',
-        middleware: plansRouter
-    }
+        middleware: plansRouter,
+    },
 ];
 
 // автоматом все запросы приходят с боди json (аля fetch => data.json())
@@ -136,7 +139,7 @@ const server = new ApolloServer({
     playground: !isProduction,
     // disable preflight request
     cors: {
-        maxAge: 600
+        maxAge: 600,
     },
     context: async ({ req, connection }) => {
         if (connection) {
@@ -148,7 +151,7 @@ const server = new ApolloServer({
 
             return { token };
         }
-    }
+    },
 });
 
 server.applyMiddleware({ app });

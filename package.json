@@ -11,7 +11,7 @@
         "client": "cd client && npm start",
         "client:install": "cd client && npm i && cd ../",
         "chat": "cd chat && npm start",
-        "server": "nodemon -r esm ./server/server.js",
+        "server": "nodemon -r esm ./server/server.js --my-custom-var=123",
         "server:prod": "NODE_ENV=production nodemon -r esm ./server/server.js",
         "build": "cd ./client && npm run build && cd ../",
         "start": "node -r esm ./server/server.js",
