@@ -1,5 +1,5 @@
 {
-  "name": "ts-crud-gql-mongo-react",
+  "name": "ts-crud-gql-fs-promise-react",
   "version": "1.0.0",
   "description": "Создаю тсконфиг для ноды реакт и реакт нейтив",
   "main": "index.js",
