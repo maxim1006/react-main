@@ -17,7 +17,7 @@ export const typeDefs = gql`
         id: String!
     }
 
-    input FamilyMember {
+    input FamilyMemberInput {
         name: String!
         age: Float!
         id: String!
@@ -25,6 +25,7 @@ export const typeDefs = gql`
 
     type DeleteFamilyMember {
         deleted: Boolean!
+        id: String!
         errors: [Error]
     }
 
@@ -35,7 +36,7 @@ export const typeDefs = gql`
 
     type Mutation {
         createFamilyMember(name: String!, age: Int!): Family
-        updateFamilyMember(input: FamilyMember): Family
+        updateFamilyMember(input: FamilyMemberInput): Family
         deleteFamilyMember(id: String!): DeleteFamilyMember
     }
 `;

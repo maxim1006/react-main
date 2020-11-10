@@ -86,7 +86,6 @@ export const resolvers = {
             members?: FamilyMemberModel[];
             errors?: [ErrorModel];
         }> => {
-            console.log(input);
             const path = 'data/family.json';
 
             try {
@@ -140,6 +139,7 @@ export const resolvers = {
             }
         ): Promise<{
             deleted?: boolean;
+            id?: string;
             errors?: [ErrorModel];
         }> => {
             const path = 'data/family.json';
@@ -152,6 +152,7 @@ export const resolvers = {
                 await writeFileJSON(path, members);
 
                 return {
+                    id,
                     deleted: true,
                 };
             } catch (error) {
