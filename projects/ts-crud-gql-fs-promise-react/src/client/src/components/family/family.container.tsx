@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import { gql, Reference, useMutation, useQuery } from "@apollo/client";
+import { gql, Reference, useMutation, useQuery } from '@apollo/client';
 import MaterialLoader from '../loader/MaterialLoader';
 import { family, family_family_members } from './__generated__/family';
 import Family from './family.component';
@@ -72,19 +72,18 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
                             return readField('id', i) !== deleteFamilyMember.id;
                         });
 
-                        const family = {
+                        // так могу получить реф к определенному типу
+                        // const newFamilyRef = cache.writeQuery({
+                        //     query: GET_FAMILY,
+                        //     data: {
+                        //         family,
+                        //     },
+                        // });
+
+                        return {
                             ...existingCommentRefs,
                             members,
                         };
-
-                        cache.writeQuery({
-                            query: GET_FAMILY,
-                            data: {
-                                family,
-                            },
-                        });
-
-                        return family;
                     },
                 },
             });
