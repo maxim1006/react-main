@@ -3,6 +3,7 @@ import { gql, Reference, useMutation, useQuery } from '@apollo/client';
 import MaterialLoader from '../loader/MaterialLoader';
 import { family, family_family_members } from './__generated__/family';
 import Family from './family.component';
+import { commonUtilsOmitTypeName } from '../../common.utils';
 
 type FamilyContainerProps = {};
 
@@ -53,6 +54,25 @@ const DELETE_FAMILY_MEMBER = gql`
     }
 `;
 
+// гкл может без измнений кеша заапдейтить только single entity, при этом обязательно должен передаваться id и
+// проперти которые был проапдейчены
+// https://www.apollographql.com/docs/react/data/mutations/#updating-a-single-existing-entity
+const UPDATE_FAMILY_MEMBER = gql`
+    mutation UpdateFamilyMember($input: FamilyMemberInput!) {
+        updateFamilyMember(input: $input) {
+            members {
+                id
+                age
+                name
+            }
+            errors {
+                field
+                message
+            }
+        }
+    }
+`;
+
 const FamilyContainer = memo<FamilyContainerProps>(() => {
     const { data, loading, error } = useQuery<family>(
         GET_FAMILY
@@ -89,8 +109,10 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
             });
         },
     });
+    const [updateMember, { data: dataAfterUpdate }] = useMutation(UPDATE_FAMILY_MEMBER);
 
     console.log('DELETE_FAMILY_MEMBER ', dataAfterRemove);
+    console.log('UPDATE_FAMILY_MEMBER ', dataAfterUpdate);
 
     const onRemove = useCallback(
         (member: family_family_members) => {
@@ -99,13 +121,20 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
         [removeMember]
     );
 
+    const onUpdate = useCallback(
+        (member: family_family_members) => {
+            updateMember({ variables: { input: commonUtilsOmitTypeName(member) } });
+        },
+        [updateMember]
+    );
+
     if (loading) return <MaterialLoader />;
     if (error) return <p>ERROR</p>;
     if (!data) return <p>Not found</p>;
 
     return (
         <>
-            <Family onRemove={onRemove} data={data} loading={loading} error={error} />
+            <Family onRemove={onRemove} onUpdate={onUpdate} data={data} loading={loading} error={error} />
         </>
     );
 });
