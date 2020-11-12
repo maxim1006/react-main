@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./SearchList.scss";
+import React, { Component } from 'react';
+import './SearchList.scss';
 
 export class SearchListComponent extends Component {
     getSearchListBody() {

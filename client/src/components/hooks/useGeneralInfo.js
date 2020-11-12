@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Bowser from "bowser";
-import { debounce, getDevice } from "../../common/helpers/helpers";
+import { useEffect, useState } from 'react';
+import Bowser from 'bowser';
+import { debounce, getDevice } from '../../common/helpers/helpers';
 
 export default () => {
     const [device, setDevice] = useState(null);
@@ -14,8 +14,8 @@ export default () => {
             setDevice(getDevice(currentDocument.clientWidth));
         };
         const throttledResize = debounce(onresize, 1000);
-        window.addEventListener("resize", throttledResize);
-        window.dispatchEvent(new Event("resize"));
+        window.addEventListener('resize', throttledResize);
+        window.dispatchEvent(new Event('resize'));
         setDevice(getDevice(currentDocument.clientWidth));
 
         // getBrowser
@@ -25,7 +25,7 @@ export default () => {
         setBrowser(browserName);
 
         return () => {
-            window.removeEventListener("resize", throttledResize);
+            window.removeEventListener('resize', throttledResize);
         };
     }, []);
 
