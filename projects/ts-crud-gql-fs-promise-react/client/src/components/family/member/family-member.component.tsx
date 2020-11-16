@@ -1,10 +1,10 @@
 import React, { memo, useState } from 'react';
-import { family_family_members } from '../__generated__/family';
+import { GetFamily_family_members } from '../__generated__/GetFamily';
 
 type FamilyMemberProps = {
-    member: family_family_members;
-    onRemove?: (member: family_family_members) => void;
-    onUpdate?: (member: family_family_members) => void;
+    member: GetFamily_family_members;
+    onRemove?: (member: GetFamily_family_members) => void;
+    onUpdate?: (member: GetFamily_family_members) => void;
 };
 
 const FamilyMember = memo<FamilyMemberProps>(({ member, onRemove, onUpdate }) => {

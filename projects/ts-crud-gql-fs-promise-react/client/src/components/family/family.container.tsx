@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { gql, Reference, useMutation, useQuery } from '@apollo/client';
 import MaterialLoader from '../loader/MaterialLoader';
-import { family, family_family_members } from './__generated__/family';
+import { GetFamily, GetFamily_family_members } from './__generated__/GetFamily';
 import Family from './family.component';
 import { commonUtilsOmitTypeName } from '../../common.utils';
 import CreateFamilyMember from './create-member/create-family-member.component';
@@ -14,7 +14,7 @@ type FamilyContainerProps = {};
 
 // так делаю гет запрос
 export const GET_FAMILY = gql`
-    query GET_FAMILY {
+    query GetFamily {
         family {
             members {
                 ...FamilyMemberFragment
@@ -94,12 +94,12 @@ const CREATE_FAMILY_MEMBER = gql`
 `;
 
 const FamilyContainer = memo<FamilyContainerProps>(() => {
-    const { data, loading, error, refetch } = useQuery<family>(
+    const { data, loading, error, refetch } = useQuery<GetFamily>(
         GET_FAMILY
         // { fetchPolicy: 'network-only' }
     );
 
-    const { data: cachedFamily } = useQuery<family>(GET_CACHED_FAMILY);
+    const { data: cachedFamily } = useQuery<GetFamily>(GET_CACHED_FAMILY);
 
     const [
         createMember,
@@ -109,6 +109,14 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
             cache.modify({
                 fields: {
                     family(existingCommentRefs) {
+                        // add all family that get from BE to cache
+                        // cache.writeQuery({
+                        //     query: GET_FAMILY,
+                        //     data: {
+                        //         family: createFamilyMember,
+                        //     },
+                        // });
+
                         // самое смешное что если ничего не возврщать то тоже обновление будет, но будет доп запрос в getFamily
                         // а если вернуть кеш то не будет доп гет запроса
                         return createFamilyMember;
@@ -159,14 +167,14 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
     );
 
     const onUpdate = useCallback(
-        (member: family_family_members) => {
+        (member: GetFamily_family_members) => {
             updateMember({ variables: { input: commonUtilsOmitTypeName(member) } });
         },
         [updateMember]
     );
 
     const onRemove = useCallback(
-        (member: family_family_members) => {
+        (member: GetFamily_family_members) => {
             removeMember({ variables: { id: member.id } });
         },
         [removeMember]
