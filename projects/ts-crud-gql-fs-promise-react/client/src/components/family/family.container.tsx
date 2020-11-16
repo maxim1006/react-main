@@ -150,6 +150,40 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
                 },
             });
         },
+        // а вот так если бы бе возвращал мембера
+        // update(cache, { data: { createFamilyMember } }) {
+        //     cache.modify({
+        //         fields: {
+        //             family(existingCommentRefs) {
+        //                 const newFamilyMemberRef = cache.writeFragment({
+        //                     data: createFamilyMember.member,
+        //                     fragment: gql`
+        //                         fragment NewFamilyMember on FamilyMember {
+        //                             id
+        //                             name
+        //                             age
+        //                         }
+        //                     `
+        //                 });
+        //
+        //                 return {
+        //                     ...existingCommentRefs,
+        //                     members: [...existingCommentRefs.members, newFamilyMemberRef]
+        //                 };
+        //             },
+        //         },
+        //     });
+        // },
+        // так на onCompleted
+        // onCompleted({ createFamilyMember }) {
+        //     console.log("onCompleted createFamilyMember ", createFamilyMember);
+        //     cache.writeQuery({
+        //         query: GET_FAMILY,
+        //         data: {
+        //             family: createFamilyMember,
+        //         },
+        //     });
+        // },
     });
     const [updateMember, { data: dataAfterUpdate }] = useMutation(UPDATE_FAMILY_MEMBER);
 
