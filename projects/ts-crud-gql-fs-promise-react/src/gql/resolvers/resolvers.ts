@@ -190,3 +190,22 @@ export const resolvers = {
 //         }
 //     }
 // }
+
+// mutation createFamilyMember($name:String!, $age:Int!) {
+//     createFamilyMember(name:$name, age:$age) {
+//         members{
+//             id
+//             name
+//         }
+//         errors{
+//             field
+//             message
+//         }
+//     }
+// }
+
+// variables
+// {
+//     "age": 33,
+//     "name": "Max3"
+// }

@@ -13,6 +13,6 @@ const apolloServer = new ApolloServer({
 const app = express();
 apolloServer.applyMiddleware({ app });
 
-app.use(express.static('./public'));
+app.use(express.static('./client/build'));
 
 app.listen({ port: 4000 }, () => console.log(`🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`));

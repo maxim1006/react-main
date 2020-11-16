@@ -4,7 +4,12 @@ import MaterialLoader from '../loader/MaterialLoader';
 import { family, family_family_members } from './__generated__/family';
 import Family from './family.component';
 import { commonUtilsOmitTypeName } from '../../common.utils';
+import CreateFamilyMember from './create-member/create-family-member.component';
+import DataErrors from '../errors/data/data-errors.component';
+import { ErrorModel } from '../../models/error.model';
+import { FamilyMemberFragment } from '../../gql/query/family/family.fragments';
 
+// тут все в одном файле для простоты восприятия, в проде разумеется надо разбивать
 type FamilyContainerProps = {};
 
 // так делаю гет запрос
@@ -12,9 +17,7 @@ export const GET_FAMILY = gql`
     query GET_FAMILY {
         family {
             members {
-                name
-                age
-                id
+                ...FamilyMemberFragment
             }
             errors {
                 message
@@ -22,6 +25,7 @@ export const GET_FAMILY = gql`
             }
         }
     }
+    ${FamilyMemberFragment.fragments.main}
 `;
 
 // так могу забрать закешированные данные
@@ -73,17 +77,47 @@ const UPDATE_FAMILY_MEMBER = gql`
     }
 `;
 
+const CREATE_FAMILY_MEMBER = gql`
+    mutation CreateFamilyMember($name: String!, $age: Int!) {
+        createFamilyMember(name: $name, age: $age) {
+            members {
+                id
+                age
+                name
+            }
+            errors {
+                field
+                message
+            }
+        }
+    }
+`;
+
 const FamilyContainer = memo<FamilyContainerProps>(() => {
-    const { data, loading, error } = useQuery<family>(
+    const { data, loading, error, refetch } = useQuery<family>(
         GET_FAMILY
         // { fetchPolicy: 'network-only' }
     );
-    console.log('GET_FAMILY ', data);
 
     const { data: cachedFamily } = useQuery<family>(GET_CACHED_FAMILY);
-    console.log('GET_CACHED_FAMILY ', cachedFamily);
 
-    const [removeMember, { data: dataAfterRemove }] = useMutation(DELETE_FAMILY_MEMBER, {
+    const [
+        createMember,
+        { loading: createMemberLoading, error: createMemberError, data: dataAfterCreate },
+    ] = useMutation(CREATE_FAMILY_MEMBER, {
+        update(cache, { data: { createFamilyMember } }) {
+            cache.modify({
+                fields: {
+                    family(existingCommentRefs) {
+                        // самое смешное что если ничего не возврщать то тоже обновление будет, но будет доп запрос в getFamily
+                        // а если вернуть кеш то не будет доп гет запроса
+                        return createFamilyMember;
+                    },
+                },
+            });
+        },
+    });
+    const [removeMember, { data: dataAfterDelete }] = useMutation(DELETE_FAMILY_MEMBER, {
         update(cache, { data: { deleteFamilyMember } }) {
             cache.modify({
                 fields: {
@@ -111,14 +145,17 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
     });
     const [updateMember, { data: dataAfterUpdate }] = useMutation(UPDATE_FAMILY_MEMBER);
 
-    console.log('DELETE_FAMILY_MEMBER ', dataAfterRemove);
+    console.log('GET_FAMILY ', data);
+    console.log('GET_CACHED_FAMILY ', cachedFamily);
+    console.log('CREATE_FAMILY_MEMBER ', dataAfterCreate);
     console.log('UPDATE_FAMILY_MEMBER ', dataAfterUpdate);
+    console.log('DELETE_FAMILY_MEMBER ', dataAfterDelete);
 
-    const onRemove = useCallback(
-        (member: family_family_members) => {
-            removeMember({ variables: { id: member.id } });
+    const onCreate = useCallback(
+        ({ name, age }) => {
+            createMember({ variables: { name, age } });
         },
-        [removeMember]
+        [createMember]
     );
 
     const onUpdate = useCallback(
@@ -128,15 +165,48 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
         [updateMember]
     );
 
-    if (loading) return <MaterialLoader />;
-    if (error) return <p>ERROR</p>;
+    const onRemove = useCallback(
+        (member: family_family_members) => {
+            removeMember({ variables: { id: member.id } });
+        },
+        [removeMember]
+    );
+
+    if (loading || createMemberLoading) return <MaterialLoader />;
+    if (error || createMemberError) return <p>ERROR</p>;
     if (!data) return <p>Not found</p>;
+
+    const errors = handleErrors([
+        dataAfterCreate?.createFamilyMember?.errors,
+        dataAfterUpdate?.updateFamilyMember?.errors,
+        dataAfterDelete?.deleteFamilyMember?.errors,
+    ]);
 
     return (
         <>
+            <button type="button" onClick={() => refetch()}>
+                Refetch family
+            </button>
+            <CreateFamilyMember onCreate={onCreate} />
             <Family onRemove={onRemove} onUpdate={onUpdate} data={data} loading={loading} error={error} />
+            <DataErrors errors={errors} />
         </>
     );
 });
 
 export default FamilyContainer;
+
+// helpers
+function handleErrors(errors: ErrorModel[]) {
+    const err: ErrorModel[] = [];
+
+    errors.forEach(i => {
+        if (Array.isArray(i)) {
+            i.forEach((error: ErrorModel) => {
+                err.push(error);
+            });
+        }
+    });
+
+    return err;
+}
