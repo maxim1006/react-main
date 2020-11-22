@@ -1,11 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-export const typeDefs = gql`
-    type Error {
-        message: String
-        field: String
-    }
-
+export const FamilyTypeDefs = gql`
     type Family {
         members: [FamilyMember]
         errors: [Error]
@@ -27,16 +22,5 @@ export const typeDefs = gql`
         deleted: Boolean!
         id: String!
         errors: [Error]
-    }
-
-    type Query {
-        #        hello: String
-        family: Family
-    }
-
-    type Mutation {
-        createFamilyMember(name: String!, age: Int!): Family
-        updateFamilyMember(input: FamilyMemberInput): Family
-        deleteFamilyMember(id: String!): DeleteFamilyMember
     }
 `;

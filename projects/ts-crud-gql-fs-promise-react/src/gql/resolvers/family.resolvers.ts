@@ -2,7 +2,7 @@ import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
 import { ErrorModel } from '../../models/error.model';
 import { FamilyMemberModel } from '../../models/family.model';
 
-export const resolvers = {
+export const FamilyResolvers = {
     Query: {
         // hello: (root, args, ctx, info) => {
         //     // console.log(root, args, ctx, info);

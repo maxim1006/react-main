@@ -10,3 +10,5 @@ https://github.com/websockets/ws
 
 ### React
 https://overreacted.io/a-complete-guide-to-useeffect/
+// animation
+https://github.com/pmndrs/react-spring

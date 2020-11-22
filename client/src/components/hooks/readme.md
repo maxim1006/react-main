@@ -67,6 +67,14 @@ allow a functional component to use the context system
 ## useRef
 allow a functional component to use the ref system
 
+useRef returns a mutable ref object whose .current property is initialized to the passed argument (initialValue). The returned object will persist for the full lifetime of the component.
+
+Удобно использовать для хранения и записи через все рендеры,
+
+const a = useRef();
+
+дальше где-то a.current = {}
+
 
 
 ## useCallback
