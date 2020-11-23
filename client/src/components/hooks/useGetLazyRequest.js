@@ -10,7 +10,7 @@ export default ({ url }) => {
 
     const refetch = useCallback(() => {
         setCancelRequest(customAxios.CancelToken.source());
-    }, []);
+    }, [setCancelRequest]);
 
     const refetchInner = useCallback(async () => {
         try {
@@ -21,8 +21,6 @@ export default ({ url }) => {
             });
 
             setData(data);
-
-            return data;
         } catch (e) {
             console.log(`Get request to ${url} error `, e);
         } finally {
