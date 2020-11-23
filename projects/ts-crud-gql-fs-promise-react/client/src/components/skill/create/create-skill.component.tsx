@@ -1,14 +1,14 @@
 import React, { memo, useRef, useState } from 'react';
 
 type CreateSkillProps = {
-    onCreate: (member: { name: string; age: number }) => void;
+    onCreate: (member: { name: string; completed: boolean }) => void;
 };
 
 const CreateSkill = memo<CreateSkillProps>(({ onCreate }) => {
     const [error, setError] = useState<boolean>(false);
 
     const nameRef = useRef<HTMLInputElement>(null!);
-    const ageRef = useRef<HTMLInputElement>(null!);
+    const completedRef = useRef<HTMLInputElement>(null!);
 
     return (
         <form
@@ -16,7 +16,7 @@ const CreateSkill = memo<CreateSkillProps>(({ onCreate }) => {
             onSubmit={e => {
                 e.preventDefault();
 
-                if (!nameRef.current.value.trim() || !ageRef.current.value.trim()) {
+                if (!nameRef.current.value.trim()) {
                     setError(true);
                     return false;
                 } else {
@@ -24,12 +24,11 @@ const CreateSkill = memo<CreateSkillProps>(({ onCreate }) => {
                 }
 
                 const name = nameRef.current.value;
-                const ageRefValue = parseInt(ageRef.current.value, 10);
-                const age = isNaN(ageRefValue) ? 0 : ageRefValue;
+                const completed = completedRef.current.checked;
 
                 onCreate({
                     name,
-                    age,
+                    completed,
                 });
             }}
         >
@@ -40,13 +39,13 @@ const CreateSkill = memo<CreateSkillProps>(({ onCreate }) => {
             </div>
             <div>
                 <label>
-                    Age: <input ref={ageRef} type="text" name="age" />
+                    Completed: <input ref={completedRef} type="checkbox" name="completed" />
                 </label>
             </div>
             <div style={{ color: 'red' }} hidden={!error}>
-                Name or age cant be empty
+                Name cant be empty
             </div>
-            <button type="submit">Create member</button>
+            <button type="submit">Create skill</button>
         </form>
     );
 });

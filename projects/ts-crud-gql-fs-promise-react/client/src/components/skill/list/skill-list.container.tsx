@@ -4,6 +4,7 @@ import { commonUtilsOmitTypeName } from '../../../common.utils';
 import MaterialLoader from '../../loader/MaterialLoader';
 import CreateSkill from '../create/create-skill.component';
 import SkillList from './skill-list.component';
+import { GetSkills } from './__generated__/GetSkills';
 
 // тут все в одном файле для простоты восприятия, в проде разумеется надо разбивать
 type SkillListContainerProps = {};
@@ -29,6 +30,7 @@ export const GET_SKILLS = gql`
 const DELETE_SKILL = gql`
     mutation DeleteSkill($id: String!) {
         deleteSkill(id: $id) {
+            id
             items {
                 id
                 name
@@ -45,14 +47,15 @@ const DELETE_SKILL = gql`
 const UPDATE_SKILL = gql`
     mutation UpdateSkill($input: SkillInput!) {
         updateSkill(input: $input) {
+            id
             items {
                 id
                 name
                 completed
             }
             errors {
-                field
                 message
+                field
             }
         }
     }
@@ -61,14 +64,15 @@ const UPDATE_SKILL = gql`
 const CREATE_SKILL = gql`
     mutation CreateSkill($name: String!, $completed: Boolean!) {
         createSkill(name: $name, completed: $completed) {
+            id
             items {
                 id
                 name
                 completed
             }
             errors {
-                field
                 message
+                field
             }
         }
     }
@@ -77,7 +81,7 @@ const CREATE_SKILL = gql`
 const SkillListContainer = memo<SkillListContainerProps>(() => {
     const { data, loading, error, refetch } = useQuery<GetSkills>(GET_SKILLS);
     const [createSkill, { data: dataAfterCreate }] = useMutation(CREATE_SKILL);
-    const [updateSkill, { data: dataAfterUpdate }] = useMutation(DELETE_SKILL);
+    const [updateSkill, { data: dataAfterUpdate }] = useMutation(UPDATE_SKILL);
     const [removeSkill, { data: dataAfterDelete }] = useMutation(DELETE_SKILL);
 
     console.log('GET_SKILLS ', data);
@@ -111,13 +115,13 @@ const SkillListContainer = memo<SkillListContainerProps>(() => {
     if (!data) return <p>Not found</p>;
 
     return (
-        <>
+        <div style={{ marginBottom: 100 }}>
             <button type="button" onClick={() => refetch()}>
-                Refetch family
+                Refetch Skills
             </button>
             <CreateSkill onCreate={onCreate} />
             <SkillList data={data} loading={loading} onUpdate={onUpdate} onRemove={onRemove} />
-        </>
+        </div>
     );
 });
 

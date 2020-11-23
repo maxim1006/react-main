@@ -18,6 +18,12 @@ type DeleteFamilyMember {
   errors: [Error]
 }
 
+type DeleteSkill {
+  deleted: Boolean!
+  id: String!
+  errors: [Error]
+}
+
 type Error {
   message: String
   field: String
@@ -44,10 +50,32 @@ type Mutation {
   createFamilyMember(name: String!, age: Int!): Family
   updateFamilyMember(input: FamilyMemberInput): Family
   deleteFamilyMember(id: String!): DeleteFamilyMember
+  createSkill(name: String!, completed: Boolean!): Skills
+  updateSkill(input: SkillInput): Skills
+  deleteSkill(id: String!): Skills
 }
 
 type Query {
   family: Family
+  skills: Skills
+}
+
+type Skill {
+  name: String!
+  completed: Boolean!
+  id: String!
+}
+
+input SkillInput {
+  name: String!
+  completed: Boolean!
+  id: String!
+}
+
+type Skills {
+  id: String!
+  items: [Skill]
+  errors: [Error]
 }
 
 # The `Upload` scalar type represents a file upload.

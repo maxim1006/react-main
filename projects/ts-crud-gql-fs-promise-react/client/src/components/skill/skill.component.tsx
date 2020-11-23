@@ -1,9 +1,10 @@
 import React, { memo, useState } from 'react';
+import { GetSkills_skills_items } from './list/__generated__/GetSkills';
 
 type SkillProps = {
     data: any;
-    onRemove?: (member: any) => void;
-    onUpdate?: (member: any) => void;
+    onRemove?: (skill: GetSkills_skills_items) => void;
+    onUpdate?: (GetSkills_skills_items: GetSkills_skills_items) => void;
 };
 
 const Skill = memo<SkillProps>(({ data, onRemove, onUpdate }) => {

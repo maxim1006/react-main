@@ -1,14 +1,19 @@
 import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
 import { SkillModel, SkillsModel } from '../../models/skills.model';
 
-const SKILLS_ID = `Skills_${Date.now()}`;
+const SKILLS_ID = `Skills_id`;
 const path = 'data/skills.json';
 
 export const SkillsResolvers = {
     Query: {
         skills: async (): Promise<SkillsModel> => {
             try {
-                return await readFileJSON('data/skills.json');
+                const items = await readFileJSON('data/skills.json');
+
+                return {
+                    id: SKILLS_ID,
+                    items,
+                };
             } catch (error) {
                 return {
                     id: SKILLS_ID,
@@ -48,8 +53,11 @@ export const SkillsResolvers = {
                 skills.push(skill);
 
                 await writeFileJSON(path, skills);
-                console.log(skills);
-                return skills;
+
+                return {
+                    id: SKILLS_ID,
+                    items: skills,
+                };
             } catch (error) {
                 return {
                     id: SKILLS_ID,
@@ -98,7 +106,10 @@ export const SkillsResolvers = {
 
                 await writeFileJSON(path, skills);
 
-                return skills;
+                return {
+                    id: SKILLS_ID,
+                    items: skills,
+                };
             } catch (error) {
                 return {
                     id: SKILLS_ID,
@@ -121,7 +132,10 @@ export const SkillsResolvers = {
 
                 await writeFileJSON(path, skills);
 
-                return skills;
+                return {
+                    id: SKILLS_ID,
+                    items: skills,
+                };
             } catch (error) {
                 return {
                     id: SKILLS_ID,
@@ -131,3 +145,65 @@ export const SkillsResolvers = {
         },
     },
 };
+
+// {
+//     skills {
+//     id
+//     items {
+//         name
+//         id
+//         completed
+//     }
+// }
+// }
+
+// mutation createSkill($name:String!, $completed:Boolean!) {
+//     createSkill(name:$name, completed:$completed) {
+//         id
+//         items{
+//             id
+//             name
+//             completed
+//         }
+//         errors{
+//             field
+//             message
+//         }
+//     }
+// }
+// {
+//     "name": "HTML",
+//     "completed": true
+// }
+
+// mutation deleteSkill($id: String!) {
+//     deleteSkill(id: $id) {
+//         id
+//         items {
+//             id
+//             name
+//             completed
+//         }
+//         errors {
+//             field
+//             message
+//         }
+//     }
+// }
+
+// mutation {
+//     updateSkill(
+//         input: { name: "html1", completed: true, id: "Skill_1606117113299" }
+// ) {
+//         id
+//         items {
+//             id
+//             name
+//             completed
+//         }
+//         errors {
+//             field
+//             message
+//         }
+//     }
+// }
