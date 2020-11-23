@@ -95,6 +95,7 @@ const Parent = ()=> {
    }, [a]);
    return <Child onClick={eventHandler}/>
 
+При изменении в array сама функция обернутая в useCallback вызываться не будет
 
 
 ## useMemo

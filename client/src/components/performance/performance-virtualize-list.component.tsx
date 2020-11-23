@@ -1,21 +1,17 @@
-import React, { memo, useEffect, useRef } from "react";
-import { FixedSizeList, VariableSizeList } from "react-window";
-import useFetch from "../hooks/useFetch";
+import React, { memo, useEffect, useRef } from 'react';
+import { FixedSizeList, VariableSizeList } from 'react-window';
+import useFetch from '../hooks/useFetch';
 
 type PostType = { id: string; title: string; body: string; style: any; index: number };
 
 // Идиоткий плагин хрен знает как народ его использует, не умеет считать динамическую высоту
 
 const PerformanceVirtualizeList: React.FC = () => {
-    const controller = new AbortController();
-
     const sizes: any = [];
 
-    const data: PostType[] =
-        useFetch({
-            url: "https://jsonplaceholder.typicode.com/posts",
-            controller
-        }) || [];
+    const { data }: { data: any } = useFetch({
+        url: 'https://jsonplaceholder.typicode.com/posts',
+    });
 
     const RowComponent = ({ title, body, style, index }: Partial<PostType>) => {
         const ref = useRef<HTMLDivElement>(null!);

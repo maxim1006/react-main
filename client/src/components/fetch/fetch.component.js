@@ -1,17 +1,13 @@
-import React, { memo } from "react";
-import MaterialLoader from "../loader/MaterialLoader";
-import "./fetch.component.scss";
-import FetchCanvas from "./canvas/fetch-canvas.component";
-import useFetchGet from "./useFetchGet";
-import useFetchPost from "./useFetchPost";
+import React, { memo } from 'react';
+import MaterialLoader from '../loader/MaterialLoader';
+import './fetch.component.scss';
+import FetchCanvas from './canvas/fetch-canvas.component';
+import useFetchGet from './useFetchGet';
+import useFetchPost from './useFetchPost';
 
-export default memo(() => {
+const Fetch = memo(() => {
     const { data, setController, controller } = useFetchGet();
-    const {
-        data: postData,
-        setController: setPostController,
-        controller: postController
-    } = useFetchPost();
+    const { data: postData, setController: setPostController, controller: postController } = useFetchPost();
 
     console.log(data);
 
@@ -26,22 +22,19 @@ export default memo(() => {
             >
                 Start fetch request
             </button>
-            {data
-                ? data.map(familyMember => familyMember.name)
-                : controller && <MaterialLoader />}
+            {data ? data.map(familyMember => familyMember.name) : controller && <MaterialLoader />}
 
             <h3 className="fetch__header">Fetch post</h3>
-            <button
-                type="button"
-                onClick={() => setPostController(new AbortController())}
-            >
+            <button type="button" onClick={() => setPostController(new AbortController())}>
                 fetch post
             </button>
-            {postData
-                ? postData.message
-                : postController && "Loading post data..."}
+            {postData ? postData.message : postController && 'Loading post data...'}
             <h3 className="fetch__header">Fetch canvas</h3>
             <FetchCanvas />
         </>
     );
 });
+
+Fetch.displayName = 'Fetch';
+
+export default Fetch;

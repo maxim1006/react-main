@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default () => {
     const [data, setData] = useState(null);
     const [controller, setController] = useState(null);
 
-    const fetchUrl = "/api/fetch";
+    const fetchUrl = '/api/fetch';
 
     useEffect(() => {
         (async () => {
@@ -17,12 +17,12 @@ export default () => {
 
             try {
                 const data = await fetch(fetchUrl, {
-                    signal: controller.signal
+                    signal: controller.signal,
                 });
                 const jsonData = await data.json();
                 setData(jsonData);
             } catch (e) {
-                console.log("fetch component fetch error ", e);
+                console.log('fetch component fetch error ', e);
             }
         })();
 
@@ -32,6 +32,6 @@ export default () => {
     return {
         data,
         setController,
-        controller
+        controller,
     };
 };
