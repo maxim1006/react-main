@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default () => {
     const [data, setData] = useState(null);
@@ -12,28 +12,22 @@ export default () => {
             }
 
             try {
-                const response = await fetch(
-                    "http://localhost:3001/api/fetch/post",
-                    {
-                        signal: controller.signal,
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json;charset=utf-8"
-                        },
-                        body: JSON.stringify({
-                            message: "Howdy stranger!"
-                        })
-                    }
-                );
+                const response = await fetch('http://localhost:3001/api/fetch/post', {
+                    signal: controller.signal,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                    },
+                    body: JSON.stringify({
+                        message: 'Howdy stranger!',
+                    }),
+                });
 
                 const jsonData = await response.json();
                 setData(jsonData);
-                console.log("fetchPost result ", data);
+                console.log('fetchPost result ', jsonData);
             } catch (e) {
-                console.log(
-                    "useFetchPost http://localhost:3001/api/fetch/post error ",
-                    e
-                );
+                console.log('useFetchPost http://localhost:3001/api/fetch/post error ', e);
             }
         })();
 
@@ -45,6 +39,6 @@ export default () => {
     return {
         data,
         setController,
-        controller
+        controller,
     };
 };

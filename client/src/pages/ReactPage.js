@@ -5,9 +5,7 @@ import JsxFragment from '../components/jsx/JsxFragment';
 import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
-import Fetch from '../components/fetch/fetch.component';
 import Component from '../components/component/Component';
-import FamilyFetch from '../components/family/fetch/FamilyFetch';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
 
 export default function ReactPage() {

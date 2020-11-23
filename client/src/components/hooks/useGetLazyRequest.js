@@ -31,7 +31,7 @@ export default ({ url }) => {
     useEffect(() => {
         refetchInner();
         return () => cancelRequest?.cancel(`Cancel get request to ${url}`);
-    }, [refetchInner, cancelRequest]);
+    }, [refetchInner, cancelRequest, url]);
 
     return { data, refetch, loading };
 };

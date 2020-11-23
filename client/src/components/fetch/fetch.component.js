@@ -9,8 +9,6 @@ const Fetch = memo(() => {
     const { data, setController, controller } = useFetchGet();
     const { data: postData, setController: setPostController, controller: postController } = useFetchPost();
 
-    console.log(data);
-
     return (
         <>
             <h3>Fetch get</h3>

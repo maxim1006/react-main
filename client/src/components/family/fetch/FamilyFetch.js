@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch';
 
 const FamilyFetch = memo(() => {
     const { data, refetch } = useFetch({ url: 'http://localhost:3001/api/family' });
-    const { data: data1 } = useFetch({ url: 'https://jsonplaceholder.typicode.com/users' });
+    // const { data: data1 } = useFetch({ url: 'https://jsonplaceholder.typicode.com/users' });
 
     return data ? (
         <>
