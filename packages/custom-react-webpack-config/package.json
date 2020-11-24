@@ -134,8 +134,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix -- --max-warnings 0",
-      "pre-push": "npm run test"
+      "pre-commit123": "npm run lint:fix -- --max-warnings 0",
+      "pre-push123": "npm run test"
     }
   },
   "jestSonar": {
