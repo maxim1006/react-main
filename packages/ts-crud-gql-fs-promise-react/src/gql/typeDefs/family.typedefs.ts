@@ -18,7 +18,7 @@ export const FamilyTypeDefs = gql`
         id: String!
     }
 
-    type DeleteFamilyMember {
+    type DeletedFamilyMember {
         deleted: Boolean!
         id: String!
         errors: [Error]

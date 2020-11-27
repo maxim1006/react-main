@@ -1,0 +1,19 @@
+overwrite: true
+schema:
+  - "schema.graphql"
+  - "src/gql/typedefs.ts"
+documents:
+#  - "src/**/fragments.ts"
+#  - "src/**/mutations.ts"
+#  - "src/**/queries.ts"
+  - "src/**/*.ts"
+  - "src/**/*.tsx"
+generates:
+  src/generated/operations.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+    config:
+      preResolveTypes: true
+      omitOperationSuffix: true
+      exportFragmentSpreadSubTypes: true

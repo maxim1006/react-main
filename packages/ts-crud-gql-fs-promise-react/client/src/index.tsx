@@ -2,10 +2,10 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.less';
 import * as serviceWorker from './serviceWorker';
+import { client } from './gql/gql';
 import App from './components/app/app.component';
 import { ApolloProvider, useQuery } from '@apollo/client';
 import Login from './components/login/login.component';
-import { client } from './gql/gql';
 import { IS_LOGGED_IN } from './gql/query/login/login';
 
 function IsLoggedIn() {

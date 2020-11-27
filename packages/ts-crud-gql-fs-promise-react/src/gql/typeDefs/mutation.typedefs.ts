@@ -5,7 +5,7 @@ export const MutationTypeDefs = gql`
         #Family
         createFamilyMember(name: String!, age: Int!): Family
         updateFamilyMember(input: FamilyMemberInput): Family
-        deleteFamilyMember(id: String!): DeleteFamilyMember
+        deleteFamilyMember(id: String!): DeletedFamilyMember
 
         #Skills
         createSkill(name: String!, completed: Boolean!): Skills

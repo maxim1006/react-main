@@ -18,10 +18,4 @@ export const SkillsTypeDefs = gql`
         completed: Boolean!
         id: String!
     }
-
-    type DeleteSkill {
-        deleted: Boolean!
-        id: String!
-        errors: [Error]
-    }
 `;
