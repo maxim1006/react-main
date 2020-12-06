@@ -5,6 +5,9 @@ import MaterialLoader from '../../loader/MaterialLoader';
 import CreateSkill from '../create/create-skill.component';
 import SkillList from './skill-list.component';
 import { GetSkills } from './__generated__/GetSkills';
+import { skillFilter } from '../../../gql/cache';
+import styles from './skill-list-container.module.less';
+import { FilterModel } from '../../../models/filter.model';
 
 // тут все в одном файле для простоты восприятия, в проде разумеется надо разбивать
 type SkillListContainerProps = {};
@@ -14,6 +17,11 @@ export const GET_SKILLS = gql`
     query GetSkills {
         skills {
             id
+            filteredItems @client {
+                id
+                name
+                completed
+            }
             items {
                 id
                 name
@@ -84,10 +92,10 @@ const SkillListContainer = memo<SkillListContainerProps>(() => {
     const [updateSkill, { data: dataAfterUpdate }] = useMutation(UPDATE_SKILL);
     const [removeSkill, { data: dataAfterDelete }] = useMutation(DELETE_SKILL);
 
-    console.log('GET_SKILLS ', data);
-    console.log('CREATE_SKILL ', dataAfterCreate);
-    console.log('UPDATE_SKILL ', dataAfterUpdate);
-    console.log('DELETE_SKILL ', dataAfterDelete);
+    // console.log('GET_SKILLS ', data);
+    // console.log('CREATE_SKILL ', dataAfterCreate);
+    // console.log('UPDATE_SKILL ', dataAfterUpdate);
+    // console.log('DELETE_SKILL ', dataAfterDelete);
 
     const onCreate = useCallback(
         ({ name, completed }) => {
@@ -114,13 +122,32 @@ const SkillListContainer = memo<SkillListContainerProps>(() => {
     if (error) return <p>ERROR</p>;
     if (!data) return <p>Not found</p>;
 
+    const onFilterClick = (filter: FilterModel) => {
+        skillFilter(filter);
+    };
+
     return (
         <div style={{ marginBottom: 100 }}>
-            <button type="button" onClick={() => refetch()}>
-                Refetch Skills
-            </button>
+            <h3 className={styles.title}>Filtered Skills</h3>
+            <div>
+                Filters:{' '}
+                {['All', 'Completed'].map((i, idx) => (
+                    <span className={styles.filter} onClick={() => onFilterClick(i as FilterModel)} key={idx}>
+                        {i}
+                    </span>
+                ))}
+            </div>
+            <SkillList data={data?.skills?.filteredItems} />
+
+            <h3 className={styles.title}>All Skills</h3>
             <CreateSkill onCreate={onCreate} />
-            <SkillList data={data} loading={loading} onUpdate={onUpdate} onRemove={onRemove} />
+            <SkillList data={data?.skills?.items} loading={loading} onUpdate={onUpdate} onRemove={onRemove} />
+
+            <p className={styles.block}>
+                <button type="button" onClick={() => refetch()}>
+                    Refetch Skills
+                </button>
+            </p>
         </div>
     );
 });

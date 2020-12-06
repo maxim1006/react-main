@@ -5,8 +5,8 @@ import Skill from '../skill.component';
 import { GetSkills_skills_items } from './__generated__/GetSkills';
 
 type SkillListProps = {
-    data: any;
-    loading: boolean;
+    data: (GetSkills_skills_items | null)[] | null | undefined;
+    loading?: boolean;
     error?: ApolloError;
     onRemove?: (skill: GetSkills_skills_items) => void;
     onUpdate?: (skill: GetSkills_skills_items) => void;
@@ -20,7 +20,7 @@ const SkillList = memo<SkillListProps>(({ data, loading, error, onRemove, onUpda
     return (
         <>
             <ul>
-                {data.skills?.items?.map((data: GetSkills_skills_items) => {
+                {data.map(data => {
                     if (data) {
                         return (
                             <li key={data?.id}>

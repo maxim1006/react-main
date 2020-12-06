@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export const FamilyTypeDefs = gql`
     type Family {
+        id: String!
         members: [FamilyMember]
         errors: [Error]
     }

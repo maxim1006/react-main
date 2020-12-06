@@ -1,4 +1,4 @@
-import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { cache } from './cache';
 import { typeDefs } from './typedefs';
 

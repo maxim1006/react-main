@@ -1,0 +1,23 @@
+.filter {
+    margin: 0 4px;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.activeFilter {
+    composes: filter;
+    color: darkred;
+}
+
+.title {
+    margin-top: 30px;
+}
+
+.block {
+    margin-top: 20px;
+}

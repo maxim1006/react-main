@@ -105,6 +105,8 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
         createMember,
         { loading: createMemberLoading, error: createMemberError, data: dataAfterCreate },
     ] = useMutation(CREATE_FAMILY_MEMBER, {
+        // ignore errors to show data
+        // errorPolicy: 'ignore',
         update(cache, { data: { createFamilyMember } }) {
             cache.modify({
                 fields: {
@@ -187,11 +189,11 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
     });
     const [updateMember, { data: dataAfterUpdate }] = useMutation(UPDATE_FAMILY_MEMBER);
 
-    console.log('GET_FAMILY ', data);
-    console.log('GET_CACHED_FAMILY ', cachedFamily);
-    console.log('CREATE_FAMILY_MEMBER ', dataAfterCreate);
-    console.log('UPDATE_FAMILY_MEMBER ', dataAfterUpdate);
-    console.log('DELETE_FAMILY_MEMBER ', dataAfterDelete);
+    // console.log('GET_FAMILY ', data);
+    // console.log('GET_CACHED_FAMILY ', cachedFamily);
+    // console.log('CREATE_FAMILY_MEMBER ', dataAfterCreate);
+    // console.log('UPDATE_FAMILY_MEMBER ', dataAfterUpdate);
+    // console.log('DELETE_FAMILY_MEMBER ', dataAfterDelete);
 
     const onCreate = useCallback(
         ({ name, age }) => {
