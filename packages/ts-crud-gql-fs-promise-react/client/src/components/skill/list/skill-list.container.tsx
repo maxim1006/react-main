@@ -1,13 +1,15 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { commonUtilsOmitTypeName } from '../../../common.utils';
 import MaterialLoader from '../../loader/MaterialLoader';
 import CreateSkill from '../create/create-skill.component';
 import SkillList from './skill-list.component';
-import { GetSkills } from './__generated__/GetSkills';
+import { GetSkills, GetSkills_skills_items } from './__generated__/GetSkills';
 import { skillFilter } from '../../../gql/cache';
 import styles from './skill-list-container.module.less';
 import { FilterModel } from '../../../models/filter.model';
+import { SkillModel } from '../../../../../src/models/skills.model';
+import { useFilteredSkills } from './use-filtered-skills.hook';
 
 // тут все в одном файле для простоты восприятия, в проде разумеется надо разбивать
 type SkillListContainerProps = {};
@@ -126,6 +128,8 @@ const SkillListContainer = memo<SkillListContainerProps>(() => {
         skillFilter(filter);
     };
 
+    const { filteredSkills } = useFilteredSkills(data);
+
     return (
         <div style={{ marginBottom: 100 }}>
             <h3 className={styles.title}>Filtered Skills</h3>
@@ -138,6 +142,8 @@ const SkillListContainer = memo<SkillListContainerProps>(() => {
                 ))}
             </div>
             <SkillList data={data?.skills?.filteredItems} />
+            {/*По идее ровно также мог бы взять обычные айтемы и отфильтровать их относительно реактивной переменной*/}
+            <SkillList data={filteredSkills} />
 
             <h3 className={styles.title}>All Skills</h3>
             <CreateSkill onCreate={onCreate} />

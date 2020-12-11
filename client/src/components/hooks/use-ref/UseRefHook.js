@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from 'react';
 
 export default memo(() => {
     const ref = useRef();
@@ -15,6 +15,15 @@ export default memo(() => {
     }, []);
 
     console.log(3); // 1,3,2
+
+    // Usage2
+    const noRerenderState = useRef({ a: 1 });
+
+    setTimeout(() => {
+        noRerenderState.current = { a: 2 };
+    }, 3000);
+
+    console.log(noRerenderState);
 
     return (
         <>
