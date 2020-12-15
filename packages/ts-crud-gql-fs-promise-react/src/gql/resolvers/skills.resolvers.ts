@@ -1,7 +1,7 @@
 import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
 import { SkillModel, SkillsModel } from '../../models/skills.model';
 
-const SKILLS_ID = `Skills_id`;
+export const SKILLS_ID = `Skills_id`;
 const path = 'data/skills.json';
 
 export const SkillsResolvers = {

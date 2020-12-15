@@ -2,6 +2,8 @@ import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
 import { ErrorModel } from '../../models/error.model';
 import { FamilyMemberModel } from '../../models/family.model';
 
+// тут специально без id чтобы посмотреть как кеш в этом случае работает
+
 export const FamilyResolvers = {
     Query: {
         // hello: (root, args, ctx, info) => {

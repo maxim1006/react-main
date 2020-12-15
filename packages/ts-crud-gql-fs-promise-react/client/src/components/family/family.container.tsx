@@ -8,6 +8,7 @@ import CreateFamilyMember from './create-member/create-family-member.component';
 import DataErrors from '../errors/data/data-errors.component';
 import { ErrorModel } from '../../models/error.model';
 import { FamilyMemberFragment } from '../../gql/query/family/family.fragments';
+import { ErrorFragment } from '../../gql/query/error/error.fragment';
 
 // тут все в одном файле для простоты восприятия, в проде разумеется надо разбивать
 type FamilyContainerProps = {};
@@ -20,12 +21,12 @@ export const GET_FAMILY = gql`
                 ...FamilyMemberFragment
             }
             errors {
-                message
-                field
+                ...ErrorFragment
             }
         }
     }
     ${FamilyMemberFragment.fragments.main}
+    ${ErrorFragment.fragments.main}
 `;
 
 // так могу забрать закешированные данные
@@ -38,11 +39,11 @@ export const GET_CACHED_FAMILY = gql`
                 id
             }
             errors {
-                message
-                field
+                ...ErrorFragment
             }
         }
     }
+    ${ErrorFragment.fragments.main}
 `;
 
 const DELETE_FAMILY_MEMBER = gql`
@@ -51,11 +52,11 @@ const DELETE_FAMILY_MEMBER = gql`
             deleted
             id
             errors {
-                message
-                field
+                ...ErrorFragment
             }
         }
     }
+    ${ErrorFragment.fragments.main}
 `;
 
 // гкл может без измнений кеша заапдейтить только single entity, при этом обязательно должен передаваться id и

@@ -7,19 +7,23 @@ import { MutationTypeDefs } from './gql/typeDefs/mutation.typedefs';
 import { FamilyTypeDefs } from './gql/typeDefs/family.typedefs';
 import { SkillsTypeDefs } from './gql/typeDefs/skills.typedefs';
 import { ErrorTypeDefs } from './gql/typeDefs/error.typedefs';
+import { EntitiesTypedefs } from './gql/typeDefs/entities.typedefs';
+import { EntitiesResolvers } from './gql/resolvers/entities.resolvers';
 
 const apolloServer = new ApolloServer({
     resolvers: {
         Query: {
             ...SkillsResolvers.Query,
             ...FamilyResolvers.Query,
+            ...EntitiesResolvers.Query,
         },
         Mutation: {
             ...SkillsResolvers.Mutation,
             ...FamilyResolvers.Mutation,
         },
+        Entities: { ...EntitiesResolvers.Entities },
     },
-    typeDefs: [QueryTypeDefs, MutationTypeDefs, FamilyTypeDefs, SkillsTypeDefs, ErrorTypeDefs],
+    typeDefs: [EntitiesTypedefs, QueryTypeDefs, MutationTypeDefs, FamilyTypeDefs, SkillsTypeDefs, ErrorTypeDefs],
     // через контекст гкл могу достать res req
     context: ({ req, res }) => ({ req, res }),
 });

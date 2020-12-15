@@ -6,5 +6,7 @@ export const QueryTypeDefs = gql`
         family: Family
         #Skills
         skills: Skills
+        #Union
+        getEntities(id: String!): Entities
     }
 `;
