@@ -14,6 +14,7 @@
 ## Best practices
 * [React + TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/README.md)
 * [React & Redux in TypeScript - Complete Guide](https://github.com/piotrwitek/react-redux-typescript-guide)
+* [Clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript#introduction)
 
 ## Articles
 * [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)
