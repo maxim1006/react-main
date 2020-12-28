@@ -7,11 +7,16 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
+import ClassNames from '../components/classnames/class-names.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
+                <Component title="ExamplesComponent">
+                    <ClassNames />
+                </Component>
+
                 {/*<Component title="ExamplesComponent">*/}
                 {/*    <VminGrid />*/}
                 {/*</Component>*/}

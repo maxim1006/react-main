@@ -1,0 +1,15 @@
+.base {
+    color: #000;
+}
+
+.accept {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.disabled {
+    color: #ccc;
+}

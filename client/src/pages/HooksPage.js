@@ -1,15 +1,13 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import Component from '../components/component/Component';
 import HooksUseStateFamily from '../components/hooks/use-state/HooksUseStateFamily';
 import HooksUseStateCounter from '../components/hooks/use-state/HooksUseStateCounter';
 import { UseContextHookProvider } from '../components/hooks/use-context/use-context.hook';
 import UseContextContainer from '../components/hooks/use-context/use-context.container';
-import Test123 from '../components/hooks/use-context/test';
 
 const HooksPage = () => {
     return (
         <>
-            <Test123 />
             <Component title="UseLayoutEffectComponent">
                 <UseContextHookProvider initData={{ number: 1 }}>
                     <UseContextContainer />
