@@ -49,15 +49,15 @@
     ]
   },
   "devDependencies": {
-    "apollo": "^2.31.1",
-    "less-loader": "^6.2.0",
-    "prettier": "^2.0.5",
-    "react-app-rewired": "^2.1.6",
-    "webpack-bundle-analyzer": "^3.8.0",
     "@graphql-codegen/cli": "1.19.1",
     "@graphql-codegen/introspection": "1.18.0",
     "@graphql-codegen/typescript": "1.17.11",
     "@graphql-codegen/typescript-operations": "1.17.9",
-    "@graphql-codegen/typescript-react-apollo": "2.1.1"
+    "@graphql-codegen/typescript-react-apollo": "^2.1.1",
+    "apollo": "^2.31.1",
+    "less-loader": "^6.2.0",
+    "prettier": "^2.0.5",
+    "react-app-rewired": "^2.1.6",
+    "webpack-bundle-analyzer": "^3.8.0"
   }
 }
