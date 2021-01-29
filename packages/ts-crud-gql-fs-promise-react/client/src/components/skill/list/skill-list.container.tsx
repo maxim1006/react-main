@@ -8,7 +8,6 @@ import { GetSkills, GetSkills_skills_items } from './__generated__/GetSkills';
 import { skillFilter } from '../../../gql/cache';
 import styles from './skill-list-container.module.less';
 import { FilterModel } from '../../../models/filter.model';
-import { SkillModel } from '../../../../../src/models/skills.model';
 import { useFilteredSkills } from './use-filtered-skills.hook';
 
 // тут все в одном файле для простоты восприятия, в проде разумеется надо разбивать

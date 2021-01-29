@@ -6,6 +6,8 @@
   "scripts": {
     "watch": "tsc -w",
     "dev": "nodemon ./dist/index.js",
+    "dev1": "tsc-watch -p ./ --outDir ./dist --onSuccess \"node ./dist/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
+    "dev2": "nodemon --exec ts-node ./src/index.ts",
     "dev-type-gql": "nodemon ./dist/index-type-gql.js"
   },
   "author": "Max Maximov",
@@ -17,6 +19,7 @@
     "express": "^4.17.1",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^9.0.0",
+    "tsc-watch": "^4.2.9",
     "type-graphql": "^1.1.1",
     "typescript": "^4.0.5"
   }

@@ -1,0 +1,9 @@
+{
+    "projects": {
+        "ts-crud-gql-fs-promise-react": {
+            "includes": [
+                "./*.graphql"
+            ]
+        }
+    }
+}

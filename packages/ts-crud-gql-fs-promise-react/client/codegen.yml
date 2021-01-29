@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - "schema.graphql"
+  - "http://localhost:4000/graphql"
   - "src/gql/typedefs.ts"
 documents:
 #  - "src/**/fragments.ts"
@@ -8,6 +8,7 @@ documents:
 #  - "src/**/queries.ts"
   - "src/**/*.ts"
   - "src/**/*.tsx"
+  - "src/gql/**/*.graphql"
 generates:
   src/generated/operations.tsx:
     plugins:

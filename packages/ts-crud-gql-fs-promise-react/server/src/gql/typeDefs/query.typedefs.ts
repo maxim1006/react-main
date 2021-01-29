@@ -6,7 +6,9 @@ export const QueryTypeDefs = gql`
         family: Family
         #Skills
         skills: Skills
-        #Union
+        "Query to get tracks"
+        tracks: [Track!]!
+        "Union"
         getEntities(id: String!): Entities
     }
 `;
