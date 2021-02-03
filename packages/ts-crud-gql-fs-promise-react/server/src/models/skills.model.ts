@@ -9,5 +9,5 @@ export interface SkillModel {
 export interface SkillsModel {
     id: string;
     items?: SkillModel[];
-    errors?: [ErrorModel];
+    errors?: ErrorModel[];
 }

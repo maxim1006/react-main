@@ -1,6 +1,7 @@
 import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
-import { ErrorModel } from '../../models/error.model';
+import { ErrorModel, ServerError } from '../../models/error.model';
 import { FamilyMemberModel } from '../../models/family.model';
+import { ERROR_CODE } from '../../constants';
 
 // тут специально без id чтобы посмотреть как кеш в этом случае работает
 
@@ -12,7 +13,6 @@ export const FamilyResolvers = {
         // },
         family: async (): Promise<{
             members?: FamilyMemberModel[];
-            errors?: [ErrorModel];
         }> => {
             try {
                 const members = await readFileJSON('data/family.json');
@@ -21,9 +21,14 @@ export const FamilyResolvers = {
                     members,
                 };
             } catch (error) {
-                return {
-                    errors: [{ field: 'family', message: `Query family error ${error.message}` }],
-                };
+                throw new ServerError('Internal Server Error', ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `Query family error ${error.message}`,
+                            field: 'family',
+                        },
+                    ],
+                });
             }
         },
     },
@@ -44,15 +49,25 @@ export const FamilyResolvers = {
             const path = 'data/family.json';
 
             if (!name) {
-                return {
-                    errors: [{ field: 'addFamilyMember', message: `No name input provided` }],
-                };
+                throw new ServerError('No name input provided', ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `No name input provided`,
+                            field: 'addFamilyMember',
+                        },
+                    ],
+                });
             }
 
             if (!age) {
-                return {
-                    errors: [{ field: 'addFamilyMember', message: `No age input provided` }],
-                };
+                throw new ServerError('No name input provided', ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `No name input provided`,
+                            field: 'addFamilyMember',
+                        },
+                    ],
+                });
             }
 
             const member = { age, name, id: `Member_${Date.now()}` };
@@ -72,9 +87,14 @@ export const FamilyResolvers = {
                     members,
                 };
             } catch (error) {
-                return {
-                    errors: [{ field: 'addFamilyMember', message: `Mutation addFamilyMember error ${error.message}` }],
-                };
+                throw new ServerError(`Mutation addFamilyMember error ${error.message}`, ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `Mutation addFamilyMember error ${error.message}`,
+                            field: 'addFamilyMember',
+                        },
+                    ],
+                });
             }
         },
         updateFamilyMember: async (
@@ -90,47 +110,52 @@ export const FamilyResolvers = {
         }> => {
             const path = 'data/family.json';
 
+            let members;
+
             try {
-                let members = await readFileJSON(path);
-
-                if (!Array.isArray(members)) {
-                    return {
-                        errors: [
-                            {
-                                field: 'updateFamilyMember',
-                                message: `Mutation updateFamilyMember error no members to update`,
-                            },
-                        ],
-                    };
-                }
-
-                let isMember = members.find((m: FamilyMemberModel) => m.id === input.id);
-
-                if (!isMember) {
-                    return {
-                        errors: [
-                            {
-                                field: 'updateFamilyMember',
-                                message: `Mutation updateFamilyMember error no such member`,
-                            },
-                        ],
-                    };
-                }
-
-                members = members.map((m: FamilyMemberModel) => (m.id === input.id ? input : m));
-
-                await writeFileJSON(path, members);
-
-                return {
-                    members,
-                };
+                members = await readFileJSON(path);
             } catch (error) {
-                return {
+                throw new ServerError(`Mutation updateFamilyMember error ${error.message}`, ERROR_CODE, {
                     errors: [
-                        { field: 'updateFamilyMember', message: `Mutation updateFamilyMember error ${error.message}` },
+                        {
+                            message: `Mutation updateFamilyMember error ${error.message}`,
+                            field: 'updateFamilyMember',
+                        },
                     ],
-                };
+                });
             }
+
+            if (!Array.isArray(members)) {
+                throw new ServerError(`Mutation updateFamilyMember error no members to update`, ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `Mutation updateFamilyMember error no members to update`,
+                            field: 'updateFamilyMember',
+                        },
+                    ],
+                });
+            }
+
+            let isMember = members.find((m: FamilyMemberModel) => m.id === input.id);
+
+            if (!isMember) {
+                throw new ServerError(`Mutation updateFamilyMember error no such member`, ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `Mutation updateFamilyMember error no such member`,
+                            field: 'updateFamilyMember',
+                        },
+                    ],
+                });
+            }
+
+            members = members.map((m: FamilyMemberModel) => (m.id === input.id ? input : m));
+
+            await writeFileJSON(path, members);
+
+            return {
+                members,
+            };
         },
         deleteFamilyMember: async (
             _: any,
@@ -158,11 +183,14 @@ export const FamilyResolvers = {
                     deleted: true,
                 };
             } catch (error) {
-                return {
+                throw new ServerError(`Mutation deleteFamilyMember error ${error.message}`, ERROR_CODE, {
                     errors: [
-                        { field: 'deleteFamilyMember', message: `Mutation deleteFamilyMember error ${error.message}` },
+                        {
+                            message: `Mutation deleteFamilyMember error ${error.message}`,
+                            field: 'deleteFamilyMember',
+                        },
                     ],
-                };
+                });
             }
         },
     },

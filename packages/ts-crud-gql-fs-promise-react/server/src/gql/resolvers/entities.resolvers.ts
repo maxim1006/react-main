@@ -31,6 +31,7 @@ export const EntitiesResolvers = {
                     };
                 } catch (error) {
                     return {
+                        id,
                         errors: [{ field: 'family', message: `Query family error ${error.message}` }],
                     };
                 }

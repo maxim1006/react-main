@@ -1,5 +1,3 @@
-import { ErrorModel } from './error.model';
-
 export interface FamilyMemberModel {
     name: string;
     age: number;
@@ -9,5 +7,4 @@ export interface FamilyMemberModel {
 export interface FamilyModel {
     id?: string;
     members?: FamilyMemberModel[];
-    errors?: [ErrorModel];
 }
