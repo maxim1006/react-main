@@ -14,22 +14,20 @@ export const FamilyResolvers = {
         family: async (): Promise<{
             members?: FamilyMemberModel[];
         }> => {
-            try {
-                const members = await readFileJSON('data/family.json');
-
-                return {
-                    members,
-                };
-            } catch (error) {
+            const members = await readFileJSON('data/family.json').catch(e => {
                 throw new ServerError('Internal Server Error', ERROR_CODE, {
                     errors: [
                         {
-                            message: `Query family error ${error.message}`,
+                            message: `Query family error ${e.message}`,
                             field: 'family',
                         },
                     ],
                 });
-            }
+            });
+
+            return {
+                members,
+            };
         },
     },
     Mutation: {
@@ -110,11 +108,7 @@ export const FamilyResolvers = {
         }> => {
             const path = 'data/family.json';
 
-            let members;
-
-            try {
-                members = await readFileJSON(path);
-            } catch (error) {
+            let members = await readFileJSON(path).catch(error => {
                 throw new ServerError(`Mutation updateFamilyMember error ${error.message}`, ERROR_CODE, {
                     errors: [
                         {
@@ -123,7 +117,7 @@ export const FamilyResolvers = {
                         },
                     ],
                 });
-            }
+            });
 
             if (!Array.isArray(members)) {
                 throw new ServerError(`Mutation updateFamilyMember error no members to update`, ERROR_CODE, {
