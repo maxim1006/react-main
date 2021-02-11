@@ -25,29 +25,26 @@ const ClassNames = memo<ClassNamesProps>(() => {
         [styles.disabled]: state === 'disabled',
     });
 
+    // via css-modules 3
+    let className3 = cn(
+        `${styles.base}`,
+        state === 'accept' && styles.accept,
+        state === 'error' && styles.error,
+        state === 'disabled' && styles.disabled,
+    );
+
     return (
         <>
             <p>1</p>
             <p>
-                <button className={styles.base} onClick={() => setState('base')}>
-                    Base
-                </button>
+                <button onClick={() => setState('base')}>Base</button>
                 <button onClick={() => setState('accept')}>Accept</button>
                 <button onClick={() => setState('error')}>Error</button>
                 <button onClick={() => setState('disabled')}>Disabled</button>
             </p>
             <div className={className}>ClassNames</div>
-
-            <p>2</p>
-            <p>
-                <button className={styles.base} onClick={() => setState('base')}>
-                    Base
-                </button>
-                <button onClick={() => setState('accept')}>Accept</button>
-                <button onClick={() => setState('error')}>Error</button>
-                <button onClick={() => setState('disabled')}>Disabled</button>
-            </p>
             <div className={className2}>ClassNames2</div>
+            <div className={className3}>ClassNames3</div>
         </>
     );
 });
