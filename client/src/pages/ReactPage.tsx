@@ -7,28 +7,26 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import ClassNames from '../components/classnames/class-names.component';
-import Lazy from '../components/lazy/lazy.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="Lazy">
-                    <Lazy />
-                </Component>
+                {/* <Component title="Lazy">*/}
+                {/*    <Lazy />*/}
+                {/* </Component>*/}
 
-                <Component title="ExamplesComponent">
-                    <ClassNames />
-                </Component>
+                {/* <Component title="ExamplesComponent">*/}
+                {/*    <ClassNames />*/}
+                {/* </Component>*/}
 
-                {/*<Component title="ExamplesComponent">*/}
+                {/* <Component title="ExamplesComponent">*/}
                 {/*    <VminGrid />*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
-                {/*<Component title="ExamplesComponent">*/}
+                {/* <Component title="ExamplesComponent">*/}
                 {/*    <ExamplesComponent />*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
                 {/* <Component title="BroadcastComponent">*/}
                 {/*    <BroadcastComponent />*/}
@@ -94,9 +92,9 @@ export default function ReactPage() {
                 {/*    <ArrayComponent/>*/}
                 {/* </Component>*/}
 
-                {/*<Component title="Fetch">*/}
+                {/* <Component title="Fetch">*/}
                 {/*    <Fetch />*/}
-                {/*</Component>*/}
+                {/* </Component>*/}
 
                 {/* <Component title="Skills">*/}
                 {/*    <Skills/>*/}
@@ -104,7 +102,7 @@ export default function ReactPage() {
 
                 <Component title="Family fetch">
                     <AxiosFamily />
-                    {/*<FamilyFetch />*/}
+                    {/* <FamilyFetch />*/}
                 </Component>
 
                 {/* <Component title="Container example">*/}
