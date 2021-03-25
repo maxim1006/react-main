@@ -4,7 +4,7 @@ import { typeDefs } from './typedefs';
 
 export const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     cache,
-    uri: 'http://localhost:4000/graphql',
+    uri: 'http://localhost:4001/graphql',
     headers: {
         authorization: localStorage.getItem('token') || '',
         'client-name': 'Max',
