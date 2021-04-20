@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store/configureStore';
-import history from './history';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 // обычно с редаксом
 render(
@@ -16,7 +15,7 @@ render(
         {/*<ConnectedRouter history={history}>*/}
         {/*при чем если использую хистори то нужно не браузерроутер а просто роутер*/}
         {/*<Router history={history}>*/}
-        <BrowserRouter history={history}>
+        <BrowserRouter>
             <App />
         </BrowserRouter>
     </Provider>,
