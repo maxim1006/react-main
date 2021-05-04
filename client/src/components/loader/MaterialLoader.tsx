@@ -13,7 +13,7 @@ export default function MaterialLoaderComponent({ customStyles, message, delay =
     useEffect(() => {
         let timeoutId: number;
         if (delay) {
-            timeoutId = setTimeout(() => {
+            timeoutId = window.setTimeout(() => {
                 setVisible(true);
             }, delay);
         } else {
