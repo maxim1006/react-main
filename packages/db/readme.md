@@ -177,6 +177,48 @@ INNER JOIN Users ON Users.id = guest_id
 WHERE room_id = 1;
 ```
 
+// length of varchar > 15
+```sql, postgres
+SELECT tweet_id from Tweets
+WHERE LENGTH(content) > 15
+```
+
+// where and count distinct as
+```sql
+select date_id, make_name, count(distinct lead_id) as unique_leads, count(distinct partner_id) as unique_partners
+from DailySales
+group by date_id, make_name
+```
+
+SELECT product_id from Products
+WHERE low_fats = 'Y' and recyclable = 'Y'
+
+// разбивка на группы date_id, make_name всех уникальных lead_id & partner_id
+
+DailySales table:
++-----------+-----------+---------+------------+
+| date_id   | make_name | lead_id | partner_id |
++-----------+-----------+---------+------------+
+| 2020-12-8 | toyota    | 0       | 1          |
+| 2020-12-8 | toyota    | 1       | 0          |
+| 2020-12-8 | toyota    | 1       | 2          |
+| 2020-12-7 | toyota    | 0       | 2          |
+| 2020-12-7 | toyota    | 0       | 1          |
+| 2020-12-8 | honda     | 1       | 2          |
+| 2020-12-8 | honda     | 2       | 1          |
+| 2020-12-7 | honda     | 0       | 1          |
+| 2020-12-7 | honda     | 1       | 2          |
+| 2020-12-7 | honda     | 2       | 1          |
++-----------+-----------+---------+------------+
+Result table:
++-----------+-----------+--------------+-----------------+
+| date_id   | make_name | unique_leads | unique_partners |
++-----------+-----------+--------------+-----------------+
+| 2020-12-8 | toyota    | 2            | 3               |
+| 2020-12-7 | toyota    | 1            | 2               |
+| 2020-12-8 | honda     | 2            | 2               |
+| 2020-12-7 | honda     | 3            | 2               |
++-----------+-----------+--------------+-----------------+
 
 
 // drop
