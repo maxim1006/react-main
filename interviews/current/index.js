@@ -3,7 +3,7 @@ const delay = (time, ...args) =>
         setTimeout(
             (...args) => {
                 res(args);
-                console.log({ args, time });
+                console.log('delay ', { args, time });
             },
             time,
             ...args,
