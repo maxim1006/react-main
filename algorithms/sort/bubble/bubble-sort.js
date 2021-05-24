@@ -54,25 +54,22 @@ const arr = [
 ];
 let count = 0;
 
-function selectionSort(array) {
-    for (let i = 0; i < array.length; i++) {
-        let indexMin = i;
-
-        for (let j = i + 1; j < array.length; j++) {
-            if (array[j] < array[indexMin]) {
-                indexMin = j;
+function bubbleSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j + 1] < arr[j]) {
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
+
             count++;
         }
-
-        let tmp = array[i];
-        array[i] = array[indexMin];
-        array[indexMin] = tmp;
     }
 
-    return array;
+    return arr;
 }
 
-console.log(selectionSort(arr)); // complexity O(n^2)
+console.log(bubbleSort(arr)); // O(n^2)
 console.log(arr.length); // 52
-console.log('count = ', count); // 1326
+console.log('counter ', count); // 2704
