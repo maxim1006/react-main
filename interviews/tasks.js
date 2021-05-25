@@ -1,5 +1,4 @@
-// currying
-/*********** Task ***********/
+/*********** Task currying ***********/
 // function sum(a, b, c) {
 //     return a + b + c;
 // }
@@ -22,8 +21,7 @@
 //     };
 // }
 
-// currying2
-/*********** Task ***********/
+/*********** Task currying2 ***********/
 // console.log(sum(0)(1)(2)(3)(4)(5));
 /*********** Answer ***********/
 // function sum(num) {
@@ -39,8 +37,7 @@
 //     return f;
 // }
 
-// Обход дерева / объекта
-/*********** Task ***********/
+/*********** Task Обход дерева / объекта ***********/
 // const obj = {
 //     a: {
 //         num: 1,
@@ -83,8 +80,7 @@
 //     return result;
 // }
 
-// Обход дерева / объекта 2
-/*********** Task ***********/
+/*********** Task Обход дерева / объекта 2 ***********/
 // const obj = {
 //     a: {
 //         b: {
@@ -115,13 +111,33 @@
 //     return obj;
 // }
 
-// Перетаскиваемый блок - написать drag&drop 100х100 пикселей.
+/*********** Task Перетаскиваемый блок - написать drag&drop 100х100 пикселей. ***********/
 
-// compose
-/*********** Task ***********/
+/*********** Task compose ***********/
 // var addOne = x => x + 1;
 // var addTwo = x => x + 2;
 //
 // compose(addOne, addTwo)(0); // 3
 /*********** Answer ***********/
 // const compose = (...fns) => arg => fns.reduce((acc, item) => item(acc), arg);
+
+/*********** Task recursion ***********/
+// function sumTo(n) {
+//     /*... ваш код ... */
+// }
+// console.log(sumTo(100)); // 5050
+/*********** Answer ***********/
+// function sumTo(n) {
+//     if (!n) return 0;
+//
+//     return n + sumTo(--n);
+// }
+
+/*********** Task factorial ***********/
+// function factorial(n) {/*... ваш код ... */}
+// console.log('factorial ', factorial(5)); // 1*2*3*4*5 = 120
+
+/*********** Task Fibonacci ***********/
+// Fibonacci - каждое последующее число равно сумме двух предыдущих 0,1,1,2,3,5,8,13,21
+// function fibonacci(n) {/*... ваш код ... */}
+// console.log(fibonacci(8)); // 21
