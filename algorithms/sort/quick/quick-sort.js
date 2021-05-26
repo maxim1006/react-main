@@ -79,6 +79,6 @@ function quickSort(arr) {
     return [...quickSort(less), pivotValue, ...quickSort(greater)];
 }
 
-console.log(quickSort(arr));
+console.log(quickSort(arr)); //  O(log 2n^n)
 console.log(arr.length); // 52
 console.log(count); // 308
