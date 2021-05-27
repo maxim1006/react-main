@@ -48,29 +48,17 @@ O(log n)
 В двойном цикле пробегаемся по массиву и сравниваем соседние элементы, если следующий элемент меньше чем предыдущий то меняем местами, получается своего рода всплытие
 сортировка пузырьком 
 
-### Quick sort (Hoare sort) - O(log 2n^n)
+### Quick sort (Hoare sort) - O(log 2n * n)
 Принцип разделяй и власвуй. Рекурсивной функцией делим массив на подмассивы и каждый раз рекурсивно выбираем опорный элемент, чаще всего центральный, пробегаемся по массиву и все элементы который больше добавляем в 1 массив а те которые меньше в другой массив, для каждого из полученных массивов выполняю туже операцию и так делаю до тех пор пока длинна массива не равна 1, что и будет базовым условием для выхода из рекурсии. Затем полученные массивы склеиваются в 1 большой.
-
-
-### merge sort - O(n log n)
-if only one item
-    return
-Else
-   sort left half of items 
-   sort right half of items 
-   merge sorted halves (взять минимальный элемент из списка который был разделен с помощью мерж сорта (а мы делили на списки минимальных размеров к примеру лист из 8 элементов поделили на 8 листов с размером 1) и поставить перед большим списком и смержить)
-
-### [Quick sort](https://stackoverflow.com/questions/234683/javascript-array-sort-implementation)
- In Chrome's v8 source code, as of today, it uses QuickSort and InsertionSort, for smaller arrays.
 
 ### recursion
 это функция которая вызывает сама себя, должна иметь условие при котором вызов функции прекращается иначе будет бесконечный вызов
 
-### Stack
-Stack - like a stack of books, last in first out (lifo) (push/pop)
-In other words, a stack is a list of elements that are accessible only from one end of the list, which is called the Top of Stack (ToS).
+### Stack (push/pop)
+LIFO
+Элементы всегда добавляются в конец структуры и извлекаются также из конца (как пример стопка книг или тарелок)
 
-### Queue
-Queue - as a real queue (push, shift) - first in first element out
+### Queue (push, shift)
+FIFO
 В очереди элементы всегда вставляются в конец структуры, а извлекаются из ее начала (как очередь на кассу) 
 FIFO - first in first out - первый вошел первый вышел

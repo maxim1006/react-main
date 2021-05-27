@@ -59,10 +59,10 @@
 //
 //     if (obj?.a?.num) {
 //         result += obj.a.num;
+//     }
 //
-//         if (obj?.a?.a) {
-//             result += sum(obj.a);
-//         }
+//     if (obj?.a?.a) {
+//         result += sum(obj.a);
 //     }
 //
 //     return result;

@@ -34,6 +34,7 @@ To traverse graph can use DFS (depth first search) or BDF (breadth-first-search)
 
 ### breadth-first-search
 Поиск в ширину (англ. breadth-first search, BFS)
+C помощью очереди
 проверить есть ли путь из точки а в точку g
 проверяет есть ли путь, а также находит это за минимальное количество шагов
 
