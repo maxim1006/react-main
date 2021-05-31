@@ -46,7 +46,9 @@ function recursiveBinarySearch(array, item, start, end) {
 }
 
 console.log(binarySearch(array, 5)); // O(log n)
-console.log('count ', count);
+console.log('array length ', array.length); // 16
+console.log('count ', count); // 3
 
 console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
-console.log('countR ', countR);
+console.log('array length ', array.length); // 16
+console.log('countR ', countR); // 3

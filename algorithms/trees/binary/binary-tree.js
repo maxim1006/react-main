@@ -10,13 +10,18 @@ class BinaryTree {
             let node = this.root;
             let newNode = new TreeNode(value);
 
+            // нахожу самую нижнюю ноду к которой буду аттачить новую ноду с value
             while (node) {
                 if (value > node.value) {
-                    if (!node.right) break;
+                    if (!node.right) {
+                        break;
+                    }
 
                     node = node.right;
                 } else {
-                    if (!node.left) break;
+                    if (!node.left) {
+                        break;
+                    }
 
                     node = node.left;
                 }
@@ -31,7 +36,7 @@ class BinaryTree {
     }
 
     print(root = this.root) {
-        if (!root) return;
+        if (!root) return true;
 
         console.log(root.value);
         this.print(root.left);
@@ -48,7 +53,6 @@ class TreeNode {
 }
 
 const tree = new BinaryTree();
-
 tree.add(5);
 tree.add(2);
 tree.add(6);
@@ -56,4 +60,5 @@ tree.add(2);
 tree.add(7);
 tree.add(1);
 
+// сначала выведется левое поддерево с меньшими элементами и только затем правое
 tree.print();

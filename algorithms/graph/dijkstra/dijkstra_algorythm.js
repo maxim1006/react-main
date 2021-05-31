@@ -56,7 +56,7 @@ function shortPath(graph, start, end) {
     return costs;
 }
 
-console.log(shortPath(graph, 'a', 'g'));
+console.log(shortPath(graph, 'a', 'g')); // { b: 2, c: 1, d: 6, e: 3, f: 4, g: 5 }
 
 // helpers
 function findLowestCost(costs, processed) {

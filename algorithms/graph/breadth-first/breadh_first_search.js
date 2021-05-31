@@ -37,23 +37,23 @@ graph.f = ['g'];
 
 // without for
 function breadthSearch(graph, start, end) {
-    let paths = graph[start];
+    let queue = graph[start];
 
-    while (paths.length) {
-        console.log(paths);
+    while (queue.length) {
+        console.log(queue);
 
-        if (paths.includes(end)) {
+        if (queue.includes(end)) {
             console.log('found: ', end);
             return true;
         }
 
-        let current = paths.shift();
+        let current = queue.shift();
 
         if (!graph[current] || !Array.isArray(graph[current])) {
             graph[current] = [];
         }
 
-        paths = [...paths, ...graph[current]];
+        queue = [...queue, ...graph[current]];
     }
 
     console.log('nothing was found ');

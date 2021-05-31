@@ -33,7 +33,7 @@ export const UseContextHookProvider = ({
 
             try {
                 const { data }: { data: JSONPlaceholderTodo } = await customAxios.get(
-                    `https://jsonplaceholder.typicode.com/todos/${number ?? initData.number}`
+                    `https://jsonplaceholder.typicode.com/todos/${number ?? initData.number}`,
                 );
                 setResult(data);
             } catch (e) {
@@ -42,7 +42,7 @@ export const UseContextHookProvider = ({
                 setLoading(false);
             }
         },
-        [initData]
+        [initData],
     );
 
     useEffect(() => {
