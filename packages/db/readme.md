@@ -1,3 +1,24 @@
+### Базы данных
+2 вида 
+SQL (реляционные)  MySQL, Postgres
+Хранят строго структурированные данные в таблицах с четкой структурой, структура таблиц задается на этапе проектирования базы данных
+NoSQL (нереляционные) mongoDB, Redis
+(один из самых популярных видов - документоориентированные, хранят информацию в виде иерархических структур данных, к примеру в JSON формате, те данные представлены просто как объект)
+
+#### Нормальные формы
+1) Одна ячейка содержит 1 значение
+2) Нормальная форма - каждая запись должна иметь уникальный идентификатор (первичный ключ, id)
+
+#### Связи 
+1) one-to-many (один учитель может преподавать несколько предметов)
+2) One-to-one (один чел один пасспорт)
+3) many-to-many (учителя - ученики)
+
+### Объединения
+inner join === join
+Outer left join, outer right join,
+Full join
+
 ### Postgres
 (cделал черзе pgAdmin)
 CREATE DATABASE airbnb;
@@ -6,15 +27,6 @@ CREATE DATABASE airbnb;
 SHOW DATABASES;
 
 // создание
-```sql
-CREATE TABLE Users (
-    id INT PRIMARY KEY AUTO_INCREMENT, 
-    email VARCHAR(255) NOT NULL UNIQUE, 
-    bio TEXT, 
-    country VARCHAR(2)
-)
-```
-
 ```postgres
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY, 
