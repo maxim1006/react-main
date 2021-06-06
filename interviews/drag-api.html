@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag Api</title>
+    <style>
+        ol {
+            padding: 50px;
+            background-color: #ccc;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+<ol data-draggable="target">
+    <li data-draggable="item">Item 0</li>
+    <li data-draggable="item">Item 1</li>
+    <li data-draggable="item">Item 2</li>
+    <li data-draggable="item">Item 3</li>
+</ol>
+
+<ol data-draggable="target">
+    <li data-draggable="item">Item 4</li>
+    <li data-draggable="item">Item 5</li>
+</ol>
+
+<ol data-draggable="target">
+    <li data-draggable="item">Item 6</li>
+    <li data-draggable="item">Item 7</li>
+</ol>
+
+<ol data-draggable="target">
+    <li data-draggable="item">Item 8</li>
+</ol>
+
+<script>
+    (function() {
+        //exclude older browsers by the features we need them to support
+        if (!('draggable' in document.createElement('span'))) {
+            return;
+        }
+
+        //get the collection of draggable items and add their draggable attribute
+        let items = document.querySelectorAll('[data-draggable="item"]');
+        let itemsLength = items.length;
+
+        for (let i = 0; i < itemsLength; i++) {
+            items[i].setAttribute('draggable', 'true');
+        }
+
+        //variable for storing the dragging item reference
+        //this will avoid the need to define any transfer data
+        //which means that the elements don't need to have IDs
+        let item = null;
+
+        //dragstart event to initiate mouse dragging
+        document.addEventListener('dragstart',(e) => {
+            //set the item reference to this element
+            item = e.target;
+
+            //we don't need the transfer data, but we have to define something
+            //otherwise the drop action won't work at all in firefox
+            //most browsers support the proper mime-type syntax, eg. "text/plain"
+            //but we have to use this incorrect syntax for the benefit of IE10+
+            e.dataTransfer.setData('text', '');
+        });
+
+        //dragover event to allow the drag by preventing its default
+        //ie. the default action of an element is not to allow dragging
+        document.addEventListener('dragover', (e) => {
+            if (item) e.preventDefault();
+        });
+
+        //drop event to allow the element to be dropped into valid targets
+        document.addEventListener('drop', (e) => {
+                //if this element is a drop target, move the item here
+                //then prevent default to allow the action (same as dragover)
+                if (e.target.getAttribute('data-draggable') === 'target') {
+                    e.target.appendChild(item);
+                    e.preventDefault();
+                }
+            },
+            false,
+        );
+
+        //dragend event to clean-up after drop or abort
+        //which fires whether or not the drop target was valid
+        document.addEventListener('dragend',(e) => {
+            item = null;
+        });
+    })();
+
+</script>
+</body>
+</html>

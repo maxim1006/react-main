@@ -1,5 +1,6 @@
-1) brew install mysql (при чем надо с паролем)
-2) mysql -u root -p
+1) https://formulae.brew.sh/formula/mysql
+2) brew install mysql (при чем надо с паролем)
+3) mysql -u root -p (и полдня для понимания что надо раздать пермишены для sudo chmod -R 777 /usr/local/var/mysql/ )
 
 ### SHOW DATABASES; 
 (после каждого скрипта обязательно ;)
@@ -63,6 +64,9 @@ SELECT age, COUNT(age) FROM teacher GROUP BY age; // сгруппирует уч
 
 ### alter table teacher add age int;
 Добавить колонку age в таблицу teacher
+
+ALTER TABLE user_entity AUTO_INCREMENT=1; // сбросить индексы
+
 
 ### update teacher set age = 20 where id = 1;
 
