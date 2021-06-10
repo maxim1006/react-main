@@ -1,4 +1,11 @@
-const matrix = ['XOOXO', 'XOOXO', 'OOOXO', 'XXOXO', 'OXOOO'];
+// prettier-ignore
+const matrix = [
+    'XOOXO',
+    'XOOXO',
+    'OOOXO',
+    'XXOXO',
+    'OXOOO'
+];
 
 const symbol = 'X';
 const symbolO = 'O';
