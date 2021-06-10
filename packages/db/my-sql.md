@@ -71,3 +71,5 @@ ALTER TABLE user_entity AUTO_INCREMENT=1; // сбросить индексы
 ### update teacher set age = 20 where id = 1;
 
 ### delete from teacher where id = 1;
+
+### drop table todo_entity;

@@ -44,4 +44,4 @@ function perimiter(matrix) {
     return result;
 }
 
-console.log(perimiter(matrix));
+console.log(perimiter(matrix)); //24
