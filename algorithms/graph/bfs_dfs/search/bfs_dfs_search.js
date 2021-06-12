@@ -60,4 +60,25 @@ function breadthSearch(graph, start, end) {
     return false;
 }
 
-console.log(breadthSearch(graph, 'a', 'g'));
+function dfs(graph, start, end) {
+    let isFound = false;
+
+    if (graph[start].includes(end)) {
+        console.log('dfs found: ', end, 'in', start);
+        return true;
+    }
+
+    for (let i of graph[start]) {
+        isFound = dfs(graph, i, end);
+
+        if (isFound) {
+            console.log('dfs found in rec: ', end);
+            return true;
+        }
+    }
+
+    return isFound;
+}
+
+console.log(bfs(graph, 'a', 'g'));
+console.log(dfs(graph, 'a', 'g'));

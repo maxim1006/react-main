@@ -74,7 +74,7 @@ function iteration(tree) {
         }
 
         if (Array.isArray(node.c) && node.c.length > 0) {
-            node.c.forEach(i => stack.push(i));
+            stack = [...stack, ...node.c];
         }
     }
 
