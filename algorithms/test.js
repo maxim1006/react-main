@@ -1,78 +1,55 @@
-const tree = [
-    {
-        v: 5,
-        c: [
-            {
-                v: 10,
-                c: [
-                    {
-                        v: 11,
-                    },
-                ],
-            },
-            {
-                v: 7,
-                c: [
-                    {
-                        v: 5,
-                        c: [
-                            {
-                                v: 1,
-                            },
-                        ],
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        v: 5,
-        c: [
-            {
-                v: 10,
-            },
-            {
-                v: 15,
-            },
-        ],
-    },
-];
+const graph = {};
+graph.a = { b: 2, c: 1 };
+graph.b = { f: 7 };
+graph.c = { d: 5, e: 2 };
+graph.d = { f: 2 };
+graph.e = { f: 1 };
+graph.f = { g: 1 };
+graph.g = {};
 
-function recursive(tree) {
-    let sum = 0;
+const MAX_INT = 100000000;
 
-    if (!Array.isArray(tree) || tree.length <= 0) {
-        return sum;
-    }
+function shortPath(graph, start, end) {
+    let costs = {};
+    let visited = new Set();
 
-    for (let i of tree) {
-        sum += i.v;
-
-        if (Array.isArray(i.c) && i.c.length) {
-            sum += recursive(i.c);
+    Object.keys(graph).forEach(key => {
+        if (key !== start) {
+            costs[key] = graph[start][key] || MAX_INT;
         }
+    });
+
+    let lowestNode = findLowestNode(costs, visited);
+
+    while (lowestNode) {
+        let neighbors = graph[lowestNode];
+
+        Object.keys(neighbors).forEach(neighbor => {
+            if (costs[neighbor] > costs[lowestNode] + neighbors[neighbor]) {
+                costs[neighbor] = costs[lowestNode] + neighbors[neighbor];
+            }
+        });
+
+        visited.add(lowestNode);
+
+        lowestNode = findLowestNode(costs, visited);
     }
 
-    return sum;
+    return costs;
 }
 
-function treeSum(tree) {
-    let sum = 0;
+console.log(shortPath(graph, 'a', 'g')); // { b: 2, c: 1, d: 6, e: 3, f: 4, g: 5 }
 
-    let stack = tree;
+function findLowestNode(costs, visited) {
+    let lowestValue = MAX_INT;
+    let lowestNode;
 
-    while (stack.length) {
-        let i = stack.pop();
-
-        sum += i.v;
-
-        if (Array.isArray(i.c) && i.c.length) {
-            stack = [...stack, ...i.c];
+    Object.keys(costs).forEach(key => {
+        if (costs[key] < lowestValue && !visited.has(key)) {
+            lowestValue = costs[key];
+            lowestNode = key;
         }
-    }
+    });
 
-    return sum;
+    return lowestNode;
 }
-
-console.log(recursive(tree));
-console.log(treeSum(tree));

@@ -10,12 +10,13 @@ function factorial(n) {
 function factorialIter(n) {
     let result = 1;
 
+    if (n === 1) {
+        return 1;
+    }
+
     while (n) {
         result *= n;
         --n;
-    }
-    if (n === 1) {
-        return 1;
     }
 
     return result;

@@ -97,6 +97,7 @@ routes.forEach(route => addEdge(...route));
 //         for (const node of nodes) {
 //             if (node === BKK) {
 //                 canFly = true;
+//                 console.log("found in ", node);
 //                 return canFly;
 //             }
 //

@@ -1,8 +1,6 @@
 class LinkedList {
-    constructor() {
-        this.root = null;
-        this.size = 0;
-    }
+    root = null;
+    size = 0;
 
     add(value) {
         if (!this.size) {
