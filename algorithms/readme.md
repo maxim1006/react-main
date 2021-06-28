@@ -1,7 +1,7 @@
 ### O
 On the order of - the worst case scenario of algorithm. В процессе его вычислений достаточно много допущений, к примеру n^2 + 2n + 1 === O(n^2), или n - 1 === O(n) // где n - количество операций за который алгоритм приходит к финальному результату причем указывается всегда наихудшая ситуация
 
-O(n^2) - bubble sort, selection sort
+O(n^2) - bubble sort, selection sort (n to the power of 2 или n to the two)
 O(n log n) - quick sort
 O(n) - linear search
 O(log n) - binary search (на отсортированном массиве)
@@ -54,6 +54,10 @@ O(log n)
 ### recursion
 это функция которая вызывает сама себя, должна иметь условие при котором вызов функции прекращается иначе будет бесконечный вызов
 
+Фунцкия **fibonacci** 
+O(2^n) - time complexity
+O(n) - space complexity
+
 ### Stack (push/pop)
 LIFO (последний кто подошел выйдет первый)
 Элементы всегда добавляются в конец структуры и извлекаются также из конца (как пример стопка книг или тарелок)
@@ -98,3 +102,9 @@ O(log2n) - поиск
 
 ### set 
 Хранит только уникальные значения
+
+### grid
+Любое передвижение по матрице m*n можно разложить на дерево, так как двигаться можем только вправо или вниз
+O(2^(n+m)) - time complexity
+O(n+m) - space complexity
+O(m*n) - time complexity memoized

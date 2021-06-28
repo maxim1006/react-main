@@ -109,6 +109,6 @@ function sumIterQueue(tree) {
     return result;
 }
 
-console.log(sum(tree));
+console.log(sum(tree)); // 108
 console.log(sumIterStack(tree));
 console.log(sumIterQueue(tree));

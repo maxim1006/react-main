@@ -7,14 +7,15 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
+import Lazy from '../components/lazy/lazy.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                {/* <Component title="Lazy">*/}
-                {/*    <Lazy />*/}
-                {/* </Component>*/}
+                <Component title="Lazy">
+                    <Lazy />
+                </Component>
 
                 {/* <Component title="ExamplesComponent">*/}
                 {/*    <ClassNames />*/}
