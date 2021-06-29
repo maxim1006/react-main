@@ -3,27 +3,19 @@ function howSumR(num, arr, store = {}) {
     if (num < 0) return null;
     if (num === 0) return [];
 
-    for (let i of arr) {
-        let current = howSumR(num - i, arr, store);
+    let shortest = null;
 
-        if (current) {
-            store[num] = [...current, i];
-            return store[num];
+    for (let i of arr) {
+        let result = howSumR(num - i, arr, store);
+
+        if (result !== null) {
+            result = [...result, i];
+            if (shortest === null || shortest.length > result.length) shortest = result;
         }
     }
 
-    store[num] = null;
-
-    return null;
+    store[num] = shortest;
+    return shortest;
 }
 
-// time O(n^m * m) еще умножаю на m потому что для каждого рекурсивного вызова должен скопировать массив space(m)
-console.time('start');
-console.log(howSumR(300, [5, 3, 4, 7]));
-console.log(howSumR(30, [7, 14])); // null
-console.timeEnd('start');
-// time O(n*m*m) еще умножаю на m потому что для каждого рекурсивного вызова должен скопировать массив space(m*m) так как для мемо стора каждый ключ имеет массив с максимум m элементов
-console.time('start1');
-console.log(howSumR(300, [5, 3, 4, 7]));
-console.log(howSumR(300, [7, 14])); // null
-console.timeEnd('start1');
+console.log(howSumR(300, [5, 3, 30, 7]));
