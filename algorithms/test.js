@@ -1,21 +1,15 @@
-function howSumR(num, arr, store = {}) {
-    if (num in store) return store[num];
-    if (num < 0) return null;
-    if (num === 0) return [];
+function myVariant(str, arr) {
+    if (str === '') return [[]];
 
-    let shortest = null;
+    let result = [];
 
-    for (let i of arr) {
-        let result = howSumR(num - i, arr, store);
-
-        if (result !== null) {
-            result = [...result, i];
-            if (shortest === null || shortest.length > result.length) shortest = result;
-        }
+    for (let word of arr) {
+        if (str.startsWith(word))
+            result = [...result, ...myVariant(str.slice(word.length), arr).map(i => [word, ...i])];
     }
 
-    store[num] = shortest;
-    return shortest;
+    return result;
 }
 
-console.log(howSumR(300, [5, 3, 30, 7]));
+console.log(myVariant('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c']));
+console.log(myVariant('asd', ['b', 'c']));

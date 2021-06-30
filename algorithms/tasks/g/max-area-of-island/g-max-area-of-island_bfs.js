@@ -89,3 +89,7 @@ function createMatrix(h, w) {
 
     return matrix;
 }
+
+function createMatrix1(h, w) {
+    return Array.from({ length: h }, (item, index) => new Array(w).fill(false));
+}

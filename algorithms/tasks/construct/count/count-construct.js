@@ -32,6 +32,7 @@ function countConstructM(target, wordBank, store = {}) {
 // Time: O(n^m * m) умножаю еще на m изза слайса
 // Space: O(m * m) умножаю еще на m изза слайса
 console.time('countConstruct');
+console.log(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c'])); // 4
 console.log(countConstruct('purple', ['purp', 'p', 'ur', 'le', 'purpl'])); // 2
 console.log(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); // 1
 console.log(countConstruct('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'])); // 0
@@ -42,6 +43,7 @@ console.log('------------------');
 // Time: O(n * m * m) умножаю еще на m изза слайса
 // Space: O(m * m) умножаю еще на m изза слайса
 console.time('countConstructM');
+console.log(countConstructM('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c'])); // 4
 console.log(countConstructM('purple', ['purp', 'p', 'ur', 'le', 'purpl'])); // 2
 console.log(countConstructM('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); // 1
 console.log(countConstructM('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'])); // 0
