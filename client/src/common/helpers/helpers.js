@@ -2,7 +2,7 @@ export function convertArrayToObjById(arr) {
     return arr.reduce((acc, current) => {
         return {
             ...acc,
-            [current.id]: current
+            [current.id]: current,
         };
     }, {});
 }
@@ -16,35 +16,32 @@ export function onlyUnique(value, index, array) {
 }
 
 export function isFunction(f) {
-    return typeof f === "function";
+    return typeof f === 'function';
 }
 
 export function getDevice(documentWidth) {
     if (documentWidth > 1024) {
-        return "desktop";
+        return 'desktop';
     }
 
     if (documentWidth < 1024 && documentWidth > 768) {
-        return "tablet";
+        return 'tablet';
     }
 
     if (documentWidth < 768) {
-        return "mobile";
+        return 'mobile';
     }
 }
 
-export function throttle(func, time) {
-    let prevDate;
-
+export function throttle(f, t) {
+    let id;
     return function(...args) {
-        const context = this;
-        const currentDate = +new Date();
-
-        if (!prevDate) {
-            prevDate = +new Date();
-        } else if (currentDate - prevDate > time) {
-            prevDate = null;
-            func.apply(context, args);
+        if (!id) {
+            id = setTimeout(() => {
+                id = null;
+                console.log(this);
+                f.apply(this, args);
+            }, t);
         }
     };
 }
@@ -52,7 +49,7 @@ export function throttle(func, time) {
 export function debounce(func, time = 0) {
     let timeout;
 
-    return function (...args) {
+    return function(...args) {
         const context = this;
 
         clearTimeout(timeout);
@@ -63,8 +60,7 @@ export function debounce(func, time = 0) {
 }
 
 export const generateUniqueId = () => {
-    return `${getRandomSymbols4() +
-        getRandomSymbols4()}-${getRandomSymbols4()}`;
+    return `${getRandomSymbols4() + getRandomSymbols4()}-${getRandomSymbols4()}`;
 };
 
 export const getRandomIntInclusive = (min, max) => {
@@ -104,7 +100,6 @@ export const isLocalStorageEnabled = () => {
     }
     return 'available';
 };
-
 
 // Helpers
 function getRandomSymbols4() {
