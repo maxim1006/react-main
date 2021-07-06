@@ -7,9 +7,11 @@ const fib = n => {
 
     for (let i = 0; i <= n; i++) {
         // к следующим 2м числам прибавляю текущее
-        table[i + 1] += table[i];
-        table[i + 2] += table[i];
+        if (i + 1 <= n) table[i + 1] += table[i];
+        if (i + 2 <= n) table[i + 2] += table[i];
     }
+
+    console.log(table);
 
     return table[n];
 };

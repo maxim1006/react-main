@@ -68,7 +68,9 @@ function canSumRM(num, arr, store = {}) {
 console.log(canSum(7, [5, 3, 4, 7])); // true
 console.log(canSumOptimal(7, [5, 3, 4, 7])); // true
 console.log(canSumR(7, [5, 3, 4, 7])); // true
+console.time('canSum');
 console.log(canSumRM(7, [5, 3, 4, 7])); // true
 console.log(canSumRM(7, [2, 4])); // false
 console.log(canSumRM(8, [2, 3, 5])); // true
 console.log(canSumRM(300, [7, 14])); // false
+console.timeEnd('canSum');
