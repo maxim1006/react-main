@@ -156,6 +156,7 @@
 // Если символ повторяется более 1 раза, к нему добавляется количество повторений.
 // console.log(RLE('ABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB')); // "AB3C2XYZD4E3F3A6B28"
 /*********** Answer ***********/
+// Создал prev = первый элемент, резалт пустой (так как не знаю как в него нужно положить prev) а дальше пишу условия как положить prev в резалт итерируясь с 1 позиции
 // function RLE(str) {
 //     let counter = 1;
 //     let result = '';
@@ -176,15 +177,14 @@
 //
 //     return result;
 // }
-// function RLE2(str) {
+// function RLE(str) {
 //     let counter = 1;
-//     let length = str.length;
 //     let result = '';
 //
-//     for (let i = 0; i < length; i++) {
-//         if (i + 1 === length) break;
+//     for (let i = 0; i < str.length; i++) {
+//         if (i + 1 === str.length) break;
 //
-//         if (str[i + 1] !== str[i]) {
+//         if (str[i] !== str[i + 1]) {
 //             result += counter > 1 ? str[i] + counter : str[i];
 //             counter = 1;
 //         } else {
@@ -192,7 +192,7 @@
 //         }
 //     }
 //
-//     result += counter > 1 ? str[length - 1] + counter : str[length - 1];
+//     result += counter > 1 ? str[str.length - 1] + counter : str[str.length - 1];
 //
 //     return result;
 // }
@@ -244,6 +244,7 @@
 // console.log(compress([1, 4, 3, 2])); // '1-4'
 // console.log(compress([1, 4])); // '1,4'
 /*********** Answer ***********/
+// Создал prev = первый элемент, резалт пустой (так как не знаю как в него нужно положить prev) а дальше пишу условия как положить prev в резалт итерируясь с 1 позиции
 // function compress(arr) {
 //     let sorted = arr.sort((a, b) => a - b); // [1,4]
 //     let length = sorted.length;
@@ -300,19 +301,22 @@
 // let str = 'a.b.c.d.e.f'; // {a: {b: { c: {d: {e: {f:{}}}}}}}
 /*********** Answer ***********/
 // function convert(str) {
+//     let o = {};
+//     let temp;
 //     let arr = str.split('.');
-//     let obj = { [arr[0]]: {} };
-//     let temp = obj[arr[0]];
+//     let length = arr.length;
 //
-//     for (let i = 1; i < arr.length; i++) {
-//         console.log(temp);
-//         if (i + 1 < arr.length) {
+//     o[arr[0]] = {};
+//     temp = o[arr[0]];
+//
+//     for (let i = 1; i < length; i++) {
+//         if (i + 1 < length) {
 //             temp[arr[i]] = { [arr[i + 1]]: {} };
 //             temp = temp[arr[i]];
 //         }
 //     }
 //
-//     return obj;
+//     return o;
 // }
 //
 // console.log(JSON.stringify(convert(str)));
