@@ -1,6 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
-/* eslint-disable import/no-extraneous-dependencies */
 const xlsx = require('xlsx');
 const fs = require('fs');
 
