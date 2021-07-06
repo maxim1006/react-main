@@ -1,6 +1,6 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-import "./User.scss";
+import './User.scss';
 
 export default memo(({ name, occupation }) => {
     return (

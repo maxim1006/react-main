@@ -1,8 +1,8 @@
-import { memo } from "react";
+import { memo } from 'react';
 
 const isRequired = a => {
     console.log(a);
-    throw new Error("param is required");
+    throw new Error('param is required');
 };
 
 const MethodParameterValidationTipComponent = ({ requiredProp = isRequired() }) => {

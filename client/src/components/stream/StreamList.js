@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import {Link} from "react-router-dom";
-import {deleteStream, fetchStreams} from "../../store/actions";
-import Stream from "./Stream";
-import ModalPortal from "../portals/modal/ModalPortal";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { deleteStream, fetchStreams } from '../../store/actions';
+import Stream from './Stream';
+import ModalPortal from '../portals/modal/ModalPortal';
 
 class StreamList extends Component {
     state = {
-        streamToDelete: null
+        streamToDelete: null,
     };
 
     componentDidMount() {
@@ -32,14 +32,7 @@ class StreamList extends Component {
                 {Object.entries(streams).map(([id, stream]) => {
                     return (
                         <li key={id} className="stream-list__item">
-                            <Stream
-                                {...stream}
-                                title={
-                                    <Link to={`/stream/${stream.id}`}>
-                                        {stream.title}
-                                    </Link>
-                                }
-                            />
+                            <Stream {...stream} title={<Link to={`/stream/${stream.id}`}>{stream.title}</Link>} />
 
                             {this.renderControls(stream)}
                         </li>
@@ -57,10 +50,7 @@ class StreamList extends Component {
             return (
                 <div className="stream-list__controls">
                     <Link to={`/stream/edit/${id}`}>Edit</Link>
-                    <button
-                        type="button"
-                        onClick={this.showDeleteModal.bind(this, stream)}
-                    >
+                    <button type="button" onClick={this.showDeleteModal.bind(this, stream)}>
                         Delete
                     </button>
                 </div>
@@ -84,10 +74,7 @@ class StreamList extends Component {
         if (stream) {
             const controls = (
                 <>
-                    <button
-                        type="button"
-                        onClick={this.onDelete.bind(this, stream)}
-                    >
+                    <button type="button" onClick={this.onDelete.bind(this, stream)}>
                         Delete
                     </button>
                     <button type="button" onClick={this.hideDeleteModel}>
@@ -96,12 +83,7 @@ class StreamList extends Component {
                 </>
             );
 
-            return (
-                <ModalPortal
-                    title="Are u sure u wanna delete this stream?"
-                    controls={controls}
-                />
-            );
+            return <ModalPortal title="Are u sure u wanna delete this stream?" controls={controls} />;
         }
     }
 
@@ -119,24 +101,24 @@ class StreamList extends Component {
 
     hideDeleteModel = () => {
         this.setState({
-            streamToDelete: null
+            streamToDelete: null,
         });
     };
 
     showDeleteModal = stream => {
         this.setState({
-            streamToDelete: stream
+            streamToDelete: stream,
         });
     };
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     streams: state.streams,
     currentUserId: state.auth.userId,
-    auth: state.auth.isSignedIn
+    auth: state.auth.isSignedIn,
 });
 
 export default connect(mapStateToProps, {
     fetchStreams,
-    deleteStream
+    deleteStream,
 })(StreamList);

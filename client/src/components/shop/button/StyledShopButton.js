@@ -1,9 +1,6 @@
-import styled, { css } from "styled-components";
-import {
-    StyledMainColor,
-    StyledPrimaryColor
-} from "../../styled-component/StylesColors";
-import { StyledFontLightBig } from "../../styled-component/mixins/SyledFonts";
+import styled, { css } from 'styled-components';
+import { StyledMainColor, StyledPrimaryColor } from '../../styled-component/StylesColors';
+import { StyledFontLightBig } from '../../styled-component/mixins/SyledFonts';
 
 const shopButtonDark = css`
     background-color: ${StyledMainColor};
@@ -20,14 +17,14 @@ const shopButtonFullWidth = css`
 `;
 
 const getButtonStyles = props => {
-    let styles = "";
+    let styles = '';
 
     if (props.fullWidth) {
-        styles += shopButtonFullWidth.join("");
+        styles += shopButtonFullWidth.join('');
     }
 
     if (props.dark) {
-        styles += shopButtonDark.join("");
+        styles += shopButtonDark.join('');
     }
 
     return styles;

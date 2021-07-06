@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default ({ name, progress, onChange }) => (
     <div className="framework">
@@ -10,11 +10,9 @@ export default ({ name, progress, onChange }) => (
             Progress:
             <input
                 type="checkbox"
-                checked={progress === "done"}
+                checked={progress === 'done'}
                 onChange={onChange}
-                ref={el =>
-                    el && (el.indeterminate = progress === "indeterminate")
-                }
+                ref={el => el && (el.indeterminate = progress === 'indeterminate')}
             />
         </label>
     </div>

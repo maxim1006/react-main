@@ -1,9 +1,9 @@
-import React, { Component, Children } from "react";
-import "./Tabs.scss";
+import React, { Component, Children } from 'react';
+import './Tabs.scss';
 
 export class TabsComponent extends Component {
     state = {
-        activeTab: 0
+        activeTab: 0,
     };
 
     componentDidMount() {
@@ -41,7 +41,7 @@ export class TabsComponent extends Component {
             <div
                 onClick={this.onClick.bind(this, index)}
                 key={index}
-                className={`tabs__header-item${index === this.state.activeTab ? " _active" : ""}`}
+                className={`tabs__header-item${index === this.state.activeTab ? ' _active' : ''}`}
             >
                 {child.props.tabName}
             </div>
@@ -56,14 +56,14 @@ export class TabsComponent extends Component {
                 </div>
             );
         }
-        return "";
+        return '';
     }
 
     onClick = index => {
         // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
         // через функцию это делаю
         this.setState((prevState, prevProps) => ({
-            activeTab: index
+            activeTab: index,
         }));
     };
 }

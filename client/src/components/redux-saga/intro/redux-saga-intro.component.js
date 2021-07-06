@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { sagaGetUserStartAction } from "../../../store/actions";
-import MaterialLoaderComponent from "../../loader/MaterialLoader";
+import React, { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { sagaGetUserStartAction } from '../../../store/actions';
+import MaterialLoaderComponent from '../../loader/MaterialLoader';
 
 const ReduxSagaIntroComponent = () => {
     const dispatch = useDispatch();

@@ -1,9 +1,6 @@
-import React, { memo, useContext } from "react";
-import {
-    TodosStoreReactContext,
-    toggleCompleteTodoActionCreator
-} from "../todo-store.component";
-import TodoList from "../components/todo-list.component";
+import React, { memo, useContext } from 'react';
+import { TodosStoreReactContext, toggleCompleteTodoActionCreator } from '../todo-store.component';
+import TodoList from '../components/todo-list.component';
 
 const TodoListContainer = () => {
     const { store, state } = useContext(TodosStoreReactContext);
@@ -14,11 +11,7 @@ const TodoListContainer = () => {
             <TodoList
                 todos={state.todos}
                 currentFilter={state.visibilityFilter}
-                onChange={(id, completed) =>
-                    store.dispatch(
-                        toggleCompleteTodoActionCreator(id, completed)
-                    )
-                }
+                onChange={(id, completed) => store.dispatch(toggleCompleteTodoActionCreator(id, completed))}
             />
         </>
     );

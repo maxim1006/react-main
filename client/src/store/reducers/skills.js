@@ -1,11 +1,11 @@
-import { SKILL_TYPES } from "../actions/types";
+import { SKILL_TYPES } from '../actions/types';
 
 const initState = {
     isLoading: false,
-    searchValue: "",
+    searchValue: '',
     items: {},
-    filterValue: "",
-    error: null
+    filterValue: '',
+    error: null,
 };
 
 export default (state = initState, action) => {
@@ -18,7 +18,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: action.payload
+                items: action.payload,
             };
         }
 
@@ -36,7 +36,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...state.items, [newItem.id]: newItem }
+                items: { ...state.items, [newItem.id]: newItem },
             };
         }
 
@@ -51,7 +51,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...restItems }
+                items: { ...restItems },
             };
         }
 
@@ -65,7 +65,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...state.items, [item.id]: item }
+                items: { ...state.items, [item.id]: item },
             };
         }
 
@@ -76,8 +76,8 @@ export default (state = initState, action) => {
                 ...state,
                 isLoading: false,
                 error: {
-                    ...action.payload
-                }
+                    ...action.payload,
+                },
             };
         }
 

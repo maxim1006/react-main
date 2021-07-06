@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Song from "./Song";
-import { selectSong } from "../../store/actions";
-import SongDetails from "./SongDetails";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Song from './Song';
+import { selectSong } from '../../store/actions';
+import SongDetails from './SongDetails';
 
 class SongList extends Component {
     // проперти автоматом биндятся
@@ -22,17 +22,11 @@ class SongList extends Component {
         const { songs, selectedSong, selectSong } = this.props;
 
         return songs.map((song, index) => {
-            const isSelected = selectedSong
-                ? selectedSong.song.title === song.title
-                : null;
+            const isSelected = selectedSong ? selectedSong.song.title === song.title : null;
 
             return (
                 <li key={index}>
-                    <Song
-                        {...song}
-                        selected={isSelected}
-                        onSelect={selectSong.bind(this, song)}
-                    />
+                    <Song {...song} selected={isSelected} onSelect={selectSong.bind(this, song)} />
                 </li>
             );
         });
@@ -42,14 +36,14 @@ class SongList extends Component {
 // вызывается с полным стейтом
 const mapStateToProps = (state, ownProps) => ({
     songs: state.songs,
-    selectedSong: state.selectedSong
+    selectedSong: state.selectedSong,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     selectSong: song => {
         // console.log(ownProps);
         dispatch(selectSong(song));
-    }
+    },
 });
 
 // могу забиндить на возвращаемый эвент из Song сразу action, для этого надо вернуть объект

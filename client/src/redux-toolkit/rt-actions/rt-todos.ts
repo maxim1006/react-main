@@ -9,7 +9,7 @@ export const RtAddTodoAction = createAction('ADD_TODO', (text: string) => {
     return {
         payload: {
             id: currentId++,
-            text
-        }
+            text,
+        },
     };
 });

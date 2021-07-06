@@ -1,17 +1,14 @@
-import React, { memo, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { createStream } from "../../store/actions";
-import StreamForm from "./StreamForm";
+import React, { memo, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { createStream } from '../../store/actions';
+import StreamForm from './StreamForm';
 
 export default memo(() => {
     const dispatch = useDispatch();
     // хоть чайлд и использует memo(() => {}) все равно должен использовать useCallback, чтобы замемоизировать функцию которую прокидываю
     // в проперти чайлда, иначе чайлд будет постоянно ререндериться
-    const onSubmit = useCallback(
-        formValues => dispatch(createStream(formValues)),
-        [dispatch]
-    );
+    const onSubmit = useCallback(formValues => dispatch(createStream(formValues)), [dispatch]);
 
     return (
         <>

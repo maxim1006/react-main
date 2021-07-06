@@ -1,10 +1,10 @@
-import React, { memo } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import TodoList from "../components/todo-list.component";
-import { selectTodos, selectVisibilityFilter, toggleTodo } from "../store";
-import { TodosAppState } from "../store/state";
-import { ITodo } from "../../../models/todo.model";
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import TodoList from '../components/todo-list.component';
+import { selectTodos, selectVisibilityFilter, toggleTodo } from '../store';
+import { TodosAppState } from '../store/state';
+import { ITodo } from '../../../models/todo.model';
 
 export type TodoListContainerProps = {
     todos: ITodo[];
@@ -12,16 +12,8 @@ export type TodoListContainerProps = {
     onChange: (id: string, completed: boolean) => void;
 };
 
-const TodoListConnectedContainer = ({
-    todos,
-    visibilityFilter,
-    onChange
-}: TodoListContainerProps) => (
-    <TodoList
-        todos={todos}
-        currentFilter={visibilityFilter}
-        onChange={onChange}
-    />
+const TodoListConnectedContainer = ({ todos, visibilityFilter, onChange }: TodoListContainerProps) => (
+    <TodoList todos={todos} currentFilter={visibilityFilter} onChange={onChange} />
 );
 
 // базовый вариант
@@ -37,21 +29,15 @@ const TodoListConnectedContainer = ({
 // });
 
 // тоже но с createStructuredSelector
-const mapStateToProps = createStructuredSelector<
-    TodosAppState,
-    { todos: ITodo[]; visibilityFilter: string }
->({
+const mapStateToProps = createStructuredSelector<TodosAppState, { todos: ITodo[]; visibilityFilter: string }>({
     todos: selectTodos,
-    visibilityFilter: selectVisibilityFilter
+    visibilityFilter: selectVisibilityFilter,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
     onChange: (id: string, completed: boolean) => {
         dispatch(toggleTodo(id, completed));
-    }
+    },
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(memo(TodoListConnectedContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(memo(TodoListConnectedContainer));

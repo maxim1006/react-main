@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import Todo from "./todo.component";
-import { ITodo } from "../../../models/todo.model";
+import React, { memo } from 'react';
+import Todo from './todo.component';
+import { ITodo } from '../../../models/todo.model';
 
 export interface ITodoListProps {
     currentFilter: string;
@@ -11,23 +11,11 @@ export interface ITodoListProps {
 const TodoList = ({ todos, currentFilter, onChange }: ITodoListProps) => (
     <ul>
         {getFilteredTodos(todos, currentFilter).map(
-            ({
-                id,
-                name,
-                completed
-            }: {
-                id: string;
-                name: string;
-                completed: boolean;
-            }) => (
+            ({ id, name, completed }: { id: string; name: string; completed: boolean }) => (
                 <li key={id}>
-                    <Todo
-                        name={name}
-                        completed={completed}
-                        onChange={() => onChange(id, completed)}
-                    />
+                    <Todo name={name} completed={completed} onChange={() => onChange(id, completed)} />
                 </li>
-            )
+            ),
         )}
     </ul>
 );
@@ -38,11 +26,11 @@ export default memo(TodoList);
 function getFilteredTodos(todos: any, filter: string) {
     return todos.filter((todo: ITodo) => {
         switch (filter) {
-            case "Completed": {
+            case 'Completed': {
                 return todo.completed;
             }
 
-            case "Active": {
+            case 'Active': {
                 return !todo.completed;
             }
 

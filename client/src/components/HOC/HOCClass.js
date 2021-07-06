@@ -1,30 +1,27 @@
-import React, { PureComponent } from "react";
-import WithMaterialLoader from "./WithMaterialLoader";
-import FamilyList from "../family/FamilyList";
-import { firestore } from "../../firebase/firebase.utils";
+import React, { PureComponent } from 'react';
+import WithMaterialLoader from './WithMaterialLoader';
+import FamilyList from '../family/FamilyList';
+import { firestore } from '../../firebase/firebase.utils';
 
 // WithMaterialLoader  это HOC
 const FamilyWithLoader = WithMaterialLoader(FamilyList);
 
 export default class FamilyWithLoaderContainer extends PureComponent {
     state = {
-        family: null
+        family: null,
     };
 
     componentDidMount() {
         (async () => {
             try {
-                const collectionRef = firestore.collection("family");
+                const collectionRef = firestore.collection('family');
                 const collectionSnapshot = await collectionRef.get();
 
                 this.setState({
-                    family: collectionSnapshot.docs.map(doc => doc.data())
+                    family: collectionSnapshot.docs.map(doc => doc.data()),
                 });
             } catch (e) {
-                console.log(
-                    `useFirestoreGetDocs getData ${"family"} error `,
-                    e
-                );
+                console.log(`useFirestoreGetDocs getData ${'family'} error `, e);
             }
         })();
     }

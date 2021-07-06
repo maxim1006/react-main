@@ -37,7 +37,7 @@ const UseState = memo<UseStateProps>(() => {
         <>
             {fState}
             <button onClick={onClick}>increase</button>
-            {/*// TODO implement on friday*/}
+            {/*/ / TODO implement on friday*/}
             <button>decrease</button>
             <p>Counter: {counter}</p>
             <p>Object example: {obj.a}</p>

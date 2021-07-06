@@ -17,14 +17,14 @@ export default memo(({ price }) => {
                 method: 'post',
                 data: {
                     amount: stripePrice,
-                    token
-                }
+                    token,
+                },
             }).then(
                 _ => console.log('stripe payment success'),
-                e => console.log('stripe payment error ', e)
+                e => console.log('stripe payment error ', e),
             );
         },
-        [stripePrice]
+        [stripePrice],
     );
 
     return (

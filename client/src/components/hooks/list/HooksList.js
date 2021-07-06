@@ -1,5 +1,5 @@
-import React from "react";
-import useHooks from "../useHooks";
+import React from 'react';
+import useHooks from '../useHooks';
 
 export default ({ resource }) => {
     const resources = useHooks(resource);

@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useRef } from "react";
-import "./drag-n-drop.component.scss";
+import React, { memo, useEffect, useRef } from 'react';
+import './drag-n-drop.component.scss';
 
 const DragNDrop = () => {
     const dragRef = useRef<HTMLDivElement>(null!);
@@ -37,10 +37,7 @@ const DragNDrop = () => {
         startOffsetX = startDragElementBCR.left - dragParentElementBCR.left;
         startOffsetY = startDragElementBCR.top - dragParentElementBCR.top;
 
-        const {
-            clientHeight: height,
-            clientWidth: width
-        } = document.documentElement;
+        const { clientHeight: height, clientWidth: width } = document.documentElement;
 
         documentElementInfo = { width, height };
     };
@@ -102,22 +99,22 @@ const DragNDrop = () => {
         const dragElement = dragRef.current;
         // console.log("drag useEffect");
 
-        dragElement.addEventListener("mousedown", onDragStart);
-        document.addEventListener("mousemove", onDrag);
-        document.addEventListener("mouseup", onDragEnd);
+        dragElement.addEventListener('mousedown', onDragStart);
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', onDragEnd);
 
-        dragElement.addEventListener("touchstart", onDragStart);
-        dragElement.addEventListener("touchmove", onDrag);
-        dragElement.addEventListener("touchend", onDragEnd);
+        dragElement.addEventListener('touchstart', onDragStart);
+        dragElement.addEventListener('touchmove', onDrag);
+        dragElement.addEventListener('touchend', onDragEnd);
 
         return () => {
-            dragElement.removeEventListener("mousedown", onDragStart);
-            document.removeEventListener("mousemove", onDrag);
-            document.removeEventListener("mouseup", onDragEnd);
+            dragElement.removeEventListener('mousedown', onDragStart);
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('mouseup', onDragEnd);
 
-            dragElement.removeEventListener("touchstart", onDragStart);
-            dragElement.removeEventListener("touchmove", onDrag);
-            dragElement.removeEventListener("touchend", onDragEnd);
+            dragElement.removeEventListener('touchstart', onDragStart);
+            dragElement.removeEventListener('touchmove', onDrag);
+            dragElement.removeEventListener('touchend', onDragEnd);
         };
     }, []);
 

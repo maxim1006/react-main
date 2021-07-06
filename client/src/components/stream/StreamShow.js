@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchStream } from "../../store/actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchStream } from '../../store/actions';
 
 class StreamShow extends Component {
     componentDidMount() {
@@ -34,7 +34,7 @@ class StreamShow extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    stream: state.streams[ownProps.match.params.id]
+    stream: state.streams[ownProps.match.params.id],
 });
 
 export default connect(mapStateToProps, { fetchStream })(StreamShow);

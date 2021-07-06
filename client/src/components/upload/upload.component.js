@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState } from 'react';
 
 const UploadComponent = () => {
     const [image, setImage] = useState();
@@ -17,7 +17,7 @@ const UploadComponent = () => {
                     width: 100,
                     height: 100,
                     backgroundImage: `url('${image}'), linear-gradient(0deg, rgba(12, 32, 50, 0.6), rgba(12, 32, 50, 0.6))`,
-                    backgroundSize: "100% 100%"
+                    backgroundSize: '100% 100%',
                 }}
             />
         </>

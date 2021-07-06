@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Framework from "./Framework";
-import * as fromActions from "../../store/actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Framework from './Framework';
+import * as fromActions from '../../store/actions';
 
 class FrameworkList extends Component {
     componentDidMount() {
@@ -14,10 +14,7 @@ class FrameworkList extends Component {
         return frameworks.map((framework, index) => {
             return (
                 <li key={index}>
-                    <Framework
-                        onChange={changeFrameworkStatus.bind(this, framework)}
-                        {...framework}
-                    />
+                    <Framework onChange={changeFrameworkStatus.bind(this, framework)} {...framework} />
                 </li>
             );
         });
@@ -29,7 +26,7 @@ class FrameworkList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    frameworks: state.frameworks
+    frameworks: state.frameworks,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -38,22 +35,22 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchFrameworks: () => dispatch(fromActions.fetchFrameworks),
     changeFrameworkStatus: framework => {
         switch (framework.progress) {
-            case "done": {
+            case 'done': {
                 framework.progress = null;
                 break;
             }
-            case "indeterminate": {
-                framework.progress = "done";
+            case 'indeterminate': {
+                framework.progress = 'done';
                 break;
             }
             default: {
-                framework.progress = "indeterminate";
+                framework.progress = 'indeterminate';
                 break;
             }
         }
 
         dispatch(fromActions.changeFrameworkStatus(framework));
-    }
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FrameworkList);

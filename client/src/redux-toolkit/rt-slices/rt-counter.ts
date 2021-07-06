@@ -9,8 +9,8 @@ export const rtCounterSlice = createSlice({
     initialState: 0,
     reducers: {
         rtIncrement: state => state + 1,
-        rtDecrement: state => state - 1
-    }
+        rtDecrement: state => state - 1,
+    },
 });
 
 export const { rtIncrement, rtDecrement } = rtCounterSlice.actions;

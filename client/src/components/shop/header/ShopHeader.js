@@ -1,27 +1,19 @@
-import React from "react";
+import React from 'react';
 // так импорчу свг
-import { Link } from "react-router-dom";
-import { createStructuredSelector } from "reselect";
-import { ReactComponent as LogoIcon } from "../../../assets/icons/crown.svg";
-import { ReactComponent as CartIcon } from "../../../assets/icons/shopping-bag.svg";
-import { auth } from "../../../firebase/firebase.utils";
-import "./ShopHeader.scss";
-import { connect } from "react-redux";
-import { shopToggleDropdown } from "../../../store/actions";
-import MaterialLoader from "../../loader/MaterialLoader";
-import {
-    selectShopCartQuantity,
-    selectShopCartVisibleDropdown
-} from "../../../store/selectors";
-import { selectShopCurrentUser } from "../../../store/selectors/shopUser";
-import ShopCartDropdownHooks from "../cart-dropdown/ShopCartDropdownHooks";
+import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import { ReactComponent as LogoIcon } from '../../../assets/icons/crown.svg';
+import { ReactComponent as CartIcon } from '../../../assets/icons/shopping-bag.svg';
+import { auth } from '../../../firebase/firebase.utils';
+import './ShopHeader.scss';
+import { connect } from 'react-redux';
+import { shopToggleDropdown } from '../../../store/actions';
+import MaterialLoader from '../../loader/MaterialLoader';
+import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '../../../store/selectors';
+import { selectShopCurrentUser } from '../../../store/selectors/shopUser';
+import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
 
-const ShopHeader = ({
-    shopToggleDropdown,
-    visibleCartDropdown,
-    user,
-    cartQuantity
-}) => {
+const ShopHeader = ({ shopToggleDropdown, visibleCartDropdown, user, cartQuantity }) => {
     return (
         <div className="shop-header">
             <div className="shop-header__title">Shop</div>
@@ -49,10 +41,7 @@ const ShopHeader = ({
 
             <div className="shop-header__cart">
                 <span className="shop-header__cart-count">{cartQuantity}</span>
-                <CartIcon
-                    className="shop-header__cart-icon"
-                    onClick={shopToggleDropdown}
-                />
+                <CartIcon className="shop-header__cart-icon" onClick={shopToggleDropdown} />
                 {visibleCartDropdown && <ShopCartDropdownHooks />}
             </div>
 
@@ -74,9 +63,9 @@ const ShopHeader = ({
 const mapStateToProps = createStructuredSelector({
     visibleCartDropdown: selectShopCartVisibleDropdown,
     cartQuantity: selectShopCartQuantity,
-    user: selectShopCurrentUser
+    user: selectShopCurrentUser,
 });
 
 export default connect(mapStateToProps, {
-    shopToggleDropdown
+    shopToggleDropdown,
 })(ShopHeader);

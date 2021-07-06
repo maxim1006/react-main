@@ -1,9 +1,9 @@
-import React from "react";
-import "./JsxExamples.css";
+import React from 'react';
+import './JsxExamples.css';
 
 export default () => {
-    const buttonText = "Click me";
-    const inlineStyles = { backgroundColor: "#e8f3e8", color: "#333" };
+    const buttonText = 'Click me';
+    const inlineStyles = { backgroundColor: '#e8f3e8', color: '#333' };
 
     return (
         <div>
@@ -11,9 +11,7 @@ export default () => {
             <ol>
                 <li className="jsx-example__list-item">
                     {/* двойные стили пишу camelCase*/}
-                    <div style={{ backgroundColor: "#e8f3e8", color: "#333" }}>
-                        Inline styles
-                    </div>
+                    <div style={{ backgroundColor: '#e8f3e8', color: '#333' }}>Inline styles</div>
                     <div style={inlineStyles}>Inline styles2</div>
                 </li>
                 <li className="jsx-example__list-item">

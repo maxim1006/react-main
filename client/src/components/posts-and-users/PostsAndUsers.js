@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchPostsAndUsers } from "../../store/actions";
-import "./PostsAndUsers.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPostsAndUsers } from '../../store/actions';
+import './PostsAndUsers.scss';
 
 class PostsAndUsers extends Component {
     componentDidMount() {
@@ -51,9 +51,9 @@ class PostsAndUsers extends Component {
 
 const mapStateToProps = state => ({
     posts: state.posts,
-    users: state.users.users
+    users: state.users.users,
 });
 
 export default connect(mapStateToProps, {
-    fetchPostsAndUsers
+    fetchPostsAndUsers,
 })(PostsAndUsers);

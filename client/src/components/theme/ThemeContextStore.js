@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import React, { Component } from 'react';
+import ThemeContext from '../../context/ThemeContext';
 
 export class ThemeContextStore extends Component {
     state = {
-        theme: "default"
+        theme: 'default',
     };
 
     render() {
         return (
-            <ThemeContext.Provider
-                value={{ ...this.state, onThemeChange: this.onThemeChange }}
-            >
+            <ThemeContext.Provider value={{ ...this.state, onThemeChange: this.onThemeChange }}>
                 {this.props.children}
             </ThemeContext.Provider>
         );
@@ -21,13 +19,13 @@ export class ThemeContextStore extends Component {
         const theme = event.target.value;
 
         switch (theme) {
-            case "default": {
-                htmlElement.classList.remove("theme1", "theme2");
+            case 'default': {
+                htmlElement.classList.remove('theme1', 'theme2');
                 break;
             }
 
             default: {
-                htmlElement.classList.remove("theme1", "theme2");
+                htmlElement.classList.remove('theme1', 'theme2');
                 htmlElement.classList.add(theme);
             }
         }

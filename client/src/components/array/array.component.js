@@ -1,6 +1,6 @@
-import React, { memo, useEffect } from "react";
-import "./array.component.scss";
-import "./array-prettify.component.scss";
+import React, { memo, useEffect } from 'react';
+import './array.component.scss';
+import './array-prettify.component.scss';
 
 const ArrayComponent = memo(() => {
     useEffect(() => {

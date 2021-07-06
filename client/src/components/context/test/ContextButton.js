@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import LanguageContext from "../../../context/LanguageContext";
+import React, { useContext } from 'react';
+import LanguageContext from '../../../context/LanguageContext';
 
 export default () => {
     const language = useContext(LanguageContext);
-    const text = language === "en" ? "Submit" : "Подтвердить";
+    const text = language === 'en' ? 'Submit' : 'Подтвердить';
 
     return <button type="button">{text}</button>;
 };

@@ -20,7 +20,7 @@ export default memo(({ match }) => {
 
     const onSubmit = useCallback(formValues => dispatch(editStream(match.params.id, formValues)), [
         dispatch,
-        match.params.id
+        match.params.id,
     ]);
 
     if (stream) {

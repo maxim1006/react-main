@@ -1,45 +1,45 @@
-import axios from "../../common/api/axios";
-import { USER_TYPES } from "./types";
+import axios from '../../common/api/axios';
+import { USER_TYPES } from './types';
 
 export const fetchUsers = () => async (dispatch, getState) => {
     try {
         dispatch({
-            type: USER_TYPES.FETCH_USERS_START
+            type: USER_TYPES.FETCH_USERS_START,
         });
 
-        const { data: users } = await axios.get("users");
+        const { data: users } = await axios.get('users');
 
         dispatch({
             type: USER_TYPES.FETCH_USERS_SUCCESS,
-            payload: users
+            payload: users,
         });
     } catch (e) {
         dispatch({
-            type: USER_TYPES.FETCH_USERS_ERROR
+            type: USER_TYPES.FETCH_USERS_ERROR,
         });
 
-        console.log("Action fetchUsers error", e);
+        console.log('Action fetchUsers error', e);
     }
 };
 
 export const fetchUserById = id => async (dispatch, getState) => {
     try {
         dispatch({
-            type: USER_TYPES.FETCH_USER_START
+            type: USER_TYPES.FETCH_USER_START,
         });
 
         const { data: user } = await axios.get(`users/${id}`);
 
         dispatch({
             type: USER_TYPES.FETCH_USER_SUCCESS,
-            payload: user
+            payload: user,
         });
     } catch (e) {
         dispatch({
-            type: USER_TYPES.FETCH_USER_ERROR
+            type: USER_TYPES.FETCH_USER_ERROR,
         });
 
-        console.log("Action fetchUser error", e);
+        console.log('Action fetchUser error', e);
     }
 };
 

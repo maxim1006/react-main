@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import { connect } from "react-redux";
-import TodoHeader from "../components/todo-header.component";
-import { addTodo } from "../store";
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import TodoHeader from '../components/todo-header.component';
+import { addTodo } from '../store';
 
 const TodoHeaderConnectedContainer = ({ dispatch }: any) => (
     <TodoHeader

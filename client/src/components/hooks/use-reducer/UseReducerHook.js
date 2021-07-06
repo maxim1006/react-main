@@ -1,25 +1,25 @@
-import React, { memo, useReducer } from "react";
-import MaterialLoader from "../../loader/MaterialLoader";
-import useGetRequest from "../useGetRequest";
+import React, { memo, useReducer } from 'react';
+import MaterialLoader from '../../loader/MaterialLoader';
+import useGetRequest from '../useGetRequest';
 
 const initialState = {
     family: null,
-    searchQuery: ""
+    searchQuery: '',
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SET_FAMILY": {
+        case 'SET_FAMILY': {
             return {
                 ...state,
-                family: action.payload
+                family: action.payload,
             };
         }
 
-        case "SET_SEARCH_QUERY": {
+        case 'SET_SEARCH_QUERY': {
             return {
                 ...state,
-                searchQuery: action.payload
+                searchQuery: action.payload,
             };
         }
 
@@ -30,13 +30,13 @@ const reducer = (state = initialState, action) => {
 };
 
 const setFamilyAction = family => ({
-    type: "SET_FAMILY",
-    payload: family
+    type: 'SET_FAMILY',
+    payload: family,
 });
 
-const setSearchQueryAction = (searchQuery = "") => ({
-    type: "SET_SEARCH_QUERY",
-    payload: searchQuery
+const setSearchQueryAction = (searchQuery = '') => ({
+    type: 'SET_SEARCH_QUERY',
+    payload: searchQuery,
 });
 
 export default memo(() => {
@@ -46,8 +46,8 @@ export default memo(() => {
     const { family, searchQuery } = state;
 
     useGetRequest({
-        url: "family",
-        cb: data => dispatch(setFamilyAction(data))
+        url: 'family',
+        cb: data => dispatch(setFamilyAction(data)),
     });
 
     filteredFamily =
@@ -56,26 +56,19 @@ export default memo(() => {
             name
                 .trim()
                 .toLowerCase()
-                .includes(searchQuery.trim().toLowerCase())
+                .includes(searchQuery.trim().toLowerCase()),
         );
 
     return (
         <div className="use-reducer-hook">
             <div>
-                <input
-                    value={searchQuery}
-                    onChange={e =>
-                        dispatch(setSearchQueryAction(e.target.value))
-                    }
-                    type="text"
-                />
+                <input value={searchQuery} onChange={e => dispatch(setSearchQueryAction(e.target.value))} type="text" />
             </div>
             {filteredFamily ? (
                 <ul>
                     {filteredFamily.map(({ name, age, id }) => (
                         <li key={id}>
-                            {name}
-:{age}
+                            {name}:{age}
                         </li>
                     ))}
                 </ul>

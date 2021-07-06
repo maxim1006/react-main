@@ -10,7 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 const Rt = () => {
     return (
         <Provider store={RtStore}>
-            {/*должен обернуть в гейт чтобы подгрузилась инфа из локал сторадж*/}
+            {/* должен обернуть в гейт чтобы подгрузилась инфа из локал сторадж*/}
             <PersistGate loading={null} persistor={RtPersistor}>
                 <RtCounter />
                 <RtTodos />

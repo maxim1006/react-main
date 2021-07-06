@@ -1,10 +1,10 @@
-import React, { memo, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import User from "./User";
-import { fetchUsers } from "../../store/actions";
-import "./UserList.scss";
-import { selectIsLoadingUsers, selectUsersArray } from "../../store/selectors";
-import MaterialLoader from "../loader/MaterialLoader";
+import React, { memo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import User from './User';
+import { fetchUsers } from '../../store/actions';
+import './UserList.scss';
+import { selectIsLoadingUsers, selectUsersArray } from '../../store/selectors';
+import MaterialLoader from '../loader/MaterialLoader';
 
 export default memo(() => {
     const dispatch = useDispatch();

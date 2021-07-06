@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export default (ref, cb) => {
     const handleClick = e => {
@@ -9,10 +9,10 @@ export default (ref, cb) => {
 
     // круто то что при каждом новом вызове этого useEffect будет вызываться возвращаемая функция очистки
     useEffect(() => {
-        document.addEventListener("click", handleClick);
+        document.addEventListener('click', handleClick);
 
         return () => {
-            document.removeEventListener("click", handleClick);
+            document.removeEventListener('click', handleClick);
         };
     });
 };

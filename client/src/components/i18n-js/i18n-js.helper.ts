@@ -1,11 +1,11 @@
-import i18n from "i18n-js";
+import i18n from 'i18n-js';
 
-import en from "../../i18n/translations/locales/en.json";
+import en from '../../i18n/translations/locales/en.json';
 
 i18n.fallbacks = true;
 // i18n.translations = translations;
 i18n.translations = { en, ru: {} };
-i18n.defaultLocale = "en";
+i18n.defaultLocale = 'en';
 
 export default i18n;
 
@@ -19,9 +19,9 @@ export const loadTranslations = async () => {
                 );
                 i18n.translations[locale] = {
                     ...i18n.translations[locale],
-                    ...data
+                    ...data,
                 };
-            })
+            }),
     );
 };
 

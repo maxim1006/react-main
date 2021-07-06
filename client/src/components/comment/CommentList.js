@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import CommentComponent from "./Comment";
-import "./CommentList.scss";
-import ContentProjectionContentComponent from "../content-projection/ContentProjectionContent";
-import ContentProjectionComponent from "../content-projection/ContentProjection";
-import customAxios from "../../common/api/axios";
+import React, { Component } from 'react';
+import CommentComponent from './Comment';
+import './CommentList.scss';
+import ContentProjectionContentComponent from '../content-projection/ContentProjectionContent';
+import ContentProjectionComponent from '../content-projection/ContentProjection';
+import customAxios from '../../common/api/axios';
 
 export class CommentListComponent extends Component {
     state = {
-        comments: []
+        comments: [],
     };
 
     render() {
@@ -15,11 +15,7 @@ export class CommentListComponent extends Component {
             return (
                 <ContentProjectionComponent
                     key={index}
-                    projectFromProp={
-                        <ContentProjectionContentComponent
-                            content={comment.occupation}
-                        />
-                    }
+                    projectFromProp={<ContentProjectionContentComponent content={comment.occupation} />}
                 >
                     <CommentComponent {...comment} />
                 </ContentProjectionComponent>
@@ -33,12 +29,12 @@ export class CommentListComponent extends Component {
         this.cancelGetCommentsRequest = customAxios.CancelToken.source();
 
         try {
-            const { data: comments } = await customAxios.get("/comments", {
-                cancelToken: this.cancelGetCommentsRequest.token
+            const { data: comments } = await customAxios.get('/comments', {
+                cancelToken: this.cancelGetCommentsRequest.token,
             });
 
             this.setState({
-                comments
+                comments,
             });
         } catch (e) {
             console.log("CommentListComponent get('/comments'... ", e);
@@ -46,9 +42,7 @@ export class CommentListComponent extends Component {
     }
 
     componentWillUnmount() {
-        this.cancelGetCommentsRequest.cancel(
-            "CommentListComponent get('/comments'... canceled"
-        );
+        this.cancelGetCommentsRequest.cancel("CommentListComponent get('/comments'... canceled");
     }
 }
 

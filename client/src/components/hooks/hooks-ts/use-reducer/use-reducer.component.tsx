@@ -36,7 +36,7 @@ const reducer = (state = initialState, action: { type: string; payload: any }): 
         case 'REMOVE_MEMBER': {
             const removeMember = action.payload;
             const newTeamMembers = state.team.members.filter(
-                (member: TeamMemberModel) => member.id !== removeMember.id
+                (member: TeamMemberModel) => member.id !== removeMember.id,
             );
 
             return {

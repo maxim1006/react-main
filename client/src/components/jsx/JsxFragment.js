@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default ({ prop1, prop2 }) => {
     // пример синтаксиса если надо вернуть multiple elements

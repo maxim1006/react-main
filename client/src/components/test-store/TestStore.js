@@ -1,22 +1,22 @@
 // Просто для примера
-import { connect } from "react-redux";
-import React from "react";
+import { connect } from 'react-redux';
+import React from 'react';
 
 const testIncrease = () => ({
-    type: "TEST_INCREASE"
+    type: 'TEST_INCREASE',
 });
 
 const testDecrease = () => ({
-    type: "TEST_DECREASE"
+    type: 'TEST_DECREASE',
 });
 
 export const testStore = (state = 0, action) => {
     switch (action.type) {
-        case "TEST_INCREASE": {
+        case 'TEST_INCREASE': {
             return ++state;
         }
 
-        case "TEST_DECREASE": {
+        case 'TEST_DECREASE': {
             return --state;
         }
 
@@ -39,5 +39,5 @@ export default connect(
     state => ({
         // testStore: state.testStore
     }),
-    { testIncrease, testDecrease }
+    { testIncrease, testDecrease },
 )(testComponent);

@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
-import React from "react";
-import "./MainMenu.scss";
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+import './MainMenu.scss';
 
 export type MainMenuProps = {
     routes: { to: string; title: string }[];

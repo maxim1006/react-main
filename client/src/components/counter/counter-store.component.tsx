@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useState } from "react";
-import { COUNTER_TYPES } from "../../store/actions/types";
+import React, { memo, useEffect, useState } from 'react';
+import { COUNTER_TYPES } from '../../store/actions/types';
 
 // Create store
 const createStore = (reducer: Function) => {
@@ -64,20 +64,8 @@ const CounterStore: React.FC = () => {
     return (
         <>
             <p>{value}</p>
-            <button
-                onClick={() =>
-                    store.dispatch({ type: COUNTER_TYPES.INCREMENT })
-                }
-            >
-                Increment
-            </button>
-            <button
-                onClick={() =>
-                    store.dispatch({ type: COUNTER_TYPES.DECREMENT })
-                }
-            >
-                Decrement
-            </button>
+            <button onClick={() => store.dispatch({ type: COUNTER_TYPES.INCREMENT })}>Increment</button>
+            <button onClick={() => store.dispatch({ type: COUNTER_TYPES.DECREMENT })}>Decrement</button>
         </>
     );
 };

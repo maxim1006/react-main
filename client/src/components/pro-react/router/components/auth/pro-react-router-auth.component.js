@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
+import React, { memo } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 const ProReactRouterAuthComponent = () => {
     return (
@@ -8,7 +8,7 @@ const ProReactRouterAuthComponent = () => {
             <Grid container spacing={3}>
                 <Grid item xs={6}>
                     <h3>SignUpForm</h3>
-                    <form noValidate autoComplete="off" style={{ marginBottom: "30px" }}>
+                    <form noValidate autoComplete="off" style={{ marginBottom: '30px' }}>
                         <Grid item xs={12}>
                             <TextField id="standard-basic" label="Standard" />
                         </Grid>

@@ -1,5 +1,5 @@
-import React from "react";
-import "./Component.scss";
+import React from 'react';
+import './Component.scss';
 
 export default ({ title, children }) => (
     <div className="component">

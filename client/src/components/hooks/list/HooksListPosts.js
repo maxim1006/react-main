@@ -1,9 +1,9 @@
-import React from "react";
-import useHooks from "../useHooks";
+import React from 'react';
+import useHooks from '../useHooks';
 
 export default () => {
     // это чисто для примера, что супер удобно переиспользовать хуки
-    const resources = useHooks("posts");
+    const resources = useHooks('posts');
 
     return resources ? (
         <ul className="hooks-list">

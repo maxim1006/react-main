@@ -1,4 +1,4 @@
-import { SELECT_SONG } from "../actions/types";
+import { SELECT_SONG } from '../actions/types';
 
 const selectedSongReducerInitialState = null;
 

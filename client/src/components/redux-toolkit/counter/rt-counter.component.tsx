@@ -8,7 +8,7 @@ const RtCounter = () => {
     const counter = useSelector<RtRootState>(state => state.counter);
     return (
         <div>
-            {/*reduxBatch - поэтому могу вызывать 2 экшена за раз*/}
+            {/* reduxBatch - поэтому могу вызывать 2 экшена за раз*/}
             <button type="button" onClick={() => dispatch([rtIncrement(), rtIncrement()])}>
                 Increment twice
             </button>

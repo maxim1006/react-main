@@ -1,5 +1,5 @@
-import React from "react";
-import "./ContentProjection.scss";
+import React from 'react';
+import './ContentProjection.scss';
 
 // посмотреть использование можно в CommentList.js
 export default ({ projectFromProp, children }) => {
@@ -12,19 +12,16 @@ export default ({ projectFromProp, children }) => {
                     <button
                         type="button"
                         style={{
-                            color: "white",
-                            backgroundColor: "green",
-                            marginRight: "30px"
+                            color: 'white',
+                            backgroundColor: 'green',
+                            marginRight: '30px',
                         }}
                     >
                         Approve
                     </button>
                 </div>
                 <div className="content-projection__reject">
-                    <button
-                        type="button"
-                        style={{ color: "white", backgroundColor: "red" }}
-                    >
+                    <button type="button" style={{ color: 'white', backgroundColor: 'red' }}>
                         Reject
                     </button>
                 </div>

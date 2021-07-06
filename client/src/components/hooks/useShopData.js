@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { firestore } from "../../firebase/firebase.utils";
-import { RouteNameMap } from "../shop/shop.data";
-import { shopSetData } from "../../store/actions";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { firestore } from '../../firebase/firebase.utils';
+import { RouteNameMap } from '../shop/shop.data';
+import { shopSetData } from '../../store/actions';
 
 export default () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         // получаю дату из fireStore
-        const shopDataRef = firestore.collection("shopData");
+        const shopDataRef = firestore.collection('shopData');
 
         const shopDataUnsubscribe = shopDataRef.onSnapshot(async snapshot => {
             const shopData = snapshot.docs.reduce((acc, doc) => {
@@ -21,8 +21,8 @@ export default () => {
                         title,
                         items,
                         id,
-                        routeName: RouteNameMap.get(title)
-                    }
+                        routeName: RouteNameMap.get(title),
+                    },
                 };
             }, {});
 

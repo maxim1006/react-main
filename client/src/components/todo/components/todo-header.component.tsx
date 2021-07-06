@@ -1,4 +1,4 @@
-import React, { memo, useRef } from "react";
+import React, { memo, useRef } from 'react';
 
 export interface ITodoHeaderProps {
     onClick: (value: string) => void;
@@ -16,7 +16,7 @@ const TodoHeader = ({ onClick }: ITodoHeaderProps) => {
             <button
                 onClick={() => {
                     onClick(inputRef.current.value);
-                    inputRef.current.value = "";
+                    inputRef.current.value = '';
                 }}
             >
                 Add todo

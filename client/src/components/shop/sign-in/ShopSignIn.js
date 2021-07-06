@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import ShopFormInput from "../form-input/ShopFormInput";
-import ShopButton from "../button/ShopButton";
-import "./ShopSignIn.scss";
-import { auth, signInWithGoogle } from "../../../firebase/firebase.utils";
-import NotificationPortal from "../../portals/notification/NotificationPortal";
+import React, { Component } from 'react';
+import ShopFormInput from '../form-input/ShopFormInput';
+import ShopButton from '../button/ShopButton';
+import './ShopSignIn.scss';
+import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
+import NotificationPortal from '../../portals/notification/NotificationPortal';
 
 export default class ShopSignIn extends Component {
     notificationErrorTimeout;
 
     state = {
-        email: "",
-        password: "",
-        error: ""
+        email: '',
+        password: '',
+        error: '',
     };
 
     render() {
@@ -64,15 +64,15 @@ export default class ShopSignIn extends Component {
             await auth.signInWithEmailAndPassword(email, password);
 
             this.setState({
-                email: "",
-                password: ""
+                email: '',
+                password: '',
             });
         } catch (e) {
             this.setState({
-                error: e.message
+                error: e.message,
             });
 
-            console.log("Shop SignIn onSubmit error ", e);
+            console.log('Shop SignIn onSubmit error ', e);
         }
     };
 
@@ -92,10 +92,7 @@ export default class ShopSignIn extends Component {
         }
 
         return error ? (
-            <NotificationPortal
-                styleClass="_error"
-                onClose={this.clearNotificationError}
-            >
+            <NotificationPortal styleClass="_error" onClose={this.clearNotificationError}>
                 {error}
             </NotificationPortal>
         ) : null;
@@ -103,7 +100,7 @@ export default class ShopSignIn extends Component {
 
     clearNotificationError = () => {
         this.setState({
-            error: null
+            error: null,
         });
 
         clearTimeout(this.notificationErrorTimeout);

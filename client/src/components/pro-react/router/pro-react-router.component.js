@@ -10,7 +10,7 @@ const ProReactRouterComponent = () => {
             <MainMenu
                 routes={[
                     { to: '/pro-react/auth', title: 'Auth' },
-                    { to: '/pro-react/admin', title: 'Admin' }
+                    { to: '/pro-react/admin', title: 'Admin' },
                 ]}
             />
 

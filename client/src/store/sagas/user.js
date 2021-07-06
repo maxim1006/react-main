@@ -16,7 +16,7 @@ function* getUser(action) {
         // это типо диспатч в сагах
         yield put({
             type: SAGA_TYPES.GET_USER_SUCCESS,
-            payload: user
+            payload: user,
         });
     } catch (e) {
         yield put({ type: SAGA_TYPES.GET_USER_ERROR, message: e.message });

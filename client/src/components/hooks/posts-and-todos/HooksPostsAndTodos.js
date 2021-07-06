@@ -1,19 +1,19 @@
-import React, { memo, useState } from "react";
-import HooksList from "../list/HooksList";
-import HooksListPosts from "../list/HooksListPosts";
+import React, { memo, useState } from 'react';
+import HooksList from '../list/HooksList';
+import HooksListPosts from '../list/HooksListPosts';
 
 export default memo(() => {
-    const [resource, setResource] = useState("posts");
+    const [resource, setResource] = useState('posts');
 
     return (
         <div className="hooks-page">
             <h3>"Hello Hooks Page!"</h3>
 
             <div className="hooks-page__controls">
-                <button type="button" onClick={() => setResource("posts")}>
+                <button type="button" onClick={() => setResource('posts')}>
                     Posts
                 </button>
-                <button type="button" onClick={() => setResource("todos")}>
+                <button type="button" onClick={() => setResource('todos')}>
                     Todos
                 </button>
             </div>

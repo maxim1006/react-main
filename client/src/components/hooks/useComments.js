@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import customAxios from "../../common/api/axios";
+import { useEffect, useState } from 'react';
+import customAxios from '../../common/api/axios';
 
 export default () => {
     const [comments, setComments] = useState([]);
@@ -8,8 +8,8 @@ export default () => {
     useEffect(() => {
         (async () => {
             try {
-                const { data: comments } = await customAxios.get("/comments", {
-                    cancelToken: cancelGetCommentsRequest.token
+                const { data: comments } = await customAxios.get('/comments', {
+                    cancelToken: cancelGetCommentsRequest.token,
                 });
 
                 setComments(comments);
@@ -19,9 +19,7 @@ export default () => {
         })();
 
         return () => {
-            cancelGetCommentsRequest.cancel(
-                "CommentListHooks get('/comments'... canceled"
-            );
+            cancelGetCommentsRequest.cancel("CommentListHooks get('/comments'... canceled");
         };
     }, []);
 

@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import customAxios from "../../common/api/axios";
+import React, { Component } from 'react';
+import customAxios from '../../common/api/axios';
 
 export class JsxListComponent extends Component {
     state = {
-        family: []
+        family: [],
     };
 
     async componentDidMount() {
         this.cancelGetFamilyRequest = customAxios.CancelToken.source();
 
         try {
-            const { data: family } = await customAxios.get("/family", {
-                cancelToken: this.cancelGetFamilyRequest.token
+            const { data: family } = await customAxios.get('/family', {
+                cancelToken: this.cancelGetFamilyRequest.token,
             });
 
             this.setState({
-                family
+                family,
             });
         } catch (e) {
             console.log("JsxListComponent get('/family'... ", e);
@@ -23,9 +23,7 @@ export class JsxListComponent extends Component {
     }
 
     componentWillUnmount() {
-        this.cancelGetFamilyRequest.cancel(
-            "JsxListComponent get('/family'... canceled"
-        );
+        this.cancelGetFamilyRequest.cancel("JsxListComponent get('/family'... canceled");
     }
 
     // Тут классный пример деструктуризации входных свойств

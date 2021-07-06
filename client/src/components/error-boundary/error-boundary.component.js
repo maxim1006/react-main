@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 
 export class ErrorBoundary extends PureComponent {
     state = { hasError: false };
@@ -11,7 +11,7 @@ export class ErrorBoundary extends PureComponent {
     componentDidCatch(error, errorInfo) {
         // You can also log the error to an error reporting service
         // logErrorToMyService(error, errorInfo);
-        console.log("error: ", error, "errorInfo: ", errorInfo);
+        console.log('error: ', error, 'errorInfo: ', errorInfo);
     }
 
     render() {
@@ -20,6 +20,6 @@ export class ErrorBoundary extends PureComponent {
             return <h1>Error is caught. Something went wrong.</h1>;
         }
 
-        return this.props.children || "";
+        return this.props.children || '';
     }
 }

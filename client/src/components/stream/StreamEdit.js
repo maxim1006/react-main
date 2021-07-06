@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { editStream, fetchStream } from "../../store/actions";
-import StreamForm from "./StreamForm";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { editStream, fetchStream } from '../../store/actions';
+import StreamForm from './StreamForm';
 
 class StreamEdit extends Component {
     componentDidMount() {
@@ -21,10 +21,7 @@ class StreamEdit extends Component {
             return (
                 <>
                     <h3>Edit stream</h3>
-                    <StreamForm
-                        initialValues={{ title, description }}
-                        onSubmit={this.onSubmit.bind(this)}
-                    />
+                    <StreamForm initialValues={{ title, description }} onSubmit={this.onSubmit.bind(this)} />
 
                     <p>
                         <Link to="/stream">Go to stream list -&gt;</Link>
@@ -41,7 +38,7 @@ class StreamEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    stream: state.streams[ownProps.match.params.id]
+    stream: state.streams[ownProps.match.params.id],
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -50,7 +47,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     editStream: (...args) => {
         dispatch(editStream(...args));
-    }
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StreamEdit);

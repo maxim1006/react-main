@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import "./dropdown-item.component.scss";
+import React, { memo } from 'react';
+import './dropdown-item.component.scss';
 
 const DropdownItem = memo(({ leftIcon, rightIcon, children }) => {
     return (

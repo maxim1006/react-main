@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { StyledFontBoldLarge } from "../../../styled-component/mixins/SyledFonts";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { StyledFontBoldLarge } from '../../../styled-component/mixins/SyledFonts';
 
 export const StyledShopCollectionsPreview = styled.div``;
 

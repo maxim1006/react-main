@@ -1,8 +1,8 @@
-import React from "react";
-import "./Song.scss";
+import React from 'react';
+import './Song.scss';
 
 export default ({ title, selected, onSelect }) => {
-    const style = selected ? { backgroundColor: "lightblue" } : null;
+    const style = selected ? { backgroundColor: 'lightblue' } : null;
 
     return (
         <div className="song" style={style}>

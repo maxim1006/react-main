@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./DomRefImage.scss";
+import React, { Component } from 'react';
+import './DomRefImage.scss';
 
 export class DomRefImageComponent extends Component {
     constructor(props) {
@@ -17,16 +17,8 @@ export class DomRefImageComponent extends Component {
 
     render() {
         const { styleClass, image } = this.props;
-        const className = `dom-ref-image ${styleClass || ""}`;
+        const className = `dom-ref-image ${styleClass || ''}`;
 
-        return (
-            <img
-                loading="lazy"
-                ref={this.imageRef}
-                alt={image}
-                className={className}
-                src={image}
-            />
-        );
+        return <img loading="lazy" ref={this.imageRef} alt={image} className={className} src={image} />;
     }
 }

@@ -1,12 +1,9 @@
-import { VISIBILITY_FILTER_TYPES } from "../actions";
-import { VisibilityFilterState } from "../state";
+import { VISIBILITY_FILTER_TYPES } from '../actions';
+import { VisibilityFilterState } from '../state';
 
-const initState: VisibilityFilterState = "All";
+const initState: VisibilityFilterState = 'All';
 
-export default (
-    state = initState,
-    action: { type: string; payload: string }
-) => {
+export default (state = initState, action: { type: string; payload: string }) => {
     switch (action.type) {
         case VISIBILITY_FILTER_TYPES.SET: {
             return action.payload;

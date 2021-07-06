@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from "../actions/types";
+import { FETCH_POSTS } from '../actions/types';
 
 const initialState = [];
 

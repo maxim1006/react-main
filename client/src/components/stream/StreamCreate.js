@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { createStream } from "../../store/actions";
-import StreamForm from "./StreamForm";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { createStream } from '../../store/actions';
+import StreamForm from './StreamForm';
 
 class StreamCreate extends Component {
     render() {

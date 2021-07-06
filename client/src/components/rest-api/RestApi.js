@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import customAxios from "../../common/api/axios";
+import React, { Component } from 'react';
+import customAxios from '../../common/api/axios';
 
 export class RestApiComponent extends Component {
     state = {
-        items: []
+        items: [],
     };
 
     cancelGetFamilyRequest = null;
@@ -27,18 +27,15 @@ export class RestApiComponent extends Component {
         this.cancelGetFamilyRequest = customAxios.CancelToken.source();
 
         try {
-            const { data: items } = await customAxios.get("/family", {
-                cancelToken: this.cancelGetFamilyRequest.token
+            const { data: items } = await customAxios.get('/family', {
+                cancelToken: this.cancelGetFamilyRequest.token,
             });
 
             this.setState({
-                items
+                items,
             });
         } catch (e) {
-            console.log(
-                "FormsComponent componentDidMount fetch('http://localhost:3001/api/articles') error",
-                e
-            );
+            console.log("FormsComponent componentDidMount fetch('http://localhost:3001/api/articles') error", e);
         }
     }
 
@@ -58,8 +55,6 @@ export class RestApiComponent extends Component {
 
     componentWillUnmount() {
         // убиваю реквест через axios
-        this.cancelGetFamilyRequest.cancel(
-            "http://localhost:3001/api/family canceled"
-        );
+        this.cancelGetFamilyRequest.cancel('http://localhost:3001/api/family canceled');
     }
 }

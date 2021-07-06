@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import React, { memo, useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Stream from "../Stream";
-import StreamControls from "./StreamControls";
-import { deleteStream } from "../../../store/actions";
-import ModalPortal from "../../portals/modal/ModalPortal";
-import { selectAuthUserId, selectStreams } from "../../../store/selectors";
+import { Link } from 'react-router-dom';
+import React, { memo, useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Stream from '../Stream';
+import StreamControls from './StreamControls';
+import { deleteStream } from '../../../store/actions';
+import ModalPortal from '../../portals/modal/ModalPortal';
+import { selectAuthUserId, selectStreams } from '../../../store/selectors';
 
 export default memo(() => {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default memo(() => {
         stream => () => {
             setStreamToDelete(stream);
         },
-        []
+        [],
     );
 
     const onModalDeleteButtonClick = useCallback(() => {
@@ -46,14 +46,7 @@ export default memo(() => {
                 {Object.entries(streams).map(([id, stream]) => {
                     return (
                         <li key={id} className="stream-list__item">
-                            <Stream
-                                {...stream}
-                                title={
-                                    <Link to={`/stream/${stream.id}`}>
-                                        {stream.title}
-                                    </Link>
-                                }
-                            />
+                            <Stream {...stream} title={<Link to={`/stream/${stream.id}`}>{stream.title}</Link>} />
 
                             <StreamControls
                                 stream={stream}
@@ -65,12 +58,7 @@ export default memo(() => {
                 })}
             </ul>
 
-            {streamToDelete && (
-                <ModalPortal
-                    title="Are u sure u wanna delete this stream?"
-                    controls={controls}
-                />
-            )}
+            {streamToDelete && <ModalPortal title="Are u sure u wanna delete this stream?" controls={controls} />}
         </>
     );
 });

@@ -1,19 +1,17 @@
-import React from "react";
-import "./ShopCollectionsPreview.scss";
-import { withRouter } from "react-router-dom";
-import ShopCollectionsPreviewItemHooks from "./item/ShopCollectionsPreviewItemHooks";
+import React from 'react';
+import './ShopCollectionsPreview.scss';
+import { withRouter } from 'react-router-dom';
+import ShopCollectionsPreviewItemHooks from './item/ShopCollectionsPreviewItemHooks';
 import {
     StyledShopCollectionsPreview,
     StyledShopCollectionsPreviewItem,
     StyledShopCollectionsPreviewItems,
-    StyledShopCollectionsPreviewTitle
-} from "./StyledShopCollectionsPreview";
+    StyledShopCollectionsPreviewTitle,
+} from './StyledShopCollectionsPreview';
 
 export default withRouter(({ title, items }) => (
     <StyledShopCollectionsPreview>
-        <StyledShopCollectionsPreviewTitle
-            to={`collections/${title.toLowerCase()}`}
-        >
+        <StyledShopCollectionsPreviewTitle to={`collections/${title.toLowerCase()}`}>
             {title}
         </StyledShopCollectionsPreviewTitle>
         <StyledShopCollectionsPreviewItems>

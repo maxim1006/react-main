@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import ShopCartListItem from "../cart-item/ShopCartListItem";
-import { selectShopCartItems } from "../../../../store/selectors";
-import "./ShopCartList.scss";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import ShopCartListItem from '../cart-item/ShopCartListItem';
+import { selectShopCartItems } from '../../../../store/selectors';
+import './ShopCartList.scss';
 
 const ShopCartList = ({ cartItems }) => {
     return Object.entries(cartItems).length ? (
@@ -26,7 +26,7 @@ const ShopCartList = ({ cartItems }) => {
 // });
 
 const mapStateToProps = createStructuredSelector({
-    cartItems: selectShopCartItems
+    cartItems: selectShopCartItems,
 });
 
 export default connect(mapStateToProps)(ShopCartList);

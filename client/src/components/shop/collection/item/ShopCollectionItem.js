@@ -1,23 +1,17 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 import {
     StyledShopCollectionItem,
     StyledShopCollectionItemButton,
     StyledShopCollectionItemImage,
     StyledShopCollectionItemImageWrapper,
-    StyledShopCollectionItemPrice
-} from "./StyledShopCollectionItem";
+    StyledShopCollectionItemPrice,
+} from './StyledShopCollectionItem';
 
 export default memo(({ onAddCartItem, imageUrl, name, price }) => (
     <StyledShopCollectionItem>
         <StyledShopCollectionItemImageWrapper>
-            <StyledShopCollectionItemButton onClick={onAddCartItem}>
-                Add to cart
-            </StyledShopCollectionItemButton>
-            <StyledShopCollectionItemImage
-                loading="lazy"
-                alt={name}
-                src={imageUrl}
-            />
+            <StyledShopCollectionItemButton onClick={onAddCartItem}>Add to cart</StyledShopCollectionItemButton>
+            <StyledShopCollectionItemImage loading="lazy" alt={name} src={imageUrl} />
         </StyledShopCollectionItemImageWrapper>
         <StyledShopCollectionItemPrice>
             <div className="shop-collection-item__price-name">{name}</div>

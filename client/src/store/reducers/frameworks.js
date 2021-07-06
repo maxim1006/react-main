@@ -1,4 +1,4 @@
-import { CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS } from "../actions/types";
+import { CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS } from '../actions/types';
 
 const initialState = [];
 

@@ -1,17 +1,14 @@
-import React, { Component } from "react";
-import ShopFormInput from "../form-input/ShopFormInput";
-import ShopButton from "../button/ShopButton";
-import {
-    auth,
-    createUserProfileDocument
-} from "../../../firebase/firebase.utils";
+import React, { Component } from 'react';
+import ShopFormInput from '../form-input/ShopFormInput';
+import ShopButton from '../button/ShopButton';
+import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils';
 
 export default class ShopSignUp extends Component {
     state = {
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
     };
 
     render() {
@@ -81,21 +78,18 @@ export default class ShopSignUp extends Component {
         }
 
         try {
-            const { user } = await auth.createUserWithEmailAndPassword(
-                email,
-                password
-            );
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
             await createUserProfileDocument(user, { displayName });
 
             this.setState({
-                displayName: "",
-                email: "",
-                password: "",
-                confirmPassword: ""
+                displayName: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
             });
         } catch (e) {
-            console.log("Sign Up handleSubmit error ", e.message);
+            console.log('Sign Up handleSubmit error ', e.message);
         }
     };
 

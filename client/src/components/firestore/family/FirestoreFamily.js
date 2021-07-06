@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import useFirestoreFamily from "../../hooks/useFirestoreFamily";
-import MaterialLoader from "../../loader/MaterialLoader";
-import { StyledFirestoreFamilyList } from "./StyledFirestoreFamily";
+import React, { memo } from 'react';
+import useFirestoreFamily from '../../hooks/useFirestoreFamily';
+import MaterialLoader from '../../loader/MaterialLoader';
+import { StyledFirestoreFamilyList } from './StyledFirestoreFamily';
 
 export default memo(() => {
     const family = useFirestoreFamily();

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { StyledFontBoldLarge } from "../styled-component/mixins/SyledFonts";
-import { StyledBorderColorLight } from "../styled-component/StylesColors";
+import styled from 'styled-components';
+import { StyledFontBoldLarge } from '../styled-component/mixins/SyledFonts';
+import { StyledBorderColorLight } from '../styled-component/StylesColors';
 
 export const StyledRef = styled.div`
     height: 300px;

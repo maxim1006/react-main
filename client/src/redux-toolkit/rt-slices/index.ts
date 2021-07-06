@@ -10,5 +10,5 @@ export default combineReducers({
     todos,
     visibilityFilter,
     issuesDisplay,
-    posts
+    posts,
 });

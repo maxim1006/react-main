@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./ModalPortal.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './ModalPortal.scss';
 
 // если в названии поставить [name].module.scss то соберется как css модуль а не просто jsка
 
@@ -15,6 +15,6 @@ export default ({ title, controls }) => {
                 <div className="modal-portal__controls">{controls}</div>
             </div>
         </div>,
-        document.querySelector("#modal")
+        document.querySelector('#modal'),
     );
 };

@@ -1,5 +1,5 @@
-import React from "react";
-import CountUp from "react-countup";
+import React from 'react';
+import CountUp from 'react-countup';
 
 const CountupWrapper: React.FC = () => {
     return (
@@ -13,8 +13,8 @@ const CountupWrapper: React.FC = () => {
                 decimal=","
                 prefix="EUR "
                 suffix=" left"
-                onEnd={() => console.log("Ended! 👏")}
-                onStart={() => console.log("Started! 💨")}
+                onEnd={() => console.log('Ended! 👏')}
+                onStart={() => console.log('Started! 💨')}
             >
                 {({ countUpRef, start }) => (
                     <div>

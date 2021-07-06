@@ -1,6 +1,6 @@
-import { useIntl } from "react-intl";
-import React, { memo } from "react";
-import messages from "./messages";
+import { useIntl } from 'react-intl';
+import React, { memo } from 'react';
+import messages from './messages';
 
 const ReactIntlChild: React.FC = () => {
     const { formatMessage } = useIntl();

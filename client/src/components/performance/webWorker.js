@@ -15,16 +15,16 @@ const worker = self => {
         return num * factorial(num - 1);
     }
 
-    self.addEventListener("message", event => {
+    self.addEventListener('message', event => {
         const { eventType, payload } = event.data;
 
-        if (eventType === "sum") {
+        if (eventType === 'sum') {
             const start = performance.now();
             const arr = generateBigArray();
-            console.log("webworker took", performance.now() - start, " ms");
+            console.log('webworker took', performance.now() - start, ' ms');
             postMessage({
-                eventType: "sumResult",
-                payload: sum(arr)
+                eventType: 'sumResult',
+                payload: sum(arr),
             });
         }
     });

@@ -1,7 +1,7 @@
-import { SHOP_USER_TYPES } from "../actions/types";
+import { SHOP_USER_TYPES } from '../actions/types';
 
 const initialState = {
-    currentUser: null
+    currentUser: null,
 };
 
 export default (state = initialState, action) => {
@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
         case SHOP_USER_TYPES.SET_CURRENT_USER: {
             return {
                 ...state,
-                currentUser: action.payload
+                currentUser: action.payload,
             };
         }
 

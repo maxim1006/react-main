@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class AsyncSetState extends Component {
     state = {
-        counter: 0
+        counter: 0,
     };
 
     onClick = () => {
@@ -10,7 +10,7 @@ export default class AsyncSetState extends Component {
         // через функцию это делаю
         // this.setState((prevState, prevProps) => {...})
         this.setState(({ counter }, { increaseNumber }) => ({
-            counter: counter + increaseNumber
+            counter: counter + increaseNumber,
         }));
     };
 

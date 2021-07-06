@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import customAxios from "../../common/api/axios";
+import React, { Component } from 'react';
+import customAxios from '../../common/api/axios';
 
 export default class extends Component {
     state = {
-        list: []
+        list: [],
     };
 
     componentDidMount() {
@@ -19,9 +19,7 @@ export default class extends Component {
     }
 
     componentWillUnmount() {
-        this.cancelHooksRequest.cancel(
-            "HooksListClass get('/hooks'... canceled"
-        );
+        this.cancelHooksRequest.cancel("HooksListClass get('/hooks'... canceled");
     }
 
     render() {
@@ -48,15 +46,12 @@ export default class extends Component {
         this.cancelHooksRequest = customAxios.CancelToken.source();
 
         try {
-            const { data: list } = await customAxios.get(
-                `/hooks/${this.props.resource}`,
-                {
-                    cancelToken: this.cancelHooksRequest.token
-                }
-            );
+            const { data: list } = await customAxios.get(`/hooks/${this.props.resource}`, {
+                cancelToken: this.cancelHooksRequest.token,
+            });
 
             this.setState({
-                list
+                list,
             });
         } catch (e) {
             console.log("HooksListClass get('/hooks'... error ", e);
@@ -64,8 +59,6 @@ export default class extends Component {
     };
 
     cancelGetHooks = () => {
-        this.cancelHooksRequest.cancel(
-            "HooksListClass get('/hooks'... canceled"
-        );
+        this.cancelHooksRequest.cancel("HooksListClass get('/hooks'... canceled");
     };
 }

@@ -1,5 +1,5 @@
-import React, { memo, useContext } from "react";
-import i18nContext from "../../context/i18nContext";
+import React, { memo, useContext } from 'react';
+import i18nContext from '../../context/i18nContext';
 
 // https://github.com/fnando/i18n-js
 
@@ -9,11 +9,11 @@ const I18nJsInnerComponent: React.FC = () => {
     return (
         <div>
             <h3>I18n Inner</h3>
-            <p>{i18n.t("browse")}</p>
-            <p>{i18n.t("browse", { locale: "ru" })}</p>
-            <p>{i18n.t("complex.prop", { count: 10 })}</p>
-            <p>{i18n.t("cancel")}</p>
-            <p>{i18n.t("clear")}</p>
+            <p>{i18n.t('browse')}</p>
+            <p>{i18n.t('browse', { locale: 'ru' })}</p>
+            <p>{i18n.t('complex.prop', { count: 10 })}</p>
+            <p>{i18n.t('cancel')}</p>
+            <p>{i18n.t('clear')}</p>
         </div>
     );
 };

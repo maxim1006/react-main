@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { signIn, signOut } from "../../store/actions/auth";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn, signOut } from '../../store/actions/auth';
 
 class GoogleAuth extends Component {
     // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!
@@ -10,12 +10,11 @@ class GoogleAuth extends Component {
 
     componentDidMount() {
         window.gapi &&
-            window.gapi.load("client:auth2", () => {
+            window.gapi.load('client:auth2', () => {
                 window.gapi.client
                     .init({
-                        clientId:
-                            "356527932784-volcn5md0nd1eg5nc2hn30cd6a6oeclf.apps.googleusercontent.com",
-                        scope: "email"
+                        clientId: '356527932784-volcn5md0nd1eg5nc2hn30cd6a6oeclf.apps.googleusercontent.com',
+                        scope: 'email',
                     })
                     .then(
                         () => {
@@ -31,7 +30,7 @@ class GoogleAuth extends Component {
 
                             // console.log("GoogleAuth gapi.client.init inited");
                         },
-                        () => console.log("GoogleAuth gapi.client.init error")
+                        () => console.log('GoogleAuth gapi.client.init error'),
                     );
             });
     }
@@ -39,9 +38,7 @@ class GoogleAuth extends Component {
     authStatusChange = isSignedIn => {
         // сохраняю в стейт
         // логиню юзера по id
-        isSignedIn
-            ? this.props.signIn(this.auth.currentUser.get().getId())
-            : this.props.signOut();
+        isSignedIn ? this.props.signIn(this.auth.currentUser.get().getId()) : this.props.signOut();
 
         // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!
         // this.setState({
@@ -56,9 +53,9 @@ class GoogleAuth extends Component {
 
         try {
             const signInData = await this.auth.signIn();
-            console.log("User signed in ", signInData);
+            console.log('User signed in ', signInData);
         } catch (e) {
-            console.log("GoogleAuth signIn error ", e);
+            console.log('GoogleAuth signIn error ', e);
         }
     };
 
@@ -67,9 +64,9 @@ class GoogleAuth extends Component {
 
         try {
             await this.auth.signOut();
-            console.log("User signed out.");
+            console.log('User signed out.');
         } catch (e) {
-            console.log("GoogleAuth signed out error ", e);
+            console.log('GoogleAuth signed out error ', e);
         }
     };
 
@@ -80,7 +77,7 @@ class GoogleAuth extends Component {
         const { isSignedIn } = this.props;
 
         if (isSignedIn === null) {
-            return "Auth is loading...";
+            return 'Auth is loading...';
         }
 
         return (
@@ -102,7 +99,7 @@ class GoogleAuth extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.auth.isSignedIn,
 });
 
 export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth);

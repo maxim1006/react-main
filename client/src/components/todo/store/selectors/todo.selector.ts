@@ -1,3 +1,3 @@
-import { TodosAppState } from "../state";
+import { TodosAppState } from '../state';
 
 export const selectTodos = (state: TodosAppState) => state.todos;

@@ -1,11 +1,11 @@
-import React from "react";
-import MaterialLoaderComponent from "../loader/MaterialLoader";
-import useLocation from "../hooks/useLocation";
+import React from 'react';
+import MaterialLoaderComponent from '../loader/MaterialLoader';
+import useLocation from '../hooks/useLocation';
 
 export default () => {
     const { latitude, longitude, errorMessage } = useLocation();
 
-    let position = "";
+    let position = '';
 
     if (latitude) {
         position = (
@@ -20,8 +20,8 @@ export default () => {
         position = (
             <div
                 style={{
-                    position: "relaive",
-                    pointerEvents: "none"
+                    position: 'relaive',
+                    pointerEvents: 'none',
                 }}
             >
                 {errorMessage || <MaterialLoaderComponent />}

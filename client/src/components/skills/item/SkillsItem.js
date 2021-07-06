@@ -1,8 +1,7 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
 export default memo(({ name, status, ...restProps }) => (
     <span className="skills-item" {...restProps}>
-        {name} -
-{status}
+        {name} -{status}
     </span>
 ));

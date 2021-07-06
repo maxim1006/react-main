@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from 'react';
 
 const Child = memo(({ prop, onClick }) => {
-    console.log("Child rerender");
+    console.log('Child rerender');
     return (
         <div onClick={onClick}>
             Child counter:
@@ -11,7 +11,7 @@ const Child = memo(({ prop, onClick }) => {
 });
 
 const Child1 = memo(({ prop, onClick }) => {
-    console.log("Child 1 rerender");
+    console.log('Child 1 rerender');
     return (
         <div onClick={onClick}>
             Child counter:
@@ -31,10 +31,7 @@ export default memo(() => {
     // а если так, то useCallback вернет мемоизированную функцию и перерендериваться будет только тот
     // чайлд на который кликнул
     const onChildClick = useCallback(() => setClickCounter(++clickCounter), []);
-    const onChildClick1 = useCallback(
-        () => setClickCounter1(++clickCounter1),
-        []
-    );
+    const onChildClick1 = useCallback(() => setClickCounter1(++clickCounter1), []);
 
     return (
         <>

@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import ToDoFilterLink from "./todo-filter-link.component";
+import React, { memo } from 'react';
+import ToDoFilterLink from './todo-filter-link.component';
 
 export interface IToDoFilterLinksProps {
     currentFilter?: string;
@@ -23,9 +23,9 @@ const ToDoFilterLinks = ({ currentFilter, onClick }: IToDoFilterLinksProps) => {
     return (
         <div>
             Filters:
-            {getTodoLinkView("All")}
-            {getTodoLinkView("Completed")}
-            {getTodoLinkView("Active")}
+            {getTodoLinkView('All')}
+            {getTodoLinkView('Completed')}
+            {getTodoLinkView('Active')}
             Current filter: <b>{currentFilter}</b>
         </div>
     );

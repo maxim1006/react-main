@@ -1,6 +1,6 @@
-import React, { memo, useCallback, useState } from "react";
-import customAxios from "../../common/api/axios";
-import MaterialLoaderComponent from "../loader/MaterialLoader";
+import React, { memo, useCallback, useState } from 'react';
+import customAxios from '../../common/api/axios';
+import MaterialLoaderComponent from '../loader/MaterialLoader';
 
 const GetRequestHookOnCbComponent: React.FC = () => {
     const [isSending, setIsSending] = useState(false);
@@ -12,11 +12,11 @@ const GetRequestHookOnCbComponent: React.FC = () => {
         setIsSending(true);
 
         try {
-            const { data } = await customAxios.get("family");
+            const { data } = await customAxios.get('family');
             setFamilyData(data);
             setIsSending(false);
         } catch (e) {
-            console.log("GetRequestHookOnCbComponent error ", e);
+            console.log('GetRequestHookOnCbComponent error ', e);
         }
     }, [isSending]);
 

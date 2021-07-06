@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchUserById } from "../../store/actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUserById } from '../../store/actions';
 
 class PostUser extends Component {
     componentDidMount() {
@@ -25,7 +25,7 @@ class PostUser extends Component {
 }
 
 const mapStateToProps = (state, { userId }) => ({
-    user: findUser(state, userId)
+    user: findUser(state, userId),
 });
 
 export default connect(mapStateToProps, { fetchUserById })(PostUser);

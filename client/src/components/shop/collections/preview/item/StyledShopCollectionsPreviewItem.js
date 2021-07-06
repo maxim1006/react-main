@@ -1,9 +1,6 @@
-import styled from "styled-components";
-import {
-    StyledFontLightBig,
-    StyledFontRegularBig
-} from "../../../../styled-component/mixins/SyledFonts";
-import { StyledMainColor } from "../../../../styled-component/StylesColors";
+import styled from 'styled-components';
+import { StyledFontLightBig, StyledFontRegularBig } from '../../../../styled-component/mixins/SyledFonts';
+import { StyledMainColor } from '../../../../styled-component/StylesColors';
 
 export const StyledShopCollectionsPreviewItem = styled.div``;
 

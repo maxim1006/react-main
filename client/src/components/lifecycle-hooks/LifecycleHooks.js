@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { LifecycleParent } from "./LifecycleParent";
+import React, { Component } from 'react';
+import { LifecycleParent } from './LifecycleParent';
 
 // constructor
 // render
@@ -7,7 +7,7 @@ import { LifecycleParent } from "./LifecycleParent";
 
 export class LifecycleHooksComponent extends Component {
     state = {
-        prop: null
+        prop: null,
     };
 
     // в случае если нужно засетить initial state, делаю это в конструкторе
@@ -21,7 +21,7 @@ export class LifecycleHooksComponent extends Component {
     // assign the initial state to this.state directly in the constructor:
     constructor(props) {
         super(props);
-        console.log("constructor");
+        console.log('constructor');
 
         // Если вдруг захочу в процессе апдейта стейта использовать стейт или проперти, обязательно
         // через функцию это делаю
@@ -45,7 +45,7 @@ export class LifecycleHooksComponent extends Component {
     // Avoid introducing any side-effects or subscriptions in the constructor.
     // For those use cases, use componentDidMount() instead.
     componentDidMount() {
-        console.log("componentDidMount");
+        console.log('componentDidMount');
     }
 
     // Использую если необходимо апдейтить стейт на основе изменений входных пропертей компонента, обязательно с условием см ниже
@@ -62,7 +62,7 @@ export class LifecycleHooksComponent extends Component {
     // Вызывается после render метода (когда поменяется стейт у родителя), либо когда поменяется стейт у этого компонента
     // componentDidUpdate() will not be invoked if shouldComponentUpdate() returns false.
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("componentDidUpdate");
+        console.log('componentDidUpdate');
     }
 
     // если вызову shouldComponentUpdate и он вернет фолс, то componentDidUpdate вызываться не будет
@@ -80,7 +80,7 @@ export class LifecycleHooksComponent extends Component {
 
     // clear everything
     componentWillUnmount() {
-        console.log("componentWillUnmount");
+        console.log('componentWillUnmount');
     }
 
     // The render() method is the only required method in a class component.
@@ -97,7 +97,7 @@ export class LifecycleHooksComponent extends Component {
     // If you need to interact with the browser, perform your work in componentDidMount() or the other lifecycle methods instead. Keeping render() pure makes components easier to think about.
     // Должен только возвращать JSX и все
     render() {
-        console.log("render");
+        console.log('render');
 
         return <LifecycleParent />;
     }

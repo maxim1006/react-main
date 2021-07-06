@@ -1,9 +1,9 @@
-import { USER_TYPES } from "../actions/types";
+import { USER_TYPES } from '../actions/types';
 
 const initialState = {
     users: {},
     isLoadingUsers: false,
-    isLoadingUser: false
+    isLoadingUser: false,
 };
 
 export default (state = initialState, action) => {
@@ -15,13 +15,13 @@ export default (state = initialState, action) => {
         case USER_TYPES.FETCH_USER_SUCCESS: {
             const newUsers = {
                 ...state.users,
-                [action.payload.id]: action.payload
+                [action.payload.id]: action.payload,
             };
 
             return {
                 ...state,
                 users: newUsers,
-                isLoadingUser: false
+                isLoadingUser: false,
             };
         }
 
@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 users: newUsers,
-                isLoadingUsers: false
+                isLoadingUsers: false,
             };
         }
 

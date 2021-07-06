@@ -1,9 +1,9 @@
-import { SHOP_DATA_TYPES } from "../actions/types";
+import { SHOP_DATA_TYPES } from '../actions/types';
 
 const initialState = {
     data: null,
     isLoading: false,
-    errorMessage: undefined
+    errorMessage: undefined,
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
                 ...state,
                 data: action.payload,
                 isLoading: false,
-                errorMessage: undefined
+                errorMessage: undefined,
             };
         }
 
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-                errorMessage: undefined
+                errorMessage: undefined,
             };
         }
 
@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                errorMessage: action.payload
+                errorMessage: action.payload,
             };
         }
 

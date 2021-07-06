@@ -1,12 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export default function ChildFunction({
-    string,
-    obj,
-    propFromRestOperator,
-    onClick,
-    truthy
-}) {
+export default function ChildFunction({ string, obj, propFromRestOperator, onClick, truthy }) {
     return (
         <div onPointerUp={onClick}>
             string: {string} <br />
@@ -20,5 +14,5 @@ export default function ChildFunction({
 }
 
 ChildFunction.defaultProps = {
-    string: "default"
+    string: 'default',
 };

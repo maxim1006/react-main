@@ -1,6 +1,6 @@
-import React from "react";
-import ShopMenuItem from "./item/ShopMenuItem";
-import StyledShopMenu from "./StyledShopMenu";
+import React from 'react';
+import ShopMenuItem from './item/ShopMenuItem';
+import StyledShopMenu from './StyledShopMenu';
 
 export default ({ items }) =>
     items ? (
@@ -13,5 +13,5 @@ export default ({ items }) =>
             ))}
         </StyledShopMenu>
     ) : (
-        "No shop menu items"
+        'No shop menu items'
     );

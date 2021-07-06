@@ -25,7 +25,7 @@ function createWorkBook() {
 function addSheet(wb, name, data) {
     wb.SheetNames.push(name);
     const ws = xlsx.utils.aoa_to_sheet(data);
-    ws['!cols'] = [{ width: 100 }/* first column */, { width: 100 }/* second column */];
+    ws['!cols'] = [{ width: 100 } /* first column */, { width: 100 } /* second column */];
     // eslint-disable-next-line no-param-reassign
     wb.Sheets[name] = ws;
 }

@@ -1,19 +1,11 @@
-import React, { memo, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-    selectShopCartItems,
-    selectShopCartTotal
-} from "../../../store/selectors";
-import "./ShopCheckout.scss";
-import ShopCheckoutItem from "./item/ShopCheckoutItem";
-import {
-    shopAddCartItem,
-    shopClearCartItems,
-    shopRemoveCartItem,
-    shopRemoveCartItems
-} from "../../../store/actions";
-import ShopStripeButton from "../stripe/ShopStripeButton";
-import ShopButton from "../button/ShopButton";
+import React, { memo, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectShopCartItems, selectShopCartTotal } from '../../../store/selectors';
+import './ShopCheckout.scss';
+import ShopCheckoutItem from './item/ShopCheckoutItem';
+import { shopAddCartItem, shopClearCartItems, shopRemoveCartItem, shopRemoveCartItems } from '../../../store/actions';
+import ShopStripeButton from '../stripe/ShopStripeButton';
+import ShopButton from '../button/ShopButton';
 
 export default memo(() => {
     // селекторы использую чтобы предотвратить пересчет в них стейта, а то будет каждый раз при ренедеренге компоненты пересчитываться логика в селекторе, а так только когда касается этого стейта
@@ -21,24 +13,13 @@ export default memo(() => {
     const cartItems = useSelector(selectShopCartItems);
     const dispatch = useDispatch();
 
-    const onRemove = useCallback(
-        item => () => dispatch(shopRemoveCartItems(item)),
-        [dispatch]
-    );
+    const onRemove = useCallback(item => () => dispatch(shopRemoveCartItems(item)), [dispatch]);
 
-    const onRemoveItem = useCallback(
-        item => () => dispatch(shopRemoveCartItem(item)),
-        [dispatch]
-    );
+    const onRemoveItem = useCallback(item => () => dispatch(shopRemoveCartItem(item)), [dispatch]);
 
-    const onAddItem = useCallback(
-        item => () => dispatch(shopAddCartItem(item)),
-        [dispatch]
-    );
+    const onAddItem = useCallback(item => () => dispatch(shopAddCartItem(item)), [dispatch]);
 
-    const onClearCart = useCallback(() => dispatch(shopClearCartItems()), [
-        dispatch
-    ]);
+    const onClearCart = useCallback(() => dispatch(shopClearCartItems()), [dispatch]);
 
     return (
         <div className="shop-checkout">

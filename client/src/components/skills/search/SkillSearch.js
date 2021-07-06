@@ -1,14 +1,14 @@
-import React, { memo, useEffect } from "react";
-import { connect } from "react-redux";
-import { addSkill, changeSkillSearchValue } from "../../../store/actions";
-import customAxios from "../../../common/api/axios";
+import React, { memo, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addSkill, changeSkillSearchValue } from '../../../store/actions';
+import customAxios from '../../../common/api/axios';
 
 const SkillSearch = memo(({ addSkill, value, ...restProps }) => {
     const cancelAddSkillRequest = customAxios.CancelToken.source();
 
     useEffect(() => {
         return () => {
-            cancelAddSkillRequest.cancel("SkillSearch add Skill canceled");
+            cancelAddSkillRequest.cancel('SkillSearch add Skill canceled');
         };
     }, [value]);
 
@@ -25,7 +25,7 @@ const SkillSearch = memo(({ addSkill, value, ...restProps }) => {
 });
 
 const mapStateToProps = (state, ownProps) => ({
-    value: state.skills.searchValue
+    value: state.skills.searchValue,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     addSkill: (cancelAddSkillRequest, value) => {
         dispatch(addSkill(value, cancelAddSkillRequest.token));
-    }
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillSearch);

@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 function SongDetails({ selectedSong }) {
     if (selectedSong) {
@@ -32,7 +32,7 @@ function SongDetails({ selectedSong }) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    selectedSong: state.selectedSong
+    selectedSong: state.selectedSong,
 });
 
 export default connect(mapStateToProps)(SongDetails);

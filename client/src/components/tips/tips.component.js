@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import { TabsComponent } from "../tabs/Tabs";
-import MethodParameterValidationTipComponent from "./method-paramerter-validation/method-paramerter-validation-tip.component";
+import React, { memo } from 'react';
+import { TabsComponent } from '../tabs/Tabs';
+import MethodParameterValidationTipComponent from './method-paramerter-validation/method-paramerter-validation-tip.component';
 
 const TipsComponent = () => {
     return (
@@ -9,14 +9,14 @@ const TipsComponent = () => {
                 <MethodParameterValidationTipComponent requiredProp />
             </div>
             <div tabName="Pretty JSON stringify">
-                <div style={{ whiteSpace: "pre" }}>{JSON.stringify({ name: "John", Age: 23 }, null, "\t")}</div>
+                <div style={{ whiteSpace: 'pre' }}>{JSON.stringify({ name: 'John', Age: 23 }, null, '\t')}</div>
             </div>
             <div tabName="Unique Values From An Array">
-                {console.log([...new Set([1, 2, 3, 3, 3, "school", "school", "ball", false, false, true, true])])}
+                {console.log([...new Set([1, 2, 3, 3, 3, 'school', 'school', 'ball', false, false, true, true])])}
                 [...new Set([1, 2, 3, 3,3,"school","school",'ball',false,false,true,true])];
             </div>
             <div tabName="Removing Falsy Values From Arrays">
-                {console.log(["", undefined, null, NaN, 0, "", false, "prop"].filter(Boolean))}
+                {console.log(['', undefined, null, NaN, 0, '', false, 'prop'].filter(Boolean))}
                 undefined; null; NaN; 0; “” (empty string); false; <br />
                 myArray.filter(Boolean);
             </div>

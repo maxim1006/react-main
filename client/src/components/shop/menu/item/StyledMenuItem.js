@@ -1,8 +1,5 @@
-import styled from "styled-components";
-import {
-    StyledFontBoldLarge,
-    StyledFontLightBig
-} from "../../../styled-component/mixins/SyledFonts";
+import styled from 'styled-components';
+import { StyledFontBoldLarge, StyledFontLightBig } from '../../../styled-component/mixins/SyledFonts';
 
 export const StyledShopMenuItem = styled.div`
     display: flex;

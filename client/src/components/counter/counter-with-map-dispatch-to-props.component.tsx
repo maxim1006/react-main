@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import { connect } from "react-redux";
-import { decrementCounter, incrementCounter } from "../../store/actions";
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import { decrementCounter, incrementCounter } from '../../store/actions';
 
 export type CounterProps = {
     counter?: number;
@@ -8,11 +8,7 @@ export type CounterProps = {
     decrementCounter: any;
 };
 
-const CounterWithMapDispatchToProps = ({
-    counter,
-    incrementCounter,
-    decrementCounter
-}: CounterProps) => {
+const CounterWithMapDispatchToProps = ({ counter, incrementCounter, decrementCounter }: CounterProps) => {
     return (
         <div className="counter">
             <div className="counter__value">
@@ -32,15 +28,12 @@ const CounterWithMapDispatchToProps = ({
 };
 
 const mapStateToProps = (state: any, ownProps: any) => ({
-    counter: state.counter
+    counter: state.counter,
 });
 
 const mapDispatchToProps = {
     incrementCounter,
-    decrementCounter
+    decrementCounter,
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(memo(CounterWithMapDispatchToProps));
+export default connect(mapStateToProps, mapDispatchToProps)(memo(CounterWithMapDispatchToProps));

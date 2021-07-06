@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
 export interface ITodoProps {
     completed: boolean;
@@ -11,7 +11,7 @@ const Todo = ({ completed, onChange, name }: ITodoProps) => (
         <input checked={completed} onChange={onChange} type="checkbox" />
         <span
             style={{
-                textDecoration: completed ? "line-through" : "none"
+                textDecoration: completed ? 'line-through' : 'none',
             }}
         >
             {name}

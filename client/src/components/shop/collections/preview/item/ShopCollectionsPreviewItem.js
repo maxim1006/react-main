@@ -1,7 +1,7 @@
-import React from "react";
-import "./ShopCollectionsPreviewItem.scss";
-import { connect } from "react-redux";
-import { shopAddCartItem } from "../../../../../store/actions";
+import React from 'react';
+import './ShopCollectionsPreviewItem.scss';
+import { connect } from 'react-redux';
+import { shopAddCartItem } from '../../../../../store/actions';
 
 const ShopCollectionPreviewItem = ({ item, shopAddCartItem }) => {
     const { imageUrl, name, price } = item;
@@ -27,17 +27,13 @@ const ShopCollectionPreviewItem = ({ item, shopAddCartItem }) => {
                 />
             </div>
             <div className="collections-preview-item__price">
-                <div className="collections-preview-item__price-name">
-                    {name}
-                </div>
-                <div className="collections-preview-item__price-value">
-                    {price}
-                </div>
+                <div className="collections-preview-item__price-name">{name}</div>
+                <div className="collections-preview-item__price-value">{price}</div>
             </div>
         </div>
     );
 };
 
 export default connect(null, {
-    shopAddCartItem
+    shopAddCartItem,
 })(ShopCollectionPreviewItem);

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import LanguageContext from "../../../context/LanguageContext";
+import React, { useContext } from 'react';
+import LanguageContext from '../../../context/LanguageContext';
 
 export default () => {
     const language = useContext(LanguageContext);
-    const label = language === "en" ? "Name" : "Имя";
+    const label = language === 'en' ? 'Name' : 'Имя';
 
     return (
         <p>

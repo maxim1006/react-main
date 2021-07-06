@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchPosts } from "../../store/actions";
-import Post from "./Post";
-import PostUser from "./PostUser";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../../store/actions';
+import Post from './Post';
+import PostUser from './PostUser';
 
 class PostList extends Component {
     componentDidMount() {
@@ -28,7 +28,7 @@ class PostList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    posts: state.posts
+    posts: state.posts,
 });
 
 export default connect(mapStateToProps, { fetchPosts })(PostList);

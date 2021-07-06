@@ -1,9 +1,9 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState } from 'react';
 
 export default memo(() => {
-    const familyNames = ["Max", "Aliya", "Lili", "Alice"];
+    const familyNames = ['Max', 'Aliya', 'Lili', 'Alice'];
 
-    const [name, setName] = useState("Max");
+    const [name, setName] = useState('Max');
 
     const showName = () => {
         let nameIndex = familyNames.indexOf(name);

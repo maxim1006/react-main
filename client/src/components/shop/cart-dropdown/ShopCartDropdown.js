@@ -1,10 +1,10 @@
-import React from "react";
-import ShopButton from "../button/ShopButton";
-import "./ShopCartDropdown.scss";
-import { withRouter } from "react-router-dom";
-import connect from "react-redux/es/connect/connect";
-import { shopToggleDropdown } from "../../../store/actions";
-import ShopCartListHooks from "../cart/cart-list/ShopCartListHooks";
+import React from 'react';
+import ShopButton from '../button/ShopButton';
+import './ShopCartDropdown.scss';
+import { withRouter } from 'react-router-dom';
+import connect from 'react-redux/es/connect/connect';
+import { shopToggleDropdown } from '../../../store/actions';
+import ShopCartListHooks from '../cart/cart-list/ShopCartListHooks';
 
 const ShopCartDropdown = ({ history, dispatch }) => {
     return (
@@ -16,7 +16,7 @@ const ShopCartDropdown = ({ history, dispatch }) => {
                 <ShopButton
                     fullWidth
                     onClick={() => {
-                        history.push("/shop/checkout");
+                        history.push('/shop/checkout');
                         dispatch(shopToggleDropdown());
                     }}
                 >

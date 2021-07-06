@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import CounterStore from "./counter-store.component";
+import React, { memo } from 'react';
+import CounterStore from './counter-store.component';
 
 const Counters: React.FC = () => {
     return (

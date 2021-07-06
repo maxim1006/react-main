@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import styles from "./css-module.module.scss";
+import React, { memo } from 'react';
+import styles from './css-module.module.scss';
 
 const CssModuleComponent = () => {
     return (

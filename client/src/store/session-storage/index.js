@@ -1,6 +1,6 @@
 export function loadState() {
     try {
-        const serializedState = sessionStorage.getItem("state");
+        const serializedState = sessionStorage.getItem('state');
 
         if (serializedState === null) return undefined;
 
@@ -13,8 +13,8 @@ export function loadState() {
 export function saveState(state) {
     try {
         const serializedState = JSON.stringify(state);
-        sessionStorage.setItem("state", serializedState);
+        sessionStorage.setItem('state', serializedState);
     } catch (e) {
-        console.log("saveState in sessionStorage error ", e);
+        console.log('saveState in sessionStorage error ', e);
     }
 }

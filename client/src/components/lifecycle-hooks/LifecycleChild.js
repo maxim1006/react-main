@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 /*
 Так как этот компонент зависит только от входящего свойства prop, но при этом перерендериваться будет каждый раз когда
@@ -11,8 +11,8 @@ export class LifecycleChild extends Component {
     }
 
     render() {
-        console.log("LifecycleChild rendered");
+        console.log('LifecycleChild rendered');
 
-        return "LifecycleChild";
+        return 'LifecycleChild';
     }
 }

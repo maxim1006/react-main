@@ -1,6 +1,6 @@
-import { PLANS_TYPES } from "./types";
-import { IPlans } from "../../../../models/plans.model";
-import { IError } from "../../../../models/error.model";
+import { PLANS_TYPES } from './types';
+import { IPlans } from '../../../../models/plans.model';
+import { IError } from '../../../../models/error.model';
 
 interface FetchPlans {
     type: typeof PLANS_TYPES.FETCH_START;

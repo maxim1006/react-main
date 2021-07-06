@@ -12,7 +12,7 @@ import { CancelTokenSource } from 'axios';
 const TodoPlansConnectedContainer = ({
     plans,
     isLoading,
-    fetchTodoPlans
+    fetchTodoPlans,
 }: {
     plans: ISimpleMap<IPlan>;
     isLoading: boolean;
@@ -32,14 +32,14 @@ const TodoPlansConnectedContainer = ({
 const mapStateToProps = (state: TodosAppState) => {
     return {
         plans: state.plans.plans,
-        isLoading: state.plans.isLoading
+        isLoading: state.plans.isLoading,
     };
 };
 
 const mapDispatchToProps = (dispatch: typeof store.dispatch) => ({
     fetchTodoPlans: (cancelFetchSkillRequest: any) => {
         dispatch(fetchTodoPlans(cancelFetchSkillRequest.token) as any);
-    }
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(memo(TodoPlansConnectedContainer));

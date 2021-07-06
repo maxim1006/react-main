@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useRef } from "react";
-import "./mouseover-mouseleave.component.scss";
-import { generateUniqueId } from "../../common/helpers/helpers";
+import React, { memo, useEffect, useRef } from 'react';
+import './mouseover-mouseleave.component.scss';
+import { generateUniqueId } from '../../common/helpers/helpers';
 
 const MouseoverMouseleave: React.FC = () => {
     let currentElem: HTMLElement | null = null;
@@ -15,7 +15,7 @@ const MouseoverMouseleave: React.FC = () => {
             // это переход внутри - игнорируем такое событие
             if (currentElem) return;
 
-            const target = (event.target as Element).closest("td");
+            const target = (event.target as Element).closest('td');
 
             // переход не на <td> - игнорировать
             if (!target) return;
@@ -26,7 +26,7 @@ const MouseoverMouseleave: React.FC = () => {
 
             // ура, мы зашли на новый <td>
             currentElem = target;
-            target.style.background = "pink";
+            target.style.background = 'pink';
         };
 
         tableElement.onmouseout = (event: MouseEvent) => {
@@ -47,7 +47,7 @@ const MouseoverMouseleave: React.FC = () => {
             }
 
             // мы действительно покинули элемент
-            currentElem.style.background = "";
+            currentElem.style.background = '';
             currentElem = null;
         };
     }, []);
@@ -60,17 +60,14 @@ const MouseoverMouseleave: React.FC = () => {
                     {Array.from({ length: 5 }, (cell, cellIndex) => {
                         const cellKey = generateUniqueId();
                         return (
-                            <td
-                                className="mouseover-mouseleave__cell"
-                                key={cellKey}
-                            >
+                            <td className="mouseover-mouseleave__cell" key={cellKey}>
                                 row: {index} cell {cellIndex}
                             </td>
                         );
                     })}
                 </tr>
             );
-        })
+        }),
     };
 
     return (

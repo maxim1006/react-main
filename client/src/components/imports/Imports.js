@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 export default () => {
     const getData = async () => {
-        const data = await import("./data.js");
+        const data = await import('./data.js');
         console.log(data.default);
     };
 
@@ -15,6 +15,6 @@ export default () => {
 };
 
 (async () => {
-    const data = await require("./data.js");
-    console.log("data from dynamic import ", data);
+    const data = await require('./data.js');
+    console.log('data from dynamic import ', data);
 })();

@@ -12,9 +12,9 @@ render(
     <Provider store={store}>
         {/* Могу использовать обычный роутер как выше, могу тот с которым работаю в редакс,
         сейчас работатет только с history: "^4.10.1"*/}
-        {/*<ConnectedRouter history={history}>*/}
-        {/*при чем если использую хистори то нужно не браузерроутер а просто роутер*/}
-        {/*<Router history={history}>*/}
+        {/* <ConnectedRouter history={history}>*/}
+        {/* при чем если использую хистори то нужно не браузерроутер а просто роутер*/}
+        {/* <Router history={history}>*/}
         <BrowserRouter>
             <App />
         </BrowserRouter>

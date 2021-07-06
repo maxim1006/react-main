@@ -1,9 +1,9 @@
 // в этом примере использую HOC и Container паттерн, все это ради примера compose
 // Container обычно не рендерит ничего а прокидывает проперти в компоненту - реализация concerns separate pattern
-import React from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import WithMaterialLoader from "../HOC/WithMaterialLoader";
+import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import WithMaterialLoader from '../HOC/WithMaterialLoader';
 
 // компонент только для примера
 const SongsList = ({ songs }) => (
@@ -15,7 +15,7 @@ const SongsList = ({ songs }) => (
 );
 
 const mapStateToProps = state => ({
-    songs: state.songs
+    songs: state.songs,
 });
 
 // так трудно читать что происходит

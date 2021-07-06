@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { SAGA_TYPES } from "../../../store/actions/types";
+import React, { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SAGA_TYPES } from '../../../store/actions/types';
 
 const SagaCounterComponent = () => {
     const sagaState = useSelector(state => state.saga);

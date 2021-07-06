@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import ShopCollectionsPreview from "./preview/ShopCollectionsPreview";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import ShopCollectionsPreview from './preview/ShopCollectionsPreview';
 
 class ShopCollections extends Component {
     render() {
@@ -11,15 +11,13 @@ class ShopCollections extends Component {
             // in Preview show 4 items
             currentItem.items = currentItem.items.slice(0, 4);
 
-            return (
-                <ShopCollectionsPreview key={currentItem.id} {...currentItem} />
-            );
+            return <ShopCollectionsPreview key={currentItem.id} {...currentItem} />;
         });
     }
 }
 
 const mapStateToProps = state => ({
-    shopData: state.shopData.data
+    shopData: state.shopData.data,
 });
 
 export default connect(mapStateToProps)(ShopCollections);

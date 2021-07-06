@@ -1,6 +1,6 @@
-import React, { memo, useState } from "react";
-import OutsideChangeContext from "../../../context/OutsideChangeContext";
-import OutsideChangeContextInner from "./OutsideChangeContextInner";
+import React, { memo, useState } from 'react';
+import OutsideChangeContext from '../../../context/OutsideChangeContext';
+import OutsideChangeContextInner from './OutsideChangeContextInner';
 
 export default memo(() => {
     const [contextValue, setContextValue] = useState(null);
@@ -11,9 +11,7 @@ export default memo(() => {
 
     return (
         <>
-            <OutsideChangeContext.Provider
-                value={{ value: contextValue, setValue }}
-            >
+            <OutsideChangeContext.Provider value={{ value: contextValue, setValue }}>
                 <OutsideChangeContextInner />
             </OutsideChangeContext.Provider>
         </>

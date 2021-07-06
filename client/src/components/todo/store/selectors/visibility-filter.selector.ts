@@ -1,4 +1,3 @@
-import { TodosAppState } from "../state";
+import { TodosAppState } from '../state';
 
-export const selectVisibilityFilter = (state: TodosAppState) =>
-    state.visibilityFilter;
+export const selectVisibilityFilter = (state: TodosAppState) => state.visibilityFilter;

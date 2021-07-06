@@ -1,4 +1,4 @@
-import { COUNTER_TYPES } from "../actions/types";
+import { COUNTER_TYPES } from '../actions/types';
 
 const initState = 0;
 
