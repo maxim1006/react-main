@@ -1,20 +1,25 @@
-function gridTraveler(m, n) {
-    const grid = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+console.log(compress([1, 4, 5, 2, 3, 9, 18, 8, 11, 0])); // '0-5,8-9,11,18' [1,2,3,4,5,8,9,11,18]
+console.log(compress([1, 4, 3, 2])); // '1-4'
+console.log(compress([1, 4])); // '1,4'
 
-    grid[1][1] = 1;
+function compress(arr) {
+    let sorted = arr.sort((a, b) => a - b);
+    let prev = arr[0];
+    let start = prev;
+    let result = '';
 
-    for (let i = 0; i <= m; i++) {
-        for (let j = 0; j <= n; j++) {
-            if (j + 1 <= n) grid[i][j + 1] += grid[i][j];
-            if (i + 1 <= m) grid[i + 1][j] += grid[i][j];
+    for (let i = 1; i < sorted.length; i++) {
+        let current = sorted[i];
+
+        if (current - prev > 1) {
+            result += prev === start ? `,${prev}` : `,${start}-${prev}`;
+            start = current;
         }
+
+        prev = current;
     }
 
-    return grid[m][n];
-}
+    result += prev === start ? `,${prev}` : `,${start}-${prev}`;
 
-console.log(gridTraveler(1, 1)); // 1
-console.log(gridTraveler(2, 3)); // 3
-console.log(gridTraveler(3, 2)); // 3
-console.log(gridTraveler(3, 3)); // 6
-console.log(gridTraveler(18, 18)); // 2333606220
+    return result.slice(1);
+}

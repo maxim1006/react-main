@@ -246,28 +246,23 @@
 /*********** Answer ***********/
 // Создал prev = первый элемент, резалт пустой (так как не знаю как в него нужно положить prev) а дальше пишу условия как положить prev в резалт итерируясь с 1 позиции
 // function compress(arr) {
-//     let sorted = arr.sort((a, b) => a - b); // [1,4]
-//     let length = sorted.length;
-//     let prev = sorted[0];
+//     let sorted = arr.sort((a, b) => a - b);
+//     let prev = arr[0];
+//     let start = prev;
 //     let result = '';
-//     let counter = 0;
 //
-//     for (let i = 1; i < length; i++) {
-//         if (arr[i] - prev > 1) {
-//             result += counter ? `-${prev}` : `,${prev}`;
-//             counter = 0;
-//         } else {
-//             if (counter === 0) {
-//                 result += `,${prev}`;
-//             }
+//     for (let i = 1; i < sorted.length; i++) {
+//         let current = sorted[i];
 //
-//             ++counter;
+//         if (current - prev > 1) {
+//             result += prev === start ? `,${prev}` : `,${start}-${prev}`;
+//             start = current;
 //         }
 //
-//         prev = arr[i];
+//         prev = current;
 //     }
 //
-//     result += counter ? `-${prev}` : `,${prev}`;
+//     result += prev === start ? `,${prev}` : `,${start}-${prev}`;
 //
 //     return result.slice(1);
 // }
