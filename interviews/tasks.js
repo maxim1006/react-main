@@ -296,22 +296,15 @@
 // let str = 'a.b.c.d.e.f'; // {a: {b: { c: {d: {e: {f:{}}}}}}}
 /*********** Answer ***********/
 // function convert(str) {
-//     let o = {};
-//     let temp;
-//     let arr = str.split('.');
-//     let length = arr.length;
+//     const arr = str.split('.');
+//     let obj = {};
 //
-//     o[arr[0]] = {};
-//     temp = o[arr[0]];
+//     arr.reduce((acc, item) => {
+//         acc[item] = {};
+//         return acc[item];
+//     }, obj);
 //
-//     for (let i = 1; i < length; i++) {
-//         if (i + 1 < length) {
-//             temp[arr[i]] = { [arr[i + 1]]: {} };
-//             temp = temp[arr[i]];
-//         }
-//     }
-//
-//     return o;
+//     return obj;
 // }
 //
 // console.log(JSON.stringify(convert(str)));

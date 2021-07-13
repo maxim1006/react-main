@@ -3,6 +3,14 @@ const arrayR = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 let count = 0;
 let countR = 0;
 
+console.log(binarySearch(array, 5)); // O(log n)
+console.log('array length ', array.length); // 16
+console.log('count ', count); // 3
+
+console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
+console.log('array length ', array.length); // 16
+console.log('countR ', countR); // 3
+
 function binarySearch(array, item) {
     let start = 0;
     let end = array.length;
@@ -44,11 +52,3 @@ function recursiveBinarySearch(array, item, start, end) {
         ? recursiveBinarySearch(array, item, start, middle - 1)
         : recursiveBinarySearch(array, item, middle + 1, end);
 }
-
-console.log(binarySearch(array, 5)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('count ', count); // 3
-
-console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('countR ', countR); // 3

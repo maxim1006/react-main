@@ -1,19 +1,3 @@
-function canSum(num, arr) {
-    let result = false;
-    let length = arr.length;
-
-    outer: for (let i = 0; i < length; i++) {
-        for (let j = i + 1; j < length; j++) {
-            if (arr[i] === num || arr[i] + arr[j] === num) {
-                result = true;
-                break outer;
-            }
-        }
-    }
-
-    return result;
-}
-
 function canSumOptimal(num, arr) {
     let store = {};
 

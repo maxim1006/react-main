@@ -36,7 +36,7 @@ function countSquares(matrix) {
     let result = 0;
     let xLength = matrix[0].length;
     let yLength = matrix.length;
-    let temp = initTemp2dArray(xLength, yLength);
+    let temp = new Array(yLength).fill(0).map(() => new Array(xLength).fill(0));
 
     for (let y = 0; y < yLength; y++) {
         for (let x = 0; x < xLength; x++) {
@@ -54,16 +54,6 @@ function countSquares(matrix) {
     }
 
     return result;
-}
-
-function initTemp2dArray(x, y) {
-    let arr = [];
-
-    for (let i = 0; i < y; i++) {
-        arr.push(new Array(x).fill(0));
-    }
-
-    return arr;
 }
 
 console.log(countSquares(matrix)); // 15;

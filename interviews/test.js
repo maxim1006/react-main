@@ -1,21 +1,51 @@
-console.log(RLE('ABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB')); // "AB3C2XYZD4E3F3A6B28"
+function recursiveBinarySearch(arr, num, start, end) {
+    let pivotIndex = Math.floor((end + start) / 2);
+    let pivot = arr[pivotIndex];
 
-function RLE(str) {
-    let counter = 1;
-    let result = '';
+    if (pivot === num) {
+        console.log('found in ', pivotIndex);
+        return pivotIndex;
+    }
 
-    for (let i = 0; i < str.length; i++) {
-        if (i + 1 === str.length) break;
+    if (end - start <= 1) return false;
 
-        if (str[i] !== str[i + 1]) {
-            result += counter > 1 ? str[i] + counter : str[i];
-            counter = 1;
+    return num > pivot
+        ? recursiveBinarySearch(arr, num, pivotIndex + 1, end)
+        : recursiveBinarySearch(arr, num, 0, pivotIndex - 1);
+}
+
+function binarySearch(arr, num) {
+    let end = arr.length;
+    let start = 0;
+
+    while (end - start > 0) {
+        let pivotIndex = Math.floor((end + start) / 2);
+        let pivot = arr[pivotIndex];
+
+        if (pivot === num) {
+            console.log('found in ', pivotIndex);
+            return true;
+        }
+
+        if (num > pivot) {
+            start = pivotIndex + 1;
         } else {
-            ++counter;
+            end = pivotIndex - 1;
         }
     }
 
-    result += counter > 1 ? str[str.length - 1] + counter : str[str.length - 1];
-
-    return result;
+    return false;
 }
+
+const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const arrayR = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+let count = 0;
+let countR = 0;
+
+console.log(binarySearch(array, 5)); // O(log n)
+console.log('array length ', array.length); // 16
+console.log('count ', count); // 3
+
+console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
+console.log('array length ', array.length); // 16
+console.log('countR ', countR); // 3
