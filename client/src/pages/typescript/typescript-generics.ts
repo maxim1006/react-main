@@ -26,4 +26,12 @@ function getProperty<T, K extends keyof T>(obj: T, key?: K) {
     return obj[key];
 }
 
-const prop = getProperty(obj, 'name'); // если тут сделаю ошибку, например names вместо name, то ts подсветит теперь. Также ts подсветит, что prop это string
+// если тут сделаю ошибку, например names вместо name, то ts подсветит теперь.
+// Также ts подсветит, что prop это string
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const prop = getProperty(obj, 'name');
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const funcWithGeneric = <T>(obj: T): T => {
+    return obj;
+};
