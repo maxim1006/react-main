@@ -25,8 +25,7 @@ app.get('/get-messages', (req, res) => {
 app.post('/post-messages', (req, res) => {
     const message = req.body;
     emitter.emit('newMessage', message);
-    res.status(200);
-    res.end();
+    res.status(200).end();
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

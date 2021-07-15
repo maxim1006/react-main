@@ -22,13 +22,16 @@ app.get('/connect-messages', (req, res) => {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
     });
+    emitter.on('newMessage', message => {
+        // это обязательный паттерн для эвент соурсинга `data: ${message} \n\n`
+        res.write(`data: ${JSON.stringify(message)} \n\n`);
+    });
 });
 
 app.post('/post-messages', (req, res) => {
     const message = req.body;
     emitter.emit('newMessage', message);
-    res.status(200);
-    res.end();
+    res.status(200).end();
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

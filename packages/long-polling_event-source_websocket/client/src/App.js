@@ -1,10 +1,12 @@
 import './App.css';
-import LongPolling from './long-polling/long-polling';
+import Websocket from './websocket/websocket';
 
 function App() {
     return (
         <div className="App">
-            <LongPolling />
+            <Websocket />
+            {/*<EventSource />*/}
+            {/*<LongPolling />*/}
         </div>
     );
 }
