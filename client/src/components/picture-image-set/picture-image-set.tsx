@@ -11,7 +11,7 @@ const PictureImageSet = memo<PictureImageSetProps>(() => {
         <>
             <picture>
                 <source
-                    type="../../assets/images/avif"
+                    type="image/avif"
                     srcSet="../../assets/images/cat@1x.avif 1x, ../../assets/images/cat@2x.avif 2x"
                 />
                 <source type="image/webp" srcSet={`${cat1X} 1x, ${cat2X} 2x`} />
