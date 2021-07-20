@@ -1,51 +1,25 @@
-function recursiveBinarySearch(arr, num, start, end) {
-    let pivotIndex = Math.floor((end + start) / 2);
-    let pivot = arr[pivotIndex];
+console.log(RLE('ABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB')); // "AB3C2XYZD4E3F3A6B28"
 
-    if (pivot === num) {
-        console.log('found in ', pivotIndex);
-        return pivotIndex;
-    }
+function RLE(str) {
+    let prev = str[0];
+    let result = '';
+    let l = str.length;
+    let counter = 1;
 
-    if (end - start <= 1) return false;
+    for (let i = 1; i < l; i++) {
+        let cur = str[i];
 
-    return num > pivot
-        ? recursiveBinarySearch(arr, num, pivotIndex + 1, end)
-        : recursiveBinarySearch(arr, num, 0, pivotIndex - 1);
-}
-
-function binarySearch(arr, num) {
-    let end = arr.length;
-    let start = 0;
-
-    while (end - start > 0) {
-        let pivotIndex = Math.floor((end + start) / 2);
-        let pivot = arr[pivotIndex];
-
-        if (pivot === num) {
-            console.log('found in ', pivotIndex);
-            return true;
-        }
-
-        if (num > pivot) {
-            start = pivotIndex + 1;
+        if (cur !== prev) {
+            result += counter > 1 ? `${prev}${counter}` : `${prev}`;
+            counter = 1;
         } else {
-            end = pivotIndex - 1;
+            ++counter;
         }
+
+        prev = cur;
     }
 
-    return false;
+    result += counter > 1 ? `${prev}${counter}` : `${prev}`;
+
+    return result;
 }
-
-const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-const arrayR = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-let count = 0;
-let countR = 0;
-
-console.log(binarySearch(array, 5)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('count ', count); // 3
-
-console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('countR ', countR); // 3

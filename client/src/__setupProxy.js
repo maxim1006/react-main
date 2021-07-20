@@ -48,9 +48,7 @@
 //         '*',
 //         // Put inside ['/fast-buy', '/o'] additional paths that will be proxied from cra dev mode to liferay
 //         createProxyMiddleware(['/fast-buy', '/o', '/x/'], {
-//             // Sergey Sasko server
 //             // target: 'http://ws-11180:8082',
-//             // Youriy Shalonin server
 //             target: 'http://ws-12602:8082',
 //             changeOrigin: true,
 //             headers: {

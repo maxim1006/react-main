@@ -1,3 +1,28 @@
+function quickSort(arr) {
+    let length = arr.length;
+
+    if (length <= 1) {
+        return arr;
+    }
+
+    let pivotIndex = Math.floor(arr.length / 2);
+    let pivotValue = arr[pivotIndex];
+
+    let less = [];
+    let greater = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        ++count;
+        let value = arr[i];
+
+        if (i === pivotIndex) continue;
+
+        pivotValue > value ? less.push(value) : greater.push(value);
+    }
+
+    return [...quickSort(less), pivotValue, ...quickSort(greater)];
+}
+
 const arr = [
     0,
     3,
@@ -53,31 +78,6 @@ const arr = [
     23,
 ];
 let count = 0;
-
-function quickSort(arr) {
-    let length = arr.length;
-
-    if (length <= 1) {
-        return arr;
-    }
-
-    let pivotIndex = Math.floor(arr.length / 2);
-    let pivotValue = arr[pivotIndex];
-
-    let less = [];
-    let greater = [];
-
-    for (let i = 0; i < arr.length; i++) {
-        ++count;
-        let value = arr[i];
-
-        if (i === pivotIndex) continue;
-
-        pivotValue > value ? less.push(value) : greater.push(value);
-    }
-
-    return [...quickSort(less), pivotValue, ...quickSort(greater)];
-}
 
 console.log(quickSort(arr)); //  O(n * log n)
 console.log(arr.length); // 52
