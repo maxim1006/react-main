@@ -177,25 +177,6 @@
 //
 //     return result;
 // }
-// function RLE(str) {
-//     let counter = 1;
-//     let result = '';
-//
-//     for (let i = 0; i < str.length; i++) {
-//         if (i + 1 === str.length) break;
-//
-//         if (str[i] !== str[i + 1]) {
-//             result += counter > 1 ? str[i] + counter : str[i];
-//             counter = 1;
-//         } else {
-//             ++counter;
-//         }
-//     }
-//
-//     result += counter > 1 ? str[str.length - 1] + counter : str[str.length - 1];
-//
-//     return result;
-// }
 
 /*********** Task Дан набор отрезков - пожалуйста напишите функцию convert() которая объеденяет вхождения ***********/
 // const input = [
@@ -217,24 +198,23 @@
 /*********** Answer ***********/
 // function convert(input) {
 //     let sorted = input.sort((a, b) => a[0] - b[0]);
-//     let length = sorted.length;
-//     let temp = sorted[0];
-//     let result = [];
+//     let res = [];
+//     let prev = sorted[0];
 //
-//     for (let i = 1; i < length; i++) {
-//         let current = sorted[i];
+//     for (let i = 1, l = sorted.length; i < l; i++) {
+//         let cur = sorted[i];
 //
-//         if (temp[1] + 1 >= current[0]) {
-//             temp = [temp[0], Math.max(temp[1], current[1])];
+//         if (cur[0] > prev[1] + 1) {
+//             res.push(prev);
+//             prev = cur;
 //         } else {
-//             result.push(temp);
-//             temp = current;
-//
-//             if (i === length - 1) result.push(temp);
+//             prev = [prev[0], Math.max(prev[1], cur[1])];
 //         }
 //     }
 //
-//     return result;
+//     res.push(prev);
+//
+//     return res;
 // }
 //
 // console.log(convert(input));
@@ -263,31 +243,6 @@
 //     }
 //
 //     result += prev === start ? `,${prev}` : `,${start}-${prev}`;
-//
-//     return result.slice(1);
-// }
-// function compress(arr) {
-//     let sorted = arr.sort((a, b) => a - b); // [1,4]
-//     let length = sorted.length;
-//     let result = '';
-//     let counter = 0;
-//
-//     for (let i = 0; i < length; i++) {
-//         if (i + 1 === length) break;
-//
-//         if (arr[i + 1] - arr[i] > 1) {
-//             result += counter ? `-${arr[i]}` : `,${arr[i]}`;
-//             counter = 0;
-//         } else {
-//             if (counter === 0) {
-//                 result += `,${arr[i]}`;
-//             }
-//
-//             ++counter;
-//         }
-//     }
-//
-//     result += counter ? `-${arr[length - 1]}` : `,${arr[length - 1]}`;
 //
 //     return result.slice(1);
 // }
