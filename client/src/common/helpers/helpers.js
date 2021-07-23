@@ -33,15 +33,24 @@ export function getDevice(documentWidth) {
     }
 }
 
-export function throttle(f, t) {
+export function throttle(fn, time) {
     let id;
-    return function(...args) {
+    let first;
+
+    return function f(...args) {
         if (!id) {
+            fn.apply(this, args);
+
             id = setTimeout(() => {
                 id = null;
-                console.log(this);
-                f.apply(this, args);
-            }, t);
+
+                if (first) {
+                    f.apply(this, args);
+                    first = false;
+                }
+            }, time);
+        } else {
+            first = true;
         }
     };
 }
