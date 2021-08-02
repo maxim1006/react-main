@@ -1,8 +1,13 @@
 import React, { createContext, memo, useMemo } from 'react';
 import { useSessionStorage } from './session-stoarage.hook';
 
+export interface SessionStorageModel {
+    value1?: string;
+    value2?: string;
+}
+
 export interface SessionStorageContextModel {
-    sessionStorage: Record<string, any>;
+    sessionStorage: SessionStorageModel;
     setSessionStorage: (prop: Record<string, any>) => void;
 }
 export const SessionStorageContext = createContext<SessionStorageContextModel>(null!);

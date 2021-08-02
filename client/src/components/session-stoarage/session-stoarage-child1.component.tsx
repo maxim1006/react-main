@@ -16,7 +16,7 @@ const SessionStorageChild1 = memo<SessionStorageChild1Props>(() => {
                     });
                 }}
             />
-            {sessionStorage.value2}
+            {sessionStorage?.value2}
         </>
     );
 });
