@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/router/RouterLazyRoute.js"],"names":[],"mappings":"iHAAA,2BAEe,4BAAM","file":"static/js/20.49e2062b.chunk.js","sourcesContent":["import React from 'react';\n\nexport default () => <h4>RouterLazyRoute</h4>;\n"],"sourceRoot":""}

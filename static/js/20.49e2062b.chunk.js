@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-main"]=this["webpackJsonpreact-main"]||[]).push([[20],{471:function(t,e,n){"use strict";n.r(e);var a=n(0),r=n.n(a);e.default=function(){return r.a.createElement("h4",null,"RouterLazyRoute")}}}]);
-//# sourceMappingURL=20.49e2062b.chunk.js.map
