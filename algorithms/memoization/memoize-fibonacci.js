@@ -13,9 +13,9 @@ function fibonacciMemoized(n, store = {}) {
 }
 
 console.time('fibo');
-console.log(fibonacci(40)); // O(2^n) - time O(n) - space
+console.log(fibonacci(2)); // O(2^n) - time O(n) - space
 console.timeEnd('fibo');
 
 console.time('memo');
-console.log(fibonacciMemoized(40)); // O(2*n) - time O(n) - space
+console.log(fibonacciMemoized(2)); // O(2*n) - time O(n) - space
 console.timeEnd('memo');

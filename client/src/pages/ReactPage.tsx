@@ -7,16 +7,19 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import PictureImageSet from '../components/picture-image-set/picture-image-set';
-import Grid from '../components/grid/Grid';
+import SessionStorageParent from '../components/session-stoarage/session-stoarage-parent.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="PictureImageSet">
-                    <PictureImageSet />
+                <Component title="SessionStorage">
+                    <SessionStorageParent />
                 </Component>
+
+                {/* <Component title="PictureImageSet">*/}
+                {/*    <PictureImageSet />*/}
+                {/* </Component>*/}
 
                 {/* <Component title="Lazy"> */}
                 {/*    <Lazy />*/}
@@ -154,9 +157,9 @@ export default function ReactPage() {
                 {/*    <Parent/>*/}
                 {/* </Component>*/}
 
-                <Component title="Grid">
-                    <Grid />
-                </Component>
+                {/* <Component title="Grid"> */}
+                {/*    <Grid />*/}
+                {/* </Component> */}
 
                 {/* <Component title="RestApiComponent">*/}
                 {/*    <RestApiComponent/>*/}

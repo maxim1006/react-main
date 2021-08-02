@@ -47,6 +47,9 @@ mkdir -p /foo/bar/baz  # creates bar and baz within bar under existing /foo
 # rm
 rm -rf some-directory
 
+// удалить нод модули в папке
+rm -rf ./**/node_modules
+
 # rmdir
 rmdir some-directory (removes empty directory)
 
