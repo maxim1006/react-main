@@ -19,6 +19,10 @@
 function same(arr1, arr2) {
     let o = {};
     let o1 = {};
+    let l1 = arr1.length;
+    let l2 = arr2.length;
+
+    if (l1 !== l2) return false;
 
     for (let i of arr1) {
         o[i] = o[i] ? ++o[i] : 1;
