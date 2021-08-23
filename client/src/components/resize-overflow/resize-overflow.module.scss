@@ -4,8 +4,8 @@
     max-width: 300px;
     overflow-x: scroll;
     overflow-y: hidden;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     -webkit-mask-image: linear-gradient(to left, transparent, black var(--right-gradient), black var(--left-gradient), transparent 100%);
     mask-image: linear-gradient(to left, transparent, black var(--right-gradient), black var(--left-gradient), transparent 100%);
 
@@ -25,15 +25,21 @@
     --right-gradient: 10%;
 }
 
+.li {
+    min-width: 100px;
+    min-height: 100px;
+    border: 1px solid;
+}
+
 .wrapperVertical {
     display: flex;
     flex-direction: column;
-    height: 200px;
     max-width: 300px;
+    height: 200px;
     overflow-x: hidden;
     overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     -webkit-mask-image: linear-gradient(to bottom, transparent, black var(--top-gradient), black var(--bottom-gradient), transparent 100%);
     mask-image: linear-gradient(to bottom, transparent, black var(--top-gradient), black var(--bottom-gradient), transparent 100%);
 
@@ -44,7 +50,7 @@
     --top-gradient: 0%;
     --bottom-gradient: 100%;
 
-    > .li+.li {
+    > .li + .li {
         margin-top: -1px;
     }
 }
@@ -55,10 +61,4 @@
 
 .withBottomGradient {
     --bottom-gradient: 90%;
-}
-
-.li {
-    min-width: 100px;
-    min-height: 100px;
-    border: 1px solid;
 }
