@@ -7,15 +7,23 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import SessionStorageParent from '../components/session-stoarage/session-stoarage-parent.component';
+import ResizeOverflow from '../components/resize-overflow/resize-overflow.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="SessionStorage">
-                    <SessionStorageParent />
+                <Component title="ResizeOverflow">
+                    <ResizeOverflow />
                 </Component>
+
+                {/* <Component title="CloneElement"> */}
+                {/*    <CloneElementContainer /> */}
+                {/* </Component> */}
+
+                {/* <Component title="SessionStorage"> */}
+                {/*    <SessionStorageParent />*/}
+                {/* </Component> */}
 
                 {/* <Component title="PictureImageSet">*/}
                 {/*    <PictureImageSet />*/}

@@ -19,3 +19,15 @@
    
 ### Linked Lists
 Создаю инишиал лист и вспомогательную ссылку на list (именно на лист!!! обычно temp), потом в цикле while прохожусь по всем next как temp = list.next; не забываю после while обработать конечные условия. С помощью temp меняю/модифицирую list.next и возвращаю list.next
+
+### Recursions
+Invoke the same function until u reach your base case (the condition when recursion ends) passing different inputs
+Обязательно нужен base case (условие при котором прекращаю рекурсию) и возвращаемое value из функции иначе получу stack overflow (Maximum call stack exceed)
+
+Когда нам надо наполнить рекурсивно какой-нибудь массив обычно используют helper method recursion
+function outer(input) {
+    let arr = [];
+    function helper() {...}
+    helper(input);
+    return arr;
+}

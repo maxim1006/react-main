@@ -1,5 +1,5 @@
 import React, { createContext, memo, useMemo } from 'react';
-import { useSessionStorage } from './session-stoarage.hook';
+import { useSessionStorage } from '../../hooks/session-stoarage.hook';
 
 export interface SessionStorageModel {
     value1?: string;
