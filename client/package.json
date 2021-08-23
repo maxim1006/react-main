@@ -19,7 +19,8 @@
         "log": "node ./logs.js",
         "postlog": "NODE_ENV=postlog node ./logs.js",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
-        "lint:fix": "npm run lint -- --fix"
+        "lint:fix": "npm run lint -- --fix",
+        "rm": "rm -rf ./test"
     },
     "husky": {
         "hooks": {
