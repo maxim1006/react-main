@@ -92,15 +92,17 @@ sudo chown __use-name__ .
 sudo  chown mysql:mysql mysql-files // дать права пользователю mysql и группе mysql на папку mysql-files
 
 sudo chown -R mysql /usr/local/var/mysql/
-
+-R - recursively
 # chmod
 http://linuxcommand.org/lc3_lts0090.php
 
 chmod 600 some_file // для файла только оунер может менять
-chmod 755 ./ // для директории
+chmod 755 ./ // для директории the directory owner has full access. All others may list the directory, but cannot create files nor delete them. This setting is common for directories that you wish to share with other users.
+
+chmod +x file__name // сделать файл выполняемым, если создаю баш скрипт должен поставить
 
 sudo chmod -R 777 /usr/local/var/mysql/  // проставить разрешения для запуска mysql, затем sudo /usr/local/Cellar/mysql/8.0.25_1/support-files/mysql.server start
-
+-R - recursively
 # check ownership
 ls -laF /usr/local/var/mysql/
 
