@@ -35,3 +35,6 @@ const prop = getProperty(obj, 'name');
 const funcWithGeneric = <T>(obj: T): T => {
     return obj;
 };
+
+const foo = <T>(x: T) => x;
+// export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;

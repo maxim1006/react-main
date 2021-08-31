@@ -64,4 +64,9 @@ export type RtRootState = ReturnType<typeof rootReducer>;
 // так как часто использую сразу вынесу сюда чтобы не копи пастить
 export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
 
+export type RootState = ReturnType<typeof RtStore.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+
+// export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
+
 export default RtStore;
