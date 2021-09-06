@@ -7,15 +7,19 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import ResizeOverflow from '../components/resize-overflow/resize-overflow.component';
+import ProTabs from '../components/tabs/pro/pro-tabs.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="ResizeOverflow">
-                    <ResizeOverflow />
+                <Component title="ProTabs">
+                    <ProTabs />
                 </Component>
+
+                {/* <Component title="ResizeOverflow"> */}
+                {/*    <ResizeOverflow /> */}
+                {/* </Component> */}
 
                 {/* <Component title="CloneElement"> */}
                 {/*    <CloneElementContainer /> */}
