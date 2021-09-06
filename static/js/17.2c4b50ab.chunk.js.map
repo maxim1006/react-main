@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/LazyPage.js"],"names":["LazyPage"],"mappings":"iHAAA,mEAEe,SAASA,IACpB,OAAO","file":"static/js/17.2c4b50ab.chunk.js","sourcesContent":["import React from 'react';\n\nexport default function LazyPage() {\n    return <div>Lazy module</div>;\n}\n"],"sourceRoot":""}
