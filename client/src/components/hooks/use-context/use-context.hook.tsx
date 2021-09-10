@@ -14,7 +14,7 @@ interface ContextHookModel {
     loading?: boolean;
 }
 
-export const UseContextHookContext = React.createContext<ContextHookModel>(null);
+export const UseContextHookContext = React.createContext<ContextHookModel>({} as ContextHookModel);
 
 export const UseContextHookProvider = ({
     initData,
