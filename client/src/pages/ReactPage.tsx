@@ -7,15 +7,19 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import ProTabs from '../components/tabs/pro/pro-tabs.component';
+import ImagePreload from '../components/image/preload/image-preload.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="ProTabs">
-                    <ProTabs />
+                <Component title="Image preload">
+                    <ImagePreload />
                 </Component>
+
+                {/* <Component title="ProTabs"> */}
+                {/*    <ProTabs /> */}
+                {/* </Component> */}
 
                 {/* <Component title="ResizeOverflow"> */}
                 {/*    <ResizeOverflow /> */}
