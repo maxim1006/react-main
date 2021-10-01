@@ -5,16 +5,16 @@ import { ButtonBase } from '@material-ui/core';
 
 export const o = {
     foo: 1,
-    bar: 2,
+    bar: 2
 };
 
 export const o1: typeof o = {
     foo: 3,
-    bar: 1,
+    bar: 1
 };
 
 export const o2: Partial<typeof o> = {
-    bar: 1,
+    bar: 1
 };
 
 // Grabbing the Prop types of a component: Use React.ComponentProps and typeof,
@@ -37,4 +37,4 @@ function foo(bar: string) {
 //  inside your app, if you need { baz: number }
 type FooReturn = ReturnType<typeof foo>; // { baz: number }
 
-console.log((window as any).customProp);
+console.log(window.customProp);
