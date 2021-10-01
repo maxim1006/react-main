@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useSessionStorage = (propName = 'portal') => {
+export const useSessionStorage = (propName = 'storage') => {
     const [currentValue, setCurrentValue] = useState<Record<string, any>>(null);
     const [currentSessionStorage, setCurrentSessionStorage] = useState(() => {
         try {

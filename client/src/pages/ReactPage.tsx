@@ -7,15 +7,25 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import ImagePreload from '../components/image/preload/image-preload.component';
+import Storage from '../components/storage/storage.component';
+import Storage1 from '../components/storage/storage1.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName="React">
-                <Component title="Image preload">
-                    <ImagePreload />
+                <Component title="Storage">
+                    <Storage />
+                    <Storage1 />
                 </Component>
+
+                {/* <Component title="Previous"> */}
+                {/*    <Previous />*/}
+                {/* </Component> */}
+
+                {/* <Component title="Image preload"> */}
+                {/*    <ImagePreload />*/}
+                {/* </Component> */}
 
                 {/* <Component title="ProTabs"> */}
                 {/*    <ProTabs /> */}
