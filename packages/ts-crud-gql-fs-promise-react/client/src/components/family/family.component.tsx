@@ -2,14 +2,14 @@ import React, { memo } from 'react';
 import MaterialLoader from '../loader/MaterialLoader';
 import { ApolloError } from '@apollo/client/errors';
 import FamilyMember from './member/family-member.component';
-import { FamilyMemberPartsFragment, GetFamilyQuery } from '../../generated/operations';
+import { FamilyMember as FamilyMemberModel, GetFamilyQuery } from '../../generated/operations';
 
 type FamilyProps = {
     data: GetFamilyQuery;
     loading: boolean;
     error?: ApolloError;
-    onRemove?: (member: FamilyMemberPartsFragment) => void;
-    onUpdate?: (member: FamilyMemberPartsFragment) => void;
+    onRemove?: (member: FamilyMemberModel) => void;
+    onUpdate?: (member: FamilyMemberModel) => void;
 };
 
 const Family = memo<FamilyProps>(({ data, loading, error, onRemove, onUpdate }) => {

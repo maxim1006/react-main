@@ -4,14 +4,13 @@ import MaterialLoader from '../loader/MaterialLoader';
 import Family from './family.component';
 import { commonUtilsOmitTypeName } from '../../common.utils';
 import CreateFamilyMember from './create-member/create-family-member.component';
-import DataErrors from '../errors/data/data-errors.component';
 import {
     CreateFamilyMemberDocument,
     CreateFamilyMemberMutation,
     DeleteFamilyMemberDocument,
     DeleteFamilyMemberMutation,
     ErrorPartsFragment,
-    FamilyMemberPartsFragment,
+    FamilyMember,
     UpdateFamilyMemberDocument,
     UpdateFamilyMemberMutation,
     useGetCachedFamilyQuery,
@@ -150,14 +149,14 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
     );
 
     const onUpdate = useCallback(
-        (member: FamilyMemberPartsFragment) => {
+        (member: FamilyMember) => {
             updateMember({ variables: { input: commonUtilsOmitTypeName(member) } });
         },
         [updateMember]
     );
 
     const onRemove = useCallback(
-        (member: FamilyMemberPartsFragment) => {
+        (member: FamilyMember) => {
             removeMember({ variables: { id: member.id } });
         },
         [removeMember]
