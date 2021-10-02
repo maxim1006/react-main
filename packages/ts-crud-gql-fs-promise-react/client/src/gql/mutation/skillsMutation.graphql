@@ -1,0 +1,32 @@
+mutation DeleteSkill($id: String!) {
+    deleteSkill(id: $id) {
+        id
+        items {
+            id
+            name
+            completed
+        }
+    }
+}
+
+mutation UpdateSkill($input: SkillInput!) {
+    updateSkill(input: $input) {
+        id
+        items {
+            id
+            name
+            completed
+        }
+    }
+}
+
+mutation CreateSkill($name: String!, $completed: Boolean!) {
+    createSkill(name: $name, completed: $completed) {
+        id
+        items {
+            id
+            name
+            completed
+        }
+    }
+}

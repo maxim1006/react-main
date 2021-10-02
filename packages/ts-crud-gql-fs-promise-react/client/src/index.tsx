@@ -6,10 +6,10 @@ import { client } from './gql/gql';
 import App from './components/app/app.component';
 import { ApolloProvider, useQuery } from '@apollo/client';
 import Login from './components/login/login.component';
-import { IS_LOGGED_IN } from './gql/query/login/login';
+import { IsUserLoggedInDocument } from './generated/operations';
 
 function IsLoggedIn() {
-    const { data } = useQuery(IS_LOGGED_IN);
+    const { data } = useQuery(IsUserLoggedInDocument);
     return data.isLoggedIn ? <App /> : <Login />;
 }
 

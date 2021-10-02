@@ -4,7 +4,6 @@ import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
 import { FieldError } from '../entities/FieldError';
 
 export const FAMILY_ID = 'FAMILY_ID';
-
 @InputType()
 class FamilyMemberInput {
     @Field()

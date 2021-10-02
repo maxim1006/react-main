@@ -1,0 +1,5 @@
+#если задаю так то обязательно должен в typeDefs прописать тип
+
+query IsAdmin {
+    isAdmin @client
+}

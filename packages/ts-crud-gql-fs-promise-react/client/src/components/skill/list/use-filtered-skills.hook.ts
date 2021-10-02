@@ -1,7 +1,7 @@
 import { skillFilter } from '../../../gql/cache';
-import { GetSkills } from './__generated__/GetSkills';
+import { GetSkillsQuery } from '../../../generated/operations';
 
-export function useFilteredSkills(data: GetSkills) {
+export function useFilteredSkills(data: GetSkillsQuery) {
     let filteredSkills = null;
 
     if (Array.isArray(data?.skills?.items)) {

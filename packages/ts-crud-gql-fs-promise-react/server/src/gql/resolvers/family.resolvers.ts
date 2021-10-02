@@ -42,9 +42,10 @@ export const FamilyResolvers = {
             }
         ): Promise<{
             members?: FamilyMemberModel[];
-            errors?: [ErrorModel];
         }> => {
             const path = 'data/family.json';
+
+            console.log(name, age);
 
             if (!name) {
                 throw new ServerError('No name input provided', ERROR_CODE, {
@@ -58,10 +59,10 @@ export const FamilyResolvers = {
             }
 
             if (!age) {
-                throw new ServerError('No name input provided', ERROR_CODE, {
+                throw new ServerError('No age input provided', ERROR_CODE, {
                     errors: [
                         {
-                            message: `No name input provided`,
+                            message: `No age input provided`,
                             field: 'addFamilyMember',
                         },
                     ],
@@ -104,7 +105,6 @@ export const FamilyResolvers = {
             }
         ): Promise<{
             members?: FamilyMemberModel[];
-            errors?: [ErrorModel];
         }> => {
             const path = 'data/family.json';
 

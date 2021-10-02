@@ -1,9 +1,12 @@
 import { InMemoryCache, makeVar, Reference } from '@apollo/client';
-import { GetSkills_skills_items } from '../components/skill/list/__generated__/GetSkills';
 import { FilterModel } from '../models/filter.model';
 
 export const cache: InMemoryCache = new InMemoryCache({
     typePolicies: {
+        // если у инстанса нет id то гкл будет тупить и не перерерисовывать, это можно поправить хаком
+        // SomeRefOrValue: {
+        //     keyFields: false,
+        // },
         Query: {
             fields: {
                 // так создаю локальную переменную
@@ -25,7 +28,7 @@ export const cache: InMemoryCache = new InMemoryCache({
                 filteredItems: {
                     read(_, { readField, field }) {
                         const items: any = readField('items');
-                        let filteredItems: GetSkills_skills_items[] = [];
+                        let filteredItems: any[] = [];
 
                         if (items && Array.isArray(items)) {
                             filteredItems = items.filter((i: Reference) => {

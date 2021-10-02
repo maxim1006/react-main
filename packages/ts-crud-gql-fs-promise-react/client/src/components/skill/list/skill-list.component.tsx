@@ -2,14 +2,15 @@ import React, { memo } from 'react';
 import { ApolloError } from '@apollo/client/errors';
 import MaterialLoader from '../../loader/MaterialLoader';
 import Skill from '../skill.component';
-import { GetSkills_skills_items } from './__generated__/GetSkills';
+import { GetSkillsQuery } from '../../../generated/operations';
+import { ArrayType } from '../../../models/common.model';
 
 type SkillListProps = {
-    data: (GetSkills_skills_items | null)[] | null | undefined;
+    data: NonNullable<GetSkillsQuery['skills']>['items'];
     loading?: boolean;
     error?: ApolloError;
-    onRemove?: (skill: GetSkills_skills_items) => void;
-    onUpdate?: (skill: GetSkills_skills_items) => void;
+    onRemove?: (skill: ArrayType<NonNullable<GetSkillsQuery['skills']>['items']>) => void;
+    onUpdate?: (skill: ArrayType<NonNullable<GetSkillsQuery['skills']>['items']>) => void;
 };
 
 const SkillList = memo<SkillListProps>(({ data, loading, error, onRemove, onUpdate }) => {

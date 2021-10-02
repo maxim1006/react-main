@@ -1,0 +1,29 @@
+mutation DeleteFamilyMember($id: String!) {
+    deleteFamilyMember(id: $id) {
+        deleted
+        id
+    }
+}
+
+# гкл может без измнений кеша заапдейтить только single entity, при этом обязательно должен передаваться id и
+# проперти которые был проапдейчены
+# https://www.apollographql.com/docs/react/data/mutations/#updating-a-single-existing-entity
+mutation UpdateFamilyMember($input: FamilyMemberInput!) {
+    updateFamilyMember(input: $input) {
+        members {
+            id
+            age
+            name
+        }
+    }
+}
+
+mutation CreateFamilyMember($name: String!, $age: Int!) {
+    createFamilyMember(name: $name, age: $age) {
+        members {
+            id
+            age
+            name
+        }
+    }
+}

@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
-import { useTracks } from '../../generated/operations';
 import MaterialLoader from '../loader/MaterialLoader';
+import { useTracksQuery } from '../../generated/operations';
 
 type TracksContainerProps = {};
 
 const TracksContainer = memo<TracksContainerProps>(() => {
-    const { data, loading, error } = useTracks({
+    const { data, loading, error } = useTracksQuery({
         variables: {},
     });
 

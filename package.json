@@ -21,25 +21,10 @@
         "lint:fix": "eslint ./client/src --ext .ts,.tsx,.js,.jsx --fix",
         "deploy": "gh-pages -d ./client/build"
     },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "pretty-quick --staged"
         }
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
     },
     "dependencies": {
         "@types/jest": "^25.2.1",
@@ -71,20 +56,7 @@
         "gh-pages": "^3.1.0"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^4.32.0",
-        "@typescript-eslint/parser": "^4.32.0",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^7.32.0",
-        "eslint-config-react-app": "^6.0.0",
-        "eslint-plugin-flowtype": "^5.10.0",
-        "eslint-plugin-import": "^2.24.2",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-react": "^7.26.1",
-        "eslint-plugin-react-hooks": "^4.2.0",
         "prettier": "^1.19.1",
-        "pretty-quick": "^2.0.1",
-        "stylelint": "^13.13.1",
-        "stylelint-config-rational-order": "^0.1.2",
-        "stylelint-config-standard": "^22.0.0"
+        "pretty-quick": "^2.0.1"
     }
 }

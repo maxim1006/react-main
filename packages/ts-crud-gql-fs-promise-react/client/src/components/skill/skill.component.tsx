@@ -1,10 +1,11 @@
 import React, { memo, useState } from 'react';
-import { GetSkills_skills_items } from './list/__generated__/GetSkills';
+import { ArrayType } from '../../models/common.model';
+import { GetSkillsQuery } from '../../generated/operations';
 
 type SkillProps = {
     data: any;
-    onRemove?: (skill: GetSkills_skills_items) => void;
-    onUpdate?: (GetSkills_skills_items: GetSkills_skills_items) => void;
+    onRemove?: (skill: ArrayType<NonNullable<GetSkillsQuery['skills']>['items']>) => void;
+    onUpdate?: (skill: ArrayType<NonNullable<GetSkillsQuery['skills']>['items']>) => void;
 };
 
 const Skill = memo<SkillProps>(({ data, onRemove, onUpdate }) => {
@@ -15,12 +16,11 @@ const Skill = memo<SkillProps>(({ data, onRemove, onUpdate }) => {
     const onCurrentEditSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setEditMode(false);
-        onUpdate &&
-            onUpdate({
-                ...data,
-                name: editNameState,
-                completed: editCompletedState,
-            });
+        onUpdate?.({
+            ...data,
+            name: editNameState,
+            completed: editCompletedState,
+        });
     };
 
     return (
@@ -29,7 +29,7 @@ const Skill = memo<SkillProps>(({ data, onRemove, onUpdate }) => {
                 Name: {data?.name} Completed: {JSON.stringify(data?.completed)}
             </p>
             {onRemove && (
-                <button type="button" onClick={() => onRemove && onRemove(data)}>
+                <button type="button" onClick={() => onRemove?.(data)}>
                     Remove
                 </button>
             )}

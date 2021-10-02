@@ -1,77 +1,185 @@
+#
 directive @cacheControl(
-  maxAge: Int
-  scope: CacheControlScope
+    maxAge: Int
+    scope: CacheControlScope
 ) on FIELD_DEFINITION | OBJECT | INTERFACE
-# Exposes a URL that specifies the behaviour of this scalar.
-directive @specifiedBy(
-  # The URL that specifies the behaviour of this scalar.
-  url: String!
-) on SCALAR
-enum CacheControlScope {
-  PUBLIC
-  PRIVATE
-}
 
-type DeletedFamilyMember {
-  deleted: Boolean!
-  id: String!
-  errors: [Error]
-}
-
-type Error {
-  message: String
-  field: String
-}
-
-type Family {
-  members: [FamilyMember]
-  errors: [Error]
-}
-
-type FamilyMember {
-  name: String!
-  age: Float!
-  id: String!
-}
-
-input FamilyMemberInput {
-  name: String!
-  age: Float!
-  id: String!
-}
-
-type Mutation {
-  createFamilyMember(name: String!, age: Int!): Family
-  updateFamilyMember(input: FamilyMemberInput): Family
-  deleteFamilyMember(id: String!): DeletedFamilyMember
-  createSkill(name: String!, completed: Boolean!): Skills
-  updateSkill(input: SkillInput): Skills
-  deleteSkill(id: String!): Skills
-}
-
+#
 type Query {
-  family: Family
-  skills: Skills
+    #
+    family: Family
+
+    #
+    skills: Skills
+
+    # Query to get tracks
+    tracks: [Track!]!
+
+    # Union
+    getEntities(id: String!): Entities
 }
 
-type Skill {
-  name: String!
-  completed: Boolean!
-  id: String!
+#
+type Family {
+    #
+    id: String!
+
+    #
+    members: [FamilyMember]
+
+    #
+    errors: [Error]
 }
 
-input SkillInput {
-  name: String!
-  completed: Boolean!
-  id: String!
+#
+type FamilyMember {
+    #
+    name: String!
+
+    #
+    age: Float!
+
+    #
+    id: String!
 }
 
+#
+type Error {
+    #
+    message: String
+
+    #
+    field: String
+}
+
+#
 type Skills {
-  id: String!
-  items: [Skill]
-  errors: [Error]
+    #
+    id: String!
+
+    #
+    items: [Skill]
+
+    #
+    errors: [Error]
+}
+
+#
+type Skill {
+    #
+    name: String!
+
+    #
+    completed: Boolean!
+
+    #
+    id: String!
+}
+
+# A track is a number of modules
+type Track {
+    #
+    id: ID!
+
+    # The track's title
+    title: String!
+
+    # The track's author
+    author: TrackAuthor!
+
+    #
+    thumbnail: String
+
+    #
+    length: Int
+
+    #
+    modulesCount: Int
+}
+
+#
+type TrackAuthor {
+    #
+    id: ID!
+
+    #
+    name: String!
+
+    #
+    age: Int
+
+    # Author's photo
+    photo: String
+}
+
+#
+union Entities = Skills | Family
+
+#
+type Mutation {
+    #
+    createFamilyMember(name: String!, age: Int!): Family
+
+    #
+    updateFamilyMember(input: FamilyMemberInput): Family
+
+    #
+    deleteFamilyMember(id: String!): DeletedFamilyMember
+
+    #
+    createSkill(name: String!, completed: Boolean!): Skills
+
+    #
+    updateSkill(input: SkillInput): Skills
+
+    #
+    deleteSkill(id: String!): Skills
+}
+
+#
+input FamilyMemberInput {
+    #
+    name: String!
+
+    #
+    age: Float!
+
+    #
+    id: String!
+}
+
+#
+type DeletedFamilyMember {
+    #
+    deleted: Boolean!
+
+    #
+    id: String!
+
+    #
+    errors: [Error]
+}
+
+#
+input SkillInput {
+    #
+    name: String!
+
+    #
+    completed: Boolean!
+
+    #
+    id: String!
+}
+
+#
+enum CacheControlScope {
+    #
+    PUBLIC
+
+    #
+    PRIVATE
 }
 
 # The `Upload` scalar type represents a file upload.
 scalar Upload
-

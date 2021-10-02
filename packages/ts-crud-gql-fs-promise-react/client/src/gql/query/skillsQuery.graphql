@@ -1,0 +1,15 @@
+query GetSkills {
+    skills {
+        id
+        filteredItems @client {
+            id
+            name
+            completed
+        }
+        items {
+            id
+            name
+            completed
+        }
+    }
+}

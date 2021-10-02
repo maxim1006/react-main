@@ -1,0 +1,19 @@
+# так делаю гет запрос
+query GetFamily {
+    family {
+        members {
+            ...FamilyMemberParts
+        }
+    }
+}
+
+# так могу забрать закешированные данные
+query GetCachedFamily {
+    family @client {
+        members {
+            name
+            age
+            id
+        }
+    }
+}

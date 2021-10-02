@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { ErrorModel } from '../../../models/error.model';
+import { ErrorPartsFragment } from '../../../generated/operations';
 
 type DataErrorsProps = {
-    errors: ErrorModel[] | null | undefined;
+    errors: ErrorPartsFragment[] | null | undefined;
 };
 
 const DataErrors = memo<DataErrorsProps>(({ errors }) => {
