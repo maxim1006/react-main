@@ -1,11 +1,10 @@
 import React, { memo, useState } from 'react';
-import { ArrayType } from '../../models/common.model';
-import { GetSkillsQuery } from '../../generated/operations';
+import { Skill as SkillModel } from '../../generated/operations';
 
 type SkillProps = {
     data: any;
-    onRemove?: (skill: ArrayType<NonNullable<GetSkillsQuery['skills']>['items']>) => void;
-    onUpdate?: (skill: ArrayType<NonNullable<GetSkillsQuery['skills']>['items']>) => void;
+    onRemove?: (skill: SkillModel) => void;
+    onUpdate?: (skill: SkillModel) => void;
 };
 
 const Skill = memo<SkillProps>(({ data, onRemove, onUpdate }) => {
