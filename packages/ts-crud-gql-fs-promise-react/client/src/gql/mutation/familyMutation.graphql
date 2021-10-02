@@ -27,3 +27,11 @@ mutation CreateFamilyMember($name: String!, $age: Int!) {
         }
     }
 }
+
+mutation CreateFamilyMemberUnique($name: String!, $age: Int!) {
+    createFamilyMemberUnique(name: $name, age: $age) {
+        id
+        age
+        name
+    }
+}

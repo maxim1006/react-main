@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import { Reference, useMutation } from '@apollo/client';
+import { gql, Reference, useMutation } from '@apollo/client';
 import MaterialLoader from '../loader/MaterialLoader';
 import Family from './family.component';
 import { commonUtilsOmitTypeName } from '../../common.utils';
@@ -13,6 +13,7 @@ import {
     FamilyMember,
     UpdateFamilyMemberDocument,
     UpdateFamilyMemberMutation,
+    useCreateFamilyMemberUniqueMutation,
     useGetCachedFamilyQuery,
     useGetFamilyQuery,
 } from '../../generated/operations';
@@ -63,7 +64,67 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
                 },
             });
         },
+        // а вот так если бы бе возвращал мембера
+        // update(cache, { data: { createFamilyMember } }) {
+        //     cache.modify({
+        //         fields: {
+        //             family(existingCommentRefs) {
+        //                 const newFamilyMemberRef = cache.writeFragment({
+        //                     data: createFamilyMember.member,
+        //                     fragment: gql`
+        //                         fragment NewFamilyMember on FamilyMember {
+        //                             id
+        //                         }
+        //                     `
+        //                 });
+        //
+        //                 return {
+        //                     ...existingCommentRefs,
+        //                     members: [...existingCommentRefs.members, newFamilyMemberRef]
+        //                 };
+        //             },
+        //         },
+        //     });
+        // },
+        // так на onCompleted
+        // onCompleted({ createFamilyMember }) {
+        //     console.log("onCompleted createFamilyMember ", createFamilyMember);
+        //     cache.writeQuery({
+        //         query: GET_FAMILY,
+        //         data: {
+        //             family: createFamilyMember,
+        //         },
+        //     });
+        // },
     });
+
+    const [
+        createFamilyMemberUniqueMutation,
+        { data: createFamilyMemberUniqueData },
+    ] = useCreateFamilyMemberUniqueMutation({
+        update(cache, { data }) {
+            const newMember = data?.createFamilyMemberUnique;
+            cache.modify({
+                fields: {
+                    family(existingCommentRefs) {
+                        const newFamilyMemberRef = cache.writeFragment({
+                            data: newMember,
+                            fragment: gql`
+                                fragment NewFamilyMember on FamilyMember {
+                                    id
+                                }
+                            `,
+                        });
+                        return {
+                            ...existingCommentRefs,
+                            members: [...existingCommentRefs.members, newFamilyMemberRef],
+                        };
+                    },
+                },
+            });
+        },
+    });
+
     const [removeMember, { data: dataAfterDelete }] = useMutation<DeleteFamilyMemberMutation>(
         DeleteFamilyMemberDocument,
         {
@@ -93,38 +154,6 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
                     },
                 });
             },
-            // а вот так если бы бе возвращал мембера
-            // update(cache, { data: { createFamilyMember } }) {
-            //     cache.modify({
-            //         fields: {
-            //             family(existingCommentRefs) {
-            //                 const newFamilyMemberRef = cache.writeFragment({
-            //                     data: createFamilyMember.member,
-            //                     fragment: gql`
-            //                         fragment NewFamilyMember on FamilyMember {
-            //                             id
-            //                         }
-            //                     `
-            //                 });
-            //
-            //                 return {
-            //                     ...existingCommentRefs,
-            //                     members: [...existingCommentRefs.members, newFamilyMemberRef]
-            //                 };
-            //             },
-            //         },
-            //     });
-            // },
-            // так на onCompleted
-            // onCompleted({ createFamilyMember }) {
-            //     console.log("onCompleted createFamilyMember ", createFamilyMember);
-            //     cache.writeQuery({
-            //         query: GET_FAMILY,
-            //         data: {
-            //             family: createFamilyMember,
-            //         },
-            //     });
-            // },
         }
     );
     const [updateMember, { data: dataAfterUpdate }] = useMutation<UpdateFamilyMemberMutation>(
@@ -140,12 +169,12 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
     const onCreate = useCallback(
         async ({ name, age }) => {
             try {
-                await createMember({ variables: { name, age } });
+                await createFamilyMemberUniqueMutation({ variables: { name, age } });
             } catch (e) {
                 console.error('FamilyContainer onCreate error ', e);
             }
         },
-        [createMember]
+        [createFamilyMemberUniqueMutation]
     );
 
     const onUpdate = useCallback(

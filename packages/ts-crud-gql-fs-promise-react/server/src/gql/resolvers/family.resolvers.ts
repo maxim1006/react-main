@@ -1,5 +1,5 @@
 import { readFileJSON, writeFileJSON } from '../../utils/fs-utils';
-import { ErrorModel, ServerError } from '../../models/error.model';
+import { ServerError } from '../../models/error.model';
 import { FamilyMemberModel } from '../../models/family.model';
 import { ERROR_CODE } from '../../constants';
 
@@ -45,8 +45,6 @@ export const FamilyResolvers = {
         }> => {
             const path = 'data/family.json';
 
-            console.log(name, age);
-
             if (!name) {
                 throw new ServerError('No name input provided', ERROR_CODE, {
                     errors: [
@@ -85,6 +83,67 @@ export const FamilyResolvers = {
                 return {
                     members,
                 };
+            } catch (error) {
+                throw new ServerError(`Mutation addFamilyMember error ${error.message}`, ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `Mutation addFamilyMember error ${error.message}`,
+                            field: 'addFamilyMember',
+                        },
+                    ],
+                });
+            }
+        },
+        createFamilyMemberUnique: async (
+            _: any,
+            {
+                name,
+                age,
+            }: {
+                name: string;
+                age: number;
+            }
+        ): Promise<FamilyMemberModel> => {
+            const path = 'data/family.json';
+
+            if (!name) {
+                throw new ServerError('No name input provided', ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `No name input provided`,
+                            field: 'addFamilyMember',
+                        },
+                    ],
+                });
+            }
+
+            if (!age) {
+                throw new ServerError('No age input provided', ERROR_CODE, {
+                    errors: [
+                        {
+                            message: `No age input provided`,
+                            field: 'addFamilyMember',
+                        },
+                    ],
+                });
+            }
+
+            const member = { age, name, id: `Member_${Date.now()}` };
+
+            console.log({ member });
+
+            try {
+                let members = await readFileJSON(path);
+
+                if (!Array.isArray(members)) {
+                    members = [];
+                }
+
+                members.push(member);
+
+                await writeFileJSON(path, members);
+
+                return member;
             } catch (error) {
                 throw new ServerError(`Mutation addFamilyMember error ${error.message}`, ERROR_CODE, {
                     errors: [
@@ -161,7 +220,6 @@ export const FamilyResolvers = {
         ): Promise<{
             deleted?: boolean;
             id?: string;
-            errors?: [ErrorModel];
         }> => {
             const path = 'data/family.json';
 

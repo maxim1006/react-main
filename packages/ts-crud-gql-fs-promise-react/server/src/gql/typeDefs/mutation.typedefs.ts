@@ -4,6 +4,7 @@ export const MutationTypeDefs = gql`
     type Mutation {
         #Family
         createFamilyMember(name: String!, age: Int!): Family
+        createFamilyMemberUnique(name: String!, age: Int!): FamilyMember
         updateFamilyMember(input: FamilyMemberInput): Family
         deleteFamilyMember(id: String!): DeletedFamilyMember
 
