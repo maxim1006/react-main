@@ -17,8 +17,8 @@ generates:
       - "typescript-react-apollo"
 #      - "typed-document-node"
     config:
-
-#        preResolveTypes: true # true by default
+#        preResolveTypes: true вроде тру по дефолту но не работает если не указать)
+        preResolveTypes: true
 #        omitOperationSuffix: false # false by default
         exportFragmentSpreadSubTypes: true
         dedupeFragments: true
