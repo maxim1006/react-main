@@ -3,7 +3,6 @@ import MaterialLoader from '../loader/MaterialLoader';
 import { ApolloError } from '@apollo/client/errors';
 import FamilyMember from './member/family-member.component';
 import { FamilyMemberPartsFragment, GetFamilyQuery } from '../../generated/operations';
-import { ArrayType } from '../../models/common.model';
 
 type FamilyProps = {
     data: GetFamilyQuery;
@@ -14,7 +13,8 @@ type FamilyProps = {
     // можно вынести во фрагмент и использовать его тип
     onRemove?: (member: FamilyMemberPartsFragment) => void;
     // а можно использовать как infer массива
-    onUpdate?: (member: ArrayType<NonNullable<GetFamilyQuery['family']>['members']>) => void;
+    // onUpdate?: (member: ArrayType<NonNullable<GetFamilyQuery['family']>['members']>) => void;
+    onUpdate?: (member: FamilyMemberPartsFragment) => void;
 };
 
 const Family = memo<FamilyProps>(({ data, loading, error, onRemove, onUpdate }) => {

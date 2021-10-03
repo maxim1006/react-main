@@ -10,7 +10,7 @@ import {
     DeleteFamilyMemberDocument,
     DeleteFamilyMemberMutation,
     ErrorPartsFragment,
-    FamilyMember,
+    FamilyMemberPartsFragment,
     UpdateFamilyMemberDocument,
     UpdateFamilyMemberMutation,
     useCreateFamilyMemberUniqueMutation,
@@ -178,14 +178,14 @@ const FamilyContainer = memo<FamilyContainerProps>(() => {
     );
 
     const onUpdate = useCallback(
-        (member: FamilyMember) => {
+        (member: FamilyMemberPartsFragment) => {
             updateMember({ variables: { input: commonUtilsOmitTypeName(member) } });
         },
         [updateMember]
     );
 
     const onRemove = useCallback(
-        (member: FamilyMember) => {
+        (member: FamilyMemberPartsFragment) => {
             removeMember({ variables: { id: member.id } });
         },
         [removeMember]
