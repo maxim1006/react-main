@@ -1,9 +1,11 @@
 import React, { memo, useState } from 'react';
-import { FamilyMemberPartsFragment } from '../../../generated/operations';
+import { FamilyMemberPartsFragment, GetFamilyQuery } from '../../../generated/operations';
+import { ArrayType } from '../../../models/common.model';
 
 type FamilyMemberProps = {
     member: FamilyMemberPartsFragment;
-    onRemove?: (member: FamilyMemberPartsFragment) => void;
+    // это для примера использования типа прямо из запроса, полную сущность использовать не могу в качестве типа, так как запрашиваю не полностью все свойства, поэтому либо фрагмент либо так
+    onRemove?: (member: ArrayType<NonNullable<GetFamilyQuery['family']>['members']>) => void;
     onUpdate?: (member: FamilyMemberPartsFragment) => void;
 };
 

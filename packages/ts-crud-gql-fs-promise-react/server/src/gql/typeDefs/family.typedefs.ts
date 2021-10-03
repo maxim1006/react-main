@@ -9,6 +9,7 @@ export const FamilyTypeDefs = gql`
 
     type FamilyMember {
         name: String!
+        gender: String!
         age: Float!
         id: String!
     }

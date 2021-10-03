@@ -2,14 +2,19 @@ import React, { memo } from 'react';
 import MaterialLoader from '../loader/MaterialLoader';
 import { ApolloError } from '@apollo/client/errors';
 import FamilyMember from './member/family-member.component';
-import { FamilyMember as FamilyMemberModel, GetFamilyQuery } from '../../generated/operations';
+import { FamilyMemberPartsFragment, GetFamilyQuery } from '../../generated/operations';
+import { ArrayType } from '../../models/common.model';
 
 type FamilyProps = {
     data: GetFamilyQuery;
     loading: boolean;
     error?: ApolloError;
-    onRemove?: (member: FamilyMemberModel) => void;
-    onUpdate?: (member: FamilyMemberModel) => void;
+    // так будет ошибка так как могу запрашивать не всю сущность FamilyMemberModel
+    // onRemove?: (member: FamilyMemberModel) => void;
+    // можно вынести во фрагмент и использовать его тип
+    onRemove?: (member: FamilyMemberPartsFragment) => void;
+    // а можно использовать как infer массива
+    onUpdate?: (member: ArrayType<NonNullable<GetFamilyQuery['family']>['members']>) => void;
 };
 
 const Family = memo<FamilyProps>(({ data, loading, error, onRemove, onUpdate }) => {
