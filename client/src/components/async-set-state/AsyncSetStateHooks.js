@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 export default function AsyncSetStateHooks({ increaseNumber }) {
+    console.log(231);
     const [counter, setCounter] = useState(0);
     const onClick = () => {
         setCounter(counter + increaseNumber);
