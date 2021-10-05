@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useState } from 'react';
 
 const Child = memo(({ prop, onClick }) => {
     console.log('Child rerender');

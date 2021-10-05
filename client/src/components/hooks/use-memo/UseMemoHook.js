@@ -1,6 +1,8 @@
 import React, { memo, useEffect, useMemo, useState } from 'react';
 
 export default memo(() => {
+    // это чисто для примера простой объект в зависимостях и мемоизированный
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const obj = {};
     const memoizedObj = useMemo(() => {}, []);
     const [counter, setCounter] = useState(0);

@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 
-export default () => {
+export function useLocation() {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
-        const success = ({ coords }) => {
+        const success = ({ coords }: Position) => {
             setLatitude(coords.latitude);
             setLongitude(coords.longitude);
         };
 
-        const error = e => {
-            console.log('Getting position error ', e);
+        const error = (e: PositionError) => {
+            console.error('Getting position error ', e);
             setErrorMessage(e.message);
         };
 
@@ -28,6 +28,6 @@ export default () => {
     return {
         latitude,
         longitude,
-        errorMessage,
+        errorMessage
     };
-};
+}

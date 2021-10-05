@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { shopAddCartItem } from '../../../../../store/actions';
+import { shopAddCartItem } from '@app/store/actions';
 import {
     StyledShopCollectionsPreviewItem,
     StyledShopCollectionsPreviewItemButton,
@@ -8,10 +8,10 @@ import {
     StyledShopCollectionsPreviewItemImageWrapper,
     StyledShopCollectionsPreviewItemPrice,
     StyledShopCollectionsPreviewItemPriceName,
-    StyledShopCollectionsPreviewItemPriceValue,
+    StyledShopCollectionsPreviewItemPriceValue
 } from './StyledShopCollectionsPreviewItem';
 
-export default ({ item }) => {
+export default function ShopCollectionsPreviewItemHooks({ item }) {
     const { imageUrl, name, price } = item;
 
     const dispatch = useDispatch();
@@ -23,15 +23,15 @@ export default ({ item }) => {
                 <StyledShopCollectionsPreviewItemButton onClick={addCartItem}>
                     Add to cart
                 </StyledShopCollectionsPreviewItemButton>
-                <StyledShopCollectionsPreviewItemImage loading="lazy" alt="shop preview item" src={imageUrl} />
+                <StyledShopCollectionsPreviewItemImage loading='lazy' alt='shop preview item' src={imageUrl} />
             </StyledShopCollectionsPreviewItemImageWrapper>
             <StyledShopCollectionsPreviewItemPrice>
                 <StyledShopCollectionsPreviewItemPriceName>{name}</StyledShopCollectionsPreviewItemPriceName>
                 {/* Пример как сделать любой селектор из styled component, вместо слеектора могу передать любой компонент*/}
-                <StyledShopCollectionsPreviewItemPriceValue as="span">
+                <StyledShopCollectionsPreviewItemPriceValue as='span'>
                     {price}
                 </StyledShopCollectionsPreviewItemPriceValue>
             </StyledShopCollectionsPreviewItemPrice>
         </StyledShopCollectionsPreviewItem>
     );
-};
+}

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import customAxios from '../../common/api/axios';
+import customAxios from '@app/common/api/axios';
 
-export default class extends Component {
+export default class HooksListClass extends Component {
     state = {
-        list: [],
+        list: []
     };
 
     componentDidMount() {
@@ -26,9 +26,9 @@ export default class extends Component {
         const { list } = this.state;
 
         return list ? (
-            <ul className="hooks-list">
+            <ul className='hooks-list'>
                 {list.map(({ title }, index) => (
-                    <li className="hooks-list__item" key={index}>
+                    <li className='hooks-list__item' key={index}>
                         {title}
                     </li>
                 ))}
@@ -47,11 +47,11 @@ export default class extends Component {
 
         try {
             const { data: list } = await customAxios.get(`/hooks/${this.props.resource}`, {
-                cancelToken: this.cancelHooksRequest.token,
+                cancelToken: this.cancelHooksRequest.token
             });
 
             this.setState({
-                list,
+                list
             });
         } catch (e) {
             console.log("HooksListClass get('/hooks'... error ", e);

@@ -3,12 +3,12 @@ import ShopFormInput from '../form-input/ShopFormInput';
 import ShopButton from '../button/ShopButton';
 import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils';
 
-export default () => {
+export default function ShopSignUpHooks() {
     const [signUpState, setSignUpState] = useState({
         displayName: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        confirmPassword: ''
     });
 
     const { displayName, email, password, confirmPassword } = signUpState;
@@ -30,7 +30,7 @@ export default () => {
                 displayName: '',
                 email: '',
                 password: '',
-                confirmPassword: '',
+                confirmPassword: ''
             });
         } catch (e) {
             console.log('Sign Up handleSubmit error ', e.message);
@@ -43,58 +43,58 @@ export default () => {
 
             setSignUpState({ ...signUpState, [name]: value });
         },
-        [signUpState],
+        [signUpState]
     );
 
     return (
-        <div className="shop-sign-up">
+        <div className='shop-sign-up'>
             <h3>Sign Up</h3>
             <form onSubmit={handleSubmit}>
                 <ShopFormInput
-                    label="Login"
-                    autoComplete="username"
+                    label='Login'
+                    autoComplete='username'
                     handleChange={handleChange}
-                    name="displayName"
-                    id="shopSignUpLogin"
-                    type="text"
+                    name='displayName'
+                    id='shopSignUpLogin'
+                    type='text'
                     value={displayName}
                     required
                 />
 
                 <ShopFormInput
-                    label="Email"
+                    label='Email'
                     handleChange={handleChange}
-                    name="email"
-                    id="shopSignUpEmail"
-                    type="email"
+                    name='email'
+                    id='shopSignUpEmail'
+                    type='email'
                     value={email}
                     required
                 />
 
                 <ShopFormInput
-                    label="Password"
+                    label='Password'
                     handleChange={handleChange}
-                    name="password"
-                    id="shopSignUpPassword"
-                    type="password"
-                    autoComplete="new-password"
+                    name='password'
+                    id='shopSignUpPassword'
+                    type='password'
+                    autoComplete='new-password'
                     value={password}
                     required
                 />
 
                 <ShopFormInput
-                    label="Confirm Password"
+                    label='Confirm Password'
                     handleChange={handleChange}
-                    name="confirmPassword"
-                    autoComplete="new-password"
-                    id="shopSignUpConfirmPassword"
-                    type="password"
+                    name='confirmPassword'
+                    autoComplete='new-password'
+                    id='shopSignUpConfirmPassword'
+                    type='password'
                     value={confirmPassword}
                     required
                 />
 
-                <ShopButton type="submit">Sign up</ShopButton>
+                <ShopButton type='submit'>Sign up</ShopButton>
             </form>
         </div>
     );
-};
+}

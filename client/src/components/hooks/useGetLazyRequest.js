@@ -3,7 +3,7 @@ import customAxios from '../../common/api/axios';
 
 // можно делать через const controllerRef = useRef<any>(); а можно и через useState,
 // просто нужна еще 1 функция которая будет триггерить новый CancelToken
-export default ({ url }) => {
+export default function useGetLazyRequest({ url }) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [cancelRequest, setCancelRequest] = useState(null);
@@ -17,7 +17,7 @@ export default ({ url }) => {
             setLoading(true);
 
             const { data } = await customAxios.get(url, {
-                cancelToken: cancelRequest?.token,
+                cancelToken: cancelRequest?.token
             });
 
             setData(data);
@@ -34,4 +34,4 @@ export default ({ url }) => {
     }, [refetchInner, cancelRequest, url]);
 
     return { data, refetch, loading };
-};
+}

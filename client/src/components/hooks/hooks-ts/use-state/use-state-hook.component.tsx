@@ -5,6 +5,8 @@ type UseStateProps = {};
 const UseState = memo<UseStateProps>(() => {
     let [counter, setCounter] = useState<number>(0);
     const [obj, setObj] = useState<{ a: number }>({ a: 1 });
+    // example of useState init as function
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [fState, setFState] = useState(() => {
         console.log('init state function is triggered');
         return 1;
@@ -21,7 +23,7 @@ const UseState = memo<UseStateProps>(() => {
         console.log(counter);
         setCounter(v => v + 1);
         console.log(counter);
-    }, []);
+    }, [counter]);
 
     const onClick = () => {
         setCounter(value => ++value);

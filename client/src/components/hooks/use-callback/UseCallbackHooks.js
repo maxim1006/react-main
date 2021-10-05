@@ -30,8 +30,8 @@ export default memo(() => {
 
     // а если так, то useCallback вернет мемоизированную функцию и перерендериваться будет только тот
     // чайлд на который кликнул
-    const onChildClick = useCallback(() => setClickCounter(++clickCounter), []);
-    const onChildClick1 = useCallback(() => setClickCounter1(++clickCounter1), []);
+    const onChildClick = useCallback(() => setClickCounter(i => ++i), [setClickCounter]);
+    const onChildClick1 = useCallback(() => setClickCounter1(i => ++i), [setClickCounter1]);
 
     return (
         <>

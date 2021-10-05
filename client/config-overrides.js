@@ -14,7 +14,7 @@ module.exports = {
     webpack: function(config, env) {
         let isProd = env === 'production';
         let plugins = config.plugins;
-        let externalLess = process.argv.includes('--bss-external-less');
+        let externalLess = process.argv.includes('--external-less');
 
         // build analyzer
         if (process.argv.includes('--report')) {
@@ -30,7 +30,7 @@ module.exports = {
         alias({
             ...configPaths('tsconfig-paths.json'),
             ...config.resolve.alias,
-            '@styles': path.resolve(__dirname, 'src/assets/styles'),
+            '@styles': path.resolve(__dirname, 'src/assets/styles')
         })(config);
 
         // dont build runtime chunk
@@ -48,32 +48,32 @@ module.exports = {
                 new FileManagerPlugin({
                     events: {
                         onEnd: {
-                            copy: [{ source: 'from', destination: `$to` }],
-                        },
-                    },
-                }),
+                            copy: [{ source: 'from', destination: `$to` }]
+                        }
+                    }
+                })
             );
         }
 
         // extract index.less in separate file via build:less task and get index.less as global.css in ./
         if (isProd && externalLess) {
             config.entry = {
-                main: path.resolve(__dirname, 'src/index.less'),
+                main: path.resolve(__dirname, 'src/index.less')
             };
 
             config.plugins = [
                 new MiniCssExtractPlugin({
                     // Options similar to the same options in webpackOptions.output
                     // both options are optional
-                    filename: '[name].css',
+                    filename: '[name].css'
                 }),
                 new FileManagerPlugin({
                     events: {
                         onEnd: {
-                            copy: [{ source: 'build/global.css', destination: `./` }],
-                        },
-                    },
-                }),
+                            copy: [{ source: 'build/global.css', destination: `./` }]
+                        }
+                    }
+                })
             ];
 
             config.optimization.splitChunks = {
@@ -86,9 +86,9 @@ module.exports = {
                         chunks: 'all',
                         minChunks: 1,
                         reuseExistingChunk: true,
-                        enforce: true,
-                    },
-                },
+                        enforce: true
+                    }
+                }
             };
         }
 
@@ -106,5 +106,5 @@ module.exports = {
         ///////////////////////////////////////////////////////////
 
         return config;
-    },
+    }
 };

@@ -1,10 +1,10 @@
 import axios, { CancelTokenSource } from 'axios';
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { useCallback, useEffect, useReducer, useRef } from 'react';
 import customAxios from '../../../common/api/axios';
 
 export default function useGetRequest<T>({
     url,
-    cb,
+    cb
 }: {
     url: string;
     cb?: (data: T | undefined) => void;
@@ -29,7 +29,7 @@ export default function useGetRequest<T>({
             forceUpdate();
 
             const { data: fetchedData } = await axios.get(url, {
-                cancelToken: cancelRequest.current?.token,
+                cancelToken: cancelRequest.current?.token
             });
 
             data.current = fetchedData;
@@ -50,6 +50,6 @@ export default function useGetRequest<T>({
     return {
         data: data.current,
         loading: loading.current,
-        refetch,
+        refetch
     };
 }

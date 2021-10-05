@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import customAxios from '../../common/api/axios';
 
-export default () => {
+export default function useComments() {
     const [comments, setComments] = useState([]);
     const cancelGetCommentsRequest = customAxios.CancelToken.source();
 
@@ -9,7 +9,7 @@ export default () => {
         (async () => {
             try {
                 const { data: comments } = await customAxios.get('/comments', {
-                    cancelToken: cancelGetCommentsRequest.token,
+                    cancelToken: cancelGetCommentsRequest.token
                 });
 
                 setComments(comments);
@@ -21,7 +21,7 @@ export default () => {
         return () => {
             cancelGetCommentsRequest.cancel("CommentListHooks get('/comments'... canceled");
         };
-    }, []);
+    }, [cancelGetCommentsRequest]);
 
     return comments;
-};
+}

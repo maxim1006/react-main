@@ -7,7 +7,7 @@ import RouterRoute1 from '../components/router/RouterRoute1';
 
 const RouterLazyRoute = React.lazy(() => import('../components/router/RouterLazyRoute'));
 
-export default () => {
+export default function RouterPage() {
     return (
         <>
             <h3>Router examples</h3>
@@ -17,7 +17,7 @@ export default () => {
                     { to: '/router/exact', title: 'RouterExactRoute' },
                     { to: '/router/route1', title: 'RouterRoute1' },
                     { to: '/router/lazy', title: 'RouterLazyRoute' },
-                    { to: '/router/*', title: 'RouterLazyNotFound' },
+                    { to: '/router/*', title: 'RouterLazyNotFound' }
                 ]}
             />
             {/* покажет только первый найденный роут*/}
@@ -27,16 +27,16 @@ export default () => {
                     это чисто для примера что такое exact
                     <Route path="/router" exact component={RouterExactRoute}/>
                 */}
-                <Route path="/router/exact" exact component={RouterExactRoute} />
-                <Route path="/router/route1" component={RouterRoute1} />
-                <Route path="/router/lazy" component={RouterLazyRoute} />
-                <Route path="/router/*">
+                <Route path='/router/exact' exact component={RouterExactRoute} />
+                <Route path='/router/route1' component={RouterRoute1} />
+                <Route path='/router/lazy' component={RouterLazyRoute} />
+                <Route path='/router/*'>
                     <NotFound>Router not found</NotFound>
                 </Route>
             </Switch>
         </>
     );
-};
+}
 
 // пример роутинга, несколько роутов при переключении линок от текущего path
 // import { Redirect, BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';

@@ -9,12 +9,17 @@ import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
 import Storage from '../components/storage/storage.component';
 import Storage1 from '../components/storage/storage1.component';
+import UpdateEffect from '@app/components/hooks/update-effect.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
-            <div tabName="React">
-                <Component title="Storage">
+            <div tabName='React'>
+                <Component title='Storage'>
+                    <UpdateEffect />
+                </Component>
+
+                <Component title='Storage'>
                     <Storage />
                     <Storage1 />
                 </Component>
@@ -135,7 +140,7 @@ export default function ReactPage() {
                 {/*    <Skills/>*/}
                 {/* </Component>*/}
 
-                <Component title="Family fetch">
+                <Component title='Family fetch'>
                     <AxiosFamily />
                     {/* <FamilyFetch />*/}
                 </Component>
@@ -211,15 +216,15 @@ export default function ReactPage() {
                 {/*    <ClassBasedHooks/>*/}
                 {/* </Component>*/}
             </div>
-            <div tabName="Redux Forms">
+            <div tabName='Redux Forms'>
                 <ReduxForm />
             </div>
-            <div tabName="Forms">
+            <div tabName='Forms'>
                 <FormsComponent />
             </div>
-            <div tabName="JSX">
+            <div tabName='JSX'>
                 <JsxListComponent />
-                <JsxFragment prop1="prop1" prop2="prop2" />
+                <JsxFragment prop1='prop1' prop2='prop2' />
                 <JSXExampleComponent />
             </div>
         </TabsComponent>

@@ -1,10 +1,6 @@
 import React, { memo, useEffect, useRef } from 'react';
 import TypescriptReducerHooks from './reducer/typescript-reducer-hooks.component';
 
-interface UserModel {
-    name?: string;
-}
-
 const TypescriptHooks = () => {
     // const [user, setUser] = useState<UserModel | null>(null);
 
@@ -26,7 +22,7 @@ const TypescriptHooks = () => {
         <>
             <div ref={ref1}>Ref1</div>
             <div ref={ref2}>Ref2</div>
-            <input ref={inputEl} type="text" />
+            <input ref={inputEl} type='text' />
             <TypescriptReducerHooks />
         </>
     );

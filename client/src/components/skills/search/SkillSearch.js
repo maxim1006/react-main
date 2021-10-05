@@ -10,14 +10,14 @@ const SkillSearch = memo(({ addSkill, value, ...restProps }) => {
         return () => {
             cancelAddSkillRequest.cancel('SkillSearch add Skill canceled');
         };
-    }, [value]);
+    }, [cancelAddSkillRequest, value]);
 
     const onAddSkill = () => addSkill(cancelAddSkillRequest, value);
 
     return (
-        <div className="skill-search">
-            <input type="text" {...restProps} />
-            <button type="button" onClick={onAddSkill}>
+        <div className='skill-search'>
+            <input type='text' {...restProps} />
+            <button type='button' onClick={onAddSkill}>
                 Add skill
             </button>
         </div>
@@ -25,7 +25,7 @@ const SkillSearch = memo(({ addSkill, value, ...restProps }) => {
 });
 
 const mapStateToProps = (state, ownProps) => ({
-    value: state.skills.searchValue,
+    value: state.skills.searchValue
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     addSkill: (cancelAddSkillRequest, value) => {
         dispatch(addSkill(value, cancelAddSkillRequest.token));
-    },
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillSearch);

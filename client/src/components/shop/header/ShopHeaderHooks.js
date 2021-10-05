@@ -13,7 +13,7 @@ import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '../../../
 import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
 import useClickOutside from '../../hooks/useClickOutside';
 
-export default () => {
+export default function ShopHeaderHooks() {
     // аля mapStateToProps
     const currentUser = useSelector(selectShopCurrentUser);
     const visibleDropdown = useSelector(selectShopCartVisibleDropdown);
@@ -28,16 +28,16 @@ export default () => {
     useClickOutside(ref, () => dispatch(shopCloseDropdown()));
 
     return (
-        <div className="shop-header">
-            <div className="shop-header__title">Shop</div>
-            <LogoIcon className="shop-header__logo" />
-            <div className="shop-header__sign">
+        <div className='shop-header'>
+            <div className='shop-header__title'>Shop</div>
+            <LogoIcon className='shop-header__logo' />
+            <div className='shop-header__sign'>
                 {currentUser === null ? (
-                    <MaterialLoaderComponent message="" customStyles={{ width: '30px' }} />
+                    <MaterialLoaderComponent message='' customStyles={{ width: '30px' }} />
                 ) : currentUser ? (
                     <>
                         <a
-                            href="/"
+                            href='/'
                             onClick={e => {
                                 e.preventDefault();
                                 auth.signOut();
@@ -47,15 +47,15 @@ export default () => {
                         </a>
                     </>
                 ) : (
-                    <Link to="/shop/sign">Sign In</Link>
+                    <Link to='/shop/sign'>Sign In</Link>
                 )}
             </div>
-            <div className="shop-header__cart" ref={ref}>
-                <span className="shop-header__cart-count">{cartQuantity}</span>
-                <CartIcon className="shop-header__cart-icon" onClick={toggleDropdown} />
+            <div className='shop-header__cart' ref={ref}>
+                <span className='shop-header__cart-count'>{cartQuantity}</span>
+                <CartIcon className='shop-header__cart-icon' onClick={toggleDropdown} />
                 {visibleDropdown && <ShopCartDropdownHooks />}
             </div>
-            {currentUser && <div className="shop-header__user">Hello: {currentUser.displayName}</div>}
+            {currentUser && <div className='shop-header__user'>Hello: {currentUser.displayName}</div>}
         </div>
     );
-};
+}

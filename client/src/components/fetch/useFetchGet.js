@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default () => {
+export default function useFetchGet() {
     const [data, setData] = useState(null);
     const [controller, setController] = useState(null);
 
@@ -17,7 +17,7 @@ export default () => {
 
             try {
                 const data = await fetch(fetchUrl, {
-                    signal: controller.signal,
+                    signal: controller.signal
                 });
                 const jsonData = await data.json();
                 setData(jsonData);
@@ -32,6 +32,6 @@ export default () => {
     return {
         data,
         setController,
-        controller,
+        controller
     };
-};
+}

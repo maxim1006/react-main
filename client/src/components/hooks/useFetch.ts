@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export default ({ url }: { url?: string; controller?: any }) => {
+export default function useFetch({ url }: { url?: string; controller?: any }) {
     const [data, setData] = useState(null);
     const controllerRef = useRef<any>();
 
@@ -27,4 +27,4 @@ export default ({ url }: { url?: string; controller?: any }) => {
     }, [refetch]);
 
     return { data, refetch };
-};
+}

@@ -1,5 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable */
 const xlsx = require('xlsx');
 const path = require('path');
 
@@ -17,7 +16,7 @@ function createWorkBook() {
     const wb = xlsx.utils.book_new();
     wb.Props = {
         Title: 'Translations',
-        CreatedDate: new Date(),
+        CreatedDate: new Date()
     };
     return wb;
 }

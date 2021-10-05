@@ -19,5 +19,5 @@ export default memo(({ className, ...restProps }) => {
         };
     }, []);
 
-    return <img loading="lazy" ref={ref} className={currentClassName} {...restProps} />;
+    return <img alt='my' loading='lazy' ref={ref} className={currentClassName} {...restProps} />;
 });

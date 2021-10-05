@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <h4>RouterLazyRoute</h4>;
+export default function RouterLazyRoute() {
+    return <h4>RouterLazyRoute</h4>;
+}

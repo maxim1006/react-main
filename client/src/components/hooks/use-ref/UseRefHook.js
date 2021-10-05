@@ -12,7 +12,7 @@ export default memo(() => {
         console.log(2); // 1,3,2
         console.log(ref);
         console.log(ref1);
-    }, []);
+    }, [ref1]);
 
     console.log(3); // 1,3,2
 

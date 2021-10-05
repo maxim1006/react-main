@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { store } from './todo-store.component';
 
-export default () => {
+export default function useTodoState() {
     const [state, setState] = useState(store.getState());
 
     useEffect(() => {
@@ -13,4 +13,4 @@ export default () => {
     }, []);
 
     return state;
-};
+}

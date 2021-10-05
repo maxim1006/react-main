@@ -2,7 +2,7 @@ import { CHANGE_FRAMEWORK_STATUS, FETCH_FRAMEWORKS } from '../actions/types';
 
 const initialState = [];
 
-export default (state = initialState, action) => {
+export default function frameworksReducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_FRAMEWORKS: {
             return action.payload;
@@ -26,4 +26,4 @@ export default (state = initialState, action) => {
             return state;
         }
     }
-};
+}

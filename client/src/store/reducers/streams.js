@@ -1,6 +1,6 @@
 import { CREATE_STREAM, DELETE_STREAM, EDIT_STREAM, FETCH_STREAM, FETCH_STREAMS } from '../actions/types';
 
-export default (state = {}, action) => {
+export default function streamReducer(state = {}, action) {
     switch (action.type) {
         case CREATE_STREAM:
         case EDIT_STREAM:
@@ -25,4 +25,4 @@ export default (state = {}, action) => {
             return state;
         }
     }
-};
+}

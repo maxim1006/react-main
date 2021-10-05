@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+export default function Imports() {
     const getData = async () => {
         const data = await import('./data.js');
         console.log(data.default);
@@ -12,7 +12,7 @@ export default () => {
             <div onClick={getData}>Get data</div>
         </>
     );
-};
+}
 
 (async () => {
     const data = await require('./data.js');

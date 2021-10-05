@@ -1,4 +1,4 @@
-class Singleton {
+export class Singleton {
     static instance;
 
     constructor() {

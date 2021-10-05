@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 
+import { useResize } from './resize.hook';
+
 const MEDIA_DEFAULT_MOBILE_MAX_WIDTH = 767;
 const MEDIA_DEFAULT_TABLET_MAX_WIDTH = 1249;
 const MEDIA_DEFAULT_DESKTOP_MAX_WIDTH = 1439;
-
-import { useResize } from './resize.hook';
 
 export type MediaProps = {
     mobileMaxWidth?: number;

@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <h4>RouterExactRoute</h4>;
+export default function RouterExactRoute() {
+    return <h4>RouterExactRoute</h4>;
+}

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { shopSetCurrentUser } from '../../store/actions';
 
-export default () => {
+export default function useShopLogin() {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -26,8 +26,8 @@ export default () => {
                     dispatch(
                         shopSetCurrentUser({
                             id: snapshot.id,
-                            ...snapshot.data(),
-                        }),
+                            ...snapshot.data()
+                        })
                     );
                 });
             } else {
@@ -44,4 +44,4 @@ export default () => {
             }
         };
     }, [dispatch]);
-};
+}

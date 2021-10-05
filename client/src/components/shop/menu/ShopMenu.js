@@ -2,8 +2,8 @@ import React from 'react';
 import ShopMenuItem from './item/ShopMenuItem';
 import StyledShopMenu from './StyledShopMenu';
 
-export default ({ items }) =>
-    items ? (
+export default function ShopMenu({ items }) {
+    return items ? (
         <StyledShopMenu>
             {/* для примера использую стайлд компонент вместо нормального:*/
             /* <div className="shop-menu">*/}
@@ -15,3 +15,4 @@ export default ({ items }) =>
     ) : (
         'No shop menu items'
     );
+}

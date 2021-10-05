@@ -5,7 +5,7 @@ import ContentProjectionContentComponent from '../content-projection/ContentProj
 import ContentProjectionComponent from '../content-projection/ContentProjection';
 import useComments from '../hooks/useComments';
 
-export default () => {
+export default function CommentListHooks() {
     const comments = useComments();
 
     const renderComments = comments.map((comment, index) => {
@@ -19,5 +19,5 @@ export default () => {
         );
     });
 
-    return <ul className="comment-list">{renderComments}</ul>;
-};
+    return <ul className='comment-list'>{renderComments}</ul>;
+}

@@ -3,7 +3,7 @@
         "npm run lint -- --max-warnings 0",
         "prettier --write"
     ],
-    "src/**/*.{css,less}": [
+    "src/**/*.{css,less,scss}": [
         "stylelint --fix"
     ]
 }

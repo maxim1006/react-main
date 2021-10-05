@@ -17,14 +17,14 @@ const SkillList = memo(({ isLoading, items, removeItem, onStatusChange, fetchSki
             cancelFetchSkillRequest.cancel('SkillList fetch canceled');
             cancelRemoveSkillRequest.cancel('SkillList remove canceled');
         };
-    }, []);
+    }, [cancelFetchSkillRequest, cancelRemoveSkillRequest, fetchSkills]);
 
     return (
-        <div className="skill-list">
+        <div className='skill-list'>
             {isLoading ? (
                 <MaterialLoaderComponent delay={300} />
             ) : (
-                <ul className="skills-list">
+                <ul className='skills-list'>
                     {Object.values(items).map(item => (
                         <li key={item.id}>
                             <SkillsItem {...item} />
@@ -33,7 +33,7 @@ const SkillList = memo(({ isLoading, items, removeItem, onStatusChange, fetchSki
                             <span onClick={_ => removeItem(item, cancelRemoveSkillRequest)}>&#10008;</span>
 
                             <input
-                                type="checkbox"
+                                type='checkbox'
                                 checked={item.status === 'done'}
                                 ref={el => el && (el.indeterminate = item.status === 'in progress')}
                                 onChange={_ => onStatusChange(item)}
@@ -48,7 +48,7 @@ const SkillList = memo(({ isLoading, items, removeItem, onStatusChange, fetchSki
 
 const mapStateToProps = (state, ownProps) => ({
     items: state.skills.items,
-    isLoading: state.skills.isLoading,
+    isLoading: state.skills.isLoading
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     onStatusChange: item => {
         dispatch(changeSkillStatus(item));
-    },
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillList);

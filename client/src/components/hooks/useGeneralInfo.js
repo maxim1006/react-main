@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Bowser from 'bowser';
 import { debounce, getDevice } from '../../common/helpers/helpers';
 
-export default () => {
+export default function useGeneralInfo() {
     const [device, setDevice] = useState(null);
     const [browser, setBrowser] = useState(null);
 
@@ -30,4 +30,4 @@ export default () => {
     }, []);
 
     return { device, browser };
-};
+}

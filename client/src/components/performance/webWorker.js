@@ -10,13 +10,13 @@ const worker = self => {
         return arr.reduce((e, prev) => e + prev, 0);
     }
 
-    function factorial(num) {
-        if (num === 1) return 1;
-        return num * factorial(num - 1);
-    }
+    // function factorial(num) {
+    //     if (num === 1) return 1;
+    //     return num * factorial(num - 1);
+    // }
 
     self.addEventListener('message', event => {
-        const { eventType, payload } = event.data;
+        const { eventType } = event.data;
 
         if (eventType === 'sum') {
             const start = performance.now();
@@ -24,7 +24,7 @@ const worker = self => {
             console.log('webworker took', performance.now() - start, ' ms');
             postMessage({
                 eventType: 'sumResult',
-                payload: sum(arr),
+                payload: sum(arr)
             });
         }
     });

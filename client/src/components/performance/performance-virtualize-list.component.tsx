@@ -10,7 +10,7 @@ const PerformanceVirtualizeList: React.FC = () => {
     const sizes: any = [];
 
     const { data }: { data: any } = useFetch({
-        url: 'https://jsonplaceholder.typicode.com/posts',
+        url: 'https://jsonplaceholder.typicode.com/posts'
     });
 
     const RowComponent = ({ title, body, style, index }: Partial<PostType>) => {
@@ -20,7 +20,7 @@ const PerformanceVirtualizeList: React.FC = () => {
                 ref.current.style.height = null;
                 sizes[index] = ref.current.offsetHeight;
             }
-        }, []);
+        }, [index]);
 
         return (
             <div style={style} ref={ref}>

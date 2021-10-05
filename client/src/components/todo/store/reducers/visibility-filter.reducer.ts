@@ -3,7 +3,7 @@ import { VisibilityFilterState } from '../state';
 
 const initState: VisibilityFilterState = 'All';
 
-export default (state = initState, action: { type: string; payload: string }) => {
+export default function visibilityFilterReducer(state = initState, action: { type: string; payload: string }) {
     switch (action.type) {
         case VISIBILITY_FILTER_TYPES.SET: {
             return action.payload;
@@ -12,4 +12,4 @@ export default (state = initState, action: { type: string; payload: string }) =>
         default:
             return state;
     }
-};
+}

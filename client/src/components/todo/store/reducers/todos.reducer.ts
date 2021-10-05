@@ -8,11 +8,11 @@ const initState: TodosState = [
     {
         name: 'deeply learn redux',
         completed: false,
-        id: generateUniqueId(),
-    },
+        id: generateUniqueId()
+    }
 ];
 
-export default (state = initState, action: TodoActionTypes) => {
+export default function todosReducer(state = initState, action: TodoActionTypes) {
     switch (action.type) {
         case TODOS_TYPES.TOGGLE: {
             const { id, completed }: ITodo = action.payload as ITodo;
@@ -27,4 +27,4 @@ export default (state = initState, action: TodoActionTypes) => {
         default:
             return state;
     }
-};
+}

@@ -1,74 +1,76 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
 import './drag-n-drop.component.scss';
 
 const DragNDrop = () => {
     const dragRef = useRef<HTMLDivElement>(null!);
     const dragParentRef = useRef<HTMLDivElement>(null!);
-    let isDraggerDragged: boolean;
-    let startX: number;
-    let startY: number;
-    let startOffsetX: number;
-    let startOffsetY: number;
-    let startDragElementBCR: {
+    let isDraggerDragged = useRef<boolean>();
+    let startX = useRef<number>();
+    let startY = useRef<number>();
+    let startOffsetX = useRef<number>();
+    let startOffsetY = useRef<number>();
+    let startDragElementBCR = useRef<{
         left: number;
         top: number;
         width: number;
         height: number;
-    };
+    }>();
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    let documentElementInfo: { width: number; height: number };
+    let documentElementInfo = useRef<{ width: number; height: number }>();
 
-    const onDragStart = (e: any) => {
+    const onDragStart = useCallback((e: any) => {
         e.preventDefault();
-        isDraggerDragged = true;
+        isDraggerDragged.current = true;
 
         if (e.touches) {
-            startX = e.touches[0].pageX;
-            startY = e.touches[0].pageY;
+            startX.current = e.touches[0].pageX;
+            startY.current = e.touches[0].pageY;
         } else {
-            startX = e.pageX;
-            startY = e.pageY;
+            startX.current = e.pageX;
+            startY.current = e.pageY;
         }
 
         const dragElement = dragRef.current;
         const dragParentElement = dragParentRef.current;
-        startDragElementBCR = dragElement.getBoundingClientRect();
+        startDragElementBCR.current = dragElement.getBoundingClientRect();
         const dragParentElementBCR = dragParentElement.getBoundingClientRect();
-        startOffsetX = startDragElementBCR.left - dragParentElementBCR.left;
-        startOffsetY = startDragElementBCR.top - dragParentElementBCR.top;
+        startOffsetX.current = startDragElementBCR.current.left - dragParentElementBCR.left;
+        startOffsetY.current = startDragElementBCR.current.top - dragParentElementBCR.top;
 
         const { clientHeight: height, clientWidth: width } = document.documentElement;
 
-        documentElementInfo = { width, height };
-    };
+        documentElementInfo.current = { width, height };
 
-    const onDrag = (e: any) => {
-        if (isDraggerDragged) {
+        console.log(documentElementInfo.current);
+    }, []);
+
+    const onDrag = useCallback((e: any) => {
+        if (isDraggerDragged.current) {
             let diffX;
             let diffY;
 
             if (e.touches) {
-                diffX = e.touches[0].pageX - startX;
-                diffY = e.touches[0].pageY - startY;
+                diffX = e.touches[0].pageX - startX.current;
+                diffY = e.touches[0].pageY - startY.current;
             } else {
-                diffX = e.pageX - startX;
-                diffY = e.pageY - startY;
+                diffX = e.pageX - startX.current;
+                diffY = e.pageY - startY.current;
             }
 
             let resultX;
             let resultY;
 
-            resultX = diffX + startOffsetX;
-            resultY = diffY + startOffsetY;
+            resultX = diffX + startOffsetX.current;
+            resultY = diffY + startOffsetY.current;
 
             // top border
-            if (diffY + startDragElementBCR.top < 0) {
-                resultY = startOffsetY - startDragElementBCR.top;
+            if (diffY + startDragElementBCR.current.top < 0) {
+                resultY = startOffsetY.current - startDragElementBCR.current.top;
             }
 
             // left border
-            if (diffX + startDragElementBCR.left < 0) {
-                resultX = startOffsetX - startDragElementBCR.left;
+            if (diffX + startDragElementBCR.current.left < 0) {
+                resultX = startOffsetX.current - startDragElementBCR.current.left;
             }
 
             // TODO bottom border
@@ -87,13 +89,13 @@ const DragNDrop = () => {
             // console.log(dragElementBCR.right - clientWidth < 0);
             // console.log(dragElementBCR.bottom - clientHeight < 0);
 
-            dragRef.current.style.transform = `translate3d(${`${resultX}px`}, ${`${resultY}px`}, 0)`;
+            dragRef.current.style.transform = `translate3d(${resultX}px, ${resultY}px, 0)`;
         }
-    };
+    }, []);
 
-    const onDragEnd = () => {
-        isDraggerDragged = false;
-    };
+    const onDragEnd = useCallback(() => {
+        isDraggerDragged.current = false;
+    }, []);
 
     useEffect(() => {
         const dragElement = dragRef.current;
@@ -116,11 +118,11 @@ const DragNDrop = () => {
             dragElement.removeEventListener('touchmove', onDrag);
             dragElement.removeEventListener('touchend', onDragEnd);
         };
-    }, []);
+    }, [onDragStart, onDrag, onDragEnd]);
 
     return (
-        <div className="drag-n-drop" ref={dragParentRef}>
-            <div className="drag-n-drop__element" ref={dragRef}>
+        <div className='drag-n-drop' ref={dragParentRef}>
+            <div className='drag-n-drop__element' ref={dragRef}>
                 Drag me
             </div>
         </div>

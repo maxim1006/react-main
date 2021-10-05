@@ -1,11 +1,13 @@
-import React from 'react';
-import MaterialLoaderComponent from '../loader/MaterialLoader';
-import useLocation from '../hooks/useLocation';
+import React, { memo } from 'react';
+import { useLocation } from '@app/hooks/useLocation';
+import MaterialLoaderComponent from '@app/components/loader/MaterialLoader';
 
-export default () => {
+type ClassBasedHooksProps = {};
+
+const ClassBasedHooks = memo<ClassBasedHooksProps>(function ClassBasedHooks() {
     const { latitude, longitude, errorMessage } = useLocation();
 
-    let position = '';
+    let position = null;
 
     if (latitude) {
         position = (
@@ -20,8 +22,8 @@ export default () => {
         position = (
             <div
                 style={{
-                    position: 'relaive',
-                    pointerEvents: 'none',
+                    position: 'relative',
+                    pointerEvents: 'none'
                 }}
             >
                 {errorMessage || <MaterialLoaderComponent />}
@@ -30,4 +32,6 @@ export default () => {
     }
 
     return position;
-};
+});
+
+export default ClassBasedHooks;

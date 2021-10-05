@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ShopCollectionsPreview from './preview/ShopCollectionsPreview';
 import MaterialLoader from '../../loader/MaterialLoader';
 
-export default () => {
+export default function ShopCollectionsHooks() {
     const shopData = useSelector(state => state.shopData.data);
 
     return shopData ? (
@@ -17,4 +17,4 @@ export default () => {
     ) : (
         <MaterialLoader />
     );
-};
+}

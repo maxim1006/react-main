@@ -1,9 +1,10 @@
 import React, { memo, useEffect, useRef } from 'react';
 import './mouseover-mouseleave.component.scss';
-import { generateUniqueId } from '../../common/helpers/helpers';
+import { generateUniqueId } from '@app/common/helpers/helpers';
+
+let currentElem: HTMLElement | null = null;
 
 const MouseoverMouseleave: React.FC = () => {
-    let currentElem: HTMLElement | null = null;
     const tableRef = useRef<HTMLTableElement>(null!);
 
     useEffect(() => {
@@ -56,22 +57,22 @@ const MouseoverMouseleave: React.FC = () => {
         rows: Array.from({ length: 5 }, (row, index) => {
             const rowKey = generateUniqueId();
             return (
-                <tr className="mouseover-mouseleave__row" key={rowKey}>
+                <tr className='mouseover-mouseleave__row' key={rowKey}>
                     {Array.from({ length: 5 }, (cell, cellIndex) => {
                         const cellKey = generateUniqueId();
                         return (
-                            <td className="mouseover-mouseleave__cell" key={cellKey}>
+                            <td className='mouseover-mouseleave__cell' key={cellKey}>
                                 row: {index} cell {cellIndex}
                             </td>
                         );
                     })}
                 </tr>
             );
-        }),
+        })
     };
 
     return (
-        <table ref={tableRef} className="mouseover-mouseleave__table">
+        <table ref={tableRef} className='mouseover-mouseleave__table'>
             <tbody>{tableView.rows}</tbody>
         </table>
     );

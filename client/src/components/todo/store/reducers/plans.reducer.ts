@@ -5,12 +5,12 @@ import { PlansActionTypes } from '../actions/plans.action-type';
 const initState: PlansState = {
     isLoading: false,
     error: {
-        message: '',
+        message: ''
     },
-    plans: {},
+    plans: {}
 };
 
-export default (state = initState, action: PlansActionTypes): PlansState => {
+export default function plansReducer(state = initState, action: PlansActionTypes): PlansState {
     switch (action.type) {
         case PLANS_TYPES.FETCH_START: {
             return { ...state, isLoading: true };
@@ -29,4 +29,4 @@ export default (state = initState, action: PlansActionTypes): PlansState => {
         default:
             return state;
     }
-};
+}

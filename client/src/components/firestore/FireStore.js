@@ -1,7 +1,7 @@
 // https://firebase.google.com/docs/firestore/
-import { firestore } from '../../firebase/firebase.utils';
+import { firestore } from '@app/firebase/firebase.utils';
 
-export default () => {
+export default function FireStore() {
     // documentRef returns documentSnapshot (свойства exists, data())
     // collectionRef returns querySnapshot
     //
@@ -42,7 +42,7 @@ export default () => {
 
         // нереально использовать из-за большой вложенности
         const collections = await fetch(
-            'https://firestore.googleapis.com/v1/projects/react-main-1006-8eae6/databases/(default)/documents/family',
+            'https://firestore.googleapis.com/v1/projects/react-main-1006-8eae6/databases/(default)/documents/family'
         );
         const collectionsJson = await collections.json();
         console.log('all docs from fetch ', collectionsJson);
@@ -58,7 +58,7 @@ export default () => {
 
             newBatch.set(newDoc, {
                 name: names[index],
-                age: ages[index],
+                age: ages[index]
             });
         });
 
@@ -67,4 +67,4 @@ export default () => {
     })();
 
     return 'Firestore';
-};
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default () => {
+export default function UseFetchPost() {
     const [data, setData] = useState(null);
     const [controller, setController] = useState(null);
 
@@ -16,11 +16,11 @@ export default () => {
                     signal: controller.signal,
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json;charset=utf-8',
+                        'Content-Type': 'application/json;charset=utf-8'
                     },
                     body: JSON.stringify({
-                        message: 'Howdy stranger!',
-                    }),
+                        message: 'Howdy stranger!'
+                    })
                 });
 
                 const jsonData = await response.json();
@@ -39,6 +39,6 @@ export default () => {
     return {
         data,
         setController,
-        controller,
+        controller
     };
-};
+}

@@ -1,5 +1,5 @@
-import { SimpleMap } from '../../models/simple-map.model';
+import { SimpleMap } from '@app/models/simple-map.model';
 
-export default function<T>(data: SimpleMap<T>) {
+export default function mapToArray<T>(data: SimpleMap<T>) {
     return Object.keys(data ? data : {}).map(key => data[key]);
 }

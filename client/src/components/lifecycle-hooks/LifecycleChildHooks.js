@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default ({ prop }) => {
+export default function LifecycleChildHooks({ prop }) {
     // будет выполняться каждый раз при изменении стейта родителя
     console.log('LifecycleChildHooks rendered');
 
@@ -10,4 +10,4 @@ export default ({ prop }) => {
     }, [prop]);
 
     return 'LifecycleChildHooks';
-};
+}

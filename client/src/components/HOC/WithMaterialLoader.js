@@ -7,5 +7,6 @@ import MaterialLoader from '../loader/MaterialLoader';
 
 // return <>{Wrapper ? <Wrapper className={className}>{bannersList}</Wrapper> : bannersList}</>;
 
-export default WrappedComponent => ({ isLoading, ...restProps }) =>
-    isLoading ? <MaterialLoader /> : <WrappedComponent {...restProps} />;
+export default function WithMaterialLoader(WrappedComponent) {
+    return ({ isLoading, ...restProps }) => (isLoading ? <MaterialLoader /> : <WrappedComponent {...restProps} />);
+}

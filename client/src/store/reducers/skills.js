@@ -5,10 +5,10 @@ const initState = {
     searchValue: '',
     items: {},
     filterValue: '',
-    error: null,
+    error: null
 };
 
-export default (state = initState, action) => {
+export default function skillsReducer(state = initState, action) {
     switch (action.type) {
         case SKILL_TYPES.FETCH_SKILLS_START: {
             return { ...state, isLoading: true };
@@ -18,7 +18,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: action.payload,
+                items: action.payload
             };
         }
 
@@ -36,7 +36,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...state.items, [newItem.id]: newItem },
+                items: { ...state.items, [newItem.id]: newItem }
             };
         }
 
@@ -51,7 +51,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...restItems },
+                items: { ...restItems }
             };
         }
 
@@ -65,7 +65,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...state.items, [item.id]: item },
+                items: { ...state.items, [item.id]: item }
             };
         }
 
@@ -76,8 +76,8 @@ export default (state = initState, action) => {
                 ...state,
                 isLoading: false,
                 error: {
-                    ...action.payload,
-                },
+                    ...action.payload
+                }
             };
         }
 
@@ -89,4 +89,4 @@ export default (state = initState, action) => {
             return state;
         }
     }
-};
+}

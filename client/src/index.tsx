@@ -1,12 +1,12 @@
+import '@app/global';
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store/configureStore';
 import { BrowserRouter } from 'react-router-dom';
-import '@app/global';
+import App from '@app/App';
 
 // обычно с редаксом
 render(
@@ -20,12 +20,12 @@ render(
             <App />
         </BrowserRouter>
     </Provider>,
-    document.getElementById('root'),
+    document.getElementById('root')
 );
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept('./App', render);
-}
+// if (process.env.NODE_ENV === 'development' && module.hot) {
+//     module.hot.accept('./App', render);
+// }
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { firestore } from '../../firebase/firebase.utils';
+import { firestore } from '@app/firebase/firebase.utils';
 import { RouteNameMap } from '../shop/shop.data';
-import { shopSetData } from '../../store/actions';
+import { shopSetData } from '@app/store/actions';
 
-export default () => {
+export default function useShopData() {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,8 +21,8 @@ export default () => {
                         title,
                         items,
                         id,
-                        routeName: RouteNameMap.get(title),
-                    },
+                        routeName: RouteNameMap.get(title)
+                    }
                 };
             }, {});
 
@@ -33,4 +33,4 @@ export default () => {
             shopDataUnsubscribe && shopDataUnsubscribe();
         };
     }, [dispatch]);
-};
+}

@@ -7,9 +7,9 @@ const isRequired = a => {
 
 const MethodParameterValidationTipComponent = ({ requiredProp = isRequired() }) => {
     // если раскомментирую будет ошибка, так как проверка сработает
-    const print = (num = isRequired()) => {
-        console.log(`printing ${num}`);
-    };
+    // const print = (num = isRequired()) => {
+    //     console.log(`printing ${num}`);
+    // };
     // print(2); // printing 2
     // print(); // error
     // print(null); // printing null

@@ -35,6 +35,7 @@ function foo(bar: string) {
 }
 
 //  inside your app, if you need { baz: number }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type FooReturn = ReturnType<typeof foo>; // { baz: number }
 
 console.log(window.customProp);
