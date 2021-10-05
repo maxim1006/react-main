@@ -4,49 +4,51 @@
     $this: shop-collection-item;
 
     &__image-wrapper {
-        display: flex;
         position: relative;
+        display: flex;
     }
 
     &__image {
         width: 300px;
-        height: 350px;
         max-width: 100%;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        height: 350px;
         border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
     &__button {
-        opacity: 0;
-        visibility: hidden;
         position: absolute;
+        right: 20px;
         bottom: 20px;
         left: 20px;
-        right: 20px;
         width: 260px;
         height: 40px;
-        background-color: rgba(255, 255, 255, 0.9);
-        transition: all 0.2s;
-        @include font-regular-big;
         color: $main-color;
         text-align: center;
-        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.9);
         outline: none;
+        visibility: hidden;
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.2s;
+
+        @include font-regular-big;
 
         .#{$this}__image-wrapper:hover & {
-            opacity: 1;
             visibility: visible;
+            opacity: 1;
         }
 
         &:hover {
-            background-color: $main-color;
             color: white;
+            background-color: $main-color;
         }
     }
 
     &__price {
         display: flex;
         justify-content: space-between;
+
         @include font-light-big;
     }
 }

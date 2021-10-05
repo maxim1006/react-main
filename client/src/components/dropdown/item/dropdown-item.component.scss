@@ -1,14 +1,14 @@
 @import "../../../assets/styles/common.scss";
 
 .dropdown-item {
-    height: 50px;
     display: flex;
     align-items: center;
-    border-radius: 8px;
-    transition: background 300ms;
+    height: 50px;
     padding: 8px;
     color: #fff;
     text-decoration: none;
+    border-radius: 8px;
+    transition: background 300ms;
 
     &:hover {
         background-color: #525357;
@@ -17,10 +17,10 @@
     &__icon {
         margin-right: 10px;
 
-        &>:first-child {
-            fill: #fff;
+        & > :first-child {
             width: 20px;
             height: 20px;
+            fill: #fff;
         }
     }
 }

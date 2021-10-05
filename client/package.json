@@ -21,7 +21,7 @@
         "postlog": "NODE_ENV=postlog node ./logs.js",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
         "lint:fix": "npm run lint -- --fix",
-        "stylelint": "stylelint src/**/*{.css,.less}",
+        "stylelint": "stylelint src/**/*{.css,.less,.scss}",
         "stylelint:fix": "npm run stylelint -- --fix",
         "rm": "rm -rf ./test"
     },

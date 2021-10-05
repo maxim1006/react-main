@@ -6,6 +6,7 @@
         justify-content: space-between;
         padding-bottom: 10px;
         border-bottom: 1px solid $border-color-light;
+
         @include font-bold;
 
         &-item {
@@ -29,22 +30,25 @@
     }
 
     &__total {
+        position: sticky;
+        bottom: 0;
+        left: 0;
         display: flex;
         justify-content: space-between;
-        position: sticky;
-        left: 0;
-        bottom: 0;
         margin-top: 20px;
-        text-align: right;
-        @include font-light-large;
         font-size: 30px;
+        text-align: right;
         background-color: white;
+
+        @include font-light-large;
     }
 
     &__info {
         display: flex;
         justify-content: center;
+
         @include font-light-large;
+
         color: $error-color;
     }
 }

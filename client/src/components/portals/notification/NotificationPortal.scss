@@ -1,28 +1,29 @@
 @import "../../../assets/styles/common";
 
 .notification {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 20px;
-    
+
     &._error {
-        background-color: $error-color;
         color: white;
+        background-color: $error-color;
+
         @include font-light-big;
     }
 
     &__close {
         position: absolute;
         top: 50%;
-        margin-top: -20px;
         right: 20px;
         width: 40px;
         height: 40px;
+        margin-top: -20px;
         line-height: 40px;
         cursor: pointer;
         opacity: 0.6;

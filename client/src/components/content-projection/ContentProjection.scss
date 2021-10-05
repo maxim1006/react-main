@@ -4,9 +4,10 @@
     padding: 20px;
     border: 2px solid $main-color;
     border-radius: 10px;
+
     @include box-shadow;
 
-    &+& {
+    & + & {
         margin-top: 20px;
     }
 

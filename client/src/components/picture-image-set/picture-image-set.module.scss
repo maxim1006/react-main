@@ -12,6 +12,8 @@
     position: relative;
     display: grid;
     align-items: end;
+    max-width: 500px;
+
     /* Для Chrome и Safari */
     background-image:
         //linear-gradient(
@@ -23,6 +25,7 @@
             url('../../assets/images/cat@2x.webp') 2x,
             url('../../assets/images/cat@1x.webp') 1x
         );
+
     /* Для Firefox */
     background-image:
         linear-gradient(
@@ -39,7 +42,6 @@
             //url('../../assets/images/cat@1x.jpeg') 1x
         );
     background-size: cover;
-    max-width: 500px;
     aspect-ratio: 1 / 1;
 }
 
@@ -53,9 +55,9 @@
     margin: 0;
     padding: 0.7em;
     color: white;
-    line-height: 0.7;
     font-weight: normal;
     font-size: 50px;
+    line-height: 0.7;
 }
 
 .feature__link {
@@ -72,7 +74,6 @@
         left: 0;
         content: '';
     }
-
 
     &:focus-visible {
         outline: none;

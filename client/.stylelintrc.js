@@ -6,14 +6,14 @@ module.exports = {
         'value-keyword-case': [
             'lower',
             {
-                ignoreProperties: ['composes'],
-            },
+                ignoreProperties: ['composes']
+            }
         ],
         'selector-pseudo-class-no-unknown': [
             true,
             {
-                ignorePseudoClasses: ['global', 'local'],
-            },
-        ],
-    },
+                ignorePseudoClasses: ['global', 'local', 'export']
+            }
+        ]
+    }
 };
