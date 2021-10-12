@@ -7,26 +7,21 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
-import Storage from '../components/storage/storage.component';
-import Storage1 from '../components/storage/storage1.component';
-import UpdateEffect from '@app/components/hooks/update-effect.component';
+import WindowSizeHook from '@app/components/hook/window-size/window-size-hook.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Storage'>
-                    <UpdateEffect />
+                <Component title='Hooks'>
+                    <WindowSizeHook />
+                    {/*<OnScreenHook />*/}
+                    {/*<EventListenerHook />*/}
+                    {/*<ScriptHook />*/}
+                    {/*<PreviousHook />*/}
+                    {/*<UpdateEffectHook />*/}
+                    {/*<StorageHook />*/}
                 </Component>
-
-                <Component title='Storage'>
-                    <Storage />
-                    <Storage1 />
-                </Component>
-
-                {/* <Component title="Previous"> */}
-                {/*    <Previous />*/}
-                {/* </Component> */}
 
                 {/* <Component title="Image preload"> */}
                 {/*    <ImagePreload />*/}

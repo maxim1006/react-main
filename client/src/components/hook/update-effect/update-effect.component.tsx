@@ -1,9 +1,9 @@
 import React, { memo, useState } from 'react';
 import { useUpdateEffect } from '@app/hooks/update-effect.hook';
 
-type UpdateEffectProps = {};
+type UpdateEffectHookProps = {};
 
-const UpdateEffect = memo<UpdateEffectProps>(function UpdateEffect() {
+const UpdateEffectHook = memo<UpdateEffectHookProps>(function UpdateEffectHook() {
     const [count, setCount] = useState(10);
     useUpdateEffect(() => console.log(count), [count]);
 
@@ -15,4 +15,4 @@ const UpdateEffect = memo<UpdateEffectProps>(function UpdateEffect() {
     );
 });
 
-export default UpdateEffect;
+export default UpdateEffectHook;

@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
-
-import { useResize } from './resize.hook';
+import { useEventListener } from '@app/hooks/event-listener.hook';
 
 const MEDIA_DEFAULT_MOBILE_MAX_WIDTH = 767;
 const MEDIA_DEFAULT_TABLET_MAX_WIDTH = 1249;
@@ -23,14 +22,21 @@ export const useMedia = (props?: MediaProps) => {
     const initialMediaData = getMediaData(props);
     const [mediaData, setMediaData] = useState<MediaDataType>(initialMediaData);
 
-    const handleWindowResize = useCallback(() => {
-        setMediaData(pevMediaData => ({
-            ...pevMediaData,
-            ...getMediaData(props),
-        }));
-    }, [props]);
+    const handleWindowResize = useCallback(
+        _ => {
+            setMediaData(pevMediaData => ({
+                ...pevMediaData,
+                ...getMediaData(props)
+            }));
+        },
+        [props]
+    );
 
-    useResize(handleWindowResize);
+    useEventListener({
+        eventType: 'resize',
+        callback: handleWindowResize,
+        throttleTime: 1000
+    });
 
     return mediaData;
 };
@@ -44,6 +50,6 @@ const getMediaData = (props?: MediaProps) => {
         mobile: window.innerWidth <= mobileMaxWidth,
         tablet: window.innerWidth > mobileMaxWidth && window.innerWidth <= tabletMaxWidth,
         desktop: window.innerWidth > tabletMaxWidth,
-        desktopFullHD: window.innerWidth > desktopMaxWidth,
+        desktopFullHD: window.innerWidth > desktopMaxWidth
     };
 };

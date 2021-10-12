@@ -1,12 +1,12 @@
 import { MutableRefObject, useCallback, useEffect, useState } from 'react';
 import { debounce } from 'lodash';
-import { useResize } from './resize.hook';
+import { useEventListener } from '@app/hooks/event-listener.hook';
 
 export const SCROLL_DEBOUNCE_TIME = 100;
 
 export function useOverflow<T extends HTMLElement>(
     refElement: MutableRefObject<T | null>,
-    scrollDebounceTime = SCROLL_DEBOUNCE_TIME,
+    scrollDebounceTime = SCROLL_DEBOUNCE_TIME
 ) {
     const [isLeftSideOverflown, setLeftSideOverflown] = useState(false);
     const [isRightSideOverflown, setRightSideOverflown] = useState(false);
@@ -19,17 +19,21 @@ export function useOverflow<T extends HTMLElement>(
             setTopSideOverflown(refElement.current.scrollTop > 0);
 
             setRightSideOverflown(
-                refElement.current.offsetWidth + refElement.current.scrollLeft !== refElement.current.scrollWidth,
+                refElement.current.offsetWidth + refElement.current.scrollLeft !== refElement.current.scrollWidth
             );
 
             setBottomSideOverflown(
-                refElement.current.offsetHeight + refElement.current.scrollTop !== refElement.current.scrollHeight,
+                refElement.current.offsetHeight + refElement.current.scrollTop !== refElement.current.scrollHeight
             );
         }
     }, [refElement]);
 
     // We have to listen resize event as well
-    useResize(detectOverflow);
+    useEventListener({
+        eventType: 'resize',
+        callback: detectOverflow,
+        throttleTime: 1000
+    });
 
     useEffect(() => {
         detectOverflow();
@@ -48,6 +52,6 @@ export function useOverflow<T extends HTMLElement>(
         isLeftSideOverflown,
         isRightSideOverflown,
         isTopSideOverflown,
-        isBottomSideOverflown,
+        isBottomSideOverflown
     };
 }

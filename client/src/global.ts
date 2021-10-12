@@ -3,6 +3,7 @@ declare global {
         initialStore: Record<string, string>;
         localStorage: Storage;
         customProp: string;
+        $: any;
     }
 }
 

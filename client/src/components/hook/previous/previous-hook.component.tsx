@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { usePrevious } from '../../hooks/previous.hook';
+import { usePrevious } from '@app/hooks/previous.hook';
 
 type PreviousProps = {};
 

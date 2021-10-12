@@ -1,9 +1,9 @@
 import React, { memo, useRef } from 'react';
-import { useLocalStorage, useSessionStorage } from '../../hooks/storage';
+import { useLocalStorage, useSessionStorage } from '@app/hooks/storage';
 
-type StorageProps = {};
+type StorageHookProps = {};
 
-const Storage = memo<StorageProps>(function Storage() {
+const StorageHook = memo<StorageHookProps>(function StorageHook() {
     const ref = useRef<HTMLInputElement>();
     const ref1 = useRef<HTMLInputElement>();
     const [value, setSessionStorageValue, removeSessionStorageValue] = useSessionStorage('name');
@@ -14,7 +14,7 @@ const Storage = memo<StorageProps>(function Storage() {
             <section style={{ marginBottom: '30px' }}>
                 <h3>Session storage</h3>
                 <p>Value: {value}</p>
-                <input ref={ref} type="text" />
+                <input ref={ref} type='text' />
                 <button onClick={() => setSessionStorageValue(ref.current.value)}>Set sessionStorage value</button>
                 <button onClick={() => removeSessionStorageValue(ref.current.value)}>
                     Remove sessionStorage value
@@ -24,7 +24,7 @@ const Storage = memo<StorageProps>(function Storage() {
             <section style={{ marginBottom: '30px' }}>
                 <h3>Local storage</h3>
                 <p>Value: {value1}</p>
-                <input ref={ref1} type="text" />
+                <input ref={ref1} type='text' />
                 <button onClick={() => setLocalStorageValue(ref1.current.value)}>Set local value</button>
                 <button onClick={() => removeLocalStorageValue(ref1.current.value)}>Remove local value</button>
             </section>
@@ -32,4 +32,4 @@ const Storage = memo<StorageProps>(function Storage() {
     );
 });
 
-export default Storage;
+export default StorageHook;

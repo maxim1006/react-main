@@ -9,7 +9,7 @@
 
 export const obj = {
     name: 'Max',
-    age: 30,
+    age: 30
 };
 
 let b: keyof typeof obj = 'name'; // let b: "name" | "age
@@ -36,5 +36,9 @@ const funcWithGeneric = <T>(obj: T): T => {
     return obj;
 };
 
+console.log(funcWithGeneric(1));
+
 const foo = <T>(x: T) => x;
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
+// export type ArrayType<T> = T extends Array<infer V> ? V : never;
+// export type Maybe<T> = T | null;
