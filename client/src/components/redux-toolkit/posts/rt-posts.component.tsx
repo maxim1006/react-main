@@ -1,11 +1,11 @@
 import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { rtFetchPostsAction } from '../../../redux-toolkit/rt-slices/rt-posts';
-import { RtRootState } from '../../../redux-toolkit/rt-configureStore';
+import { rtFetchPostsAction } from '@app/redux-toolkit/rt-slices/rt-posts';
+import { AppDispatch, RtRootState } from '@app/redux-toolkit/rt-configureStore';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
 
 const RtPosts = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const posts = useSelector((state: RtRootState) => state.posts);
 
     useEffect(() => {

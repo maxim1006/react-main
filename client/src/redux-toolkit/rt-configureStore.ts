@@ -1,9 +1,10 @@
 import { Action, configureStore, getDefaultMiddleware, ThunkAction } from '@reduxjs/toolkit';
 import rootReducer from './rt-slices';
 import { reduxBatch } from '@manaflair/redux-batch';
-import logger from 'redux-logger';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
 // автоматически подцепляет дев тулы
 
@@ -21,24 +22,31 @@ const persistConfig = {
     version: 1,
     storage,
     // по умолчанию в локалсторадж складывает все, тут указываю что конкретно, также есть blackList
-    whitelist: ['todos'],
+    whitelist: ['todos']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const middleware = [
+    ...getDefaultMiddleware({
+        thunk: {
+            extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL }
+        },
+        immutableCheck: false,
+        serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+        }
+    })
+    // Turn on logger if u need
+    // logger,
+];
+
 const RtStore = configureStore({
     reducer: persistedReducer,
-    middleware: [
-        ...getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
-        logger,
-    ],
+    middleware,
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
-    enhancers: [reduxBatch],
+    enhancers: [reduxBatch]
 });
 
 export const RtPersistor = persistStore(RtStore);
@@ -59,14 +67,15 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
     });
 }
 
+export default RtStore;
+
 export type RtRootState = ReturnType<typeof rootReducer>;
 
 // так как часто использую сразу вынесу сюда чтобы не копи пастить
 export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
 
 export type RootState = ReturnType<typeof RtStore.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, { fetchPolicy: {} }, Action<string>>;
+export type AppDispatch = typeof RtStore.dispatch;
 
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
-
-export default RtStore;

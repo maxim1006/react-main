@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PostModel } from '../models/posts.model';
-import { RtAppThunk } from '../rt-configureStore';
+import { AppThunk } from '../rt-configureStore';
 import customAxios from '../../common/api/axios';
 
 interface PostsStateModel {
@@ -11,7 +11,7 @@ interface PostsStateModel {
 
 const initialState: PostsStateModel = {
     loading: false,
-    entities: [],
+    entities: []
 };
 
 const rtPostsSlice = createSlice({
@@ -23,8 +23,8 @@ const rtPostsSlice = createSlice({
         },
         fetchPostsError(state, { payload }: PayloadAction<Error>) {
             state.error = payload;
-        },
-    },
+        }
+    }
 });
 
 export const { fetchPostsSuccess, fetchPostsError } = rtPostsSlice.actions;
@@ -32,10 +32,10 @@ export const { fetchPostsSuccess, fetchPostsError } = rtPostsSlice.actions;
 export default rtPostsSlice.reducer;
 
 // thunks redux toolkit не умеет поэтому ручками пишем (хорошие новости что включены из коробки)
-export const rtFetchPostsAction = (): RtAppThunk => async (dispatch, getState) => {
+export const rtFetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => async (dispatch, getState) => {
     // console.log(getState());
     try {
-        const { data: posts } = await customAxios.get('https://jsonplaceholder.typicode.com/posts');
+        const { data: posts } = await customAxios.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts');
         dispatch(fetchPostsSuccess(posts));
 
         return posts;

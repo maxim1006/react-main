@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios, { AxiosStatic } from 'axios';
 
-const customAxios: any = axios.create({
-    baseURL: 'http://localhost:3001/api',
+const customAxios = axios.create({
+    baseURL: 'http://localhost:3001/api'
     // headers: {}
-});
+}) as AxiosStatic;
 
-customAxios.CancelToken = axios.CancelToken;
-customAxios.isCancel = axios.isCancel;
+customAxios['CancelToken'] = axios.CancelToken;
+customAxios['isCancel'] = axios.isCancel;
 
 export default customAxios;
 
