@@ -179,10 +179,6 @@ export default function ReactPage() {
                 {/*    <Imports/>*/}
                 {/* </Component>*/}
 
-                {/* <Component title="Parent">*/}
-                {/*    <Parent/>*/}
-                {/* </Component>*/}
-
                 {/* <Component title="Grid"> */}
                 {/*    <Grid />*/}
                 {/* </Component> */}
