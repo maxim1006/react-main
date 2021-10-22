@@ -3,6 +3,7 @@ interface FamilyMemberNameModel {
     value: string;
 }
 
+// eslint-disable-next-line
 function addFamilyMember(name: string | FamilyMemberNameModel) {
     // а с проверкой на typedef все норм
     if (isFamilyMemberNameModel(name)) {

@@ -1,6 +1,6 @@
 export enum Props {
     Prop1 = 'Prop1',
-    Prop2 = 'Prop2',
+    Prop2 = 'Prop2'
 }
 //
 // let a: Props;
@@ -11,14 +11,15 @@ export enum Props {
 // // ошибка
 // a = 123;
 
-const CARD_PAYMENT_METHOD_NAME = "card";
+const CARD_PAYMENT_METHOD_NAME = 'card';
 
 export enum PaymentMethodEnum {
     Card = 'card',
-    None = 'None',
+    None = 'None'
 }
 
+// eslint-disable-next-line
 const paymentMethodNameByPaymentType: { [key in PaymentMethodEnum]: string } = {
     [PaymentMethodEnum.Card]: CARD_PAYMENT_METHOD_NAME,
-    [PaymentMethodEnum.None]: '',
+    [PaymentMethodEnum.None]: ''
 };

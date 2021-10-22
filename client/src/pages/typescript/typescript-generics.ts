@@ -12,6 +12,7 @@ export const obj = {
     age: 30
 };
 
+// eslint-disable-next-line
 let b: keyof typeof obj = 'name'; // let b: "name" | "age
 
 // как пример превращения этой функции в функцию с generics
@@ -38,6 +39,7 @@ const funcWithGeneric = <T>(obj: T): T => {
 
 console.log(funcWithGeneric(1));
 
+// eslint-disable-next-line
 const foo = <T>(x: T) => x;
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
 // export type ArrayType<T> = T extends Array<infer V> ? V : never;

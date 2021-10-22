@@ -19,7 +19,7 @@
         "prelog": "NODE_ENV=prelog node ./logs.js",
         "log": "node ./logs.js",
         "postlog": "NODE_ENV=postlog node ./logs.js",
-        "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
+        "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx --no-ignore",
         "lint:fix": "npm run lint -- --fix",
         "stylelint": "stylelint src/**/*{.css,.less,.scss}",
         "stylelint:fix": "npm run stylelint -- --fix",
