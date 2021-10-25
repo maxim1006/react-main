@@ -3,8 +3,8 @@ import React, { memo, useState } from 'react';
 type TypescriptEnumProps = {};
 
 enum Colors {
-    red = 'red',
-    green = 'green',
+    Red = 'red',
+    Green = 'green'
 }
 
 type TypescriptEnumChildProps = {
@@ -16,7 +16,7 @@ const TypescriptEnumChild = memo<TypescriptEnumChildProps>(({ color }) => {
 });
 
 const TypescriptEnum = memo<TypescriptEnumProps>(() => {
-    const [color, setColor] = useState<Colors>(Colors.red);
+    const [color, setColor] = useState<Colors>(Colors.Red);
 
     return (
         <>
@@ -25,8 +25,8 @@ const TypescriptEnum = memo<TypescriptEnumProps>(() => {
                     setColor(e.target.value as Colors);
                 }}
             >
-                <option value="red">red</option>
-                <option value="green">green</option>
+                <option value='red'>red</option>
+                <option value='green'>green</option>
             </select>
 
             <TypescriptEnumChild color={color} />
