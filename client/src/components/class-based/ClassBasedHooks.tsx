@@ -5,7 +5,10 @@ import MaterialLoaderComponent from '@app/components/loader/MaterialLoader';
 type ClassBasedHooksProps = {};
 
 const ClassBasedHooks = memo<ClassBasedHooksProps>(function ClassBasedHooks() {
-    const { latitude, longitude, errorMessage } = useLocation();
+    const {
+        data: { latitude, longitude },
+        errorMessage
+    } = useLocation();
 
     let position = null;
 

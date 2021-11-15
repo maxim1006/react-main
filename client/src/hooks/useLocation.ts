@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 
 export function useLocation() {
-    const [latitude, setLatitude] = useState(null);
-    const [longitude, setLongitude] = useState(null);
+    const [data, setData] = useState<Coordinates>({} as Coordinates);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const success = ({ coords }: Position) => {
-            setLatitude(coords.latitude);
-            setLongitude(coords.longitude);
+        const success = (position: Position) => {
+            setData(position.coords);
             setLoading(false);
         };
 
@@ -29,8 +27,7 @@ export function useLocation() {
     }, []);
 
     return {
-        latitude,
-        longitude,
+        data,
         errorMessage,
         loading
     };

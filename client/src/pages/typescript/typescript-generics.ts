@@ -44,3 +44,28 @@ const foo = <T>(x: T) => x;
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
 // export type ArrayType<T> = T extends Array<infer V> ? V : never;
 // export type Maybe<T> = T | null;
+
+// пример с дженериками в типах и интерфейсах
+type AuthSignUpGeneratorContainerProps<T> = {
+    prop: T;
+};
+
+type TypeGen1<T extends string | number> = T;
+// eslint-disable-next-line
+let typeGen1: TypeGen1<number> = 1;
+
+// eslint-disable-next-line
+const typeGeneric: AuthSignUpGeneratorContainerProps<string> = { prop: '1' };
+
+interface AuthSignUpGeneratorContainerModel<T> {
+    prop: T;
+}
+// eslint-disable-next-line
+const interfaceGeneric: AuthSignUpGeneratorContainerModel<string> = { prop: '1' };
+
+interface TestGen<T extends string | number> {
+    prop: T;
+}
+
+// eslint-disable-next-line
+let testGen: TestGen<number> = { prop: 1 };

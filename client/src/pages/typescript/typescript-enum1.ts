@@ -17,6 +17,8 @@ export interface ViewRadioModel extends ViewModel<ViewEnum.RADIO> {
     radioProp: string;
 }
 
+// Тут показываю пример как сделать несколько моделей объеидняющий type и в зависимости от этого наплоидить интерфейсов,
+// аля как в редюсерах
 // eslint-disable-next-line
 function trigger(model: ViewType) {
     let prop;

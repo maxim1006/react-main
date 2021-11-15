@@ -16,7 +16,8 @@ export function useWindowSize() {
 
     useEventListener({
         eventType: 'resize',
-        callback
+        callback,
+        debounceTime: 500
     });
 
     return {

@@ -1,8 +1,14 @@
 import { Action, configureStore, getDefaultMiddleware, ThunkAction } from '@reduxjs/toolkit';
-import rootReducer from './rt-slices';
 import { reduxBatch } from '@manaflair/redux-batch';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { combineReducers } from 'redux';
+import counter from '@app/redux-toolkit/rt-slices/rt-counter';
+import todos from '@app/redux-toolkit/rt-slices/rt-todos';
+import visibilityFilter from '@app/redux-toolkit/rt-slices/rt-visibility-filters';
+import issuesDisplay from '@app/redux-toolkit/rt-slices/rt-issues-display';
+import posts from '@app/redux-toolkit/rt-slices/rt-posts';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
@@ -24,6 +30,14 @@ const persistConfig = {
     // по умолчанию в локалсторадж складывает все, тут указываю что конкретно, также есть blackList
     whitelist: ['todos']
 };
+
+const rootReducer = combineReducers({
+    counter,
+    todos,
+    visibilityFilter,
+    issuesDisplay,
+    posts
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -60,22 +74,25 @@ export const RtPersistor = persistStore(RtStore);
 //     enhancers: [reduxBatch],
 // });
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept('./rt-slices', () => {
-        const newRootReducer = require('./rt-slices').default;
-        RtStore.replaceReducer(newRootReducer);
-    });
-}
+// if (process.env.NODE_ENV === 'development' && module.hot) {
+//     module.hot.accept('./rt-slices', () => {
+//         const newRootReducer = require('./rt-slices').default;
+//         RtStore.replaceReducer(newRootReducer);
+//     });
+// }
 
 export default RtStore;
 
 export type RtRootState = ReturnType<typeof rootReducer>;
-
-// так как часто использую сразу вынесу сюда чтобы не копи пастить
-export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
-
 export type RootState = ReturnType<typeof RtStore.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, { fetchPolicy: {} }, Action<string>>;
 export type AppDispatch = typeof RtStore.dispatch;
 
+// пара хуков для работы (необязательно так как обычно использую AppDispatch в дженерике диспатч но все же)
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+// остальные это кастомные типы для работы с thunk
+// так как часто использую сразу вынесу сюда чтобы не копи пастить
+export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, { fetchPolicy: {} }, Action<string>>;
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
