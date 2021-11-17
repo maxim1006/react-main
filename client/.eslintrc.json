@@ -10,9 +10,9 @@
             "experimentalObjectRestSpread": true
         }
     },
+    "ignorePatterns": ["/src/pages/typescript/**/*"],
     // add new rules here
     "rules": {},
-    // override "react-app" rules
     "overrides": [
         {
             "files": ["**/*.(j|t)s?(x)"],
