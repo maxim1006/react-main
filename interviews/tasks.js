@@ -263,3 +263,71 @@
 // }
 //
 // console.log(JSON.stringify(convert(str)));
+
+/**
+ * Необходимо написать функцию, которая на вход принимает урл,
+ * асинхронно ходит по этому урлу GET запросом и возвращает данные (json).
+ * Для получении данных можно использовать $.get или fetch.
+ * Если во время запроса произошла ошибка, то пробовать запросить ещё 5 раз.
+ * Если в итоге информацию получить не удалось, вернуть ошибку "Заданный URL недоступен".
+ */
+// function get(url) {
+//     return privateGet(url, 0);
+// }
+//
+// function privateGet(url, attempt){
+//     return fetch(url).catch(()=>{
+//         if (attempt === 5) {
+//             throw "Заданный URL недоступен";
+//         } else {
+//             return privateGet(url, attempt+1);
+//         }
+//     });
+// }
+//
+// get(url)
+//     .then(res => console.log(res))
+//     .catch(err => console.error(err))
+
+///////////////////////////////////////////////////////////////////// Task
+// const promises = [
+//     delay(50).then(() => 42),
+//     delay(75).then(() => { throw 'nope'; })
+// ];
+//
+// function getResult(promises) {
+//     return Promise.all(promises.map((promise)=>{
+//         return promise.then((v) => {
+//             return {status: "resolved", "value": v};
+//         }).catch((e)=>{
+//             return {"status": "rejected", "value": e};
+//         })
+//     }));
+//     // return Promise.resolve([{"status": "resolved", "value": 42}, {"status": "rejected", "reason": "nope"}]);
+// }
+
+// function getResult(promises) {
+//     return Promise.all(
+//         promises.map(async item => {
+//             try {
+//                 const value = await item;
+//                 return { status: "resolved", value };
+//             } catch (e) {
+//                 return { status: "rejected", reason: e };
+//             }
+//         })
+//     );
+//     // return Promise.resolve([{"status": "resolved", "value": 42}, {"status": "rejected", "reason": "nope"}]);
+// }
+// const getResult = promises =>
+//     Promise.all(
+//         promises.map(item =>
+//             item.then(
+//                 value => ({ status: "resolved", value }),
+//                 e => ({ status: "rejected", reason: e })
+//             )
+//         )
+//     );
+//
+// getResult(promises).then((e) => console.log(e));
+///////////////////////////////////////////////////////////////////// End
