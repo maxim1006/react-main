@@ -1,16 +1,16 @@
 import React, { memo, useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
     makeSelectRtPostsByTitle,
     rtFetchPostsAction,
     rtFetchPostsAction1,
     selectRtPosts
 } from '@app/redux-toolkit/rt-slices/rt-posts';
-import { AppDispatch, useAppSelector } from '@app/redux-toolkit/rt-configureStore';
+import { useAppDispatch, useAppSelector } from '@app/redux-toolkit/rt-configureStore';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
 
 const RtPosts = () => {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const { loading, entities, error } = useSelector(selectRtPosts);
 
     // пример селекта по id

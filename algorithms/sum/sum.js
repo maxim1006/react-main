@@ -34,3 +34,17 @@ console.timeEnd('addR');
 console.time('addP');
 console.log(addP(num));
 console.timeEnd('addP');
+
+
+// function getMaxSubSum(arr) {
+//     let sum = 0;
+//     let current = 0;
+//     for (let i of arr) {
+//         current += i;
+//        sum = Math.max(sum, current);
+//         if (current < 0) current = 0;
+//     }
+//     return sum;
+// }
+//
+// getMaxSubSum([-1, 2, 3, -9])

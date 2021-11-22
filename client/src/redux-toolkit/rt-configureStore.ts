@@ -1,4 +1,4 @@
-import { Action, configureStore, getDefaultMiddleware, ThunkAction } from '@reduxjs/toolkit';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { reduxBatch } from '@manaflair/redux-batch';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -9,6 +9,7 @@ import visibilityFilter from '@app/redux-toolkit/rt-slices/rt-visibility-filters
 import issuesDisplay from '@app/redux-toolkit/rt-slices/rt-issues-display';
 import posts from '@app/redux-toolkit/rt-slices/rt-posts';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { userApi } from '@app/redux-toolkit/query/user.query';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
@@ -36,28 +37,29 @@ const rootReducer = combineReducers({
     todos,
     visibilityFilter,
     issuesDisplay,
-    posts
+    posts,
+    [userApi.reducerPath]: userApi.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleware = [
-    ...getDefaultMiddleware({
-        thunk: {
-            extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL }
-        },
-        immutableCheck: false,
-        serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-        }
-    })
-    // Turn on logger if u need
-    // logger,
-];
-
 const RtStore = configureStore({
     reducer: persistedReducer,
-    middleware,
+    middleware: getDefaultMiddleware =>
+        [
+            ...getDefaultMiddleware({
+                thunk: {
+                    extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL }
+                },
+                immutableCheck: false,
+                serializableCheck: {
+                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+                }
+            })
+            // Turn on logger if u need
+            // logger,
+            // тут обязательно надо через конкат иначе ругается на него тайпскрипт, причем тупо на type в AppThunk почемуто
+        ].concat(userApi.middleware),
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
     enhancers: [reduxBatch]
@@ -93,6 +95,6 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 // остальные это кастомные типы для работы с thunk
 // так как часто использую сразу вынесу сюда чтобы не копи пастить
-export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
+// export type RtAppThunk = ThunkAction<void, RtRootState, unknown, Action<string>>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, { fetchPolicy: {} }, Action<string>>;
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
