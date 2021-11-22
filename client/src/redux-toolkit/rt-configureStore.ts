@@ -46,20 +46,19 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const RtStore = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware =>
-        [
-            ...getDefaultMiddleware({
-                thunk: {
-                    extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL }
-                },
-                immutableCheck: false,
-                serializableCheck: {
-                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-                }
-            })
+        getDefaultMiddleware({
+            thunk: {
+                extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL }
+            },
+            immutableCheck: false,
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+            }
+        })
             // Turn on logger if u need
             // logger,
             // тут обязательно надо через конкат иначе ругается на него тайпскрипт, причем тупо на type в AppThunk почемуто
-        ].concat(userApi.middleware),
+            .concat(userApi.middleware),
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
     enhancers: [reduxBatch]

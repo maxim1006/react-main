@@ -7,12 +7,12 @@ export const createStream = formValues => async (dispatch, getState) => {
         const { userId } = getState().auth;
         const { data: stream } = await axios.post('/streams', {
             ...formValues,
-            userId,
+            userId
         });
 
         dispatch({
             type: CREATE_STREAM,
-            payload: stream,
+            payload: stream
         });
 
         // после того как создал иду на /stream (это для примера)
@@ -28,7 +28,7 @@ export const fetchStreams = _ => async dispatch => {
 
         dispatch({
             type: FETCH_STREAMS,
-            payload: streams,
+            payload: streams
         });
     } catch (e) {
         console.log('fetchStreams get error ', e);
@@ -38,12 +38,12 @@ export const fetchStreams = _ => async dispatch => {
 export const fetchStream = (id, cancelToken) => async dispatch => {
     try {
         const { data: stream } = await axios.get(`/streams/${id}`, {
-            cancelToken,
+            cancelToken
         });
 
         dispatch({
             type: FETCH_STREAM,
-            payload: stream,
+            payload: stream
         });
     } catch (e) {
         console.log('fetchStream get error ', e);
@@ -55,11 +55,11 @@ export const editStream = (id, formValues) => async dispatch => {
         // в делит для примера делаю в парам, тут для примера в url, лучше вообще делать в пут чтобы не
         // получать лишний запрос options
         // patch а не put так как пут обычно перезатирает все проперти кроме id
-        const { data: stream } = await axios.patch(`/streams/${id}`, formValues);
+        const { data: stream } = await axios.put(`/streams/${id}`, formValues);
 
         dispatch({
             type: EDIT_STREAM,
-            payload: stream,
+            payload: stream
         });
 
         // после того как создал иду на /stream (это для примера)
@@ -72,12 +72,12 @@ export const editStream = (id, formValues) => async dispatch => {
 export const deleteStream = id => async dispatch => {
     try {
         const { data: stream } = await axios.delete(`/streams`, {
-            params: { id },
+            params: { id }
         });
 
         dispatch({
             type: DELETE_STREAM,
-            payload: stream,
+            payload: stream
         });
     } catch (e) {
         console.log('deleteStream get error ', e);

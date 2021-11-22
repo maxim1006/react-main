@@ -22,7 +22,7 @@ export const rtFetchPostsAction1 = createAsyncThunk('posts/fetchAll', async (_, 
         const { data: posts } = await customAxios.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts');
         return posts;
     } catch (e) {
-        return thunkApi.rejectWithValue(e.message);
+        return thunkApi.rejectWithValue(e);
     }
 });
 
@@ -80,7 +80,9 @@ export const rtFetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => 
 
         return posts;
     } catch (error) {
-        dispatch(fetchPostsError(error.message));
+        if (error instanceof Error) {
+            dispatch(fetchPostsError(error));
+        }
         console.error('error ', error);
         throw error;
     }

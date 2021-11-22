@@ -1,17 +1,45 @@
-import * as express from "express";
-import * as fsExtra from "fs-extra";
-import * as path from "path";
-import {generateUniqueId} from "../helpers/helpers";
+import * as express from 'express';
+import * as fsExtra from 'fs-extra';
+import * as path from 'path';
+import { generateUniqueId } from '../helpers/helpers';
 
 const rootDir = path.dirname(process.mainModule.filename);
 const streamsPath = path.join(rootDir, 'data', 'streams.json');
 
-
+// CRUD	HTTP
+// Create - POST
+// Read -	GET
+// Update -	PUT
+// Delete -	DELETE
 
 export const streamsRouter = express.Router();
 
+streamsRouter.get('/', async (req, res) => {
+    try {
+        let streams = await fsExtra.readJson(streamsPath);
+
+        res.status(200).json(streams);
+    } catch (e) {
+        res.status(500).json({});
+    }
+});
+
+streamsRouter.get('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        let streams = await fsExtra.readJson(streamsPath);
+
+        setTimeout(() => {
+            res.status(200).json(streams[id]);
+        }, 2000);
+    } catch (e) {
+        res.status(500).json({});
+    }
+});
+
 streamsRouter.post('/', async (req, res) => {
-    const {body} = req;
+    const { body } = req;
     const uniqueStreamId = generateUniqueId();
     const streamValue = {
         id: uniqueStreamId,
@@ -31,42 +59,12 @@ streamsRouter.post('/', async (req, res) => {
     }
 });
 
-
-
-streamsRouter.get('/', async (req, res) => {
-    try {
-        let streams = await fsExtra.readJson(streamsPath);
-
-        res.status(200).json(streams);
-    } catch (e) {
-        res.status(500).json({});
-    }
-});
-
-
-
-streamsRouter.get('/:id', async (req, res) => {
-    const {id} = req.params;
-
-    try {
-        let streams = await fsExtra.readJson(streamsPath);
-
-        setTimeout(() => {
-            res.status(200).json(streams[id]);
-        }, 2000);
-    } catch (e) {
-        res.status(500).json({});
-    }
-});
-
-
-
 streamsRouter.delete('/', async (req, res) => {
-    const {id} = req.query;
+    const { id } = req.query;
 
     try {
         let streams = await fsExtra.readJson(streamsPath);
-        const {[id]: removed, ...newStreams} = streams;
+        const { [id]: removed, ...newStreams } = streams;
 
         await fsExtra.writeJson(streamsPath, newStreams);
 
@@ -76,16 +74,14 @@ streamsRouter.delete('/', async (req, res) => {
     }
 });
 
-
-
-streamsRouter.patch('/:id', async (req, res) => {
-    const {id} = req.params;
-    const {body} = req;
+streamsRouter.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { body } = req;
 
     try {
         const streams = await fsExtra.readJson(streamsPath);
 
-        streams[id] = {...streams[id], ...body};
+        streams[id] = { ...streams[id], ...body };
 
         await fsExtra.writeJson(streamsPath, streams);
 

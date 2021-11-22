@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 
 export function useLocation() {
-    const [data, setData] = useState<Coordinates>({} as Coordinates);
+    const [data, setData] = useState<GeolocationCoordinates>({} as GeolocationCoordinates);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const success = (position: Position) => {
+        const success = (position: GeolocationPosition) => {
             setData(position.coords);
             setLoading(false);
         };
 
-        const error = (e: PositionError) => {
+        const error = (e: GeolocationPositionError) => {
             console.error('Getting position error ', e);
             setErrorMessage(e.message);
             setLoading(false);
