@@ -11,6 +11,8 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
 
     /*RTK Query*/
     const { data: users, error, isLoading, refetch } = userApi.useFetchAllUsersQuery(limit);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [fetchUsersLazy] = userApi.useLazyFetchAllUsersQuery();
     const [createUser, { isLoading: isCreating }] = userApi.useCreateUserMutation();
     const [deleteUser, { isLoading: isDeleting }] = userApi.useDeleteUserMutation();
     const [updateUser, { isLoading: isUpdating }] = userApi.useUpdateUserMutation();
@@ -38,6 +40,21 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
             {(isLoading || isCreating || isDeleting || isUpdating) && <MaterialLoader />}
 
             <div>
+                <div>
+                    Check on number update
+                    {/*сделал для проверки useQuery vs useLazyQuery*/}
+                    <input
+                        type='number'
+                        onChange={e => {
+                            let value = +e.target.value;
+                            // только refetch будет вызывать гет в useQuery
+                            setLimit(value < 0 ? 0 : value);
+                            console.log(e.target.value);
+                            // будет вызывать гет постоянно
+                            // fetchUsersLazy(value);
+                        }}
+                    />
+                </div>
                 <div>
                     <input type='text' ref={ref} /> <button onClick={createUserCb}>Create user</button>
                 </div>
