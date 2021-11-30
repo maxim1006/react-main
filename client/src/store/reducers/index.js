@@ -18,7 +18,7 @@ import saga from './saga';
 // простой вызов combineReducers({}) вызовет ошибку, поэтому передаю в него пустую функцию для стабы пока не
 // будет нормальных редьюсеров, например combineReducers({replaceMe: () => 1})
 // возвраащаю не combineReducers({}) а функцию обертку чтобы прокинуть роутер
-// https://github.com/supasate/connected-react-router
+// @see https://github.com/supasate/connected-react-router
 const createRootReducer = history =>
     combineReducers({
         router: connectRouter(history),
@@ -35,7 +35,7 @@ const createRootReducer = history =>
         shopData,
         skills,
         counter,
-        saga,
+        saga
     });
 
 export default createRootReducer;

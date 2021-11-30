@@ -1,7 +1,7 @@
 import React, { memo, useContext } from 'react';
 import i18nContext from '../../context/i18nContext';
 
-// https://github.com/fnando/i18n-js
+/** @see https://github.com/fnando/i18n-js */
 
 const I18nJsInnerComponent: React.FC = () => {
     const { i18n } = useContext(i18nContext);

@@ -23,3 +23,25 @@ const paymentMethodNameByPaymentType: { [key in PaymentMethodEnum]: string } = {
     [PaymentMethodEnum.Card]: CARD_PAYMENT_METHOD_NAME,
     [PaymentMethodEnum.None]: ''
 };
+
+// пример с энумом в качестве ключей объекта
+enum StepStateEnum {
+    Passed = 'passed',
+    Edit = 'edit',
+    Pristine = 'pristine'
+}
+
+interface StepModel {
+    currentState: StepStateEnum;
+    name: StepNameEnum;
+    stepNumber: number;
+}
+
+enum StepNameEnum {
+    Delivery = 'delivery'
+}
+
+export type StepsType = {
+    [key in StepNameEnum]?: StepModel;
+};
+///////////////////////////

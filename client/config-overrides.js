@@ -39,7 +39,7 @@ module.exports = {
         // add less
         addLess(config, isProd);
 
-        // add https://github.com/ant-design/antd-dayjs-webpack-plugin
+        /** @see https://github.com/ant-design/antd-dayjs-webpack-plugin */
         // plugins.push(new AntdDayjsWebpackPlugin());
 
         // copy build artifacts

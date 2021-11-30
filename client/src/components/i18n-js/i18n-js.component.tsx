@@ -3,7 +3,7 @@ import i18n from './i18n-js.helper';
 import I18nJsInnerComponent from './i18n-js-inner.component';
 import i18nContext from '../../context/i18nContext';
 
-// https://github.com/fnando/i18n-js
+/** @see https://github.com/fnando/i18n-js*/
 // Сделал пример с иннер так как компоненты с мемо не будут обновляться при смене локали надоо использовать контекст
 const I18nJsComponent: React.FC = () => {
     const [locale, setLocale] = useState(i18n.currentLocale());
@@ -19,7 +19,7 @@ const I18nJsComponent: React.FC = () => {
         <i18nContext.Provider value={{ i18n, setValue }}>
             <div>
                 <button
-                    type="button"
+                    type='button'
                     onClick={() => {
                         setLocale(locale === 'ru' ? 'en' : 'ru');
                     }}

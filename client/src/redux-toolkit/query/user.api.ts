@@ -1,14 +1,8 @@
 // обязательно такой импорт!!! иначе не буедет сгенеренного запроса + еще ес 4.1+ нужен
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { UserModel } from '@app/models/user.model';
+import { commonApi } from '@app/redux-toolkit/query/common.api';
 
-export const userApi = createApi({
-    reducerPath: 'userApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3001/api/v1'
-    }),
-    // tagTypes1  это таг тип за которым при инвалидации будет следить кеш rtk query, типо как кеш ГКЛ
-    tagTypes: ['User'],
+export const userApi = commonApi.injectEndpoints({
     endpoints: build => ({
         // в дженерике вторым параметром передаю тип аргумента который ожидает этот хук тут void
         fetchAllUsers: build.query<UserModel[], number | void>({
