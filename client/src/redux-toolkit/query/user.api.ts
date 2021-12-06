@@ -20,14 +20,30 @@ export const userApi = commonApi.injectEndpoints({
             }
         }),
         // в дженерике указываю что вернется а вторым что передаю (<ResultType, QueryArg>)
-        createUser: build.mutation<UserModel, UserModel>({
+        createUser: build.mutation<UserModel, UserModel & { limit: number }>({
             query: user => ({
                 url: '/users',
                 method: 'POST',
                 body: user
             }),
+            // пример пессимистик реквеста
+            async onQueryStarted(user, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+
+                    console.log({ data });
+
+                    dispatch(
+                        userApi.util.updateQueryData('fetchAllUsers', user.limit, draft => {
+                            Array.isArray(draft) && draft.unshift(data);
+                        })
+                    );
+                } catch (e) {
+                    console.error('userApi createUser error', e);
+                }
+            }
             // tagTypes3
-            invalidatesTags: ['User']
+            // invalidatesTags: ['User']
         }),
         updateUser: build.mutation<UserModel, UserModel>({
             query: user => ({

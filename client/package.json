@@ -115,6 +115,7 @@
         "stylelint": "^13.13.1",
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-standard": "^22.0.0",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
         "webpack-cli": "^3.3.10",
         "webpack-dev-server": "3.11.1",
         "sass-loader": "^10.1.1",

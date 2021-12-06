@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PostModel } from '../models/posts.model';
 import { AppThunk, RootState } from '../rt-configureStore';
 import customAxios from '../../common/api/axios';
 import { createSelector } from 'reselect';
+import { PostModel } from '@app/models/posts.model';
 
 interface PostsStateModel {
     loading: boolean;

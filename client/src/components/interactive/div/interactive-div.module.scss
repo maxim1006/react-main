@@ -1,0 +1,7 @@
+@import 'src/assets/styles/mixins';
+
+.div {
+    cursor: pointer;
+
+    @include outline-on-focus;
+}

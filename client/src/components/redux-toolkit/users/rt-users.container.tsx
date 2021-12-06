@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
-import { userApi } from '@app/redux-toolkit/query/user.query';
+import { userApi } from '@app/redux-toolkit/query/user.api';
 import MaterialLoader from '../../loader/MaterialLoader';
 
 type RtUsersContainerProps = {};
@@ -23,13 +23,13 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
     const createUserCb = () => {
         if (!ref.current.value) return;
 
-        createUser({ name: ref.current.value });
+        createUser({ name: ref.current.value, limit });
     };
 
     useEffect(() => {
         setTimeout(() => {
             // в данном случае обновит список только этого компонента а в RtUsersContainer1 так и будет список из 10
-            setLimit(3);
+            // setLimit(3);
         }, 3000);
     }, []);
 

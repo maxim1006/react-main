@@ -1,3 +1,3 @@
-import { ITodo } from '../../../../models/todo.model';
+import { TodoModel } from '../../../../models/todo.model';
 
-export type TodosState = ITodo[];
+export type TodosState = TodoModel[];

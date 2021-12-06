@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TodoModel } from '../models/todo.model';
+import { TodoModel } from '@app/models/todo.model';
 
 // createSlice and createReducer wrap your function with produce from the Immer library.
 /** @see https://immerjs.github.io/immer/docs/introduction*/
@@ -19,9 +19,9 @@ const rtTodosSlice = createSlice({
             },
             // если нужно кастомно подготовить то что прокидываю в экшн, по умолчанию все что передасться при
             // вызове экшена попадет в пейлоад, однако если нужен кастом делаю prepare
-            prepare: (text: string): { payload: TodoModel } => ({ payload: { text, id: nextTodoId++ } })
+            prepare: (text: string): { payload: TodoModel } => ({ payload: { text, id: '' + nextTodoId++ } })
         },
-        rtToggleTodo(state, { payload }: PayloadAction<number>) {
+        rtToggleTodo(state, { payload }: PayloadAction<string>) {
             const todo = state.find(todo => todo.id === payload);
 
             if (todo) {

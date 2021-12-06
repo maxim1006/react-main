@@ -1,7 +1,7 @@
 import { generateUniqueId } from '../../../../common/helpers/helpers';
 import { TODOS_TYPES } from '../actions';
 import { TodosState } from '../state';
-import { ITodo } from '../../../../models/todo.model';
+import { TodoModel } from '../../../../models/todo.model';
 import { TodoActionTypes } from '../actions/todo.action-type';
 
 const initState: TodosState = [
@@ -15,9 +15,9 @@ const initState: TodosState = [
 export default function todosReducer(state = initState, action: TodoActionTypes) {
     switch (action.type) {
         case TODOS_TYPES.TOGGLE: {
-            const { id, completed }: ITodo = action.payload as ITodo;
+            const { id, completed }: TodoModel = action.payload as TodoModel;
 
-            return state.map((todo: ITodo) => (todo.id === id ? { ...todo, completed: !completed } : todo));
+            return state.map((todo: TodoModel) => (todo.id === id ? { ...todo, completed: !completed } : todo));
         }
 
         case TODOS_TYPES.ADD: {

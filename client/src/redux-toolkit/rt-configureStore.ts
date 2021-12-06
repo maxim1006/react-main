@@ -9,7 +9,7 @@ import visibilityFilter from '@app/redux-toolkit/rt-slices/rt-visibility-filters
 import issuesDisplay from '@app/redux-toolkit/rt-slices/rt-issues-display';
 import posts from '@app/redux-toolkit/rt-slices/rt-posts';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { userApi } from '@app/redux-toolkit/query/user.query';
+import { commonApi } from '@app/redux-toolkit/query/common.api';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
@@ -38,7 +38,7 @@ const rootReducer = combineReducers({
     visibilityFilter,
     issuesDisplay,
     posts,
-    [userApi.reducerPath]: userApi.reducer
+    [commonApi.reducerPath]: commonApi.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -58,7 +58,7 @@ const RtStore = configureStore({
             // Turn on logger if u need
             // logger,
             // тут обязательно надо через конкат иначе ругается на него тайпскрипт, причем тупо на type в AppThunk почемуто
-            .concat(userApi.middleware),
+            .concat(commonApi.middleware),
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
     enhancers: [reduxBatch]

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { userApi } from '@app/redux-toolkit/query/user.query';
+import { userApi } from '@app/redux-toolkit/query/user.api';
 import MaterialLoader from '../../loader/MaterialLoader';
 
 type RtUsersContainerProps = {};

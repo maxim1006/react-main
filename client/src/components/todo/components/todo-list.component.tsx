@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import Todo from './todo.component';
-import { ITodo } from '../../../models/todo.model';
+import { TodoModel } from '../../../models/todo.model';
 
 export interface ITodoListProps {
     currentFilter: string;
@@ -15,7 +15,7 @@ const TodoList = ({ todos, currentFilter, onChange }: ITodoListProps) => (
                 <li key={id}>
                     <Todo name={name} completed={completed} onChange={() => onChange(id, completed)} />
                 </li>
-            ),
+            )
         )}
     </ul>
 );
@@ -24,7 +24,7 @@ export default memo(TodoList);
 
 // helpers
 function getFilteredTodos(todos: any, filter: string) {
-    return todos.filter((todo: ITodo) => {
+    return todos.filter((todo: TodoModel) => {
         switch (filter) {
             case 'Completed': {
                 return todo.completed;

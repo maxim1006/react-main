@@ -1,10 +1,10 @@
 import React, { ChangeEvent, memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { rtAddTodo, rtToggleTodo } from '../../../redux-toolkit/rt-slices/rt-todos';
-import { rtSetVisibilityFilter, rtVisibilityFilters } from '../../../redux-toolkit/rt-slices/rt-visibility-filters';
-import { selectRtVisibleTodos } from '../../../redux-toolkit/rt-selectors';
-import { RtRootState } from '../../../redux-toolkit/rt-configureStore';
-import { TodoModel } from '../../../redux-toolkit/models/todo.model';
+import { rtAddTodo, rtToggleTodo } from '@app/redux-toolkit/rt-slices/rt-todos';
+import { rtSetVisibilityFilter, rtVisibilityFilters } from '@app/redux-toolkit/rt-slices/rt-visibility-filters';
+import { selectRtVisibleTodos } from '@app/redux-toolkit/rt-selectors';
+import { RtRootState } from '@app/redux-toolkit/rt-configureStore';
+import { TodoModel } from '@app/models/todo.model';
 
 const RtTodos = () => {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const RtTodos = () => {
         dispatch(rtSetVisibilityFilter(filter));
     };
 
-    const onTodoClick = (id: number) => () => {
+    const onTodoClick = (id: string) => () => {
         dispatch(rtToggleTodo(id));
     };
 
@@ -34,11 +34,11 @@ const RtTodos = () => {
                 }}
             >
                 <input value={todoText} onChange={onChange} />
-                <button type="submit">Add Todo</button>
+                <button type='submit'>Add Todo</button>
             </form>
             <div>
                 {Object.values(rtVisibilityFilters).map((filter, index) => (
-                    <a onClick={onFilterClick(filter)} href="/" style={{ marginRight: 5 }} key={index}>
+                    <a onClick={onFilterClick(filter)} href='/' style={{ marginRight: 5 }} key={index}>
                         {filter}
                     </a>
                 ))}

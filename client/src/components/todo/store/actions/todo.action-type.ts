@@ -1,5 +1,5 @@
 import { TODOS_TYPES } from './types';
-import { ITodo } from '../../../../models/todo.model';
+import { TodoModel } from '../../../../models/todo.model';
 
 interface ToggleTodoActionType {
     type: typeof TODOS_TYPES.TOGGLE;
@@ -11,7 +11,7 @@ interface ToggleTodoActionType {
 
 interface AddTodoActionType {
     type: typeof TODOS_TYPES.ADD;
-    payload: ITodo;
+    payload: TodoModel;
 }
 
 export type TodoActionTypes = ToggleTodoActionType | AddTodoActionType;

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IssuesDisplayModel, IssuesDisplayRepoModel, IssuesDisplayStateModel } from '../models/issues-display.model';
+import { IssuesDisplayModel, IssuesDisplayRepoModel, IssuesDisplayStateModel } from '@app/models/issues-display.model';
 
 let initialState: IssuesDisplayStateModel = {
     org: 'rails',
     repo: 'rails',
     page: 1,
     displayType: 'issues',
-    issueId: null,
+    issueId: null
 };
 
 const issuesDisplaySlice = createSlice({
@@ -25,8 +25,8 @@ const issuesDisplaySlice = createSlice({
             const { displayType, issueId = null } = payload;
             state.displayType = displayType;
             state.issueId = issueId;
-        },
-    },
+        }
+    }
 });
 
 export const { rtDisplayRepo, rtSetCurrentPage, rtSetCurrentDisplayType } = issuesDisplaySlice.actions;
