@@ -2,7 +2,7 @@ export function convertArrayToObjById(arr) {
     return arr.reduce((acc, current) => {
         return {
             ...acc,
-            [current.id]: current,
+            [current.id]: current
         };
     }, {});
 }
@@ -33,26 +33,32 @@ export function getDevice(documentWidth) {
     }
 }
 
-export function throttle(fn, time) {
-    let id;
-    let first;
+export function throttle(func, ms) {
+    let isThrottled = false,
+        savedArgs,
+        savedThis;
 
-    return function f(...args) {
-        if (!id) {
-            fn.apply(this, args);
-
-            id = setTimeout(() => {
-                id = null;
-
-                if (first) {
-                    f.apply(this, args);
-                    first = false;
-                }
-            }, time);
-        } else {
-            first = true;
+    function wrapper() {
+        if (isThrottled) {
+            savedArgs = arguments;
+            savedThis = this;
+            return;
         }
-    };
+
+        func.apply(this, arguments);
+
+        isThrottled = true;
+
+        setTimeout(function() {
+            isThrottled = false;
+            if (savedArgs) {
+                wrapper.apply(savedThis, savedArgs);
+                savedArgs = savedThis = null;
+            }
+        }, ms);
+    }
+
+    return wrapper;
 }
 
 export function debounce(func, time = 0) {

@@ -7,8 +7,8 @@ export const delay = (time, ...args) =>
                 console.log('delay', { time, args });
             },
             time,
-            ...args,
-        ),
+            ...args
+        )
     );
 
 // getInteger
@@ -37,3 +37,44 @@ export const getType = item =>
         .call(item)
         .slice(8, -1)
         .toLowerCase();
+
+export function throttle(func, ms) {
+    let isThrottled = false,
+        savedArgs,
+        savedThis;
+
+    function wrapper() {
+        if (isThrottled) {
+            savedArgs = arguments;
+            savedThis = this;
+            return;
+        }
+
+        func.apply(this, arguments);
+
+        isThrottled = true;
+
+        setTimeout(function() {
+            isThrottled = false;
+            if (savedArgs) {
+                wrapper.apply(savedThis, savedArgs);
+                savedArgs = savedThis = null;
+            }
+        }, ms);
+    }
+
+    return wrapper;
+}
+
+export function debounce(func, time = 0) {
+    let timeout;
+
+    return function(...args) {
+        const context = this;
+
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(context, args);
+        }, time);
+    };
+}
