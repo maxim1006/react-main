@@ -1,12 +1,12 @@
-import React, { memo, useRef } from 'react';
-import { UseContextHook } from './use-context.hook';
+import React, { memo, useContext, useRef } from 'react';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
+import { ExampleContext } from '@app/components/hooks/use-context/example.context';
 
 type UseContextContainerProps = {};
 
 const UseContextContainer = memo<UseContextContainerProps>(() => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const { result, getInfo, loading } = UseContextHook();
+    const { result, getInfo, loading } = useContext(ExampleContext);
 
     return (
         <>
@@ -15,11 +15,11 @@ const UseContextContainer = memo<UseContextContainerProps>(() => {
                 <MaterialLoaderComponent />
             ) : (
                 <>
-                    Title: {result?.title}, Completed: {result?.completed.toString()}
+                    Title: {result?.name}, Completed: {result?.completed.toString()}
                 </>
             )}
 
-            <input ref={inputRef} type="text" />
+            <input ref={inputRef} type='text' />
             <button
                 disabled={loading}
                 onClick={() => {

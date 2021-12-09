@@ -331,3 +331,10 @@
 //
 // getResult(promises).then((e) => console.log(e));
 ///////////////////////////////////////////////////////////////////// End
+
+// convert to an object
+// const arr = [
+//     {name: 'width', value: 10},
+//     {name: 'height', value: 20}
+// ];
+// На выходе объект {width: 10, height: 20}
