@@ -39,3 +39,15 @@ function foo(bar: string) {
 type FooReturn = ReturnType<typeof foo>; // { baz: number }
 
 console.log(window.customProp);
+
+// Как убрать пару свойств из типа и добавить новые
+interface BaseOmitModel {
+    name: string;
+    id: string;
+    items: { text: string }[];
+}
+
+export interface NewOmitModel extends Omit<BaseOmitModel, 'id' | 'items'> {
+    id: number;
+    items: { value: unknown }[];
+}
