@@ -116,6 +116,10 @@ export const isLocalStorageEnabled = () => {
     return 'available';
 };
 
+export function arraysEqual(arr1, arr2) {
+    return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
+}
+
 // Helpers
 function getRandomSymbols4() {
     return Math.floor((1 + Math.random()) * 0x10000)

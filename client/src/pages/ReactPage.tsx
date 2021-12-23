@@ -7,6 +7,7 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
+import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
 
 export default function ReactPage() {
     return (
@@ -42,9 +43,9 @@ export default function ReactPage() {
                 {/*    <SessionStorageParent />*/}
                 {/* </Component> */}
 
-                {/* <Component title="PictureImageSet">*/}
-                {/*    <PictureImageSet />*/}
-                {/* </Component>*/}
+                <Component title='PictureImageSet'>
+                    <PictureImageSet />
+                </Component>
 
                 {/* <Component title="Lazy"> */}
                 {/*    <Lazy />*/}
