@@ -23,5 +23,15 @@ export const obj: ObjModel = {
     f1: function() {
         return '1';
     },
-    f2: () => 1,
+    f2: () => 1
 };
+
+// пример интерфейса для конструктора
+interface CallOrConstruct {
+    new (s: string): Date;
+    (n: number): number;
+}
+
+function fn(ctor: CallOrConstruct, isFunction: boolean): number | Date {
+    return isFunction ? ctor(1) : new ctor('hello');
+}

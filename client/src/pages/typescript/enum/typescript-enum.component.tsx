@@ -2,13 +2,13 @@ import React, { memo, useState } from 'react';
 
 type TypescriptEnumProps = {};
 
-enum Colors {
+enum ColorsEnum {
     Red = 'red',
     Green = 'green'
 }
 
 type TypescriptEnumChildProps = {
-    color: Colors;
+    color: ColorsEnum;
 };
 
 const TypescriptEnumChild = memo<TypescriptEnumChildProps>(({ color }) => {
@@ -16,13 +16,13 @@ const TypescriptEnumChild = memo<TypescriptEnumChildProps>(({ color }) => {
 });
 
 const TypescriptEnum = memo<TypescriptEnumProps>(() => {
-    const [color, setColor] = useState<Colors>(Colors.Red);
+    const [color, setColor] = useState<ColorsEnum>(ColorsEnum.Red);
 
     return (
         <>
             <select
                 onChange={e => {
-                    setColor(e.target.value as Colors);
+                    setColor(e.target.value as ColorsEnum);
                 }}
             >
                 <option value='red'>red</option>

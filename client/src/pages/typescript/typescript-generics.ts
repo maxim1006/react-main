@@ -1,4 +1,4 @@
-// Replace any type example
+// Пример объекта
 // export interface GModel<T> {
 //     [prop: string]: T;
 // }
@@ -7,12 +7,49 @@
 //     a: "1"
 // };
 
+// Пример функции
+// function identity<Type>(arg: T): T {
+//     return arg;
+// }
+//
+// let myIdentity: <T>(arg: T) => T = identity;
+
+// Пример интерфейса с инит значением и примером на constrain с добавлением .length
+// interface Lengthwise {
+//     length: number;
+// }
+//
+// interface GenericIdentityFn<T extends Lengthwise = number[]> {
+//     (arg: T): T;
+// }
+//
+// function identity<T>(arg: T): T {
+//     return arg;
+// }
+//
+// let myIdentityString: GenericIdentityFn<string> = identity;
+// let myIdentityNumber: GenericIdentityFn = identity;
+
+// Пример класса
+// class GenericNumber<T> {
+//     zeroValue: T;
+//     add: (x: T, y: T) => T;
+// }
+//
+// let myGenericNumber = new GenericNumber<number>();
+// myGenericNumber.zeroValue = 0;
+// myGenericNumber.add = function (x, y) {
+//     return x + y;
+// };
+
+// пример с объектами
 export const obj = {
     name: 'Max',
     age: 30
 };
 
 // eslint-disable-next-line
+// тут typeof потому что obj это value а не type
 let b: keyof typeof obj = 'name'; // let b: "name" | "age
 
 // как пример превращения этой функции в функцию с generics

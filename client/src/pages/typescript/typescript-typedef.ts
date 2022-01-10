@@ -1,3 +1,23 @@
+// from the docs (type predicates)
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+
+function isFish(pet: Fish | Bird): pet is Fish {
+    return (pet as Fish).swim !== undefined;
+}
+
+function getSmallPet(): Fish | Bird {
+    return { fly: () => {} };
+}
+
+let pet = getSmallPet();
+
+if (isFish(pet)) {
+    pet.swim();
+} else {
+    pet.fly();
+}
+
 interface FamilyMemberNameModel {
     lang: string;
     value: string;
@@ -16,6 +36,10 @@ function addFamilyMember(name: string | FamilyMemberNameModel) {
 
 export default function isFamilyMemberNameModel(name: string | FamilyMemberNameModel): name is FamilyMemberNameModel {
     return (name as FamilyMemberNameModel).lang !== undefined;
+}
+
+export function isFamilyMember(name: string | FamilyMemberNameModel): name is FamilyMemberNameModel {
+    return !!(name as FamilyMemberNameModel).lang;
 }
 
 // Для того чтобы проверить на собственные созданные интерфейсы использую технику создания typedef функции

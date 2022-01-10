@@ -2,7 +2,11 @@ type MyType = {
     prop: number;
 };
 
-interface MyModel extends MyType {
+type MyType2 = {
+    prop2?: number;
+};
+
+interface MyModel extends MyType, MyType2 {
     prop1: string;
 }
 

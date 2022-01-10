@@ -8,11 +8,20 @@ import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
 import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
+import UseUpdatableState from '@app/components/hooks/use-updatable-state/use-updatable-state.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <Component title='Use updatable state'>
+                    <UseUpdatableState />
+                </Component>
+
+                {/*<Component title='Use state'>*/}
+                {/*    <UseState />*/}
+                {/*</Component>*/}
+
                 <Component title='Hooks'>
                     {/*<WindowSizeHook />*/}
                     {/*<OnScreenHook />*/}
@@ -166,10 +175,10 @@ export default function ReactPage() {
                 {/*    <FireStore/>*/}
                 {/* </Component>*/}
 
-                {/* <Component title="AsyncSetState">*/}
-                {/*    <AsyncSetState increaseNumber={1}/>*/}
-                {/*    <AsyncSetStateHooks increaseNumber={1}/>*/}
-                {/* </Component>*/}
+                {/*<Component title="AsyncSetState">*/}
+                {/*   <AsyncSetState increaseNumber={1}/>*/}
+                {/*   <AsyncSetStateHooks increaseNumber={1}/>*/}
+                {/*</Component>*/}
 
                 {/* <Component title="Monsters">*/}
                 {/*    <Monsters/>*/}

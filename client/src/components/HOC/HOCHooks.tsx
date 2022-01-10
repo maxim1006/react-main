@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { WithMaterialLoader } from '@app/components/HOC/WithMaterialLoader';
+import { withMaterialLoader } from '@app/components/HOC/WithMaterialLoader';
 import useFirestoreGetDocs from '@app/components/hooks/useFirestoreGetDocs';
 import FamilyList from '@app/components/family/FamilyList';
 
@@ -10,7 +10,7 @@ type HOCHooksProps = {
     family: any;
 };
 
-const HOCHooks = WithMaterialLoader(
+const HOCHooks = withMaterialLoader(
     memo<HOCHooksProps>(function HOCHooks() {
         const family = useFirestoreGetDocs('family');
         return <FamilyList family={family} />;

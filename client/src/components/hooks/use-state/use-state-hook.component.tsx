@@ -26,17 +26,42 @@ const UseState = memo<UseStateProps>(() => {
     }, [counter]);
 
     const onClick = () => {
-        setCounter(value => ++value);
+        // setCounter(value => ++value);
+        //
+        // setObj(oldValue => {
+        //     oldValue.a += 1;
+        //
+        //     return { ...oldValue };
+        // });
+    };
 
-        setObj(oldValue => {
-            oldValue.a += 1;
+    const onBatchClick = () => {
+        // в коллбеках батчинг вызовется только 1 раз
+        setCounter(10);
+        setCounter(100);
+        setCounter(1000);
+        setCounter(v => v + 1);
+        console.log(counter);
+    };
 
-            return { ...oldValue };
-        });
+    const onNotBatchClick = () => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(res => res.json())
+            .then(data => {
+                // тут не батчинга и ререндеринг произойдет много раз
+                console.log(data);
+                setCounter(10);
+                setCounter(100);
+                setCounter(1000);
+                setCounter(v => v + 1);
+                console.log(counter);
+            });
     };
 
     return (
         <>
+            <button onClick={onBatchClick}>batch</button>
+            <button onClick={onNotBatchClick}>not batch</button>
             {fState}
             <button onClick={onClick}>increase</button>
             {/*/ / TODO implement on friday*/}

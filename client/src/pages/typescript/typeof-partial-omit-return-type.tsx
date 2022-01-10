@@ -3,6 +3,24 @@ import React from 'react';
 // @ts-ignore
 import { ButtonBase } from '@material-ui/core';
 
+// примеры typeof
+// const MyArray = [
+//     { name: "Alice", age: 15 },
+//     { name: "Bob", age: 23 },
+//     { name: "Eve", age: 38 },
+// ];
+//
+// // так могу получить тип элемента в массиве
+// type Person = typeof MyArray[number];
+//
+// type Person1 = {
+//     name: string;
+//     age: number;
+// }
+// type Age = typeof MyArray[number]["age"];
+// type Age2 = Person1["age"];
+
+// typeof с объектами
 export const o = {
     foo: 1,
     bar: 2
@@ -51,3 +69,22 @@ export interface NewOmitModel extends Omit<BaseOmitModel, 'id' | 'items'> {
     id: number;
     items: { value: unknown }[];
 }
+
+// конвертировать одно свойство из опционального в обязательное
+interface Book {
+    author?: string;
+    numPages: number;
+    price: number;
+    id: string;
+}
+
+// ✅ Article is a Book without a Page
+type Article = Omit<Book, 'numPages'>;
+
+// ✅ We might need a readonly verison of the Book Type
+type ReadonlyBook = Readonly<Book>;
+
+// ✅ A Book that must have an author
+type NonAnonymousBook = Omit<Book, 'author'> & Required<Pick<Book, 'author'>>;
+type NonAnonymousBook1 = Omit<Book, 'id'> & Required<Pick<Book, 'id'>>;
+type NonAnonymousBook2 = Omit<Book, 'id'> & Partial<Pick<Book, 'id'>>;

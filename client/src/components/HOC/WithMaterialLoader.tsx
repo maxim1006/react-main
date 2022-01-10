@@ -11,7 +11,7 @@ type WithMaterialLoaderProps = {
     isLoading: boolean;
 };
 
-export const WithMaterialLoader = <P extends Record<string, unknown>>(
+export const withMaterialLoader = <P extends Record<string, unknown>>(
     Component: React.ComponentType<P>
 ): React.FC<P & WithMaterialLoaderProps> => ({ isLoading, ...restProps }) =>
     isLoading ? <MaterialLoader /> : <Component {...(restProps as P)} />;
