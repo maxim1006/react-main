@@ -1,7 +1,11 @@
 export enum ViewEnum {
-    TOGGLE,
-    RADIO
+    Toggle = 'toggle',
+    Radio = 'radio'
 }
+
+type ViewEnumT = {
+    [key in keyof typeof ViewEnum]: typeof ViewEnum[key];
+};
 
 export interface ViewModel<T extends ViewEnum> {
     type: T;
@@ -9,11 +13,11 @@ export interface ViewModel<T extends ViewEnum> {
 
 export type ViewType = ViewToggleModel | ViewRadioModel;
 
-export interface ViewToggleModel extends ViewModel<ViewEnum.TOGGLE> {
+export interface ViewToggleModel extends ViewModel<ViewEnum.Toggle> {
     toggleProp: string;
 }
 
-export interface ViewRadioModel extends ViewModel<ViewEnum.RADIO> {
+export interface ViewRadioModel extends ViewModel<ViewEnum.Radio> {
     radioProp: string;
 }
 
@@ -24,12 +28,12 @@ function trigger(model: ViewType) {
     let prop;
 
     switch (model.type) {
-        case ViewEnum.RADIO: {
+        case ViewEnum.Radio: {
             prop = model.radioProp;
             break;
         }
 
-        case ViewEnum.TOGGLE: {
+        case ViewEnum.Toggle: {
             prop = model.toggleProp;
             break;
         }

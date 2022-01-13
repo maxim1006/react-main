@@ -1,0 +1,17 @@
+{
+    "name": "simple",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+        "ts": "tsc-watch -p ./ --outDir ./dist --compiler ./node_modules/typescript/bin/tsc",
+        "ts:node": "tsc-watch -p ./ --outDir ./dist --onSuccess \"node ./dist/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler ./node_modules/typescript/bin/tsc",
+        "ts:serve": "ws --spa ./src/index.html --compress --open --static.maxage -1"
+    },
+    "author": "Max Maximov",
+    "license": "ISC",
+    "dependencies": {
+        "tsc-watch": "^4.6.0",
+        "typescript": "^4.5.4"
+    }
+}

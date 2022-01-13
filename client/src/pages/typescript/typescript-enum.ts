@@ -38,10 +38,17 @@ interface StepModel {
 }
 
 enum StepNameEnum {
-    Delivery = 'delivery'
+    Delivery = 'delivery',
+    Delivery1 = 'delivery1'
 }
 
 export type StepsType = {
-    [key in StepNameEnum]?: StepModel;
+    [key in keyof typeof StepNameEnum]?: StepModel;
 };
+
+export type StepsTypeReadonly = {
+    [key in keyof typeof StepNameEnum]: typeof StepNameEnum[key];
+};
+
+export type StepsTypePartial = Partial<StepsTypeReadonly>;
 ///////////////////////////

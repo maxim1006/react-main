@@ -54,12 +54,13 @@ type LazyUser = Getters<User>; // {myId: string, myName: string, myAge: number}
 type RemoveName<T> = {[P in keyof T as Exclude<P, 'name'>]: T[P]}
 type UserWithoutName = RemoveName<User>; // {age: number, location: string}
 
-// могу итерироваться как угодно по значениям объекта
+// могу итерироваться как угодно по значениям объекта, тут P === T
 type Config<T extends {id: string}> = {[P in T as T['id']]: (e: P) => void};
 type Configed = Config<MaybeUser>;
-let obj2: Configed = {prop: (e: MaybeUser) => {}}
+let obj2: Configed = { id: (e: MaybeUser) => {}}
 
 // могу сделать conditional type which returns either a true or false depending on whether an object has the property
 type ConditionalUserName<T> = { [P in keyof T]: T[P] extends {name: string} ? true : false}
+type ConditionalUserNameT = ConditionalUserName<{anonymousUser: {name: unknown}, user: {name: string}}>;
 
 export default {};

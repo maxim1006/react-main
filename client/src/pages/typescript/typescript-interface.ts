@@ -1,4 +1,5 @@
 interface ObjModel {
+    p: string;
     f: FuncModel;
     f1: FuncModel1;
     f2: FuncModel2;
@@ -16,13 +17,18 @@ interface FuncModel2 {
     (): number;
 }
 
+// 3 варианта записи в объекте
 export const obj: ObjModel = {
+    p: '1',
+
     f() {
         return [1];
     },
+
     f1: function() {
         return '1';
     },
+
     f2: () => 1
 };
 
