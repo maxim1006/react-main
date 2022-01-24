@@ -50,5 +50,7 @@ export type StepsTypeReadonly = {
     [key in keyof typeof StepNameEnum]: typeof StepNameEnum[key];
 };
 
+var stepsTypeReadonly: StepsTypeReadonly = {Delivery: StepNameEnum.Delivery, Delivery1: StepNameEnum.Delivery1 }
+
 export type StepsTypePartial = Partial<StepsTypeReadonly>;
 ///////////////////////////

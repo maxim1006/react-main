@@ -70,6 +70,11 @@ export interface NewOmitModel extends Omit<BaseOmitModel, 'id' | 'items'> {
     items: { value: unknown }[];
 }
 
+export type NewOmitModel1 = Omit<BaseOmitModel, 'id' | 'items'> & {
+    id: number;
+    items: { value: unknown }[];
+}
+
 // конвертировать одно свойство из опционального в обязательное
 interface Book {
     author?: string;

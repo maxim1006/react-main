@@ -105,9 +105,10 @@ let name1 = new Test().getName();
 class MyClass1 {
     private static x = 0;
 }
-// console.log(MyClass.x); // error
+// console.log(MyClass1.x); // error
 
 // Static members are also inherited:
+// тут важно что нужено присвоить в myGreeting пропертю в Derived1, чтобы инстанс получил этот метод
 class Base1 {
     static getGreeting() {
         return 'Hello world';
@@ -116,19 +117,29 @@ class Base1 {
 class Derived1 extends Base1 {
     myGreeting = Derived1.getGreeting();
 }
+
+class Derived3 extends Base1 {}
+
+Derived3.getGreeting(); // 'Hello world
+
+var derived1 = new Derived1().myGreeting; // 'Hello world
+
 // превратиться в
-// class Base {
+// class Base1 {
 //     static getGreeting() {
-//         return "Hello world";
+//         return 'Hello world';
 //     }
 // }
-// class Derived extends Base {
+// class Derived1 extends Base1 {
 //     constructor() {
 //         super(...arguments);
-//         this.myGreeting = Derived.getGreeting();
+//         this.myGreeting = Derived1.getGreeting();
 //     }
 // }
-// var d = new Derived(); // d.myGreeting === "Hello world"
+// class Derived3 extends Base1 {
+// }
+// Derived3.getGreeting();
+// var derived1 = new Derived1().myGreeting; // 'Hello world
 
 /**/
 // static Blocks in Classes
@@ -156,5 +167,25 @@ class CC extends C {}
 var cc = new CC();
 // console.log(CC.a); // 1
 // console.log(cc.a); // undefined
+
+// примеры на использование this в статик
+// class A {
+//     static aS = 1;
+//     static fS() {
+//         console.log(this.a, this.aS, this);
+//     }
+//
+//     f() {console.log(this.a, this.aS, this);}
+//     f1() {console.log(this.a, this.aS, this);}
+//
+//     a = 1
+// }
+//
+// A.fS(); // undefined 1 class "class A { static aS = 1; static fS() { ... } f() {...);} f1() a = 1}"
+//
+// var a = new A();
+//
+// a.f(); // 1 undefined {a: 1}
+// a.f1(); // 1 undefined {a: 1}
 
 export default {};

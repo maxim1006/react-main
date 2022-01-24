@@ -11,8 +11,6 @@ export interface ViewModel<T extends ViewEnum> {
     type: T;
 }
 
-export type ViewType = ViewToggleModel | ViewRadioModel;
-
 export interface ViewToggleModel extends ViewModel<ViewEnum.Toggle> {
     toggleProp: string;
 }
@@ -20,6 +18,8 @@ export interface ViewToggleModel extends ViewModel<ViewEnum.Toggle> {
 export interface ViewRadioModel extends ViewModel<ViewEnum.Radio> {
     radioProp: string;
 }
+
+export type ViewType = ViewToggleModel | ViewRadioModel;
 
 // Тут показываю пример как сделать несколько моделей объеидняющий type и в зависимости от этого наплоидить интерфейсов,
 // аля как в редюсерах
