@@ -1,5 +1,5 @@
 {
-    "extends": ["react-app"],
+    "extends": ["react-app", "prettier"],
     "parserOptions": {
         "project": "./tsconfig.json",
         "tsconfigRootDir": "./",
@@ -12,8 +12,11 @@
     },
     "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js"],
     // add new rules here
-    "rules": {},
-    "plugins": [],
+    "rules": {
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "prettier/prettier": ["error"]
+    },
+    "plugins": ["prettier"],
     "overrides": [
         {
             "files": ["**/*.(j|t)s?(x)"],
