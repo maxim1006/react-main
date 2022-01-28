@@ -23,18 +23,22 @@ interface Square {
 type Shape = Circle | Square;
 
 function getArea(shape: Shape) {
-    switch (shape.kind) {
-        case ShapeEnum.Circle: {
-            return shape.radius;
-        }
+    // это обычно в редьюсерах
+    // switch (shape.kind) {
+    //     case ShapeEnum.Circle: {
+    //         return shape.radius;
+    //     }
+    //
+    //     case ShapeEnum.Square: {
+    //         return shape.sideLength;
+    //     }
+    //
+    //     default:
+    //         return shape;
+    // }
 
-        case ShapeEnum.Square: {
-            return shape.sideLength;
-        }
-
-        default:
-            return shape;
-    }
+    // или так
+    return shape.kind === ShapeEnum.Circle ? shape.radius : shape.sideLength;
 }
 
 export default {};
