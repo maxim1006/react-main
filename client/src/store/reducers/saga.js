@@ -3,9 +3,9 @@ import { SAGA_TYPES } from '../actions/types';
 const initState = {
     loading: false,
     entities: {
-        users: []
+        users: [],
     },
-    counter: 0
+    counter: 0,
 };
 
 export default function sagaReducer(state = initState, action) {
@@ -13,7 +13,7 @@ export default function sagaReducer(state = initState, action) {
         case SAGA_TYPES.GET_USER_START: {
             return {
                 ...state,
-                loading: true
+                loading: true,
             };
         }
 
@@ -23,14 +23,14 @@ export default function sagaReducer(state = initState, action) {
             return {
                 ...state,
                 loading: false,
-                entities: { ...state.entities, users }
+                entities: { ...state.entities, users },
             };
         }
 
         case SAGA_TYPES.GET_USER_ERROR: {
             return {
                 ...state,
-                loading: false
+                loading: false,
             };
         }
 
@@ -40,7 +40,7 @@ export default function sagaReducer(state = initState, action) {
 
             return {
                 ...state,
-                counter
+                counter,
             };
         }
 
@@ -49,7 +49,7 @@ export default function sagaReducer(state = initState, action) {
 
             return {
                 ...state,
-                counter
+                counter,
             };
         }
 

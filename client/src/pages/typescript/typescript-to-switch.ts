@@ -5,7 +5,7 @@ type TestType = {
 // eslint-disable-next-line
 const testType: TestType = {
     prop1: '1',
-    prop2: '2'
+    prop2: '2',
 };
 
 export type toNumberSwitch<T> = {
@@ -14,5 +14,5 @@ export type toNumberSwitch<T> = {
 // eslint-disable-next-line
 const testTypeNumber: toNumberSwitch<TestType> = {
     prop1: 1,
-    prop2: 2
+    prop2: 2,
 };

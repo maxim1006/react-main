@@ -31,7 +31,7 @@ class PostsAndUsers extends Component {
             <ul>
                 {posts.map(({ title, id, body, userId }) => {
                     return (
-                        <li key={id} className="posts-and-users__item">
+                        <li key={id} className='posts-and-users__item'>
                             <p>
                                 <b>Post title:</b>
                                 {title}

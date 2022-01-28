@@ -16,13 +16,13 @@ const ImagePreload = memo<ImagePreloadProps>(function ImagePreload() {
         <div className={styles.formInput}>
             {previewSrc && (
                 <div className={styles.preview}>
-                    <img className={styles.img} alt="some preview" src={previewSrc} id="file-ip-1-preview" />
+                    <img className={styles.img} alt='some preview' src={previewSrc} id='file-ip-1-preview' />
                 </div>
             )}
-            <label className={styles.label} htmlFor="file-ip-1">
+            <label className={styles.label} htmlFor='file-ip-1'>
                 Upload Image
             </label>
-            <input className={styles.input} type="file" id="file-ip-1" accept="image/*" onChange={showPreview} />
+            <input className={styles.input} type='file' id='file-ip-1' accept='image/*' onChange={showPreview} />
         </div>
     );
 });

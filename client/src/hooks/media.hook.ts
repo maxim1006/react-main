@@ -26,7 +26,7 @@ export const useMedia = (props?: MediaProps) => {
         _ => {
             setMediaData(pevMediaData => ({
                 ...pevMediaData,
-                ...getMediaData(props)
+                ...getMediaData(props),
             }));
         },
         [props]
@@ -35,7 +35,7 @@ export const useMedia = (props?: MediaProps) => {
     useEventListener({
         eventType: 'resize',
         callback: handleWindowResize,
-        throttleTime: 1000
+        throttleTime: 1000,
     });
 
     return mediaData;
@@ -50,6 +50,6 @@ const getMediaData = (props?: MediaProps) => {
         mobile: window.innerWidth <= mobileMaxWidth,
         tablet: window.innerWidth > mobileMaxWidth && window.innerWidth <= tabletMaxWidth,
         desktop: window.innerWidth > tabletMaxWidth,
-        desktopFullHD: window.innerWidth > desktopMaxWidth
+        desktopFullHD: window.innerWidth > desktopMaxWidth,
     };
 };

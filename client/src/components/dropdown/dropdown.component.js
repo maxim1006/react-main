@@ -15,12 +15,12 @@ const Dropdown = memo(props => {
 
     // unmountOnExit - удаляет чайлдов если не активны
     return (
-        <div className="dropdown" style={{ height: `${height + 32}px` }}>
+        <div className='dropdown' style={{ height: `${height + 32}px` }}>
             <CSSTransition
                 in={activeMenu === 'main'}
                 unmountOnExit
                 timeout={300}
-                classNames="dropdown__items"
+                classNames='dropdown__items'
                 onEnter={el => {
                     calcHeight(el);
                     console.log('onEnter className', el.className);
@@ -41,7 +41,7 @@ const Dropdown = memo(props => {
                     console.log('onExited className', el.className);
                 }}
             >
-                <div className="dropdown__items">
+                <div className='dropdown__items'>
                     <DropdownItem leftIcon={<UserIcon />}>My profile</DropdownItem>
                     <DropdownItem leftIcon={<LocationIcon />}>Location</DropdownItem>
                     <div onClick={() => setActiveMenu('second')}>
@@ -54,13 +54,13 @@ const Dropdown = memo(props => {
                 in={activeMenu === 'second'}
                 unmountOnExit
                 timeout={300}
-                classNames="dropdown__items-second"
+                classNames='dropdown__items-second'
                 onEnter={el => {
                     calcHeight(el);
                     console.log('onEnter className', el.className);
                 }}
             >
-                <div className="dropdown__items-second">
+                <div className='dropdown__items-second'>
                     <DropdownItem leftIcon={<UserIcon />}>My profile</DropdownItem>
                     <div onClick={() => setActiveMenu('main')}>
                         <DropdownItem>Go to main menu</DropdownItem>

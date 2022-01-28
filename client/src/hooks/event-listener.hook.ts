@@ -6,7 +6,7 @@ export function useEventListener<T extends UIEvent>({
     callback,
     element = window,
     throttleTime = 0,
-    debounceTime = 0
+    debounceTime = 0,
 }: {
     eventType: keyof WindowEventMap;
     callback: (e: T) => void;
@@ -19,11 +19,11 @@ export function useEventListener<T extends UIEvent>({
         const handler = (e: T) => callback(e);
 
         const throttledHandler = throttle(handler, throttleTime, {
-            trailing: true
+            trailing: true,
         });
 
         const debounceHandler = debounce(handler, debounceTime, {
-            trailing: true
+            trailing: true,
         });
 
         const finalHandler = throttleTime ? throttledHandler : debounceTime ? debounceHandler : handler;

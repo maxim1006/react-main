@@ -12,11 +12,11 @@ export default withRouter(
         const toggleDropdown = useCallback(() => dispatch(shopToggleDropdown()), [dispatch]);
 
         return (
-            <div className="shop-cart-dropdown">
-                <div className="shop-cart-dropdown__list">
+            <div className='shop-cart-dropdown'>
+                <div className='shop-cart-dropdown__list'>
                     <ShopCartListHooks />
                 </div>
-                <div className="shop-cart-dropdown__button">
+                <div className='shop-cart-dropdown__button'>
                     <ShopButton
                         fullWidth
                         onClick={() => {
@@ -29,5 +29,5 @@ export default withRouter(
                 </div>
             </div>
         );
-    }),
+    })
 );

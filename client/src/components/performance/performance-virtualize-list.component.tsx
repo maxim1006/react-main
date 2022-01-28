@@ -10,7 +10,7 @@ const PerformanceVirtualizeList: React.FC = () => {
     const sizes: any = [];
 
     const { data }: { data: any } = useFetch({
-        url: 'https://jsonplaceholder.typicode.com/posts'
+        url: 'https://jsonplaceholder.typicode.com/posts',
     });
 
     const RowComponent = ({ title, body, style, index }: Partial<PostType>) => {

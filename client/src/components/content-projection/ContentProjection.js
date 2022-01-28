@@ -14,7 +14,7 @@ export default function ContentProjection({ projectFromProp, children }) {
                         style={{
                             color: 'white',
                             backgroundColor: 'green',
-                            marginRight: '30px'
+                            marginRight: '30px',
                         }}
                     >
                         Approve

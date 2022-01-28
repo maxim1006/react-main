@@ -30,7 +30,7 @@ class GoogleAuth extends Component {
 
                             // console.log("GoogleAuth gapi.client.init inited");
                         },
-                        () => console.log('GoogleAuth gapi.client.init error'),
+                        () => console.log('GoogleAuth gapi.client.init error')
                     );
             });
     }
@@ -83,11 +83,11 @@ class GoogleAuth extends Component {
         return (
             <>
                 {isSignedIn ? (
-                    <a href="/" onClick={this.signOut}>
+                    <a href='/' onClick={this.signOut}>
                         Sign out
                     </a>
                 ) : (
-                    <a href="/" onClick={this.signIn}>
+                    <a href='/' onClick={this.signIn}>
                         Sign in
                     </a>
                 )}

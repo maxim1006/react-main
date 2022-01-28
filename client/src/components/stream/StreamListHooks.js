@@ -18,7 +18,7 @@ export default memo(() => {
             <StreamList />
             {auth && (
                 <p>
-                    <Link to="/stream/create">Create stream -&gt;</Link>
+                    <Link to='/stream/create'>Create stream -&gt;</Link>
                 </p>
             )}
         </>

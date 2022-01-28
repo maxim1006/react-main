@@ -18,9 +18,9 @@ export default memo(() => {
     return isLoadingUsers ? (
         <MaterialLoader />
     ) : (
-        <ul className="user-list">
+        <ul className='user-list'>
             {users.map(user => (
-                <li className="user-list__item" key={user.id}>
+                <li className='user-list__item' key={user.id}>
                     <User {...user} />
                 </li>
             ))}

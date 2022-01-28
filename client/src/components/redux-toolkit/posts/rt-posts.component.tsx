@@ -4,7 +4,7 @@ import {
     makeSelectRtPostsByTitle,
     rtFetchPostsAction,
     rtFetchPostsAction1,
-    selectRtPosts
+    selectRtPosts,
 } from '@app/redux-toolkit/rt-slices/rt-posts';
 import { useAppDispatch, useAppSelector } from '@app/redux-toolkit/rt-configureStore';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
@@ -26,7 +26,7 @@ const RtPosts = () => {
             const posts1 = await dispatch(rtFetchPostsAction1());
             console.log({
                 posts,
-                posts1
+                posts1,
             });
         })();
     }, [dispatch]);

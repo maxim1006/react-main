@@ -9,7 +9,7 @@ export default function useComments() {
         (async () => {
             try {
                 const { data: comments } = await customAxios.get('/comments', {
-                    cancelToken: cancelGetCommentsRequest.token
+                    cancelToken: cancelGetCommentsRequest.token,
                 });
 
                 setComments(comments);

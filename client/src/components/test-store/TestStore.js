@@ -39,5 +39,5 @@ export default connect(
     state => ({
         // testStore: state.testStore
     }),
-    { testIncrease, testDecrease },
+    { testIncrease, testDecrease }
 )(testComponent);

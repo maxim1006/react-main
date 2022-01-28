@@ -68,7 +68,7 @@ const MouseoverMouseleave: React.FC = () => {
                     })}
                 </tr>
             );
-        })
+        }),
     };
 
     return (

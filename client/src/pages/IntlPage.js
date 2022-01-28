@@ -6,10 +6,10 @@ import I18nJsComponent from '../components/i18n-js/i18n-js.component';
 const IntlPage = () => {
     return (
         <TabsComponent>
-            <div tabName="i18n-js">
+            <div tabName='i18n-js'>
                 <I18nJsComponent />
             </div>
-            <div tabName="react-intl">
+            <div tabName='react-intl'>
                 <ReactIntlComponent />
             </div>
         </TabsComponent>

@@ -56,7 +56,7 @@ export default class FetchCanvas extends Component {
     };
 
     loadCanvas = () => {
-        this.ref.current.toBlob(function(blob) {
+        this.ref.current.toBlob(function (blob) {
             // после того, как Blob создан, загружаем его
             const link = document.createElement('a');
             link.download = 'example.png';
@@ -84,20 +84,20 @@ export default class FetchCanvas extends Component {
 
     render() {
         return (
-            <div className="fetch">
+            <div className='fetch'>
                 <canvas
-                    className="fetch__canvas"
+                    className='fetch__canvas'
                     ref={this.ref}
                     width={300}
                     height={200}
                     style={{ border: '1px solid' }}
                 />
-                <input type="button" value="Отправить" onClick={() => this.sendCanvas()} />
+                <input type='button' value='Отправить' onClick={() => this.sendCanvas()} />
 
-                <input type="button" value="Очистить" onClick={() => this.clearCanvas()} />
+                <input type='button' value='Очистить' onClick={() => this.clearCanvas()} />
 
-                <input type="text" placeholder="Название изображения" onChange={this.onCanvasImageNameChange} />
-                <button type="button" onClick={() => this.loadCanvas()}>
+                <input type='text' placeholder='Название изображения' onChange={this.onCanvasImageNameChange} />
+                <button type='button' onClick={() => this.loadCanvas()}>
                     Upload canvas
                 </button>
             </div>

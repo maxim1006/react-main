@@ -15,7 +15,7 @@ export default function useHooks(resource) {
         const getHooks = async resource => {
             try {
                 const { data: resources } = await customAxios.get(`/hooks/${resource}`, {
-                    cancelToken: cancelHooksRequest.token
+                    cancelToken: cancelHooksRequest.token,
                 });
 
                 setResources(resources);

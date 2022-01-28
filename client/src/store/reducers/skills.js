@@ -5,7 +5,7 @@ const initState = {
     searchValue: '',
     items: {},
     filterValue: '',
-    error: null
+    error: null,
 };
 
 export default function skillsReducer(state = initState, action) {
@@ -18,7 +18,7 @@ export default function skillsReducer(state = initState, action) {
             return {
                 ...state,
                 isLoading: false,
-                items: action.payload
+                items: action.payload,
             };
         }
 
@@ -36,7 +36,7 @@ export default function skillsReducer(state = initState, action) {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...state.items, [newItem.id]: newItem }
+                items: { ...state.items, [newItem.id]: newItem },
             };
         }
 
@@ -51,7 +51,7 @@ export default function skillsReducer(state = initState, action) {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...restItems }
+                items: { ...restItems },
             };
         }
 
@@ -65,7 +65,7 @@ export default function skillsReducer(state = initState, action) {
             return {
                 ...state,
                 isLoading: false,
-                items: { ...state.items, [item.id]: item }
+                items: { ...state.items, [item.id]: item },
             };
         }
 
@@ -76,8 +76,8 @@ export default function skillsReducer(state = initState, action) {
                 ...state,
                 isLoading: false,
                 error: {
-                    ...action.payload
-                }
+                    ...action.payload,
+                },
             };
         }
 

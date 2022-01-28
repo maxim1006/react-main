@@ -12,7 +12,7 @@ const TodoHeader = ({ onClick }: ITodoHeaderProps) => {
 
     return (
         <div>
-            <input type="text" ref={inputRef} />
+            <input type='text' ref={inputRef} />
             <button
                 onClick={() => {
                     onClick(inputRef.current.value);

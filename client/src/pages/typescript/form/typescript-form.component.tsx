@@ -9,7 +9,7 @@ const TypescriptForm = () => {
 
     return (
         <>
-            <input type="text" name="name" value={name} onChange={onNameChange} />
+            <input type='text' name='name' value={name} onChange={onNameChange} />
         </>
     );
 };

@@ -9,7 +9,7 @@ const SessionStorageChild2 = memo<SessionStorageChild2Props>(() => {
     return (
         <>
             <input
-                type="text"
+                type='text'
                 onChange={e => {
                     setSessionStorage({
                         value2: e.target.value,

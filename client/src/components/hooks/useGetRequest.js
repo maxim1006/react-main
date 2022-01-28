@@ -9,7 +9,7 @@ export default function useGetRequest({ url, cb }) {
         (async url => {
             try {
                 const { data } = await customAxios.get(url, {
-                    cancelToken: cancelRequest.token
+                    cancelToken: cancelRequest.token,
                 });
 
                 setData(data);

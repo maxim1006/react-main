@@ -8,7 +8,7 @@ export interface ITodoProps {
 
 const Todo = ({ completed, onChange, name }: ITodoProps) => (
     <label>
-        <input checked={completed} onChange={onChange} type="checkbox" />
+        <input checked={completed} onChange={onChange} type='checkbox' />
         <span
             style={{
                 textDecoration: completed ? 'line-through' : 'none',

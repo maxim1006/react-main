@@ -12,7 +12,7 @@ class SongList extends Component {
         return (
             <>
                 <h3>Songs:</h3>
-                <ul className="song-list">{this.getSongsList()}</ul>
+                <ul className='song-list'>{this.getSongsList()}</ul>
                 <SongDetails />
             </>
         );

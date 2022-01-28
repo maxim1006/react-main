@@ -15,17 +15,17 @@ import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
 
 const ShopHeader = ({ shopToggleDropdown, visibleCartDropdown, user, cartQuantity }) => {
     return (
-        <div className="shop-header">
-            <div className="shop-header__title">Shop</div>
-            <LogoIcon className="shop-header__logo" />
+        <div className='shop-header'>
+            <div className='shop-header__title'>Shop</div>
+            <LogoIcon className='shop-header__logo' />
 
-            <div className="shop-header__sign">
+            <div className='shop-header__sign'>
                 {user === null ? (
                     <MaterialLoader />
                 ) : user ? (
                     <>
                         <a
-                            href="/"
+                            href='/'
                             onClick={e => {
                                 e.preventDefault();
                                 auth.signOut();
@@ -35,17 +35,17 @@ const ShopHeader = ({ shopToggleDropdown, visibleCartDropdown, user, cartQuantit
                         </a>
                     </>
                 ) : (
-                    <Link to="/shop/sign">Sign In</Link>
+                    <Link to='/shop/sign'>Sign In</Link>
                 )}
             </div>
 
-            <div className="shop-header__cart">
-                <span className="shop-header__cart-count">{cartQuantity}</span>
-                <CartIcon className="shop-header__cart-icon" onClick={shopToggleDropdown} />
+            <div className='shop-header__cart'>
+                <span className='shop-header__cart-count'>{cartQuantity}</span>
+                <CartIcon className='shop-header__cart-icon' onClick={shopToggleDropdown} />
                 {visibleCartDropdown && <ShopCartDropdownHooks />}
             </div>
 
-            <div className="shop-header__user">{user.displayName}</div>
+            <div className='shop-header__user'>{user.displayName}</div>
         </div>
     );
 };

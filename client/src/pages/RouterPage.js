@@ -17,7 +17,7 @@ export default function RouterPage() {
                     { to: '/router/exact', title: 'RouterExactRoute' },
                     { to: '/router/route1', title: 'RouterRoute1' },
                     { to: '/router/lazy', title: 'RouterLazyRoute' },
-                    { to: '/router/*', title: 'RouterLazyNotFound' }
+                    { to: '/router/*', title: 'RouterLazyNotFound' },
                 ]}
             />
             {/* покажет только первый найденный роут*/}

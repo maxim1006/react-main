@@ -15,7 +15,7 @@ export default memo(() => {
             <StreamForm onSubmit={onSubmit} />
 
             <p>
-                <Link to="/stream">Go to stream list -&gt;</Link>
+                <Link to='/stream'>Go to stream list -&gt;</Link>
             </p>
         </>
     );

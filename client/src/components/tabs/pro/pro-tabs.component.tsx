@@ -36,14 +36,11 @@ const ProTabs = memo<ProTabsProps>(function ProTabs() {
             setSearchString(event.target.value);
             setFilteredMenuItems(
                 menuItems.filter(item =>
-                    item.name
-                        .trim()
-                        .toLowerCase()
-                        .includes(event.target.value.trim().toLowerCase()),
-                ),
+                    item.name.trim().toLowerCase().includes(event.target.value.trim().toLowerCase())
+                )
             );
         },
-        [setSearchString, setFilteredMenuItems, menuItems],
+        [setSearchString, setFilteredMenuItems, menuItems]
     );
 
     const handleItemSelection = (idx: ShowcaseComponentsEnum) => setSelectedKeys([idx]);
@@ -54,9 +51,9 @@ const ProTabs = memo<ProTabsProps>(function ProTabs() {
     };
 
     return (
-        <div className="wrapper">
-            <div className="left">
-                <input value={searchString} type="text" onChange={e => handleSearchChange(e)} />
+        <div className='wrapper'>
+            <div className='left'>
+                <input value={searchString} type='text' onChange={e => handleSearchChange(e)} />
                 <ul>
                     {filteredMenuItems.map(i => (
                         <li onClick={() => handleItemSelection(i.id)} key={i.id}>
@@ -65,7 +62,7 @@ const ProTabs = memo<ProTabsProps>(function ProTabs() {
                     ))}
                 </ul>
             </div>
-            <div className="right">{componentMap[selectedKeys[0]]}</div>
+            <div className='right'>{componentMap[selectedKeys[0]]}</div>
         </div>
     );
 });

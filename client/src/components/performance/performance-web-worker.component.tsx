@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, { memo, useEffect, useMemo, useState } from "react";
-import worker from "./webWorker";
+import React, { memo, useEffect, useMemo, useState } from 'react';
+import worker from './webWorker';
 
 const PerformanceWebWorkerComponent: React.FC = () => {
     let webWorker: any;
@@ -9,19 +9,19 @@ const PerformanceWebWorkerComponent: React.FC = () => {
 
     const calc = () => {
         webWorker.postMessage({
-            eventType: "sum"
+            eventType: 'sum',
         });
     };
 
     useEffect(() => {
         let code = worker.toString();
-        code = code.substring(code.indexOf("{") + 1, code.lastIndexOf("}"));
-        const bb = new Blob([code], { type: "application/javascript" });
+        code = code.substring(code.indexOf('{') + 1, code.lastIndexOf('}'));
+        const bb = new Blob([code], { type: 'application/javascript' });
         webWorker = new Worker(URL.createObjectURL(bb));
-        webWorker.addEventListener("message", (event: { data: any }) => {
+        webWorker.addEventListener('message', (event: { data: any }) => {
             const { eventType, payload } = event.data;
 
-            if (eventType === "sumResult") {
+            if (eventType === 'sumResult') {
                 setResult(payload);
             }
         });

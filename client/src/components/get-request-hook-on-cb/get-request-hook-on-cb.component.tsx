@@ -22,7 +22,7 @@ const GetRequestHookOnCbComponent: React.FC = () => {
 
     return (
         <>
-            <button type="button" onClick={onClick}>
+            <button type='button' onClick={onClick}>
                 FetchFamily
             </button>
             {isSending ? (

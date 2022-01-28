@@ -25,11 +25,11 @@ export const obj: ObjModel = {
         return [1];
     },
 
-    f1: function() {
+    f1: function () {
         return '1';
     },
 
-    f2: () => 1
+    f2: () => 1,
 };
 
 // сравним с записью класса

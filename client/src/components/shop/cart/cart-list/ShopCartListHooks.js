@@ -10,9 +10,9 @@ export default memo(() => {
     const cartItems = useSelector(selectShopCartItems);
 
     return cartItems ? (
-        <ul className="shop-cart-list">
+        <ul className='shop-cart-list'>
             {Object.entries(cartItems).map(([id, item]) => (
-                <li className="shop-cart-list__item-wrapper" key={id}>
+                <li className='shop-cart-list__item-wrapper' key={id}>
                     <ShopCartListItem item={item} />
                 </li>
             ))}

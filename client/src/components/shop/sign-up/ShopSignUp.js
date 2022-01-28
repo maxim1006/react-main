@@ -15,53 +15,53 @@ export default class ShopSignUp extends Component {
         const { displayName, email, password, confirmPassword } = this.state;
 
         return (
-            <div className="shop-sign-up">
+            <div className='shop-sign-up'>
                 <h3>Sign Up</h3>
                 <form onSubmit={this.handleSubmit}>
                     <ShopFormInput
-                        label="Login"
-                        autoComplete="username"
+                        label='Login'
+                        autoComplete='username'
                         handleChange={this.handleChange}
-                        name="displayName"
-                        id="shopSignUpLogin"
-                        type="text"
+                        name='displayName'
+                        id='shopSignUpLogin'
+                        type='text'
                         value={displayName}
                         required
                     />
 
                     <ShopFormInput
-                        label="Email"
+                        label='Email'
                         handleChange={this.handleChange}
-                        name="email"
-                        id="shopSignUpEmail"
-                        type="email"
+                        name='email'
+                        id='shopSignUpEmail'
+                        type='email'
                         value={email}
                         required
                     />
 
                     <ShopFormInput
-                        label="Password"
+                        label='Password'
                         handleChange={this.handleChange}
-                        name="password"
-                        id="shopSignUpPassword"
-                        type="password"
-                        autoComplete="new-password"
+                        name='password'
+                        id='shopSignUpPassword'
+                        type='password'
+                        autoComplete='new-password'
                         value={password}
                         required
                     />
 
                     <ShopFormInput
-                        label="Confirm Password"
+                        label='Confirm Password'
                         handleChange={this.handleChange}
-                        name="confirmPassword"
-                        autoComplete="new-password"
-                        id="shopSignUpConfirmPassword"
-                        type="password"
+                        name='confirmPassword'
+                        autoComplete='new-password'
+                        id='shopSignUpConfirmPassword'
+                        type='password'
                         value={confirmPassword}
                         required
                     />
 
-                    <ShopButton type="submit">Sign up</ShopButton>
+                    <ShopButton type='submit'>Sign up</ShopButton>
                 </form>
             </div>
         );

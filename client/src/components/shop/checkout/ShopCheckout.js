@@ -22,15 +22,15 @@ export default memo(() => {
     const onClearCart = useCallback(() => dispatch(shopClearCartItems()), [dispatch]);
 
     return (
-        <div className="shop-checkout">
-            <div className="shop-checkout__header">
-                <div className="shop-checkout__header-item">Product</div>
-                <div className="shop-checkout__header-item">Description</div>
-                <div className="shop-checkout__header-item">Quantity</div>
-                <div className="shop-checkout__header-item">Price</div>
-                <div className="shop-checkout__header-item">Remove</div>
+        <div className='shop-checkout'>
+            <div className='shop-checkout__header'>
+                <div className='shop-checkout__header-item'>Product</div>
+                <div className='shop-checkout__header-item'>Description</div>
+                <div className='shop-checkout__header-item'>Quantity</div>
+                <div className='shop-checkout__header-item'>Price</div>
+                <div className='shop-checkout__header-item'>Remove</div>
             </div>
-            <div className="shop-checkout__items">
+            <div className='shop-checkout__items'>
                 {Object.entries(cartItems).map(([id, item]) => {
                     return (
                         <ShopCheckoutItem
@@ -43,15 +43,15 @@ export default memo(() => {
                     );
                 })}
             </div>
-            <div className="shop-checkout__info">
+            <div className='shop-checkout__info'>
                 *Please use following info for payments testing*
                 <br />
                 4242 4242 4242 4242 Exp.: 01/20 CVV: 123
             </div>
-            <div className="shop-checkout__info">
+            <div className='shop-checkout__info'>
                 <ShopButton onClick={onClearCart}>Clear cart</ShopButton>
             </div>
-            <div className="shop-checkout__total">
+            <div className='shop-checkout__total'>
                 TOTAL:
                 {shopTotal}
                 <ShopStripeButton price={shopTotal} />

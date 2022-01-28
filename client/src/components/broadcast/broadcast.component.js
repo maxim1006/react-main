@@ -36,8 +36,8 @@ const BroadcastComponent = () => {
 
     return (
         <>
-            <TextField id="filled-basic" label="Filled" variant="filled" value={value} onChange={onChange} />
-            <Button onClick={onClick} variant="contained" color="primary">
+            <TextField id='filled-basic' label='Filled' variant='filled' value={value} onChange={onChange} />
+            <Button onClick={onClick} variant='contained' color='primary'>
                 Broadcast
             </Button>
             <p style={{ marginTop: 20 }}>Broadcasted value in another tab on the same domain {broadCastedValue}</p>

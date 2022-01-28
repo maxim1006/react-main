@@ -21,7 +21,7 @@ export const loadTranslations = async () => {
                     ...i18n.translations[locale],
                     ...data,
                 };
-            }),
+            })
     );
 };
 

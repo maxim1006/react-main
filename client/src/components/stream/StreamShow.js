@@ -25,7 +25,7 @@ class StreamShow extends Component {
                         Stream description:
                         {stream.description}
                     </p>
-                    <Link to="/stream">Go to stream list</Link>
+                    <Link to='/stream'>Go to stream list</Link>
                 </>
             );
         }

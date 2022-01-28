@@ -27,7 +27,7 @@ const UserList = memo(({ fetchUsers, users, isLoadingUsers }) => {
 
 const mapStateToProps = createStructuredSelector({
     users: selectUsersArray,
-    isLoadingUsers: selectIsLoadingUsers
+    isLoadingUsers: selectIsLoadingUsers,
 });
 
 export default connect(mapStateToProps, { fetchUsers })(UserList);

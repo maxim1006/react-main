@@ -6,7 +6,7 @@ type CloneElementContainerProps = {};
 const CloneElementContainer = memo<CloneElementContainerProps>(function CloneElementContainer() {
     return (
         <CloneElement disabled>
-            <input type="text" defaultValue="Disabled" />
+            <input type='text' defaultValue='Disabled' />
         </CloneElement>
     );
 });

@@ -6,9 +6,9 @@ export default memo(({ stream, currentUserId, onDeleteClick }) => {
 
     if (userId === currentUserId) {
         return (
-            <div className="stream-list__controls">
+            <div className='stream-list__controls'>
                 <Link to={`/stream/edit/${id}`}>Edit</Link>
-                <button type="button" onClick={onDeleteClick}>
+                <button type='button' onClick={onDeleteClick}>
                     Delete
                 </button>
             </div>

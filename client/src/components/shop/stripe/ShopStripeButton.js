@@ -21,23 +21,23 @@ export default memo(({ price }) => {
                 },
             }).then(
                 _ => console.log('stripe payment success'),
-                e => console.log('stripe payment error ', e),
+                e => console.log('stripe payment error ', e)
             );
         },
-        [stripePrice],
+        [stripePrice]
     );
 
     return (
-        <div className="shop-stripe-button">
+        <div className='shop-stripe-button'>
             <StripeCheckout
-                label="Pay now"
-                name="My Shop"
+                label='Pay now'
+                name='My Shop'
                 stripeKey={publishKey}
                 billingAddress
                 shippingAddress
                 description={`Your total price is $${price}`}
                 amount={stripePrice}
-                panelLabel="Pay now"
+                panelLabel='Pay now'
                 token={onToken}
             />
         </div>

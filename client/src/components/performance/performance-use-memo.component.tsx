@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { memo, useMemo, useState } from "react";
+import React, { memo, useMemo, useState } from 'react';
 
 // useMemo - кеширую сложные вычисления, функция expensiveFunc вызовется только 1 раз при инициализации. Дальше при
 // изменении стейта будет вызываться функция без useMemo, а мемоизировванная не будет
@@ -16,7 +16,7 @@ const PerformanceUseMemo: React.FC = () => {
     return (
         <>
             count: {count}
-            <button type="button" onClick={() => setCount(++count)}>
+            <button type='button' onClick={() => setCount(++count)}>
                 Plus one
             </button>
         </>
@@ -27,7 +27,7 @@ export default memo(PerformanceUseMemo);
 
 // helpers
 function expensiveFunc(useMemo: boolean): number {
-    console.log("expensiveFunction triggered!!! useMemo: ", useMemo);
+    console.log('expensiveFunction triggered!!! useMemo: ', useMemo);
     // const startPerformanceLog = performance.now();
     // console.log("startPerformanceLog ", startPerformanceLog);
     let sum = 0;

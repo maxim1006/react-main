@@ -6,11 +6,11 @@ import OutsideChangeContextWrapper from '../components/context/outside-change/Ou
 export default memo(() => {
     return (
         <>
-            <Component title="OusideChange">
+            <Component title='OusideChange'>
                 <OutsideChangeContextWrapper />
             </Component>
 
-            <Component title="Language example">
+            <Component title='Language example'>
                 <ContextTest />
             </Component>
         </>

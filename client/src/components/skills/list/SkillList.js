@@ -48,7 +48,7 @@ const SkillList = memo(({ isLoading, items, removeItem, onStatusChange, fetchSki
 
 const mapStateToProps = (state, ownProps) => ({
     items: state.skills.items,
-    isLoading: state.skills.isLoading
+    isLoading: state.skills.isLoading,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     onStatusChange: item => {
         dispatch(changeSkillStatus(item));
-    }
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillList);

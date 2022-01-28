@@ -19,7 +19,7 @@ const UseCallbackHook = memo<UseCallbackHookProps>(() => {
             console.log(e.target);
             console.log(state);
         },
-        [state],
+        [state]
     );
 
     return (

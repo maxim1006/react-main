@@ -12,7 +12,7 @@ export const ExampleContext = React.createContext<ExampleContextModel>({} as Exa
 
 export const ExampleProvider = ({
     initData,
-    children
+    children,
 }: {
     initData: { number: number };
     children?: React.ReactNode;

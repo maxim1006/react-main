@@ -9,10 +9,10 @@ const SagaCounterComponent = () => {
     return (
         <>
             {sagaState.counter}
-            <button type="button" onClick={() => dispatch({ type: SAGA_TYPES.INCREMENT_COUNTER })}>
+            <button type='button' onClick={() => dispatch({ type: SAGA_TYPES.INCREMENT_COUNTER })}>
                 Increment counter
             </button>
-            <button type="button" onClick={() => dispatch({ type: SAGA_TYPES.DECREMENT_COUNTER })}>
+            <button type='button' onClick={() => dispatch({ type: SAGA_TYPES.DECREMENT_COUNTER })}>
                 Decrement counter
             </button>
         </>

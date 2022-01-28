@@ -20,13 +20,13 @@ const EventListenerHook = memo<EventListenerHookProps>(function EventListenerHoo
 
     useEventListener<KeyboardEvent>({
         eventType: 'keydown',
-        callback: keyDownCb
+        callback: keyDownCb,
     });
 
     useEventListener<MouseEvent>({
         eventType: 'resize',
         callback: resizeCb,
-        debounceTime: 1000
+        debounceTime: 1000,
     });
 
     return (

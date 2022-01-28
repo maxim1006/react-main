@@ -2,7 +2,7 @@ export function convertArrayToObjById(arr) {
     return arr.reduce((acc, current) => {
         return {
             ...acc,
-            [current.id]: current
+            [current.id]: current,
         };
     }, {});
 }
@@ -49,7 +49,7 @@ export function throttle(func, ms) {
 
         isThrottled = true;
 
-        setTimeout(function() {
+        setTimeout(function () {
             isThrottled = false;
             if (savedArgs) {
                 wrapper.apply(savedThis, savedArgs);
@@ -64,7 +64,7 @@ export function throttle(func, ms) {
 export function debounce(func, time = 0) {
     let timeout;
 
-    return function(...args) {
+    return function (...args) {
         const context = this;
 
         clearTimeout(timeout);

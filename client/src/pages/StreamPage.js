@@ -21,7 +21,7 @@ export default function StreamPage() {
                 exact
                 routes={[
                     { to: '/stream', title: 'StreamList' },
-                    { to: '/stream/create', title: 'StreamCreate' }
+                    { to: '/stream/create', title: 'StreamCreate' },
                 ]}
             />
 

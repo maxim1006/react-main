@@ -8,7 +8,7 @@ import {
     StyledShopCollectionsPreviewItemImageWrapper,
     StyledShopCollectionsPreviewItemPrice,
     StyledShopCollectionsPreviewItemPriceName,
-    StyledShopCollectionsPreviewItemPriceValue
+    StyledShopCollectionsPreviewItemPriceValue,
 } from './StyledShopCollectionsPreviewItem';
 
 export default function ShopCollectionsPreviewItemHooks({ item }) {

@@ -21,8 +21,8 @@ export default function useShopData() {
                         title,
                         items,
                         id,
-                        routeName: RouteNameMap.get(title)
-                    }
+                        routeName: RouteNameMap.get(title),
+                    },
                 };
             }, {});
 

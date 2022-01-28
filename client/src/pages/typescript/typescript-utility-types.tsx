@@ -23,16 +23,16 @@ import { ButtonBase } from '@material-ui/core';
 // typeof с объектами
 export const o = {
     foo: 1,
-    bar: 2
+    bar: 2,
 };
 
 export const o1: typeof o = {
     foo: 3,
-    bar: 1
+    bar: 1,
 };
 
 export const o2: Partial<typeof o> = {
-    bar: 1
+    bar: 1,
 };
 
 // Grabbing the Prop types of a component: Use React.ComponentProps and typeof,
@@ -73,7 +73,7 @@ export interface NewOmitModel extends Omit<BaseOmitModel, 'id' | 'items'> {
 export type NewOmitModel1 = Omit<BaseOmitModel, 'id' | 'items'> & {
     id: number;
     items: { value: unknown }[];
-}
+};
 
 // конвертировать одно свойство из опционального в обязательное
 interface Book {

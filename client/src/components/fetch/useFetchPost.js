@@ -16,11 +16,11 @@ export default function UseFetchPost() {
                     signal: controller.signal,
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
+                        'Content-Type': 'application/json;charset=utf-8',
                     },
                     body: JSON.stringify({
-                        message: 'Howdy stranger!'
-                    })
+                        message: 'Howdy stranger!',
+                    }),
                 });
 
                 const jsonData = await response.json();
@@ -39,6 +39,6 @@ export default function UseFetchPost() {
     return {
         data,
         setController,
-        controller
+        controller,
     };
 }

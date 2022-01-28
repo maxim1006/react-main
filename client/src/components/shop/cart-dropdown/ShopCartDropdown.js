@@ -8,11 +8,11 @@ import ShopCartListHooks from '../cart/cart-list/ShopCartListHooks';
 
 const ShopCartDropdown = ({ history, dispatch }) => {
     return (
-        <div className="shop-cart-dropdown">
-            <div className="shop-cart-dropdown__list">
+        <div className='shop-cart-dropdown'>
+            <div className='shop-cart-dropdown__list'>
                 <ShopCartListHooks />
             </div>
-            <div className="shop-cart-dropdown__button">
+            <div className='shop-cart-dropdown__button'>
                 <ShopButton
                     fullWidth
                     onClick={() => {

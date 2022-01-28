@@ -16,30 +16,30 @@ export default class ShopSignIn extends Component {
 
     render() {
         return (
-            <div className="shop-sign-in">
+            <div className='shop-sign-in'>
                 <h3>Sign in</h3>
-                <form onSubmit={this.onSubmit} className="shop-sign-in__form">
+                <form onSubmit={this.onSubmit} className='shop-sign-in__form'>
                     <ShopFormInput
-                        label="Email"
-                        autoComplete="email"
+                        label='Email'
+                        autoComplete='email'
                         handleChange={this.handleChange}
-                        name="email"
-                        id="shopSignInEmail"
-                        type="email"
+                        name='email'
+                        id='shopSignInEmail'
+                        type='email'
                         value={this.state.email}
                         required
                     />
                     <ShopFormInput
-                        label="Password"
+                        label='Password'
                         handleChange={this.handleChange}
-                        name="password"
-                        id="shopSignInPassword"
-                        type="password"
-                        autoComplete="new-password"
+                        name='password'
+                        id='shopSignInPassword'
+                        type='password'
+                        autoComplete='new-password'
                         value={this.state.password}
                         required
                     />
-                    <ShopButton type="submit">Sign in</ShopButton>
+                    <ShopButton type='submit'>Sign in</ShopButton>
                     <ShopButton dark onClick={signInWithGoogle}>
                         Sign in with Google
                     </ShopButton>
@@ -92,7 +92,7 @@ export default class ShopSignIn extends Component {
         }
 
         return error ? (
-            <NotificationPortal styleClass="_error" onClose={this.clearNotificationError}>
+            <NotificationPortal styleClass='_error' onClose={this.clearNotificationError}>
                 {error}
             </NotificationPortal>
         ) : null;

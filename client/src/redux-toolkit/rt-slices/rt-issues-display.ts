@@ -6,7 +6,7 @@ let initialState: IssuesDisplayStateModel = {
     repo: 'rails',
     page: 1,
     displayType: 'issues',
-    issueId: null
+    issueId: null,
 };
 
 const issuesDisplaySlice = createSlice({
@@ -25,8 +25,8 @@ const issuesDisplaySlice = createSlice({
             const { displayType, issueId = null } = payload;
             state.displayType = displayType;
             state.issueId = issueId;
-        }
-    }
+        },
+    },
 });
 
 export const { rtDisplayRepo, rtSetCurrentPage, rtSetCurrentDisplayType } = issuesDisplaySlice.actions;

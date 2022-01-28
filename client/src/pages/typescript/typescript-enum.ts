@@ -1,6 +1,6 @@
 export enum Props {
     Prop1 = 'Prop1',
-    Prop2 = 'Prop2'
+    Prop2 = 'Prop2',
 }
 //
 // let a: Props;
@@ -15,20 +15,20 @@ const CARD_PAYMENT_METHOD_NAME = 'card';
 
 export enum PaymentMethodEnum {
     Card = 'card',
-    None = 'None'
+    None = 'None',
 }
 
 // eslint-disable-next-line
 const paymentMethodNameByPaymentType: { [key in PaymentMethodEnum]: string } = {
     [PaymentMethodEnum.Card]: CARD_PAYMENT_METHOD_NAME,
-    [PaymentMethodEnum.None]: ''
+    [PaymentMethodEnum.None]: '',
 };
 
 // пример с энумом в качестве ключей объекта
 enum StepStateEnum {
     Passed = 'passed',
     Edit = 'edit',
-    Pristine = 'pristine'
+    Pristine = 'pristine',
 }
 
 interface StepModel {
@@ -39,7 +39,7 @@ interface StepModel {
 
 enum StepNameEnum {
     Delivery = 'delivery',
-    Delivery1 = 'delivery1'
+    Delivery1 = 'delivery1',
 }
 
 export type StepsType = {
@@ -50,7 +50,7 @@ export type StepsTypeReadonly = {
     [key in keyof typeof StepNameEnum]: typeof StepNameEnum[key];
 };
 
-var stepsTypeReadonly: StepsTypeReadonly = {Delivery: StepNameEnum.Delivery, Delivery1: StepNameEnum.Delivery1 }
+var stepsTypeReadonly: StepsTypeReadonly = { Delivery: StepNameEnum.Delivery, Delivery1: StepNameEnum.Delivery1 };
 
 export type StepsTypePartial = Partial<StepsTypeReadonly>;
 ///////////////////////////

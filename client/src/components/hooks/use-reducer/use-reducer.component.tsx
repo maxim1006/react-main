@@ -36,7 +36,7 @@ const reducer = (state = initialState, action: { type: string; payload: any }): 
         case 'REMOVE_MEMBER': {
             const removeMember = action.payload;
             const newTeamMembers = state.team.members.filter(
-                (member: TeamMemberModel) => member.id !== removeMember.id,
+                (member: TeamMemberModel) => member.id !== removeMember.id
             );
 
             return {
@@ -70,7 +70,7 @@ const UseReducer = memo<UseReducerProps>(() => {
     return (
         <>
             <form
-                name="formName"
+                name='formName'
                 onSubmit={e => {
                     e.preventDefault();
                     const id = new Date().getTime() + '';
@@ -82,8 +82,8 @@ const UseReducer = memo<UseReducerProps>(() => {
                     }
                 }}
             >
-                <input ref={nameInputRef} name="name" type="text" />
-                <button type="submit">Submit</button>
+                <input ref={nameInputRef} name='name' type='text' />
+                <button type='submit'>Submit</button>
             </form>
             <ul>
                 {state?.team?.members.map(({ id, name }) => (
@@ -94,7 +94,7 @@ const UseReducer = memo<UseReducerProps>(() => {
                                 e.preventDefault();
                                 dispatch(removeMemberAction({ id, name }));
                             }}
-                            href="/"
+                            href='/'
                         >
                             Remove
                         </a>

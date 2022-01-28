@@ -9,7 +9,7 @@ const ReduxSagaIntroComponent = () => {
 
     return (
         <>
-            <button type="button" onClick={() => dispatch(sagaGetUserStartAction())}>
+            <button type='button' onClick={() => dispatch(sagaGetUserStartAction())}>
                 Get user
             </button>
             {users.loading && <MaterialLoaderComponent />}

@@ -30,7 +30,7 @@ export default memo(() => {
                 click
                 {counter}
             </div>
-            <div className="grid">
+            <div className='grid'>
                 {images.map((img, index) => {
                     // return <DomRefImageComponent image={img} key={index} onLoad={onLoad}/>
                     return <DomRefImageHooks src={img} key={index} onLoad={onLoad} />;

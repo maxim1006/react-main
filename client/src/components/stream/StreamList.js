@@ -28,10 +28,10 @@ class StreamList extends Component {
         const { streams } = this.props;
 
         return (
-            <ul className="stream-list">
+            <ul className='stream-list'>
                 {Object.entries(streams).map(([id, stream]) => {
                     return (
-                        <li key={id} className="stream-list__item">
+                        <li key={id} className='stream-list__item'>
                             <Stream {...stream} title={<Link to={`/stream/${stream.id}`}>{stream.title}</Link>} />
 
                             {this.renderControls(stream)}
@@ -48,9 +48,9 @@ class StreamList extends Component {
 
         if (userId === currentUserId) {
             return (
-                <div className="stream-list__controls">
+                <div className='stream-list__controls'>
                     <Link to={`/stream/edit/${id}`}>Edit</Link>
-                    <button type="button" onClick={this.showDeleteModal.bind(this, stream)}>
+                    <button type='button' onClick={this.showDeleteModal.bind(this, stream)}>
                         Delete
                     </button>
                 </div>
@@ -62,7 +62,7 @@ class StreamList extends Component {
         if (this.props.auth) {
             return (
                 <p>
-                    <Link to="/stream/create">Create stream -&gt;</Link>
+                    <Link to='/stream/create'>Create stream -&gt;</Link>
                 </p>
             );
         }
@@ -74,16 +74,16 @@ class StreamList extends Component {
         if (stream) {
             const controls = (
                 <>
-                    <button type="button" onClick={this.onDelete.bind(this, stream)}>
+                    <button type='button' onClick={this.onDelete.bind(this, stream)}>
                         Delete
                     </button>
-                    <button type="button" onClick={this.hideDeleteModel}>
+                    <button type='button' onClick={this.hideDeleteModel}>
                         Cancel
                     </button>
                 </>
             );
 
-            return <ModalPortal title="Are u sure u wanna delete this stream?" controls={controls} />;
+            return <ModalPortal title='Are u sure u wanna delete this stream?' controls={controls} />;
         }
     }
 

@@ -29,7 +29,7 @@ const persistConfig = {
     version: 1,
     storage,
     // по умолчанию в локалсторадж складывает все, тут указываю что конкретно, также есть blackList
-    whitelist: ['todos']
+    whitelist: ['todos'],
 };
 
 const rootReducer = combineReducers({
@@ -38,7 +38,7 @@ const rootReducer = combineReducers({
     visibilityFilter,
     issuesDisplay,
     posts,
-    [commonApi.reducerPath]: commonApi.reducer
+    [commonApi.reducerPath]: commonApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -48,12 +48,12 @@ const RtStore = configureStore({
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
             thunk: {
-                extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL }
+                extraArgument: { fetchPolicy: DEFAULT_FETCH_POLICY_FROM_GQL },
             },
             immutableCheck: false,
             serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-            }
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
         })
             // Turn on logger if u need
             // logger,
@@ -61,7 +61,7 @@ const RtStore = configureStore({
             .concat(commonApi.middleware),
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
-    enhancers: [reduxBatch]
+    enhancers: [reduxBatch],
 });
 
 export const RtPersistor = persistStore(RtStore);

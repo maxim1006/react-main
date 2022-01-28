@@ -4,7 +4,7 @@ type TypescriptEnumProps = {};
 
 enum ColorsEnum {
     Red = 'red',
-    Green = 'green'
+    Green = 'green',
 }
 
 type TypescriptEnumChildProps = {

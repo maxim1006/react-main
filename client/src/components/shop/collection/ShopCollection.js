@@ -19,7 +19,7 @@ export default memo(({ match, history, location }) => {
     const onAddCartItem = useCallback(item => _ => dispatch(shopAddCartItem(item)), [dispatch]);
 
     return shopData ? (
-        <div className="shop-collection">
+        <div className='shop-collection'>
             <StyledShopCollectionTitle>{category.title}</StyledShopCollectionTitle>
             <StyledShopCollectionItems>
                 {category.items.map(item => (

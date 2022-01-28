@@ -32,7 +32,7 @@ export function useOverflow<T extends HTMLElement>(
     useEventListener({
         eventType: 'resize',
         callback: detectOverflow,
-        throttleTime: 1000
+        throttleTime: 1000,
     });
 
     useEffect(() => {
@@ -52,6 +52,6 @@ export function useOverflow<T extends HTMLElement>(
         isLeftSideOverflown,
         isRightSideOverflown,
         isTopSideOverflown,
-        isBottomSideOverflown
+        isBottomSideOverflown,
     };
 }

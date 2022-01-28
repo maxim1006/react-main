@@ -16,13 +16,13 @@ declare module 'react' {
 const Performance: React.FC = () => {
     return (
         <TabsComponent activeTab={2}>
-            <div tabName="UseMemo">
+            <div tabName='UseMemo'>
                 <PerformanceUseMemo />
             </div>
-            <div tabName="Virtualize long lists">
+            <div tabName='Virtualize long lists'>
                 <PerformanceVirtualizeList />
             </div>
-            <div tabName="Web worker">
+            <div tabName='Web worker'>
                 <PerformanceWebWorkerComponent />
             </div>
         </TabsComponent>

@@ -9,10 +9,10 @@ const RtCounter = () => {
     return (
         <div>
             {/* reduxBatch - поэтому могу вызывать 2 экшена за раз*/}
-            <button type="button" onClick={() => dispatch([rtIncrement(), rtIncrement()])}>
+            <button type='button' onClick={() => dispatch([rtIncrement(), rtIncrement()])}>
                 Increment twice
             </button>
-            <button type="button" onClick={() => dispatch(rtDecrement())}>
+            <button type='button' onClick={() => dispatch(rtDecrement())}>
                 Decrement
             </button>
             <p>{counter}</p>

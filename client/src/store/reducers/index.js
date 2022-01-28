@@ -35,7 +35,7 @@ const createRootReducer = history =>
         shopData,
         skills,
         counter,
-        saga
+        saga,
     });
 
 export default createRootReducer;

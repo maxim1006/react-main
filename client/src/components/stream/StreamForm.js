@@ -7,14 +7,14 @@ class StreamForm extends Component {
 
         return (
             <form onSubmit={handleSubmit(this.onSubmit)}>
-                <Field component={this.renderTextField} name="title" label="Enter title" mandatory />
+                <Field component={this.renderTextField} name='title' label='Enter title' mandatory />
                 <Field
                     component={this.renderMemoField}
-                    name="description"
-                    label="Enter description"
+                    name='description'
+                    label='Enter description'
                     mandatory={false}
                 />
-                <button type="submit" disabled={!valid}>
+                <button type='submit' disabled={!valid}>
                     Submit
                 </button>
             </form>
@@ -39,7 +39,7 @@ class StreamForm extends Component {
                     {label}
                     {mandatory && <sup>*</sup>}
                 </label>
-                <input type="text" autoComplete="off" id={meta.form + input.name} {...input} />
+                <input type='text' autoComplete='off' id={meta.form + input.name} {...input} />
                 <p style={{ color: 'red' }}>{meta.visited && meta.error}</p>
             </>
         );

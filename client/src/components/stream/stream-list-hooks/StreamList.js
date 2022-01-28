@@ -17,7 +17,7 @@ export default memo(() => {
         stream => () => {
             setStreamToDelete(stream);
         },
-        [],
+        []
     );
 
     const onModalDeleteButtonClick = useCallback(() => {
@@ -31,10 +31,10 @@ export default memo(() => {
 
     const controls = (
         <>
-            <button type="button" onClick={onModalDeleteButtonClick}>
+            <button type='button' onClick={onModalDeleteButtonClick}>
                 Delete
             </button>
-            <button type="button" onClick={onModalHideButtonClick}>
+            <button type='button' onClick={onModalHideButtonClick}>
                 Cancel
             </button>
         </>
@@ -42,10 +42,10 @@ export default memo(() => {
 
     return (
         <>
-            <ul className="stream-list">
+            <ul className='stream-list'>
                 {Object.entries(streams).map(([id, stream]) => {
                     return (
-                        <li key={id} className="stream-list__item">
+                        <li key={id} className='stream-list__item'>
                             <Stream {...stream} title={<Link to={`/stream/${stream.id}`}>{stream.title}</Link>} />
 
                             <StreamControls
@@ -58,7 +58,7 @@ export default memo(() => {
                 })}
             </ul>
 
-            {streamToDelete && <ModalPortal title="Are u sure u wanna delete this stream?" controls={controls} />}
+            {streamToDelete && <ModalPortal title='Are u sure u wanna delete this stream?' controls={controls} />}
         </>
     );
 });

@@ -10,16 +10,16 @@ export type CounterProps = {
 
 const Counter = memo(({ counter, dispatch }: CounterProps) => {
     return (
-        <div className="counter">
-            <div className="counter__value">
+        <div className='counter'>
+            <div className='counter__value'>
                 Value:
                 {counter}
             </div>
-            <div className="counter__controls">
-                <button type="button" onClick={() => dispatch(incrementCounter())}>
+            <div className='counter__controls'>
+                <button type='button' onClick={() => dispatch(incrementCounter())}>
                     Increment
                 </button>
-                <button type="button" onClick={() => dispatch(decrementCounter())}>
+                <button type='button' onClick={() => dispatch(decrementCounter())}>
                     Decrement
                 </button>
             </div>

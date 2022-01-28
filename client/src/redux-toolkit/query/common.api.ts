@@ -9,9 +9,9 @@ export const commonApi = createApi({
             headers.set('Authorization', 'anonymous');
 
             return headers;
-        }
+        },
     }),
     // tagTypes1  это таг тип за которым при инвалидации будет следить кеш rtk query, типо как кеш ГКЛ
     tagTypes: ['User'],
-    endpoints: _ => ({})
+    endpoints: _ => ({}),
 });

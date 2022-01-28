@@ -45,7 +45,7 @@
 // пример с объектами
 export const obj = {
     name: 'Max',
-    age: 30
+    age: 30,
 };
 
 // eslint-disable-next-line

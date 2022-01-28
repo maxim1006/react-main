@@ -7,7 +7,7 @@ const ExamplesLocalizationComponent = () => {
 
     return (
         <button
-            type="primary"
+            type='primary'
             onClick={() => {
                 i18n.changeLanguage(i18n.language === RU ? EN : RU);
             }}

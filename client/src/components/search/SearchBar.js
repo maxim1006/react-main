@@ -75,53 +75,53 @@ export class SearchBarComponent extends Component {
 
         return (
             <form onSubmit={this.onFormSubmit}>
-                <div className="search-bar">
-                    <input className="search-bar__input" value={inputValue} onChange={this.onInputChange} type="text" />
+                <div className='search-bar'>
+                    <input className='search-bar__input' value={inputValue} onChange={this.onInputChange} type='text' />
                     {this.props.children}
                     <br />
                     <input
-                        className="search-bar__input"
+                        className='search-bar__input'
                         onChange={this.onCheckboxChange}
-                        type="checkbox"
+                        type='checkbox'
                         checked={checkboxValue}
                     />
                     <br />
                     <select value={selectValue} onChange={this.onSelectChange}>
-                        <option value="1">option 1</option>
-                        <option value="2">option 2</option>
-                        <option value="3">option 3</option>
+                        <option value='1'>option 1</option>
+                        <option value='2'>option 2</option>
+                        <option value='3'>option 3</option>
                     </select>
                     <br />
-                    <textarea cols="30" rows="10" onChange={this.onTextareaChange} value={textareaValue} />
+                    <textarea cols='30' rows='10' onChange={this.onTextareaChange} value={textareaValue} />
                     <br />
                     <input
-                        type="radio"
-                        name="test"
-                        value="1"
+                        type='radio'
+                        name='test'
+                        value='1'
                         checked={radioValue === '1'}
                         onChange={this.onRadioChange}
                     />
                     radio 1
                     <br />
                     <input
-                        type="radio"
-                        name="test"
-                        value="2"
+                        type='radio'
+                        name='test'
+                        value='2'
                         checked={radioValue === '2'}
                         onChange={this.onRadioChange}
                     />
                     radio 2
                     <br />
                     <input
-                        type="radio"
-                        name="test"
-                        value="3"
+                        type='radio'
+                        name='test'
+                        value='3'
                         checked={radioValue === '3'}
                         onChange={this.onRadioChange}
                     />
                     radio 3
                     <br />
-                    <input type="date" value={dateValue} onChange={this.onDateChange} />
+                    <input type='date' value={dateValue} onChange={this.onDateChange} />
                 </div>
 
                 <p>{stringifiedState}</p>

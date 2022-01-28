@@ -14,19 +14,19 @@ class ReduxForm extends Component {
             <>
                 {/* <input type="text" onChange={control.onChange} value={control.value}/>*/}
                 {/* тоже что и*/}
-                <div className="redux-form__field">
+                <div className='redux-form__field'>
                     <label htmlFor={meta.form + input.name}>
                         {label}
                         {this.renderMandatory(mandatory)}
                     </label>
                     <input
-                        autoComplete="off"
+                        autoComplete='off'
                         id={meta.form + input.name}
-                        type="text"
+                        type='text'
                         {...input}
                         className={inputClassName}
                     />
-                    <p className="redux-form__error-message">{meta.visited && meta.error}</p>
+                    <p className='redux-form__error-message'>{meta.visited && meta.error}</p>
                 </div>
             </>
         );
@@ -48,9 +48,9 @@ class ReduxForm extends Component {
         return (
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 {/* name - обязательное имя филда*/}
-                <Field name="title" component={this.renderInput} label="Enter title" mandatory />
-                <Field name="description" component={this.renderInput} label="Enter description" />
-                <button type="submit" disabled={!valid}>
+                <Field name='title' component={this.renderInput} label='Enter title' mandatory />
+                <Field name='description' component={this.renderInput} label='Enter description' />
+                <button type='submit' disabled={!valid}>
                     Submit
                 </button>
             </form>

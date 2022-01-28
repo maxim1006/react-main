@@ -8,10 +8,10 @@ const ArrayComponent = memo(() => {
     }, []);
 
     return (
-        <div className="array">
-            <h4 className="array__title">Создание массивов</h4>
+        <div className='array'>
+            <h4 className='array__title'>Создание массивов</h4>
 
-            <pre className="prettyprint lang-js">
+            <pre className='prettyprint lang-js'>
                 {`При создании массива не могу итерироавться так как только проперти length
                 let arr = Array(3);
                 При создании массива могу итерироавться
@@ -22,23 +22,23 @@ const ArrayComponent = memo(() => {
                 `}
             </pre>
 
-            <h4 className="array__title">Fill</h4>
-            <pre className="prettyprint lang-js">
+            <h4 className='array__title'>Fill</h4>
+            <pre className='prettyprint lang-js'>
                 {`let arr = Array(3);
                 arr.fill(1); // [1, 1, 1]
                `}
             </pre>
 
-            <h4 className="array__title">From</h4>
-            <pre className="prettyprint lang-js">
+            <h4 className='array__title'>From</h4>
+            <pre className='prettyprint lang-js'>
                 {`Array.from(Array(3), (iem, index) => index); // [0, 1, 2]
 
                 Array.from({length: 3}, (iem, index) => index); // [0, 1, 2]
                 `}
             </pre>
 
-            <h4 className="array__title">Of</h4>
-            <pre className="prettyprint lang-js">
+            <h4 className='array__title'>Of</h4>
+            <pre className='prettyprint lang-js'>
                 {`var array1 = Array.of(5); // [5]
                 var array2 = Array(5); // Array(5) {length: 5}
                 `}

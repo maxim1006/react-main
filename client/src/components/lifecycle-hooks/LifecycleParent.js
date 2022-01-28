@@ -25,10 +25,10 @@ export class LifecycleParent extends Component {
         return (
             <>
                 <p>
-                    <button type="button" style={{ marginRight: '20px' }} onClick={this.changeProp}>
+                    <button type='button' style={{ marginRight: '20px' }} onClick={this.changeProp}>
                         Change prop
                     </button>
-                    <button type="button" onClick={this.changeProp1}>
+                    <button type='button' onClick={this.changeProp1}>
                         Change prop1
                     </button>
                 </p>

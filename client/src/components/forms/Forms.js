@@ -49,7 +49,7 @@ export class FormsComponent extends Component {
 
     onInput = event => {
         const filteredItems = this.state.items.filter(({ name }) =>
-            name.toLowerCase().includes(event.target.value.toLowerCase()),
+            name.toLowerCase().includes(event.target.value.toLowerCase())
         );
         this.setState({ filteredItems });
     };
@@ -78,7 +78,7 @@ export class FormsComponent extends Component {
                     transform: 'scale3d(0.8, 0.8, 0.8)',
                 }}
             >
-                <MaterialLoader message="Loading family" />
+                <MaterialLoader message='Loading family' />
             </div>
         );
     }

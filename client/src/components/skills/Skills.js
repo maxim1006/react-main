@@ -18,7 +18,7 @@ export default memo(() => {
     };
 
     return (
-        <div className="skills">
+        <div className='skills'>
             <SkillSearch />
 
             <SkillList items={items} />

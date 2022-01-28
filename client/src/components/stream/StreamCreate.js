@@ -11,7 +11,7 @@ class StreamCreate extends Component {
                 <StreamForm onSubmit={this.onSubmit} />
 
                 <p>
-                    <Link to="/stream">Go to stream list -&gt;</Link>
+                    <Link to='/stream'>Go to stream list -&gt;</Link>
                 </p>
             </>
         );

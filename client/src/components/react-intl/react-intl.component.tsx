@@ -21,7 +21,7 @@ const ReactIntlComponent: React.FC = () => {
     return (
         <>
             <button
-                type="button"
+                type='button'
                 onClick={() => {
                     setLocale(currentLocale => (currentLocale === RU ? EN : RU));
                 }}

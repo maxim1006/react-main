@@ -34,7 +34,7 @@ export const StyledShopCollectionItemButton = styled.button`
     text-align: center;
     cursor: pointer;
     outline: none;
-    
+
     ${StyledShopCollectionItemImageWrapper}:hover & {
         opacity: 1;
         visibility: visible;

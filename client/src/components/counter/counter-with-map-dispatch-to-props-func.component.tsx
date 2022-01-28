@@ -10,16 +10,16 @@ export type CounterProps = {
 
 const CounterWithMapDispatchToPropsFunc = ({ counter, incrementCounter, decrementCounter }: CounterProps) => {
     return (
-        <div className="counter">
-            <div className="counter__value">
+        <div className='counter'>
+            <div className='counter__value'>
                 Value:
                 {counter}
             </div>
-            <div className="counter__controls">
-                <button type="button" onClick={incrementCounter}>
+            <div className='counter__controls'>
+                <button type='button' onClick={incrementCounter}>
                     Increment
                 </button>
-                <button type="button" onClick={decrementCounter}>
+                <button type='button' onClick={decrementCounter}>
                     Decrement
                 </button>
             </div>

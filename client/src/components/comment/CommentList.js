@@ -22,7 +22,7 @@ export class CommentListComponent extends Component {
             );
         });
 
-        return <ul className="comment-list">{comments}</ul>;
+        return <ul className='comment-list'>{comments}</ul>;
     }
 
     async componentDidMount() {

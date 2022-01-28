@@ -5,13 +5,13 @@ type User = {
 
 let user: User = {
     name: 'Max',
-    age: 33
+    age: 33,
 };
 
 // can make Partial object with props
 
 let partialUser: Partial<User> = {
-    name: 'Aliya'
+    name: 'Aliya',
 };
 
 console.log(user, partialUser);

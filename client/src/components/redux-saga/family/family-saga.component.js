@@ -6,7 +6,7 @@ const FamilySagaComponent = () => {
     const dispatch = useDispatch();
 
     return (
-        <button type="button" onClick={() => dispatch(getFamilyAction())}>
+        <button type='button' onClick={() => dispatch(getFamilyAction())}>
             Get family
         </button>
     );

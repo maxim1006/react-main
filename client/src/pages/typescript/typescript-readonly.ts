@@ -24,7 +24,7 @@ export interface Thing {
 }
 
 let a: Thing = {
-    data: 'Max'
+    data: 'Max',
 };
 
 // еще примеры

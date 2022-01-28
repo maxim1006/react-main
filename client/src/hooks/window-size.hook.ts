@@ -17,11 +17,11 @@ export function useWindowSize() {
     useEventListener({
         eventType: 'resize',
         callback,
-        debounceTime: 500
+        debounceTime: 500,
     });
 
     return {
         width,
-        height
+        height,
     };
 }

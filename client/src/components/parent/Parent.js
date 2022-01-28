@@ -30,13 +30,13 @@ export class Parent extends Component {
                     {/* это только пример асинхронности settState, вторым аргументом он принимает функцию, которая выполнится
                     когда выполнится setState*/}
                     <input
-                        type="text"
+                        type='text'
                         onChange={e => {
                             const { value } = e.target;
                             // первый вэлью не появится в консоли так как setState асинхронная,
                             // чтобы получить актуальное значение использую второй аргумент - функцию
                             this.setState({ inputValue: e.target.value }, () =>
-                                console.log('second arg in setState ', this.state, value),
+                                console.log('second arg in setState ', this.state, value)
                             );
                             console.log('synchronous log after setState ', this.state, value);
                         }}

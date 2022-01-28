@@ -15,24 +15,16 @@
     max-width: 500px;
 
     /* Для Chrome и Safari */
-    background-image:
-        //linear-gradient(
+    background-image: //linear-gradient(
         //    to top,
         //    black,
         //    transparent 70%
         //),
-        -webkit-image-set(
-            url('../../assets/images/cat@2x.webp') 2x,
-            url('../../assets/images/cat@1x.webp') 1x
-        );
+        -webkit-image-set(url('../../assets/images/cat@2x.webp') 2x, url('../../assets/images/cat@1x.webp') 1x);
 
     /* Для Firefox */
     background-image:
-        linear-gradient(
-            to top,
-            black,
-            transparent 70%
-        ),
+        linear-gradient(to top, black, transparent 70%),
         image-set(
             //url('/images/cat@2x.avif') type('image/avif') 2x,
             //url('/images/cat@1x.avif') type('image/avif') 1x,

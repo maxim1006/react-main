@@ -1,4 +1,4 @@
-###manifest.json 
+###manifest.json
 `short_name`: the name taken when added to the home screen and situated amongst your other apps
 `name`: the name shown in the ‘add to home screen prompt’. short_name is used if not set.
 `icons`: your app icons (logo) in varying sizes for maximum compatibility with different sized devices.

@@ -11,7 +11,7 @@ const TypescriptPage = () => {
         <>
             <TypescriptEnum />
             <MainMenu routes={[{ to: '/typescript/hooks', title: 'Hooks' }]} />
-            <Route path="/typescript/hooks" component={TypescriptHooks} />
+            <Route path='/typescript/hooks' component={TypescriptHooks} />
             <TypescriptDefaultProps />
             <TypescriptForm />
         </>

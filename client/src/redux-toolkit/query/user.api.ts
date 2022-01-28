@@ -9,22 +9,22 @@ export const userApi = commonApi.injectEndpoints({
             query: (limit: number = 5) => ({
                 url: '/users',
                 params: {
-                    limit
-                }
+                    limit,
+                },
             }),
             // tagTypes2
             providesTags: result => {
                 // тут результат запроса
                 // console.log(result);
                 return ['User'];
-            }
+            },
         }),
         // в дженерике указываю что вернется а вторым что передаю (<ResultType, QueryArg>)
         createUser: build.mutation<UserModel, UserModel & { limit: number }>({
             query: user => ({
                 url: '/users',
                 method: 'POST',
-                body: user
+                body: user,
             }),
             // пример пессимистик реквеста
             async onQueryStarted(user, { dispatch, queryFulfilled }) {
@@ -41,7 +41,7 @@ export const userApi = commonApi.injectEndpoints({
                 } catch (e) {
                     console.error('userApi createUser error', e);
                 }
-            }
+            },
             // tagTypes3
             // invalidatesTags: ['User']
         }),
@@ -49,18 +49,18 @@ export const userApi = commonApi.injectEndpoints({
             query: user => ({
                 url: `/users`,
                 method: 'PUT',
-                body: user
+                body: user,
             }),
             // tagTypes3
-            invalidatesTags: ['User']
+            invalidatesTags: ['User'],
         }),
         deleteUser: build.mutation<UserModel, string>({
             query: id => ({
                 url: `/users/${id}`,
-                method: 'DELETE'
+                method: 'DELETE',
             }),
             // tagTypes3
-            invalidatesTags: ['User']
-        })
-    })
+            invalidatesTags: ['User'],
+        }),
+    }),
 });

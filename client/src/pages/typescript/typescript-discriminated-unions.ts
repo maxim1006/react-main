@@ -7,7 +7,7 @@
 
 enum ShapeEnum {
     Square = 'Square',
-    Circle = 'Circle'
+    Circle = 'Circle',
 }
 
 interface Circle {

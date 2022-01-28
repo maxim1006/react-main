@@ -29,6 +29,6 @@ export function useLocation() {
     return {
         data,
         errorMessage,
-        loading
+        loading,
     };
 }

@@ -44,7 +44,7 @@ const App: React.FC = () => {
                             { to: '/context', title: 'Context' },
                             { to: '/hooks', title: 'Hooks' },
                             { to: '/intl', title: 'Intl' },
-                            { to: '/unknown', title: 'Unknown' }
+                            { to: '/unknown', title: 'Unknown' },
                         ]}
                     />
                     {/* При переключении роутера будет показываться MaterialLoaderComponent, за это отвечает Suspense*/}

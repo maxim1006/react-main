@@ -17,7 +17,7 @@ export default function useGetLazyRequest({ url }) {
             setLoading(true);
 
             const { data } = await customAxios.get(url, {
-                cancelToken: cancelRequest?.token
+                cancelToken: cancelRequest?.token,
             });
 
             setData(data);

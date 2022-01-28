@@ -2,7 +2,7 @@ import { SIGN_IN, SIGN_OUT } from '../actions/types';
 
 const initialState = {
     isSignedIn: null,
-    userId: null
+    userId: null,
 };
 
 export default function authReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 isSignedIn: true,
-                userId: action.payload
+                userId: action.payload,
             };
         }
 
@@ -19,7 +19,7 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 isSignedIn: false,
-                userId: null
+                userId: null,
             };
         }
 

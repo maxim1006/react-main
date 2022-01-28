@@ -22,7 +22,7 @@ const Child = ({ prop }: { prop: number }) => {
     console.log({
         currentProp,
         setCurrentProp,
-        isCurrentPropChanged
+        isCurrentPropChanged,
     });
 
     return (

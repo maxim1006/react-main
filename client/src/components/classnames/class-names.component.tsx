@@ -30,7 +30,7 @@ const ClassNames = memo<ClassNamesProps>(() => {
         `${styles.base}`,
         state === 'accept' && styles.accept,
         state === 'error' && styles.error,
-        state === 'disabled' && styles.disabled,
+        state === 'disabled' && styles.disabled
     );
 
     return (

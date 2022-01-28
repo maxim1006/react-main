@@ -8,8 +8,8 @@ const initState: TodosState = [
     {
         name: 'deeply learn redux',
         completed: false,
-        id: generateUniqueId()
-    }
+        id: generateUniqueId(),
+    },
 ];
 
 export default function todosReducer(state = initState, action: TodoActionTypes) {

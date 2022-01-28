@@ -11,13 +11,13 @@ export default function ShopSignInHooks() {
     const [signInState, setSignInState] = useState({
         email: '',
         password: '',
-        error: ''
+        error: '',
     });
 
     const clearNotificationError = useCallback(() => {
         setSignInState(currentSignInState => ({
             ...currentSignInState,
-            error: null
+            error: null,
         }));
 
         clearTimeout(notificationErrorTimeout);
@@ -43,12 +43,12 @@ export default function ShopSignInHooks() {
             setSignInState({
                 ...signInState,
                 email: '',
-                password: ''
+                password: '',
             });
         } catch (e) {
             setSignInState({
                 ...signInState,
-                error: e.message
+                error: e.message,
             });
 
             console.log('Shop SignIn onSubmit error ', e);
@@ -60,7 +60,7 @@ export default function ShopSignInHooks() {
 
         setSignInState({
             ...signInState,
-            [name]: value
+            [name]: value,
         });
     };
 

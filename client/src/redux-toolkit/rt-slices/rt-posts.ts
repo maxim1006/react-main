@@ -12,7 +12,7 @@ interface PostsStateModel {
 
 const initialState: PostsStateModel = {
     loading: false,
-    entities: []
+    entities: [],
 };
 
 // 2ой способ задания thunk должен указать тут чтобы не ругался тс с последовательностью зависимостей
@@ -40,7 +40,7 @@ const rtPostsSlice = createSlice({
         fetchPostsError(state, { payload }: PayloadAction<Error>) {
             state.error = payload;
             state.loading = false;
-        }
+        },
     },
     extraReducers: {
         [rtFetchPostsAction1.pending.type]: (state, { payload }: PayloadAction<Error>) => {
@@ -54,8 +54,8 @@ const rtPostsSlice = createSlice({
         [rtFetchPostsAction1.rejected.type]: (state, { payload }: PayloadAction<Error>) => {
             state.error = payload;
             state.loading = false;
-        }
-    }
+        },
+    },
 });
 
 export const { fetchPostsSuccess, fetchPostsError, fetchPostsStart } = rtPostsSlice.actions;

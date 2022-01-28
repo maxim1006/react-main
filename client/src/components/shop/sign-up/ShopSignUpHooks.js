@@ -8,7 +8,7 @@ export default function ShopSignUpHooks() {
         displayName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
     });
 
     const { displayName, email, password, confirmPassword } = signUpState;
@@ -30,7 +30,7 @@ export default function ShopSignUpHooks() {
                 displayName: '',
                 email: '',
                 password: '',
-                confirmPassword: ''
+                confirmPassword: '',
             });
         } catch (e) {
             console.log('Sign Up handleSubmit error ', e.message);

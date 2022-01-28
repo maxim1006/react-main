@@ -24,7 +24,7 @@ class StreamEdit extends Component {
                     <StreamForm initialValues={{ title, description }} onSubmit={this.onSubmit.bind(this)} />
 
                     <p>
-                        <Link to="/stream">Go to stream list -&gt;</Link>
+                        <Link to='/stream'>Go to stream list -&gt;</Link>
                     </p>
                 </>
             );

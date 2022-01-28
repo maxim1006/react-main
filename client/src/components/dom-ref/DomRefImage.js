@@ -19,6 +19,6 @@ export class DomRefImageComponent extends Component {
         const { styleClass, image } = this.props;
         const className = `dom-ref-image ${styleClass || ''}`;
 
-        return <img loading="lazy" ref={this.imageRef} alt={image} className={className} src={image} />;
+        return <img loading='lazy' ref={this.imageRef} alt={image} className={className} src={image} />;
     }
 }

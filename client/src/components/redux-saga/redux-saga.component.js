@@ -8,13 +8,13 @@ const ReduxSaga = () => {
     return (
         <>
             <TabsComponent>
-                <div tabName="Counter">
+                <div tabName='Counter'>
                     <SagaCounterComponent />
                 </div>
-                <div tabName="Intro">
+                <div tabName='Intro'>
                     <ReduxSagaIntroComponent />
                 </div>
-                <div tabName="Family">
+                <div tabName='Family'>
                     <FamilySagaComponent />
                 </div>
             </TabsComponent>

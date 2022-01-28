@@ -89,7 +89,7 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
                                                 setEditId('');
                                                 updateUser({
                                                     ...i,
-                                                    name: editValue
+                                                    name: editValue,
                                                 });
                                             }}
                                         >

@@ -5,7 +5,7 @@ import ContextCreate from '@app/components/context/test/context-create.component
 
 export default class ContextTest extends Component {
     state = {
-        language: 'en'
+        language: 'en',
     };
 
     render() {
@@ -29,7 +29,7 @@ export default class ContextTest extends Component {
         event.preventDefault();
 
         this.setState({
-            language
+            language,
         });
     };
 }

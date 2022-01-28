@@ -2,7 +2,7 @@ import { SHOP_CART_TYPES } from '../actions/types';
 
 const initialState = {
     visibleDropdown: null,
-    cartItems: {}
+    cartItems: {},
 };
 
 export default function shopCartReducer(state = initialState, action) {
@@ -10,14 +10,14 @@ export default function shopCartReducer(state = initialState, action) {
         case SHOP_CART_TYPES.TOGGLE_DROPDOWN: {
             return {
                 ...state,
-                visibleDropdown: !state.visibleDropdown
+                visibleDropdown: !state.visibleDropdown,
             };
         }
 
         case SHOP_CART_TYPES.CLOSE_DROPDOWN: {
             return {
                 ...state,
-                visibleDropdown: false
+                visibleDropdown: false,
             };
         }
 
@@ -33,13 +33,13 @@ export default function shopCartReducer(state = initialState, action) {
             } else {
                 currentItems[newItem.id] = {
                     ...newItem,
-                    quantity: 1
+                    quantity: 1,
                 };
             }
 
             return {
                 ...state,
-                cartItems: { ...currentItems }
+                cartItems: { ...currentItems },
             };
         }
 
@@ -48,7 +48,7 @@ export default function shopCartReducer(state = initialState, action) {
 
             return {
                 ...state,
-                cartItems: { ...restItems }
+                cartItems: { ...restItems },
             };
         }
 
@@ -67,14 +67,14 @@ export default function shopCartReducer(state = initialState, action) {
 
             return {
                 ...state,
-                cartItems: { ...currentCartItems }
+                cartItems: { ...currentCartItems },
             };
         }
 
         case SHOP_CART_TYPES.CLEAR_ITEMS: {
             return {
                 visibleDropdown: null,
-                cartItems: {}
+                cartItems: {},
             };
         }
 

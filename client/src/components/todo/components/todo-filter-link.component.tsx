@@ -8,7 +8,7 @@ export type ToDoFilterLinkProps = {
 const ToDoFilterLink = ({ children, onClick, ...rest }: ToDoFilterLinkProps) => (
     <a
         {...rest}
-        href="/"
+        href='/'
         onClick={e => {
             e.preventDefault();
             onClick(e);

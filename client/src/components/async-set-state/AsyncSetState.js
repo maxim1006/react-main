@@ -18,10 +18,10 @@ export default class AsyncSetState extends Component {
         const { counter } = this.state;
 
         return (
-            <div className="async-set-state">
+            <div className='async-set-state'>
                 <p>{counter}</p>
                 <p>
-                    <button type="button" onClick={this.onClick}>
+                    <button type='button' onClick={this.onClick}>
                         Increase
                     </button>
                 </p>

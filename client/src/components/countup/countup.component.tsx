@@ -8,11 +8,11 @@ const CountupWrapper: React.FC = () => {
                 start={-875.039}
                 end={160527.012}
                 duration={2.75}
-                separator=" "
+                separator=' '
                 decimals={4}
-                decimal=","
-                prefix="EUR "
-                suffix=" left"
+                decimal=','
+                prefix='EUR '
+                suffix=' left'
                 onEnd={() => console.log('Ended! 👏')}
                 onStart={() => console.log('Started! 💨')}
             >

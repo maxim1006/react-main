@@ -37,7 +37,7 @@ export default memo(() => {
                     exact
                     routes={[
                         { to: '/shop', title: 'Home' },
-                        { to: '/shop/collections', title: 'Collections' }
+                        { to: '/shop/collections', title: 'Collections' },
                     ]}
                 />
             </div>

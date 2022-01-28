@@ -6,8 +6,8 @@ import Dropdown from '../dropdown/dropdown.component';
 
 const NavBar = memo(props => {
     return (
-        <div className="navbar">
-            <ul className="navbar__list">
+        <div className='navbar'>
+            <ul className='navbar__list'>
                 <NavBarItem icon={<BellIcon />} />
                 <NavBarItem icon={<BellIcon />} />
                 <NavBarItem icon={<BellIcon />}>

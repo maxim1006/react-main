@@ -58,7 +58,7 @@ export default function FireStore() {
 
             newBatch.set(newDoc, {
                 name: names[index],
-                age: ages[index]
+                age: ages[index],
             });
         });
 

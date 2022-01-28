@@ -32,14 +32,14 @@ export class ReduxComponent extends Component {
                 />
 
                 <Switch>
-                    <Route path="/redux" exact component={ReduxSaga} />
-                    <Route path="/redux/todos" exact component={Todos} />
-                    <Route path="/redux/counters" exact component={Counters} />
-                    <Route path="/redux/song-list" exact component={SongList} />
-                    <Route path="/redux/posts-and-users" exact component={PostsAndUsers} />
-                    <Route path="/redux/post-list" exact component={PostList} />
-                    <Route path="/redux/framework-list" exact component={FrameworkList} />
-                    <Route path="/redux/user-list" exact component={UserListHooks} />
+                    <Route path='/redux' exact component={ReduxSaga} />
+                    <Route path='/redux/todos' exact component={Todos} />
+                    <Route path='/redux/counters' exact component={Counters} />
+                    <Route path='/redux/song-list' exact component={SongList} />
+                    <Route path='/redux/posts-and-users' exact component={PostsAndUsers} />
+                    <Route path='/redux/post-list' exact component={PostList} />
+                    <Route path='/redux/framework-list' exact component={FrameworkList} />
+                    <Route path='/redux/user-list' exact component={UserListHooks} />
                 </Switch>
             </>
         );

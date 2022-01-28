@@ -28,9 +28,9 @@ export class TabsComponent extends Component {
             });
 
             return (
-                <div className="tabs">
-                    <div className="tabs__header">{tabsHeader}</div>
-                    <div className="tabs__content">{tabsBody}</div>
+                <div className='tabs'>
+                    <div className='tabs__header'>{tabsHeader}</div>
+                    <div className='tabs__content'>{tabsBody}</div>
                 </div>
             );
         }
@@ -51,7 +51,7 @@ export class TabsComponent extends Component {
     getTabsBody(child, index) {
         if (index === this.state.activeTab) {
             return (
-                <div className="tabs__content-item" key={index}>
+                <div className='tabs__content-item' key={index}>
                     {child.props.children}
                 </div>
             );

@@ -17,7 +17,7 @@ export default function useFetchGet() {
 
             try {
                 const data = await fetch(fetchUrl, {
-                    signal: controller.signal
+                    signal: controller.signal,
                 });
                 const jsonData = await data.json();
                 setData(jsonData);
@@ -32,6 +32,6 @@ export default function useFetchGet() {
     return {
         data,
         setController,
-        controller
+        controller,
     };
 }

@@ -5,9 +5,9 @@ import { PlansActionTypes } from '../actions/plans.action-type';
 const initState: PlansState = {
     isLoading: false,
     error: {
-        message: ''
+        message: '',
     },
-    plans: {}
+    plans: {},
 };
 
 export default function plansReducer(state = initState, action: PlansActionTypes): PlansState {

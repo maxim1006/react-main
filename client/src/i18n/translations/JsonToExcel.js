@@ -16,7 +16,7 @@ function createWorkBook() {
     const wb = xlsx.utils.book_new();
     wb.Props = {
         Title: 'Translations',
-        CreatedDate: new Date()
+        CreatedDate: new Date(),
     };
     return wb;
 }

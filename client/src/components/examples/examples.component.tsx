@@ -8,12 +8,12 @@ import ExamplesLocalizationComponent from './localization/examples-localization.
 
 const ExamplesComponent = () => {
     return (
-        <Suspense fallback="Loading...">
-            <ExampleComponent caption="Example of css module" component={<ExamplesCssModuleComponent />} />
-            <ExampleComponent caption="Example of icon usage" component={<UserIcon />} />
-            <ExampleComponent caption="Example of Routing" component={<ExamplesRouterComponent />} />
-            <ExampleComponent caption="Example of localization" component={<ExamplesLocalizationComponent />} />
-            <ExampleComponent caption="Example of lazy on click" component={<ExampleLazyOnClickComponent />} />
+        <Suspense fallback='Loading...'>
+            <ExampleComponent caption='Example of css module' component={<ExamplesCssModuleComponent />} />
+            <ExampleComponent caption='Example of icon usage' component={<UserIcon />} />
+            <ExampleComponent caption='Example of Routing' component={<ExamplesRouterComponent />} />
+            <ExampleComponent caption='Example of localization' component={<ExamplesLocalizationComponent />} />
+            <ExampleComponent caption='Example of lazy on click' component={<ExampleLazyOnClickComponent />} />
         </Suspense>
     );
 };

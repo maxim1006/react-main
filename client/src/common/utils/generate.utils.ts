@@ -41,7 +41,7 @@ export function generateCheckSumByLuhn(value: string) {
             arr.push(n);
         }
     }
-    let sum = arr.reduce(function(a, b) {
+    let sum = arr.reduce(function (a, b) {
         return a + b;
     });
     return sum % 10;

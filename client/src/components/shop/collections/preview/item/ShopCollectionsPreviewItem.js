@@ -7,10 +7,10 @@ const ShopCollectionPreviewItem = ({ item, shopAddCartItem }) => {
     const { imageUrl, name, price } = item;
 
     return (
-        <div className="collections-preview-item">
-            <div className="collections-preview-item__image-wrapper">
+        <div className='collections-preview-item'>
+            <div className='collections-preview-item__image-wrapper'>
                 <button
-                    className="collections-preview-item__button"
+                    className='collections-preview-item__button'
                     onClick={() => {
                         shopAddCartItem(item);
                     }}
@@ -18,17 +18,17 @@ const ShopCollectionPreviewItem = ({ item, shopAddCartItem }) => {
                     Add to cart
                 </button>
                 <img
-                    loading="lazy"
+                    loading='lazy'
                     width={300}
                     height={350}
-                    className="collections-preview-item__image"
-                    alt="shop preview item"
+                    className='collections-preview-item__image'
+                    alt='shop preview item'
                     src={imageUrl}
                 />
             </div>
-            <div className="collections-preview-item__price">
-                <div className="collections-preview-item__price-name">{name}</div>
-                <div className="collections-preview-item__price-value">{price}</div>
+            <div className='collections-preview-item__price'>
+                <div className='collections-preview-item__price-name'>{name}</div>
+                <div className='collections-preview-item__price-value'>{price}</div>
             </div>
         </div>
     );

@@ -13,7 +13,7 @@ const Fetch = memo(() => {
         <>
             <h3>Fetch get</h3>
             <button
-                type="button"
+                type='button'
                 onClick={() => {
                     setController(new AbortController());
                 }}
@@ -22,12 +22,12 @@ const Fetch = memo(() => {
             </button>
             {data ? data.map(familyMember => familyMember.name) : controller && <MaterialLoader />}
 
-            <h3 className="fetch__header">Fetch post</h3>
-            <button type="button" onClick={() => setPostController(new AbortController())}>
+            <h3 className='fetch__header'>Fetch post</h3>
+            <button type='button' onClick={() => setPostController(new AbortController())}>
                 fetch post
             </button>
             {postData ? postData.message : postController && 'Loading post data...'}
-            <h3 className="fetch__header">Fetch canvas</h3>
+            <h3 className='fetch__header'>Fetch canvas</h3>
             <FetchCanvas />
         </>
     );

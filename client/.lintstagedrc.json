@@ -1,9 +1,4 @@
 {
-    "src/**/*.{js,jsx,ts,tsx}": [
-        "npm run lint -- --max-warnings 0",
-        "prettier --write"
-    ],
-    "src/**/*.{css,less,scss}": [
-        "stylelint --fix"
-    ]
+    "src/**/*.{js,jsx,ts,tsx}": ["npm run lint -- --max-warnings 0", "prettier --write"],
+    "src/**/*.{css,less,scss}": ["stylelint --fix"]
 }

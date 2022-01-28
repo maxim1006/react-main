@@ -1,6 +1,6 @@
 export enum ViewEnum {
     Toggle = 'toggle',
-    Radio = 'radio'
+    Radio = 'radio',
 }
 
 type ViewEnumT = {

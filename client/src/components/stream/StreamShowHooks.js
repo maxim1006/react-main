@@ -24,7 +24,7 @@ export default memo(({ match }) => {
                     Stream description:
                     {stream.description}
                 </p>
-                <Link to="/stream">Go to stream list</Link>
+                <Link to='/stream'>Go to stream list</Link>
             </>
         );
     }

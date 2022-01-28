@@ -11,7 +11,7 @@ const UploadComponent = () => {
     };
     return (
         <>
-            <input type="file" onChange={onChange} />
+            <input type='file' onChange={onChange} />
             <div
                 style={{
                     width: 100,

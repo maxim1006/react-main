@@ -24,7 +24,7 @@
             height: 2px;
             background-color: dodgerblue;
             transition: all 0.2s;
-            content: "";
+            content: '';
         }
 
         &::before {
@@ -35,7 +35,7 @@
             width: 0;
             background-color: rgba(238, 242, 255, 0.3);
             transition: all 0.2s;
-            content: "";
+            content: '';
         }
 
         &._active::before {

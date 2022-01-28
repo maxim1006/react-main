@@ -1,65 +1,65 @@
 Манипулирую списком, а добавляю и беру из мапы!!!!!!!
 
-
 ###
+
 Примеры смотри тут client/src/components/todo
 
 ### redux principles
-1) State - один большущий объект на любое приложение
-2) State is readonly, modify it only via actions (объект с type пропертей)
-3) Редьюсер - pure function (при одинаковых аргументах - одинаковый результат) (не делает рест апи коллов, не мутирует объекты и массивы, а возвращает новые) возвращает next state
-4) Роль container layer component сделать connect presentational layer component to store
+
+1. State - один большущий объект на любое приложение
+2. State is readonly, modify it only via actions (объект с type пропертей)
+3. Редьюсер - pure function (при одинаковых аргументах - одинаковый результат) (не делает рест апи коллов, не мутирует объекты и массивы, а возвращает новые) возвращает next state
+4. Роль container layer component сделать connect presentational layer component to store
 
 ### redux-thunk
+
 миддлвер, для работы с асинхронными запросами
 
 action creator => action => dispatch => middleware
 
 обычно action creator возвращает объект с экшеном, но redux-thunk позволяет возвратить не только объект но и функцию из action creator. В случае если в диспатч передал функцию redux-thunk вызовет ее func(dispatch, getState), это все что он делает. На вход эта функция принимает dispatch, getState, которые контролируем и вызываем когда прошел запрос
 
-
-
 # debug_session=session_name
+
 Нужно чтобы автоматом в локалсторадж сохранять стейт и восстанавливать при перзагрузке страницы
 
-
 # async request
-Обычно использую axios (и на клиенте и на сервере) но в доках редакса предлагают использовать `import fetch from
- 'cross-fetch'` и на клиенте и на сервере
 
+Обычно использую axios (и на клиенте и на сервере) но в доках редакса предлагают использовать `import fetch from 'cross-fetch'` и на клиенте и на сервере
 
 # reducers
-1) нельзя возвращать undefined (будет ошибка)
-2) Единественное что можно возвращать это результат взаимодействия state и action переданные в редьюсер
-3) pure functions. не мутировать возвращаемое значение
 
-
+1. нельзя возвращать undefined (будет ошибка)
+2. Единественное что можно возвращать это результат взаимодействия state и action переданные в редьюсер
+3. pure functions. не мутировать возвращаемое значение
 
 ### raw example
+
 ```typescript
 // 1)
 // Создаю action creator
-const createPolicy = ({name, amount}) => ({
+const createPolicy = ({ name, amount }) => ({
     // который возвращает action
     type: 'CREATE_POLICY',
     payload: {
         name,
-        amount
-    }
+        amount,
+    },
 });
 
-const deletePolicy = ({name}) => ({
+const deletePolicy = ({ name }) => ({
     type: 'DELETE_POLICY',
     payload: {
-        name
-    }
+        name,
+    },
 });
 
-const createClaim = ({name, amount}) => ({
+const createClaim = ({ name, amount }) => ({
     type: 'CREATE_CLAIM',
     payload: {
-        name, amount
-    }
+        name,
+        amount,
+    },
 });
 
 // 2)
@@ -80,7 +80,7 @@ const policies = (listOfPolicies = [], action) => {
             return [...listOfPolicies, action.payload];
         }
         case 'DELETE_POLICY': {
-            return listOfPolicies.filter(({name}) => name !== action.payload.name);
+            return listOfPolicies.filter(({ name }) => name !== action.payload.name);
         }
         default:
             return listOfPolicies;
@@ -91,7 +91,7 @@ const policies = (listOfPolicies = [], action) => {
 // Combine Reducers
 const ourDepartments = combineReducers({
     claimsHistory,
-    policies
+    policies,
 });
 
 // 4)
@@ -100,37 +100,36 @@ const store = createStore(
     ourDepartments,
     {},
     // включаю дев тулы
-        process.env.NODE_ENV !== 'production'
-        && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    process.env.NODE_ENV !== 'production' &&
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
 
 // 5)
 // Вызываю actions
 const action = createPolicy({
-    name: "Max",
-    amount: 31
+    name: 'Max',
+    amount: 31,
 });
 
 const action1 = createPolicy({
-    name: "Aliya",
-    amount: 32
+    name: 'Aliya',
+    amount: 32,
 });
 
 const action2 = createClaim({
-    name: "Liliya",
-    amount: 4
+    name: 'Liliya',
+    amount: 4,
 });
 
 const action3 = createClaim({
-    name: "Alisa",
-    amount: 0
+    name: 'Alisa',
+    amount: 0,
 });
 
 const action4 = deletePolicy({
-    name: "Aliya"
+    name: 'Aliya',
 });
-
 
 // 6)
 // dispatch action
@@ -147,9 +146,10 @@ store.dispatch(action4);
 // });
 ```
 
-
 ### operations
+
 #### Delete
+
 return state.filter(el => el !== 'prop');
 
 const {[action.payload.id]: removed, ...newState} = state;
@@ -159,10 +159,11 @@ const newState = {...state};
 delete newState[action.payload.id]
 
 #### add
+
 [...state, 'prop'];
 {...state, newProp: 'newValue'};
 
 ### Update
+
 state.map(el => el === "oldProp" ? "newProp" : el);
 {...state, prop: 'newValue'}
-

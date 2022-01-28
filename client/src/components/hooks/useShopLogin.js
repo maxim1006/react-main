@@ -26,7 +26,7 @@ export default function useShopLogin() {
                     dispatch(
                         shopSetCurrentUser({
                             id: snapshot.id,
-                            ...snapshot.data()
+                            ...snapshot.data(),
                         })
                     );
                 });

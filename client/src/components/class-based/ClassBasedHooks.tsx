@@ -7,7 +7,7 @@ type ClassBasedHooksProps = {};
 const ClassBasedHooks = memo<ClassBasedHooksProps>(function ClassBasedHooks() {
     const {
         data: { latitude, longitude },
-        errorMessage
+        errorMessage,
     } = useLocation();
 
     let position = null;
@@ -26,7 +26,7 @@ const ClassBasedHooks = memo<ClassBasedHooksProps>(function ClassBasedHooks() {
             <div
                 style={{
                     position: 'relative',
-                    pointerEvents: 'none'
+                    pointerEvents: 'none',
                 }}
             >
                 {errorMessage || <MaterialLoaderComponent />}

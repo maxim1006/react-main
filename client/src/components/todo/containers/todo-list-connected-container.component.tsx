@@ -31,13 +31,13 @@ const TodoListConnectedContainer = ({ todos, visibilityFilter, onChange }: TodoL
 // тоже но с createStructuredSelector
 const mapStateToProps = createStructuredSelector<TodosAppState, { todos: TodoModel[]; visibilityFilter: string }>({
     todos: selectTodos,
-    visibilityFilter: selectVisibilityFilter
+    visibilityFilter: selectVisibilityFilter,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
     onChange: (id: string, completed: boolean) => {
         dispatch(toggleTodo(id, completed));
-    }
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(memo(TodoListConnectedContainer));

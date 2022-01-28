@@ -27,6 +27,6 @@ export function useScript(url: string) {
 
     return {
         error,
-        loading
+        loading,
     };
 }

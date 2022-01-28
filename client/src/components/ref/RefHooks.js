@@ -17,7 +17,7 @@ export default function RefHooks() {
 
             containerEl.scrollTo({
                 top: refsTopCoords[index] - containerTop,
-                left: 0
+                left: 0,
                 // использую scroll-behavior: smooth (can be auto or smooth) в css
                 // behavior: 'smooth'
             });

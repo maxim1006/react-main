@@ -18,10 +18,10 @@ export default memo(({ match }) => {
         };
     }, [dispatch, match.params.id]);
 
-    const onSubmit = useCallback(formValues => dispatch(editStream(match.params.id, formValues)), [
-        dispatch,
-        match.params.id,
-    ]);
+    const onSubmit = useCallback(
+        formValues => dispatch(editStream(match.params.id, formValues)),
+        [dispatch, match.params.id]
+    );
 
     if (stream) {
         const { title, description } = stream;
@@ -32,7 +32,7 @@ export default memo(({ match }) => {
                 <StreamForm initialValues={{ title, description }} onSubmit={onSubmit} />
 
                 <p>
-                    <Link to="/stream">Go to stream list -&gt;</Link>
+                    <Link to='/stream'>Go to stream list -&gt;</Link>
                 </p>
             </>
         );

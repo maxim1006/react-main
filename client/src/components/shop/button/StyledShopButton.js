@@ -39,11 +39,11 @@ export const StyledShopButton = styled.button`
     transition: all 0.2s;
     cursor: pointer;
     outline: none;
-    
-     &:hover {
+
+    &:hover {
         background-color: #fff;
         color: ${StyledPrimaryColor};
     }
-    
+
     ${getButtonStyles}
 `;

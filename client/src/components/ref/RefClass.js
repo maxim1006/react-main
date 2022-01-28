@@ -34,13 +34,13 @@ export default class RefClass extends PureComponent {
 
         return (
             <>
-                <StyledRefLink href="/" onClick={this.onLinkClick(0)}>
+                <StyledRefLink href='/' onClick={this.onLinkClick(0)}>
                     title 1
                 </StyledRefLink>
-                <StyledRefLink href="/" onClick={this.onLinkClick(1)}>
+                <StyledRefLink href='/' onClick={this.onLinkClick(1)}>
                     title 2
                 </StyledRefLink>
-                <StyledRefLink href="/" onClick={this.onLinkClick(2)}>
+                <StyledRefLink href='/' onClick={this.onLinkClick(2)}>
                     title 3
                 </StyledRefLink>
                 <StyledRef ref={this.containerRef}>

@@ -9,7 +9,7 @@ const FamilyFetch = memo(() => {
     return data ? (
         <>
             <button
-                type="button"
+                type='button'
                 onClick={() => {
                     refetch();
                 }}

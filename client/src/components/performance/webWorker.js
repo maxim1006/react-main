@@ -24,7 +24,7 @@ const worker = self => {
             console.log('webworker took', performance.now() - start, ' ms');
             postMessage({
                 eventType: 'sumResult',
-                payload: sum(arr)
+                payload: sum(arr),
             });
         }
     });

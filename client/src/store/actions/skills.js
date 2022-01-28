@@ -41,7 +41,7 @@ export const addSkill = (name, cancelToken, cb) => async dispatch => {
             {
                 name,
             },
-            { cancelToken },
+            { cancelToken }
         );
 
         isFunction(cb) && cb(item);
@@ -73,7 +73,7 @@ export const removeSkill = (skill, cancelToken, cb) => async dispatch => {
             {
                 params: { id: skill.id },
             },
-            { cancelToken },
+            { cancelToken }
         );
 
         isFunction(cb) && cb(item);
@@ -105,7 +105,7 @@ export const changeSkillStatus = (skill, cancelToken, cb) => async dispatch => {
             {
                 params: { id: skill.id },
             },
-            { cancelToken },
+            { cancelToken }
         );
 
         isFunction(cb) && cb(item);

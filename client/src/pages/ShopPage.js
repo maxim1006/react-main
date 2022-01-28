@@ -20,10 +20,10 @@ export default memo(() => {
     const user = useSelector(state => state.shopUser.currentUser);
 
     return (
-        <div className="shop">
+        <div className='shop'>
             <ShopHeaderHooks />
 
-            <div className="shop__menu">
+            <div className='shop__menu'>
                 <MainMenu
                     exact
                     routes={[
@@ -36,15 +36,15 @@ export default memo(() => {
             {/* покажет только первый найденный роут*/}
             {/* Только ShopHome будет иметь доступ к history, location и match* поэтому исползьую withRouter во внутренних компонентах */}
             <Switch>
-                <Route path="/shop" exact component={ShopHome} />
+                <Route path='/shop' exact component={ShopHome} />
 
                 {/* Если залогинился то при запросе на /shop/sign редирекчу на /shop*/}
                 {/* render - это как стандартный рендер метод у компоненты, поэтому могу использовать props*/}
-                <Route path="/shop/sign" render={props => (user ? <Redirect to="/shop" /> : <SignInAndSignUp />)} />
-                <Route path="/shop/collections" exact component={ShopCollectionsHooks} />
-                <Route path="/shop/collections/:categoryId" exact component={ShopCollection} />
-                <Route path="/shop/checkout" exact component={ShopCheckout} />
-                <Route path="/shop/*">
+                <Route path='/shop/sign' render={props => (user ? <Redirect to='/shop' /> : <SignInAndSignUp />)} />
+                <Route path='/shop/collections' exact component={ShopCollectionsHooks} />
+                <Route path='/shop/collections/:categoryId' exact component={ShopCollection} />
+                <Route path='/shop/checkout' exact component={ShopCheckout} />
+                <Route path='/shop/*'>
                     <NotFound>Shop not found</NotFound>
                 </Route>
             </Switch>

@@ -14,13 +14,13 @@ const initStateTodos = {
         {
             name: 'deeply learn redux',
             completed: false,
-            id: generateUniqueId()
-        }
-    ]
+            id: generateUniqueId(),
+        },
+    ],
 };
 
 const initStateVisibilityFilter = {
-    visibilityFilter: 'All'
+    visibilityFilter: 'All',
 };
 
 // Reducers
@@ -60,15 +60,17 @@ const visibilityFilterReducer = (state = initStateVisibilityFilter, action: { ty
 // });
 // эта запись ровно такая же как и с combineReducers
 // имплементация combineReducers
-const combineReducers = (reducers: any) => (state: any = {}, action: any) =>
-    Object.keys(reducers).reduce((nextState: any, key: string) => {
-        nextState[key] = reducers[key](state[key], action);
-        return nextState;
-    }, {});
+const combineReducers =
+    (reducers: any) =>
+    (state: any = {}, action: any) =>
+        Object.keys(reducers).reduce((nextState: any, key: string) => {
+            nextState[key] = reducers[key](state[key], action);
+            return nextState;
+        }, {});
 
 const todoAppReducer = combineReducers({
     todos: todosReducer,
-    visibilityFilter: visibilityFilterReducer
+    visibilityFilter: visibilityFilterReducer,
 });
 
 // Action creators
@@ -76,13 +78,13 @@ export const toggleCompleteTodoActionCreator = (id: string, completed: boolean) 
     type: TODOS_TYPES.TOGGLE,
     payload: {
         id,
-        completed
-    }
+        completed,
+    },
 });
 
 export const setVisibilityFilterActionCreator = (filter: string) => ({
     type: VISIBILITY_FILTER_TYPES.SET,
-    payload: filter
+    payload: filter,
 });
 
 export const addTodoActionCreator = (name: string) => ({
@@ -90,8 +92,8 @@ export const addTodoActionCreator = (name: string) => ({
     payload: {
         name,
         completed: false,
-        id: generateUniqueId()
-    }
+        id: generateUniqueId(),
+    },
 });
 
 // Store
@@ -106,7 +108,7 @@ export const store = createStore(
 // создаю контекст, добавил as any чтобы не падали ошибки тайпскрипт при пустом стейте
 export const TodosStoreReactContext = React.createContext({
     store,
-    state: {}
+    state: {},
 }) as any;
 // создаю компонент с контекстом и изменением его вэлью (Provider также как в редакс оборачиваю)
 // export const Provider = ({children, store}: any) => {

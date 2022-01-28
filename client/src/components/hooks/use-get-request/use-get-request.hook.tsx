@@ -2,13 +2,7 @@ import axios, { CancelTokenSource } from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import customAxios from '../../../common/api/axios';
 
-export default function useGetRequest<T>({
-    url,
-    cb,
-}: {
-    url: string;
-    cb?: (data: T) => void;
-}): {
+export default function useGetRequest<T>({ url, cb }: { url: string; cb?: (data: T) => void }): {
     data: T | null;
     loading: boolean;
     refetch: () => void;

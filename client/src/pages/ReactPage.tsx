@@ -14,7 +14,6 @@ export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-
                 <Component title='Use memo'>
                     <UseMemoHook />
                 </Component>
