@@ -1,8 +1,9 @@
 {
-    "name": "cli-tool",
+    "name": "maximprosv-cli-tool",
     "version": "1.0.0",
     "description": "test cli tool",
     "main": "index.js",
+    "bin": "index.js",
     "type": "module",
     "scripts": {
         "start": "node ."
