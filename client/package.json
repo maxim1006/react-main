@@ -5,7 +5,7 @@
     "homepage": "https://maxim1006.github.io/react-main",
     "scripts": {
         "report": "source-map-explorer 'build/static/js/*.js'",
-        "report+": "node ./dev-helpers/webpack-bundle-analyzer.dev-helper.js",
+        "report+": "node ./de   v-helpers/webpack-bundle-analyzer.dev-helper.js",
         "report++": "react-app-rewired build --report",
         "moment": "node ./dev-helpers/moment.dev-helper.js",
         "start": "react-app-rewired start",

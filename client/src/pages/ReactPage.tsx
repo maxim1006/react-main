@@ -8,15 +8,19 @@ import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
 import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
-import UseMemoHook from '@app/components/hooks/memo/memo-hook.component';
+import Parallax from '@app/components/parallax/parallax.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Use memo'>
-                    <UseMemoHook />
+                <Component title='Parallax'>
+                    <Parallax />
                 </Component>
+
+                {/*<Component title='Use memo'>*/}
+                {/*    <UseMemoHook />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Use state'>*/}
                 {/*    <UseState />*/}
