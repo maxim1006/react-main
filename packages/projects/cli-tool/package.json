@@ -1,0 +1,21 @@
+{
+    "name": "cli-tool",
+    "version": "1.0.0",
+    "description": "test cli tool",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node ."
+    },
+    "keywords": [],
+    "author": "Max Maximov",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "chalk-animation": "^1.6.0",
+        "figlet": "^1.5.2",
+        "gradient-string": "^2.0.0",
+        "inquirer": "^8.2.0",
+        "nanospinner": "^1.0.0"
+    }
+}
