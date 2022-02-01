@@ -9,14 +9,19 @@ import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
 import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
 import Parallax from '@app/components/parallax/parallax.component';
+import EventBus from '@app/components/event-bus/event-bus.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Parallax'>
-                    <Parallax />
+                <Component title='Event bus'>
+                    <EventBus />
                 </Component>
+
+                {/*<Component title='Parallax'>*/}
+                {/*    <Parallax />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Use memo'>*/}
                 {/*    <UseMemoHook />*/}
