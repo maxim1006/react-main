@@ -7,7 +7,7 @@ const EventBus: FC<EventBusProps> = () => {
     const [counter, setCounter] = useState(0);
     const [counter1, setCounter1] = useState(0);
 
-    console.log(eventBus);
+    console.warn(eventBus);
 
     useEffect(() => {
         eventBus.subscribe('counter', () => setCounter);
