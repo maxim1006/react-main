@@ -18,4 +18,6 @@
 //     a = 1
 // }
 
-export default {};
+const obj = {};
+
+export default obj;

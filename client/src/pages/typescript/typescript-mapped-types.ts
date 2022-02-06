@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { MyType } from '@app/pages/typescript/typescript-infer';
 
 type OnlyBooleanAndMy = {

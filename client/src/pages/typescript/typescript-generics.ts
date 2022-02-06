@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Пример объекта
 // export interface GModel<T> {
 //     [prop: string]: T;

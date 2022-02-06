@@ -3,42 +3,51 @@ import styles from './animate-and-transition.module.scss';
 
 type AnimateAndTransitionProps = {};
 
-enum AnimationTypeEnum {
+enum ActionTypeEnum {
     Shake = 'shake',
     Dance = 'dance',
+    Hide = 'hide',
+}
+
+enum ActionEventEnum {
+    Animationend = 'animationend',
+    Transitionend = 'transitionend',
 }
 
 const AnimateAndTransition: FC<AnimateAndTransitionProps> = () => {
-    const runAnimation = (e: React.MouseEvent) => {
+    const runAction = (type: ActionEventEnum) => (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
-        const dataStyle = styles[target.dataset.animation];
+        const dataStyle = styles[target.dataset.action];
         e.persist();
         target.classList.add(dataStyle);
-        target.addEventListener('animationend', () => target.classList.remove(dataStyle), {
-            once: true,
-        });
-    };
-
-    const runTransition = (e: React.MouseEvent) => {
-        const target = e.target as HTMLDivElement;
-        e.persist();
-        target.classList.add(styles.hide);
-        target.addEventListener('transitionend', () => target.classList.remove(styles.hide), {
+        target.addEventListener(type, _ => target.classList.remove(dataStyle), {
             once: true,
         });
     };
 
     return (
         <>
-            <div data-animation={AnimationTypeEnum.Shake} onClick={runAnimation} className={styles.animate}>
+            <div
+                data-action={ActionTypeEnum.Shake}
+                onClick={runAction(ActionEventEnum.Animationend)}
+                className={styles.animate}
+            >
                 Animate shake
             </div>
 
-            <div data-animation={AnimationTypeEnum.Dance} onClick={runAnimation} className={styles.animate}>
+            <div
+                data-action={ActionTypeEnum.Dance}
+                onClick={runAction(ActionEventEnum.Animationend)}
+                className={styles.animate}
+            >
                 Animate dance
             </div>
 
-            <div onClick={runTransition} className={styles.transition}>
+            <div
+                data-action={ActionTypeEnum.Hide}
+                onClick={runAction(ActionEventEnum.Transitionend)}
+                className={styles.transition}
+            >
                 Transition
             </div>
         </>

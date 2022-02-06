@@ -1,3 +1,4 @@
+/* eslint-disable */
 // в тип T положу какой-то массив и у этого массива есть элементы с типом V, верни мне вот этот тип V
 export type ArrayType<T> = T extends (infer V)[] ? V : never;
 export type Maybe<T> = T | null;

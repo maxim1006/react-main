@@ -1,3 +1,4 @@
+/* eslint-disable */
 // ✅ declare properties as readonly
 export interface Person {
     readonly name: string;

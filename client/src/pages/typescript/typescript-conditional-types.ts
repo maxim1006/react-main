@@ -1,3 +1,4 @@
+/* eslint-disable */
 interface IdLabel {
     id: number /* some fields */;
 }

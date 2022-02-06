@@ -1,3 +1,4 @@
+/* eslint-disable */
 // если такой интерфейс то его стоит разбить на 2
 // interface Shape {
 //     kind: "circle" | "square";

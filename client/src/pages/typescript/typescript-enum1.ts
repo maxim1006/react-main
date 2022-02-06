@@ -1,3 +1,4 @@
+/* eslint-disable */
 export enum ViewEnum {
     Toggle = 'toggle',
     Radio = 'radio',

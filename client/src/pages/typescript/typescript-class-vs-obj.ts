@@ -1,3 +1,4 @@
+/* eslint-disable */
 interface ObjModel {
     p: string;
     f: FuncModel;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Type-only Field Declarations
 // тут пример в классе Dogs изменения только интерфейса но не самого свойства
 interface Animal {
