@@ -4,7 +4,7 @@ type UseRefHookProps = {};
 
 const UseRefHook = memo<UseRefHookProps>(() => {
     const [renderState, setRenderState] = useState<{ a: number }>({ a: 1 });
-    // const [, forceUpdate] = useReducer(x => x + 1, 0);
+    // const [, forceUpdate] = useReducer(i => ++i, 0);
 
     // Usage 1
     // @ViewChild

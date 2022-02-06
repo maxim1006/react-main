@@ -1,0 +1,74 @@
+.animate {
+    &.shake {
+        animation: shake 250ms ease-in-out;
+    }
+
+    &.dance {
+        animation: dance 500ms ease-in-out;
+    }
+}
+
+.transition {
+    margin-bottom: 0.5em;
+    padding: 0.75em;
+    background-color: #ccc;
+    border-radius: 0.25em;
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+
+    &.hide {
+        opacity: 0;
+    }
+}
+
+@keyframes dance {
+    20% {
+        transform: translateY(-50%);
+    }
+
+    40% {
+        transform: translateY(5%);
+    }
+
+    60% {
+        transform: translateY(-25%);
+    }
+
+    80% {
+        transform: translateY(2.5%);
+    }
+
+    90% {
+        transform: translateY(-5%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    10% {
+        transform: translateX(-5%);
+    }
+
+    30% {
+        transform: translateX(5%);
+    }
+
+    50% {
+        transform: translateX(-7.5%);
+    }
+
+    70% {
+        transform: translateX(7.5%);
+    }
+
+    90% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

@@ -8,16 +8,23 @@ import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import AxiosFamily from '../components/family/axios/AxiosFamily';
 import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
-import Parallax from '@app/components/parallax/parallax.component';
-import EventBus from '@app/components/event-bus/event-bus.component';
+import AnimateAndTransition from '@app/components/animate-and-transition/animate-and-transition.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Event bus'>
-                    <EventBus />
+                <Component title='AnimateAndTransition'>
+                    <AnimateAndTransition />
                 </Component>
+
+                {/*<Component title='MatchVsTest'>*/}
+                {/*    <MatchVsTest />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='Event bus'>*/}
+                {/*    <EventBus />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Parallax'>*/}
                 {/*    <Parallax />*/}
