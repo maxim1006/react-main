@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { withMaterialLoader } from '@app/components/HOC/WithMaterialLoader';
 import useFirestoreGetDocs from '@app/components/hooks/useFirestoreGetDocs';
 import FamilyList from '@app/components/family/FamilyList';

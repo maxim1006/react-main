@@ -1,4 +1,3 @@
-import React from 'react';
 import ShopMenu from '../menu/ShopMenu';
 
 export default function ShopHome() {

@@ -1,4 +1,3 @@
-import React from 'react';
 import CommentComponent from './Comment';
 import './CommentList.scss';
 import ContentProjectionContentComponent from '../content-projection/ContentProjectionContent';

@@ -1,11 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IssuesDisplayModel, IssuesDisplayRepoModel, IssuesDisplayStateModel } from '@app/models/issues-display.model';
+import {
+    IssuesDisplayModel,
+    IssuesDisplayRepoModel,
+    IssuesDisplayStateModel,
+    IssuesDisplayTypeEnum,
+} from '@app/models/issues-display.model';
 
 let initialState: IssuesDisplayStateModel = {
     org: 'rails',
     repo: 'rails',
     page: 1,
-    displayType: 'issues',
+    displayType: IssuesDisplayTypeEnum.Issues,
     issueId: null,
 };
 

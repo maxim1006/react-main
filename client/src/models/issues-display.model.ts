@@ -1,5 +1,10 @@
+export enum IssuesDisplayTypeEnum {
+    Issues = 'issues',
+    Comments = 'comments',
+}
+
 export interface IssuesDisplayModel {
-    displayType: 'issues' | 'comments';
+    displayType: IssuesDisplayTypeEnum;
     issueId: number | null;
 }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import MaterialLoader from '../loader/MaterialLoader';
 import './MonsterList.scss';
 import MonsterItem from './MonsterItem';

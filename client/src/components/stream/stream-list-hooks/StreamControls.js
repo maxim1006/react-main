@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 export default memo(({ stream, currentUserId, onDeleteClick }) => {
     const { userId, id } = stream;

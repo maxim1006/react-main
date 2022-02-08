@@ -1,7 +1,7 @@
-import React, { memo, useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createStream } from '../../store/actions';
+import { createStream } from "@app/store/actions";
 import StreamForm from './StreamForm';
 
 export default memo(() => {

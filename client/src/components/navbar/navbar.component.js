@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import './navbar.component.scss';
 import NavBarItem from './item/navbar-item.component';
 import { ReactComponent as BellIcon } from '../../assets/icons/bell.svg';

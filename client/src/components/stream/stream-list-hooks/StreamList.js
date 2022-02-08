@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import React, { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Stream from '../Stream';
 import StreamControls from './StreamControls';
-import { deleteStream } from '../../../store/actions';
+import { deleteStream } from "@app/store/actions";
 import ModalPortal from '../../portals/modal/ModalPortal';
 import { selectAuthUserId, selectStreams } from '../../../store/selectors';
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ShopFormInput from '../form-input/ShopFormInput';
 import ShopButton from '../button/ShopButton';
 import './ShopSignIn.scss';

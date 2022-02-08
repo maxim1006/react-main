@@ -1,16 +1,14 @@
-import React from 'react';
-// так импорчу свг
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { ReactComponent as LogoIcon } from '../../../assets/icons/crown.svg';
 import { ReactComponent as CartIcon } from '../../../assets/icons/shopping-bag.svg';
-import { auth } from '../../../firebase/firebase.utils';
+import { auth } from "@app/firebase/firebase.utils";
 import './ShopHeader.scss';
 import { connect } from 'react-redux';
-import { shopToggleDropdown } from '../../../store/actions';
+import { shopToggleDropdown } from "@app/store/actions";
 import MaterialLoader from '../../loader/MaterialLoader';
 import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '../../../store/selectors';
-import { selectShopCurrentUser } from '../../../store/selectors/shopUser';
+import { selectShopCurrentUser } from "@app/store/selectors";
 import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
 
 const ShopHeader = ({ shopToggleDropdown, visibleCartDropdown, user, cartQuantity }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import './ShopCollectionsPreview.scss';
 import { withRouter } from 'react-router-dom';
 import ShopCollectionsPreviewItemHooks from './item/ShopCollectionsPreviewItemHooks';

@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { changeSkillStatus, fetchSkills, removeSkill } from '../../../store/actions';
 import SkillsItem from '../item/SkillsItem';

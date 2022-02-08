@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import User from './User';
 import { fetchUsers } from '@app/store/actions';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './MaterialLoader.scss';
 
 export type MaterialLoaderProps = {

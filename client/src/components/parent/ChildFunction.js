@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function ChildFunction({ string, obj, propFromRestOperator, onClick, truthy }) {
     return (
         <div onPointerUp={onClick}>

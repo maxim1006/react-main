@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import GeneralInfoContext from '../../context/GeneralInfoContext';
 import useGeneralInfo from '../hooks/useGeneralInfo';
 import ThemeSelector from '../theme/ThemeSelector';

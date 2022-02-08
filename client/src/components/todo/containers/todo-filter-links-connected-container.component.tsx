@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { connect } from 'react-redux';
 import ToDoFilterLinks from '../components/todo-filter-links.component';
 import { setVisibilityFilter } from '../store';

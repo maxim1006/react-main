@@ -1,4 +1,3 @@
-import React from 'react';
 import './Comment.scss';
 
 export default function Comment({ name, content, date, img, id }) {

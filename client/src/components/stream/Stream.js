@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Stream({ title, description }) {
     return (
         <div className='stream'>

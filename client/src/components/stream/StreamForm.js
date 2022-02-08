@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 
 class StreamForm extends Component {

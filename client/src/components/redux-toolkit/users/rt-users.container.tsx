@@ -49,7 +49,7 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
                             let value = +e.target.value;
                             // только refetch будет вызывать гет в useQuery
                             setLimit(value < 0 ? 0 : value);
-                            console.log(e.target.value);
+                            // console.log(e.target.value);
                             // будет вызывать гет постоянно
                             // fetchUsersLazy(value);
                         }}

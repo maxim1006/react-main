@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useLayoutEffect, useState } from 'react';
+import { memo, useEffect, useLayoutEffect, useState } from 'react';
 
 type UseEffectProps = {};
 

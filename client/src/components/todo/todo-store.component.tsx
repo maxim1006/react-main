@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { generateUniqueId } from '../../common/helpers/helpers';
+import { generateUniqueId } from '@app/common/helpers/helpers';
 import TodoFilterLinksConnectedContainer from './containers/todo-filter-links-connected-container.component';
 import TodoListConnectedContainer from './containers/todo-list-connected-container.component';
 import TodoHeaderConnectedContainer from './containers/todo-header-connected-container.component';
 import { TODOS_TYPES, VISIBILITY_FILTER_TYPES } from './store/actions';
-import { TodoModel } from '../../models/todo.model';
+import { TodoModel } from '@app/models/todo.model';
 
 // Init states
 const initStateTodos = {

@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react';
+import { memo, useContext } from 'react';
 import GeneralInfoContext from '../../context/GeneralInfoContext';
 import { StyledGeneralInfo, StyledGeneralInfoList, StyledGeneralInfoListItem } from './StyledGeneralInfo';
 

@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTodoPlans, store } from '../store';
 import TodoPlans from '../components/plans/todo-plans.component';

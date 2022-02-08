@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import './Grid.scss';
 import DomRefImageHooks from '../dom-ref/DomRefImageHooks';
 import img1 from '../../assets/images/1.jpg';

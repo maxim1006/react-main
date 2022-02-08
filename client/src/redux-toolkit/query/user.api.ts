@@ -31,7 +31,7 @@ export const userApi = commonApi.injectEndpoints({
                 try {
                     const { data } = await queryFulfilled;
 
-                    console.log({ data });
+                    // console.log({ data });
 
                     dispatch(
                         userApi.util.updateQueryData('fetchAllUsers', user.limit, draft => {

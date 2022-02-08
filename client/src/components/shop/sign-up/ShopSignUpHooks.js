@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import ShopFormInput from '../form-input/ShopFormInput';
 import ShopButton from '../button/ShopButton';
-import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils';
+import { auth, createUserProfileDocument } from "@app/firebase/firebase.utils";
 
 export default function ShopSignUpHooks() {
     const [signUpState, setSignUpState] = useState({

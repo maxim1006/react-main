@@ -1,4 +1,3 @@
-import React from 'react';
 import ShopMenuItem from './item/ShopMenuItem';
 import StyledShopMenu from './StyledShopMenu';
 

@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ShopFormInput from '../form-input/ShopFormInput';
 import ShopButton from '../button/ShopButton';
 import './ShopSignIn.scss';
-import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from "@app/firebase/firebase.utils";
 import NotificationPortal from '../../portals/notification/NotificationPortal';
 
 export default function ShopSignInHooks() {

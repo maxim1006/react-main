@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import Song from './Song';
-import { selectSong } from '../../store/actions';
+import { selectSong } from "@app/store/actions";
 import SongDetails from './SongDetails';
 
 class SongList extends Component {

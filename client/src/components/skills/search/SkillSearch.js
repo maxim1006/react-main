@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addSkill, changeSkillSearchValue } from '../../../store/actions';
 import customAxios from '../../../common/api/axios';

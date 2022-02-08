@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, memo, useCallback, useState } from 'react';
+import { ChangeEventHandler, memo, useCallback, useState } from 'react';
 import './pro-tabs.scss';
 
 type ProTabsProps = {};

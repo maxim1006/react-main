@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function JsxFragment({ prop1, prop2 }) {
     // пример синтаксиса если надо вернуть multiple elements
     // <></> - shortcut for <React.Fragment></React.Fragment>

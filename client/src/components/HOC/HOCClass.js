@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import WithMaterialLoader from './WithMaterialLoader';
 import FamilyList from '../family/FamilyList';
-import { firestore } from '../../firebase/firebase.utils';
+import { firestore } from "@app/firebase/firebase.utils";
 
 // WithMaterialLoader  это HOC
 const FamilyWithLoader = WithMaterialLoader(FamilyList);

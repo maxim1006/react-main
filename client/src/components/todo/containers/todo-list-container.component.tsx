@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react';
+import { memo, useContext } from 'react';
 import { TodosStoreReactContext, toggleCompleteTodoActionCreator } from '../todo-store.component';
 import TodoList from '../components/todo-list.component';
 

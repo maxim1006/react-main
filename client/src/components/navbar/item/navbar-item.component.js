@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import './navbar-item.component.scss';
 import { CSSTransition } from 'react-transition-group';
 

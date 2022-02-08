@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import OutsideChangeContext from '../../../context/OutsideChangeContext';
 import OutsideChangeContextInner from './OutsideChangeContextInner';
 

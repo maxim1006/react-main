@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react';
+import { memo, useContext } from 'react';
 import { setVisibilityFilterActionCreator, TodosStoreReactContext } from '../todo-store.component';
 import ToDoFilterLinks from '../components/todo-filter-links.component';
 

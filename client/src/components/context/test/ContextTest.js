@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './ContextTest.scss';
 import LanguageContext from '../../../context/LanguageContext';
 import ContextCreate from '@app/components/context/test/context-create.component';

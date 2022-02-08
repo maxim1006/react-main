@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { TabsComponent } from '../tabs/Tabs';
 import MethodParameterValidationTipComponent from './method-paramerter-validation/method-paramerter-validation-tip.component';
 

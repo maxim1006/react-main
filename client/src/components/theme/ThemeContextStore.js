@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 
 export class ThemeContextStore extends Component {

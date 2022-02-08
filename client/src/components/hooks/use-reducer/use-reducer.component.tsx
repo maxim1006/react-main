@@ -1,4 +1,4 @@
-import React, { memo, useReducer, useRef } from 'react';
+import { memo, useReducer, useRef } from 'react';
 
 type UseReducerProps = {};
 

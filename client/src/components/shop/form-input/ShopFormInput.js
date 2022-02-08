@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import './ShopFormInput.scss';
 
 export default memo(({ handleChange, label, ...restProps }) => {

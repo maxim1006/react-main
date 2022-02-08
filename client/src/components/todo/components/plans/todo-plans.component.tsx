@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
-import { IPlans } from '../../../../models/plans.model';
-import { IPlan } from '../../../../models/plan.model';
+import { memo } from 'react';
+import { IPlans } from '@app/models/plans.model';
+import { IPlan } from '@app/models/plan.model';
 
 const TodoPlans = ({ plans }: IPlans) => (
     <>

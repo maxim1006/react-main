@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { ChildClass } from './ChildClass';
 import ChildFunction from './ChildFunction';
 

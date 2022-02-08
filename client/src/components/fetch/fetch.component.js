@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import MaterialLoader from '../loader/MaterialLoader';
 import './fetch.component.scss';
 import FetchCanvas from './canvas/fetch-canvas.component';

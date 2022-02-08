@@ -1,4 +1,4 @@
-import React, { lazy, memo, NamedExoticComponent, useCallback, useState } from 'react';
+import { lazy, memo, NamedExoticComponent, useCallback, useState } from 'react';
 
 type LazyProps = {};
 

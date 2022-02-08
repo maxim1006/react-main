@@ -1,4 +1,3 @@
-import React from 'react';
 import './Song.scss';
 
 export default function Song({ title, selected, onSelect }) {

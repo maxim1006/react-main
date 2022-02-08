@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import MaterialLoader from '../../loader/MaterialLoader';
 import useFetch from '../../hooks/useFetch';
 

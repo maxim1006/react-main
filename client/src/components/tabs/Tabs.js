@@ -1,4 +1,4 @@
-import React, { Component, Children } from 'react';
+import { Component, Children } from 'react';
 import './Tabs.scss';
 
 export class TabsComponent extends Component {

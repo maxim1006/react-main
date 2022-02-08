@@ -13,8 +13,8 @@ const PictureImageSet = memo<PictureImageSetProps>(() => {
                 {/*    type='image/avif'*/}
                 {/*    srcSet='../../assets/images/cat@1x.avif 1x, ../../assets/images/cat@2x.avif 2x'*/}
                 {/*/>*/}
-                <source type='image/webp' media={'(max-width: 767px)'} srcSet={`${cat1X}`} />
-                <source type='image/webp' media={'(min-width: 768px)'} srcSet={`${cat2X}`} />
+                <source type='image/webp' media='(max-width: 767px)' srcSet={`${cat1X}`} />
+                <source type='image/webp' media='(min-width: 768px)' srcSet={`${cat2X}`} />
                 <img
                     className={styles.picture}
                     width='500'
