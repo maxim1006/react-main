@@ -1,4 +1,5 @@
 const path = require('path');
+const utils = require('./utils.js');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -10,6 +11,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        alias: utils.mapTypescriptAliasToWebpackAlias(),
     },
     module: {
         rules: [
