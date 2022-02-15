@@ -1,4 +1,4 @@
-import React, { memo, FC, useEffect } from 'react';
+import { memo, FC, useEffect } from 'react';
 
 type MatchVsTestProps = {};
 

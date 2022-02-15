@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { createRef, PureComponent } from 'react';
 import { StyledRef, StyledRefBlock, StyledRefLink, StyledRefTitle } from './StyledRef';
 
 export default class RefClass extends PureComponent {
@@ -14,12 +14,12 @@ export default class RefClass extends PureComponent {
         const { data } = this.state;
 
         // либо использую через React.createRef();
-        this.containerRef = React.createRef();
+        this.containerRef = createRef();
 
         // либо через функцию (см в render) <div ref={el => this.functionalRefDiv = el}>Functional ref</div>
         this.functionalRefDiv = null;
 
-        this.refContainers = data.map(_ => React.createRef());
+        this.refContainers = data.map(_ => createRef());
     }
 
     componentDidMount() {

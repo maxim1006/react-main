@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import './DomRefImage.scss';
 
 export class DomRefImageComponent extends Component {
@@ -6,7 +6,7 @@ export class DomRefImageComponent extends Component {
         super(props);
 
         // так создаю референс на дом структуру
-        this.imageRef = React.createRef();
+        this.imageRef = createRef();
     }
 
     componentDidMount() {

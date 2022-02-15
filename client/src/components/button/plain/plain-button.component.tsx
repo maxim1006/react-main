@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, memo } from 'react';
 
-type PlainButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+type PlainButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
 /**
  * This component exists to redefine default button type from 'submit' to 'button'

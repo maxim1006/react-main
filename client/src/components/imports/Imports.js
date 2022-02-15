@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Imports() {
     const getData = async () => {
         const data = await import('./data.js');

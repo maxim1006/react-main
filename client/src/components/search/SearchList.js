@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './SearchList.scss';
 
 export class SearchListComponent extends Component {

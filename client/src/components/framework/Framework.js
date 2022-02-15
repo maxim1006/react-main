@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Framework({ name, progress, onChange }) {
     return (
         <div className='framework'>

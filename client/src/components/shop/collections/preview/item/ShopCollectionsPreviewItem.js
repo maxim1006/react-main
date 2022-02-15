@@ -1,6 +1,6 @@
 import './ShopCollectionsPreviewItem.scss';
 import { connect } from 'react-redux';
-import { shopAddCartItem } from "@app/store/actions";
+import { shopAddCartItem } from '@app/store/actions';
 
 const ShopCollectionPreviewItem = ({ item, shopAddCartItem }) => {
     const { imageUrl, name, price } = item;

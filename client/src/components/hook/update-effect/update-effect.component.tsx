@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import { useUpdateEffect } from '@app/hooks/update-effect.hook';
 
 type UpdateEffectHookProps = {};

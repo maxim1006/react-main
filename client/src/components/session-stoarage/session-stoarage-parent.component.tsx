@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import SessionStorageChild1 from './session-stoarage-child1.component';
 import { SessionStorageProvider } from './session-stoarage.context';
 import SessionStorageChild2 from './session-stoarage-child2.component';

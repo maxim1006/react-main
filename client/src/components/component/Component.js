@@ -1,4 +1,3 @@
-import React from 'react';
 import './Component.scss';
 
 export default function Component({ title, children }) {

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, createRef } from 'react';
 
 export default class FetchCanvas extends Component {
     state = {
@@ -10,7 +10,7 @@ export default class FetchCanvas extends Component {
     constructor(props) {
         super(props);
 
-        this.ref = React.createRef();
+        this.ref = createRef();
     }
 
     componentDidMount() {

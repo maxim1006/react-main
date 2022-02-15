@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react';
+import { FC, memo, useEffect, useRef } from 'react';
 import { FixedSizeList, VariableSizeList } from 'react-window';
 import useFetch from '../hooks/useFetch';
 
@@ -6,7 +6,7 @@ type PostType = { id: string; title: string; body: string; style: any; index: nu
 
 // Идиоткий плагин хрен знает как народ его использует, не умеет считать динамическую высоту
 
-const PerformanceVirtualizeList: React.FC = () => {
+const PerformanceVirtualizeList: FC = () => {
     const sizes: any = [];
 
     const { data }: { data: any } = useFetch({

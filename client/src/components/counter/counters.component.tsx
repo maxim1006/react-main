@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import { FC, memo } from 'react';
 import CounterStore from './counter-store.component';
 
-const Counters: React.FC = () => {
+const Counters: FC = () => {
     return (
         <>
             <CounterStore />

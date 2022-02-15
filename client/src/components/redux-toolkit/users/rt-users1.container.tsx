@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { userApi } from '@app/redux-toolkit/query/user.api';
 import MaterialLoader from '../../loader/MaterialLoader';
 

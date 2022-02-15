@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import { FC, memo, MouseEvent } from 'react';
 import styles from './animate-and-transition.module.scss';
 
 type AnimateAndTransitionProps = {};
@@ -15,7 +15,7 @@ enum ActionEventEnum {
 }
 
 const AnimateAndTransition: FC<AnimateAndTransitionProps> = () => {
-    const runAction = (type: ActionEventEnum) => (e: React.MouseEvent) => {
+    const runAction = (type: ActionEventEnum) => (e: MouseEvent) => {
         const target = e.target as HTMLDivElement;
         const dataStyle = styles[target.dataset.action];
         e.persist();

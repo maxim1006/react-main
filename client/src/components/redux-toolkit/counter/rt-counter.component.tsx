@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rtIncrement, rtDecrement } from '../../../redux-toolkit/rt-slices/rt-counter';
 import { RtRootState } from '../../../redux-toolkit/rt-configureStore';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './SearchBar.scss';
 
 // все event которые передаются, в реакт оборачиваются в SyntheticEvent для косистенси, к примеру onChange работает

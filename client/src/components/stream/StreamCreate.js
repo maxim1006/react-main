@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createStream } from "@app/store/actions";
+import { createStream } from '@app/store/actions';
 import StreamForm from './StreamForm';
 
 class StreamCreate extends Component {

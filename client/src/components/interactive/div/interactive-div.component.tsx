@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { DetailedHTMLProps, EventHandler, HTMLAttributes, memo, SyntheticEvent, KeyboardEvent } from 'react';
 import cn from 'classnames';
 import styles from './interactive-div.module.less';
 
@@ -8,8 +8,8 @@ import styles from './interactive-div.module.less';
  * `isKeyboardEvent` and `isMouseEvent` type guards.
  * */
 type InteractiveDivProps = {
-    onClick: React.EventHandler<React.SyntheticEvent>;
-} & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'onClick'>;
+    onClick: EventHandler<SyntheticEvent>;
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'onClick'>;
 
 /**
  * Component that handles div with onClick handler
@@ -36,7 +36,7 @@ const InteractiveDiv = memo<InteractiveDivProps>(function InteractiveDiv(props) 
     const handleClick = onClick ?? (() => {});
     const handleKeyDown =
         onKeyDown ??
-        ((event: React.KeyboardEvent) => {
+        ((event: KeyboardEvent) => {
             if (event.key === 'Enter') {
                 handleClick(event);
             }

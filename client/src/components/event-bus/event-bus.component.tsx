@@ -1,4 +1,4 @@
-import React, { memo, FC, useState, useEffect } from 'react';
+import { memo, FC, useState, useEffect } from 'react';
 import eventBus from '@app/components/event-bus/event-bus';
 
 type EventBusProps = {};

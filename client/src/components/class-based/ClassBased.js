@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import MaterialLoaderComponent from '../loader/MaterialLoader';
 
 class ClassBasedComponent extends Component {

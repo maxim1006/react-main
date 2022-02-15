@@ -1,4 +1,3 @@
-import React from 'react';
 import './ContentProjection.scss';
 
 // посмотреть использование можно в CommentList.js

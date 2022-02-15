@@ -1,4 +1,4 @@
-import React, { memo, useContext, useRef } from 'react';
+import { memo, useContext, useRef } from 'react';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
 import { ExampleContext } from '@app/components/hooks/use-context/example.context';
 

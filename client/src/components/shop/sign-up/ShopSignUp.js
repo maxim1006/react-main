@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import ShopFormInput from '../form-input/ShopFormInput';
 import ShopButton from '../button/ShopButton';
-import { auth, createUserProfileDocument } from "@app/firebase/firebase.utils";
+import { auth, createUserProfileDocument } from '@app/firebase/firebase.utils';
 
 export default class ShopSignUp extends Component {
     state = {

@@ -18,7 +18,8 @@ const array: number[] = [1, 2, 3, 4];
 type X = typeof array extends (infer U)[] ? U : never;
 // тоже но немного по-другому
 type X1<T> = T extends any[] ? T[number] : never;
-type ArrayType1 = X1<typeof array>;
+type ArrayType1 = X1<typeof array>; // number
+type ArrayType1Str = X1<string[]>; // string
 // ну и в довесок тоже но с расширяемым дженериком и infer
 type X2<T> = T extends (infer V)[] ? V : T;
 type ArrayType2 = X2<typeof array>;

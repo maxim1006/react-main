@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import { memo, useRef } from 'react';
 import { useLocalStorage, useSessionStorage } from '@app/hooks/storage';
 
 type StorageHookProps = {};

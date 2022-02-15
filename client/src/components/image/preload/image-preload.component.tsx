@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { ChangeEvent, memo, useState } from 'react';
 import styles from './image-preload.module.scss';
 
 type ImagePreloadProps = {};
@@ -6,7 +6,7 @@ type ImagePreloadProps = {};
 const ImagePreload = memo<ImagePreloadProps>(function ImagePreload() {
     const [previewSrc, setPreviewSrc] = useState(null);
 
-    const showPreview = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const showPreview = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files.length > 0) {
             setPreviewSrc(URL.createObjectURL(e.target.files[0]));
         }

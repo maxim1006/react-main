@@ -1,4 +1,3 @@
-import React from 'react';
 import './ShopCheckoutItem.scss';
 
 export default function ShopCheckoutItem({ name, description, quantity, price, onRemove, onRemoveItem, onAddItem }) {

@@ -1,4 +1,4 @@
-import React, { memo, FC } from 'react';
+import { memo, FC } from 'react';
 import TreesImage from '@app/assets/images/Trees.png';
 import MountainsImage from '@app/assets/images/Mountain.png';
 import styles from './parallax.module.scss';

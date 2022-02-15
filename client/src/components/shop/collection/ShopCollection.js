@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { shopAddCartItem } from "@app/store/actions";
+import { shopAddCartItem } from '@app/store/actions';
 import ShopCollectionItem from './item/ShopCollectionItem';
 import { StyledShopCollectionItem, StyledShopCollectionItems, StyledShopCollectionTitle } from './StyledShopCollection';
 import MaterialLoader from '../../loader/MaterialLoader';

@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import { memo, useRef } from 'react';
 import cn from 'classnames';
 import styles from './resize-overflow.module.scss';
 import { useOverflow } from '@app/hooks/overflow.hook';

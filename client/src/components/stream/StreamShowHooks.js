@@ -1,8 +1,8 @@
 import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchStream } from "@app/store/actions";
-import { selectStreamsById } from "@app/store/selectors";
+import { fetchStream } from '@app/store/actions';
+import { selectStreamsById } from '@app/store/selectors';
 
 export default memo(({ match }) => {
     const dispatch = useDispatch();

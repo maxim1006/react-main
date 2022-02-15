@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useState } from 'react';
-import { COUNTER_TYPES } from '../../store/actions/types';
+import { FC, memo, useEffect, useState } from 'react';
+import { COUNTER_TYPES } from '@app/store/actions/types';
 
 // Create store
 const createStore = (reducer: Function) => {
@@ -48,7 +48,7 @@ const counterReducer = (state = 0, action: { type: string }) => {
 // Create store
 const store = createStore(counterReducer);
 
-const CounterStore: React.FC = () => {
+const CounterStore: FC = () => {
     const [value, setValue] = useState(store.getState());
 
     useEffect(() => {

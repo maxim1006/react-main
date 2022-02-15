@@ -3,7 +3,7 @@ import { memo, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Stream from '../Stream';
 import StreamControls from './StreamControls';
-import { deleteStream } from "@app/store/actions";
+import { deleteStream } from '@app/store/actions';
 import ModalPortal from '../../portals/modal/ModalPortal';
 import { selectAuthUserId, selectStreams } from '../../../store/selectors';
 

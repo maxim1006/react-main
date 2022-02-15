@@ -1,6 +1,5 @@
 // Просто для примера
 import { connect } from 'react-redux';
-import React from 'react';
 
 const testIncrease = () => ({
     type: 'TEST_INCREASE',

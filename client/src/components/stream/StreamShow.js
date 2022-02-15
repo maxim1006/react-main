@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchStream } from "@app/store/actions";
+import { fetchStream } from '@app/store/actions';
 
 class StreamShow extends Component {
     componentDidMount() {

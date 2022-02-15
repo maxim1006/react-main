@@ -1,8 +1,8 @@
 /* eslint-disable */
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import { FC, memo, useEffect, useMemo, useState } from 'react';
 import worker from './webWorker';
 
-const PerformanceWebWorkerComponent: React.FC = () => {
+const PerformanceWebWorkerComponent: FC = () => {
     let webWorker: any;
 
     const [result, setResult] = useState();

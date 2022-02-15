@@ -1,4 +1,3 @@
-import React from 'react';
 import './ShopCartListItem.scss';
 
 export default function ShopCartListItem({ item: { imageUrl, name, price, quantity } }) {

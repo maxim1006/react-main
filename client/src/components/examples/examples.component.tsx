@@ -1,4 +1,4 @@
-import React, { memo, Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import ExampleComponent from './example/example.component';
 import ExamplesCssModuleComponent from './css-module/examples-css-module.component';
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';

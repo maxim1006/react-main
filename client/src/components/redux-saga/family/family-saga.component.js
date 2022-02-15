@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { getFamilyAction } from '../../../store/actions';
 

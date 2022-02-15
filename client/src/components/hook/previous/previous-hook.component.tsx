@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import { usePrevious } from '@app/hooks/previous.hook';
 
 type PreviousProps = {};

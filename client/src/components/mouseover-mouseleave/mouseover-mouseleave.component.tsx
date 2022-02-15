@@ -1,10 +1,10 @@
-import React, { memo, useEffect, useRef } from 'react';
+import { FC, memo, useEffect, useRef } from 'react';
 import './mouseover-mouseleave.component.scss';
 import { generateUniqueId } from '@app/common/helpers/helpers';
 
 let currentElem: HTMLElement | null = null;
 
-const MouseoverMouseleave: React.FC = () => {
+const MouseoverMouseleave: FC = () => {
     const tableRef = useRef<HTMLTableElement>(null!);
 
     useEffect(() => {

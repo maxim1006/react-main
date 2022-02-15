@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function AsyncSetStateHooks({ increaseNumber }) {
     const [counter, setCounter] = useState(0);

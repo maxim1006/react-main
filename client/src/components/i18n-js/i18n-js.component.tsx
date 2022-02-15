@@ -1,11 +1,11 @@
-import React, { memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import i18n from './i18n-js.helper';
 import I18nJsInnerComponent from './i18n-js-inner.component';
 import i18nContext from '../../context/i18nContext';
 
 /** @see https://github.com/fnando/i18n-js*/
 // Сделал пример с иннер так как компоненты с мемо не будут обновляться при смене локали надоо использовать контекст
-const I18nJsComponent: React.FC = () => {
+const I18nJsComponent: FC = () => {
     const [locale, setLocale] = useState(i18n.currentLocale());
 
     const setValue = (value: any) => {

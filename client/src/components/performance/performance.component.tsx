@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { FC, memo } from 'react';
 import { TabsComponent } from '../tabs/Tabs';
 import PerformanceUseMemo from './performance-use-memo.component';
 import PerformanceVirtualizeList from './performance-virtualize-list.component';
@@ -13,7 +13,7 @@ declare module 'react' {
     }
 }
 
-const Performance: React.FC = () => {
+const Performance: FC = () => {
     return (
         <TabsComponent activeTab={2}>
             <div tabName='UseMemo'>

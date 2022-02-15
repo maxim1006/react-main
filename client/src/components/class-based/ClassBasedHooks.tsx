@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useLocation } from '@app/hooks/useLocation';
 import MaterialLoaderComponent from '@app/components/loader/MaterialLoader';
 

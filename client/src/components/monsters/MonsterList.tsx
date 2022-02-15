@@ -1,8 +1,14 @@
 import MaterialLoader from '../loader/MaterialLoader';
 import './MonsterList.scss';
 import MonsterItem from './MonsterItem';
+import { FC, memo } from 'react';
+import { MonstersListModel } from '@app/models/monsters.model';
 
-export default function MonsterList({ list }) {
+type MonsterListPros = {
+    list: MonstersListModel;
+};
+
+const MonsterList: FC<MonsterListPros> = ({ list }) => {
     return list ? (
         <ul className='monster-list'>
             {list.map(item => (
@@ -14,4 +20,6 @@ export default function MonsterList({ list }) {
     ) : (
         <MaterialLoader />
     );
-}
+};
+
+export default memo(MonsterList);

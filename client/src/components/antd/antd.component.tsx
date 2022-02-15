@@ -1,4 +1,4 @@
-// import React, { memo, NamedExoticComponent } from 'react';
+// import { memo, NamedExoticComponent } from 'react';
 // import { AutoComplete, AutoCompleteProps } from 'antd';
 //
 // import 'antd/lib/auto-complete/style/index.css';

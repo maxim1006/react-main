@@ -1,4 +1,3 @@
-import React from 'react';
 import './ContentProjectionContent.scss';
 
 export default function ContentProjectionContent({ content }) {

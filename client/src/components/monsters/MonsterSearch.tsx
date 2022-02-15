@@ -1,6 +1,12 @@
 import './MonsterSearch.scss';
+import { ChangeEventHandler, FC, memo } from 'react';
 
-export default function MonsterSearch({ value, onChange }) {
+type MonsterSearchProps = {
+    value: string;
+    onChange: ChangeEventHandler<HTMLInputElement>;
+};
+
+const MonsterSearch: FC<MonsterSearchProps> = ({ value, onChange }) => {
     return (
         <div className='monster-search'>
             <input
@@ -12,4 +18,6 @@ export default function MonsterSearch({ value, onChange }) {
             />
         </div>
     );
-}
+};
+
+export default memo(MonsterSearch);

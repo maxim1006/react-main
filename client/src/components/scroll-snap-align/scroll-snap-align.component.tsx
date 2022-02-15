@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import './scroll-snap-align.component.scss';
 
 const ScrollSnapAlign: React.FC = () => {

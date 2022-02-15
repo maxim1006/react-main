@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import styles from './picture-image-set.module.scss';
 import cat1X from '../../assets/images/cat@1x.webp';
 import cat2X from '../../assets/images/cat@2x.webp';

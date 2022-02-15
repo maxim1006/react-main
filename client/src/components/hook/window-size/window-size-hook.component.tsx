@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useWindowSize } from '@app/hooks/window-size.hook';
 
 type WindowSizeHookProps = {};

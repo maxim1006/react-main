@@ -189,4 +189,21 @@ var cc = new CC();
 // a.f(); // 1 undefined {a: 1}
 // a.f1(); // 1 undefined {a: 1}
 
+interface AbstractModel {
+    str: string;
+}
+
+abstract class AbstractBase implements AbstractModel {
+    str = 'Max';
+    abstract num: number;
+}
+
+class AbstractBaseInst extends AbstractBase {
+    str = 'max';
+    num = 1;
+}
+
+// let a = new AbstractBase(); // ошибко
+let a1 = new AbstractBaseInst();
+
 export default {};

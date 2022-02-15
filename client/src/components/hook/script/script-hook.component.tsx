@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useScript } from '@app/hooks/script.hook';
 
 type ScriptHookProps = {};

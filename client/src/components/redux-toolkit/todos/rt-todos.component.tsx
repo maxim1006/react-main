@@ -1,4 +1,4 @@
-import React, { ChangeEvent, memo, useState } from 'react';
+import { ChangeEvent, memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rtAddTodo, rtToggleTodo } from '@app/redux-toolkit/rt-slices/rt-todos';
 import { rtSetVisibilityFilter, rtVisibilityFilters } from '@app/redux-toolkit/rt-slices/rt-visibility-filters';

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Provider } from 'react-redux';
 import TodoHeaderConnectedContainer from './containers/todo-header-connected-container.component';
 import TodoFilterLinksConnectedContainer from './containers/todo-filter-links-connected-container.component';

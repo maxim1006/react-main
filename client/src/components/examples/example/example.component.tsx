@@ -1,4 +1,4 @@
-import React, { memo, ReactNode } from 'react';
+import { FC, memo, ReactNode } from 'react';
 import styles from './example.module.less';
 
 type ExampleComponentProps = {
@@ -6,7 +6,7 @@ type ExampleComponentProps = {
     caption: string;
 };
 
-const ExampleComponent: React.FC<ExampleComponentProps> = ({ component, caption }) => {
+const ExampleComponent: FC<ExampleComponentProps> = ({ component, caption }) => {
     return (
         <div className={styles.example}>
             <h3>{caption}</h3>

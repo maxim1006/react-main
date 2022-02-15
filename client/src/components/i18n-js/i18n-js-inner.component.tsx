@@ -1,9 +1,9 @@
-import React, { memo, useContext } from 'react';
+import { FC, memo, useContext } from 'react';
 import i18nContext from '../../context/i18nContext';
 
 /** @see https://github.com/fnando/i18n-js */
 
-const I18nJsInnerComponent: React.FC = () => {
+const I18nJsInnerComponent: FC = () => {
     const { i18n } = useContext(i18nContext);
 
     return (

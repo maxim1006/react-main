@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { StyledRef, StyledRefBlock, StyledRefLink, StyledRefTitle } from './StyledRef';
 
 const data = ['Title 1', 'Title 2', 'Title 3'];

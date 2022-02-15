@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import DropdownItem from './item/dropdown-item.component';
 import './dropdown.component.scss';
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';

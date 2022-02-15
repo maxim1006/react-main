@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 // save from XSS
 // https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml

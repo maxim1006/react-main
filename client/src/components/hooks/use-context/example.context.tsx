@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
 import customAxios from '../../../common/api/axios';
 import { TodoModel } from '@app/models/todo.model';
 
@@ -8,15 +8,9 @@ interface ExampleContextModel {
     loading?: boolean;
 }
 
-export const ExampleContext = React.createContext<ExampleContextModel>({} as ExampleContextModel);
+export const ExampleContext = createContext<ExampleContextModel>({} as ExampleContextModel);
 
-export const ExampleProvider = ({
-    initData,
-    children,
-}: {
-    initData: { number: number };
-    children?: React.ReactNode;
-}) => {
+export const ExampleProvider = ({ initData, children }: { initData: { number: number }; children?: ReactNode }) => {
     const [result, setResult] = useState<TodoModel>();
     const [loading, setLoading] = useState<boolean>();
 

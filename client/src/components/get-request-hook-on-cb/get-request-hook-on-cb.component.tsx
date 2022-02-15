@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 import customAxios from '../../common/api/axios';
 import MaterialLoaderComponent from '../loader/MaterialLoader';
 
-const GetRequestHookOnCbComponent: React.FC = () => {
+const GetRequestHookOnCbComponent: FC = () => {
     const [isSending, setIsSending] = useState(false);
     const [familyData, setFamilyData] = useState([]);
 

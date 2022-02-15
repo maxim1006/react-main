@@ -1,15 +1,15 @@
-import React, { memo } from 'react';
+import { cloneElement, isValidElement, memo, ReactNode } from 'react';
 
 type CloneElementProps = {
     disabled: boolean;
-    children: React.ReactNode;
+    children: ReactNode;
 };
 
 const CloneElement = memo<CloneElementProps>(function CloneElement({ children, disabled = false, ...rest }) {
     let childrenWithProps;
 
-    if (React.isValidElement(children)) {
-        childrenWithProps = React.cloneElement(children, { disabled });
+    if (isValidElement(children)) {
+        childrenWithProps = cloneElement(children, { disabled });
     }
 
     return <div {...rest}>{childrenWithProps}</div>;

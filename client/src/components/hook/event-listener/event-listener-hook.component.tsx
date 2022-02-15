@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useEventListener } from '@app/hooks/event-listener.hook';
 
 type EventListenerHookProps = {};

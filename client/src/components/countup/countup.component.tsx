@@ -1,7 +1,7 @@
-import React from 'react';
 import CountUp from 'react-countup';
+import { FC } from 'react';
 
-const CountupWrapper: React.FC = () => {
+const CountupWrapper: FC = () => {
     return (
         <>
             <CountUp

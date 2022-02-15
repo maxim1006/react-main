@@ -1,4 +1,4 @@
-import React, { createContext, memo, useMemo } from 'react';
+import { createContext, memo, useMemo } from 'react';
 import { useSessionStorage } from '../../hooks/session-stoarage.hook';
 
 export interface SessionStorageModel {

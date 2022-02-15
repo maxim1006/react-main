@@ -15,6 +15,15 @@
 //
 // let myIdentity: <T>(arg: T) => T = identity;
 
+// просто примеры удобно смотреть
+// function f<T>(arg: T): T {return arg}
+//
+// interface FModel {
+//     <T>(arg: T): T
+// }
+//
+// const FF: <T>(arg: T) => T = f;
+
 // Пример интерфейса с инит значением и примером на constrain с добавлением .length
 // interface Lengthwise {
 //     length: number;

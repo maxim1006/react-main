@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sagaGetUserStartAction } from '../../../store/actions';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';

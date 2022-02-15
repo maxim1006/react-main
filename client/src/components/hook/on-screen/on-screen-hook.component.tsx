@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import { memo, useRef } from 'react';
 import styles from './on-screen-hook.module.scss';
 import { useOnScreen } from '@app/hooks/on-screen.hook';
 

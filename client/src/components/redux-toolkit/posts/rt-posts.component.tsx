@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import {
     makeSelectRtPostsByTitle,

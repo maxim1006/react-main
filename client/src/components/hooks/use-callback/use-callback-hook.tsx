@@ -1,9 +1,9 @@
-import React, { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState, MouseEvent } from 'react';
 
 type UseCallbackHookProps = {};
 
 type ParentProps = {
-    onParentClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+    onParentClick: (e: MouseEvent<HTMLDivElement>) => void;
 };
 
 const MemoizedChild = memo<ParentProps>(({ onParentClick }) => {
@@ -15,7 +15,7 @@ const UseCallbackHook = memo<UseCallbackHookProps>(() => {
     const [state, setState] = useState<number>(2);
 
     const onParentClick = useCallback(
-        (e: React.MouseEvent<HTMLDivElement>) => {
+        (e: MouseEvent<HTMLDivElement>) => {
             console.log(e.target);
             console.log(state);
         },

@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import ShopButton from '../button/ShopButton';
 import './ShopCartDropdown.scss';
 import { withRouter } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentType, FC } from 'react';
 import MaterialLoader from '../loader/MaterialLoader';
 
 // type BannersListContainerProps = {
@@ -12,6 +12,6 @@ type WithMaterialLoaderProps = {
 };
 
 export const withMaterialLoader =
-    <P extends Record<string, unknown>>(Component: React.ComponentType<P>): React.FC<P & WithMaterialLoaderProps> =>
+    <P extends Record<string, unknown>>(Component: ComponentType<P>): FC<P & WithMaterialLoaderProps> =>
     ({ isLoading, ...restProps }) =>
         isLoading ? <MaterialLoader /> : <Component {...(restProps as P)} />;

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import { FC, memo, useState } from 'react';
 import MonsterSearch from './MonsterSearch';
 import MonsterList from './MonsterList';
 import useGetRequest from '../hooks/useGetRequest';
+import { MonstersListModel } from '@app/models/monsters.model';
 
-export default function Monsters() {
+type MonstersProps = {};
+
+const Monsters: FC<MonstersProps> = () => {
     const [searchValue, setSearchValue] = useState('');
-    const monsterList = useGetRequest({ url: '/monsters' });
+    const monsterList: MonstersListModel = useGetRequest({ url: '/monsters' } as { url: string; cb: any });
 
     let filteredMonsterList;
 
@@ -21,4 +24,6 @@ export default function Monsters() {
             <MonsterList list={filteredMonsterList} />
         </div>
     );
-}
+};
+
+export default memo(Monsters);

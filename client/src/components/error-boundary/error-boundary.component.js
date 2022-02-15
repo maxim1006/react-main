@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 
 export class ErrorBoundary extends PureComponent {
     state = { hasError: false };
