@@ -10,7 +10,9 @@ const RtTodos = () => {
     const dispatch = useDispatch();
     const todos = useSelector<RtRootState>(selectRtVisibleTodos) as TodoModel[];
     const [todoText, setTodoText] = useState('');
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => setTodoText(e.target.value);
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setTodoText(e.target.value);
+    };
 
     const onFilterClick = (filter: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();

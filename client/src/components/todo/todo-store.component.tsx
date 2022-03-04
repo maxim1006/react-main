@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { generateUniqueId } from '@app/common/helpers/helpers';
