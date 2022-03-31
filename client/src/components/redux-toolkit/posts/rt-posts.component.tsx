@@ -13,6 +13,7 @@ const RtPosts = () => {
     const dispatch = useAppDispatch();
     const { loading, entities, error } = useSelector(selectRtPosts);
 
+    // https://react-redux.js.org/api/hooks#using-memoizing-selectors
     // пример селекта по id
     const selectItemsByCategory = useMemo(makeSelectRtPostsByTitle, []);
     const itemsByTitle = useAppSelector(state => selectItemsByCategory(state, 'a'));

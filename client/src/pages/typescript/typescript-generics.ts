@@ -17,7 +17,19 @@
 
 // просто примеры удобно смотреть
 // function f<T>(arg: T): T {return arg}
-//
+
+type fType = number;
+
+function f<T>(arg: T): T {
+    return arg;
+}
+const ff = <T>(arg: T) => arg;
+const fff: <T>(arg: T) => T = arg => arg;
+
+f<fType>(1);
+ff<fType>(1);
+fff<fType>(1);
+
 // interface FModel {
 //     <T>(arg: T): T
 // }

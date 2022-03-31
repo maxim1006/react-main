@@ -231,3 +231,72 @@ function handleErrors(errors: ErrorPartsFragment[]) {
 
     return err;
 }
+
+// raw requests
+// export const GET_FAMILY = gql`
+//     query GetFamily {
+//         family {
+//             id
+//             members {
+//                 id
+//                 age
+//                 name
+//             }
+//             errors {
+//                 message
+//                 field
+//             }
+//         }
+//     }
+// `;
+//
+// const DELETE_FAMILY_MEMBER = gql`
+//     mutation DeleteFamilyMember($id: String!) {
+//         deleteFamilyMember(id: $id) {
+//             id
+//             members {
+//                 id
+//                 age
+//                 name
+//             }
+//             errors {
+//                 message
+//                 field
+//             }
+//         }
+//     }
+// `;
+//
+// const UPDATE_FAMILY_MEMBER = gql`
+//     mutation UpdateFamilyMember($input: FamilyMemberInput!) {
+//         updateFamilyMember(input: $input) {
+//             id
+//             members {
+//                 id
+//                 age
+//                 name
+//             }
+//             errors {
+//                 field
+//                 message
+//             }
+//         }
+//     }
+// `;
+//
+// const CREATE_FAMILY_MEMBER = gql`
+//     mutation CreateFamilyMember($name: String!, $age: Int!) {
+//         createFamilyMember(name: $name, age: $age) {
+//             id
+//             members {
+//                 id
+//                 age
+//                 name
+//             }
+//             errors {
+//                 message
+//                 field
+//             }
+//         }
+//     }
+// `;

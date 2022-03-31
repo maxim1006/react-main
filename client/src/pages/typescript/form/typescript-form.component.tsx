@@ -3,7 +3,7 @@ import React, { memo, useState } from 'react';
 const TypescriptForm = () => {
     const [name, setName] = useState<string>('');
 
-    const onNameChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.currentTarget.value);
     };
 

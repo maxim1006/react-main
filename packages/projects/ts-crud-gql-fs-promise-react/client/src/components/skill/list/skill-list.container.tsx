@@ -91,3 +91,55 @@ const SkillListContainer = memo<SkillListContainerProps>(() => {
 });
 
 export default SkillListContainer;
+
+// пример raw mutation
+// export const BOOK_TRIPS = gql`
+//     mutation BookTrips($launchIds: [ID]!) {
+//         bookTrips(launchIds: $launchIds) {
+//             success
+//             message
+//             launches {
+//                 id
+//                 isBooked
+//             }
+//         }
+//     }
+// `;
+
+// export const GET_LAUNCH = gql`
+//     query GetLaunch($launchId: ID!) {
+//         launch(id: $launchId) {
+//             ...LaunchTile
+//         }
+//     }
+//     ${LAUNCH_TILE_DATA}
+// `;
+
+// export const LAUNCH_TILE_DATA = gql`
+//     fragment LaunchTile on Launch {
+//         __typename
+//         id
+//         isBooked
+//         rocket {
+//             id
+//             name
+//         }
+//         mission {
+//             name
+//             missionPatch
+//         }
+//     }
+// `;
+//
+// export const GET_LAUNCHES = gql`
+//     query GetLaunchList($after: String) {
+//         launches(after: $after) {
+//             cursor
+//             hasMore
+//             launches {
+//                 ...LaunchTile
+//             }
+//         }
+//     }
+//     ${LAUNCH_TILE_DATA}
+// `;

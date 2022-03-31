@@ -65,6 +65,13 @@ const RouterPage: FC<RouterPageProps> = () => {
         return () => unsubscribe();
     }, [historyFromUseHistory]);
 
+    // тоже самое
+    // useEffect(() => {
+    //     return historyFromUseHistory.listen((location, action) => {
+    //         console.log('on route change');
+    //     });
+    // }, [historyFromUseHistory]);
+
     return (
         <>
             <h3>Router examples</h3>

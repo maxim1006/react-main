@@ -65,6 +65,19 @@ export default rtPostsSlice.reducer;
 // selectors
 export const selectRtPosts = (state: RootState): PostsStateModel => state.posts;
 
+// пример селектора если нужно его именно по типу заиспользовать чтобы не проверять на тип в разных селекторах
+// export const testProductSelector = <T>(selector: (state: TestProductStateModel) => T): ((state: RootState) => T) => {
+//     return (state: RootState) => {
+//         const product = selectProduct(state);
+//         if (product?.type === ProductTypeEnum.TEST) {
+//             return selector(state.product);
+//         } else {
+//             throw Error('Incorrect product type');
+//         }
+//     };
+// };
+// export const selectTestProp = testProductSelector(testProduct => testProduct.prop);
+
 export const makeSelectRtPostsByTitle = () =>
     createSelector([selectRtPosts, (_: RootState, title: string) => title], (posts, title) =>
         posts.entities?.filter(i => i.title.includes(title))
