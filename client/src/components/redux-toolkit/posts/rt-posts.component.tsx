@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
     makeSelectRtPostsByTitle,
@@ -6,8 +6,9 @@ import {
     rtFetchPostsAction1,
     selectRtPosts,
 } from '@app/redux-toolkit/rt-slices/rt-posts';
-import { useAppDispatch, useAppSelector } from '@app/redux-toolkit/rt-configureStore';
+import { useAppDispatch } from '@app/redux-toolkit/rt-configureStore';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
+import { useMemoSelector } from '@app/redux-toolkit/hooks/memo-selector.hook';
 
 const RtPosts = () => {
     const dispatch = useAppDispatch();
@@ -15,10 +16,13 @@ const RtPosts = () => {
 
     // https://react-redux.js.org/api/hooks#using-memoizing-selectors
     // пример селекта по id
-    const selectItemsByCategory = useMemo(makeSelectRtPostsByTitle, []);
-    const itemsByTitle = useAppSelector(state => selectItemsByCategory(state, 'a'));
+    // const selectItemsByCategory = useMemo(makeSelectRtPostsByTitle, []);
+    // const itemsByTitle = useAppSelector(state => selectItemsByCategory(state, 'a'));
 
-    console.log({ itemsByTitle });
+    // тоже что и выше только через кастомный хук
+    const itemsByTitleMemo = useMemoSelector(makeSelectRtPostsByTitle, 'a');
+
+    console.log({ itemsByTitleMemo });
 
     useEffect(() => {
         (async () => {

@@ -1,17 +1,16 @@
 {
-    "name": "react-main",
+    "name": "react-main-server",
     "version": "0.1.0",
     "engines": {
         "node": "13.7.0",
         "npm": "6.13.1"
     },
-    "homepage": "https://maxim1006.github.io/react-main",
     "private": true,
     "scripts": {
         "client": "cd client && npm start",
         "client:install": "cd client && npm i && cd ../",
         "chat": "cd chat && npm start",
-        "server": "nodemon -r esm ./server/server.js --my-custom-var=123",
+        "server": "nodemon -r esm ./server.js --my-custom-var=123",
         "server:prod": "NODE_ENV=production nodemon -r esm ./server/server.js",
         "build": "cd ./client && npm run build && cd ../",
         "start": "node -r esm ./server/server.js",
@@ -27,36 +26,29 @@
         }
     },
     "dependencies": {
-        "@types/jest": "^25.2.1",
-        "@types/node": "^13.13.2",
-        "@types/react": "^16.9.34",
-        "@types/react-dom": "^16.9.6",
-        "@types/react-redux": "^7.1.7",
-        "@types/react-router-dom": "^5.1.4",
-        "@types/styled-components": "^4.4.1",
-        "apollo-server": "^2.11.0",
-        "apollo-server-express": "^2.11.0",
-        "axios": "^0.19.0",
-        "body-parser": "^1.18.3",
-        "code-prettify": "^0.1.0",
+        "apollo-server": "2.11.0",
+        "apollo-server-express": "2.11.0",
+        "axios": "0.19.0",
+        "body-parser": "1.18.3",
+        "code-prettify": "0.1.0",
         "compression": "1.7.4",
         "cors": "2.8.5",
         "dotenv": "7.0.0",
-        "esm": "^3.2.25",
-        "express": "^4.16.4",
-        "faker": "^4.1.0",
-        "fs-extra": "^8.1.0",
-        "graphql": "^14.6.0",
-        "mongoose": "^5.9.5",
-        "nanoid": "^3.1.12",
-        "node-fetch": "^2.6.0",
-        "raw-body": "^2.4.1",
+        "esm": "3.2.25",
+        "express": "4.16.4",
+        "faker": "4.1.0",
+        "fs-extra": "8.1.0",
+        "graphql": "14.6.0",
+        "mongoose": "5.9.5",
+        "nanoid": "3.1.12",
+        "node-fetch": "2.6.0",
+        "raw-body": "2.4.1",
         "stripe": "6.28.0",
-        "typescript": "^3.8.3",
-        "gh-pages": "^3.1.0"
+        "typescript": "3.8.3",
+        "gh-pages": "3.1.0"
     },
     "devDependencies": {
-        "prettier": "^1.19.1",
-        "pretty-quick": "^2.0.1"
+        "prettier": "1.19.1",
+        "pretty-quick": "2.0.1"
     }
 }

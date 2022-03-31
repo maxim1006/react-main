@@ -56,6 +56,15 @@ export function generateRandomMail() {
     return mail + '@mail.com';
 }
 
+export function generateRandomString(length: number = 15) {
+    let chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    let str = '';
+    for (let i = 0; i < length; i++) {
+        str += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return str;
+}
+
 export function generateDocumentId() {
     return (
         'CA' +

@@ -79,9 +79,9 @@ export const selectRtPosts = (state: RootState): PostsStateModel => state.posts;
 // export const selectTestProp = testProductSelector(testProduct => testProduct.prop);
 
 export const makeSelectRtPostsByTitle = () =>
-    createSelector([selectRtPosts, (_: RootState, title: string) => title], (posts, title) =>
-        posts.entities?.filter(i => i.title.includes(title))
-    );
+    createSelector([selectRtPosts, (_: RootState, title: string) => title], (posts, title) => {
+        return posts.entities?.filter(i => i.title.includes(title));
+    });
 
 // thunks redux toolkit не умеет поэтому ручками пишем (хорошие новости что включены из коробки)
 export const rtFetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => async (dispatch, getState) => {
@@ -100,5 +100,3 @@ export const rtFetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => 
         throw error;
     }
 };
-
-// createAPI https://redux-toolkit.js.org/rtk-query/api/createApi
