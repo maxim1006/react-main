@@ -6,17 +6,21 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import AxiosFamily from '../components/family/axios/AxiosFamily';
-import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
-import AnimateAndTransition from '@app/components/animate-and-transition/animate-and-transition.component';
+import React18Batching from '@app/components/react18/batching/react18-batching.component';
+import React18Concurrent from '@app/components/react18/concurrent/react18-concurrent.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='AnimateAndTransition'>
-                    <AnimateAndTransition />
+                <Component title='React 18'>
+                    <React18Concurrent />
+                    <React18Batching />
                 </Component>
+
+                {/*<Component title='AnimateAndTransition'>*/}
+                {/*    <AnimateAndTransition />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='MatchVsTest'>*/}
                 {/*    <MatchVsTest />*/}
@@ -72,9 +76,9 @@ export default function ReactPage() {
                 {/*    <SessionStorageParent />*/}
                 {/* </Component> */}
 
-                <Component title='PictureImageSet'>
-                    <PictureImageSet />
-                </Component>
+                {/*<Component title='PictureImageSet'>*/}
+                {/*    <PictureImageSet />*/}
+                {/*</Component>*/}
 
                 {/* <Component title="Lazy"> */}
                 {/*    <Lazy />*/}
@@ -164,10 +168,10 @@ export default function ReactPage() {
                 {/*    <Skills/>*/}
                 {/* </Component>*/}
 
-                <Component title='Family fetch'>
-                    <AxiosFamily />
-                    {/* <FamilyFetch />*/}
-                </Component>
+                {/*<Component title='Family fetch'>*/}
+                {/*    <AxiosFamily />*/}
+                {/*    /!* <FamilyFetch />*!/*/}
+                {/*</Component>*/}
 
                 {/* <Component title="Container example">*/}
                 {/*    <ContainerClass/>*/}

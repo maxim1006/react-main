@@ -9,9 +9,13 @@ const packageJson = require('./package.json');
 const prefix = packageJson.prefix;
 const { alias, configPaths } = require('react-app-rewire-alias');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 
 module.exports = {
     webpack: function (config, env) {
+        //disable create-react-app imports restriction: "outside of src directory"
+        config.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
+
         let isProd = env === 'production';
         let plugins = config.plugins;
         let externalLess = process.argv.includes('--external-less');
