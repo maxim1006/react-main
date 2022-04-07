@@ -20,10 +20,11 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
 
     const ref = useRef<HTMLInputElement>();
 
-    const createUserCb = () => {
+    const createUserCb = async () => {
         if (!ref.current.value) return;
 
-        createUser({ name: ref.current.value, limit });
+        const data = await createUser({ name: ref.current.value, limit }).unwrap();
+        // console.log(data);
     };
 
     useEffect(() => {
