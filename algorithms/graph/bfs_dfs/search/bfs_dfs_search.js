@@ -10,30 +10,30 @@ graph.e = ['f'];
 graph.f = ['g'];
 
 // with for
-// function breadthSearch(graph, start, end) {
-//     let paths = graph[start];
-//
-//     while (paths.length) {
-//         console.log('paths ', paths);
-//         let currentPaths = [];
-//
-//         for (let path of paths) {
-//             if (end === path) {
-//                 console.log('found path: ', end);
-//                 return true;
-//             }
-//
-//             if (Array.isArray(graph[path])) {
-//                 currentPaths = [...currentPaths, ...graph[path]];
-//             }
-//         }
-//
-//         paths = currentPaths;
-//     }
-//
-//     console.log('no destination was found');
-//     return false;
-// }
+function breadthSearch(graph, start, end) {
+    let paths = graph[start];
+
+    while (paths.length) {
+        console.log('paths ', paths);
+        let currentPaths = [];
+
+        for (let path of paths) {
+            if (end === path) {
+                console.log('found path: ', end);
+                return true;
+            }
+
+            if (Array.isArray(graph[path])) {
+                currentPaths = [...currentPaths, ...graph[path]];
+            }
+        }
+
+        paths = currentPaths;
+    }
+
+    console.log('no destination was found');
+    return false;
+}
 
 // without for
 function breadthSearch(graph, start, end) {
@@ -80,5 +80,5 @@ function dfs(graph, start, end) {
     return isFound;
 }
 
-console.log(bfs(graph, 'a', 'g'));
-console.log(dfs(graph, 'a', 'g'));
+console.log(breadthSearch(graph, 'a', 'g'));
+// console.log(dfs(graph, 'a', 'g'));

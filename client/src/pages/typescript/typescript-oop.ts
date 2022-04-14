@@ -205,19 +205,24 @@ const userService1 = new UserService(new UserSqlDB());
  */
 class Singleton {
     public static instance: Singleton;
+    public prop: number = 0;
 
-    constructor(dbName: string) {
+    constructor() {
         if (Singleton.instance) return Singleton.instance;
 
-        console.log(Math.random());
+        this.prop = Math.random();
+        console.log(this);
 
         Singleton.instance = this;
     }
 }
 
-new Singleton('1');
-new Singleton('1');
-new Singleton('1');
+new Singleton();
+new Singleton();
+new Singleton();
+new Singleton();
+
+console.log(Singleton.instance.prop);
 
 // 2
 class Singleton2 {
