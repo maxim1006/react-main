@@ -1,0 +1,8 @@
+// https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images
+.mask {
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    -webkit-mask-image: url('../../assets/icons/user.svg');
+    mask-image: url('../../assets/icons/user.svg');
+}

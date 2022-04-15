@@ -6,17 +6,24 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import React18Batching from '@app/components/react18/batching/react18-batching.component';
-import React18Concurrent from '@app/components/react18/concurrent/react18-concurrent.component';
+import MyCssMask from '@app/components/css-mask/css-mask.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='React 18'>
-                    <React18Concurrent />
-                    <React18Batching />
+                <Component title='Css mask'>
+                    <MyCssMask />
                 </Component>
+
+                {/*<Component title='Aspect ratio'>*/}
+                {/*    <MyAspectRatio />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='React 18'>*/}
+                {/*    <React18Concurrent />*/}
+                {/*    <React18Batching />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='AnimateAndTransition'>*/}
                 {/*    <AnimateAndTransition />*/}
