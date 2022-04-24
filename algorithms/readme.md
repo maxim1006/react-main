@@ -1,5 +1,5 @@
 ### O
-n ^ m - n raised to the m power (or: n to the m) (or: n to the power of 2)
+n ** m - n raised to the m power (or: n to the m) (or: n to the power of 2)
 n * m - n times m
 m ^ 2 - m squared
 On the order of - the worst case scenario of algorithm. В процессе его вычислений достаточно много допущений, к примеру n^2 + 2n + 1 === O(n^2), или n - 1 === O(n) // где n - количество операций за который алгоритм приходит к финальному результату причем указывается всегда наихудшая ситуация

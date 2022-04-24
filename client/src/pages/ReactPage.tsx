@@ -7,6 +7,7 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import MyCssMask from '@app/components/css-mask/css-mask.component';
+import MyAspectRatio from '@app/components/aspect-ratio/aspect-ratio.component';
 
 export default function ReactPage() {
     return (

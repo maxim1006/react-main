@@ -54,3 +54,55 @@ const MusicApp = () => {
 };
 
 export default {};
+
+// Storage
+// В этом примере делаю интерфейс StorageApi и абстракцию StorageClient которая умеет работать со всеми стораджами а также делегирует методы выполнения
+interface StorageApi {
+    getAll: () => void;
+    getOne: () => void;
+    add: () => void;
+}
+
+class LocalStorageApi implements StorageApi {
+    getAll() {
+        // get all from LS
+    }
+    getOne() {
+        // get one from LS
+    }
+    add() {
+        // add one from LS
+    }
+}
+
+class DBApi implements StorageApi {
+    getAll() {
+        // get all from DB
+    }
+    getOne() {
+        // get one from DB
+    }
+    add() {
+        // add one from DB
+    }
+}
+
+class StorageClient implements StorageApi {
+    constructor(private storageApi: StorageApi) {}
+
+    getAll() {
+        this.storageApi.getAll();
+    }
+
+    getOne() {
+        this.storageApi.getOne();
+    }
+    add() {
+        this.storageApi.add();
+    }
+}
+
+const StorageApp = function () {
+    const storageClient = new StorageClient(new LocalStorageApi());
+    storageClient.getAll();
+};
