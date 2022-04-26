@@ -3,26 +3,36 @@ import { TodoModel } from '@app/models/todo.model';
 
 // createSlice and createReducer wrap your function with produce from the Immer library.
 /** @see https://immerjs.github.io/immer/docs/introduction*/
+interface TodosStateModel {
+    entities: TodoModel[];
+}
 
-let nextTodoId = 0;
+const initialState: TodosStateModel = {
+    entities: [],
+};
 
 const rtTodosSlice = createSlice({
     name: 'todos',
-    initialState: [],
+    initialState,
     // reducers - an object, where the keys will become action type strings, and the functions are reducers that will
     // be run when that action type is dispatched.
     reducers: {
-        rtAddTodo: {
+        rtAddTodoAction(state, { payload }: PayloadAction<TodoModel>) {
+            state.entities.push(payload);
+        },
+        rtAddTodoPreparedAction: {
             reducer: (state, { payload }: PayloadAction<TodoModel>) => {
                 const { id, text } = payload;
-                state.push({ id, text, completed: false });
+                state.entities.push({ id, text, completed: false });
             },
             // если нужно кастомно подготовить то что прокидываю в экшн, по умолчанию все что передасться при
             // вызове экшена попадет в пейлоад, однако если нужен кастом делаю prepare
-            prepare: (text: string): { payload: TodoModel } => ({ payload: { text, id: '' + nextTodoId++ } }),
+            prepare: (text: string): { payload: TodoModel } => ({
+                payload: { text, id: `${Math.random() * Date.now()}` },
+            }),
         },
-        rtToggleTodo(state, { payload }: PayloadAction<string>) {
-            const todo = state.find(todo => todo.id === payload);
+        rtToggleTodoAction(state, { payload }: PayloadAction<string>) {
+            const todo = state.entities.find(todo => todo.id === payload);
 
             if (todo) {
                 todo.completed = !todo.completed;
@@ -31,7 +41,7 @@ const rtTodosSlice = createSlice({
     },
 });
 
-export const { rtAddTodo, rtToggleTodo } = rtTodosSlice.actions;
+export const { rtAddTodoPreparedAction, rtToggleTodoAction, rtAddTodoAction } = rtTodosSlice.actions;
 
 export default rtTodosSlice.reducer;
 
