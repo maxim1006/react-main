@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get Data Get data fetch empty url 1`] = `
+Object {
+  "data": Object {
+    "completed": false,
+    "id": 1,
+    "title": "delectus aut autem",
+    "userId": 1,
+  },
+}
+`;
