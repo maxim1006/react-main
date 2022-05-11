@@ -1,13 +1,25 @@
 // delay
-export const delay = (time, ...args) =>
+export const delay = (time, args) =>
     new Promise(res =>
         setTimeout(
-            (...args) => {
+            args => {
                 res(args);
                 console.log('delay', { time, args });
             },
             time,
-            ...args
+            args
+        )
+    );
+
+export const delayWithError = (time, ...args) =>
+    new Promise((res, rej) =>
+        setTimeout(
+            args => {
+                Marh.random() > 0.5 ? res(args) : rej(args);
+                console.log('delay', { time, args });
+            },
+            time,
+            args
         )
     );
 
@@ -29,14 +41,13 @@ function curry(f) {
 }
 
 // compose
-export const compose = (...fns) => arg => fns.reduce((acc, item) => item(acc), arg);
+export const compose =
+    (...fns) =>
+    arg =>
+        fns.reduce((acc, item) => item(acc), arg);
 
 // getType()
-export const getType = item =>
-    Object.prototype.toString
-        .call(item)
-        .slice(8, -1)
-        .toLowerCase();
+export const getType = item => Object.prototype.toString.call(item).slice(8, -1).toLowerCase();
 
 export function throttle(func, ms) {
     let isThrottled = false,
@@ -54,7 +65,7 @@ export function throttle(func, ms) {
 
         isThrottled = true;
 
-        setTimeout(function() {
+        setTimeout(function () {
             isThrottled = false;
             if (savedArgs) {
                 wrapper.apply(savedThis, savedArgs);
@@ -69,7 +80,7 @@ export function throttle(func, ms) {
 export function debounce(func, time = 0) {
     let timeout;
 
-    return function(...args) {
+    return function (...args) {
         const context = this;
 
         clearTimeout(timeout);

@@ -19,6 +19,7 @@
    
 ### Linked Lists
 Создаю инишиал лист и вспомогательную ссылку на list (именно на лист!!! обычно temp), потом в цикле while прохожусь по всем next как temp = list.next; не забываю после while обработать конечные условия. С помощью temp меняю/модифицирую list.next и возвращаю list.next
+Если нужно стартовать с 1ой вершины и менять ее let res = new ListNode(0, head); а возвращать res.next
 
 ### Recursions
 Invoke the same function until u reach your base case (the condition when recursion ends) passing different inputs

@@ -11,31 +11,28 @@ console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
 console.log('array length ', array.length); // 16
 console.log('countR ', countR); // 3
 
-function binarySearch(array, item) {
-    let start = 0;
-    let end = array.length;
-    let found = false;
-    let position = -1;
+function binarySearch(array, target) {
+    let s = 0;
+    let e = array.length;
 
-    while (!found && start <= end) {
+    while (s <= e) {
         // console.log(array.slice(start, end));
         ++count;
-        let middle = Math.floor((start + end) / 2);
+        let pivot = Math.floor((s + e) / 2);
+        let cur = array[pivot];
 
-        if (array[middle] === item) {
-            found = true;
-            position = middle;
-            return position;
+        if (cur === target) {
+            return pivot;
         }
 
-        if (item < array[middle]) {
-            end = middle - 1;
+        if (target < cur) {
+            e = pivot - 1;
         } else {
-            start = middle + 1;
+            s = pivot + 1;
         }
     }
 
-    return position;
+    return -1;
 }
 
 function recursiveBinarySearch(array, item, start, end) {

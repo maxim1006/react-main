@@ -338,3 +338,82 @@
 //     {name: 'height', value: 20}
 // ];
 // На выходе объект {width: 10, height: 20}
+
+///////////////////////////////////////////////////////////////////// Task
+// optimise filtering
+// let items = [
+//     { name: 'name 1', age: '2323' },
+//     { name: 'name 2', age: '2323' },
+// ];
+// let excludeFilters = [{ k: 'name', v: 'name 1' }];
+//
+// const notOptimised = () =>
+//     items.filter(item => {
+//         let { v, k } = excludeFilters.find(f => Object.keys(item).find(key => f.k === key));
+//
+//         return v !== item[k];
+//     });
+//
+// console.time('notOptimised');
+// console.log(notOptimised());
+// console.timeEnd('notOptimised');
+//
+// let excludeFiltersMap = excludeFilters.reduce((acc, { k, v }) => {
+//     if (acc[k]) {
+//         acc[k][v] = true;
+//     } else {
+//         acc[k] = { [v]: true };
+//     }
+//
+//     return acc;
+// }, {});
+// console.log({ excludeFiltersMap });
+//
+// const optimised = () => items.filter(item => !Object.keys(item).find(key => excludeFiltersMap[key]?.[item[key]]));
+//
+// console.time('optimised');
+// console.log(optimised());
+// console.timeEnd('optimised');
+///////////////////////////////////////////////////////////////////// End
+
+///////////////////////////////////////////////////////////////////// Task
+// set intervals
+// let o = { Max: [1, 1], Alice: [2, 6], Bob: [3, 8], Catie: [4, 7] };
+//
+// function countCollisions(o) {
+//     let arr = Object.values(o)
+//         .reduce((acc, i) => [...acc, ...i], [])
+//         .sort((a, b) => a - b);
+//
+//     // console.log({ arr }); // [1, 1, 2, 3, 4, 6, 7, 8]
+//
+//     let start = arr[0];
+//     let timeFrames = [];
+//     let result = {};
+//
+//     for (let i = 1; i < arr.length; i++) {
+//         let cur = arr[i];
+//
+//         timeFrames.push([start, cur]);
+//         start = cur;
+//     }
+//
+//     // console.log({ timeFrames }); //  [[ 1, 1 ], [ 1, 2 ],[ 2, 3 ], [ 3, 4 ],[ 4, 6 ], [ 6, 7 ],[ 7, 8 ]]
+//
+//     timeFrames.forEach(i => {
+//         Object.entries(o).forEach(([name, frame]) => {
+//             if (isInFrame(i, frame)) {
+//                 result[i] = result[i] ? [...result[i], name] : [name];
+//             }
+//         });
+//     });
+//
+//     return result;
+// }
+//
+// function isInFrame(timeframe, frame) {
+//     return timeframe[0] >= frame[0] && timeframe[1] <= frame[1];
+// }
+//
+// console.log(countCollisions(o));
+///////////////////////////////////////////////////////////////////// End

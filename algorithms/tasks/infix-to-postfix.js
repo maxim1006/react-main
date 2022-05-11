@@ -8,7 +8,25 @@ If op1 = +, op2 = *, op3 = +
 The compiler first scans the expression to evaluate the expression b * c, then again scans the expression to add a to it. The result is then added to d after another scan.
 The repeated scanning makes it very in-efficient. It is better to convert the expression to postfix(or prefix) form before evaluation.
 The corresponding expression in postfix form is abc*+d+. The postfix expressions can be evaluated easily using a stack. We will cover postfix expression evaluation in a separate post.
-Algorithm
+
+*
+* let exp = 'a+b*(c^d-e)^(f+g*h)-i';
+console.log(infixToPostfix(exp)); // abcd^e-fgh*+^*+i-
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+* Algorithm
 1. Scan the infix expression from left to right.
 2. If the scanned character is an operand, output it.
 3. Else,
