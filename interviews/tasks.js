@@ -367,7 +367,7 @@
 //
 //     return acc;
 // }, {});
-// console.log({ excludeFiltersMap });
+// console.log({ excludeFiltersMap }); // { name: { 'name 1': true } } }
 //
 // const optimised = () => items.filter(item => !Object.keys(item).find(key => excludeFiltersMap[key]?.[item[key]]));
 //

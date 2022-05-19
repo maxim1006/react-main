@@ -6,16 +6,23 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import MyCssMask from '@app/components/css-mask/css-mask.component';
-import MyAspectRatio from '@app/components/aspect-ratio/aspect-ratio.component';
+import RouterTestContainer from '@app/tests/router/router-test.container';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Css mask'>
-                    <MyCssMask />
+                <Component title='RouterTestsContainer'>
+                    <RouterTestContainer />
                 </Component>
+
+                {/*<Component title='UsersTest'>*/}
+                {/*    <UsersTest />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='Css mask'>*/}
+                {/*    <MyCssMask />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Aspect ratio'>*/}
                 {/*    <MyAspectRatio />*/}
