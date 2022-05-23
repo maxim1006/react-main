@@ -7,11 +7,16 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import RouterTestContainer from '@app/tests/router/router-test.container';
+import UrlSearchParams from '@app/components/url-search-params/url-search-params.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <Component title='URLSearchParamsTest'>
+                    <UrlSearchParams />
+                </Component>
+
                 <Component title='RouterTestsContainer'>
                     <RouterTestContainer />
                 </Component>
