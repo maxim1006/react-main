@@ -58,7 +58,7 @@ function howSumRM(num, arr, store = {}) {
 
 // time O(n^m * m) еще умножаю на m потому что для каждого рекурсивного вызова должен скопировать массив space(m)
 console.time('howSumR');
-console.log(howSumR(300, [5, 3, 4, 7]));
+console.log(howSumR(9, [5, 3, 4, 7]));
 console.log(howSumR(30, [7, 14])); // null
 console.timeEnd('howSumR');
 // time O(n*m*m) еще умножаю на m потому что для каждого рекурсивного вызова должен скопировать массив space(m*m) так как для мемо стора каждый ключ имеет массив с максимум m элементов

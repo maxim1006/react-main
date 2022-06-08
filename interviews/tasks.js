@@ -22,7 +22,7 @@
 // }
 
 /*********** Task currying2 ***********/
-// console.log(sum(0)(1)(2)(3)(4)(5));
+// console.log(sum(0)(1)(2)(3)(4)(5) + "");
 /*********** Answer ***********/
 // function sum(num) {
 //     let currentSum = num;
@@ -32,7 +32,9 @@
 //         return f;
 //     }
 //
-//     f.toString = () => currentSum;
+//     f.toString = function () {
+//         return currentSum;
+//     };
 //
 //     return f;
 // }

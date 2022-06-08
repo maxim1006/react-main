@@ -97,4 +97,30 @@ function fn<T extends string[]>(...keys: T): ProgressiveImageModel | undefined |
 const e = fn('key');
 const e2 = fn('key', 'key');
 
-export default {};
+// Overload 2
+export type OptionalEntity<T> = T | undefined;
+type ProcessableEntities1 = { name: string; key: string };
+type ProcessableEntities2 = { age: number; key: string };
+export type ProcessableEntities = ProcessableEntities1 | ProcessableEntities2;
+
+export function useCmsStructuredContent<T extends ProcessableEntities, K extends string[]>(
+    src: T[] | undefined,
+    ...keys: K
+): K extends [string] ? OptionalEntity<T> : Array<OptionalEntity<T>>;
+export function useCmsStructuredContent<T extends ProcessableEntities, K extends string[]>(
+    src: T[] | undefined,
+    ...keys: K
+): OptionalEntity<T> | Array<OptionalEntity<T>> {
+    if (!src?.length) return keys.length < 2 ? undefined : [];
+
+    if (keys.length > 1) {
+        return keys.reduce<Array<OptionalEntity<T>>>((acc, key) => {
+            return [...acc, src.find(i => i.key === key)];
+        }, []);
+    } else {
+        return src[0];
+    }
+}
+
+let a: ProcessableEntities1 = { name: 'Max', key: '1' };
+const ProcessableEntitiesRes = useCmsStructuredContent([a], '1');

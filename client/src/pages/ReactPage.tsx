@@ -6,20 +6,27 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import RouterTestContainer from '@app/tests/router/router-test.container';
-import UrlSearchParams from '@app/components/url-search-params/url-search-params.component';
+import ForwradRefUseImperativeHandle from '@app/components/forward-ref-useimperativehandle/forward-ref-useimperativehandle.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='URLSearchParamsTest'>
-                    <UrlSearchParams />
+                <Component title='ForwradRefUseImperativeHandle'>
+                    <ForwradRefUseImperativeHandle />
                 </Component>
 
-                <Component title='RouterTestsContainer'>
-                    <RouterTestContainer />
-                </Component>
+                {/*<Component title='TestsReduxContainer'>*/}
+                {/*    <TestsReduxContainer />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='URLSearchParamsTest'>*/}
+                {/*    <UrlSearchParams />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='RouterTestsContainer'>*/}
+                {/*    <RouterTestContainer />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='UsersTest'>*/}
                 {/*    <UsersTest />*/}

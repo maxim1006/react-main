@@ -8,7 +8,7 @@ const UrlSearchParams: FC<UrlSearchParamsProps> = () => {
         let searchParams = new URLSearchParams(window.location.search);
         searchParams.set('param', '1');
         searchParams.set('param1', '2');
-        console.log(searchParams.toString());
+        console.log(searchParams.toString()); // param=1&param1=2
         console.dir(searchParams);
         let path = window.location.pathname + '?' + searchParams.toString();
         window.history.replaceState(null, document.title, path);

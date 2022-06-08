@@ -49,7 +49,6 @@ function canSumRM(num, arr, store = {}) {
 
 // true O(n^m) - time where n - array length, m - target sum, m - space complexity
 // memoized O(m*n)
-console.log(canSum(7, [5, 3, 4, 7])); // true
 console.log(canSumOptimal(7, [5, 3, 4, 7])); // true
 console.log(canSumR(7, [5, 3, 4, 7])); // true
 console.time('canSum');

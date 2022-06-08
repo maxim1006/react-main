@@ -2,31 +2,32 @@
 // const delay = (time, ...args) =>
 //     new Promise(res =>
 //         setTimeout(
-//             (...args) => {
+//             args => {
 //                 res(args);
 //                 console.log('delay', { time, args });
-//             },
-//             time,
-//             ...args
-//         )
-//     );
-//
-// const delayWithError = (time, ...args) =>
-//     new Promise((res, rej) =>
-//         setTimeout(
-//             args => {
-//                 if (Math.random() > 0.2) {
-//                     res(args);
-//                     console.log('delay ', { time, args });
-//                 } else {
-//                     rej(args);
-//                     console.log('delay error ', { time, args });
-//                 }
 //             },
 //             time,
 //             args
 //         )
 //     );
+
+//
+const delayWithError = (time, ...args) =>
+    new Promise((res, rej) =>
+        setTimeout(
+            args => {
+                if (Math.random() > 0.2) {
+                    res(args);
+                    console.log('delay ', { time, args });
+                } else {
+                    rej(args);
+                    console.log('delay error ', { time, args });
+                }
+            },
+            time,
+            args
+        )
+    );
 
 // запустятся параллельно
 // var arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
@@ -48,6 +49,19 @@
 // void runSequence();
 
 // запустятся последовательно 2
+
+// short variant
+// function runSequence(arr) {
+//     let p = Promise.resolve();
+//
+//     arr.forEach((i, idx) => {
+//         p = p.then((prevArr = []) => delayWithError(i, idx).then(res => [...prevArr, res]));
+//     });
+//
+//     return p;
+// }
+
+// long variant
 // function runSequence(arr) {
 //     let result = [];
 //     let p = Promise.resolve();
