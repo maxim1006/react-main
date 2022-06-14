@@ -6,15 +6,19 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import ForwradRefUseImperativeHandle from '@app/components/forward-ref-useimperativehandle/forward-ref-useimperativehandle.component';
+import MyIframe from '@app/components/iframe/my-iframe.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
                 <Component title='ForwradRefUseImperativeHandle'>
-                    <ForwradRefUseImperativeHandle />
+                    <MyIframe />
                 </Component>
+
+                {/*<Component title='ForwradRefUseImperativeHandle'>*/}
+                {/*    <ForwradRefUseImperativeHandle />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='TestsReduxContainer'>*/}
                 {/*    <TestsReduxContainer />*/}
