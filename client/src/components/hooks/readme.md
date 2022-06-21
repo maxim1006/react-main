@@ -94,6 +94,8 @@ return <Child onClick={eventHandler}/>
 
 При изменении в array сама функция обернутая в useCallback вызываться не будет
 
+Если функция зависимость, то ее надо оборачивать в useCallback, чтобы не попасть в бесконечный цикл если обновляется стейт в этой компоненте, а функция будет обновляться и будет каждый раз ререндерить
+
 ## useMemo
 
 https://reactjs.org/docs/hooks-reference.html#usememo

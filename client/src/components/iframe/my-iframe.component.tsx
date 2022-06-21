@@ -24,7 +24,7 @@ const MyIframe: FC<MyIframeProps> = () => {
                             text: 'Hi mom',
                         },
                     },
-                    window.location.origin
+                    window.top.location.origin
                 );
             });
     }, []);

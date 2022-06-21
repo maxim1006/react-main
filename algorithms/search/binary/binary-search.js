@@ -1,11 +1,16 @@
 const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const arrayR = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 let count = 0;
+let countClearer = 0;
 let countR = 0;
 
 console.log(binarySearch(array, 5)); // O(log n)
 console.log('array length ', array.length); // 16
 console.log('count ', count); // 3
+
+console.log(binarySearchClearer(array, 5)); // O(log n)
+console.log('array length ', array.length); // 16
+console.log('countClearer ', count); // 3
 
 console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
 console.log('array length ', array.length); // 16
@@ -29,6 +34,30 @@ function binarySearch(array, target) {
             e = pivot - 1;
         } else {
             s = pivot + 1;
+        }
+    }
+
+    return -1;
+}
+
+function binarySearchClearer(array, target) {
+    let s = 0;
+    let e = array.length;
+
+    while (s < e) {
+        // console.log(array.slice(start, end));
+        ++countClearer;
+        let pivot = Math.floor((s + e) / 2);
+        let cur = array[pivot];
+
+        if (cur === target) {
+            return pivot;
+        }
+
+        if (target > cur) {
+            s = pivot + 1;
+        } else {
+            e = pivot;
         }
     }
 

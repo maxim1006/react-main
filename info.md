@@ -106,3 +106,12 @@ jobs:
 
     runs-on: self-hosted // если хочу у себя на компе хостить
 
+
+### meta 
+// чтобы мог зумить и при этом в сафари не зумилось автоматом
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+### lerna
+1) npx init lerna
