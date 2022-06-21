@@ -115,3 +115,4 @@ jobs:
 
 ### lerna
 1) npx init lerna
+2) add nx to learna.json and package.json

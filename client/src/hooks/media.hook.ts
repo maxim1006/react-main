@@ -23,7 +23,7 @@ export const useMedia = (props?: MediaProps) => {
     const [mediaData, setMediaData] = useState<MediaDataType>(initialMediaData);
 
     const handleWindowResize = useCallback(
-        _ => {
+        (_: any) => {
             setMediaData(pevMediaData => ({
                 ...pevMediaData,
                 ...getMediaData(props),

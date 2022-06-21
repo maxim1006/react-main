@@ -3,4 +3,4 @@
  history, а умеет только свой) на Router*/
 import { createBrowserHistory } from 'history';
 
-export default createBrowserHistory();
+export default createBrowserHistory({ window });

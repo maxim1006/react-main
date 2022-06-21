@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import TodoList from '../components/todo-list.component';
 import { selectTodos, selectVisibilityFilter, toggleTodo } from '../store';
 import { TodosAppState } from '../store/state';
-import { TodoModel } from '../../../models/todo.model';
+import { TodoModel } from '@app/models/todo.model';
 
 export type TodoListContainerProps = {
     todos: TodoModel[];

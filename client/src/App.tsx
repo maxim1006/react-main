@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import './App.scss';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import MaterialLoaderComponent from './components/loader/MaterialLoader';
 import NotFound from './components/NotFound';
 import MainMenu from './components/menu/MainMenu';
@@ -50,21 +50,19 @@ const App: React.FC = () => {
                     {/* При переключении роутера будет показываться MaterialLoaderComponent, за это отвечает Suspense*/}
                     <Suspense fallback={<MaterialLoaderComponent />}>
                         {/* покажет только первый найденный роут*/}
-                        <Switch>
-                            <Route path='/typescript' component={TypescriptPage} />
-                            <Route path='/rt' component={ReduxToolkit} />
-                            <Route path='/shop' component={ShopPage} />
-                            <Route path='/redux' component={ReduxPage} />
-                            <Route path='/react' component={ReactPage} />
-                            <Route path='/router' component={RouterPage} />
-                            <Route path='/stream' component={StreamPage} />
-                            <Route path='/lazy' component={LazyPage} />
-                            <Route path='/context' component={ContextPage} />
-                            <Route path='/intl' component={IntlPage} />
-                            <Route path='*'>
-                                <NotFound />
-                            </Route>
-                        </Switch>
+                        <Routes>
+                            <Route path='/typescript' element={<TypescriptPage />} />
+                            <Route path='/rt' element={<ReduxToolkit />} />
+                            <Route path='/shop' element={<ShopPage />} />
+                            <Route path='/redux' element={<ReduxPage />} />
+                            <Route path='/react' element={<ReactPage />} />
+                            <Route path='/router' element={<RouterPage />} />
+                            <Route path='/stream' element={<StreamPage />} />
+                            <Route path='/lazy' element={<LazyPage />} />
+                            <Route path='/context' element={<ContextPage />} />
+                            <Route path='/intl' element={<IntlPage />} />
+                            <Route path='*' element={<NotFound />} />
+                        </Routes>
                     </Suspense>
                     {/* </Router> */}
                 </main>

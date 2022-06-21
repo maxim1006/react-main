@@ -1,6 +1,6 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 // ключ забрал тут https://console.firebase.google.com/project/react-main-1006-8eae6/settings/general/web:Y2ZhNGQ3YWQtMmY2My00NDgxLTk2ZTktMzlkZTQ3ZTA1ZjI2
 const firebaseConfig = {
@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
+export const auth = firebase.auth?.();
 export const firestore = firebase.firestore();
 
 // настраиваю сервис для работы с auth

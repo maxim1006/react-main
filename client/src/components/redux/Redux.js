@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import PostsAndUsers from '../posts-and-users/PostsAndUsers';
 import PostList from '../post/PostList';
 import SongList from '../song/SongList';
@@ -31,16 +31,16 @@ export class ReduxComponent extends Component {
                     ]}
                 />
 
-                <Switch>
-                    <Route path='/redux' exact component={ReduxSaga} />
-                    <Route path='/redux/todos' exact component={Todos} />
-                    <Route path='/redux/counters' exact component={Counters} />
-                    <Route path='/redux/song-list' exact component={SongList} />
-                    <Route path='/redux/posts-and-users' exact component={PostsAndUsers} />
-                    <Route path='/redux/post-list' exact component={PostList} />
-                    <Route path='/redux/framework-list' exact component={FrameworkList} />
-                    <Route path='/redux/user-list' exact component={UserListHooks} />
-                </Switch>
+                <Routes>
+                    <Route path='/redux' element={<ReduxSaga />} />
+                    <Route path='/redux/todos' element={<Todos />} />
+                    <Route path='/redux/counters' element={<Counters />} />
+                    <Route path='/redux/song-list' element={<SongList />} />
+                    <Route path='/redux/posts-and-users' element={<PostsAndUsers />} />
+                    <Route path='/redux/post-list' element={<PostList />} />
+                    <Route path='/redux/framework-list' element={<FrameworkList />} />
+                    <Route path='/redux/user-list' element={<UserListHooks />} />
+                </Routes>
             </>
         );
     }

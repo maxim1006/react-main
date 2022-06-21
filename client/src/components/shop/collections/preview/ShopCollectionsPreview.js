@@ -1,5 +1,4 @@
 import './ShopCollectionsPreview.scss';
-import { withRouter } from 'react-router-dom';
 import ShopCollectionsPreviewItemHooks from './item/ShopCollectionsPreviewItemHooks';
 import {
     StyledShopCollectionsPreview,
@@ -8,7 +7,7 @@ import {
     StyledShopCollectionsPreviewTitle,
 } from './StyledShopCollectionsPreview';
 
-export default withRouter(({ title, items }) => (
+export default ({ title, items }) => (
     <StyledShopCollectionsPreview>
         <StyledShopCollectionsPreviewTitle to={`collections/${title.toLowerCase()}`}>
             {title}
@@ -21,4 +20,4 @@ export default withRouter(({ title, items }) => (
             ))}
         </StyledShopCollectionsPreviewItems>
     </StyledShopCollectionsPreview>
-));
+);

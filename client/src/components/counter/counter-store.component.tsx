@@ -3,7 +3,7 @@ import { COUNTER_TYPES } from '@app/store/actions/types';
 
 // Create store
 const createStore = (reducer: Function) => {
-    let state: object;
+    let state: number;
     // так как сабскрайб может вызывааться несколько раз, должны хранить все вызовы
     const listeners: any[] = [];
 

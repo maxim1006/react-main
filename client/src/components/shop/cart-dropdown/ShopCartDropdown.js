@@ -1,8 +1,7 @@
 import ShopButton from '../button/ShopButton';
 import './ShopCartDropdown.scss';
-import { withRouter } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
-import { shopToggleDropdown } from '../../../store/actions';
+import { shopToggleDropdown } from '@app/store/actions';
 import ShopCartListHooks from '../cart/cart-list/ShopCartListHooks';
 
 const ShopCartDropdown = ({ history, dispatch }) => {
@@ -27,6 +26,6 @@ const ShopCartDropdown = ({ history, dispatch }) => {
 };
 
 // если не передаю mapDispatchToProps то connect автоматом вставляет dispatch в проперти, оставлю как альтернативу стандартному варианту
-export default withRouter(connect()(ShopCartDropdown));
+export default connect()(ShopCartDropdown);
 // обычно делаю так
 // export default withRouter(connect(null, {shopToggleDropdown})(ShopCartDropdown));

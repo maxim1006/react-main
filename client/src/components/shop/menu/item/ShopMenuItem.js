@@ -1,4 +1,3 @@
-import { withRouter } from 'react-router-dom';
 import { StyledShopMenuItem, StyledShopMenuItemSubTitle, StyledShopMenuItemTitle } from './StyledMenuItem';
 
 const MenuItem = ({ title, subtitle = 'Shop now', image, history, match, linkUrl }) => {
@@ -14,5 +13,4 @@ const MenuItem = ({ title, subtitle = 'Shop now', image, history, match, linkUrl
     );
 };
 
-// Так как Роутер сетит проперти только компонентам в <Route то остальным прокидываю инфо о роутере через withRouter
-export default withRouter(MenuItem);
+export default MenuItem;

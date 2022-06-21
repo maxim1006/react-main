@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import TestRouterAboutPage from './pages/tests-router-about-page.component';
 import TestsRouterMainPage from './pages/tests-router-main-page.component';
 import TestsRouterErrorPage from './pages/tests-router-error-page.component';
@@ -15,7 +15,7 @@ const RouterTestContainer: FC<RouterTestContainerProps> = () => {
             <Link data-testid='about-link' to='/about'>
                 About
             </Link>
-            <Switch>
+            <Routes>
                 <Route path='/about'>
                     <TestRouterAboutPage />
                 </Route>
@@ -25,7 +25,7 @@ const RouterTestContainer: FC<RouterTestContainerProps> = () => {
                 <Route path='/*'>
                     <TestsRouterErrorPage />
                 </Route>
-            </Switch>
+            </Routes>
         </BrowserRouter>
     );
 };

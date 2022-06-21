@@ -1,7 +1,7 @@
-import { DefaultRootState, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 
-export function useMemoSelector<TState = DefaultRootState, TSelected = unknown, TArgs = any>(
+export function useMemoSelector<TState = unknown, TSelected = unknown, TArgs = any>(
     selector: () => (state: TState, ...args: TArgs[]) => TSelected,
     ...args: TArgs[]
 ) {

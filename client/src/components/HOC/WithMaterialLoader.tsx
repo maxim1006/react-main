@@ -14,4 +14,4 @@ type WithMaterialLoaderProps = {
 export const withMaterialLoader =
     <P extends Record<string, unknown>>(Component: ComponentType<P>): FC<P & WithMaterialLoaderProps> =>
     ({ isLoading, ...restProps }) =>
-        isLoading ? <MaterialLoader /> : <Component {...(restProps as P)} />;
+        isLoading ? <MaterialLoader /> : <Component {...(restProps as P & WithMaterialLoaderProps)} />;

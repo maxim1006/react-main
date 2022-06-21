@@ -1,0 +1,21 @@
+{
+  "name": "@max/learna-dep-package",
+  "version": "0.0.1",
+  "description": "lerna dep",
+  "scripts": {
+    "build": "tsc",
+    "move-package-prod": "node ../../movePackageJson.js ../../dist/api",
+    "postbuild": "npm run move-package-prod"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "react": "*",
+    "@max/learna-dep-package-child": "*"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts"
+}

@@ -7,9 +7,7 @@ type TestsReduxCounterProps = {};
 
 const TestsReduxCounter: FC<TestsReduxCounterProps> = () => {
     const dispatch = useDispatch();
-    const counter = useSelector<TestsRootState>(state => {
-        return state.counter;
-    });
+    const counter = useSelector((state: TestsRootState) => state.counter);
 
     console.log(counter);
 

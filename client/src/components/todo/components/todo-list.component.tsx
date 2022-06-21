@@ -4,7 +4,7 @@ import { TodoModel } from '@app/models/todo.model';
 
 export interface ITodoListProps {
     currentFilter: string;
-    todos: React.ReactNode;
+    todos: TodoModel[];
     onChange: (id: string, completed: boolean) => void;
 }
 

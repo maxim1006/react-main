@@ -4,9 +4,9 @@ import {
     BrowserRouter as Router1,
     NavLink,
     Route,
-    Router,
-    Switch,
-    useHistory,
+    unstable_HistoryRouter as HistoryRouter,
+    Routes,
+    useNavigate,
     useLocation,
     useParams,
 } from 'react-router-dom';
@@ -46,31 +46,25 @@ const RouterPage: FC<RouterPageProps> = () => {
     } = history;
 
     let location = useLocation();
-    let historyFromUseHistory = useHistory();
+    let historyFromUseNavigate = useNavigate();
     let params = useParams();
 
     console.log({
         location,
         search,
         params,
-        historyFromUseHistory,
+        historyFromUseNavigate,
     });
 
     // надо чтобы было внутри роутера
     useEffect(() => {
-        const unsubscribe = historyFromUseHistory.listen((location, action) => {
-            console.log('on route change');
-        });
+        console.log('on route change');
+    }, [location]);
 
-        return () => unsubscribe();
-    }, [historyFromUseHistory]);
-
-    // тоже самое
-    // useEffect(() => {
-    //     return historyFromUseHistory.listen((location, action) => {
-    //         console.log('on route change');
-    //     });
-    // }, [historyFromUseHistory]);
+    // если надо запушить что-то в history
+    // function handleClick() {
+    //     historyFromUseNavigate("/home");
+    // }
 
     return (
         <>
@@ -85,49 +79,49 @@ const RouterPage: FC<RouterPageProps> = () => {
                 ]}
             />
             {/* покажет только первый найденный роут*/}
-            <Switch>
+            <Routes>
                 {/* Этот роутер закомментировал так как если раскоментить то он будет
                     покажется сразу при переходе на /router как и RouterExactRoute
                     это чисто для примера что такое exact
                     <Route path="/router" exact component={RouterExactRoute}/>
                 */}
-                <Route path='/router/exact' exact component={RouterExactRoute} />
-                <Route path='/router/route1' component={RouterRoute1} />
-                <Route path='/router/lazy' component={RouterLazyRoute} />
+                <Route path='/router/exact' element={<RouterExactRoute />} />
+                <Route path='/router/route1' element={<RouterRoute1 />} />
+                <Route path='/router/lazy' element={<RouterLazyRoute />} />
                 <Route path='/router/*'>
                     <NotFound>Router not found</NotFound>
                 </Route>
-            </Switch>
+            </Routes>
 
-            <Router history={history}>
-                <NavLink exact activeClassName='_active' to='/router/home'>
+            <HistoryRouter history={history}>
+                <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/router/home'>
                     Home
                 </NavLink>
 
-                <NavLink exact activeClassName='_active' to='/router/lazy'>
+                <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/router/lazy'>
                     Lazy
                 </NavLink>
 
-                <Switch>
-                    <Route exact path='/router/home' component={() => <>Home</>} />
-                    <Route exact path='/router/lazy' component={ExamplesLazyComponent} />
+                <Routes>
+                    <Route path='/router/home' element={<>Home</>} />
+                    <Route path='/router/lazy' element={<ExamplesLazyComponent />} />
                     <Route path='*'>
                         <NotFound />
                     </Route>
-                </Switch>
-            </Router>
+                </Routes>
+            </HistoryRouter>
 
             <Router1 basename='/router'>
                 <NavigationBar />
-                <Switch>
+                <Routes>
                     {ROUTER_STEPS.map(({ slug, component }) => (
-                        <Route key={slug} path={`/${slug}`} component={component} />
+                        <Route key={slug} path={`/${slug}`} element={<>{component}</>} />
                     ))}
 
                     {/*<Route path='*'>*/}
                     {/*    <Redirect to={{ pathname: `/${ROUTER_STEPS[0].slug}`, search }} />*/}
                     {/*</Route>*/}
-                </Switch>
+                </Routes>
 
                 <FooterBar />
             </Router1>
@@ -143,14 +137,14 @@ export default memo(RouterPage);
 // <Router>
 //     <nav className={styles.menu}>
 //         {dashboardRoutes.map(({ path, name }) => (
-//             <NavLink key={path} activeClassName="_active" className={styles.menuLink} to={path}>
+//             <NavLink key={path} className={({ isActive }) => ('' + isActive ? ' _active' : '')} to={path}>
 //                 {name}
 //             </NavLink>
 //         ))}
 //     </nav>
 //
 //     <Suspense fallback="Loading...">
-//         <Switch>
+//         <Routes>
 //             <Redirect exact from={initPageRoute} to={dashboardRoutes[0].path} />
 //
 //             {dashboardRoutes.map(({ path, route }) => (
@@ -160,14 +154,12 @@ export default memo(RouterPage);
 //                     component={lazy(() => import(`@app/components/dashboard${route}.dashboard`))}
 //                 />
 //             ))}
-//         </Switch>
+//         </Routes>
 //     </Suspense>
 // </Router>
 
 // dummy components
 function NavigationBar() {
-    let history = useHistory();
-
     const onClick = (slug: string) => () => {
         history.push(slug);
     };

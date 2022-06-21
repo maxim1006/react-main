@@ -1,5 +1,12 @@
 import { lazy, memo } from 'react';
-import { BrowserRouter as Router1, Redirect, NavLink, Route, Router, Switch } from 'react-router-dom';
+import {
+    BrowserRouter as Router1,
+    NavLink,
+    Navigate,
+    Route,
+    unstable_HistoryRouter as HistoryRouter,
+    Routes,
+} from 'react-router-dom';
 import history from '../../../history';
 
 const ExamplesLazyComponent = lazy(() => import('../lazy/examples-lazy.component'));
@@ -33,35 +40,35 @@ const ExamplesRouterComponent = () => {
 
     return (
         <>
-            <Router history={history}>
-                <NavLink exact={true} activeClassName='_active' to='/'>
+            <HistoryRouter history={history}>
+                <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/'>
                     Home
                 </NavLink>
 
-                <NavLink exact={true} activeClassName='_active' to='/lazy'>
+                <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/lazy'>
                     Lazy
                 </NavLink>
 
-                <Switch>
-                    <Route exact path='/' component={() => <>Home</>} />
-                    <Route exact path='/lazy' component={ExamplesLazyComponent} />
+                <Routes>
+                    <Route path='/' element={<>Home</>} />
+                    <Route path='/lazy' element={<ExamplesLazyComponent />} />
                     <Route path='*'>
                         <NotFound />
                     </Route>
-                </Switch>
-            </Router>
+                </Routes>
+            </HistoryRouter>
 
             <Router1>
                 <NavigationBar />
-                <Switch>
+                <Routes>
                     {ROUTER_STEPS.map(({ slug, component }) => (
-                        <Route key={slug} path={`/${slug}`} component={component} />
+                        <Route key={slug} path={`/${slug}`} element={<>{component}</>} />
                     ))}
 
                     <Route path='*'>
-                        <Redirect to={{ pathname: `/${ROUTER_STEPS[0].slug}`, search }} />
+                        <Navigate to={{ pathname: `/${ROUTER_STEPS[0].slug}`, search }} />
                     </Route>
-                </Switch>
+                </Routes>
 
                 <FooterBar />
             </Router1>

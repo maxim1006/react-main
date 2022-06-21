@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import NotFound from '../components/NotFound';
 import MainMenu from '../components/menu/MainMenu';
 import GoogleAuth from '../components/google-auth/GoogleAuth';
@@ -17,7 +17,6 @@ export default function StreamPage() {
             <GoogleAuth />
 
             <MainMenu
-                exact
                 routes={[
                     { to: '/stream', title: 'StreamList' },
                     { to: '/stream/create', title: 'StreamCreate' },
@@ -26,15 +25,15 @@ export default function StreamPage() {
 
             {/* по умолчанию если роуты не обернуть в Switch в случае /stream/create покажется также /stream/:id, чтобы
             этого избежать оборачиваю в Switch, покажется только первый подходящий роут*/}
-            <Switch>
-                <Route path='/stream' exact component={StreamListHooks} />
-                <Route path='/stream/create' exact component={StreamCreateHooks} />
-                <Route path='/stream/edit/:id' exact component={StreamEditHooks} />
-                <Route path='/stream/:id' exact component={StreamShowHooks} />
+            <Routes>
+                <Route path='/stream' element={<StreamListHooks />} />
+                <Route path='/stream/create' element={<StreamCreateHooks />} />
+                <Route path='/stream/edit/:id' element={<StreamEditHooks />} />
+                <Route path='/stream/:id' element={<StreamShowHooks />} />
                 <Route path='/stream/*'>
                     <NotFound>Stream not found</NotFound>
                 </Route>
-            </Switch>
+            </Routes>
         </>
     );
 }
