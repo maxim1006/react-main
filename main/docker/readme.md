@@ -2,7 +2,7 @@
 список всех запущенных в системе докеров
 
 ### docker build -t image__name dockerfile__path
-сбилдить докер image ex: docker build . -t maxim1006/demoapp:1.0 .
+сбилдить докер image ex: docker build -t maxim1006/demoapp:1.0 .
 -t это --tag
 
 на выходе получаю id (Successfully built 48a305f17997) который затем использую в docker run
