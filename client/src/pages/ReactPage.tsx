@@ -7,14 +7,19 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import MyIframe from '@app/components/iframe/my-iframe.component';
+import ThrottleDebounce from '@app/components/throttle-debounce/throttle-debounce.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='ForwradRefUseImperativeHandle'>
-                    <MyIframe />
+                <Component title='ThrottleDebounce'>
+                    <ThrottleDebounce />
                 </Component>
+
+                {/*<Component title='ForwradRefUseImperativeHandle'>*/}
+                {/*    <MyIframe />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='ForwradRefUseImperativeHandle'>*/}
                 {/*    <ForwradRefUseImperativeHandle />*/}

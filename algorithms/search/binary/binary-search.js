@@ -1,20 +1,27 @@
-const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-const arrayR = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-let count = 0;
+// const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+// const arrayR = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+// let count = 0;
+// let countClearer = 0;
+// let countR = 0;
+//
+// console.log(binarySearch(array, 5)); // O(log n)
+// console.log('array length ', array.length); // 16
+// console.log('count ', count); // 3
+//
+// console.log(binarySearchClearer(array, 5)); // O(log n)
+// console.log('array length ', array.length); // 16
+// console.log('countClearer ', count); // 3
+//
+// console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
+// console.log('array length ', array.length); // 16
+// console.log('countR ', countR); // 3
+
 let countClearer = 0;
-let countR = 0;
-
-console.log(binarySearch(array, 5)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('count ', count); // 3
-
-console.log(binarySearchClearer(array, 5)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('countClearer ', count); // 3
-
-console.log(recursiveBinarySearch(arrayR, 5, 0, arrayR.length)); // O(log n)
-console.log('array length ', array.length); // 16
-console.log('countR ', countR); // 3
+const array = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15];
+const testArr = [-1, 0, 1, 5, 12, 15, 16];
+for (let i of testArr) {
+    console.log('found index or -1 ', binarySearchClearer(array, i)); // O(log n)
+}
 
 function binarySearch(array, target) {
     let s = 0;
@@ -42,7 +49,8 @@ function binarySearch(array, target) {
 
 function binarySearchClearer(array, target) {
     let s = 0;
-    let e = array.length;
+    // let e = array.length - 1; // это неверно, так как не учитывает последний элемент в массиве
+    let e = array.length - 1;
 
     while (s < e) {
         // console.log(array.slice(start, end));

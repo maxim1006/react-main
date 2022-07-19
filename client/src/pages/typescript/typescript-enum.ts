@@ -55,3 +55,24 @@ var stepsTypeReadonly: StepsTypeReadonly = { Delivery: StepNameEnum.Delivery, De
 
 export type StepsTypePartial = Partial<StepsTypeReadonly>;
 ///////////////////////////
+
+// как вытащить пропсы и засетить энам
+// enum FooKeys {
+//     FOO = 'foo',
+//     BAR = 'bar',
+// }
+//
+// // probably all you need, but it's a type alias
+// type FooType = Record<FooKeys, string>;
+//
+// // if you need an interface instead you can do this
+// interface FooInterface extends FooType {}
+//
+// declare const foo: FooInterface;
+// foo.foo; // okay
+// foo[FooKeys.FOO]; // okay
+//
+// foo.bar; // okay
+// foo[FooKeys.BAR]; // okay
+//
+// foo.baz; // error

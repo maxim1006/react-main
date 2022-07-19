@@ -6,12 +6,33 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .row {
+            margin: 0;
+            padding: 10px 20px;
+            border-bottom: 1px solid;
+        }
+    </style>
 </head>
 <body>
 
-<script>
-    const delay = (time, ...args) => new Promise(res => setTimeout((...args) => {res(args); console.log({args, time})}, time, ...args));
-</script>
+<div id="map"></div>
+
+<div id="results">
+</div>
+
+<!--
+ The `defer` attribute causes the callback to execute after the full HTML
+ document has been parsed. For non-blocking uses, avoiding race conditions,
+ and consistent behavior across browsers, consider loading using Promises
+ with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+-->
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAinyHInE6jdlXaLtSHtNsPq2dE596IOo&language=en&callback=initMap&v=weekly"
+    defer
+></script>
+
+<script src="./index.js"></script>
 
 </body>
 </html>

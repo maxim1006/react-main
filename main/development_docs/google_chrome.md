@@ -1,3 +1,6 @@
+### отладчик
+chrome://inspect#devices
+
 ### "some 'text' search"
 найти ровно по словам
 

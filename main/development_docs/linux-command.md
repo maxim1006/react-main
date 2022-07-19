@@ -1,3 +1,6 @@
+# посмотреть хедеры при запросе
+curl -I https://google.com
+
 # clean RAM
 sudo purge
 

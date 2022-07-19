@@ -10,6 +10,19 @@ class Calculator {
     }
 }
 
+function add(a: number): number;
+function add(a: number, b: number | string): number;
+function add(a: number, b?: number | string): number {
+    if (typeof b === 'string') {
+        return a + +b;
+    }
+
+    return a;
+}
+
+add(1, 1);
+add(1);
+
 class Car {
     public static drive(speed: number): string;
     public static drive(speed: number, target: number): number[];
