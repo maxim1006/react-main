@@ -8,6 +8,7 @@ const selectVisibilityFilter = (state: RtRootState) => state.visibilityFilter;
 
 const selectRtTodosEntities = createSelector([selectRtTodos], todosState => todosState.entities);
 
+/* eslint-disable */
 const selectRtVisibleTodos = createSelector(
     [selectRtTodosEntities, selectVisibilityFilter],
     (todos, visibilityFilter) => {

@@ -1,21 +1,22 @@
-import React, { memo, FC } from 'react';
-import { testsDecrementAction, testsIncrementAction } from '@app/tests/store/reducers/counter';
+import React, { FC, memo } from 'react';
+import { selectTestsCounter, testsDecrementAction, testsIncrementAction } from '@app/tests/store/reducers/counter';
 import { useDispatch, useSelector } from 'react-redux';
-import { TestsRootState } from '@app/tests/store/store';
 
 type TestsReduxCounterProps = {};
 
 const TestsReduxCounter: FC<TestsReduxCounterProps> = () => {
     const dispatch = useDispatch();
-    const counter = useSelector((state: TestsRootState) => state.counter);
-
-    console.log(counter);
+    const counter = useSelector(selectTestsCounter);
 
     return (
         <div>
-            <p>{counter}</p>
-            <button onClick={() => dispatch(testsIncrementAction())}>Increment</button>
-            <button onClick={() => dispatch(testsDecrementAction())}>Decrement</button>
+            <p data-testid='value title'>{counter}</p>
+            <button data-testid='increment-btn' onClick={() => dispatch(testsIncrementAction())}>
+                Increment
+            </button>
+            <button data-testid='decrement-btn' onClick={() => dispatch(testsDecrementAction())}>
+                Decrement
+            </button>
         </div>
     );
 };

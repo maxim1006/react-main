@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { Provider } from 'react-redux';
 import RtStore, { RtPersistor } from '../../redux-toolkit/rt-configureStore';
 import { PersistGate } from 'redux-persist/integration/react';
-import RtUsersContainer from '@app/components/redux-toolkit/users/rt-users.container';
 import RtTodos from '@app/components/redux-toolkit/todos/rt-todos.component';
 
 const Rt = () => {

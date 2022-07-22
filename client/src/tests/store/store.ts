@@ -6,7 +6,8 @@ const rootReducer = combineReducers({
     counter,
 });
 
-export const createReduxStore = (preloadedState = {}) =>
+// preloadedState имеет приоритет перед initial state
+export const createReduxTestsStore = (preloadedState = { counter: 10 }) =>
     configureStore({
         reducer: rootReducer,
         preloadedState,
@@ -18,5 +19,5 @@ interface Func<T> {
 }
 const returnType = <T>(f: Func<T>) => ({} as T);
 
-const dispatchGeneric = returnType(createReduxStore).getState;
+const dispatchGeneric = returnType(createReduxTestsStore).getState;
 export type TestsRootState = ReturnType<typeof dispatchGeneric>;

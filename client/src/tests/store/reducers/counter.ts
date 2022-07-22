@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TestsRootState } from '@app/tests/store/store';
 
+const initialState: number = 0;
+
 export const testsCounterSlice = createSlice({
     name: 'counter',
-    initialState: 0,
+    initialState,
     reducers: {
         testsIncrementAction(state, { payload }: PayloadAction<void>) {
             return state + 1;

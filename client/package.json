@@ -18,7 +18,7 @@
         "build:serve": "cd ./build && ws --spa index.html --compress --open --static.maxage -1",
         "deploy": "gh-pages -d build",
         "prelog": "NODE_ENV=prelog node ./logs.js",
-        "log": "node ./logs.js",
+        "log": "HTTPS=true node ./logs.js --headed --server --port 5000 -sr",
         "postlog": "NODE_ENV=postlog node ./logs.js",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx --no-ignore",
         "lint:fix": "npm run lint -- --fix",
@@ -125,6 +125,8 @@
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-standard": "^26.0.0",
         "webpack-cli": "^4.10.0",
-        "webpack-dev-server": "4.9.2"
+        "webpack-dev-server": "4.9.2",
+        "dotenv": "^16.0.1",
+        "commander": "^9.4.0"
     }
 }

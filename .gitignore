@@ -48,3 +48,6 @@ yarn-error.log*
 
 #server data
 /server/data
+/test-results/
+/playwright-report/
+/playwright/.cache/

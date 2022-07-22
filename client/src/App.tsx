@@ -7,6 +7,7 @@ import MainMenu from './components/menu/MainMenu';
 import RouterPage from './pages/RouterPage';
 import GeneralInfo from './components/general-info/GeneralInfo';
 import ContextGeneralInfo from './components/context/ContextGeneralInfo';
+import TestsPage from '@app/pages/TestsPage';
 
 const ReduxToolkit = React.lazy(() => import('./pages/redux-toolkit/rt.page'));
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
@@ -44,6 +45,7 @@ const App: React.FC = () => {
                             { to: '/context', title: 'Context' },
                             { to: '/hooks', title: 'Hooks' },
                             { to: '/intl', title: 'Intl' },
+                            { to: '/tests', title: 'Tests' },
                             { to: '/unknown', title: 'Unknown' },
                         ]}
                     />
@@ -61,6 +63,7 @@ const App: React.FC = () => {
                             <Route path='/lazy' element={<LazyPage />} />
                             <Route path='/context' element={<ContextPage />} />
                             <Route path='/intl' element={<IntlPage />} />
+                            <Route path='/tests' element={<TestsPage />} />
                             <Route path='*' element={<NotFound />} />
                         </Routes>
                     </Suspense>

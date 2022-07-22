@@ -20,6 +20,7 @@ const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
         []
     );
 
+    /* eslint-disable */ // так делать не надо но просто для примера
     const throttleCb = useCallback(
         throttle(
             () => {
@@ -41,6 +42,7 @@ const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
         []
     );
 
+    /* eslint-disable */ // так делать не надо но просто для примера что тоже работает
     const debounceCb = useCallback(
         debounce(() => {
             console.log('debounceCb ', new Date().toUTCString());

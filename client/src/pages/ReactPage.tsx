@@ -6,7 +6,6 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import MyIframe from '@app/components/iframe/my-iframe.component';
 import ThrottleDebounce from '@app/components/throttle-debounce/throttle-debounce.component';
 
 export default function ReactPage() {
