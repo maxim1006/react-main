@@ -18,4 +18,6 @@ program.parse();
 const options = program.opts();
 
 console.log(currentProcess ? currentProcess : 'log');
+
+// CUSTOM_URL - это из .env
 console.log({ HTTPS: process.env.HTTPS, CUSTOM_URL: process.env.CUSTOM_URL, options });

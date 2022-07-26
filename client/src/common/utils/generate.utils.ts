@@ -16,6 +16,14 @@ export function generateCountryCode(): string {
     return codes[generateNumberFromRange(0, codes.length - 1)];
 }
 
+// randomArrayItem(['lol', 'a', 2, 'foo', 52, 'Jhon', 'hello', 57]);
+// Result: It will be some random item from array
+export const generateArrayItem = (arr: unknown[]) => arr[Math.floor(Math.random() * arr.length)];
+
+export const generateBoolean = () => Math.random() >= 0.5;
+
+export const generateNumberInRange = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 export function generateNumber(length: number) {
     return Array.from({ length: length }, (item, index) => {
         return generateNumberFromRange(0, 9);

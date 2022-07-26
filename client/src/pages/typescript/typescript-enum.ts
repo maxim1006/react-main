@@ -33,9 +33,9 @@ enum StepStateEnum {
 }
 
 interface StepModel {
-    currentState: StepStateEnum;
-    name: StepNameEnum;
-    stepNumber: number;
+    currentState?: StepStateEnum;
+    name?: StepNameEnum;
+    stepNumber?: number;
 }
 
 enum StepNameEnum {
@@ -43,15 +43,35 @@ enum StepNameEnum {
     Delivery1 = 'delivery1',
 }
 
-export type StepsType = {
-    [key in keyof typeof StepNameEnum]?: StepModel;
-};
+let stepNameEnum: StepNameEnum = StepNameEnum.Delivery;
 
+// а вот так уже могу забрать propName у enum
+export type StepsType = {
+    [key in keyof typeof StepNameEnum]?: string;
+};
+let stepsType: StepsType = { Delivery: '' };
+
+// тут уже ключ enum забираю
+export type StepsType3 = {
+    [key in StepNameEnum]?: string;
+};
+let stepsType3: StepsType3 = { [StepNameEnum.Delivery1]: '' };
+
+// тут обязательно надо все ключи enum перечислить
+export type StepsType1 = Record<StepNameEnum, string>;
+let stepsType1: StepsType1 = { [StepNameEnum.Delivery1]: 'str', [StepNameEnum.Delivery]: 'str' };
+
+// тут уже не надо все ключи enum перечислить
+export type StepsType2 = {
+    [key in StepNameEnum]?: string;
+};
+let stepsType2: StepsType2 = { [StepNameEnum.Delivery1]: 'str' };
+
+// а вот так уже могу забрать propName у enum
 export type StepsTypeReadonly = {
     [key in keyof typeof StepNameEnum]: typeof StepNameEnum[key];
 };
-
-var stepsTypeReadonly: StepsTypeReadonly = { Delivery: StepNameEnum.Delivery, Delivery1: StepNameEnum.Delivery1 };
+let stepsTypeReadonly: StepsTypeReadonly = { Delivery: StepNameEnum.Delivery, Delivery1: StepNameEnum.Delivery1 };
 
 export type StepsTypePartial = Partial<StepsTypeReadonly>;
 ///////////////////////////
