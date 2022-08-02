@@ -57,6 +57,9 @@ npm install npm@latest -g
 #Посмотреть устаревшие модули
 npm outdated
 
+# посмотреть все peerdeps пакета
+npm info name-of-module peerDependencies
+
 #Обновить все пакеты
 // List security breaches
 npm audit

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form
+    method='POST'
+    id='iframe-form'
+    action='http://localhost:3001/api/v1/form/from-form'
+>
+    <input type="text" name="name" value="Max">
+</form>
+
+<h2>Multipart form data form</h2>
+<form id="formDataForm" enctype="multipart/form-data">
+    <div class="input-group">
+        <label for="files">Select files</label>
+        <input  name="fileData" id="files" type="file" multiple />
+    </div>
+    <button class="submit-btn" type="submit">Upload</button>
+</form>
+
+<script type='text/javascript'>
+    // тут пример делаю форм запрос через фетч и форму и во втором случае это doc а в первом fetch
+    (async () => {
+        const formElement = document.getElementById("iframe-form");
+        const value = "Hello mom from UI form!";
+
+        const inputElement = document.createElement("input");
+        inputElement.name = "data";
+        inputElement.value = value;
+        inputElement.type = "hidden";
+        formElement.appendChild(inputElement);
+
+        // вот тут все приходит норм и на беке вижу {name: 'Max', data: 'Hello mom from UI form!'}
+        // formElement.submit();
+
+
+        // норм отработает и придет на бек объект с инфорй, & браузер сам распарсит
+        const response = await fetch("http://localhost:3001/api/v1/form/from-fetch-form", {
+            method : "POST",
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: "name=asd&value=123" // вот так нормально отошлется, а если использовать data то там жесть которую надо распарсить
+        });
+        const responseText = await response.text();
+        console.log({responseText});
+
+        // это пример с multipart форм дата жесть не получилось на бек приходит хрень
+        const formDataForm = document.getElementById("formDataForm");
+        const inputFile = document.getElementById("files");
+
+        const formData = new FormData();
+        formData.append('key1', 'value1');
+        formData.set("data", "data from fetch");
+
+        const handleSubmit = async (event) => {
+            event.preventDefault();
+
+            for (const file of inputFile.files) {
+                formData.append("file", file);
+            }
+
+            console.log(Array.from(formData.entries()));
+            const responseFormData = await fetch("http://localhost:3001/api/v1/form/from-fetch-form-data", {
+                method : "POST",
+                formData
+            });
+
+            const responseFormDataText = await responseFormData.text();
+            console.log({responseFormDataText});
+        };
+
+        formDataForm.addEventListener("submit", handleSubmit);
+
+        // просто для примера и обычный реквест, обязательно с заголовком
+        const response1 = await fetch("http://localhost:3001/api/v1/form/from-fetch", {
+            method : "POST",
+            // дело в заголовке, он обязателен
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+
+            // обратное преобразование
+            // let obj = {name: "John",age: 30};
+            //
+            // let map = new Map(Object.entries(obj));
+            // alert( map.get('name') ); // John
+            body: JSON.stringify(Object.fromEntries((new FormData(document.getElementById("iframe-form")).entries()))), // { name: 'Max', data: 'data from fetch', key1: 'value1' }
+        });
+
+        const responseJSON = await response1.json();
+
+        console.log({responseJSON});
+    })();
+</script>
+</body>
+</html>

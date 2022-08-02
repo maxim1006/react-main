@@ -17,6 +17,7 @@ import {
     streamsRouter,
     usersRouter,
     plansRouter,
+    formRouter,
 } from './routers';
 import schema from './gql/schema';
 import resolvers from './gql/resolvers';
@@ -114,6 +115,10 @@ const appRouters = [
     {
         url: 'plans',
         middleware: plansRouter,
+    },
+    {
+        url: 'form',
+        middleware: formRouter,
     },
 ];
 
