@@ -12,7 +12,6 @@ import TestsPage from '@app/pages/TestsPage';
 const ReduxToolkit = React.lazy(() => import('./pages/redux-toolkit/rt.page'));
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
 const LazyPage = React.lazy(() => import('./pages/LazyPage'));
-const StreamPage = React.lazy(() => import('./pages/StreamPage'));
 const ShopPage = React.lazy(() => import('./pages/ShopPage'));
 const ContextPage = React.lazy(() => import('./pages/ContextPage'));
 const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
@@ -59,7 +58,6 @@ const App: React.FC = () => {
                             <Route path='/redux' element={<ReduxPage />} />
                             <Route path='/react' element={<ReactPage />} />
                             <Route path='/router' element={<RouterPage />} />
-                            <Route path='/stream' element={<StreamPage />} />
                             <Route path='/lazy' element={<LazyPage />} />
                             <Route path='/context' element={<ContextPage />} />
                             <Route path='/intl' element={<IntlPage />} />

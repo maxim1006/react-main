@@ -1,10 +1,8 @@
 import React from 'react';
-import { FormsComponent } from '../components/forms/Forms';
 import { JsxListComponent } from '../components/jsx/JsxList';
 import JsxFragment from '../components/jsx/JsxFragment';
 import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
-import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
 import StorageHook from '@app/components/storage/storage-hook.component';
 
@@ -274,12 +272,6 @@ export default function ReactPage() {
                 {/* <Component title="ClassBasedHooks">*/}
                 {/*    <ClassBasedHooks/>*/}
                 {/* </Component>*/}
-            </div>
-            <div tabName='Redux Forms'>
-                <ReduxForm />
-            </div>
-            <div tabName='Forms'>
-                <FormsComponent />
             </div>
             <div tabName='JSX'>
                 <JsxListComponent />
