@@ -56,7 +56,8 @@ const App: React.FC = () => {
                             <Route path='/shop' element={<ShopPage />} />
                             <Route path='/redux' element={<ReduxPage />} />
                             <Route path='/react' element={<ReactPage />} />
-                            <Route path='/router' element={<RouterPage />} />
+                            {/*теперь всем роутам у кого есть чайлды нужна * пример: /router/* */}
+                            <Route path='/router/*' element={<RouterPage />} />
                             <Route path='/lazy' element={<LazyPage />} />
                             <Route path='/context' element={<ContextPage />} />
                             <Route path='/tests' element={<TestsPage />} />

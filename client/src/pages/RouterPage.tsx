@@ -23,18 +23,19 @@ enum RouterStepsEnum {
     Step2 = 'step2',
 }
 
+// просто убился об стол - обязательно передавать React node в component, вариант с         component: lazy(() => import('../components/examples/lazy/examples-lazy.component')), не сработает
 const ROUTER_STEPS = [
     {
         name: RouterStepsEnum.Step1,
         slug: 'step1',
         title: RouterStepsEnum.Step1,
-        component: lazy(() => import('../components/router/RouterLazyRoute')),
+        component: <RouterLazyRoute />,
     },
     {
         name: RouterStepsEnum.Step2,
         slug: 'step2',
         title: RouterStepsEnum.Step2,
-        component: lazy(() => import('../components/examples/lazy/examples-lazy.component')),
+        component: <ExamplesLazyComponent />,
     },
 ];
 
@@ -49,14 +50,14 @@ const RouterPage: FC<RouterPageProps> = () => {
     let historyFromUseNavigate = useNavigate();
     let params = useParams();
 
-    console.log({
-        location,
-        search,
-        params,
-        historyFromUseNavigate,
-    });
+    // console.log({
+    //     location,
+    //     search,
+    //     params,
+    //     historyFromUseNavigate,
+    // });
 
-    // надо чтобы было внутри роутера
+    // слушатель на изменение роута надо чтобы было внутри роутера
     useEffect(() => {
         console.log('on route change');
     }, [location]);
@@ -72,59 +73,59 @@ const RouterPage: FC<RouterPageProps> = () => {
 
             <MainMenu
                 routes={[
-                    { to: '/router/exact', title: 'RouterExactRoute' },
-                    { to: '/router/route1', title: 'RouterRoute1' },
-                    { to: '/router/lazy', title: 'RouterLazyRoute' },
-                    { to: '/router/*', title: 'RouterLazyNotFound' },
+                    { to: 'exact', title: 'RouterExactRoute' },
+                    { to: 'route1', title: 'RouterRoute1' },
+                    { to: 'lazy', title: 'RouterLazyRoute' },
+                    { to: 'not-found', title: 'RouterLazyNotFound' },
                 ]}
             />
             {/* покажет только первый найденный роут*/}
-            <Routes>
-                {/* Этот роутер закомментировал так как если раскоментить то он будет
+            {/* Этот роутер закомментировал так как если раскоментить то он будет
                     покажется сразу при переходе на /router как и RouterExactRoute
                     это чисто для примера что такое exact
                     <Route path="/router" exact component={RouterExactRoute}/>
                 */}
-                <Route path='/router/exact' element={<RouterExactRoute />} />
-                <Route path='/router/route1' element={<RouterRoute1 />} />
-                <Route path='/router/lazy' element={<RouterLazyRoute />} />
-                <Route path='/router/*'>
-                    <NotFound>Router not found</NotFound>
-                </Route>
+            <Routes>
+                <Route path='/exact' element={<RouterExactRoute />} />
+                <Route path='/route1' element={<RouterRoute1 />} />
+                <Route path='/lazy' element={<RouterLazyRoute />} />
+                <Route path='/*' element={<NotFound>Router not found</NotFound>} />
             </Routes>
 
-            <HistoryRouter history={history}>
-                <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/router/home'>
-                    Home
-                </NavLink>
+            {/*<HistoryRouter history={history}>*/}
+            {/*    <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/router/home'>*/}
+            {/*        Home*/}
+            {/*    </NavLink>*/}
 
-                <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/router/lazy'>
-                    Lazy
-                </NavLink>
+            {/*    <NavLink end className={({ isActive }) => ('' + isActive ? ' _active' : '')} to='/router/lazy'>*/}
+            {/*        Lazy*/}
+            {/*    </NavLink>*/}
 
-                <Routes>
-                    <Route path='/router/home' element={<>Home</>} />
-                    <Route path='/router/lazy' element={<ExamplesLazyComponent />} />
-                    <Route path='*'>
-                        <NotFound />
-                    </Route>
-                </Routes>
-            </HistoryRouter>
+            {/*    <Routes>*/}
+            {/*        <Route path='/router/home' element={<>Home</>} />*/}
+            {/*        <Route path='/router/lazy' element={<ExamplesLazyComponent />} />*/}
+            {/*        <Route path='*'>*/}
+            {/*            <NotFound />*/}
+            {/*        </Route>*/}
+            {/*    </Routes>*/}
+            {/*</HistoryRouter>*/}
 
-            <Router1 basename='/router'>
-                <NavigationBar />
-                <Routes>
-                    {ROUTER_STEPS.map(({ slug, component }) => (
-                        <Route key={slug} path={`/${slug}`} element={<>{component}</>} />
-                    ))}
+            {/*Вот это закомментил изза ошибки You cannot render a <Router> inside another <Router>. You should never have more than one in your app. но если это верхнего уровня то норм*/}
+            {/*<Router1 basename='/router'>*/}
+            <NavigationBar />
+            <Routes>
+                {ROUTER_STEPS.map(({ slug, component }) => (
+                    // в path={`/${slug}`} неважно с / или без
+                    <Route key={slug} path={`/${slug}`} element={<>{component}</>} />
+                ))}
 
-                    {/*<Route path='*'>*/}
-                    {/*    <Redirect to={{ pathname: `/${ROUTER_STEPS[0].slug}`, search }} />*/}
-                    {/*</Route>*/}
-                </Routes>
+                {/*<Route path='*'>*/}
+                {/*    <Redirect to={{ pathname: `/${ROUTER_STEPS[0].slug}`, search }} />*/}
+                {/*</Route>*/}
+            </Routes>
 
-                <FooterBar />
-            </Router1>
+            <FooterBar />
+            {/*</Router1>*/}
         </>
     );
 };
@@ -160,8 +161,10 @@ export default memo(RouterPage);
 
 // dummy components
 function NavigationBar() {
+    let navigate = useNavigate();
+
     const onClick = (slug: string) => () => {
-        history.push(slug);
+        navigate(slug);
     };
 
     return (
