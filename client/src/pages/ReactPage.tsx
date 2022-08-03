@@ -6,15 +6,15 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import ReduxForm from '../components/forms/ReduxForm';
 import Component from '../components/component/Component';
-import ThrottleDebounce from '@app/components/throttle-debounce/throttle-debounce.component';
+import StorageHook from '@app/components/storage/storage-hook.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='ThrottleDebounce'>
-                    <ThrottleDebounce />
-                </Component>
+                {/*<Component title='ThrottleDebounce'>*/}
+                {/*    <ThrottleDebounce />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='ForwradRefUseImperativeHandle'>*/}
                 {/*    <MyIframe />*/}
@@ -88,7 +88,7 @@ export default function ReactPage() {
                     {/*<ScriptHook />*/}
                     {/*<PreviousHook />*/}
                     {/*<UpdateEffectHook />*/}
-                    {/*<StorageHook />*/}
+                    <StorageHook />
                 </Component>
 
                 {/* <Component title="Image preload"> */}

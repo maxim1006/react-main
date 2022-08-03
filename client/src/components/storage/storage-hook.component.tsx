@@ -1,5 +1,6 @@
 import { memo, useRef } from 'react';
 import { useLocalStorage, useSessionStorage } from '@app/hooks/storage';
+import StorageHookProblem from '@app/components/storage/storage-hook-problem.component';
 
 type StorageHookProps = {};
 
@@ -28,6 +29,8 @@ const StorageHook = memo<StorageHookProps>(function StorageHook() {
                 <button onClick={() => setLocalStorageValue(ref1.current.value)}>Set local value</button>
                 <button onClick={() => removeLocalStorageValue(ref1.current.value)}>Remove local value</button>
             </section>
+
+            <StorageHookProblem />
         </div>
     );
 });
