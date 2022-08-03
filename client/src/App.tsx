@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import './App.scss';
+import './i18n/i18n';
 import { Route, Routes } from 'react-router-dom';
 import MaterialLoaderComponent from './components/loader/MaterialLoader';
 import NotFound from './components/NotFound';
@@ -15,7 +16,6 @@ const LazyPage = React.lazy(() => import('./pages/LazyPage'));
 const ShopPage = React.lazy(() => import('./pages/ShopPage'));
 const ContextPage = React.lazy(() => import('./pages/ContextPage'));
 const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
-const IntlPage = React.lazy(() => import('./pages/IntlPage'));
 const TypescriptPage = React.lazy(() => import('./pages/typescript/typescript.page'));
 
 const App: React.FC = () => {
@@ -39,7 +39,6 @@ const App: React.FC = () => {
                             { to: '/redux', title: 'Redux' },
                             { to: '/react', title: 'React' },
                             { to: '/router', title: 'Router' },
-                            { to: '/stream', title: 'Stream' },
                             { to: '/lazy', title: 'Lazy' },
                             { to: '/context', title: 'Context' },
                             { to: '/hooks', title: 'Hooks' },
@@ -60,7 +59,6 @@ const App: React.FC = () => {
                             <Route path='/router' element={<RouterPage />} />
                             <Route path='/lazy' element={<LazyPage />} />
                             <Route path='/context' element={<ContextPage />} />
-                            <Route path='/intl' element={<IntlPage />} />
                             <Route path='/tests' element={<TestsPage />} />
                             <Route path='*' element={<NotFound />} />
                         </Routes>

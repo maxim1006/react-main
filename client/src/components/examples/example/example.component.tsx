@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode } from 'react';
-import styles from './example.module.less';
+import styles from './example.module.scss';
 
 type ExampleComponentProps = {
     component: ReactNode;

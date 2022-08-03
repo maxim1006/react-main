@@ -5,11 +5,16 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '../components/component/Component';
 import StorageHook from '@app/components/storage/storage-hook.component';
+import ExamplesComponent from '@app/components/examples/examples.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <Component title='ExamplesComponent'>
+                    <ExamplesComponent />
+                </Component>
+
                 {/*<Component title='ThrottleDebounce'>*/}
                 {/*    <ThrottleDebounce />*/}
                 {/*</Component>*/}

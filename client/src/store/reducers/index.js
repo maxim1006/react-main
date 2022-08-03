@@ -1,6 +1,4 @@
 import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form';
-import { connectRouter } from 'connected-react-router';
 import songs from './songs';
 import selectedSong from './selectSong';
 import posts from './posts';
@@ -21,14 +19,12 @@ import saga from './saga';
 // @see https://github.com/supasate/connected-react-router
 const createRootReducer = history =>
     combineReducers({
-        router: connectRouter(history),
         songs,
         selectedSong,
         posts,
         frameworks,
         users,
         auth,
-        form,
         streams,
         shopUser,
         shopCart,

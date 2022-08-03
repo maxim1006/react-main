@@ -1,7 +1,6 @@
 import thunk from 'redux-thunk';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { throttle } from 'lodash';
-import { routerMiddleware } from 'connected-react-router';
 import history from '../history';
 import { loadState, saveState } from './session-storage';
 import createRootReducer from './reducers';
@@ -19,7 +18,7 @@ function configureStore(preloadedState) {
 
     // logger выводит в консоль все изменения стора, пока закомментирую чтобы не мешал
     // const middlewares = [thunk, logger];
-    const middlewares = [sagaMiddleware, thunk, routerMiddleware(history)];
+    const middlewares = [sagaMiddleware, thunk];
     const middlewareEnhancer = applyMiddleware(...middlewares);
 
     // monitorReducerEnhancer - выводит время работы каждого редьюсера
