@@ -9,6 +9,7 @@ module.exports = {
                 ignoreProperties: ['composes'],
             },
         ],
+        'selector-class-pattern': [false],
         'selector-pseudo-class-no-unknown': [
             true,
             {

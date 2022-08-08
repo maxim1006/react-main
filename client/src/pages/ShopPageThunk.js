@@ -11,7 +11,7 @@ import ShopHeaderHooks from '../components/shop/header/ShopHeaderHooks';
 import ShopCheckout from '../components/shop/checkout/ShopCheckout';
 import ShopCollectionsHooks from '../components/shop/collections/ShopCollectionsHooks';
 import ShopCollection from '../components/shop/collection/ShopCollection';
-import { fetchShopDataThunk } from '../store/actions';
+import { fetchShopDataThunk } from '../old_store/actions';
 import NotificationPortal from '../components/portals/notification/NotificationPortal';
 
 // Это чисто для примера thunk в action, или асинхронщина в useShopData

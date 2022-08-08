@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import ShopCartListItem from '../cart-item/ShopCartListItem';
-import { selectShopCartItems } from '../../../../store/selectors';
+import { selectShopCartItems } from '@app/old_store/selectors';
 import './ShopCartList.scss';
 
 const ShopCartList = ({ cartItems }) => {

@@ -1,5 +1,5 @@
 import { FC, memo, useEffect, useState } from 'react';
-import { COUNTER_TYPES } from '@app/store/actions/types';
+import { COUNTER_TYPES } from '@app/old_store/actions/types';
 
 // Create store
 const createStore = (reducer: Function) => {

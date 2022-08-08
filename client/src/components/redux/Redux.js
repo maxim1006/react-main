@@ -5,9 +5,7 @@ import PostList from '../post/PostList';
 import SongList from '../song/SongList';
 import FrameworkList from '../framework/FrameworkList';
 import MainMenu from '../menu/MainMenu';
-import UserListHooks from '../user/UserListHooks';
 import Counters from '../counter/counters.component';
-import Todos from '../todo/todos.component';
 import ReduxSaga from '../redux-saga/redux-saga.component';
 
 export class ReduxComponent extends Component {
@@ -33,13 +31,11 @@ export class ReduxComponent extends Component {
 
                 <Routes>
                     <Route path='/redux' element={<ReduxSaga />} />
-                    <Route path='/redux/todos' element={<Todos />} />
                     <Route path='/redux/counters' element={<Counters />} />
                     <Route path='/redux/song-list' element={<SongList />} />
                     <Route path='/redux/posts-and-users' element={<PostsAndUsers />} />
                     <Route path='/redux/post-list' element={<PostList />} />
                     <Route path='/redux/framework-list' element={<FrameworkList />} />
-                    <Route path='/redux/user-list' element={<UserListHooks />} />
                 </Routes>
             </>
         );

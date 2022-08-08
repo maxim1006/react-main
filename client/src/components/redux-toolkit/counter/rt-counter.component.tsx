@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { useDispatch, useSelector, batch } from 'react-redux';
-import { rtIncrement, rtDecrement } from '@app/redux-toolkit/rt-slices/rt-counter';
-import { RtRootState } from '@app/redux-toolkit/rt-configureStore';
+import { incrementAction, decrementAction } from '@app/store/counter/counter.slice';
+import { RootState } from '@app/store/store';
 
 const RtCounter = () => {
     const dispatch = useDispatch();
-    const counter = useSelector((state: RtRootState) => state.counter);
+    const counter = useSelector((state: RootState) => state.counter);
     return (
         <div>
             {/* reduxBatch - поэтому могу вызывать 2 экшена за раз*/}
@@ -13,14 +13,14 @@ const RtCounter = () => {
                 type='button'
                 onClick={() =>
                     batch(() => {
-                        dispatch(rtIncrement());
-                        dispatch(rtIncrement());
+                        dispatch(incrementAction());
+                        dispatch(decrementAction());
                     })
                 }
             >
                 Increment twice
             </button>
-            <button type='button' onClick={() => dispatch(rtDecrement())}>
+            <button type='button' onClick={() => dispatch(decrementAction())}>
                 Decrement
             </button>
             <p>{counter}</p>

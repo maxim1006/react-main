@@ -1,18 +1,13 @@
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import {
-    makeSelectRtPostsByTitle,
-    rtFetchPostsAction,
-    rtFetchPostsAction1,
-    selectRtPosts,
-} from '@app/redux-toolkit/rt-slices/rt-posts';
-import { useAppDispatch } from '@app/redux-toolkit/rt-configureStore';
+import { fetchPostsAction, fetchPostsAction1, makeSelectPostsByTitle, selectPosts } from '@app/store/posts/posts.slice';
+import { useAppDispatch } from '@app/store/store';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
-import { useMemoSelector } from '@app/redux-toolkit/hooks/memo-selector.hook';
+import { useMemoSelector } from '@app/store/hooks/memo-selector.hook';
 
 const RtPosts = () => {
     const dispatch = useAppDispatch();
-    const { loading, entities, error } = useSelector(selectRtPosts);
+    const { loading, entities, error } = useSelector(selectPosts);
 
     // https://react-redux.js.org/api/hooks#using-memoizing-selectors
     // пример селекта по id
@@ -20,15 +15,15 @@ const RtPosts = () => {
     // const itemsByTitle = useAppSelector(state => selectItemsByCategory(state, 'a'));
 
     // тоже что и выше только через кастомный хук
-    const itemsByTitleMemo = useMemoSelector(makeSelectRtPostsByTitle, 'a');
+    const itemsByTitleMemo = useMemoSelector(makeSelectPostsByTitle, 'a');
 
     console.log({ itemsByTitleMemo });
 
     useEffect(() => {
         (async () => {
             //  пример thunk возвращает промис с результатом запроса, круто чтобы чейнинг использовать !!!
-            const posts = await dispatch(rtFetchPostsAction());
-            const posts1 = await dispatch(rtFetchPostsAction1());
+            const posts = await dispatch(fetchPostsAction());
+            const posts1 = await dispatch(fetchPostsAction1());
             console.log({
                 posts,
                 posts1,

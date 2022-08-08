@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { signIn, signOut } from '../../store/actions/auth';
+import { signIn, signOut } from '@app/old_store/actions';
 
 class GoogleAuth extends Component {
     // так как перевел на редакс, то стейт хранить уже не нужно, но для примера оставлю и в стейте!!!

@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import ShopButton from '../button/ShopButton';
 import './ShopCartDropdown.scss';
-import { shopToggleDropdown } from '@app/store/actions';
+import { shopToggleDropdown } from '@app/old_store/actions';
 import { useDispatch } from 'react-redux';
 import ShopCartListHooks from '../cart/cart-list/ShopCartListHooks';
 

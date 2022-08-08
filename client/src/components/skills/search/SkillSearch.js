@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { addSkill, changeSkillSearchValue } from '../../../store/actions';
+import { addSkill, changeSkillSearchValue } from '@app/old_store/actions';
 import customAxios from '../../../common/api/axios';
 
 const SkillSearch = memo(({ addSkill, value, ...restProps }) => {

@@ -1,7 +1,7 @@
 import ShopButton from '../button/ShopButton';
 import './ShopCartDropdown.scss';
 import connect from 'react-redux/es/connect/connect';
-import { shopToggleDropdown } from '@app/store/actions';
+import { shopToggleDropdown } from '@app/old_store/actions';
 import ShopCartListHooks from '../cart/cart-list/ShopCartListHooks';
 
 const ShopCartDropdown = ({ history, dispatch }) => {

@@ -21,7 +21,7 @@ const StorageHookProblem: FC<StorageHookProblemProps> = () => {
 function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispatch<any> }) {
     const [valueInner, setValueInner] = useLocalStorage('prop1');
     const [valueService, setValueService] = useLocalStorageService<string>('service');
-    const [valueService1, setValueService1] = useLocalStorageService<{ prop: string }>('service1');
+    const [valueService1, setValueService1] = useLocalStorageService<{ prop?: string }>('service1');
 
     return (
         <div>
@@ -41,7 +41,7 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
                 valueService: <input onChange={e => setValueService(e.target.value)} type='text' />
             </div>
             <hr />
-            <div>valueServiceObj: {valueService1.prop}</div>
+            <div>valueServiceObj: {valueService1?.prop}</div>
             <div>
                 valueServiceObj: <input onChange={e => setValueService1({ prop: e.target.value })} type='text' />
             </div>
@@ -51,7 +51,7 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
 function Child2({ parentProp, setValue }: { parentProp: string; setValue: Dispatch<any> }) {
     const [valueInner, setValueInner] = useLocalStorage('prop1');
     const [valueService, setValueService] = useLocalStorageService<string>('service');
-    const [valueService1, setValueService1] = useLocalStorageService<{ prop: string }>('service1');
+    const [valueService1, setValueService1] = useLocalStorageService<{ prop?: string }>('service1');
 
     return (
         <div>
@@ -71,7 +71,7 @@ function Child2({ parentProp, setValue }: { parentProp: string; setValue: Dispat
                 valueService: <input onChange={e => setValueService(e.target.value)} type='text' />
             </div>
             <hr />
-            <div>valueServiceObj: {valueService1.prop}</div>
+            <div>valueServiceObj: {valueService1?.prop}</div>
             <div>
                 valueServiceObj: <input onChange={e => setValueService1({ prop: e.target.value })} type='text' />
             </div>

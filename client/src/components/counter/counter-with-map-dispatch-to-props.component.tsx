@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { connect } from 'react-redux';
-import { decrementCounter, incrementCounter } from '../../store/actions';
+import { decrementCounter, incrementCounter } from '../../old_store/actions';
 
 export type CounterProps = {
     counter?: number;

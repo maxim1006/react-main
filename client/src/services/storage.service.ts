@@ -19,7 +19,7 @@ class StorageService {
 
     public read<T>(itemKey: string): T | undefined {
         try {
-            return JSON.parse(window.localStorage.getItem(itemKey) || '{}');
+            return JSON.parse(window.localStorage.getItem(itemKey) || null);
         } catch (e) {
             console.error('Reading LocalStorage error ', e);
         }

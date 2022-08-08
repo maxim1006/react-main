@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { sagaGetUserStartAction } from '../../../store/actions';
+import { sagaGetUserStartAction } from '@app/old_store/actions';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
 
 const ReduxSagaIntroComponent = () => {

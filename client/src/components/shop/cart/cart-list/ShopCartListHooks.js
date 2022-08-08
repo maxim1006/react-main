@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import ShopCartListItem from '../cart-item/ShopCartListItem';
-import { selectShopCartItems } from '../../../../store/selectors';
+import { selectShopCartItems } from '@app/old_store/selectors';
 
 // оборачиваю в React.memo чтобы ререндеринг проходил только при изменении входных пропертей, а не каждый раз когда
 // перерендеривается родитель

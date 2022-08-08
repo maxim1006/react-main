@@ -10,7 +10,7 @@ import GeneralInfo from './components/general-info/GeneralInfo';
 import ContextGeneralInfo from './components/context/ContextGeneralInfo';
 import TestsPage from '@app/pages/TestsPage';
 
-const ReduxToolkit = React.lazy(() => import('./pages/redux-toolkit/rt.page'));
+const ReduxToolkit = React.lazy(() => import('./pages/rt.page'));
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
 const LazyPage = React.lazy(() => import('./pages/LazyPage'));
 const ShopPage = React.lazy(() => import('./pages/ShopPage'));

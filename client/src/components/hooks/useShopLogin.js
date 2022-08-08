@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
-import { shopSetCurrentUser } from '../../store/actions';
+import { auth, createUserProfileDocument } from '@app/firebase/firebase.utils';
+import { shopSetCurrentUser } from '@app/old_store/actions';
 
 export default function useShopLogin() {
     const dispatch = useDispatch();

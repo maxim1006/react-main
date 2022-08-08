@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserById } from '../../store/actions';
+import { fetchUserById } from '@app/old_store/actions';
 
 class PostUser extends Component {
     componentDidMount() {

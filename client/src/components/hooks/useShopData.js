@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { firestore } from '@app/firebase/firebase.utils';
 import { RouteNameMap } from '../shop/shop.data';
-import { shopSetData } from '@app/store/actions';
+import { shopSetData } from '@app/old_store/actions';
 
 export default function useShopData() {
     const dispatch = useDispatch();

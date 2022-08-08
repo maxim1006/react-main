@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../store/actions';
+import { fetchPosts } from '@app/old_store/actions';
 import Post from './Post';
 import PostUser from './PostUser';
 

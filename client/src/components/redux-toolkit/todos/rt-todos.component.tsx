@@ -1,12 +1,12 @@
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { rtAddTodoAction, rtAddTodoPreparedAction, rtToggleTodoAction } from '@app/redux-toolkit/rt-slices/rt-todos';
-import { rtSetVisibilityFilter, rtVisibilityFilters } from '@app/redux-toolkit/rt-slices/rt-visibility-filters';
-import { selectRtTodosEntities } from '@app/redux-toolkit/rt-selectors';
+import { addTodoAction, addTodoPreparedAction, toggleTodoAction } from '@app/store/todos/todos.slice';
+import { setVisibilityFilterAction, visibilityFilters } from '@app/store/visibility-filters/visibility-filters.slice';
+import { selectTodosEntities } from '@app/store/todos/todos.selector';
 
 const RtTodos = () => {
     const dispatch = useDispatch();
-    const todos = useSelector(selectRtTodosEntities);
+    const todos = useSelector(selectTodosEntities);
     const [todoText, setTodoText] = useState('');
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setTodoText(e.target.value);
@@ -18,17 +18,17 @@ const RtTodos = () => {
 
     const onFilterClick = (filter: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        dispatch(rtSetVisibilityFilter(filter));
+        dispatch(setVisibilityFilterAction(filter));
     };
 
     const onTodoClick = (id: string) => () => {
-        dispatch(rtToggleTodoAction(id));
+        dispatch(toggleTodoAction(id));
     };
 
     const addTodoAsObject = () => {
         if (todoText.trim()) {
             dispatch(
-                rtAddTodoAction({
+                addTodoAction({
                     text: todoText,
                     id: `${Math.random() * Date.now()}`,
                 })
@@ -46,7 +46,7 @@ const RtTodos = () => {
                         return;
                     }
 
-                    dispatch(rtAddTodoPreparedAction(todoText));
+                    dispatch(addTodoPreparedAction(todoText));
 
                     setTodoText('');
                 }}
@@ -58,7 +58,7 @@ const RtTodos = () => {
                 </button>
             </form>
             <div>
-                {Object.values(rtVisibilityFilters).map((filter, index) => (
+                {Object.values(visibilityFilters).map((filter, index) => (
                     <a onClick={onFilterClick(filter)} href='/' style={{ marginRight: 5 }} key={index}>
                         {filter}
                     </a>

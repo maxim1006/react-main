@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { changeSkillStatus, fetchSkills, removeSkill } from '../../../store/actions';
+import { changeSkillStatus, fetchSkills, removeSkill } from '@app/old_store/actions';
 import SkillsItem from '../item/SkillsItem';
 import customAxios from '../../../common/api/axios';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';

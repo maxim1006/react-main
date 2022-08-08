@@ -39,6 +39,10 @@ const ROUTER_STEPS = [
     },
 ];
 
+function IndexComp() {
+    return <>u'll see me on index)))</>;
+}
+
 type RouterPageProps = {};
 
 const RouterPage: FC<RouterPageProps> = () => {
@@ -50,12 +54,12 @@ const RouterPage: FC<RouterPageProps> = () => {
     let historyFromUseNavigate = useNavigate();
     let params = useParams();
 
-    // console.log({
-    //     location,
-    //     search,
-    //     params,
-    //     historyFromUseNavigate,
-    // });
+    console.log({
+        location,
+        search,
+        params,
+        historyFromUseNavigate,
+    });
 
     // слушатель на изменение роута надо чтобы было внутри роутера
     useEffect(() => {
@@ -114,6 +118,7 @@ const RouterPage: FC<RouterPageProps> = () => {
             {/*<Router1 basename='/router'>*/}
             <NavigationBar />
             <Routes>
+                <Route index element={<IndexComp />} />
                 {ROUTER_STEPS.map(({ slug, component }) => (
                     // в path={`/${slug}`} неважно с / или без
                     <Route key={slug} path={`/${slug}`} element={<>{component}</>} />
@@ -163,9 +168,7 @@ export default memo(RouterPage);
 function NavigationBar() {
     let navigate = useNavigate();
 
-    const onClick = (slug: string) => () => {
-        navigate(slug);
-    };
+    const onClick = (slug: string) => () => navigate(slug);
 
     return (
         <>

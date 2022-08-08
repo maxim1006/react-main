@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import Framework from './Framework';
-import * as fromActions from '../../store/actions';
+import * as fromActions from '../../old_store/actions';
 
 class FrameworkList extends Component {
     componentDidMount() {

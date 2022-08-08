@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { getFamilyAction } from '../../../store/actions';
+import { getFamilyAction } from '@app/old_store/actions';
 
 const FamilySagaComponent = () => {
     const dispatch = useDispatch();

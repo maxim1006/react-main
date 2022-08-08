@@ -6,10 +6,10 @@ import { ReactComponent as CartIcon } from '../../../assets/icons/shopping-bag.s
 import { auth } from '@app/firebase/firebase.utils';
 import './ShopHeader.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { shopCloseDropdown, shopToggleDropdown } from '../../../store/actions';
+import { shopCloseDropdown, shopToggleDropdown } from '@app/old_store/actions';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
-import { selectShopCurrentUser } from '@app/store/selectors';
-import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '../../../store/selectors';
+import { selectShopCurrentUser } from '@app/old_store/selectors';
+import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '@app/old_store/selectors';
 import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
 import useClickOutside from '../../hooks/useClickOutside';
 

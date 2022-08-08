@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { shopAddCartItem } from '@app/store/actions';
+import { shopAddCartItem } from '@app/old_store/actions';
 import {
     StyledShopCollectionsPreviewItem,
     StyledShopCollectionsPreviewItemButton,

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPostsAndUsers } from '../../store/actions';
+import { fetchPostsAndUsers } from '@app/old_store/actions';
 import './PostsAndUsers.scss';
 
 class PostsAndUsers extends Component {

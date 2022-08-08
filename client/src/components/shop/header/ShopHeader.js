@@ -5,10 +5,10 @@ import { ReactComponent as CartIcon } from '../../../assets/icons/shopping-bag.s
 import { auth } from '@app/firebase/firebase.utils';
 import './ShopHeader.scss';
 import { connect } from 'react-redux';
-import { shopToggleDropdown } from '@app/store/actions';
+import { shopToggleDropdown } from '@app/old_store/actions';
 import MaterialLoader from '../../loader/MaterialLoader';
-import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '../../../store/selectors';
-import { selectShopCurrentUser } from '@app/store/selectors';
+import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '@app/old_store/selectors';
+import { selectShopCurrentUser } from '@app/old_store/selectors';
 import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
 
 const ShopHeader = ({ shopToggleDropdown, visibleCartDropdown, user, cartQuantity }) => {

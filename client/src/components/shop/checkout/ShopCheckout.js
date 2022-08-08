@@ -1,9 +1,9 @@
 import { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectShopCartItems, selectShopCartTotal } from '../../../store/selectors';
+import { selectShopCartItems, selectShopCartTotal } from '@app/old_store/selectors';
 import './ShopCheckout.scss';
 import ShopCheckoutItem from './item/ShopCheckoutItem';
-import { shopAddCartItem, shopClearCartItems, shopRemoveCartItem, shopRemoveCartItems } from '../../../store/actions';
+import { shopAddCartItem, shopClearCartItems, shopRemoveCartItem, shopRemoveCartItems } from '@app/old_store/actions';
 import ShopStripeButton from '../stripe/ShopStripeButton';
 import ShopButton from '../button/ShopButton';
 

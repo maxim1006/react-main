@@ -1,6 +1,24 @@
-// const { createProxyMiddleware } = require('http-proxy-middleware');
+// // const { createProxyMiddleware } = require('http-proxy-middleware');
+//
+// const proxyHeaders = {
+//     'X-Forwarded-Host': 'localhost:3000',
+//     'X-Forwarded-Proto': 'http',
+// };
 //
 // module.exports = function (app) {
+//     //webpack needs index.html, but we have to redirect to portal http://localhost:8080 page without /index.html path
+//     app.use(
+//         process.env.PUBLIC_URL + '/index.html',
+//         createProxyMiddleware({
+//             target: 'http://localhost:8080',
+//             secure: false,
+//             logLevel: 'debug',
+//             pathRewrite: {
+//                 '/index.html': '/',
+//             },
+//             headers: proxyHeaders,
+//         })
+//     );
 //     // example
 //     app.use(
 //         '/api',
@@ -46,16 +64,17 @@
 //     );
 //     app.use(
 //         '*',
-//         // Put inside ['/fast-buy', '/o'] additional paths that will be proxied from cra dev mode to liferay
-//         createProxyMiddleware(['/fast-buy', '/o', '/x/'], {
-//             // target: 'http://ws-11180:8082',
-//             target: 'http://ws-12602:8082',
-//             changeOrigin: true,
-//             headers: {
-//                 'X-Forwarded-Host': 'localhost:3000',
-//                 'X-Forwarded-Proto': 'http',
-//             },
-//             secure: false,
-//         })
+//         //тут hot-update чтобы все запросы с ним проксировать на 8080
+//         createProxyMiddleware(
+//             path =>
+//                 !/^\/(static|manifest\.json|locales|favicon\.ico|images|plugins|scripts|.*\.hot-update\..*)/.test(path),
+//             {
+//                 target: 'http://localhost:8080',
+//                 changeOrigin: true,
+//                 logLevel: 'debug',
+//                 headers: proxyHeaders,
+//                 secure: false,
+//             }
+//         )
 //     );
 // };

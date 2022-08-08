@@ -1,9 +1,0 @@
-@import 'src/assets/styles/common';
-
-.user-list {
-    &__item {
-        & + & {
-            margin-top: 20px;
-        }
-    }
-}

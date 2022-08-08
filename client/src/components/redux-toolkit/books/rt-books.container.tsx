@@ -1,17 +1,17 @@
 import React, { memo, FC, FormEventHandler, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@app/redux-toolkit/rt-configureStore';
+import { useAppDispatch, useAppSelector } from '@app/store/store';
 import {
-    rtAddBookAction,
-    rtFetchBooksAction,
-    rtRemoveBookAction,
-    rtUpdateBookAction,
-    rtUpdateBookAsyncAction,
+    addBookAction,
+    fetchBooksAction,
+    removeBookAction,
     selectAllBooks,
     selectBookById,
     selectBookEntities,
     selectBookIds,
     selectTotalBooks,
-} from '@app/redux-toolkit/rt-slices/rt-books';
+    updateBookAction,
+    updateBookAsyncAction,
+} from '@app/store/books/books.slice';
 import { generateRandomString } from '@app/common/utils/generate.utils';
 
 type RtBooksContainerProps = {};
@@ -29,7 +29,7 @@ const RtBooksContainer: FC<RtBooksContainerProps> = () => {
 
     useEffect(() => {
         (async () => {
-            const result = await dispatch(rtFetchBooksAction());
+            const result = await dispatch(fetchBooksAction());
             console.log({ result });
         })();
     }, [dispatch]);
@@ -42,7 +42,7 @@ const RtBooksContainer: FC<RtBooksContainerProps> = () => {
         };
 
         dispatch(
-            rtAddBookAction({
+            addBookAction({
                 id: Date.now() + '',
                 title: target.title.value,
             })
@@ -60,7 +60,7 @@ const RtBooksContainer: FC<RtBooksContainerProps> = () => {
                 {bookAll.map(i => (
                     <li key={i.id}>
                         {i.title}
-                        <button type='button' onClick={() => dispatch(rtRemoveBookAction(i.id))}>
+                        <button type='button' onClick={() => dispatch(removeBookAction(i.id))}>
                             remove
                         </button>
                         &nbsp;
@@ -69,7 +69,7 @@ const RtBooksContainer: FC<RtBooksContainerProps> = () => {
                             onClick={() => {
                                 // async update
                                 dispatch(
-                                    rtUpdateBookAsyncAction({
+                                    updateBookAsyncAction({
                                         id: i.id,
                                         title: generateRandomString(),
                                     })
@@ -77,7 +77,7 @@ const RtBooksContainer: FC<RtBooksContainerProps> = () => {
 
                                 // sync update
                                 dispatch(
-                                    rtUpdateBookAction({
+                                    updateBookAction({
                                         id: i.id,
                                         changes: {
                                             title: generateRandomString(),
