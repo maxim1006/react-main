@@ -12,7 +12,7 @@ tests represent actual user's flows.
 - Activate SIM card
 
 #### Regression tests
-tests for some specific parts of functionality which are tend to be broken from time to time or just have a very complex logic which should be properly tested.
+tests for some specific parts of functionality which are tended to be broken from time to time or just have a very complex logic which should be properly tested.
 **Naming convention:** `*.regression.ts`
 **Examples:**
 - Check if prices are calculated correctly
