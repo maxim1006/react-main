@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import styles from './user-list.module.less';
+import styles from './user-list.module.scss';
 import { useDispatch } from 'react-redux';
 import MyUser from '@app/components/redux-toolkit/user/user.component';
 import { useThunkUserList } from '@app/components/redux-toolkit/user/list/thunk-user-list.hook';
@@ -10,18 +10,6 @@ type UsersContainerProps = {};
 const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
     // eslint-disable-next-line no-empty-pattern
     const {
-        // ref,
-        // users,
-        // usersLoading,
-        // addUserLoading,
-        // deleteUserLoading,
-        // updateUserLoading,
-        // onAddUser,
-        // onUpdateUser,
-        // onDeleteUser,
-    } = useManualUserList();
-
-    const {
         ref,
         users,
         usersLoading,
@@ -31,7 +19,19 @@ const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
         onAddUser,
         onUpdateUser,
         onDeleteUser,
-    } = useThunkUserList();
+    } = useManualUserList();
+
+    // const {
+    //     ref,
+    //     users,
+    //     usersLoading,
+    //     addUserLoading,
+    //     deleteUserLoading,
+    //     updateUserLoading,
+    //     onAddUser,
+    //     onUpdateUser,
+    //     onDeleteUser,
+    // } = useThunkUserList();
 
     const dispatch = useDispatch();
 
