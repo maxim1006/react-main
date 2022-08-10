@@ -6,7 +6,7 @@ import shouldCompress from './helpers/server.helper';
 import cors from 'cors';
 
 const app = express(),
-    port = process.env.NODEJS_PORT || 3000,
+    port = process.env.NODEJS_PORT || 3001,
     root = '/api/v1/',
     isProduction = process.env.NODE_ENV === 'production';
 
@@ -26,8 +26,11 @@ const appRouters = [
 app.use(
     cors({
         credentials: !isProduction,
+        preflightContinue: false,
+        maxAge: 86400,
     })
 );
+
 app.use(bodyParser.json());
 
 app.use(compression({ filter: shouldCompress }));

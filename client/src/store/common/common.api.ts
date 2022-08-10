@@ -5,7 +5,7 @@ export const commonApi = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3001/api/v1',
-        prepareHeaders: headers => {
+        prepareHeaders: (headers, { extra, endpoint, getState }) => {
             headers.set('Content-Type', 'application/json;charset=UTF-8');
             headers.set('Authorization', 'anonymous');
             headers.set('X-Request-ID', uuidv4());

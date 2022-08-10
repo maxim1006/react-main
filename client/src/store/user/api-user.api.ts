@@ -1,17 +1,16 @@
 import { UserModel } from '@app/models/user.model';
-import { API_PATH } from '@app/constants/common.constants';
 import { commonApi } from '../common/common.api';
 
 export const apiUserApi = commonApi.injectEndpoints({
     endpoints: build => ({
         fetchUserList: build.query<UserModel[], void>({
             query: () => ({
-                url: `${API_PATH}/user`,
+                url: `user`,
             }),
         }),
         addUser: build.mutation<UserModel, { user: Partial<UserModel> }>({
             query: ({ user }) => ({
-                url: `${API_PATH}/user`,
+                url: `user`,
                 method: 'POST',
                 body: user,
             }),
@@ -29,7 +28,7 @@ export const apiUserApi = commonApi.injectEndpoints({
         }),
         updateUser: build.mutation<UserModel, { user: UserModel }>({
             query: ({ user }) => ({
-                url: `${API_PATH}/user`,
+                url: `user`,
                 method: 'PUT',
                 body: user,
             }),
@@ -53,7 +52,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                 // const state = getState() as RootState;
 
                 const result = await fetchWithBQ({
-                    url: `${API_PATH}/user/${user.id}`,
+                    url: `user/${user.id}`,
                     method: 'DELETE',
                 });
 
