@@ -1,17 +1,16 @@
 // delay
-// const delay = (time, ...args) =>
-//     new Promise(res =>
-//         setTimeout(
-//             args => {
-//                 res(args);
-//                 console.log('delay', { time, args });
-//             },
-//             time,
-//             args
-//         )
-//     );
+const delay = (time, ...args) =>
+    new Promise(res =>
+        setTimeout(
+            args => {
+                res(args);
+                console.log('delay', { time, args });
+            },
+            time,
+            args
+        )
+    );
 
-//
 const delayWithError = (time, ...args) =>
     new Promise((res, rej) =>
         setTimeout(
@@ -29,14 +28,22 @@ const delayWithError = (time, ...args) =>
         )
     );
 
+
+let arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
+
 // запустятся параллельно
-// var arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
-//
 // arr.map(async (i, index) => {
 //     console.log(index);
 //     let res = await i;
 //     console.log(res);
 // });
+
+// запустятся параллельно
+for (let i of arr) {
+    console.log(i);
+    i.then(i => console.log(i));
+    console.log('after', i);
+}
 
 // запустятся последовательно
 // async function runSequence() {
