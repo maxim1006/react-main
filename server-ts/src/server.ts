@@ -23,6 +23,7 @@ const appRouters = [
     },
 ];
 
+// убился сделать кастомно так что похоже в новых версиях ноды надо использовать именно корс
 app.use(
     cors({
         credentials: !isProduction,

@@ -7,6 +7,20 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <base href="/example-base/"/>
+        <link rel="canonical" href="{canonicalLink}"/>
+
+        <link rel="manifest" href="/manifest.json">
+
+        <link rel="stylesheet" href="/main.css"><!--http://localhost:63343/main.css такой будет путь, это для примеров с base-->
+        <link rel="stylesheet" href="main1.css"><!--http://localhost:63343/example-base/main1.css-->
+        <link rel="stylesheet" href="./main2.css"><!--http://localhost:63343/example-base/main2.css-->
+
+        <link rel="icon" href="/documents/20123/65419/favicon.ico" sizes="any">
+        <link rel="icon" href="/documents/20123/65419/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/documents/20123/65419/favicon-180x180.png">
+
         <title>Global React</title>
     </head>
     <body>
