@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
 import styles from './user-list.module.scss';
-import { useDispatch } from 'react-redux';
 import MyUser from '@app/components/redux-toolkit/user/user.component';
-import { useThunkUserList } from '@app/components/redux-toolkit/user/list/thunk-user-list.hook';
 import { useManualUserList } from '@app/components/redux-toolkit/user/list/api-user-list.hook';
 
 type UsersContainerProps = {};
@@ -32,8 +30,6 @@ const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
     //     onUpdateUser,
     //     onDeleteUser,
     // } = useThunkUserList();
-
-    const dispatch = useDispatch();
 
     return (
         <>
