@@ -1,4 +1,4 @@
-import { ComponentType, createContext, FC, ReactNode, useCallback, useEffect, useState } from 'react';
+import { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
 import customAxios from '../../../common/api/axios';
 import { TodoModel } from '@app/models/todo.model';
 
