@@ -10,6 +10,7 @@ module.exports = {
             },
         ],
         'selector-class-pattern': ['.*'],
+        'custom-property-pattern': ['.*'],
         'color-function-notation': ['legacy'],
         'selector-pseudo-class-no-unknown': [
             true,
