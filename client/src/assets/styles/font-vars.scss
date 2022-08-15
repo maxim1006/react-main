@@ -1,9 +1,29 @@
-$font-family: notosans, sans-serif;
-$font-small-size: 12px;
-$font-normal-size: 14px;
+$font-family: cairo, sans-serif;
+$font-tiny-size: 10px;
+$line-height-tiny: 14px;
+$font-small-size: 11px;
+$line-height-small: 16px;
+$font-normal-size: 12px;
+$line-height-normal: 18px;
+$font-base-size: 14px;
+$line-height-base: 20px;
 $font-medium-size: 16px;
+$line-height-medium: 24px;
 $font-big-size: 18px;
-$font-large-size: 22px;
+$line-height-big: 26px;
+$font-large-size: 20px;
+$line-height-large: 28px;
+$font-major-size: 22px;
+$line-height-major: 22px;
+$font-very-big-size: 24px;
+$line-height-very-big: 30px;
+$font-huge-size: 28px;
+$line-height-huge: 40px;
+$font-max-size: 36px;
+$line-height-max: 42px;
+$font-weight-base: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
 
 /* base */
 @mixin font-base() {
@@ -111,3 +131,12 @@ $font-large-size: 22px;
 }
 
 /*********   */
+
+/* custom */
+@mixin font-custom($font-weight: $font-weight-base, $font-size: $font-base-size, $line-height: $line-height-base) {
+    @include font-base;
+
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+}

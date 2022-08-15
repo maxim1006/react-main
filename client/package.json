@@ -10,7 +10,7 @@
         "report++": "react-app-rewired build --report",
         "moment": "node ./dev-helpers/moment.dev-helper.js",
         "start": "react-app-rewired start",
-        "build": "react-app-rewired build",
+        "build": "npm run lint && react-app-rewired build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "server": "nodemon -r esm ./server/server.js",
@@ -127,6 +127,7 @@
         "stylelint": "^14.9.1",
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-standard": "^26.0.0",
+        "stylelint-config-standard-scss": "^5.0.0",
         "webpack-cli": "^4.10.0",
         "webpack-dev-server": "4.9.3"
     }

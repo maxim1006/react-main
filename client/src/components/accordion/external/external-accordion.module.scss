@@ -1,0 +1,98 @@
+@import "src/assets/styles/common";
+@import "src/assets/styles/colors";
+@import "src/assets/styles/media";
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/font-vars";
+
+external-accordion-content {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    color: $main-color;
+    opacity: 0;
+    transition: opacity 0.4s, padding 0.4s, max-height 0.5s;
+
+    & > a {
+        color: $primary-color;
+    }
+
+    & > ul {
+        padding: 16px 0 0 16px;
+
+        & > li {
+            padding-left: 4px;
+
+            &::marker {
+                content: "—";
+            }
+        }
+    }
+
+    & > ul:first-child {
+        padding: 0 0 0 16px;
+    }
+
+    & > strong {
+        display: block;
+        margin: 18px 0;
+    }
+}
+
+external-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    color: $main-color;
+    letter-spacing: var(--external-accordion-header-letter-spacing, normal);
+    text-transform: capitalize;
+    border-bottom: 1px solid $secondary-border-color;
+    cursor: pointer;
+
+    @include font-custom(
+        var(--external-accordion-header-font-weight, $font-weight-base),
+        var(--external-accordion-header-font-size, $font-medium-size),
+        var(--external-accordion-header-line-height, $line-height-very-big)
+    );
+
+    &::after {
+        align-self: center;
+        width: 24px;
+        height: 24px;
+        background: url("/assets/icons/chevron-down.svg") no-repeat;
+        transition: all 0.3s linear;
+        content: "";
+
+        @media #{$mobile} {
+            align-self: end;
+        }
+    }
+}
+
+.host external-accordion-header {
+    padding: var(--external-accordion-header-padding, 10px 6px 12px 0);
+}
+
+external-accordion-section {
+    &[data-section-active] {
+        external-accordion-header {
+            @include font-custom(
+                var(--external-accordion-header-active-font-weight, $font-weight-bold),
+                var(--external-accordion-header-active-font-size, $font-medium-size),
+                var(--external-accordion-header-active-line-height, $line-height-very-big)
+            );
+
+            padding: var(--external-accordion-header-active-padding, 10px 6px 12px 0);
+
+            &::after {
+                align-self: center;
+                transform: rotate(180deg);
+            }
+        }
+
+        external-accordion-content {
+            max-height: max-content;
+            padding: var(--external-accordion-content-padding, 16px 0 20px);
+            opacity: 1;
+            transition: opacity 0.4s, padding-bottom 0.4s, padding-top 0.4s, max-height 0.7s;
+        }
+    }
+}

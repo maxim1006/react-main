@@ -5,15 +5,23 @@ import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '../components/component/Component';
 import StorageHook from '@app/components/storage/storage-hook.component';
-import ExamplesComponent from '@app/components/examples/examples.component';
+import ExternalAccordionContainer from '@app/components/accordion/external/external-accordion.container';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='ExamplesComponent'>
-                    <ExamplesComponent />
+                <Component title='External Accordion'>
+                    <ExternalAccordionContainer />
                 </Component>
+
+                {/*<Component title='Load lazy image'>*/}
+                {/*    <LazyImage />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='ExamplesComponent'>*/}
+                {/*    <ExamplesComponent />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='ThrottleDebounce'>*/}
                 {/*    <ThrottleDebounce />*/}
