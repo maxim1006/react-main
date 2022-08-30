@@ -53,6 +53,6 @@ yarn-error.log*
 /playwright/.cache/
 
 #interim
-#test.html
-#test.json
-#test.txt
+test.html
+test.json
+test.txt
