@@ -12,11 +12,11 @@ import TestsPage from '@app/pages/TestsPage';
 
 const ReduxToolkit = React.lazy(() => import('./pages/rt.page'));
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
+const TypescriptPage = React.lazy(() => import('./pages/typescript/typescript.page'));
 const LazyPage = React.lazy(() => import('./pages/LazyPage'));
 const ShopPage = React.lazy(() => import('./pages/ShopPage'));
 const ContextPage = React.lazy(() => import('./pages/ContextPage'));
 const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
-const TypescriptPage = React.lazy(() => import('./pages/typescript/typescript.page'));
 
 const App: React.FC = () => {
     return (
@@ -33,11 +33,11 @@ const App: React.FC = () => {
                     {/* <Router history={history}> */}
                     <MainMenu
                         routes={[
-                            { to: '/typescript', title: 'Typescript' },
+                            { to: '/react', title: 'React' },
                             { to: '/rt', title: 'Redux Toolkit' },
+                            { to: '/typescript', title: 'Typescript' },
                             { to: '/shop', title: 'Shop' },
                             { to: '/redux', title: 'Redux' },
-                            { to: '/react', title: 'React' },
                             { to: '/router', title: 'Router' },
                             { to: '/lazy', title: 'Lazy' },
                             { to: '/context', title: 'Context' },
@@ -51,11 +51,11 @@ const App: React.FC = () => {
                     <Suspense fallback={<MaterialLoaderComponent />}>
                         {/* покажет только первый найденный роут*/}
                         <Routes>
-                            <Route path='/typescript' element={<TypescriptPage />} />
+                            <Route path='/react' element={<ReactPage />} />
                             <Route path='/rt' element={<ReduxToolkit />} />
+                            <Route path='/typescript' element={<TypescriptPage />} />
                             <Route path='/shop' element={<ShopPage />} />
                             <Route path='/redux' element={<ReduxPage />} />
-                            <Route path='/react' element={<ReactPage />} />
                             {/*теперь всем роутам у кого есть чайлды нужна * пример: /router/* */}
                             <Route path='/router/*' element={<RouterPage />} />
                             <Route path='/lazy' element={<LazyPage />} />

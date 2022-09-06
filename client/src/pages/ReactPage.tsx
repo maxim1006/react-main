@@ -3,7 +3,7 @@ import { JsxListComponent } from '../components/jsx/JsxList';
 import JsxFragment from '../components/jsx/JsxFragment';
 import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
-import Component from '../components/component/Component';
+import Component from '../components/component/component.component';
 import StorageHook from '@app/components/storage/storage-hook.component';
 import ExternalAccordionContainer from '@app/components/accordion/external/external-accordion.container';
 

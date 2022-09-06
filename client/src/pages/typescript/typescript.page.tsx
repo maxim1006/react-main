@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import MainMenu from '../../components/menu/MainMenu';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import TypescriptHooks from './hooks/typescript-hooks.component';
 import TypescriptDefaultProps from './default-props/typescript-default-props.component';
 import TypescriptForm from './form/typescript-form.component';
@@ -11,7 +11,9 @@ const TypescriptPage = () => {
         <>
             <TypescriptEnum />
             <MainMenu routes={[{ to: '/typescript/hooks', title: 'Hooks' }]} />
-            <Route path='/typescript/hooks' element={<TypescriptHooks />} />
+            <Routes>
+                <Route path='/typescript/hooks' element={<TypescriptHooks />} />
+            </Routes>
             <TypescriptDefaultProps />
             <TypescriptForm />
         </>
