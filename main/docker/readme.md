@@ -54,3 +54,7 @@ docker run -p 5000:8080 -d \
 ### забрать докер образ из докер репо
 docker pull __image-name__
 
+### закинуть докер образ в artifactory
+docker tag __id-of-local-docker-image__ __artifactory-link__/folder/name
+docker login __artifactory-link__
+docker push __artifactory-link__/folder/name

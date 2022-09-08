@@ -39,11 +39,11 @@ let arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
 // });
 
 // запустятся параллельно
-for (let i of arr) {
-    console.log(i);
-    i.then(i => console.log(i));
-    console.log('after', i);
-}
+// for (let i of arr) {
+//     console.log(i);
+//     i.then(i => console.log(i));
+//     console.log('after', i);
+// }
 
 // запустятся последовательно
 // async function runSequence() {
@@ -87,7 +87,7 @@ for (let i of arr) {
 //     return p;
 // }
 //
-// runSequence([2500, 2000, 2200]).then(
+// runSequence([3000, 2000, 4000]).then(
 //     res => console.log('result ', res),
 //     err => console.error('runSequence err ', err)
 // );
