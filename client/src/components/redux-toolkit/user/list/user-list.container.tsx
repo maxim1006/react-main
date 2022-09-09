@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import styles from './user-list.module.scss';
 import MyUser from '@app/components/redux-toolkit/user/user.component';
-import { useManualUserList } from '@app/components/redux-toolkit/user/list/api-user-list.hook';
+import { useApiUserList } from '@app/components/redux-toolkit/user/list/api-user-list.hook';
 
 type UsersContainerProps = {};
 
@@ -12,12 +12,17 @@ const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
         users,
         usersLoading,
         addUserLoading,
+        addUserDebouncedLoading,
         deleteUserLoading,
         updateUserLoading,
         onAddUser,
+        onAddUserDebounced,
         onUpdateUser,
         onDeleteUser,
-    } = useManualUserList();
+        onFetchUserLazy,
+        onPollingStart,
+        onPollingEnd,
+    } = useApiUserList();
 
     // const {
     //     ref,
@@ -33,14 +38,28 @@ const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
 
     return (
         <>
+            <div>
+                <button type='button' className={styles.button} onClick={onPollingStart}>
+                    Start Polling
+                </button>
+                <button type='button' className={styles.button} onClick={onPollingEnd}>
+                    End Polling
+                </button>
+                <button type='button' className={styles.button} onClick={onFetchUserLazy}>
+                    Fetch Lazy User)
+                </button>
+            </div>
             <div className={styles.block}>
                 <input type='text' ref={ref} placeholder='User Name' />
                 <button type='button' className={styles.button} onClick={onAddUser}>
                     Add user
                 </button>
+                <button type='button' className={styles.button} onClick={onAddUserDebounced}>
+                    Add Debounced user
+                </button>
             </div>
             <div className={styles.block}>
-                {usersLoading || addUserLoading || deleteUserLoading || updateUserLoading ? (
+                {usersLoading || addUserLoading || deleteUserLoading || updateUserLoading || addUserDebouncedLoading ? (
                     <>Loading...</>
                 ) : (
                     <ul className={styles.list}>

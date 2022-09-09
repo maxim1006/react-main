@@ -1,5 +1,10 @@
 import { UserModel } from '@app/models/user.model';
 import { commonApi } from '../common/common.api';
+import { MaybePromise } from '@reduxjs/toolkit/dist/query/tsHelpers';
+import { debounce } from 'lodash';
+import { ThunkDispatch } from 'redux-thunk';
+import { FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
+import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 
 export const apiUserApi = commonApi.injectEndpoints({
     endpoints: build => ({
@@ -7,6 +12,20 @@ export const apiUserApi = commonApi.injectEndpoints({
             query: () => ({
                 url: `user`,
             }),
+        }),
+        fetchUser: build.query<UserModel, { userId: string }>({
+            async queryFn({ userId }, { dispatch, getState }, __, fetchWithBQ) {
+                const result = await fetchWithBQ({
+                    url: `user/${userId}`,
+                    method: 'GET',
+                });
+
+                if (result.error) throw result.error;
+
+                const data = result.data as UserModel;
+
+                return { data };
+            },
         }),
         addUser: build.mutation<UserModel, { user: Partial<UserModel> }>({
             query: ({ user }) => ({
@@ -24,6 +43,14 @@ export const apiUserApi = commonApi.injectEndpoints({
                         })
                     );
                 } catch {}
+            },
+        }),
+        addUserDebounced: build.mutation<UserModel, { user: Partial<UserModel> }>({
+            async queryFn({ user }, { dispatch, getState }, __, fetchWithBQ) {
+                // Pessimistic Updates
+                const data = (await debouncedAddUser(user, dispatch, fetchWithBQ)) ?? null;
+
+                return { data };
             },
         }),
         updateUser: build.mutation<UserModel, { user: UserModel }>({
@@ -72,3 +99,33 @@ export const apiUserApi = commonApi.injectEndpoints({
         }),
     }),
 });
+
+const debouncedAddUser = debounce(
+    async (
+        user: Partial<UserModel>,
+        dispatch: ThunkDispatch<any, any, any>,
+        fetchWithBQ: (
+            arg: string | FetchArgs
+        ) => MaybePromise<QueryReturnValue<unknown, FetchBaseQueryError, FetchBaseQueryMeta>>
+    ) => {
+        // Pessimistic Updates
+        const result = await fetchWithBQ({
+            url: `user`,
+            method: 'POST',
+            body: user,
+        });
+
+        if (result.error) throw result.error;
+
+        const data = result.data as UserModel;
+
+        dispatch(
+            apiUserApi.util.updateQueryData('fetchUserList', undefined, userList => {
+                userList.push(data);
+            })
+        );
+
+        return data;
+    },
+    1000
+);
