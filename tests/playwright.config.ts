@@ -34,12 +34,13 @@ const config: PlaywrightTestConfig = {
     /* Opt out of parallel tests on CI. */
     workers: process.env.CI ? 1 : undefined,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-    reporter: 'html',
+    reporter: isCI ? [['dot'], ['html', { open: 'never' }]] : [['line'], ['html', { open: 'never' }]],
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         ignoreHTTPSErrors: true,
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
         trace: 'retain-on-failure',
+        video: 'retain-on-failure',
         permissions: [],
         /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
         actionTimeout: 30 * 1000,

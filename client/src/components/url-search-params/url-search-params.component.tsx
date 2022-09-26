@@ -11,7 +11,18 @@ const UrlSearchParams: FC<UrlSearchParamsProps> = () => {
         console.log(searchParams.toString()); // param=1&param1=2
         console.dir(searchParams);
         let path = window.location.pathname + '?' + searchParams.toString();
+        // меняю прямо текущий стейт без перезагрузки
         window.history.replaceState(null, document.title, path);
+    }, []);
+
+    useEffect(() => {
+        const url = new URL(process.env.PUBLIC_URL, window.location.href);
+        // или так
+        // const url = new URL(window.location.href);
+        url.searchParams.append('prop', 'value');
+
+        // далее сечу с перезагрузкой
+        // window.location.href = url.href;
     }, []);
 
     const locationHref = window.location.href;

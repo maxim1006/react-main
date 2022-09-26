@@ -109,6 +109,14 @@ module.exports = {
         }
         ///////////////////////////////////////////////////////////
 
+        // сделал чтобы было билд удобнее из express сервера сервить
+        // без этого добавит ко всему /react-main
+        // /manifest.json вместо /react-main/manifest.json
+        config.output = {
+            ...config.output,
+            publicPath: '/',
+        };
+
         return config;
     },
 };

@@ -28,8 +28,7 @@ const delayWithError = (time, ...args) =>
         )
     );
 
-
-let arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
+// let arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
 
 // запустятся параллельно
 // arr.map(async (i, index) => {
@@ -44,6 +43,20 @@ let arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
 //     i.then(i => console.log(i));
 //     console.log('after', i);
 // }
+
+// function animate(counter, ms) {
+//     delay(ms).then(res => {
+//         if (counter > 1) {
+//             --counter;
+//
+//             return animate(counter, 2000 / counter);
+//         } else {
+//             return 'Hello';
+//         }
+//     });
+// }
+//
+// console.log(animate(3, 2000));
 
 // запустятся последовательно
 // async function runSequence() {
@@ -86,7 +99,7 @@ let arr = [delay(2500, 44), delay(2000, 11), delay(2200, 33)];
 //
 //     return p;
 // }
-//
+
 // runSequence([3000, 2000, 4000]).then(
 //     res => console.log('result ', res),
 //     err => console.error('runSequence err ', err)

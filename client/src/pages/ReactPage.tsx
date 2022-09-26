@@ -6,14 +6,16 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '../components/component/component.component';
 import StorageHook from '@app/components/storage/storage-hook.component';
 import ExternalAccordionContainer from '@app/components/accordion/external/external-accordion.container';
+import MyIframe from '@app/components/iframe/my-iframe.component';
+import MyIframe1 from '@app/components/iframe/my-iframe1.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='External Accordion'>
-                    <ExternalAccordionContainer />
-                </Component>
+                {/*<Component title='External Accordion'>*/}
+                {/*    <ExternalAccordionContainer />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Load lazy image'>*/}
                 {/*    <LazyImage />*/}
@@ -27,9 +29,13 @@ export default function ReactPage() {
                 {/*    <ThrottleDebounce />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='ForwradRefUseImperativeHandle'>*/}
-                {/*    <MyIframe />*/}
-                {/*</Component>*/}
+                <Component title='Iframe'>
+                    <MyIframe />
+                </Component>
+
+                <Component title='Iframe1'>
+                    <MyIframe1 />
+                </Component>
 
                 {/*<Component title='ForwradRefUseImperativeHandle'>*/}
                 {/*    <ForwradRefUseImperativeHandle />*/}
@@ -92,15 +98,15 @@ export default function ReactPage() {
                 {/*    <UseUpdatableState />*/}
                 {/*</Component>*/}
 
-                <Component title='Hooks'>
-                    {/*<WindowSizeHook />*/}
-                    {/*<OnScreenHook />*/}
-                    {/*<EventListenerHook />*/}
-                    {/*<ScriptHook />*/}
-                    {/*<PreviousHook />*/}
-                    {/*<UpdateEffectHook />*/}
-                    <StorageHook />
-                </Component>
+                {/*<Component title='Hooks'>*/}
+                {/*<WindowSizeHook />*/}
+                {/*<OnScreenHook />*/}
+                {/*<EventListenerHook />*/}
+                {/*<ScriptHook />*/}
+                {/*<PreviousHook />*/}
+                {/*<UpdateEffectHook />*/}
+                {/*<StorageHook />*/}
+                {/*</Component>*/}
 
                 {/* <Component title="Image preload"> */}
                 {/*    <ImagePreload />*/}
@@ -286,11 +292,11 @@ export default function ReactPage() {
                 {/*    <ClassBasedHooks/>*/}
                 {/* </Component>*/}
             </div>
-            <div tabName='JSX'>
-                <JsxListComponent />
-                <JsxFragment prop1='prop1' prop2='prop2' />
-                <JSXExampleComponent />
-            </div>
+            {/*<div tabName='JSX'>*/}
+            {/*    <JsxListComponent />*/}
+            {/*    <JsxFragment prop1='prop1' prop2='prop2' />*/}
+            {/*    <JSXExampleComponent />*/}
+            {/*</div>*/}
         </TabsComponent>
     );
 }

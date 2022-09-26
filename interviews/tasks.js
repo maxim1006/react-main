@@ -1,25 +1,25 @@
 /*********** Task currying ***********/
-// function sum(a, b, c) {
-//     return a + b + c;
-// }
-//
-// let curriedSum = curry(sum);
-//
-// console.log(curriedSum(1, 2, 3)); // 6
-// console.log(curriedSum(1)(2, 3)); // 6
-// console.log(curriedSum(1)(2)(3)); // 6
+function sum(a, b, c) {
+    return a + b + c;
+}
+
+let curriedSum = curry(sum);
+
+console.log(curriedSum(1, 2, 3)); // 6
+console.log(curriedSum(1)(2, 3)); // 6
+console.log(curriedSum(1)(2)(3)); // 6
 /*********** Answer ***********/
-// function curry(f) {
-//     return function curried(...args) {
-//         if (args.length >= f.length) {
-//             return f.apply(this, args);
-//         } else {
-//             return function pass(...args2) {
-//                 return curried.apply(this, args.concat(args2));
-//             };
-//         }
-//     };
-// }
+function curry(f) {
+    return function curried(...args) {
+        if (args.length >= f.length) {
+            return f.apply(this, args);
+        } else {
+            return function pass(...args2) {
+                return curried.apply(this, args.concat(args2));
+            };
+        }
+    };
+}
 
 /*********** Task currying2 ***********/
 // console.log(sum(0)(1)(2)(3)(4)(5) + "");

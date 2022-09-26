@@ -21,6 +21,7 @@ import {
 } from './routers';
 import schema from './gql/schema';
 import resolvers from './gql/resolvers';
+import fallback from 'express-history-api-fallback';
 // import './db/db.js';
 
 // const cors = require('cors');
@@ -132,10 +133,10 @@ appRouters.forEach(router => app.use(root + router.url, router.middleware));
 
 // сервлю статические файлы
 if (isProduction) {
-    app.use(express.static(path.join(__dirname, '../client/build')));
-
+    const root = path.join(__dirname, '../client/build');
+    app.use(express.static(root));
     app.get('*', (req, res) => {
-        res.send(path.join(__dirname, '../client/build', 'index.html'));
+        res.sendFile(root + '/index.html');
     });
 }
 

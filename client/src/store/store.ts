@@ -13,6 +13,7 @@ import issuesDisplay from './issues-display/issues-display.slice';
 import posts from './posts/posts.slice';
 import books from './books/books.slice';
 import thunkUser from './thunk-user/thunk-user.slice';
+import { abstractProductReducer } from '@app/store/product/abstract/abstract-product.slice';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
     posts,
     books,
     thunkUser,
+    product: abstractProductReducer,
     [commonApi.reducerPath]: commonApi.reducer,
 });
 

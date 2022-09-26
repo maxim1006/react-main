@@ -7,7 +7,7 @@
     },
     "private": true,
     "scripts": {
-        "server": "nodemon -r esm ./server.js --my-custom-var=123",
+        "server": "NODE_ENV=production nodemon -r esm ./server.js --my-custom-var=123",
         "server:prod": "NODE_ENV=production nodemon -r esm ./server/server.js",
         "build": "cd ./client && npm run build && cd ../",
         "start": "node -r esm ./server/server.js",
@@ -35,17 +35,19 @@
         "express": "4.16.4",
         "faker": "4.1.0",
         "fs-extra": "8.1.0",
+        "gh-pages": "3.1.0",
         "graphql": "14.6.0",
         "mongoose": "5.9.5",
+        "multer": "1.4.2",
         "nanoid": "3.1.12",
         "node-fetch": "2.6.0",
         "raw-body": "2.4.1",
         "stripe": "6.28.0",
-        "typescript": "3.8.3",
-        "multer": "1.4.2",
-        "gh-pages": "3.1.0"
+        "typescript": "3.8.3"
     },
     "devDependencies": {
+        "express-history-api-fallback": "^2.2.1",
+        "nodemon": "^2.0.19",
         "prettier": "1.19.1",
         "pretty-quick": "2.0.1"
     }

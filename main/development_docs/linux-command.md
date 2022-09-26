@@ -1,5 +1,10 @@
 # посмотреть хедеры при запросе
 curl -I https://google.com
+curl -Ik https://google.com
+curl -Ik -X POST https://google.com
+curl --location --request POST https://google.com
+
+-I - head; -k - insecure; -X - request
 
 # clean RAM
 sudo purge
