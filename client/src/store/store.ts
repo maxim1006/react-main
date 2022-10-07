@@ -52,6 +52,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
     reducer: persistedReducer,
+    preloadedState,
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
             thunk: {
@@ -66,7 +67,6 @@ const store = configureStore({
             // logger,
             // тут обязательно надо через конкат иначе ругается на него тайпскрипт, причем тупо на type в AppThunk почемуто
             .concat(commonApi.middleware, rtkQueryErrorLogger),
-    preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
     enhancers: [reduxBatch],
 });
