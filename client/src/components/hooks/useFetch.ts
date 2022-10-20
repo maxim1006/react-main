@@ -23,8 +23,16 @@ export default function useFetch({ url }: { url?: string; controller?: any }) {
 
     // init fetch
     useEffect(() => {
-        refetch();
+        void refetch();
     }, [refetch]);
 
     return { data, refetch };
 }
+
+// если писать через простой useEffect
+// useEffect(() => {
+//     const controller = new AbortController();
+//     fetch(url, { signal: controller.signal }).then().catch().finally();
+//
+//     return () => controller.abort();
+// }, [url]);

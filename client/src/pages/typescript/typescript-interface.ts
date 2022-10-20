@@ -6,6 +6,12 @@ interface ObjModel {
     f2: FuncModel2;
 }
 
+interface TestFuncModel {
+    // виды функций в типах / интерфейсах
+    (arg: string): number[];
+    func: (arg: string) => number[];
+}
+
 interface FuncModel {
     (): number[];
 }

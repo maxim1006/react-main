@@ -21,3 +21,6 @@ console.log(currentProcess ? currentProcess : 'log');
 
 // CUSTOM_URL - это из .env
 console.log({ HTTPS: process.env.HTTPS, CUSTOM_URL: process.env.CUSTOM_URL, options });
+
+// process.argv example
+console.log({ argvs: process.argv });

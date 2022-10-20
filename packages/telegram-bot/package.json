@@ -1,0 +1,21 @@
+{
+    "name": "maximprosv-bot",
+    "version": "1.0.0",
+    "description": "1) в телеге пишу botfather затем клик на /newbot и вводим название должна прийти сообщенька и токен",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon index.js one two",
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "node-telegram-bot-api": "^0.59.0"
+    },
+    "devDependencies": {
+        "dotenv": "^16.0.3",
+        "nodemon": "^2.0.4"
+    },
+    "author": "",
+    "license": "ISC"
+}

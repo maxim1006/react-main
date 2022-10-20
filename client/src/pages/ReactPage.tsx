@@ -1,18 +1,28 @@
 import React from 'react';
-import { JsxListComponent } from '../components/jsx/JsxList';
-import JsxFragment from '../components/jsx/JsxFragment';
-import JSXExampleComponent from '../components/jsx/JsxExamples';
 import { TabsComponent } from '../components/tabs/Tabs';
-import Component from '../components/component/component.component';
-import StorageHook from '@app/components/storage/storage-hook.component';
-import ExternalAccordionContainer from '@app/components/accordion/external/external-accordion.container';
-import MyIframe from '@app/components/iframe/my-iframe.component';
-import MyIframe1 from '@app/components/iframe/my-iframe1.component';
+import CommonErrorsRefInsteadState from '@app/components/common-errors/common-errors-ref-instead-state.component';
+import Component from '@app/components/component/component.component';
+import CommonErrorsUseCallback from '@app/components/common-errors/common-errors-use-callback.component';
+import CommonErrorsUseEffect from '@app/components/common-errors/common-errors-use-effect.component';
+import CommonErrorsUseMemo from '@app/components/common-errors/common-errors-use-memo.component';
+import CommonErrorsUseFetch from '@app/components/common-errors/common-errors-use-fetch.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <Component title='Common error use useRef instead of useState'>
+                    <CommonErrorsUseFetch />
+                    <CommonErrorsUseMemo />
+                    <CommonErrorsRefInsteadState />
+                    <CommonErrorsUseCallback />
+                    <CommonErrorsUseEffect />
+                </Component>
+
+                {/*<Component title='Custom tag'>*/}
+                {/*    <CustomTag />*/}
+                {/*</Component>*/}
+
                 {/*<Component title='External Accordion'>*/}
                 {/*    <ExternalAccordionContainer />*/}
                 {/*</Component>*/}
@@ -29,13 +39,13 @@ export default function ReactPage() {
                 {/*    <ThrottleDebounce />*/}
                 {/*</Component>*/}
 
-                <Component title='Iframe'>
-                    <MyIframe />
-                </Component>
+                {/*<Component title='Iframe'>*/}
+                {/*    <MyIframe />*/}
+                {/*</Component>*/}
 
-                <Component title='Iframe1'>
-                    <MyIframe1 />
-                </Component>
+                {/*<Component title='Iframe1'>*/}
+                {/*    <MyIframe1 />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='ForwradRefUseImperativeHandle'>*/}
                 {/*    <ForwradRefUseImperativeHandle />*/}

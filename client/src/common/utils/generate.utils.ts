@@ -87,3 +87,7 @@ export function generateDocumentId() {
 export function generateId() {
     return Date.now() * Math.random();
 }
+
+export function generateUUID() {
+    return crypto.randomUUID();
+}
