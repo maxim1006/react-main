@@ -9,9 +9,10 @@ import {
     handleUnknownQueryCallbacksMessages,
 } from './messages/unknown.message';
 import { BotEventsEnum } from './constants/bot-events.constants';
-import { MESSAGE_MAP, MessageEnum, MessageTypesEnum } from './constants/message.constants';
-import { CHATS_DB } from './db/db';
+import { MESSAGE_MAP } from './constants/message.constants';
 import { handleGuessNumberCbQuery } from './callback-queries/guess-number.callback-query';
+import { getUserMode, setUser } from './db/user.db';
+import { MessageEnum } from './models/message.model';
 
 async function main() {
     await setBotCommands();
@@ -22,30 +23,40 @@ async function main() {
             chat: { id: chatId },
             text,
         } = msg;
+        const userName = msg?.from?.username;
 
+        if (!userName) return console.error('Alarm ghost in town!!!');
+
+        // создаю пользователя (с проверкой на существование)
+        await setUser({ userName, firstName: msg?.from?.first_name });
+
+        // обработка стартовых messages
         if (MESSAGE_MAP[text as MessageEnum])
             return await MESSAGE_MAP[text as MessageEnum]({ chat, msg });
 
-        if (CHATS_DB[chatId]?.type === MessageTypesEnum.Math)
-            return await handleMathGameResultMessages({ chat, msg });
+        // обработка messages в ходе игры
+        const mode = await getUserMode({ userName });
+        if (mode === MessageEnum.MathGame) return await handleMathGameResultMessages({ chat, msg });
 
         return await handleUnknownCommandsMessages({ chatId });
     });
 
     await BOT.on(BotEventsEnum.CallbackQuery, async msg => {
         const chatId = msg.message?.chat.id;
-        const data = msg.data;
 
         if (!chatId) return console.error('No chatId in callback_query');
         if (!msg.message) return console.error('No chatMessage in callback_query');
 
         const chat = msg.message.chat;
+        const userName = msg?.from?.username;
 
-        if (CHATS_DB[chatId]?.type === MessageTypesEnum.GuessNumber)
-            return await handleGuessNumberCbQuery({ data, chat });
+        if (!userName) return console.error('BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
 
-        if (CHATS_DB[chatId]?.type === MessageTypesEnum.Math)
-            return await handleMathGameTaskMessages({ chat });
+        const mode = await getUserMode({ userName });
+
+        if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
+
+        if (mode === MessageEnum.MathGame) return await handleMathGameTaskMessages({ chat });
 
         return await handleUnknownQueryCallbacksMessages({ chatId });
     });

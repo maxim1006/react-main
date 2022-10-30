@@ -1,15 +1,17 @@
-import { GameTypeEnum } from './game.model';
+import { MessageEnum } from './message.model';
 
-export interface UserModel<T> {
-    dates: UserDateModel<T>;
-    name: string;
+export interface UserModel<T = void> {
+    dates?: UserDateModel<T>;
+    firstName?: string;
+    // текущий месседж в котором находится пользователь
+    mode?: MessageEnum;
 }
 
-export interface UserDateModel<T> {
+export interface UserDateModel<T = void> {
     [key: string]: {
-        data: {
+        data?: {
             games: {
-                [key in GameTypeEnum]: Record<string, T>;
+                [key in MessageEnum]?: Record<string, T>;
             };
         };
     };

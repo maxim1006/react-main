@@ -1,9 +1,8 @@
 import { BOT } from '../constants/bot.constants';
 import { CHATS_DB } from '../db/db';
 import { MATH_GAMES_SIGN_MAP } from '../constants/math-game.constants';
-import { MessageTypesEnum } from '../constants/message.constants';
 import { MathGameModule } from '../modules/math-game.module';
-import { MessageBaseModel } from '../models/message.model';
+import { MessageBaseModel, MessageEnum } from '../models/message.model';
 import { HAPPY_EMOJI, SAD_EMOJI } from '../constants/emoji.constants';
 import { SEND_MESSAGE_OPTIONS_TRY_AGAIN } from '../constants/message-options.constants';
 import { MathGameModel } from '../models/math-game.model';
@@ -12,7 +11,7 @@ export const handleMathGameTaskMessages = async ({ chat: { id: chatId } }: Messa
     const game = new MathGameModule().getRandomTask();
 
     CHATS_DB[chatId] = {
-        type: MessageTypesEnum.Math,
+        type: MessageEnum.MathGame,
         value: game,
     };
 

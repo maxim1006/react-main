@@ -1,5 +1,5 @@
-import { MessageTypesEnum } from '../constants/message.constants';
 import { MathGameModel } from './math-game.model';
+import { MessageEnum } from './message.model';
 
 export interface EmptyChatDbModel {
     type: null;
@@ -7,12 +7,12 @@ export interface EmptyChatDbModel {
 }
 
 export interface MathChatDbModel {
-    type: MessageTypesEnum.Math;
+    type: MessageEnum.MathGame;
     value: MathGameModel;
 }
 
 export interface GuessNumberChatDbModel {
-    type: MessageTypesEnum.GuessNumber;
+    type: MessageEnum.GuessNumber;
     value: number;
 }
 
