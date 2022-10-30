@@ -22,6 +22,7 @@
     // add new rules here
     "rules": {
         //        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "react/no-array-index-key": ["error"],
         "@typescript-eslint/naming-convention": [
             "error",
             {

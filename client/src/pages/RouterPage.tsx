@@ -9,6 +9,7 @@ import {
     useNavigate,
     useLocation,
     useParams,
+    matchPath,
 } from 'react-router-dom';
 import RouterExactRoute from '@app/components/router/RouterExactRoute';
 import RouterRoute1 from '@app/components/router/RouterRoute1';
@@ -45,6 +46,8 @@ function IndexComp() {
 
 type RouterPageProps = {};
 
+const RouteName = '/router';
+
 const RouterPage: FC<RouterPageProps> = () => {
     const {
         location: { search },
@@ -59,6 +62,8 @@ const RouterPage: FC<RouterPageProps> = () => {
         search,
         params,
         historyFromUseNavigate,
+        match: matchPath(location.pathname, RouteName),
+        matchExact: matchPath(location.pathname, RouteName)?.pathname === RouteName,
     });
 
     // слушатель на изменение роута надо чтобы было внутри роутера
@@ -69,6 +74,8 @@ const RouterPage: FC<RouterPageProps> = () => {
     // если надо запушить что-то в history
     // function handleClick() {
     //     historyFromUseNavigate("/home");
+    //     // go back
+    //     // navigate(-1);
     // }
 
     return (

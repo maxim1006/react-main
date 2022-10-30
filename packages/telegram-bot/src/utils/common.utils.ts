@@ -1,4 +1,4 @@
-export const convertCommandsToStringList = commands => {
+export const convertCommandsToStringList = (commands: Record<string, string>) => {
     return (
         '\n' +
         Object.entries(commands).reduce((acc, [command, description]) => {

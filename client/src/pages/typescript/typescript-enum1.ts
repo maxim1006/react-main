@@ -4,8 +4,20 @@ export enum ViewEnum {
     Radio = 'radio',
 }
 
+type ViewEnumT1 = {
+    [key in ViewEnum]?: string;
+};
+
+const viewEnumTTest1: ViewEnumT1 = {
+    [ViewEnum.Radio]: 'aasd',
+};
+
 type ViewEnumT = {
-    [key in keyof typeof ViewEnum]: typeof ViewEnum[key];
+    [key in keyof typeof ViewEnum]?: typeof ViewEnum[key];
+};
+
+const viewEnumTTest: ViewEnumT = {
+    Radio: ViewEnum.Radio,
 };
 
 export interface ViewModel<T extends ViewEnum> {

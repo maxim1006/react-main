@@ -13,8 +13,8 @@ O(1) - constant time
 ### division
 numerator / denominator = fraction
 
-### multiply
-multiplier / multiplicand = product
+### multiplication
+multiplier * multiplicand = product
 
 ### Ω (omega)
 Best case scenario (omega of 1 - linear search)
