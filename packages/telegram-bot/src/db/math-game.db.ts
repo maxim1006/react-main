@@ -34,7 +34,7 @@ export const addMathGameToUser = async ({
     });
 };
 
-export const getCurrentLastMathGame = async <T>({
+export const getTodayLastMathGame = async <T>({
     userName,
 }: {
     userName: string;
@@ -69,14 +69,14 @@ export const getCurrentLastMathGame = async <T>({
     };
 };
 
-export const updateCurrentLastMathGame = async ({
+export const updateTodayLastMathGame = async ({
     userName,
     data,
 }: {
     userName: string;
     data: Partial<MathGameModel>;
 }) => {
-    const game = await getCurrentLastMathGame({ userName });
+    const game = await getTodayLastMathGame({ userName });
     const userDocRef = await DB.doc(`users/${userName}`);
     const userData = await getDataByDocName<UserModel<MathGameModel>>(`users/${userName}`);
     const currentDay = getTodayDateByUserDataDates(userData);

@@ -5,7 +5,7 @@ import {
 import { handleGuessNumberMessage } from '../messages/guess-number.message';
 import { BOT } from '../constants/bot.constants';
 import { CallbackQuery } from 'node-telegram-bot-api';
-import { getUserGameById } from '../db/user.db';
+import { getTodayUserGameById } from '../db/user.db';
 import { MessageEnum } from '../models/message.model';
 import { GuessNumberGameModel } from '../models/guess-number-game.model';
 
@@ -24,7 +24,7 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
         return await handleGuessNumberMessage({ chat, msg: msg.message });
 
     const [gameId, answer] = data?.split(' ');
-    const gameData = await getUserGameById<GuessNumberGameModel>({
+    const gameData = await getTodayUserGameById<GuessNumberGameModel>({
         gameId,
         userName,
         gameType: MessageEnum.GuessNumber,

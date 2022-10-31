@@ -1,5 +1,3 @@
-// это аля симуляция БД
-import { ChatDbModel } from '../models/chat-db.model';
 import path from 'path';
 import admin from 'firebase-admin';
 
@@ -21,5 +19,3 @@ async function DBTest() {
 }
 
 void DBTest();
-
-export const CHATS_DB: Record<string, ChatDbModel> = {};

@@ -6,8 +6,8 @@ import { HAPPY_EMOJI, SAD_EMOJI } from '../constants/emoji.constants';
 import { SEND_MESSAGE_OPTIONS_TRY_AGAIN } from '../constants/message-options.constants';
 import {
     addMathGameToUser,
-    getCurrentLastMathGame,
-    updateCurrentLastMathGame,
+    getTodayLastMathGame,
+    updateTodayLastMathGame,
 } from '../db/math-game.db';
 
 export const handleMathGameTaskMessages = async ({
@@ -35,7 +35,7 @@ export const handleMathGameResultMessages = async ({
 }: MessageBaseModel) => {
     if (!chat.username) return console.error('handleMathGameResultMessages no chat.username error');
 
-    const game = await getCurrentLastMathGame({ userName: chat.username });
+    const game = await getTodayLastMathGame({ userName: chat.username });
 
     if (!game) return console.error('handleMathGameResultMessages no game error');
 
@@ -49,7 +49,7 @@ export const handleMathGameResultMessages = async ({
     const msgAnswer = Number(msg?.text);
     const isCorrect = task.result === msgAnswer;
 
-    await updateCurrentLastMathGame({
+    await updateTodayLastMathGame({
         userName: chat.username,
         data: {
             answer: {

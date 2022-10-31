@@ -50,7 +50,7 @@ export const getUserMode = async ({
     return userData.mode;
 };
 
-export const getUserGameById = async <T>({
+export const getTodayUserGameById = async <T>({
     userName,
     gameType,
     gameId,
