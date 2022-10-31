@@ -4,6 +4,7 @@ export interface MathGameModel {
     name: MathGamesEnum;
     task: MathGameTaskModel;
     answer?: MathGameAnswerModel;
+    timestamp: number;
 }
 
 export interface MathGameTaskModel {

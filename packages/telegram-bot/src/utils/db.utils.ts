@@ -1,14 +1,7 @@
-import { CHATS_DB, DB } from '../db/db';
-import { Chat } from 'node-telegram-bot-api';
+import { DB } from '../db/db';
 import { DocumentData } from '@google-cloud/firestore';
 import { firestore } from 'firebase-admin';
 import DocumentReference = firestore.DocumentReference;
-
-export const clearDB = (chat: Chat) =>
-    (CHATS_DB[chat.id] = {
-        type: null,
-        value: null,
-    });
 
 export const setDBDoc = async <T = { [x: string]: any }>(
     doc: DocumentReference<DocumentData>,

@@ -17,6 +17,7 @@ export class MathGameModule {
         return {
             name,
             task,
+            timestamp: Date.now(),
         };
     }
 
@@ -67,8 +68,8 @@ export class MathGameModule {
         let fraction = 0.1;
 
         while ((fraction | 0) !== fraction) {
-            numerator = getRandomInteger(1, MAX_DIVISION_INTEGER);
-            denominator = getRandomInteger(1, MAX_DIVISION_INTEGER);
+            numerator = getRandomInteger(2, MAX_DIVISION_INTEGER);
+            denominator = getRandomInteger(2, MAX_DIVISION_INTEGER);
 
             fraction = numerator / denominator;
         }

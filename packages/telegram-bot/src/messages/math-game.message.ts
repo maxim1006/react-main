@@ -1,19 +1,24 @@
 import { BOT } from '../constants/bot.constants';
-import { CHATS_DB } from '../db/db';
 import { MATH_GAMES_SIGN_MAP } from '../constants/math-game.constants';
 import { MathGameModule } from '../modules/math-game.module';
-import { MessageBaseModel, MessageEnum } from '../models/message.model';
+import { MessageBaseModel } from '../models/message.model';
 import { HAPPY_EMOJI, SAD_EMOJI } from '../constants/emoji.constants';
 import { SEND_MESSAGE_OPTIONS_TRY_AGAIN } from '../constants/message-options.constants';
-import { MathGameModel } from '../models/math-game.model';
+import {
+    addMathGameToUser,
+    getCurrentLastMathGame,
+    updateCurrentLastMathGame,
+} from '../db/math-game.db';
 
-export const handleMathGameTaskMessages = async ({ chat: { id: chatId } }: MessageBaseModel) => {
+export const handleMathGameTaskMessages = async ({
+    chat,
+    chat: { id: chatId },
+}: MessageBaseModel) => {
     const game = new MathGameModule().getRandomTask();
 
-    CHATS_DB[chatId] = {
-        type: MessageEnum.MathGame,
-        value: game,
-    };
+    if (!chat.username) return console.error('handleMathGameTaskMessages chat.username error');
+
+    await addMathGameToUser({ userName: chat.username, game });
 
     return await BOT.sendMessage(
         chatId,
@@ -24,11 +29,17 @@ export const handleMathGameTaskMessages = async ({ chat: { id: chatId } }: Messa
 };
 
 export const handleMathGameResultMessages = async ({
+    chat,
     chat: { id: chatId },
     msg,
 }: MessageBaseModel) => {
-    const game = CHATS_DB[chatId].value as MathGameModel;
-    const { task, answer } = game;
+    if (!chat.username) return console.error('handleMathGameResultMessages no chat.username error');
+
+    const game = await getCurrentLastMathGame({ userName: chat.username });
+
+    if (!game) return console.error('handleMathGameResultMessages no game error');
+
+    const { task, answer } = game.data;
 
     if (answer)
         return await BOT.sendMessage(chatId, `Уже отвечал на этот вопрос, нажми "Играть еще"`);
@@ -38,10 +49,15 @@ export const handleMathGameResultMessages = async ({
     const msgAnswer = Number(msg?.text);
     const isCorrect = task.result === msgAnswer;
 
-    game.answer = {
-        isCorrect,
-        value: msgAnswer,
-    };
+    await updateCurrentLastMathGame({
+        userName: chat.username,
+        data: {
+            answer: {
+                isCorrect,
+                value: msgAnswer,
+            },
+        },
+    });
 
     return sendCbMessage({
         chatId,

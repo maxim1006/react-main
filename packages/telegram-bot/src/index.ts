@@ -27,16 +27,19 @@ async function main() {
 
         if (!userName) return console.error('Alarm ghost in town!!!');
 
-        // создаю пользователя (с проверкой на существование)
-        await setUser({ userName, firstName: msg?.from?.first_name });
+        const mode = text as MessageEnum;
 
         // обработка стартовых messages
-        if (MESSAGE_MAP[text as MessageEnum])
+        if (MESSAGE_MAP[mode]) {
+            // создаю пользователя (с проверкой на существование)
+            await setUser({ userName, firstName: msg?.from?.first_name, mode });
             return await MESSAGE_MAP[text as MessageEnum]({ chat, msg });
+        }
 
         // обработка messages в ходе игры
-        const mode = await getUserMode({ userName });
-        if (mode === MessageEnum.MathGame) return await handleMathGameResultMessages({ chat, msg });
+        const currentMode = await getUserMode({ userName });
+        if (currentMode === MessageEnum.MathGame)
+            return await handleMathGameResultMessages({ chat, msg });
 
         return await handleUnknownCommandsMessages({ chatId });
     });
@@ -55,7 +58,6 @@ async function main() {
         const mode = await getUserMode({ userName });
 
         if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
-
         if (mode === MessageEnum.MathGame) return await handleMathGameTaskMessages({ chat });
 
         return await handleUnknownQueryCallbacksMessages({ chatId });
