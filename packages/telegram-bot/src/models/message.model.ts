@@ -10,4 +10,5 @@ export enum MessageEnum {
     Info = '/info',
     GuessNumber = '/guess_number',
     MathGame = '/math_game',
+    Stats = '/stats',
 }

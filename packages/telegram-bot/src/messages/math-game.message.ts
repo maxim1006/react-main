@@ -1,14 +1,12 @@
 import { BOT } from '../constants/bot.constants';
 import { MATH_GAMES_SIGN_MAP } from '../constants/math-game.constants';
 import { MathGameModule } from '../modules/math-game.module';
-import { MessageBaseModel } from '../models/message.model';
+import { MessageBaseModel, MessageEnum } from '../models/message.model';
 import { HAPPY_EMOJI, SAD_EMOJI } from '../constants/emoji.constants';
 import { SEND_MESSAGE_OPTIONS_TRY_AGAIN } from '../constants/message-options.constants';
-import {
-    addMathGameToUser,
-    getTodayLastMathGame,
-    updateTodayLastMathGame,
-} from '../db/math-game.db';
+import { getTodayLastMathGame, updateTodayLastMathGame } from '../db/math-game.db';
+import { getTodayUserGameStatsByGameType } from '../db/user.db';
+import { addTodayGameToUser } from '../db/game.db';
 
 export const handleMathGameTaskMessages = async ({
     chat,
@@ -18,7 +16,7 @@ export const handleMathGameTaskMessages = async ({
 
     if (!chat.username) return console.error('handleMathGameTaskMessages chat.username error');
 
-    await addMathGameToUser({ userName: chat.username, game });
+    await addTodayGameToUser({ gameType: MessageEnum.MathGame, userName: chat.username, game });
 
     return await BOT.sendMessage(
         chatId,
@@ -33,9 +31,11 @@ export const handleMathGameResultMessages = async ({
     chat: { id: chatId },
     msg,
 }: MessageBaseModel) => {
-    if (!chat.username) return console.error('handleMathGameResultMessages no chat.username error');
+    const userName = chat.username;
 
-    const game = await getTodayLastMathGame({ userName: chat.username });
+    if (!userName) return console.error('handleMathGameResultMessages no userName error');
+
+    const game = await getTodayLastMathGame({ userName });
 
     if (!game) return console.error('handleMathGameResultMessages no game error');
 
@@ -50,7 +50,7 @@ export const handleMathGameResultMessages = async ({
     const isCorrect = task.result === msgAnswer;
 
     await updateTodayLastMathGame({
-        userName: chat.username,
+        userName,
         data: {
             answer: {
                 isCorrect,
@@ -59,11 +59,19 @@ export const handleMathGameResultMessages = async ({
         },
     });
 
+    const stats = await getTodayUserGameStatsByGameType({
+        gameType: MessageEnum.MathGame,
+        userName,
+    });
+
     return sendCbMessage({
         chatId,
         emoji: isCorrect ? HAPPY_EMOJI : SAD_EMOJI,
         text: isCorrect
-            ? `Молодец! <b>${Number(msg?.text)}</b> это правильный ответ`
+            ? `
+Молодец! <b>${Number(msg?.text)}</b> это правильный ответ
+Сегодня сыграно ${stats.all}, правильных ответов: ${stats.correct}
+              `
             : `Неверно, правильный ответ <b>${task.result}</b>`,
     });
 };

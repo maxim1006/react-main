@@ -3,30 +3,32 @@ import { getDataByDocName, setDBDoc } from '../utils/db.utils';
 import { UserModel } from '../models/user.model';
 import { getTodayDateByUserDataDates } from '../utils/dates.utils';
 import * as crypto from 'crypto';
-import { GuessNumberGameModel } from '../models/guess-number-game.model';
 import { MessageEnum } from '../models/message.model';
+import { GameModel } from '../models/game.model';
 
-export const addGuessNumberGameToUser = async ({
+export const addTodayGameToUser = async ({
     userName,
+    gameType,
     game,
 }: {
     userName: string;
-    game: GuessNumberGameModel;
+    gameType: MessageEnum;
+    game: GameModel;
 }) => {
     const userDocRef = await DB.doc(`users/${userName}`);
-    const userData = await getDataByDocName<UserModel<GuessNumberGameModel>>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
-    if (!currentDay) return console.error('addGuessNumberGameToUser currentDay error');
+    if (!currentDay) return console.error('addTodayGameToUser currentDay error');
 
     const gameId = crypto.randomUUID();
 
-    await setDBDoc<UserModel<GuessNumberGameModel>>(userDocRef, {
+    await setDBDoc<UserModel>(userDocRef, {
         dates: {
             [currentDay]: {
                 data: {
                     games: {
-                        [MessageEnum.GuessNumber]: {
+                        [gameType]: {
                             [gameId]: game,
                         },
                     },

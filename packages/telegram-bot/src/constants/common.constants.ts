@@ -1,8 +1,11 @@
+import { MessageEnum } from '../models/message.model';
+
 export const COMMANDS = {
-    '/start': 'приветствие',
-    '/math_game': 'математика',
-    '/info': 'необходимая информация',
-    '/guess_number': 'покажет кнопки',
+    [MessageEnum.Start]: 'приветствие',
+    [MessageEnum.MathGame]: 'математика',
+    [MessageEnum.GuessNumber]: 'покажет кнопки',
+    [MessageEnum.Stats]: 'статистика игр',
+    [MessageEnum.Info]: 'необходимая информация',
 };
 
 export enum CommonEnum {

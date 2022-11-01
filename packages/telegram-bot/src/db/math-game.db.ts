@@ -3,36 +3,7 @@ import { DB } from './db';
 import { getDataByDocName, setDBDoc } from '../utils/db.utils';
 import { UserModel } from '../models/user.model';
 import { getTodayDateByUserDataDates } from '../utils/dates.utils';
-import * as crypto from 'crypto';
 import { MessageEnum } from '../models/message.model';
-
-export const addMathGameToUser = async ({
-    userName,
-    game,
-}: {
-    userName: string;
-    game: MathGameModel;
-}) => {
-    const userDocRef = await DB.doc(`users/${userName}`);
-    const userData = await getDataByDocName<UserModel<MathGameModel>>(`users/${userName}`);
-    const currentDay = getTodayDateByUserDataDates(userData);
-
-    if (!currentDay) return console.error('addMathGameToUser currentDay error');
-
-    await setDBDoc<UserModel<MathGameModel>>(userDocRef, {
-        dates: {
-            [currentDay]: {
-                data: {
-                    games: {
-                        [MessageEnum.MathGame]: {
-                            [crypto.randomUUID()]: game,
-                        },
-                    },
-                },
-            },
-        },
-    });
-};
 
 export const getTodayLastMathGame = async <T>({
     userName,
@@ -42,7 +13,7 @@ export const getTodayLastMathGame = async <T>({
     gameId: string;
     data: MathGameModel;
 } | void> => {
-    const userData = await getDataByDocName<UserModel<MathGameModel>>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
     const today = getTodayDateByUserDataDates(userData);
 
     if (!userData.dates) return console.error('getCurrentMathGame no userData.dates');
@@ -66,6 +37,9 @@ export const getTodayLastMathGame = async <T>({
     return {
         gameId,
         data,
+    } as {
+        gameId: string;
+        data: MathGameModel;
     };
 };
 
@@ -78,13 +52,13 @@ export const updateTodayLastMathGame = async ({
 }) => {
     const game = await getTodayLastMathGame({ userName });
     const userDocRef = await DB.doc(`users/${userName}`);
-    const userData = await getDataByDocName<UserModel<MathGameModel>>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
     if (!currentDay) return console.error('updateLastMathGame currentDay error');
     if (!game) return console.error('updateLastMathGame no game error');
 
-    await setDBDoc<UserModel<MathGameModel>>(userDocRef, {
+    await setDBDoc<UserModel>(userDocRef, {
         dates: {
             [currentDay]: {
                 data: {

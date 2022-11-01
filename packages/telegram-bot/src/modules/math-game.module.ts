@@ -1,13 +1,12 @@
 import { getRandomInteger } from '../utils/common.utils';
 import {
     MATH_GAMES,
-    MathGamesEnum,
     MAX_DIVISION_INTEGER,
     MAX_MULTIPLICATION_INTEGER,
     MAX_SUBTRACTION_INTEGER,
     MAX_SUM_INTEGER,
 } from '../constants/math-game.constants';
-import { MathGameModel, MathGameTaskModel } from '../models/math-game.model';
+import { MathGameModel, MathGamesEnum, MathGameTaskModel } from '../models/math-game.model';
 
 export class MathGameModule {
     getRandomTask(): MathGameModel {

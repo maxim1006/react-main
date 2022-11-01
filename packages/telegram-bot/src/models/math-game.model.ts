@@ -1,6 +1,6 @@
-import { MathGamesEnum } from '../constants/math-game.constants';
+import { AbstractGameModel } from './abstract-game.model';
 
-export interface MathGameModel {
+export interface MathGameModel extends AbstractGameModel {
     name: MathGamesEnum;
     task: MathGameTaskModel;
     answer?: MathGameAnswerModel;
@@ -16,4 +16,11 @@ export interface MathGameTaskModel {
 export interface MathGameAnswerModel {
     isCorrect?: boolean;
     value?: number;
+}
+
+export enum MathGamesEnum {
+    Sum = 'sum',
+    Subtraction = 'subtraction',
+    Multiplication = 'multiplication',
+    IntegerDivision = 'integerDivision',
 }

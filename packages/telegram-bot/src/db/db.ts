@@ -1,5 +1,7 @@
 import path from 'path';
 import admin from 'firebase-admin';
+import { getUserGameStatsByGameType } from './user.db';
+import { MessageEnum } from '../models/message.model';
 
 const serviceAccount = require(path.resolve(
     __dirname,
@@ -13,6 +15,7 @@ const app = admin.initializeApp({
 export const DB = app.firestore();
 
 async function DBTest() {
+    await getUserGameStatsByGameType({ userName: 'maximprosv', gameType: MessageEnum.MathGame });
     // const userName = 'maximprosv';
     // await setUser({ userName, firstName: 'Max' });
     // await addMathGameToUser({ userName, game: USER_MATH_GAME_EXAMPLE });
