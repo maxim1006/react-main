@@ -120,9 +120,6 @@ export const getUserGameStatsByGameType = async ({
         })
         .join(' ');
 
-    console.log(gamesByMonth);
-    console.log(gamesByMonthStr);
-
     return {
         gamesByMonth,
         gamesByMonthStr,
@@ -135,14 +132,13 @@ export const getTodayUserGameStatsByGameType = async ({
 }: {
     userName: string;
     gameType: MessageEnum;
-}): Promise<{ all: number; correct: number; error: number }> => {
+}): Promise<{ all: number; correct: number }> => {
     const userData = await getDataByDocName<UserModel>(`users/${userName}`);
     const today = getTodayDateByUserDataDates(userData);
 
     const stats = {
         all: 0,
         correct: 0,
-        error: 0,
     };
 
     if (!userData.dates) {
@@ -157,17 +153,10 @@ export const getTodayUserGameStatsByGameType = async ({
 
     const games = userData.dates[today].data?.games[gameType];
 
-    let all = 0,
-        correct = 0;
-
     if (games) {
-        all = Object.keys(games).length;
-        correct = Object.values(games).filter(g => g.answer?.isCorrect).length;
+        stats.all = Object.keys(games).length;
+        stats.correct = Object.values(games).filter(g => g.answer?.isCorrect).length;
     }
 
-    return {
-        all,
-        correct,
-        error: all - correct,
-    };
+    return stats;
 };

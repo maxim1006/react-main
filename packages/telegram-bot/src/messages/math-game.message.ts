@@ -70,7 +70,7 @@ export const handleMathGameResultMessages = async ({
         text: isCorrect
             ? `
 Молодец! <b>${Number(msg?.text)}</b> это правильный ответ
-Сегодня сыграно ${stats.all}, правильных ответов: ${stats.correct}
+Сегодня сыграно <b>${stats.all}</b>, правильных ответов: <b>${stats.correct}</b>
               `
             : `Неверно, правильный ответ <b>${task.result}</b>`,
     });
