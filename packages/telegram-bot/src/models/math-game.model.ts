@@ -8,9 +8,9 @@ export interface MathGameModel extends AbstractGameModel {
 }
 
 export interface MathGameTaskModel {
-    part1: number;
-    part2: number;
-    result: number;
+    part1: number | string;
+    part2: number | string;
+    result: number | string;
 }
 
 export interface MathGameAnswerModel {
@@ -20,7 +20,11 @@ export interface MathGameAnswerModel {
 
 export enum MathGamesEnum {
     Sum = 'sum',
+    SumMeters = 'sumMeters',
+    SumKilos = 'sumKilos',
     Subtraction = 'subtraction',
     Multiplication = 'multiplication',
     IntegerDivision = 'integerDivision',
+    ConvertToGrams = 'convertToGrams',
+    ConvertToKilos = 'convertToKilos',
 }

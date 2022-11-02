@@ -44,7 +44,7 @@ export const getUserMode = async ({
     return userData.mode;
 };
 
-export const getTodayUserGameById = async <T>({
+export const getTodayUserGameById = async <T extends GameModel>({
     firstName,
     gameType,
     gameId,

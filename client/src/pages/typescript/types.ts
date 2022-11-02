@@ -1,16 +1,17 @@
 // extends ничего не расширяет а лишь указывает что данный дженерик должен принимать объект со свойствами от extends
 
-// пример с extends и тут TestTypeA должен экстендить TestTypeC иначе ошибка
-export interface TestTypeA extends TestTypeC {
-    a?: number;
-}
-
+// пример с extends
 interface TestTypeB {
     b?: number;
 }
 
 interface TestTypeC extends TestTypeB {
     c?: number;
+}
+
+// тут TestTypeA должен экстендить TestTypeC иначе ошибка
+export interface TestTypeA extends TestTypeC {
+    a?: number;
 }
 
 class TestTypeClass<T extends TestTypeC> {
@@ -27,7 +28,7 @@ testTypeClass1.cc = { c: 1, b: 1 };
  *
  *
  * */
-// пример с = и тут TestTypeA НЕ должен экстендить TestTypeC
+// пример с = и тут TestTypeAA НЕ должен экстендить TestTypeC
 export interface TestTypeAA {
     a?: number;
 }

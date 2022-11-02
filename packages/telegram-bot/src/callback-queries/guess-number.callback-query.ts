@@ -15,6 +15,7 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     const data = msg.data;
     const firstName = chat?.first_name;
 
+    if (!chat) return console.error('handleGuessNumberCbQuery no chat');
     if (!chatId) return console.error('handleGuessNumberCbQuery no chatId');
     if (!firstName) return console.error('handleGuessNumberCbQuery no firstName');
     if (!data) return console.error('handleGuessNumberCbQuery no message data');
@@ -28,6 +29,8 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
         firstName,
         gameType: MessageEnum.GuessNumber,
     });
+
+    if (!gameData) return console.error('handleGuessNumberCbQuery gameData error');
 
     if (gameData?.task === Number(answer))
         return await BOT.sendMessage(

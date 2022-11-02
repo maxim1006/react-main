@@ -1,5 +1,4 @@
 import { BOT } from '../constants/bot.constants';
-import { MATH_GAMES_SIGN_MAP } from '../constants/math-game.constants';
 import { MathGameModule } from '../modules/math-game.module';
 import { MessageBaseModel, MessageEnum } from '../models/message.model';
 import { HAPPY_EMOJI, SAD_EMOJI } from '../constants/emoji.constants';
@@ -7,6 +6,7 @@ import { SEND_MESSAGE_OPTIONS_TRY_AGAIN } from '../constants/message-options.con
 import { getTodayLastMathGame, updateTodayLastMathGame } from '../db/math-game.db';
 import { getTodayUserGameStatsByGameType } from '../db/user.db';
 import { addTodayGameToUser } from '../db/game.db';
+import { getMathMessageData } from '../utils/math/math-message.utils';
 
 export const handleMathGameTaskMessages = async ({
     chat,
@@ -18,12 +18,7 @@ export const handleMathGameTaskMessages = async ({
 
     await addTodayGameToUser({ gameType: MessageEnum.MathGame, firstName: chat.first_name, game });
 
-    return await BOT.sendMessage(
-        chatId,
-        `Пожалуйста реши пример: ${game.task.part1} ${MATH_GAMES_SIGN_MAP[game.name]} ${
-            game.task.part2
-        } = `
-    );
+    return await BOT.sendMessage(chatId, getMathMessageData({ game }).message);
 };
 
 export const handleMathGameResultMessages = async ({
@@ -44,17 +39,17 @@ export const handleMathGameResultMessages = async ({
     if (answer)
         return await BOT.sendMessage(chatId, `Уже отвечал на этот вопрос, нажми "Играть еще"`);
 
-    if (!msg?.text) return await BOT.sendMessage(chatId, `Пожалуйста введи числовой ответ`);
+    if (!msg?.text) return await BOT.sendMessage(chatId, `Пожалуйста введи ответ`);
 
-    const msgAnswer = Number(msg?.text);
-    const isCorrect = task.result === msgAnswer;
+    const handledUserAnswer = getMathMessageData({ game: game.data, userAnswer: msg.text }).answer;
+    const isCorrect = task.result === handledUserAnswer;
 
     await updateTodayLastMathGame({
         firstName,
         data: {
             answer: {
                 isCorrect,
-                value: msgAnswer,
+                value: handledUserAnswer,
             },
         },
     });
@@ -69,7 +64,7 @@ export const handleMathGameResultMessages = async ({
         emoji: isCorrect ? HAPPY_EMOJI : SAD_EMOJI,
         text: isCorrect
             ? `
-Молодец! <b>${Number(msg?.text)}</b> это правильный ответ
+Молодец! <b>${msg.text}</b> это правильный ответ
 Сегодня сыграно <b>${stats.all}</b>, правильных ответов: <b>${stats.correct}</b>
               `
             : `Неверно, правильный ответ <b>${task.result}</b>`,

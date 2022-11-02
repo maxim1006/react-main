@@ -1,6 +1,6 @@
 import { getRandomInteger } from '../utils/common.utils';
 import {
-    MATH_GAMES,
+    MATH_GAMES_SIGN_MAP,
     MAX_DIVISION_INTEGER,
     MAX_MULTIPLICATION_INTEGER,
     MAX_SUBTRACTION_INTEGER,
@@ -10,7 +10,11 @@ import { MathGameModel, MathGamesEnum, MathGameTaskModel } from '../models/math-
 
 export class MathGameModule {
     getRandomTask(): MathGameModel {
-        const name = MATH_GAMES[getRandomInteger(0, MATH_GAMES.length - 1)];
+        // @ts-ignore
+        const name = Object.keys(MATH_GAMES_SIGN_MAP)[
+            getRandomInteger(0, Object.keys(MATH_GAMES_SIGN_MAP).length - 1)
+        ] as MathGamesEnum;
+
         const task = this[name]();
 
         return {
@@ -29,6 +33,34 @@ export class MathGameModule {
             part1: term1,
             part2: term2,
             result: sum,
+        };
+    }
+
+    [MathGamesEnum.SumMeters](): MathGameTaskModel {
+        const term1 = getRandomInteger(0, 3);
+        const term11 = getRandomInteger(1, 20);
+        const term2 = getRandomInteger(0, 3);
+        const term22 = getRandomInteger(1, 20);
+        const sum = term1 * 100 + term11 + term2 * 100 + term22;
+
+        return {
+            part1: `${term1}м${term11}см`,
+            part2: `${term2}м${term22}см`,
+            result: sum / 100,
+        };
+    }
+
+    [MathGamesEnum.SumKilos](): MathGameTaskModel {
+        const term1 = getRandomInteger(0, 3);
+        const term11 = +String(getRandomInteger(1, 10)).padEnd(getRandomInteger(2, 3), '0');
+        const term2 = getRandomInteger(0, 3);
+        const term22 = +String(getRandomInteger(1, 10)).padEnd(getRandomInteger(2, 3), '0');
+        const sum = term1 * 1000 + term11 + term2 * 1000 + term22;
+
+        return {
+            part1: `${term1}кг${term11}г`,
+            part2: `${term2}кг${term22}г`,
+            result: sum / 1000,
         };
     }
 
@@ -77,6 +109,27 @@ export class MathGameModule {
             part1: numerator,
             part2: denominator,
             result: fraction,
+        };
+    }
+
+    [MathGamesEnum.ConvertToGrams](): MathGameTaskModel {
+        const term1 = getRandomInteger(0, 3);
+        const term11 = +String(getRandomInteger(1, 10)).padEnd(getRandomInteger(2, 3), '0');
+
+        return {
+            part1: `${term1}кг${term11}г`,
+            part2: '',
+            result: term1 * 1000 + term11,
+        };
+    }
+
+    [MathGamesEnum.ConvertToKilos](): MathGameTaskModel {
+        const term1 = getRandomInteger(100, 5000);
+
+        return {
+            part1: `${term1}г`,
+            part2: '',
+            result: term1 / 1000,
         };
     }
 

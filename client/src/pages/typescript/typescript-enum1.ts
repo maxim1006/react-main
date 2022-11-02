@@ -37,7 +37,7 @@ export type ViewType = ViewToggleModel | ViewRadioModel;
 // Тут показываю пример как сделать несколько моделей объеидняющий type и в зависимости от этого наплоидить интерфейсов,
 // аля как в редюсерах
 // eslint-disable-next-line
-function trigger(model: ViewType) {
+function foo(model: ViewType) {
     let prop;
 
     switch (model.type) {
@@ -57,3 +57,17 @@ function trigger(model: ViewType) {
 
     console.warn(prop);
 }
+
+// вот пример использования тут обращаю внимание что ViewType могу использовать как угодно, чуть дальше более интересный пример
+const viewToggleModel: ViewToggleModel = { toggleProp: ViewEnum.Toggle, type: ViewEnum.Toggle };
+const viewRadioModel: ViewRadioModel = { radioProp: ViewEnum.Radio, type: ViewEnum.Radio };
+
+let f = foo(viewToggleModel);
+let f1 = foo(viewRadioModel);
+
+function foo1<T extends ViewType>(model: T) {
+    return model;
+}
+
+let f11 = foo1(viewToggleModel);
+let f111 = foo1(viewRadioModel);

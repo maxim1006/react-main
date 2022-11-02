@@ -5,8 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev:ts": "tsc-watch -p ./ --outDir ./dist --onSuccess \"node ./dist/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
-        "dev:js": "nodemon index.js one two",
-        "build:ts": "nodemon index.js one two",
+        "dev:js": "nodemon index.js",
         "start": "node dist/index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
