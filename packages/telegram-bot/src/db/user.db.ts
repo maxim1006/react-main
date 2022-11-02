@@ -104,13 +104,14 @@ export const getUserGameStatsByGameType = async ({
             return `<b>${month}</b>: \n ${Object.entries(value)
                 .map(
                     ([dateDay, value]) =>
-                        `${new Date(dateDay).toLocaleDateString()}: всего: <b>${
+                        `
+${new Date(dateDay).toLocaleDateString()}: всего: <b>${
                             Object.keys(value).length
                         }</b>, правильных ответов: <b>${
                             Object.values(value).filter(i => i.answer?.isCorrect).length
-                        }</b>`
+                        }</b>\n`
                 )
-                .toString()} \n`;
+                .join('')}`;
         })
         .join(' ');
 

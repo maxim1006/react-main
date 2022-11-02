@@ -1,6 +1,5 @@
 import { getRandomInteger } from '../utils/common.utils';
 import {
-    MATH_GAMES_SIGN_MAP,
     MAX_DIVISION_INTEGER,
     MAX_MULTIPLICATION_INTEGER,
     MAX_SUBTRACTION_INTEGER,
@@ -10,10 +9,24 @@ import { MathGameModel, MathGamesEnum, MathGameTaskModel } from '../models/math-
 
 export class MathGameModule {
     getRandomTask(): MathGameModel {
-        // @ts-ignore
-        const name = Object.keys(MATH_GAMES_SIGN_MAP)[
-            getRandomInteger(0, Object.keys(MATH_GAMES_SIGN_MAP).length - 1)
-        ] as MathGamesEnum;
+        const arr = [
+            MathGamesEnum.Sum,
+            MathGamesEnum.SumMeters,
+            MathGamesEnum.SumMeters,
+            MathGamesEnum.SumKilos,
+            MathGamesEnum.SumKilos,
+            MathGamesEnum.Subtraction,
+            MathGamesEnum.Subtraction,
+            MathGamesEnum.Multiplication,
+            MathGamesEnum.IntegerDivision,
+            MathGamesEnum.ConvertToGrams,
+            MathGamesEnum.ConvertToGrams,
+            MathGamesEnum.ConvertToGrams,
+            MathGamesEnum.ConvertToKilos,
+            MathGamesEnum.ConvertToKilos,
+            MathGamesEnum.ConvertToKilos,
+        ];
+        const name = arr[getRandomInteger(0, arr.length - 1)] as MathGamesEnum;
 
         const task = this[name]();
 
