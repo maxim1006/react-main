@@ -13,20 +13,19 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     const chat = msg.message?.chat;
     const chatId = chat?.id;
     const data = msg.data;
-    const userName = chat?.username;
+    const firstName = chat?.first_name;
 
     if (!chatId) return console.error('handleGuessNumberCbQuery no chatId');
-    if (!userName) return console.error('handleGuessNumberCbQuery no userName');
+    if (!firstName) return console.error('handleGuessNumberCbQuery no firstName');
     if (!data) return console.error('handleGuessNumberCbQuery no message data');
 
-    console.log({ data });
     if (data === CallbackGuessNumberDataEnum.GuessNumberAgain)
         return await handleGuessNumberMessage({ chat, msg: msg.message });
 
     const [gameId, answer] = data?.split(' ');
     const gameData = await getTodayUserGameById<GuessNumberGameModel>({
         gameId,
-        userName,
+        firstName,
         gameType: MessageEnum.GuessNumber,
     });
 

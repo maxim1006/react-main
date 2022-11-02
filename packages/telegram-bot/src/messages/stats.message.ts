@@ -3,10 +3,10 @@ import { MessageBaseModel, MessageEnum } from '../models/message.model';
 import { getUserGameStatsByGameType } from '../db/user.db';
 
 export const handleStatsMessages = async ({ chat, msg }: MessageBaseModel) => {
-    if (!chat.username) return console.error('handleStatsMessages username error');
+    if (!chat.first_name) return console.error('handleStatsMessages firstName error');
 
     const statsData = await getUserGameStatsByGameType({
-        userName: chat.username,
+        firstName: chat.first_name,
         gameType: MessageEnum.MathGame,
     });
 

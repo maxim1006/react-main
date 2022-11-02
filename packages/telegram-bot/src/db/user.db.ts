@@ -5,28 +5,22 @@ import { DB } from './db';
 import { MessageEnum } from '../models/message.model';
 import { GameModel } from '../models/game.model';
 
-export const setUser = async ({
-    firstName,
-    userName,
-    mode,
-}: {
-    firstName?: string;
-    userName: string;
-    mode: MessageEnum;
-}) => {
-    const userDocRef = await DB.doc(`users/${userName}`);
+export const setUser = async ({ firstName, mode }: { firstName?: string; mode: MessageEnum }) => {
+    const userDocRef = await DB.doc(`users/${firstName}`);
 
     await setDBDoc<UserModel>(userDocRef, {
         firstName,
         mode,
     });
 
-    await addUserDate({ userName });
+    if (!firstName) return console.error('setUser firstName error');
+
+    await addUserDate({ firstName });
 };
 
-export const addUserDate = async ({ userName }: { userName: string }) => {
-    const userDocRef = await DB.doc(`users/${userName}`);
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+export const addUserDate = async ({ firstName }: { firstName: string }) => {
+    const userDocRef = await DB.doc(`users/${firstName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
 
     if (!getTodayDateByUserDataDates(userData))
         await setDBDoc<UserModel>(userDocRef, {
@@ -41,25 +35,25 @@ export const addUserDate = async ({ userName }: { userName: string }) => {
 };
 
 export const getUserMode = async ({
-    userName,
+    firstName,
 }: {
-    userName: string;
+    firstName: string;
 }): Promise<MessageEnum | void> => {
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
 
     return userData.mode;
 };
 
 export const getTodayUserGameById = async <T>({
-    userName,
+    firstName,
     gameType,
     gameId,
 }: {
-    userName: string;
+    firstName: string;
     gameType: MessageEnum;
     gameId: string;
 }): Promise<T | void> => {
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const today = getTodayDateByUserDataDates(userData);
 
     if (!userData.dates) return console.error('getUserGameById no userData.dates');
@@ -69,15 +63,15 @@ export const getTodayUserGameById = async <T>({
 };
 
 export const getUserGameStatsByGameType = async ({
-    userName,
+    firstName,
     gameType,
     period = 'year',
 }: {
-    userName: string;
+    firstName: string;
     gameType: MessageEnum;
     period?: 'year';
 }) => {
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const gamesByMonth: Record<string, Record<string, Record<string, Partial<GameModel>>>> = {};
     const months = [
         'January',
@@ -127,13 +121,13 @@ export const getUserGameStatsByGameType = async ({
 };
 
 export const getTodayUserGameStatsByGameType = async ({
-    userName,
+    firstName,
     gameType,
 }: {
-    userName: string;
+    firstName: string;
     gameType: MessageEnum;
 }): Promise<{ all: number; correct: number }> => {
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const today = getTodayDateByUserDataDates(userData);
 
     const stats = {

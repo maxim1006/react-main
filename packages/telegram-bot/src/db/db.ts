@@ -15,10 +15,10 @@ const app = admin.initializeApp({
 export const DB = app.firestore();
 
 async function DBTest() {
-    await getUserGameStatsByGameType({ userName: 'maximprosv', gameType: MessageEnum.MathGame });
-    // const userName = 'maximprosv';
-    // await setUser({ userName, firstName: 'Max' });
-    // await addMathGameToUser({ userName, game: USER_MATH_GAME_EXAMPLE });
+    await getUserGameStatsByGameType({ firstName: 'maximprosv', gameType: MessageEnum.MathGame });
+    // const firstName = 'maximprosv';
+    // await setUser({ firstName });
+    // await addMathGameToUser({ firstName, game: USER_MATH_GAME_EXAMPLE });
 }
 
 void DBTest();

@@ -23,21 +23,21 @@ async function main() {
             chat: { id: chatId },
             text,
         } = msg;
-        const userName = msg?.from?.username;
+        const firstName = chat.first_name;
 
-        if (!userName) return console.error('Alarm ghost in town!!!');
+        if (!firstName) return console.error('BotEventsEnum.Message Alarm ghost in town!!!');
 
         const mode = text as MessageEnum;
 
         // обработка стартовых messages
         if (MESSAGE_MAP[mode]) {
             // создаю пользователя (с проверкой на существование)
-            await setUser({ userName, firstName: msg?.from?.first_name, mode });
+            await setUser({ firstName, mode });
             return await MESSAGE_MAP[text as MessageEnum]({ chat, msg });
         }
 
         // обработка messages в ходе игры
-        const currentMode = await getUserMode({ userName });
+        const currentMode = await getUserMode({ firstName });
         if (currentMode === MessageEnum.MathGame)
             return await handleMathGameResultMessages({ chat, msg });
 
@@ -51,11 +51,11 @@ async function main() {
         if (!msg.message) return console.error('No chatMessage in callback_query');
 
         const chat = msg.message.chat;
-        const userName = msg?.from?.username;
+        const firstName = chat.first_name;
 
-        if (!userName) return console.error('BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
+        if (!firstName) return console.error('BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
 
-        const mode = await getUserMode({ userName });
+        const mode = await getUserMode({ firstName });
 
         if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
         if (mode === MessageEnum.MathGame) return await handleMathGameTaskMessages({ chat });

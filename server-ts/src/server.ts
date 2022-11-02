@@ -6,7 +6,7 @@ import shouldCompress from './helpers/server.helper';
 import cors from 'cors';
 
 const app = express(),
-    port = process.env.NODEJS_PORT || 3001,
+    port = process.env.NODEJS_PORT || 3005,
     root = '/api/v1/',
     isProduction = process.env.NODE_ENV === 'production';
 
@@ -18,7 +18,7 @@ if (!isProduction) {
 // Add your mock router here
 const appRouters = [
     {
-        url: 'user',
+        url: 'users',
         middleware: routers.userRouter,
     },
 ];

@@ -6,14 +6,14 @@ import { getTodayDateByUserDataDates } from '../utils/dates.utils';
 import { MessageEnum } from '../models/message.model';
 
 export const getTodayLastMathGame = async <T>({
-    userName,
+    firstName,
 }: {
-    userName: string;
+    firstName: string;
 }): Promise<{
     gameId: string;
     data: MathGameModel;
 } | void> => {
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const today = getTodayDateByUserDataDates(userData);
 
     if (!userData.dates) return console.error('getCurrentMathGame no userData.dates');
@@ -44,15 +44,15 @@ export const getTodayLastMathGame = async <T>({
 };
 
 export const updateTodayLastMathGame = async ({
-    userName,
+    firstName,
     data,
 }: {
-    userName: string;
+    firstName: string;
     data: Partial<MathGameModel>;
 }) => {
-    const game = await getTodayLastMathGame({ userName });
-    const userDocRef = await DB.doc(`users/${userName}`);
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const game = await getTodayLastMathGame({ firstName });
+    const userDocRef = await DB.doc(`users/${firstName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
     if (!currentDay) return console.error('updateLastMathGame currentDay error');

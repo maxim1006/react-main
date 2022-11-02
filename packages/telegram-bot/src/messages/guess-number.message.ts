@@ -4,14 +4,14 @@ import { MessageBaseModel, MessageEnum } from '../models/message.model';
 import { addTodayGameToUser } from '../db/game.db';
 
 export const handleGuessNumberMessage = async ({ msg }: MessageBaseModel) => {
-    const userName = msg?.chat?.username;
+    const firstName = msg?.chat?.first_name;
     const chatId = msg?.chat.id;
 
     if (!chatId) return console.error('handleGuessNumberMessage no chatId');
-    if (!userName) return console.error('handleGuessNumberMessage Alarm ghost in town!!!');
+    if (!firstName) return console.error('handleGuessNumberMessage Alarm ghost in town!!!');
 
     const data = await addTodayGameToUser({
-        userName,
+        firstName,
         gameType: MessageEnum.GuessNumber,
         game: { task: getRandomInteger(), timestamp: Date.now() },
     });

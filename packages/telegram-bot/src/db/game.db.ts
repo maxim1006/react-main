@@ -7,16 +7,16 @@ import { MessageEnum } from '../models/message.model';
 import { GameModel } from '../models/game.model';
 
 export const addTodayGameToUser = async ({
-    userName,
+    firstName,
     gameType,
     game,
 }: {
-    userName: string;
+    firstName: string;
     gameType: MessageEnum;
     game: GameModel;
 }) => {
-    const userDocRef = await DB.doc(`users/${userName}`);
-    const userData = await getDataByDocName<UserModel>(`users/${userName}`);
+    const userDocRef = await DB.doc(`users/${firstName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
     if (!currentDay) return console.error('addTodayGameToUser currentDay error');
