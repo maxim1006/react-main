@@ -33,17 +33,24 @@ export const getMathMessageData = ({
             break;
         }
 
+        case MathGamesEnum.ConvertToCentimeters: {
+            res.message = `Переведи в сантиметры: ${game.task.part1} ${
+                MATH_GAMES_SIGN_MAP[game.name]
+            } ${game.task.part2}, ответ напиши в см (например: 100см)`;
+            break;
+        }
+
         case MathGamesEnum.SumMeters: {
             res.message = `Пожалуйста реши пример: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
-            } ${game.task.part2}, ответ напиши в м и см (например: 100см)`;
+            } ${game.task.part2}, ответ напиши в м и см (например: 1м10см)`;
             break;
         }
 
         case MathGamesEnum.SumKilos: {
             res.message = `Пожалуйста реши пример: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
-            } ${game.task.part2}, ответ напиши в кг и г (например: 1000г)`;
+            } ${game.task.part2}, ответ напиши в кг и г (например: 1кг100г)`;
 
             const groups = userAnswer?.match(/(\d+)/g);
 

@@ -14,4 +14,5 @@ export const MATH_GAMES_SIGN_MAP = {
     [MathGamesEnum.IntegerDivision]: '/',
     [MathGamesEnum.ConvertToGrams]: '=',
     [MathGamesEnum.ConvertToKilos]: '=',
+    [MathGamesEnum.ConvertToCentimeters]: '=',
 };

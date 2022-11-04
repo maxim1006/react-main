@@ -8,4 +8,9 @@
 
 ### pm2 для бг нод процессов
 [pm2](https://www.npmjs.com/package/pm2)
- 
+
+### установка firebase
+1) npm i firebase-tools -D
+2) node_modules/.bin/firebase login // вот так прикольно чтобы в глобальные пакеты не лезть а только локально
+если нужно (node_modules/.bin/firebase login:add __account-email__, node_modules/.bin/firebase login:use  __account-email__)
+3) node_modules/.bin/firebase init functions

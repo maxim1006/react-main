@@ -11,7 +11,6 @@
         "prod:list": "pm2 list",
         "prod:stop": "pm2 stop index",
         "prod:monit": "pm2 monit",
-        "i": "firebase hosting:disable",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {

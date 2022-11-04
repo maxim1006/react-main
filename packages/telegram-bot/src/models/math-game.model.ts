@@ -20,11 +20,12 @@ export interface MathGameAnswerModel {
 
 export enum MathGamesEnum {
     Sum = 'sum',
-    SumMeters = 'sumMeters',
-    SumKilos = 'sumKilos',
     Subtraction = 'subtraction',
     Multiplication = 'multiplication',
     IntegerDivision = 'integerDivision',
+    SumMeters = 'sumMeters',
+    SumKilos = 'sumKilos',
     ConvertToGrams = 'convertToGrams',
     ConvertToKilos = 'convertToKilos',
+    ConvertToCentimeters = 'convertToCentimeters',
 }

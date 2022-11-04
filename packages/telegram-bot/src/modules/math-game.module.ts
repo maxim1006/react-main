@@ -11,20 +11,19 @@ export class MathGameModule {
     getRandomTask(): MathGameModel {
         const arr = [
             MathGamesEnum.Sum,
-            MathGamesEnum.SumMeters,
-            MathGamesEnum.SumMeters,
-            MathGamesEnum.SumKilos,
-            MathGamesEnum.SumKilos,
-            MathGamesEnum.Subtraction,
             MathGamesEnum.Subtraction,
             MathGamesEnum.Multiplication,
             MathGamesEnum.IntegerDivision,
-            MathGamesEnum.ConvertToGrams,
+            MathGamesEnum.SumMeters,
+            MathGamesEnum.SumMeters,
+            MathGamesEnum.SumKilos,
+            MathGamesEnum.SumKilos,
             MathGamesEnum.ConvertToGrams,
             MathGamesEnum.ConvertToGrams,
             MathGamesEnum.ConvertToKilos,
             MathGamesEnum.ConvertToKilos,
-            MathGamesEnum.ConvertToKilos,
+            MathGamesEnum.ConvertToCentimeters,
+            MathGamesEnum.ConvertToCentimeters,
         ];
         const name = arr[getRandomInteger(0, arr.length - 1)] as MathGamesEnum;
 
@@ -143,6 +142,17 @@ export class MathGameModule {
             part1: `${term1}г`,
             part2: '',
             result: term1 / 1000,
+        };
+    }
+
+    [MathGamesEnum.ConvertToCentimeters](): MathGameTaskModel {
+        const term1 = getRandomInteger(1, 9);
+        const term11 = getRandomInteger(0, 99);
+
+        return {
+            part1: `${term1}м${term11}см`,
+            part2: '',
+            result: term1 * 100 + term11,
         };
     }
 
