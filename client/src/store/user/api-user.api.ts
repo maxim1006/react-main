@@ -10,13 +10,13 @@ export const apiUserApi = commonApi.injectEndpoints({
     endpoints: build => ({
         fetchUserList: build.query<UserModel[], void>({
             query: () => ({
-                url: `user`,
+                url: `users`,
             }),
         }),
         fetchUser: build.query<UserModel, { userId: string }>({
             async queryFn({ userId }, { dispatch, getState }, __, fetchWithBQ) {
                 const result = await fetchWithBQ({
-                    url: `user/${userId}`,
+                    url: `users/${userId}`,
                     method: 'GET',
                 });
 
@@ -29,7 +29,7 @@ export const apiUserApi = commonApi.injectEndpoints({
         }),
         addUser: build.mutation<UserModel, { user: Partial<UserModel> }>({
             query: ({ user }) => ({
-                url: `user`,
+                url: `users`,
                 method: 'POST',
                 body: user,
             }),
@@ -55,7 +55,7 @@ export const apiUserApi = commonApi.injectEndpoints({
         }),
         updateUser: build.mutation<UserModel, { user: UserModel }>({
             query: ({ user }) => ({
-                url: `user`,
+                url: `users`,
                 method: 'PUT',
                 body: user,
             }),
@@ -79,7 +79,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                 // const state = getState() as RootState;
 
                 const result = await fetchWithBQ({
-                    url: `user/${user.id}`,
+                    url: `users/${user.id}`,
                     method: 'DELETE',
                 });
 
@@ -110,7 +110,7 @@ const debouncedAddUser = debounce(
     ) => {
         // Pessimistic Updates
         const result = await fetchWithBQ({
-            url: `user`,
+            url: `users`,
             method: 'POST',
             body: user,
         });

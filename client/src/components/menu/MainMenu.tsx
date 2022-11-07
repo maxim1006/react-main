@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './MainMenu.scss';
+import { generateUUID } from '@app/common/utils/generate.utils';
 
 export type MainMenuProps = {
     routes: { to: string; title: string }[];
@@ -12,7 +13,7 @@ export default function MainMenu({ routes, exact }: MainMenuProps) {
             <ul className='main-menu'>
                 {routes.map((route, index) => {
                     return (
-                        <li className='main-menu__item' key={index}>
+                        <li className='main-menu__item' key={generateUUID()}>
                             {/* тоже что и Link только с возможностью стилизации*/}
                             <NavLink
                                 end={!!exact}
