@@ -5,7 +5,7 @@ import compression from 'compression';
 import shouldCompress from './helpers/server.helper';
 import cors from 'cors';
 
-const app = express(),
+export const app = express(),
     port = process.env.NODEJS_PORT || 3005,
     root = '/api/v1/',
     isProduction = process.env.NODE_ENV === 'production';
