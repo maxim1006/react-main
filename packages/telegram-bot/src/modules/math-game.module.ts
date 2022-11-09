@@ -50,15 +50,17 @@ export class MathGameModule {
 
     [MathGamesEnum.SumMeters](): MathGameTaskModel {
         const term1 = getRandomInteger(0, 3);
-        const term11 = getRandomInteger(1, 20);
+        const term11 = getRandomInteger(0, 10);
+        const term111 = getRandomInteger(1, 20);
         const term2 = getRandomInteger(0, 3);
-        const term22 = getRandomInteger(1, 20);
-        const sum = term1 * 100 + term11 + term2 * 100 + term22;
+        const term22 = getRandomInteger(0, 10);
+        const term222 = getRandomInteger(1, 20);
+        const sum = term1 * 100 + term11 * 10 + term111 + term2 * 100 + term22 * 10 + term222;
 
         return {
-            part1: `${term1}м${term11}см`,
-            part2: `${term2}м${term22}см`,
-            result: sum / 100,
+            part1: `${term1}м${term11}дм${term111}см`,
+            part2: `${term2}м${term22}дм${term222}см`,
+            result: sum,
         };
     }
 
@@ -146,13 +148,14 @@ export class MathGameModule {
     }
 
     [MathGamesEnum.ConvertToCentimeters](): MathGameTaskModel {
-        const term1 = getRandomInteger(1, 9);
-        const term11 = getRandomInteger(0, 99);
+        const term1 = getRandomInteger(1, 5);
+        const term11 = getRandomInteger(0, 10);
+        const term111 = getRandomInteger(0, 99);
 
         return {
-            part1: `${term1}м${term11}см`,
+            part1: `${term1}м${term11}дм${term111}см`,
             part2: '',
-            result: term1 * 100 + term11,
+            result: term1 * 100 + term11 * 10 + term111,
         };
     }
 

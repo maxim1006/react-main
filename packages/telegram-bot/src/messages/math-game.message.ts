@@ -7,6 +7,7 @@ import { getTodayLastMathGame, updateTodayLastMathGame } from '../db/math-game.d
 import { getTodayUserGameStatsByGameType } from '../db/user.db';
 import { addTodayGameToUser } from '../db/game.db';
 import { getMathMessageData } from '../utils/math/math-message.utils';
+import { getRandomImage } from '../utils/image.utils';
 
 export const handleMathGameTaskMessages = async ({
     chat,
@@ -60,6 +61,7 @@ export const handleMathGameResultMessages = async ({
     });
 
     return sendCbMessage({
+        isCorrect,
         chatId,
         emoji: isCorrect ? HAPPY_EMOJI : SAD_EMOJI,
         text: isCorrect
@@ -76,12 +78,17 @@ async function sendCbMessage({
     emoji,
     chatId,
     text,
+    isCorrect,
 }: {
     emoji: string;
     chatId: number;
     text: string;
+    isCorrect: boolean;
 }) {
-    await BOT.sendMessage(chatId, emoji);
+    // await BOT.sendMessage(chatId, emoji);
+    isCorrect
+        ? await BOT.sendPhoto(chatId, getRandomImage('photos'))
+        : await BOT.sendMessage(chatId, emoji);
     return await BOT.sendMessage(chatId, text, {
         parse_mode: 'HTML',
         ...SEND_MESSAGE_OPTIONS_TRY_AGAIN,

@@ -13,3 +13,7 @@ export function getRandomInteger(min = 0, max = 9) {
 
     return Math.floor((max - min + 1) * Math.random() + min);
 }
+
+export function getRandomItemFromArray(arr: unknown[]) {
+    return arr[getRandomInteger(0, arr.length - 1)];
+}

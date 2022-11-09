@@ -23,8 +23,9 @@
 </form>
 
 <script type='text/javascript'>
-    // тут пример делаю форм запрос через фетч и форму и во втором случае это doc а в первом fetch
+    // тут делаю пример форм запрос через фетч и форму и во втором случае это doc а в первом fetch
     (async () => {
+        // это пример с обычным сабмитом формы
         const formElement = document.getElementById("iframe-form");
         const value = "Hello mom from UI form!";
 
@@ -38,6 +39,7 @@
         // formElement.submit();
 
 
+        // это пример с application/x-www-form-urlencoded
         // норм отработает и придет на бек объект с инфорй, & браузер сам распарсит
         const response = await fetch("http://localhost:3001/api/v1/form/from-fetch-form", {
             method : "POST",
