@@ -1,23 +1,23 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import CommonErrorsRefInsteadState from '@app/components/common-errors/common-errors-ref-instead-state.component';
 import Component from '@app/components/component/component.component';
-import CommonErrorsUseCallback from '@app/components/common-errors/common-errors-use-callback.component';
-import CommonErrorsUseEffect from '@app/components/common-errors/common-errors-use-effect.component';
-import CommonErrorsUseMemo from '@app/components/common-errors/common-errors-use-memo.component';
-import CommonErrorsUseFetch from '@app/components/common-errors/common-errors-use-fetch.component';
+import Grid from '@app/components/grid/grid.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Common error use useRef instead of useState'>
+                <Component title='Grid examples'>
+                    <Grid />
+                </Component>
+
+                {/*<Component title='Common error use useRef instead of useState'>
                     <CommonErrorsUseFetch />
                     <CommonErrorsUseMemo />
                     <CommonErrorsRefInsteadState />
                     <CommonErrorsUseCallback />
                     <CommonErrorsUseEffect />
-                </Component>
+                </Component>*/}
 
                 {/*<Component title='Custom tag'>*/}
                 {/*    <CustomTag />*/}

@@ -18,8 +18,6 @@ react-router - main
 - native
 - redux
 
-
-
 ### deploy github pages
 NPM выполнит любую команду сперва с pre и только потом саму команду (пример, если сделать npm run deploy, то сперва выполнится predeploy)! Круто!
 

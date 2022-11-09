@@ -102,6 +102,7 @@ export const getUserGameStatsByGameType = async ({
     const gamesByMonthStr = Object.entries(gamesByMonth)
         .map(([month, value]) => {
             return `<b>${month}</b>: \n ${Object.entries(value)
+                .sort((a, b) => +new Date(a[0]) - +new Date(b[0]))
                 .map(
                     ([dateDay, value]) =>
                         `
