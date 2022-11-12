@@ -5,6 +5,8 @@ import { handleInfoMessages } from '../messages/info.message';
 import { handleGuessNumberMessage } from '../messages/guess-number.message';
 import { handleMathGameTaskMessages } from '../messages/math-game.message';
 import { handleStatsMessages } from '../messages/stats.message';
+import { handleCheatSheetMessages } from '../messages/cheatsheet.message';
+import { handleClockGameMessage } from '../messages/clock-game.message';
 
 export const MESSAGE_MAP: Record<
     MessageEnum,
@@ -13,7 +15,9 @@ export const MESSAGE_MAP: Record<
     // когда пользователь первый раз открыл бота и нажал на кнопку подключиться сработает /start
     [MessageEnum.Start]: ({ chat, msg }) => handleStartMessages({ chat }),
     [MessageEnum.Info]: ({ chat, msg }) => handleInfoMessages({ chat, msg }),
-    [MessageEnum.GuessNumber]: ({ chat, msg }) => handleGuessNumberMessage({ chat, msg }),
+    [MessageEnum.Cheatsheet]: ({ chat, msg }) => handleCheatSheetMessages({ chat, msg }),
+    [MessageEnum.ClockGame]: ({ chat, msg }) => handleClockGameMessage({ chat, msg }),
     [MessageEnum.MathGame]: ({ chat, msg }) => handleMathGameTaskMessages({ chat }),
+    [MessageEnum.GuessNumber]: ({ chat, msg }) => handleGuessNumberMessage({ chat, msg }),
     [MessageEnum.Stats]: ({ chat, msg }) => handleStatsMessages({ chat }),
 };

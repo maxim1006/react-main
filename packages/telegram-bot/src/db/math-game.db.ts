@@ -24,7 +24,7 @@ export const getTodayLastMathGame = async <T>({
     if (!mathGames) return console.error('getCurrentMathGame no math games error');
 
     const sortedMathGames = Object.entries(mathGames).sort(
-        (a, b) => a[1].timestamp - b[1].timestamp
+        (a, b) => a[1].timestamp ?? 0 - (b[1].timestamp ?? 0)
     );
 
     const lastGame = sortedMathGames.at(-1);

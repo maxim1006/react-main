@@ -13,8 +13,10 @@ import { MESSAGE_MAP } from './constants/message.constants';
 import { handleGuessNumberCbQuery } from './callback-queries/guess-number.callback-query';
 import { getUserMode, setUser } from './db/user.db';
 import { MessageEnum } from './models/message.model';
+import { handleClockGameCbQuery } from './callback-queries/clock-game.callback-query';
 
 async function main() {
+    // задаю меню
     await setBotCommands();
 
     BOT.on(BotEventsEnum.Message, async msg => {
@@ -58,6 +60,7 @@ async function main() {
         const mode = await getUserMode({ firstName });
 
         if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
+        if (mode === MessageEnum.ClockGame) return await handleClockGameCbQuery({ msg });
         if (mode === MessageEnum.MathGame) return await handleMathGameTaskMessages({ chat });
 
         return await handleUnknownQueryCallbacksMessages({ chatId });

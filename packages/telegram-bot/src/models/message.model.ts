@@ -8,7 +8,9 @@ export interface MessageBaseModel {
 export enum MessageEnum {
     Start = '/start',
     Info = '/info',
+    Cheatsheet = '/cheatsheet',
     GuessNumber = '/guess_number',
     MathGame = '/math_game',
+    ClockGame = '/clock_game',
     Stats = '/stats',
 }

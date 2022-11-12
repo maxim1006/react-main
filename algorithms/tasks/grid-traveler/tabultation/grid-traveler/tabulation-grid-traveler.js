@@ -2,6 +2,7 @@
 // Для того чтобы понять сколько вариантов прохода по матрице иду от нуля, правому и нижнему соседу прибавляю значение текущей клетки, так и иду по каждому ряду
 // let grid = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
 // let grid = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+// [...Array(10).keys()] - создаю array от 0 до 9, класс
 
 function gridTravelerWithoutAddDimension(m, n) {
     const grid = new Array(m).fill(0).map(_ => new Array(n).fill(0));

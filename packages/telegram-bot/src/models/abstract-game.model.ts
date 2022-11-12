@@ -3,7 +3,7 @@ import { MathGamesEnum } from './math-game.model';
 export interface AbstractGameModel {
     name?: MathGamesEnum;
     answer?: AbstractGameAnswerModel;
-    timestamp: number;
+    timestamp?: number;
 }
 
 export interface AbstractGameAnswerModel {
