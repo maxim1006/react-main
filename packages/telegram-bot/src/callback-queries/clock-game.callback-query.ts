@@ -43,7 +43,7 @@ export const handleClockGameCbQuery = async ({ msg }: { msg: CallbackQuery }) =>
         await BOT.sendPhoto(chatId, getRandomImagePath('photos'));
         return await BOT.sendMessage(
             chatId,
-            `Воу, правильно часы показывают ${userAnswer}`,
+            `Молодец, правильно часы показывают ${userAnswer}`,
             SEND_MESSAGE_OPTIONS_CLOCK_GAME_AGAIN
         );
     }

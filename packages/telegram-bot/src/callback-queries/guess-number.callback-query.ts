@@ -35,7 +35,7 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     if (gameData?.task === Number(answer))
         return await BOT.sendMessage(
             chatId,
-            `Воу, правильно, загадали ${gameData?.task}`,
+            `Умничка, правильно, загадали ${gameData?.task}`,
             SEND_MESSAGE_OPTIONS_GUESS_NUMBER_AGAIN
         );
 
