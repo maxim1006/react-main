@@ -57,12 +57,12 @@ function generateClockAnswers(gameId: string, imageNumber: string) {
                 if (i === 1)
                     return {
                         text: `${h}:${randMins}`,
-                        callback_data: `${gameId} ${h}:${randMins}`,
+                        callback_data: `${gameId} ${h}:${(randMins + '').padStart(2, '0')}`,
                     };
 
                 return {
-                    text: `${h}:${randMins1}`,
-                    callback_data: `${gameId} ${h}:${randMins1}`,
+                    text: `${h}:${(randMins1 + '').padStart(2, '0')}`,
+                    callback_data: `${gameId} ${h}:${(randMins1 + '').padStart(2, '0')}`,
                 };
             })
         )

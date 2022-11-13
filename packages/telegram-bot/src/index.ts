@@ -40,6 +40,7 @@ async function main() {
 
         // обработка messages в ходе игры
         const currentMode = await getUserMode({ firstName });
+
         if (currentMode === MessageEnum.MathGame)
             return await handleMathGameResultMessages({ chat, msg });
 
