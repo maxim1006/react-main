@@ -1,5 +1,5 @@
 export type NotFoundProps = {
-    children?: any;
+    children?: React.ReactNode;
 };
 
 export default function NotFound({ children }: NotFoundProps) {

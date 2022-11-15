@@ -4,10 +4,12 @@ function sum(a, b, c) {
 }
 
 let curriedSum = curry(sum);
+let curriedSum1 = curry(sum);
+let curriedSum2 = curry(sum);
 
 console.log(curriedSum(1, 2, 3)); // 6
-console.log(curriedSum(1)(2, 3)); // 6
-console.log(curriedSum(1)(2)(3)); // 6
+console.log(curriedSum1(1)(2, 3)); // 6
+console.log(curriedSum2(1)(2)(3)); // 6
 /*********** Answer ***********/
 function curry(f) {
     return function curried(...args) {

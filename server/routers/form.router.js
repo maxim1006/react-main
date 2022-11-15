@@ -35,7 +35,11 @@ formRouter.post('/from-fetch-form-data', (req, res) => {
         if (req.files.length) {
             req.files.forEach(file => {
                 if (
-                    !(file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg')
+                    !(
+                        file.mimetype === 'image/png' ||
+                        file.mimetype === 'image/jpg' ||
+                        file.mimetype === 'image/jpeg'
+                    )
                 ) {
                     res.status(422).json(
                         `{"message": "Upload error. File should be 'image/png' || 'image/jpg' || 'image/jpeg'"}`

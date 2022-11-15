@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "server.js",
+    "module": "esnext",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "tsc-watch -p ./ --outDir ./dist --onSuccess \"node ./dist/server.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc"

@@ -1,16 +1,6 @@
 import React, { FC, lazy, memo, useEffect } from 'react';
 import MainMenu from '@app/components/menu/MainMenu';
-import {
-    BrowserRouter as Router1,
-    NavLink,
-    Route,
-    unstable_HistoryRouter as HistoryRouter,
-    Routes,
-    useNavigate,
-    useLocation,
-    useParams,
-    matchPath,
-} from 'react-router-dom';
+import { matchPath, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import RouterExactRoute from '@app/components/router/RouterExactRoute';
 import RouterRoute1 from '@app/components/router/RouterRoute1';
 import NotFound from '@app/components/NotFound';

@@ -62,6 +62,19 @@
 //             },
 //         })
 //     );
+//         app.use(
+//             process.env.PUBLIC_URL + '/showcase.html/**',
+//             createProxyMiddleware({
+//                 target: 'http://localhost:3000',
+//                 changeOrigin: true,
+//                 logLevel: 'debug',
+//                 headers: proxyHeaders,
+//                 secure: false,
+//                 pathRewrite: function (path, req) {
+//                     return path.replace(/showcase.html\/.*/, 'showcase.html');
+//                 },
+//             })
+//         );
 //     app.use(
 //         '*',
 //         //тут hot-update чтобы все запросы с ним проксировать на 8080
