@@ -3,5 +3,5 @@ export type NotFoundProps = {
 };
 
 export default function NotFound({ children }: NotFoundProps) {
-    return children || <div>Page not found</div>;
+    return <>{children}</> || <div>Page not found</div>;
 }

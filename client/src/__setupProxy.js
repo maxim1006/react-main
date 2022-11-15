@@ -73,6 +73,9 @@
 //                 pathRewrite: function (path, req) {
 //                     return path.replace(/showcase.html\/.*/, 'showcase.html');
 //                 },
+// pathRewrite: {
+//     'showcase.html/.*': 'showcase.html',
+// },
 //             })
 //         );
 //     app.use(
