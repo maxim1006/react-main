@@ -1,13 +1,17 @@
 import { PostsRestClient } from '../clients/posts-rest.client.js';
 
 class PostsController {
-    create(req, res) {
-        PostsRestClient.create(req, res);
+    constructor(client) {
+        this.client = client;
     }
 
-    getByUser(req, res) {
-        PostsRestClient.getByUser(req, res);
-    }
+    create = (req, res) => {
+        this.client.create(req, res);
+    };
+
+    getByUser = (req, res) => {
+        this.client.getByUser(req, res);
+    };
 }
 
-export const postsController = new PostsController();
+export const postsController = new PostsController(PostsRestClient);

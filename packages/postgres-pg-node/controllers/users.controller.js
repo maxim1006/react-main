@@ -1,21 +1,26 @@
 import { UsersRestClient } from '../clients/users-rest.client.js';
 
+// тут интересно что надо использовать лямбда функцию чтобы контекст класса сохранить
 class UsersController {
-    create(req, res) {
-        UsersRestClient.createUser(req, res);
+    constructor(client) {
+        this.client = client;
     }
-    getAll(req, res) {
-        UsersRestClient.getAllUsers(req, res);
-    }
-    getById(req, res) {
-        UsersRestClient.getUserById(req, res);
-    }
-    update(req, res) {
-        UsersRestClient.updateUser(req, res);
-    }
-    delete(req, res) {
-        UsersRestClient.deleteUser(req, res);
-    }
+
+    create = (req, res) => {
+        this.client.createUser(req, res);
+    };
+    getAll = (req, res) => {
+        this.client.getAllUsers(req, res);
+    };
+    getById = (req, res) => {
+        this.client.getUserById(req, res);
+    };
+    update = (req, res) => {
+        this.client.updateUser(req, res);
+    };
+    delete = (req, res) => {
+        this.client.deleteUser(req, res);
+    };
 }
 
-export const usersController = new UsersController();
+export const usersController = new UsersController(UsersRestClient);
