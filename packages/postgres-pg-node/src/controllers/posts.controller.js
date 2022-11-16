@@ -1,4 +1,4 @@
-import { PostsRestClient } from '../clients/posts-rest.client.js';
+import { PostsPgRestClient } from '../clients/posts-pg-rest.client.js';
 
 class PostsController {
     constructor(client) {
@@ -14,4 +14,4 @@ class PostsController {
     };
 }
 
-export const postsController = new PostsController(PostsRestClient);
+export const postsController = new PostsController(PostsPgRestClient);

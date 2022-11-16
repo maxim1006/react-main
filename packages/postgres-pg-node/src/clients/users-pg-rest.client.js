@@ -1,8 +1,8 @@
-import { pool } from '../db.js';
+import { pgPool } from '../pg-db.js';
 
-export class UsersRestClient {
+export class UsersPgRestClient {
     static getAllUsers = (request, response) => {
-        pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+        pgPool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
             if (error) {
                 throw error;
             }
@@ -13,7 +13,7 @@ export class UsersRestClient {
     static getUserById = (request, response) => {
         const id = parseInt(request.params.id);
 
-        pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+        pgPool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
             if (error) {
                 throw error;
             }
@@ -25,7 +25,7 @@ export class UsersRestClient {
         const { name, email } = request.body;
 
         // RETURNING говорит о том что после создания функция вернет пользователя
-        pool.query(
+        pgPool.query(
             'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *',
             [name, email],
             (error, results) => {
@@ -45,7 +45,7 @@ export class UsersRestClient {
 
         const id = paramsId || bodyId;
 
-        pool.query(
+        pgPool.query(
             'UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING *',
             [name, email, id],
             (error, results) => {
@@ -62,7 +62,7 @@ export class UsersRestClient {
     static deleteUser = (request, response) => {
         const id = parseInt(request.params.id);
 
-        pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+        pgPool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
             if (error) {
                 throw error;
             }

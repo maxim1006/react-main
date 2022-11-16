@@ -1,9 +1,9 @@
 import pg from 'pg';
 
 // connect to db
-const Pool = pg.Pool;
+const PgPool = pg.Pool;
 
-export const pool = new Pool({
+export const pgPool = new PgPool({
     user: 'me',
     host: 'localhost',
     database: 'api',
