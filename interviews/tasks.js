@@ -84,6 +84,11 @@ function curry(f) {
 //     return result;
 // }
 
+// 3
+// function sum(obj = {}, res = 0) {
+//     return obj.a ? res += obj.a.num + sum(obj.a, res) : 0;
+// }
+
 /*********** Task Обход дерева / объекта 2 ***********/
 // const obj = {
 //     a: {
@@ -99,20 +104,21 @@ function curry(f) {
 // console.log(get(obj, 'a.e')); // 'f'
 // console.log(get(obj, 'a.x.e')); // undefined
 /*********** Answer ***********/
-// function get(obj, path) {
-//     let arr = path.split('.');
+// 1
+// function get(obj, str) {
+//     const arr = str.split(".");
+//     let res = obj;
 //
-//     let result;
-//
-//     for (let i = 0; i < arr.length; i++) {
-//         if (!obj[arr[i]]) {
-//             return;
-//         }
-//
-//         obj = obj[arr[i]];
+//     for (let i of arr) {
+//         res = res?.[i];
 //     }
 //
-//     return obj;
+//     return res;
+// }
+
+// 2
+// function get(obj, str) {
+//     return str.split(".").reduce((acc, i) => acc?.[i], obj)
 // }
 
 /*********** Task Перетаскиваемый блок - написать drag&drop 100х100 пикселей. ***********/

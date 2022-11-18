@@ -1,4 +1,4 @@
-import { pgPool } from '../pg-db.js';
+import { pgPool } from '../db/pg/pg-db.js';
 
 export class PostsPgRestClient {
     static async create(request, response) {

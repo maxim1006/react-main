@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { usersRouter } from './routes/users.routes.js';
 import { postsRouter } from './routes/posts.routes.js';
+import './db/sequelize/sequelize-db.js';
 
 const app = express();
 const port = 3124;

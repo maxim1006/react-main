@@ -114,3 +114,8 @@ jobs:
 ### lerna
 1) npx init lerna
 2) add nx to learna.json and package.json
+
+##
+origin - тот кто отсылает
+referer = origin + path
+host - куда делается request (host из Request URL)
