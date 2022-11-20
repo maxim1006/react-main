@@ -14,7 +14,9 @@
 </form>
 
 <h2>Multipart form data form</h2>
-<form id="formDataForm" enctype="multipart/form-data">
+<!--так работает если постить через форму-->
+<!--<form method="post" action="http://localhost:3001/api/v1/form/from-fetch-form-data" id="formDataForm" enctype="multipart/form-data">-->
+<form method="post" id="formDataForm" enctype="multipart/form-data">
     <div class="input-group">
         <label for="files">Select files</label>
         <input  name="fileData" id="files" type="file" multiple />
@@ -56,21 +58,18 @@
         const formDataForm = document.getElementById("formDataForm");
         const inputFile = document.getElementById("files");
 
-        const formData = new FormData();
-        formData.append('key1', 'value1');
-        formData.set("data", "data from fetch");
-
         const handleSubmit = async (event) => {
             event.preventDefault();
 
-            for (const file of inputFile.files) {
-                formData.append("file", file);
-            }
+            // важно что new FormData(formDataForm); сразу возьмет все необходимое из формы без этого не работал multer
+            const formData = new FormData(formDataForm);
+            formData.append('key1', 'value1'); // добавит в entries еще 1 key1
+            formData.set("data", "data from fetch"); // будет перезаписывать data
 
             console.log(Array.from(formData.entries()));
             const responseFormData = await fetch("http://localhost:3001/api/v1/form/from-fetch-form-data", {
                 method : "POST",
-                formData
+                body: formData
             });
 
             const responseFormDataText = await responseFormData.text();

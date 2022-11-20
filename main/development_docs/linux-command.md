@@ -134,6 +134,8 @@ echo "export VAR_NAME='VAR_VALUE''" > var-file.env
 echo "var-file" >> .gitignore
 source ./var-file.env
 
+">> appends to the file and > overwrites the file."
+
 // создать файл
 echo "Some line" > file1.txt
 

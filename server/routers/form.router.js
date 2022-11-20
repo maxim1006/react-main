@@ -29,8 +29,8 @@ const upload = multer({ storage }).array('fileData', 5);
 formRouter.post('/from-fetch-form-data', (req, res) => {
     upload(req, res, err => {
         const filedata = req.file;
-        const path = filedata.path;
-        const mimetype = filedata.mimetype;
+        const path = filedata && filedata.path;
+        const mimetype = filedata && filedata.mimetype;
 
         if (req.files.length) {
             req.files.forEach(file => {
