@@ -5,7 +5,6 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { commonApi } from '@app/store/common/common.api';
-import { rtkQueryErrorLogger } from '@app/store/common/error-logger';
 import counter from './counter/counter.slice';
 import todos from './todos/todos.slice';
 import visibilityFilter from './visibility-filters/visibility-filters.slice';
@@ -14,6 +13,7 @@ import posts from './posts/posts.slice';
 import books from './books/books.slice';
 import thunkUser from './thunk-user/thunk-user.slice';
 import { abstractProductReducer } from '@app/store/product/abstract/abstract-product.slice';
+import { rtkQueryErrorLogger } from '@app/store/store.utils';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 

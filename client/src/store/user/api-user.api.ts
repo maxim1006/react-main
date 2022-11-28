@@ -20,7 +20,9 @@ export const apiUserApi = commonApi.injectEndpoints({
                     method: 'GET',
                 });
 
-                if (result.error) throw result.error;
+                // тут обязательно возвращаю result так как в нем meta,
+                // обработка в общем middleware
+                if (result.error) return result;
 
                 const data = result.data as UserModel;
 
@@ -42,7 +44,9 @@ export const apiUserApi = commonApi.injectEndpoints({
                             userList.push(newUser);
                         })
                     );
-                } catch {}
+                } catch {
+                    console.error('addUser onQueryStarted error');
+                }
             },
         }),
         addUserDebounced: build.mutation<UserModel, { user: Partial<UserModel> }>({
@@ -83,7 +87,8 @@ export const apiUserApi = commonApi.injectEndpoints({
                     method: 'DELETE',
                 });
 
-                if (result.error) throw result.error;
+                // тут обязательно возвращаю result так как в нем meta
+                if (result.error) return result;
 
                 const data = result.data as UserModel;
 

@@ -40,9 +40,17 @@ export const rtkQueryErrorLogger: Middleware = (api: MiddlewareAPI) => next => a
 
 // helpers
 function logRequestError(action: AnyAction) {
-    const meta = action.meta.baseQueryMeta;
-    const { method, url } = meta.request;
-    const { status, statusText } = meta.response;
+    const meta = action.meta;
+
+    if (!meta) return console.error("logRequestError Action doesn't contain 'meta'", action);
+
+    const { request, response } = meta.baseQueryMeta;
+
+    if (!request && !response) return console.error(`Request/response error: ${meta.baseQueryMeta}`);
+
+    const { method, url } = request ?? {};
+    const { status, statusText } = response ?? {};
+
     const requestHeaders = action.meta?.baseQueryMeta?.request?.headers || [];
 
     const xRequestId = [...requestHeaders].find(([header]) => header === HeadersEnum.XRequestId)?.[1];
@@ -51,5 +59,14 @@ function logRequestError(action: AnyAction) {
     console.log(`STATUS: ${status}`);
     console.log(`STATUS-TEXT: ${statusText}`);
     console.log(`X-REQUEST-ID: ${xRequestId}`);
+
+    if (meta.arg) console.log(`RTK QUERY: ${meta.arg.type} ${meta.arg.endpointName}`);
+
+    if (action.payload) {
+        console.groupCollapsed('PAYLOAD');
+        console.log(JSON.stringify(action.payload, null, 4));
+        console.groupEnd();
+    }
+
     console.groupEnd();
 }

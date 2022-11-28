@@ -1,0 +1,50 @@
+.host {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-start;
+    width: 600px;
+
+    --line-number: 4;
+    --line-height: 1.2;
+}
+
+.block {
+    padding: 20px;
+    border: 1px solid;
+}
+
+.paragraph {
+    position: relative;
+    max-height: calc(var(--line-number) * 1em * var(--line-height));
+    line-height: var(--line-height);
+    overflow: hidden;
+
+    &:has(+ .checkbox:checked) {
+        max-height: none;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: calc(1 * 1em * var(--line-height));
+        background: linear-gradient(to bottom, transparent, #fff);
+    }
+}
+
+.checkbox {
+    appearance: none;
+    margin-top: 20px;
+    border: 1px solid;
+
+    &:before {
+        content: "Expand";
+    }
+
+    &:checked:before {
+        content: "Collapse";
+    }
+}

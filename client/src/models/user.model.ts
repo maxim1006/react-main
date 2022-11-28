@@ -1,6 +1,6 @@
 export interface UserModel {
     id?: string;
-    name: string;
+    name?: string;
     occupation?: string;
     address?: {
         city?: string;

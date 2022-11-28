@@ -1,15 +1,17 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import Component from '@app/components/component/component.component';
-import Grid from '@app/components/grid/grid.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='Grid examples'>
-                    <Grid />
-                </Component>
+                {/*<Component title='Equal blocks css'>*/}
+                {/*    <EqualBlocks />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='Grid examples'>*/}
+                {/*    <Grid />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Common error use useRef instead of useState'>
                     <CommonErrorsUseFetch />

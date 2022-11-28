@@ -58,18 +58,10 @@ function curry(f) {
 // };
 /*********** Answer ***********/
 // 1
-// function sum(obj) {
-//     let result = 0;
+// function sum(obj, res = 0) {
+//     if (!obj.a) return res;
 //
-//     if (obj?.a?.num) {
-//         result += obj.a.num;
-//     }
-//
-//     if (obj?.a?.a) {
-//         result += sum(obj.a);
-//     }
-//
-//     return result;
+//     return res += obj.a.num + sum(obj.a);
 // }
 
 // 2
@@ -146,6 +138,11 @@ function curry(f) {
 /*********** Task factorial ***********/
 // function factorial(n) {/*... ваш код ... */}
 // console.log('factorial ', factorial(5)); // 1*2*3*4*5 = 120
+// function factorial(n, res = 1) {
+//     if (n === 1) return res;
+//
+//     return n * factorial(--n);
+// }
 
 /*********** Task Fibonacci ***********/
 // Fibonacci - каждое последующее число равно сумме двух предыдущих 0,1,1,2,3,5,8,13,21
@@ -186,6 +183,26 @@ function curry(f) {
 //     result += counter > 1 ? prev + counter : prev;
 //
 //     return result;
+// }
+
+// через next решение более лаконичное
+// function RLE(str) {
+//     let res = "";
+//     let count = 1;
+//
+//     for (let i = 0; i < str.length; i++) {
+//         let cur = str[i];
+//         let next = str[i+1];
+//
+//         if (cur === next) {
+//             ++count;
+//         } else {
+//             res += cur + (count > 1 ? count : "");
+//             count = 1;
+//         }
+//     }
+//
+//     return res;
 // }
 
 /*********** Task Дан набор отрезков - пожалуйста напишите функцию convert() которая объеденяет вхождения ***********/

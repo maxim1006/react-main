@@ -11,11 +11,12 @@ userRouter.get('/', async (req: Request, res: Response) => {
     const { limit } = req.query;
 
     try {
+        res.status(500).json({ error: 'business error' });
         let users = await fsExtra.readJson(userPath);
 
         res.status(200).json(users.slice(0, Number.isInteger(limit) ? limit : users.length));
     } catch (e) {
-        res.status(500).json({});
+        res.status(500).json({ error: 'business error' });
     }
 });
 

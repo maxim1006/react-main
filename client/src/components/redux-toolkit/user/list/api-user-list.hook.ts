@@ -52,7 +52,16 @@ export function useApiUserList() {
         console.log({ lazyUser });
     }, [fetchUserLazy, users]);
 
-    const onUpdateUser = useCallback((user: UserModel) => updateUser({ user }), [updateUser]);
+    const onUpdateUser = useCallback(
+        async (user: UserModel) => {
+            const updatedUser = await updateUser({ user })
+                .unwrap()
+                .catch(e => console.log(e));
+
+            console.log({ updatedUser });
+        },
+        [updateUser]
+    );
     const onDeleteUser = useCallback((user: UserModel) => deleteUser(user), [deleteUser]);
 
     useEffect(() => {
