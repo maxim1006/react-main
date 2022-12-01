@@ -1,10 +1,16 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
+import Component from '@app/components/component/component.component';
+import MyObservers from '@app/components/observers/observers.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <Component title='Observers'>
+                    <MyObservers />
+                </Component>
+
                 {/*<Component title='Equal blocks css'>*/}
                 {/*    <EqualBlocks />*/}
                 {/*</Component>*/}

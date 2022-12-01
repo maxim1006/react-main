@@ -150,7 +150,7 @@ export class MathGameModule {
     [MathGamesEnum.ConvertToCentimeters](): MathGameTaskModel {
         const term1 = getRandomInteger(1, 5);
         const term11 = getRandomInteger(0, 10);
-        const term111 = getRandomInteger(0, 99);
+        const term111 = getRandomInteger(0, 9);
 
         return {
             part1: `${term1}м${term11}дм${term111}см`,

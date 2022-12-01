@@ -12,10 +12,6 @@ async function main() {
 
     console.log(files);
 
-    fs.mkdirSync(path.resolve(process.cwd(), `dist`), {
-        recursive: true,
-    });
-
     const stream = fs.createWriteStream(`./dist/${files[0]}`);
 
     ffmpeg({ source: path.resolve('./src', files[0]), nolog: false })
@@ -33,3 +29,7 @@ async function main() {
 }
 
 main();
+
+function convertFile(ffmpeg, file) {
+    return new Promise((res, rej) => {});
+}

@@ -106,7 +106,7 @@ export const getUserGameStatsByGameType = async ({
                 .map(
                     ([dateDay, value]) =>
                         `
-${new Date(dateDay).toLocaleDateString()}: всего: <b>${
+${new Date(dateDay).toDateString()}: всего сыграно: <b>${
                             Object.keys(value).length
                         }</b>, правильных ответов: <b>${
                             Object.values(value).filter(i => i.answer?.isCorrect).length

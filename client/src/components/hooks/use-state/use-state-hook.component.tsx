@@ -5,7 +5,7 @@ type UseStateProps = {};
 const UseState = memo<UseStateProps>(() => {
     let [counter, setCounter] = useState<number>(0);
     const [obj] = useState<{ a: number }>({ a: 1 });
-    // example of useState init as function
+    // example of useState init as function, если так не сделать а просто передать функцию то каждый раз при ререндеринге она будет вызываться, а так только 1 раз
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [fState] = useState(() => {
         console.log('init state function is triggered');
@@ -48,7 +48,7 @@ const UseState = memo<UseStateProps>(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(res => res.json())
             .then(data => {
-                // тут не батчинга и ререндеринг произойдет много раз
+                // тут нет батчинга и ререндеринг произойдет много раз
                 console.log(data);
                 setCounter(10);
                 setCounter(100);

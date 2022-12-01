@@ -1,0 +1,28 @@
+@import "src/assets/styles/colors";
+
+.resize {
+    width: 30vw;
+    height: 20vh;
+    border: 1px solid;
+}
+
+.intersectionWrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    overflow: auto;
+}
+
+.intersect {
+    border: 1px solid;
+    padding: 0.5rem;
+}
+
+.intersectValue {
+    composes: intersect;
+    position: sticky;
+    left: 0;
+    top: 0;
+    background-color: $bg-color;
+}
