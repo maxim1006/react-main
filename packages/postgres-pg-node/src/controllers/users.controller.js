@@ -1,4 +1,4 @@
-import { UsersPgRestClient } from '../clients/users-pg-rest.client.js';
+import { restClientProducer } from '../producers/rest-client.producer.js';
 
 // тут интересно что надо использовать лямбда функцию чтобы контекст класса сохранить
 class UsersController {
@@ -23,4 +23,4 @@ class UsersController {
     };
 }
 
-export const usersController = new UsersController(UsersPgRestClient);
+export const usersController = new UsersController(restClientProducer.getUsersRestClient());

@@ -6,6 +6,7 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon ./src/index.js",
+        "start:pg": "nodemon ./src/index.js --pg",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
@@ -16,6 +17,9 @@
         "sequelize": "^6.25.6"
     },
     "devDependencies": {
+        "@types/node": "^18.11.10",
+        "@types/pg": "^8.6.5",
+        "@types/sequelize": "^4.28.14",
         "nodemon": "^2.0.20"
     }
 }

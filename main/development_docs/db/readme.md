@@ -253,5 +253,5 @@ TEXT - стринга с неопределенным размером
 VARCHAR(2) - максимальная длинна 2
 WHERE email LIKE 'm%' - найти все email начинающиеся с m
 FOREIGN KEY(owner_id) 
-    REFERENCES Users(id) - это связка на другую табличку, если так сделать то теперь юзера просто так не удалить так как у него есть связка на комнаты
+    REFERENCES Users(id) - это связка на другую табличку, если так сделать то теперь юзера просто так не удалить так как у него есть связка на комнаты (https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-foreign-key/)
 

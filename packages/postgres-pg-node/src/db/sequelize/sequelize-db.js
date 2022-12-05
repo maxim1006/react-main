@@ -11,3 +11,9 @@ try {
 } catch (error) {
     console.error('Unable to connect to the database:', error);
 }
+
+export const syncSequelizeDb = async () => {
+    // синхронизирую модели в коде с таблицами в бд
+    await sequelize.sync();
+    console.log('Models synchronized successfully');
+};
