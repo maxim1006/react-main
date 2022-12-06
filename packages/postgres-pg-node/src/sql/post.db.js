@@ -1,13 +1,9 @@
-CREATE TABLE users (
-  ID SERIAL PRIMARY KEY,
-  name VARCHAR(30),
-  email VARCHAR(30)
-);
-
-CREATE TABLE posts (
+export const DB_CREATE_POSTS_TABLE = `
+CREATE TABLE IF NOT EXISTS "posts" (
    ID SERIAL PRIMARY KEY,
    title VARCHAR(100),
    content VARCHAR(255),
    user_id INTEGER,
    FOREIGN KEY (user_id) REFERENCES users (id)
 );
+`;

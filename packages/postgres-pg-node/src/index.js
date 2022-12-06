@@ -6,6 +6,7 @@ import './db/sequelize/sequelize-db.js';
 import { syncSequelizeDb } from './db/sequelize/sequelize-db.js';
 import { associateModels } from './models/association.model.js';
 import { IS_PG } from './constants/common.constants.js';
+import { startPg } from './db/pg/pg-db.js';
 
 const app = express();
 const port = 3124;
@@ -23,7 +24,9 @@ app.get('/', (request, response) => {
 
 [usersRouter, postsRouter].forEach(i => app.use('/api', i));
 
-if (!IS_PG) {
+if (IS_PG) {
+    void startPg();
+} else {
     // синхронизирую ассоциации
     associateModels();
     // синхронизирую базу данных после роутов, чтобы модели подтянулись

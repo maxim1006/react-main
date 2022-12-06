@@ -146,7 +146,7 @@ class CCar {
     wheels: CWheel[];
     freshener1: CFreshener;
 
-    // здесь аггрегация - это передача CFreshener через DI как инстанс
+    // здесь аггрегация (Агрегация – это когда экземпляр двигателя создается где-то в другом месте кода, и передается в конструктор автомобиля в качестве параметра) - это передача CFreshener через DI как инстанс
     constructor(public freshener: CFreshener, freshener1: CFreshener) {
         // это для примера, что можно и так и через public freshener: CFreshener сделать аггрегацию
         this.freshener1 = freshener1;
@@ -236,5 +236,16 @@ class Singleton2 {
 }
 
 console.log(Singleton2.instance.prop, Singleton2.instance.prop, Singleton2.instance.prop); // одно и тоже число 3 раза
+
+// Композиция – это когда двигатель не существует отдельно от автомобиля. Он создается при создании автомобиля и полностью управляется автомобилем. В типичном примере, экземпляр двигателя будет создаваться в конструкторе автомобиля.
+class CompositionEngine {}
+
+class CompositionCar {
+    private engine: CompositionEngine;
+
+    constructor() {
+        this.engine = new CompositionEngine();
+    }
+}
 
 export {};
