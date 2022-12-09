@@ -386,11 +386,7 @@ function curry(f) {
 // console.timeEnd('notOptimised');
 //
 // let excludeFiltersMap = excludeFilters.reduce((acc, { k, v }) => {
-//     if (acc[k]) {
-//         acc[k][v] = true;
-//     } else {
-//         acc[k] = { [v]: true };
-//     }
+//     acc[k] = { [v]: true };
 //
 //     return acc;
 // }, {});
