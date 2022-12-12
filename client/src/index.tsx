@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './old_store/configureStore';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from '@app/App';
+import FullRouterContainer from '@app/components/router/full/full-router.container';
 
 // обычно с редаксом 17
 // render(
@@ -28,6 +29,9 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
     <Provider store={store}>
+        {/* пример полного цикла роутера http://localhost:3000/full-router */}
+        <FullRouterContainer />
+
         {/* Могу использовать обычный роутер как выше, могу тот с которым работаю в редакс,
         сейчас работатет только с history: "^4.10.1"*/}
         {/* <ConnectedRouter history={history}>*/}

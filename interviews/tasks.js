@@ -400,43 +400,40 @@ function curry(f) {
 ///////////////////////////////////////////////////////////////////// End
 
 ///////////////////////////////////////////////////////////////////// Task
-// set intervals
 // let o = { Max: [1, 1], Alice: [2, 6], Bob: [3, 8], Catie: [4, 7] };
 //
 // function countCollisions(o) {
-//     let arr = Object.values(o)
-//         .reduce((acc, i) => [...acc, ...i], [])
-//         .sort((a, b) => a - b);
+//     let res = {};
+//     let intervals = getIntervals(o);
 //
-//     // console.log({ arr }); // [1, 1, 2, 3, 4, 6, 7, 8]
+//     for (let interval of intervals) res[interval] = findIntersections(interval, o);
 //
-//     let start = arr[0];
-//     let timeFrames = [];
-//     let result = {};
+//     return res;
+// }
 //
-//     for (let i = 1; i < arr.length; i++) {
-//         let cur = arr[i];
+// function getIntervals(o) {
+//     return Object.values(o)
+//         .flatMap(i => i)
+//         .sort((a, b) => a - b)
+//         .reduce((acc, i, idx, arr) => {
+//             let next = arr[idx + 1];
 //
-//         timeFrames.push([start, cur]);
-//         start = cur;
-//     }
+//             if (next) acc.push([i, next]);
 //
-//     // console.log({ timeFrames }); //  [[ 1, 1 ], [ 1, 2 ],[ 2, 3 ], [ 3, 4 ],[ 4, 6 ], [ 6, 7 ],[ 7, 8 ]]
+//             return acc;
+//         }, []);
+// }
 //
-//     timeFrames.forEach(i => {
-//         Object.entries(o).forEach(([name, frame]) => {
-//             if (isInFrame(i, frame)) {
-//                 result[i] = result[i] ? [...result[i], name] : [name];
-//             }
-//         });
+// function findIntersections(interval, o) {
+//     return Object.keys(o).filter(key => {
+//         let value = o[key];
+//
+//         return (
+//             (value[0] < interval[1] && value[1] > interval[0]) ||
+//             (value[0] === interval[0] && value[1] === interval[1])
+//         );
 //     });
-//
-//     return result;
 // }
 //
-// function isInFrame(timeframe, frame) {
-//     return timeframe[0] >= frame[0] && timeframe[1] <= frame[1];
-// }
-//
-// console.log(countCollisions(o));
+// console.log(countCollisions(o)); // {"1,1":["Max"],"2,3":["Alice"],"3,4":["Alice","Bob"],"4,6":["Alice","Bob","Catie"],"6,7":["Bob","Catie"],"7,8":["Bob"]}
 ///////////////////////////////////////////////////////////////////// End

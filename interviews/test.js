@@ -1,21 +1,36 @@
-console.log(compress([1, 4, 5, 2, 3, 9, 18, 8, 11, 0])); // '0-5,8-9,11,18' [0,1,2,3,4,5,8,9,11,18]
-console.log(compress([1, 4, 3, 2])); // '1-4'
-console.log(compress([1, 4])); // '1,4'
+let o = { Max: [1, 1], Alice: [2, 6], Bob: [3, 8], Catie: [4, 7] };
 
-function compress(arr) {
-    let res = '';
-    let sorted = arr.slice().sort((a, b) => a - b);
-    let prev = arr[0];
+function countCollisions(o) {
+    let res = {};
+    let intervals = getIntervals(o);
 
-    for (let i = 0; i < sorted.length; i++) {
-        let cur = sorted[i];
-        let next = sorted[i + 1];
+    for (let interval of intervals) res[interval] = findIntersections(interval, o);
 
-        if (cur !== next - 1) {
-            res += prev === cur ? prev + ',' : prev + '-' + cur + ',';
-            prev = next;
-        }
-    }
-
-    return res.slice(0, res.length - 1);
+    return res;
 }
+
+function getIntervals(o) {
+    return Object.values(o)
+        .flatMap(i => i)
+        .sort((a, b) => a - b)
+        .reduce((acc, i, idx, arr) => {
+            let next = arr[idx + 1];
+
+            if (next) acc.push([i, next]);
+
+            return acc;
+        }, []);
+}
+
+function findIntersections(interval, o) {
+    return Object.keys(o).filter(key => {
+        let value = o[key];
+
+        return (
+            (value[0] < interval[1] && value[1] > interval[0]) ||
+            (value[0] === interval[0] && value[1] === interval[1])
+        );
+    });
+}
+
+console.log(countCollisions(o)); // {"1,1":["Max"],"2,3":["Alice"],"3,4":["Alice","Bob"],"4,6":["Alice","Bob","Catie"],"6,7":["Bob","Catie"],"7,8":["Bob"]}

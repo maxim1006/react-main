@@ -1,6 +1,6 @@
-import { useState, memo, Suspense, lazy } from 'react';
+import { useState, memo, Suspense, lazy, ComponentType } from 'react';
 
-const ExamplesLazyComponent = lazy(() => import('../lazy/examples-lazy.component'));
+const ExamplesLazyComponent: ComponentType = lazy(() => import('../lazy/examples-lazy.component'));
 
 const ExampleLazyOnClickComponent = () => {
     const [view, setView] = useState(false);
