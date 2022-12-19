@@ -1,8 +1,6 @@
 import { pgPool } from './pg-db.js';
 
-const DROP_TABLE = 'DROP TABLE IF EXISTS "pgAlter"';
-
-const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgAlter"
+const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgMaxMin"
                       (
                           "id"            SERIAL,
                           "name"          VARCHAR(50)    NOT NULL,
@@ -12,7 +10,7 @@ const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgAlter"
                           PRIMARY KEY ("id")
                       )`;
 
-const INSERT_DATA = `INSERT INTO "pgAlter"
+const INSERT_DATA = `INSERT INTO "pgMaxMin"
                          ("name", "surname", "department_id", "salary")
                      VALUES ('John', 'Stewart', 1, '3512.00'),
                             ('Kate', 'Lewis', 3, '6574.00'),
@@ -21,30 +19,18 @@ const INSERT_DATA = `INSERT INTO "pgAlter"
                             ('Andrew', 'Thompson', NULL, '2100.00');
 `;
 
-// меняю имя и тип у колонки salary на VARCHAR (не получилось сделать в 1 колонке)
-const query = `ALTER TABLE "pgAlter"
-               ALTER COLUMN "salary" TYPE VARCHAR`;
+const query = `SELECT
+               MAX("salary") AS "maximum salary",
+               MIN("salary") AS "minimum salary"
+               FROM "pgMaxMin";`;
 
-const query1 = `ALTER TABLE "pgAlter"
-               RENAME COLUMN "salary" TO "earnings"`;
-
-// добавляю колонку
-const query2 = `ALTER TABLE "pgAlter"
-				ADD IF NOT EXISTS "email" VARCHAR(255);`;
-
-const query3 = `SELECT * from "pgAlter"`;
-
-export const pgAlter = async () => {
+export const pgMaxMin = async () => {
     try {
-        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 
-        await pgPool.query(query);
-        await pgPool.query(query1);
-        await pgPool.query(query2);
-        const { rows } = await pgPool.query(query3);
-        console.log('fetchRows ', JSON.stringify(rows));
+        const { rows } = await pgPool.query(query);
+        console.log('fetchRows ', JSON.stringify(rows)); //  [{"maximum salary":"6574.00","minimum salary":"2100.00"}]
     } catch (e) {
         console.error(e);
     }

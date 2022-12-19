@@ -25,6 +25,7 @@ VALUES
     ('Simon', 'Collins', 3, '3000.00');
 `;
 
+// OFFSET says to skip that many rows before beginning to return rows. OFFSET 0 is the same as omitting the OFFSET clause, as is OFFSET with a NULL argument.
 const query = `
             SELECT *
             FROM "pgFetchRows"

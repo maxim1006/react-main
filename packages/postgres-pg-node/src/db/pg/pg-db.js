@@ -1,6 +1,12 @@
 import pg from 'pg';
-import { pgHaving } from './pg-having.db.js';
-import { pgInnerJoinDb } from './pg-inner-join.db.js';
+import { pgAlter } from './pg-alter.db.js';
+import { pgRound } from './pg-round.db.js';
+import { pgSelectDistinct } from './pg-select-distinct.db.js';
+import { pgSum } from './pg-sum.db.js';
+import { pgUpper } from './pg-upper.db.js';
+import { pgUpdateQuery } from './pg-update-query.db.js';
+import { pgDelete } from './pg-delete.db.js';
+import { pgWhere } from './pg-where.db.js';
 
 // connect to db
 const PgPool = pg.Pool;
@@ -21,6 +27,5 @@ export const startPg = async () => {
     // } catch (e) {
     //     console.error('startPg create Tables error ', e);
     // }
-
-    void pgInnerJoinDb();
+    void pgWhere();
 };

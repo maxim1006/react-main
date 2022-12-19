@@ -154,7 +154,7 @@ class CCar {
         this.wheels = [new CWheel(), new CWheel(), new CWheel(), new CWheel()];
     }
 
-    // делегирование - вызываю методы и двигателя и колев
+    // делегирование - вызываю методы и двигателя и колес
     drive() {
         this.engine.drive();
         this.wheels.forEach(i => i.drive());
