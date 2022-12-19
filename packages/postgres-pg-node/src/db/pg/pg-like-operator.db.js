@@ -1,5 +1,7 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgLikeOperator"';
+
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgLikeOperator"
                       (
                           "id"            SERIAL,
@@ -24,6 +26,7 @@ const query = `SELECT * FROM "pgLikeOperator"
 
 export const pgLikeOperator = async () => {
     try {
+        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 

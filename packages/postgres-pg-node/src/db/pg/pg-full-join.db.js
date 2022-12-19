@@ -1,5 +1,8 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgFullJoin"';
+const DROP_TABLE1 = 'DROP TABLE IF EXISTS "pgFullJoinDepartments"';
+
 // добавляю email колонку в табличку
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgFullJoin"
                       (
@@ -41,10 +44,12 @@ const query = `SELECT *
 
 export const pgFullJoinDb = async () => {
     try {
-        // await pgPool.query(CREATE_TABLE);
-        // await pgPool.query(CREATE_TABLE1);
-        // await pgPool.query(INSERT_DATA);
-        // await pgPool.query(INSERT_DATA1);
+        await pgPool.query(DROP_TABLE);
+        await pgPool.query(DROP_TABLE1);
+        await pgPool.query(CREATE_TABLE);
+        await pgPool.query(CREATE_TABLE1);
+        await pgPool.query(INSERT_DATA);
+        await pgPool.query(INSERT_DATA1);
 
         const { rows } = await pgPool.query(query);
         console.log('fetchRows ', JSON.stringify(rows)); // физически таблицы не смержатся но в запросе придет

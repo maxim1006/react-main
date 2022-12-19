@@ -1,5 +1,7 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgHaving"';
+
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgHaving"
                       (
                           "id"      SERIAL,
@@ -26,6 +28,7 @@ const query = `SELECT COUNT("id") AS "number of pgHaving", "country"
 
 export const pgHaving = async (min = 2) => {
     try {
+        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 

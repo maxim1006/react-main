@@ -1,6 +1,8 @@
 import { pgPool } from './pg-db.js';
 
-// тут создавстся новая табличка на основе pgCreateTableAs с юзерами у которых email === null
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgCreateTableAs"';
+
+// тут создастся новая табличка на основе pgCreateTableAs с юзерами у которых email === null
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgCreateTableAs"
                       (
                           "id"            SERIAL,
@@ -28,6 +30,7 @@ const query = `
 
 export const pgCreateTableAs = async () => {
     try {
+        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 

@@ -1,5 +1,7 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgGroupByMultipleColumns"';
+
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgGroupByMultipleColumns"
                       (
                           "id"            SERIAL,
@@ -27,6 +29,7 @@ const query = `SELECT "name", "department_id", COUNT(*) AS "peopleWithSameNameIn
 
 export const pgGroupByMultipleColumns = async () => {
     try {
+        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 

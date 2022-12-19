@@ -1,5 +1,7 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgLower"';
+
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgLower"
                       (
                           "id"            SERIAL,
@@ -24,6 +26,7 @@ const query = `SELECT LOWER("name") AS "Lowercase names"
 
 export const pgLower = async () => {
     try {
+        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 

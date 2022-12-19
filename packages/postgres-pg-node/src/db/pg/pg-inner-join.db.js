@@ -1,5 +1,9 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgInnerJoin"';
+
+const DROP_TABLE1 = 'DROP TABLE IF EXISTS "pgInnerJoinDepartments"';
+
 // Замучался но, при JOIN в случае если не будет у pgInnerJoinDepartments хватать id для department_id из pgInnerJoin то будет ошибка, idшники обязательно должны соответствовать (всего 3 департамента и не может быть user из 4го)
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgInnerJoin"
                       (
@@ -43,11 +47,13 @@ const query = `SELECT *
 
 export const pgInnerJoinDb = async () => {
     try {
+        await pgPool.query(DROP_TABLE);
+        await pgPool.query(DROP_TABLE1);
         // таблицу от которой зависит pgInnerJoin должен написать раньше, при проверке не забудь закомментить все создания и инсерты чтобы проверить query!
-        // await pgPool.query(CREATE_TABLE1);
-        // await pgPool.query(CREATE_TABLE);
-        // await pgPool.query(INSERT_DATA1);
-        // await pgPool.query(INSERT_DATA);
+        await pgPool.query(CREATE_TABLE1);
+        await pgPool.query(CREATE_TABLE);
+        await pgPool.query(INSERT_DATA1);
+        await pgPool.query(INSERT_DATA);
 
         const { rows } = await pgPool.query(query);
         console.log('fetchRows ', JSON.stringify(rows));

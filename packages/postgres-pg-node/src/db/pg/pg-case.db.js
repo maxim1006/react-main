@@ -1,5 +1,7 @@
 import { pgPool } from './pg-db.js';
 
+const DROP_TABLE = 'DROP TABLE IF EXISTS "pgCase"';
+
 const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgCase"
                       (
                           "id"            SERIAL,
@@ -31,6 +33,7 @@ const query = `
 
 export const pgCase = async () => {
     try {
+        await pgPool.query(DROP_TABLE);
         await pgPool.query(CREATE_TABLE);
         await pgPool.query(INSERT_DATA);
 
