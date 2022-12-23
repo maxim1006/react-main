@@ -1,12 +1,26 @@
-interface A {
-    a: string;
+interface BaseCardModel {
+    id: string;
+    type: CardTypeEnum;
 }
 
-interface B extends A {
-    b: string;
+export interface ComparisonCardModel extends BaseCardModel {
+    type: CardTypeEnum.Card;
+    model: string;
 }
 
-export const typescriptUnion: B = {
-    a: '1',
-    b: '1',
-};
+export interface ComparisonPlaceholderModel extends BaseCardModel {
+    type: CardTypeEnum.Placeholder;
+    prop: number;
+}
+
+export type ComparisonModel = ComparisonCardModel | ComparisonPlaceholderModel;
+
+export enum CardTypeEnum {
+    Card = 'Card',
+    Placeholder = 'Placeholder',
+}
+
+function f(arg: ComparisonModel) {
+    if (arg.type === CardTypeEnum.Card) return arg.model;
+    if (arg.type === CardTypeEnum.Placeholder) return arg.prop;
+}

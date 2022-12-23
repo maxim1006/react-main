@@ -122,9 +122,27 @@ interface AuthSignUpGeneratorContainerModel<T> {
 // eslint-disable-next-line
 const interfaceGeneric: AuthSignUpGeneratorContainerModel<string> = { prop: '1' };
 
+// тут в отличие от T = нельзя уже переопределить а можно ограничиться только текущими значениями дженерика
 interface TestGen<T extends string | number> {
     prop: T;
 }
 
 // eslint-disable-next-line
 let testGen: TestGen<number> = { prop: 1 };
+
+// eslint-disable-next-line
+// let testGen1: TestGen<boolean> = { prop: true }; // error
+
+// разница между T = в том что тут дефолтное и может быть переопределено
+interface TestGenEqual<T = string | number> {
+    prop: T;
+}
+
+// eslint-disable-next-line
+let testGenEqual: TestGenEqual<number> = { prop: 1 };
+
+// eslint-disable-next-line
+let testGenEqual1: TestGenEqual<boolean> = { prop: true };
+
+// eslint-disable-next-line
+let testGenEqual2: TestGenEqual<string> = { prop: 'str' };

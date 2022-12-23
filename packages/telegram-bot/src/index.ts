@@ -35,7 +35,7 @@ async function main() {
         if (MESSAGE_MAP[mode]) {
             // создаю пользователя (с проверкой на существование)
             await setUser({ firstName, mode });
-            return await MESSAGE_MAP[text as MessageEnum]({ chat, msg });
+            return await MESSAGE_MAP[mode]({ chat, msg });
         }
 
         // обработка messages в ходе игры
