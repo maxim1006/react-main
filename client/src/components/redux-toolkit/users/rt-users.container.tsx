@@ -24,7 +24,7 @@ const RtUsersContainer = memo<RtUsersContainerProps>(function RtUsersContainer()
         if (!ref.current.value) return;
 
         const data = await createUser({ name: ref.current.value, limit }).unwrap();
-        // console.log(data);
+        console.log(data);
     };
 
     useEffect(() => {

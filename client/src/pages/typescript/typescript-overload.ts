@@ -1,3 +1,4 @@
+/*eslint-disable*/
 // ad-hoc (мнимый) один метод работает как бы с 2мя типами данных, за счет перегрузки методов
 class Calculator {
     add(a: number): number;
@@ -23,6 +24,7 @@ function add(a: number, b?: number | string): number {
 add(1, 1);
 add(1);
 
+// eslint-disable-next-line
 class Car {
     public static drive(speed: number): string;
     public static drive(speed: number, target: number): number[];
@@ -74,7 +76,9 @@ function useCmsPicture(key: string, ...keys: string[]): ProgressiveImageModel | 
 }
 
 // тут как раз прикол что теперь не надо входные типы указывать а выходные автоматом подцепятся, наведи на res
+// eslint-disable-next-line
 const res = useCmsPicture('key', 'key');
+// eslint-disable-next-line
 const res1 = useCmsPicture('key');
 
 // ну или так https://stackoverflow.com/questions/52817922/typescript-return-type-depending-on-parameter
@@ -91,7 +95,7 @@ function fn<T extends string[]>(
 function fn<T extends string[]>(...keys: T): ProgressiveImageModel | undefined | ProgressiveImageModel[] {
     const pictures = window.pictures;
 
-    if (!pictures?.length) keys.length < 2 ? undefined : [];
+    if (!pictures?.length) return keys.length < 2 ? undefined : [];
 
     if (keys?.length) {
         return keys.reduce<ProgressiveImageModel[]>((acc, key) => {
@@ -107,7 +111,9 @@ function fn<T extends string[]>(...keys: T): ProgressiveImageModel | undefined |
     }
 }
 
+// eslint-disable-next-line
 const e = fn('key');
+// eslint-disable-next-line
 const e2 = fn('key', 'key');
 
 // Overload 2
@@ -135,5 +141,7 @@ export function useCmsStructuredContent<T extends ProcessableEntities, K extends
     }
 }
 
+// eslint-disable-next-line
 let a: ProcessableEntities1 = { name: 'Max', key: '1' };
+// eslint-disable-next-line
 const ProcessableEntitiesRes = useCmsStructuredContent([a], '1');

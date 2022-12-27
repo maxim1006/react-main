@@ -1,3 +1,4 @@
+/*eslint-disable*/
 /*********************** Encapsulation ***********************/
 interface FamilyMemberModel {
     name: string;

@@ -1,8 +1,5 @@
 import TestsReduxCounter from '@app/tests/components/redux/counter/tests-redux-counter.component';
-import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Provider } from 'react-redux';
-import { createReduxTestsStore } from '@app/tests/store/store';
 import { renderWithRedux } from '@app/tests/helpers/render-with-redux';
 
 describe('Counter test', () => {

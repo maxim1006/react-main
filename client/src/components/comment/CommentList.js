@@ -11,10 +11,10 @@ export class CommentListComponent extends Component {
     };
 
     render() {
-        const comments = this.state.comments.map((comment, index) => {
+        const comments = this.state.comments.map(comment => {
             return (
                 <ContentProjectionComponent
-                    key={index}
+                    key={crypto.randomUUID()}
                     projectFromProp={<ContentProjectionContentComponent content={comment.occupation} />}
                 >
                     <CommentComponent {...comment} />

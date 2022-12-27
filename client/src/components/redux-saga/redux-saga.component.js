@@ -6,19 +6,17 @@ import SagaCounterComponent from './counter/saga-counter.component';
 
 const ReduxSaga = () => {
     return (
-        <>
-            <TabsComponent>
-                <div tabName='Counter'>
-                    <SagaCounterComponent />
-                </div>
-                <div tabName='Intro'>
-                    <ReduxSagaIntroComponent />
-                </div>
-                <div tabName='Family'>
-                    <FamilySagaComponent />
-                </div>
-            </TabsComponent>
-        </>
+        <TabsComponent>
+            <div tabName='Counter'>
+                <SagaCounterComponent />
+            </div>
+            <div tabName='Intro'>
+                <ReduxSagaIntroComponent />
+            </div>
+            <div tabName='Family'>
+                <FamilySagaComponent />
+            </div>
+        </TabsComponent>
     );
 };
 

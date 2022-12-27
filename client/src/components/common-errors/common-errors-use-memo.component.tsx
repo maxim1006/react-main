@@ -5,6 +5,7 @@ type CommonErrorsUseMemoProps = {};
 const CommonErrorsUseMemo: FC<CommonErrorsUseMemoProps> = () => {
     const [name, setName] = useState('');
     const [surName, setSurName] = useState('');
+    // eslint-disable-next-line
     const [theme, setTheme] = useState<boolean>();
 
     const onNameChange = (e: ChangeEvent<HTMLInputElement>) => setName(e.target.value);

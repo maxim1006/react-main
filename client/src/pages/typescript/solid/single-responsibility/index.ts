@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
  * S - single responsibility principle
  * */

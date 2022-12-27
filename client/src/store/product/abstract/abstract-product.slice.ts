@@ -3,7 +3,6 @@ import { ProductStateModel, ProductTypeEnum } from '@app/models/product.model';
 import { product1Reducer } from '@app/store/product/1/product1.slice';
 import { product2Reducer } from '@app/store/product/2/product2.slice';
 import { product1InnerPropAdapterInitialState } from '@app/store/product/1/product1.adapters';
-import { product2InnerPropAdapter } from '@app/store/product/2/product2.adapters';
 
 const initialState: ProductStateModel = {
     // тут надо добавить исходный продукт иначе не сработает action из product.container

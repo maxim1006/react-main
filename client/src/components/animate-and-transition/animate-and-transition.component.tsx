@@ -1,4 +1,4 @@
-import { FC, memo, MouseEvent, useState } from 'react';
+import { FC, memo, MouseEvent } from 'react';
 import styles from './animate-and-transition.module.scss';
 
 type AnimateAndTransitionProps = {};

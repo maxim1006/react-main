@@ -25,7 +25,7 @@ class SongList extends Component {
             const isSelected = selectedSong ? selectedSong.song.title === song.title : null;
 
             return (
-                <li key={index}>
+                <li key={crypto.randomUUID()}>
                     <Song {...song} selected={isSelected} onSelect={selectSong.bind(this, song)} />
                 </li>
             );

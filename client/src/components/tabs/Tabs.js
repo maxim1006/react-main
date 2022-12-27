@@ -40,7 +40,7 @@ export class TabsComponent extends Component {
         return (
             <div
                 onClick={this.onClick.bind(this, index)}
-                key={index}
+                key={crypto.randomUUID()}
                 className={`tabs__header-item${index === this.state.activeTab ? ' _active' : ''}`}
             >
                 {child.props.tabName}

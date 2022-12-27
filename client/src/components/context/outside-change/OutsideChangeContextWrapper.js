@@ -10,10 +10,8 @@ export default memo(() => {
     };
 
     return (
-        <>
-            <OutsideChangeContext.Provider value={{ value: contextValue, setValue }}>
-                <OutsideChangeContextInner />
-            </OutsideChangeContext.Provider>
-        </>
+        <OutsideChangeContext.Provider value={{ value: contextValue, setValue }}>
+            <OutsideChangeContextInner />
+        </OutsideChangeContext.Provider>
     );
 });

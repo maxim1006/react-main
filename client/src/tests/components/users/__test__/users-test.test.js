@@ -1,4 +1,4 @@
-import { findAllByTestId, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import UsersTest from '../users-test.component';
 
 const MOCK_USERS = [

@@ -7,8 +7,8 @@ import WithMaterialLoader from '../HOC/WithMaterialLoader';
 // компонент только для примера
 const SongsList = ({ songs }) => (
     <ul>
-        {songs.map(({ title }, index) => (
-            <li key={index}>{title}</li>
+        {songs.map(({ title }) => (
+            <li key={crypto.randomUUID()}>{title}</li>
         ))}
     </ul>
 );

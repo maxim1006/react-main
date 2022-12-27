@@ -8,8 +8,8 @@ export default memo(() => {
 
     return family ? (
         <StyledFirestoreFamilyList>
-            {family.map(({ name, age }, index) => (
-                <li key={index}>
+            {family.map(({ name, age }) => (
+                <li key={crypto.randomUUID()}>
                     Name:
                     {name}
                     age:

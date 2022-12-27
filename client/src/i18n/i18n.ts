@@ -11,6 +11,7 @@ export const LOCALE_HASH_COOKIE = 'LOCALE_HASH';
 
 const defaultLanguage = getCookie(LANGUAGE_COOKIE) || EN_LOCALE;
 const localeHashCookieValue = getCookie(LOCALE_HASH_COOKIE);
+// eslint-disable-next-line
 const queryHashString = localeHashCookieValue ? `&hash=${localeHashCookieValue}` : '';
 importLocale(defaultLanguage);
 dayjs.locale(defaultLanguage.toLowerCase());

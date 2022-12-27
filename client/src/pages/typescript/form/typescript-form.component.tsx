@@ -7,11 +7,7 @@ const TypescriptForm = () => {
         setName(e.currentTarget.value);
     };
 
-    return (
-        <>
-            <input type='text' name='name' value={name} onChange={onNameChange} />
-        </>
-    );
+    return <input type='text' name='name' value={name} onChange={onNameChange} />;
 };
 
 export default memo(TypescriptForm);

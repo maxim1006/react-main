@@ -20,4 +20,5 @@ import './single-responsibility';
  * 1 класс - 1 задача, 1 сущность - 1 задача
  * */
 
-export default {};
+const o = {};
+export default o;

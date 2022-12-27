@@ -6,8 +6,8 @@ const FamilyList = memo<FamilyListProps>(function FamilyList({ family }) {
     return (
         <ul>
             {family &&
-                family.map(({ name, age }, index) => (
-                    <li key={index}>
+                family.map(({ name, age }) => (
+                    <li key={crypto.randomUUID()}>
                         Name:
                         {name}
                         age:

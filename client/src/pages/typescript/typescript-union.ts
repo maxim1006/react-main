@@ -20,6 +20,7 @@ export enum CardTypeEnum {
     Placeholder = 'Placeholder',
 }
 
+// eslint-disable-next-line
 function f(arg: ComparisonModel) {
     if (arg.type === CardTypeEnum.Card) return arg.model;
     if (arg.type === CardTypeEnum.Placeholder) return arg.prop;

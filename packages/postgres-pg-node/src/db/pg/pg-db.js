@@ -1,6 +1,7 @@
 import pg from 'pg';
 import { DB_CREATE_USERS_TABLE } from '../../sql/user.db.js';
 import { DB_CREATE_POSTS_TABLE } from '../../sql/post.db.js';
+import { pgCase } from './pg-case.db.js';
 
 // connect to db
 const PgPool = pg.Pool;
@@ -23,4 +24,5 @@ export const startPg = async () => {
     }
 
     // void pgInnerJoinDb();
+    void pgCase();
 };

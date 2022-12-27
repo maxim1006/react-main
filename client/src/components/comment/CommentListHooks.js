@@ -7,10 +7,10 @@ import useComments from '../hooks/useComments';
 export default function CommentListHooks() {
     const comments = useComments();
 
-    const renderComments = comments.map((comment, index) => {
+    const renderComments = comments.map(comment => {
         return (
             <ContentProjectionComponent
-                key={index}
+                key={crypto.randomUUID()}
                 projectFromProp={<ContentProjectionContentComponent content={comment.occupation} />}
             >
                 <CommentComponent {...comment} />

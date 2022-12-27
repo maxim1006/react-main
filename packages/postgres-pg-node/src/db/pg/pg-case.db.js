@@ -2,15 +2,19 @@ import { pgPool } from './pg-db.js';
 
 const DROP_TABLE = 'DROP TABLE IF EXISTS "pgCase"';
 
-const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS "pgCase"
-                      (
-                          "id"            SERIAL,
-                          "name"          VARCHAR(50)    NOT NULL,
-                          "surname"       VARCHAR(50)    NOT NULL,
-                          "department_id" INTEGER,
-                          "salary"        DECIMAL(15, 2) NOT NULL,
-                          PRIMARY KEY ("id")
-                      )`;
+// тут прикольно что строку для формирования UUID нужно писать именно c DEFAULT иначе ошибка в строке формирования id
+// тут пример id как UUID
+const CREATE_TABLE = `
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TABLE IF NOT EXISTS "pgCase" (
+  "id" UUID DEFAULT gen_random_uuid(),
+  "name"          VARCHAR(50)    NOT NULL,
+  "surname"       VARCHAR(50)    NOT NULL,
+  "department_id" BIGINT,
+  "salary"        DECIMAL(15, 2) NOT NULL,
+  PRIMARY KEY ("id")
+)`;
 
 const INSERT_DATA = `INSERT INTO "pgCase"
                          ("name", "surname", "department_id", "salary")

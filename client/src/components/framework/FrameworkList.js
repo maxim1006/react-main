@@ -11,9 +11,9 @@ class FrameworkList extends Component {
     getFrameworkList() {
         const { frameworks, changeFrameworkStatus } = this.props;
 
-        return frameworks.map((framework, index) => {
+        return frameworks.map(framework => {
             return (
-                <li key={index}>
+                <li key={crypto.randomUUID()}>
                     <Framework onChange={changeFrameworkStatus.bind(this, framework)} {...framework} />
                 </li>
             );

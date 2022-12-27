@@ -25,28 +25,26 @@ export class Parent extends Component {
         const rest = { propFromRestOperator: 'prop from rest' };
 
         return (
-            <>
-                <div onBlur={this.onBlur}>
-                    {/* это только пример асинхронности settState, вторым аргументом он принимает функцию, которая выполнится
+            <div onBlur={this.onBlur}>
+                {/* это только пример асинхронности settState, вторым аргументом он принимает функцию, которая выполнится
                     когда выполнится setState*/}
-                    <input
-                        type='text'
-                        onChange={e => {
-                            const { value } = e.target;
-                            // первый вэлью не появится в консоли так как setState асинхронная,
-                            // чтобы получить актуальное значение использую второй аргумент - функцию
-                            this.setState({ inputValue: e.target.value }, () =>
-                                console.log('second arg in setState ', this.state, value)
-                            );
-                            console.log('synchronous log after setState ', this.state, value);
-                        }}
-                    />
-                    {/* truthy без value значит truthy=true*/}
-                    <ChildClass truthy string={string} obj={obj} {...rest} />
-                    <ChildFunction truthy obj={obj} {...rest} onClick={this.onClick} />
-                    <div onClick={this.onClick}>Cant click on Component itself but can on node</div>
-                </div>
-            </>
+                <input
+                    type='text'
+                    onChange={e => {
+                        const { value } = e.target;
+                        // первый вэлью не появится в консоли так как setState асинхронная,
+                        // чтобы получить актуальное значение использую второй аргумент - функцию
+                        this.setState({ inputValue: e.target.value }, () =>
+                            console.log('second arg in setState ', this.state, value)
+                        );
+                        console.log('synchronous log after setState ', this.state, value);
+                    }}
+                />
+                {/* truthy без value значит truthy=true*/}
+                <ChildClass truthy string={string} obj={obj} {...rest} />
+                <ChildFunction truthy obj={obj} {...rest} onClick={this.onClick} />
+                <div onClick={this.onClick}>Cant click on Component itself but can on node</div>
+            </div>
         );
     }
 }

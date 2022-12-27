@@ -1,8 +1,9 @@
-import React, { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 
 type CommonErrorsUseEffectProps = {};
 
 const CommonErrorsUseEffect: FC<CommonErrorsUseEffectProps> = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [state, setState] = useState(null);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const CommonErrorsUseEffect: FC<CommonErrorsUseEffectProps> = () => {
     //     console.log(state);
     // }, [state]);
 
-    return <></>;
+    return null;
 };
 
 export default memo(CommonErrorsUseEffect);

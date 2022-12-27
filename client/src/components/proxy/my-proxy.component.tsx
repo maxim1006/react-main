@@ -11,6 +11,7 @@ export const COMPONENTS_DESCRIPTORS: Record<ComponentTypeEnum, { component: FC |
 };
 
 // usage
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ChildContainer: FC<{}> = () => {
     const Child = COMPONENTS_DESCRIPTORS.test.component;
 

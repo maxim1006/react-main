@@ -21,17 +21,15 @@ const ShopHeader = ({ shopToggleDropdown, visibleCartDropdown, user, cartQuantit
                 {user === null ? (
                     <MaterialLoader />
                 ) : user ? (
-                    <>
-                        <a
-                            href='/'
-                            onClick={e => {
-                                e.preventDefault();
-                                auth.signOut();
-                            }}
-                        >
-                            Sign Out
-                        </a>
-                    </>
+                    <a
+                        href='/'
+                        onClick={e => {
+                            e.preventDefault();
+                            auth.signOut();
+                        }}
+                    >
+                        Sign Out
+                    </a>
                 ) : (
                     <Link to='/shop/sign'>Sign In</Link>
                 )}

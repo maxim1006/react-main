@@ -1,7 +1,6 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import MyObservers from '@app/components/observers/observers.component';
 import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
 
 export default function ReactPage() {

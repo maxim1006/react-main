@@ -119,3 +119,31 @@ jobs:
 origin - тот кто отсылает
 referer = origin + path
 host - куда делается request (host из Request URL)
+
+# Version Control (Git) Conventions
+
+## Commits
+
+❗️ **Commit messages will be used to generate `CHANGELOG.md`.**
+So you must write commit messages according to [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+
+Each commit message must have a ticket number and change `type` annotation, e.g. `feat: TICKET_PREFIX-77777 added new awesome feature`.
+Possible types are listed in `package.json`:
+
+```json
+{
+    "types": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "dp", "hidden": true },
+        { "type": "docs", "hidden": true },
+        { "type": "test", "hidden": true }
+    ]
+}
+```
+
+Changes of types `feat` and `fix` will be placed in corresponding sections of `CHANGELOG.md`. **Others will be ignored, so be careful about it**.
+
+You can reference Gitlab users in commit messages by adding `@userId`. In that case link to the user's Gitlab profile will be added to changelog.
+
+> Example: commit message: `feat: TICKET_PREFIX-7 cool stuff @max` will add a [@max](https://git.repository.com/max) link

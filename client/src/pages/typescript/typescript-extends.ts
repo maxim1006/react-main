@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 // пример с extends пропертей
 export type AType = 'a' | 'b' | 'c';
 

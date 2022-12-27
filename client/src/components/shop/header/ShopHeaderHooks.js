@@ -35,17 +35,15 @@ export default function ShopHeaderHooks() {
                 {currentUser === null ? (
                     <MaterialLoaderComponent message='' customStyles={{ width: '30px' }} />
                 ) : currentUser ? (
-                    <>
-                        <a
-                            href='/'
-                            onClick={e => {
-                                e.preventDefault();
-                                auth.signOut();
-                            }}
-                        >
-                            Sign Out
-                        </a>
-                    </>
+                    <a
+                        href='/'
+                        onClick={e => {
+                            e.preventDefault();
+                            auth.signOut();
+                        }}
+                    >
+                        Sign Out
+                    </a>
                 ) : (
                     <Link to='/shop/sign'>Sign In</Link>
                 )}

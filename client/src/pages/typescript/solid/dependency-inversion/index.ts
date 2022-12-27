@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 /*
  * D - Dependency Inversion principle - Принцип инверсии зависимостей
  *

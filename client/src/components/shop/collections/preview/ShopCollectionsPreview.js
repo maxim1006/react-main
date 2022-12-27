@@ -7,7 +7,7 @@ import {
     StyledShopCollectionsPreviewTitle,
 } from './StyledShopCollectionsPreview';
 
-export default ({ title, items }) => (
+const ShopCollectionsPreview = ({ title, items }) => (
     <StyledShopCollectionsPreview>
         <StyledShopCollectionsPreviewTitle to={`collections/${title.toLowerCase()}`}>
             {title}
@@ -21,3 +21,5 @@ export default ({ title, items }) => (
         </StyledShopCollectionsPreviewItems>
     </StyledShopCollectionsPreview>
 );
+
+export default ShopCollectionsPreview;

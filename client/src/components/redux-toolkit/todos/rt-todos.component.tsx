@@ -58,8 +58,8 @@ const RtTodos = () => {
                 </button>
             </form>
             <div>
-                {Object.values(visibilityFilters).map((filter, index) => (
-                    <a onClick={onFilterClick(filter)} href='/' style={{ marginRight: 5 }} key={index}>
+                {Object.values(visibilityFilters).map(filter => (
+                    <a onClick={onFilterClick(filter)} href='/' style={{ marginRight: 5 }} key={crypto.randomUUID()}>
                         {filter}
                     </a>
                 ))}
