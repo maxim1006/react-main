@@ -1,0 +1,56 @@
+{
+    "name": "react-main",
+    "version": "1.2.0",
+    "description": "maxim1006",
+    "main": "",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "release": "standard-version"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maxim1006/react-main.git"
+    },
+    "author": "maxim1006",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/maxim1006/react-main/issues"
+    },
+    "homepage": "https://github.com/maxim1006/react-main#readme",
+    "standard-version": {
+        "scripts": {
+            "postchangelog": ""
+        },
+        "types": [
+            {
+                "type": "feat",
+                "section": "Features"
+            },
+            {
+                "type": "fix",
+                "section": "Bug Fixes"
+            },
+            {
+                "type": "dp",
+                "hidden": true
+            },
+            {
+                "type": "docs",
+                "hidden": true
+            },
+            {
+                "type": "test",
+                "hidden": true
+            }
+        ],
+        "issueUrlFormat": "https://github.com/maxim1006/react-main/{{id}}",
+        "issuePrefixes": [
+            "MAXIM1006-"
+        ]
+    },
+    "devDependencies": {
+        "standard-version": "^9.5.0"
+    }
+}
