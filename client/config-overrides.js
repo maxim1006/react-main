@@ -10,6 +10,7 @@ const prefix = packageJson.prefix;
 const { alias, configPaths } = require('react-app-rewire-alias');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const UnusedWebpackPlugin = require('unused-webpack-plugin');
 
 module.exports = {
     webpack: function (config, env) {
@@ -19,11 +20,22 @@ module.exports = {
         let isProd = env === 'production';
         let plugins = config.plugins;
         let externalLess = process.argv.includes('--external-less');
+        let unusedPluginEnabled = process.argv.includes('--unused-plugin');
 
         // build analyzer
         if (process.argv.includes('--report')) {
             plugins.push(new BundleAnalyzerPlugin());
         }
+
+        !isProd &&
+            unusedPluginEnabled &&
+            config.plugins.push(
+                new UnusedWebpackPlugin({
+                    directories: [path.join(__dirname, './src')],
+                    exclude: ['*.test.js'],
+                    root: __dirname,
+                })
+            );
 
         // add aliases
         // config.resolve.alias = {

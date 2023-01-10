@@ -437,3 +437,20 @@ function curry(f) {
 //
 // console.log(countCollisions(o)); // {"1,1":["Max"],"2,3":["Alice"],"3,4":["Alice","Bob"],"4,6":["Alice","Bob","Catie"],"6,7":["Bob","Catie"],"7,8":["Bob"]}
 ///////////////////////////////////////////////////////////////////// End
+
+///////////////////////////////////////////////////////////////////// Task
+// requestAnimationFrame(() => console.log('raf'));
+//
+// Promise.resolve('resolve').then(a => console.log(a));
+//
+// setTimeout(() => console.log('setTimeout'), 0);
+//
+// console.log(1);
+//
+// // Последовательность:
+// // 1 // консоль лог
+// // resolve // промис
+// // 4 // id сеттаймаута
+// // raf // отработает requestAnimationFrame
+// // setTimeout // отработает таймаут
+///////////////////////////////////////////////////////////////////// End
