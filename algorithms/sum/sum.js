@@ -23,7 +23,7 @@ function addP(n) {
     return (n * (n + 1)) / 2;
 }
 
-const num = 10000;
+const num = 1000;
 
 console.time('add');
 console.log(add(num));
@@ -34,7 +34,6 @@ console.timeEnd('addR');
 console.time('addP');
 console.log(addP(num));
 console.timeEnd('addP');
-
 
 // function getMaxSubSum(arr) {
 //     let sum = 0;

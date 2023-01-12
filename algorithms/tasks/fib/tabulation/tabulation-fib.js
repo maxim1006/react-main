@@ -11,13 +11,44 @@ const fib = n => {
         if (i + 2 <= n) table[i + 2] += table[i];
     }
 
-    console.log(table);
+    // console.log(table);
 
     return table[n];
 };
 
+function fibIter(n) {
+    if (n === 0) return 0;
+    if (n < 2) return 1;
+
+    let cur = 1;
+    let prev = 1;
+
+    for (let i = 2; i < n; i++) {
+        let temp = cur;
+        cur += prev;
+        prev = temp;
+    }
+
+    return cur;
+}
+
+function fibRecursive(n) {
+    if (n === 0) return 0;
+    if (n < 2) return 1;
+
+    return fibRecursive(n - 1) + fibRecursive(n - 2);
+}
+
 // time O(n), space O(n)
 console.log(fib(6)); // 8
+console.log(fibIter(6)); // 8
+console.log(fibRecursive(6)); // 8
 console.log(fib(7)); // 13
+console.log(fibIter(7)); // 13
+console.log(fibRecursive(7)); // 13
 console.log(fib(8)); // 21
+console.log(fibIter(8)); // 21
+console.log(fibRecursive(8)); // 21
 console.log(fib(50)); // 12586269025
+console.log(fibIter(50)); // 12586269025
+console.log(fibRecursive(50)); // 12586269025

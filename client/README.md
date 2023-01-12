@@ -1,4 +1,9 @@
-s### install app
+### origin, referer, host
+origin - тот кто отсылает
+referer = origin + path
+host - это ресурс на который идет реквест
+
+### install app
 npx create-react-app my-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
