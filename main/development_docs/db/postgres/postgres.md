@@ -3,7 +3,8 @@
 ### installation
 #### brew install postgresql (brew services start postgresql/brew services stop postgresql)
 
-- запуская postgres brew services start postgresql
+- запускаю postgres командой
+  brew services start postgresql
 - подключаюсь к ней с помощью psql: psql postgres
   \conninfo
   \q: Exit psql connection

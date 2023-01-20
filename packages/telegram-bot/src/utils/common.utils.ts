@@ -9,7 +9,7 @@ export const convertCommandsToStringList = (commands: Record<string, string>) =>
 
 export function getRandomInteger(min = 0, max = 9) {
     min = Math.ceil(min);
-    max = Math.ceil(max);
+    max = Math.floor(max);
 
     return Math.floor((max - min + 1) * Math.random() + min);
 }
