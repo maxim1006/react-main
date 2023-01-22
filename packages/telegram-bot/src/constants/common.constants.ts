@@ -15,4 +15,6 @@ export enum CommonEnum {
     PlayAgain = 'play_again',
 }
 
-export const isProd = process.env.NODE_ENV === 'prod';
+export const isProd = process.env.NODE_ENV !== 'dev';
+
+console.log({ isProd });

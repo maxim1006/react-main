@@ -8,6 +8,7 @@ import { SAD_EMOJI } from '../constants/emoji.constants';
 import { handleEnglishGameTaskMessages } from '../messages/english-game.message';
 import { EnglishGameModel } from '../models/english-game.model';
 import { ENGLISH_WORDS_DICTIONARY } from '../constants/english.constants';
+import { updateTodayLastGameByType } from '../db/game.db';
 
 export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) => {
     const chat = msg.message?.chat;
@@ -33,6 +34,18 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     if (!gameData) return console.error('Error handleEnglishGameCbQuery gameData error');
 
     const correctAnswer = ENGLISH_WORDS_DICTIONARY[gameData.task.value.key];
+    const isCorrect = correctAnswer.includes(userAnswer);
+
+    await updateTodayLastGameByType({
+        gameType: MessageEnum.EnglishGame,
+        firstName,
+        data: {
+            answer: {
+                isCorrect,
+                value: gameData.task.value.key,
+            },
+        },
+    });
 
     if (correctAnswer.includes(userAnswer)) {
         await BOT.sendPhoto(chatId, getRandomImagePath('photos'));

@@ -8,7 +8,7 @@
         "start": "NODE_ENV=dev tsc-watch -p ./ --outDir ./public --onSuccess \"node ./public/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
         "dev:js": "nodemon public/index.js",
         "serve:js": "node public/index.js",
-        "prod:start": "NODE_ENV=prod pm2 start public/index.js",
+        "prod:start": "pm2 start public/index.js",
         "prod:list": "pm2 list",
         "prod:stop": "pm2 stop index",
         "prod:monit": "pm2 monit",

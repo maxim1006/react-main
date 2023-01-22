@@ -3,11 +3,15 @@ import { MathGameModule } from '../modules/math-game.module';
 import { MessageBaseModel, MessageEnum } from '../models/message.model';
 import { HAPPY_EMOJI, SAD_EMOJI } from '../constants/emoji.constants';
 import { SEND_MESSAGE_OPTIONS_TRY_AGAIN } from '../constants/message-options.constants';
-import { getTodayLastMathGame, updateTodayLastMathGame } from '../db/math-game.db';
 import { getTodayUserGameStatsByGameType } from '../db/user.db';
-import { addTodayGameToUser } from '../db/game.db';
+import {
+    addTodayGameToUser,
+    getTodayLastGameByType,
+    updateTodayLastGameByType,
+} from '../db/game.db';
 import { getMathMessageData } from '../utils/math/math-message.utils';
 import { getRandomImagePath } from '../utils/image.utils';
+import { MathGameModel } from '../models/math-game.model';
 
 export const handleMathGameTaskMessages = async ({
     chat,
@@ -32,21 +36,25 @@ export const handleMathGameResultMessages = async ({
 
     if (!firstName) return console.error('Error handleMathGameResultMessages no firstName error');
 
-    const game = await getTodayLastMathGame({ firstName });
+    const game = await getTodayLastGameByType({ firstName, gameType: MessageEnum.MathGame });
 
     if (!game) return console.error('Error handleMathGameResultMessages no game error');
 
-    const { task, answer } = game.data;
+    const { task, answer } = game.data as MathGameModel;
 
     if (answer)
         return await BOT.sendMessage(chatId, `Уже отвечал на этот вопрос, нажми "Играть еще"`);
 
     if (!msg?.text) return await BOT.sendMessage(chatId, `Пожалуйста введи ответ`);
 
-    const handledUserAnswer = getMathMessageData({ game: game.data, userAnswer: msg.text }).answer;
+    const handledUserAnswer = getMathMessageData({
+        game: game.data as MathGameModel,
+        userAnswer: msg.text,
+    }).answer;
     const isCorrect = task.result === handledUserAnswer;
 
-    await updateTodayLastMathGame({
+    await updateTodayLastGameByType({
+        gameType: MessageEnum.MathGame,
         firstName,
         data: {
             answer: {
