@@ -4,7 +4,7 @@ import { UserModel } from '../models/user.model';
 import { getTodayDateByUserDataDates } from '../utils/dates.utils';
 import * as crypto from 'crypto';
 import { MessageEnum } from '../models/message.model';
-import { GameModel } from '../models/game.model';
+import { GameType } from '../models/game.model';
 
 export const addTodayGameToUser = async ({
     firstName,
@@ -13,13 +13,13 @@ export const addTodayGameToUser = async ({
 }: {
     firstName: string;
     gameType: MessageEnum;
-    game: GameModel;
+    game: GameType;
 }) => {
     const userDocRef = await DB.doc(`users/${firstName}`);
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
-    if (!currentDay) return console.error('addTodayGameToUser currentDay error');
+    if (!currentDay) return console.error('Error addTodayGameToUser currentDay error');
 
     const gameId = crypto.randomUUID();
 

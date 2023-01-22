@@ -7,8 +7,8 @@ export const handleGuessNumberMessage = async ({ msg }: MessageBaseModel) => {
     const firstName = msg?.chat?.first_name;
     const chatId = msg?.chat.id;
 
-    if (!chatId) return console.error('handleGuessNumberMessage no chatId');
-    if (!firstName) return console.error('handleGuessNumberMessage Alarm ghost in town!!!');
+    if (!chatId) return console.error('Error handleGuessNumberMessage no chatId');
+    if (!firstName) return console.error('Error handleGuessNumberMessage Alarm ghost in town!!!');
 
     const data = await addTodayGameToUser({
         firstName,

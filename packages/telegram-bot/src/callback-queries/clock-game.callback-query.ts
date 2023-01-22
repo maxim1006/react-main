@@ -3,10 +3,7 @@ import { CallbackQuery } from 'node-telegram-bot-api';
 import { getTodayUserGameById } from '../db/user.db';
 import { MessageEnum } from '../models/message.model';
 import { GuessNumberGameModel } from '../models/guess-number-game.model';
-import {
-    CallbackPlayAgainEnum,
-    SEND_MESSAGE_OPTIONS_CLOCK_GAME_AGAIN,
-} from '../constants/play-again.constants';
+import { CallbackPlayAgainEnum, getPlayAgainMarkup } from '../constants/play-again.constants';
 import { handleClockGameMessage } from '../messages/clock-game.message';
 import { CLOCK_ANSWERS } from '../constants/clock-answers.constants';
 import { getRandomImagePath } from '../utils/image.utils';
@@ -18,10 +15,10 @@ export const handleClockGameCbQuery = async ({ msg }: { msg: CallbackQuery }) =>
     const data = msg.data;
     const firstName = chat?.first_name;
 
-    if (!chat) return console.error('handleClockGameCbQuery no chat');
-    if (!chatId) return console.error('handleClockGameCbQuery no chatId');
-    if (!firstName) return console.error('handleClockGameCbQuery no firstName');
-    if (!data) return console.error('handleClockGameCbQuery no message data');
+    if (!chat) return console.error('Error handleClockGameCbQuery no chat');
+    if (!chatId) return console.error('Error handleClockGameCbQuery no chatId');
+    if (!firstName) return console.error('Error handleClockGameCbQuery no firstName');
+    if (!data) return console.error('Error handleClockGameCbQuery no message data');
 
     if (data === CallbackPlayAgainEnum.ClockGame)
         return await handleClockGameMessage({ chat, msg: msg.message });
@@ -33,7 +30,7 @@ export const handleClockGameCbQuery = async ({ msg }: { msg: CallbackQuery }) =>
         gameType: MessageEnum.ClockGame,
     });
 
-    if (!gameData) return console.error('handleClockGameCbQuery gameData error');
+    if (!gameData) return console.error('Error handleClockGameCbQuery gameData error');
 
     const correctAnswer = CLOCK_ANSWERS[gameData.task ?? ''];
     const [correctH, correctM] = correctAnswer.split(':');
@@ -44,14 +41,15 @@ export const handleClockGameCbQuery = async ({ msg }: { msg: CallbackQuery }) =>
         return await BOT.sendMessage(
             chatId,
             `Молодец, правильно часы показывают ${userAnswer}`,
-            SEND_MESSAGE_OPTIONS_CLOCK_GAME_AGAIN
+            getPlayAgainMarkup(CallbackPlayAgainEnum.ClockGame)
         );
     }
 
     await BOT.sendMessage(chatId, SAD_EMOJI);
+
     return await BOT.sendMessage(
         chatId,
         `Неверно, часы показывают ${correctAnswer}`,
-        SEND_MESSAGE_OPTIONS_CLOCK_GAME_AGAIN
+        getPlayAgainMarkup(CallbackPlayAgainEnum.ClockGame)
     );
 };

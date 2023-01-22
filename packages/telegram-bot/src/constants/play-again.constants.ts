@@ -1,32 +1,20 @@
-import TelegramBot from 'node-telegram-bot-api';
-
 export enum CallbackPlayAgainEnum {
     GuessNumber = 'guessNumber again',
     ClockGame = 'clock game',
+    EnglishGame = 'english game',
 }
 
-export const SEND_MESSAGE_OPTIONS_GUESS_NUMBER_AGAIN: TelegramBot.SendMessageOptions = {
-    reply_markup: {
-        inline_keyboard: [
-            [
-                {
-                    text: 'Играть еще раз',
-                    callback_data: CallbackPlayAgainEnum.GuessNumber,
-                },
+export function getPlayAgainMarkup(callback_data: CallbackPlayAgainEnum) {
+    return {
+        reply_markup: {
+            inline_keyboard: [
+                [
+                    {
+                        text: 'Играть еще раз',
+                        callback_data,
+                    },
+                ],
             ],
-        ],
-    },
-};
-
-export const SEND_MESSAGE_OPTIONS_CLOCK_GAME_AGAIN: TelegramBot.SendMessageOptions = {
-    reply_markup: {
-        inline_keyboard: [
-            [
-                {
-                    text: 'Играть еще раз',
-                    callback_data: CallbackPlayAgainEnum.ClockGame,
-                },
-            ],
-        ],
-    },
-};
+        },
+    };
+}

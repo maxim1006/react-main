@@ -1,7 +1,7 @@
 import { AbstractGameModel } from './abstract-game.model';
 
 export interface MathGameModel extends AbstractGameModel {
-    name: MathGamesEnum;
+    name: MathGameEnum;
     task: MathGameTaskModel;
     answer?: MathGameAnswerModel;
     timestamp: number;
@@ -18,7 +18,7 @@ export interface MathGameAnswerModel {
     value?: number;
 }
 
-export enum MathGamesEnum {
+export enum MathGameEnum {
     Sum = 'sum',
     Subtraction = 'subtraction',
     Multiplication = 'multiplication',

@@ -15,7 +15,8 @@ export const handleMathGameTaskMessages = async ({
 }: MessageBaseModel) => {
     const game = new MathGameModule().getRandomTask();
 
-    if (!chat.first_name) return console.error('handleMathGameTaskMessages chat.firstName error');
+    if (!chat.first_name)
+        return console.error('Error handleMathGameTaskMessages chat.firstName error');
 
     await addTodayGameToUser({ gameType: MessageEnum.MathGame, firstName: chat.first_name, game });
 
@@ -29,11 +30,11 @@ export const handleMathGameResultMessages = async ({
 }: MessageBaseModel) => {
     const firstName = chat.first_name;
 
-    if (!firstName) return console.error('handleMathGameResultMessages no firstName error');
+    if (!firstName) return console.error('Error handleMathGameResultMessages no firstName error');
 
     const game = await getTodayLastMathGame({ firstName });
 
-    if (!game) return console.error('handleMathGameResultMessages no game error');
+    if (!game) return console.error('Error handleMathGameResultMessages no game error');
 
     const { task, answer } = game.data;
 
@@ -67,7 +68,7 @@ export const handleMathGameResultMessages = async ({
         text: isCorrect
             ? `
 Молодец! <b>${msg.text}</b> это правильный ответ
-Сегодня сыграно <b>${stats.all}</b>, правильных ответов: <b>${stats.correct}</b>
+Сегодня сыграно <b>${stats?.all}</b>, правильных ответов: <b>${stats?.correct}</b>
               `
             : `Неверно, правильный ответ <b>${task.result}</b>`,
     });

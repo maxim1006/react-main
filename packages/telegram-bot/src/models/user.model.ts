@@ -1,5 +1,5 @@
 import { MessageEnum } from './message.model';
-import { GameModel } from './game.model';
+import { GameType } from './game.model';
 
 export interface UserModel {
     dates?: UserDateModel;
@@ -12,7 +12,7 @@ export interface UserDateModel {
     [key: string]: {
         data?: {
             games: {
-                [key in MessageEnum]?: Record<string, GameModel>;
+                [key in MessageEnum]?: Record<string, GameType>;
             };
         };
     };

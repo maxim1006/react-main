@@ -3,7 +3,8 @@ import { getDataByDocName, setDBDoc } from '../utils/db.utils';
 import { getTodayDateByUserDataDates } from '../utils/dates.utils';
 import { DB } from './db';
 import { MessageEnum } from '../models/message.model';
-import { GameModel } from '../models/game.model';
+import { GameType } from '../models/game.model';
+import { MONTHS } from '../constants/date.constants';
 
 export const setUser = async ({ firstName, mode }: { firstName?: string; mode: MessageEnum }) => {
     const userDocRef = await DB.doc(`users/${firstName}`);
@@ -13,7 +14,7 @@ export const setUser = async ({ firstName, mode }: { firstName?: string; mode: M
         mode,
     });
 
-    if (!firstName) return console.error('setUser firstName error');
+    if (!firstName) return console.error('Error setUser firstName error');
 
     await addUserDate({ firstName });
 };
@@ -44,7 +45,7 @@ export const getUserMode = async ({
     return userData.mode;
 };
 
-export const getTodayUserGameById = async <T extends GameModel>({
+export const getTodayUserGameById = async <T extends GameType>({
     firstName,
     gameType,
     gameId,
@@ -56,8 +57,8 @@ export const getTodayUserGameById = async <T extends GameModel>({
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const today = getTodayDateByUserDataDates(userData);
 
-    if (!userData.dates) return console.error('getUserGameById no userData.dates');
-    if (!today) return console.error('getUserGameById today date error');
+    if (!userData.dates) return console.error('Error getUserGameById no userData.dates');
+    if (!today) return console.error('Error getUserGameById today date error');
 
     return userData.dates[today].data?.games[gameType]?.[gameId] as T;
 };
@@ -72,27 +73,13 @@ export const getUserGameStatsByGameType = async ({
     period?: 'year';
 }) => {
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
-    const gamesByMonth: Record<string, Record<string, Record<string, Partial<GameModel>>>> = {};
-    const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-    ];
+    const gamesByMonth: Record<string, Record<string, Record<string, Partial<GameType>>>> = {};
 
     Object.entries(userData.dates ?? {}).forEach(([key, value]) => {
         const date = new Date(key);
         const month = date.getMonth();
         const year = date.getFullYear();
-        const fullDateStr = months[month] + ' ' + year;
+        const fullDateStr = MONTHS[month] + ' ' + year;
 
         if (!gamesByMonth[fullDateStr]) gamesByMonth[fullDateStr] = {};
 
@@ -128,7 +115,7 @@ export const getTodayUserGameStatsByGameType = async ({
 }: {
     firstName: string;
     gameType: MessageEnum;
-}): Promise<{ all: number; correct: number }> => {
+}): Promise<{ all: number; correct: number } | void> => {
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const today = getTodayDateByUserDataDates(userData);
 
@@ -137,15 +124,9 @@ export const getTodayUserGameStatsByGameType = async ({
         correct: 0,
     };
 
-    if (!userData.dates) {
-        console.error('getTodayUserGameStatsByGameType no userData.dates');
-        return stats;
-    }
-
-    if (!today) {
-        console.error('getTodayUserGameStatsByGameType today date error');
-        return stats;
-    }
+    if (!userData.dates)
+        return console.error('Error getTodayUserGameStatsByGameType no userData.dates');
+    if (!today) return console.error('Error getTodayUserGameStatsByGameType today date error');
 
     const games = userData.dates[today].data?.games[gameType];
 

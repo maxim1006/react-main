@@ -1,3 +1,7 @@
+### TODO
+1) payments - сделать бюджет для лили
+2) сделать Английский модуль
+
 ### Useful links
 [firebase](https://console.firebase.google.com/)
 [firestore crud](https://cloud.google.com/nodejs/docs/reference/firestore/latest)
@@ -14,3 +18,8 @@
 2) node_modules/.bin/firebase login // вот так прикольно чтобы в глобальные пакеты не лезть а только локально
 если нужно (node_modules/.bin/firebase login:add __account-email__, node_modules/.bin/firebase login:use  __account-email__)
 3) node_modules/.bin/firebase init functions
+
+### beget
+ssh maxim1@maxim1.beget.tech
+ssh localhost -p 222
+(теперь в докере могу что угодно делать)

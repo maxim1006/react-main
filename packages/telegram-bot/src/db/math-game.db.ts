@@ -16,12 +16,12 @@ export const getTodayLastMathGame = async <T>({
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const today = getTodayDateByUserDataDates(userData);
 
-    if (!userData.dates) return console.error('getCurrentMathGame no userData.dates');
-    if (!today) return console.error('getCurrentMathGame today date error');
+    if (!userData.dates) return console.error('Error getCurrentMathGame no userData.dates');
+    if (!today) return console.error('Error getCurrentMathGame today date error');
 
     const mathGames = userData.dates[today].data?.games[MessageEnum.MathGame];
 
-    if (!mathGames) return console.error('getCurrentMathGame no math games error');
+    if (!mathGames) return console.error('Error getCurrentMathGame no math games error');
 
     const sortedMathGames = Object.entries(mathGames).sort(
         (a, b) => (a[1].timestamp ?? 0) - (b[1].timestamp ?? 0)
@@ -29,8 +29,8 @@ export const getTodayLastMathGame = async <T>({
 
     const lastGame = sortedMathGames.at(-1);
 
-    if (!lastGame?.[0]) return console.error('getCurrentMathGame gameId error');
-    if (!lastGame?.[1]) return console.error('getCurrentMathGame game data error');
+    if (!lastGame?.[0]) return console.error('Error getCurrentMathGame gameId error');
+    if (!lastGame?.[1]) return console.error('Error getCurrentMathGame game data error');
 
     const [gameId, data] = lastGame;
 
@@ -55,8 +55,8 @@ export const updateTodayLastMathGame = async ({
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
-    if (!currentDay) return console.error('updateLastMathGame currentDay error');
-    if (!game) return console.error('updateLastMathGame no game error');
+    if (!currentDay) return console.error('Error updateLastMathGame currentDay error');
+    if (!game) return console.error('Error updateLastMathGame no game error');
 
     await setDBDoc<UserModel>(userDocRef, {
         dates: {

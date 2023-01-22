@@ -9,8 +9,8 @@ export const handleClockGameMessage = async ({ msg }: MessageBaseModel) => {
     const firstName = msg?.chat?.first_name;
     const chatId = msg?.chat.id;
 
-    if (!chatId) return console.error('handleClockGameMessage no chatId');
-    if (!firstName) return console.error('handleClockGameMessage Alarm ghost in town!!!');
+    if (!chatId) return console.error('Error handleClockGameMessage no chatId');
+    if (!firstName) return console.error('Error handleClockGameMessage Alarm ghost in town!!!');
 
     const path = getRandomClockImagePath();
     const imageNumber = path.match(/(\d*).png/)?.[1] ?? '0';
@@ -21,7 +21,7 @@ export const handleClockGameMessage = async ({ msg }: MessageBaseModel) => {
         game: { task: imageNumber },
     });
 
-    if (!data) return console.error('handleClockGameMessage addTodayGameToUser data error');
+    if (!data) return console.error('Error handleClockGameMessage addTodayGameToUser data error');
 
     await BOT.sendMessage(chatId, `Пожалуйста выбери сколько показывают часы `, {
         reply_markup: {

@@ -1,8 +1,8 @@
 import * as crypto from 'crypto';
-import { MathGamesEnum } from '../constants/math-game.constants';
+import { MathGameEnum } from '../constants/math-game.constants';
 import { UserModel } from '../models/user.model';
-import { MathGameModel } from '../models/math-game.model';
 import { MessageEnum } from '../models/message.model';
+import { MathGameModel } from '../models/math-game.model';
 
 export const USER_MATH_GAME_EXAMPLE = {
     name: MathGamesEnum.Sum,
@@ -17,13 +17,13 @@ export const USER_MATH_GAME_EXAMPLE = {
     },
 };
 
-export const USER_DATA_EXAMPLE: UserModel<MathGameModel> = {
+export const USER_DATA_EXAMPLE: UserModel = {
     dates: {
         [new Date().toISOString()]: {
             data: {
                 games: {
                     [MessageEnum.MathGame]: {
-                        [crypto.randomUUID()]: USER_MATH_GAME_EXAMPLE,
+                        [crypto.randomUUID()]: USER_MATH_GAME_EXAMPLE as MathGameModel,
                     },
                 },
             },

@@ -52,6 +52,9 @@ mkdir some-directory
 
 mkdir -p /foo/bar/baz  # creates bar and baz within bar under existing /foo
 
+# cp
+cp -R ./src/admin ./public # copy recursively all files from src/admin to public
+
 # rm
 rm -rf some-directory
 

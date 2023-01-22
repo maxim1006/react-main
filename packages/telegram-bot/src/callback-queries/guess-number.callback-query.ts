@@ -4,10 +4,7 @@ import { CallbackQuery } from 'node-telegram-bot-api';
 import { getTodayUserGameById } from '../db/user.db';
 import { MessageEnum } from '../models/message.model';
 import { GuessNumberGameModel } from '../models/guess-number-game.model';
-import {
-    CallbackPlayAgainEnum,
-    SEND_MESSAGE_OPTIONS_GUESS_NUMBER_AGAIN,
-} from '../constants/play-again.constants';
+import { CallbackPlayAgainEnum, getPlayAgainMarkup } from '../constants/play-again.constants';
 
 export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) => {
     const chat = msg.message?.chat;
@@ -15,10 +12,10 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     const data = msg.data;
     const firstName = chat?.first_name;
 
-    if (!chat) return console.error('handleGuessNumberCbQuery no chat');
-    if (!chatId) return console.error('handleGuessNumberCbQuery no chatId');
-    if (!firstName) return console.error('handleGuessNumberCbQuery no firstName');
-    if (!data) return console.error('handleGuessNumberCbQuery no message data');
+    if (!chat) return console.error('Error handleGuessNumberCbQuery no chat');
+    if (!chatId) return console.error('Error handleGuessNumberCbQuery no chatId');
+    if (!firstName) return console.error('Error handleGuessNumberCbQuery no firstName');
+    if (!data) return console.error('Error handleGuessNumberCbQuery no message data');
 
     if (data === CallbackPlayAgainEnum.GuessNumber)
         return await handleGuessNumberMessage({ chat, msg: msg.message });
@@ -30,18 +27,18 @@ export const handleGuessNumberCbQuery = async ({ msg }: { msg: CallbackQuery }) 
         gameType: MessageEnum.GuessNumber,
     });
 
-    if (!gameData) return console.error('handleGuessNumberCbQuery gameData error');
+    if (!gameData) return console.error('Error handleGuessNumberCbQuery gameData error');
 
     if (gameData?.task === Number(answer))
         return await BOT.sendMessage(
             chatId,
             `Умничка, правильно, загадали ${gameData?.task}`,
-            SEND_MESSAGE_OPTIONS_GUESS_NUMBER_AGAIN
+            getPlayAgainMarkup(CallbackPlayAgainEnum.GuessNumber)
         );
 
     return await BOT.sendMessage(
         chatId,
         `Эх не повезло, загадали ${gameData?.task}`,
-        SEND_MESSAGE_OPTIONS_GUESS_NUMBER_AGAIN
+        getPlayAgainMarkup(CallbackPlayAgainEnum.GuessNumber)
     );
 };

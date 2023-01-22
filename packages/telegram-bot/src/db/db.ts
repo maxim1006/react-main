@@ -1,7 +1,5 @@
 import path from 'path';
 import admin from 'firebase-admin';
-import { getUserGameStatsByGameType } from './user.db';
-import { MessageEnum } from '../models/message.model';
 
 const serviceAccount = require(path.resolve(
     __dirname,
@@ -14,8 +12,14 @@ const app = admin.initializeApp({
 
 export const DB = app.firestore();
 
+/* Тут делаю всякие тесты с бд если вдруг хочу узнать какую-то инфо */
 async function DBTest() {
-    await getUserGameStatsByGameType({ firstName: 'maximprosv', gameType: MessageEnum.MathGame });
+    // @ts-ignore
+    // const data = await getTodayUserGameStatsByGameType({
+    //     firstName: 'Lili2015',
+    //     gameType: MessageEnum.MathGame,
+    // });
+    // console.log({ data: data });
     // const firstName = 'maximprosv';
     // await setUser({ firstName });
     // await addMathGameToUser({ firstName, game: USER_MATH_GAME_EXAMPLE });

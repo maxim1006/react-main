@@ -5,27 +5,27 @@ import {
     MAX_SUBTRACTION_INTEGER,
     MAX_SUM_INTEGER,
 } from '../constants/math-game.constants';
-import { MathGameModel, MathGamesEnum, MathGameTaskModel } from '../models/math-game.model';
+import { MathGameModel, MathGameEnum, MathGameTaskModel } from '../models/math-game.model';
 
 export class MathGameModule {
     getRandomTask(): MathGameModel {
         const arr = [
-            MathGamesEnum.Sum,
-            MathGamesEnum.Subtraction,
-            MathGamesEnum.Multiplication,
-            MathGamesEnum.IntegerDivision,
-            MathGamesEnum.SumMeters,
-            MathGamesEnum.SumMeters,
-            MathGamesEnum.SumKilos,
-            MathGamesEnum.SumKilos,
-            MathGamesEnum.ConvertToGrams,
-            MathGamesEnum.ConvertToGrams,
-            MathGamesEnum.ConvertToKilos,
-            MathGamesEnum.ConvertToKilos,
-            MathGamesEnum.ConvertToCentimeters,
-            MathGamesEnum.ConvertToCentimeters,
+            MathGameEnum.Sum,
+            MathGameEnum.Subtraction,
+            MathGameEnum.Multiplication,
+            MathGameEnum.IntegerDivision,
+            MathGameEnum.SumMeters,
+            MathGameEnum.SumMeters,
+            MathGameEnum.SumKilos,
+            MathGameEnum.SumKilos,
+            MathGameEnum.ConvertToGrams,
+            MathGameEnum.ConvertToGrams,
+            MathGameEnum.ConvertToKilos,
+            MathGameEnum.ConvertToKilos,
+            MathGameEnum.ConvertToCentimeters,
+            MathGameEnum.ConvertToCentimeters,
         ];
-        const name = arr[getRandomInteger(0, arr.length - 1)] as MathGamesEnum;
+        const name = arr[getRandomInteger(0, arr.length - 1)] as MathGameEnum;
 
         const task = this[name]();
 
@@ -36,7 +36,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.Sum](): MathGameTaskModel {
+    [MathGameEnum.Sum](): MathGameTaskModel {
         const term1 = getRandomInteger(2, MAX_SUM_INTEGER);
         const term2 = getRandomInteger(2, MAX_SUM_INTEGER);
         const sum = term1 + term2;
@@ -48,7 +48,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.SumMeters](): MathGameTaskModel {
+    [MathGameEnum.SumMeters](): MathGameTaskModel {
         const term1 = getRandomInteger(0, 3);
         const term11 = getRandomInteger(0, 10);
         const term111 = getRandomInteger(1, 20);
@@ -64,7 +64,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.SumKilos](): MathGameTaskModel {
+    [MathGameEnum.SumKilos](): MathGameTaskModel {
         const term1 = getRandomInteger(0, 3);
         const term11 = +String(getRandomInteger(1, 10)).padEnd(getRandomInteger(2, 3), '0');
         const term2 = getRandomInteger(0, 3);
@@ -78,7 +78,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.Subtraction](): MathGameTaskModel {
+    [MathGameEnum.Subtraction](): MathGameTaskModel {
         const minuend = getRandomInteger(2, MAX_SUBTRACTION_INTEGER);
         let subtrahend = getRandomInteger(2, MAX_SUBTRACTION_INTEGER);
 
@@ -95,7 +95,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.Multiplication](): MathGameTaskModel {
+    [MathGameEnum.Multiplication](): MathGameTaskModel {
         const multiplier = getRandomInteger(2, MAX_MULTIPLICATION_INTEGER);
         const multiplicand = getRandomInteger(2, MAX_MULTIPLICATION_INTEGER);
         const product = multiplier * multiplicand;
@@ -107,7 +107,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.IntegerDivision](): MathGameTaskModel {
+    [MathGameEnum.IntegerDivision](): MathGameTaskModel {
         let numerator = 0;
         let denominator = 0;
         let fraction = 0.1;
@@ -126,7 +126,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.ConvertToGrams](): MathGameTaskModel {
+    [MathGameEnum.ConvertToGrams](): MathGameTaskModel {
         const term1 = getRandomInteger(0, 3);
         const term11 = +String(getRandomInteger(1, 10)).padEnd(getRandomInteger(2, 3), '0');
 
@@ -137,7 +137,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.ConvertToKilos](): MathGameTaskModel {
+    [MathGameEnum.ConvertToKilos](): MathGameTaskModel {
         const term1 = getRandomInteger(100, 5000);
 
         return {
@@ -147,7 +147,7 @@ export class MathGameModule {
         };
     }
 
-    [MathGamesEnum.ConvertToCentimeters](): MathGameTaskModel {
+    [MathGameEnum.ConvertToCentimeters](): MathGameTaskModel {
         const term1 = getRandomInteger(1, 5);
         const term11 = getRandomInteger(0, 10);
         const term111 = getRandomInteger(0, 9);
@@ -157,13 +157,5 @@ export class MathGameModule {
             part2: '',
             result: term1 * 100 + term11 * 10 + term111,
         };
-    }
-
-    division() {
-        const numerator = getRandomInteger(2, MAX_DIVISION_INTEGER);
-        const denominator = getRandomInteger(2, MAX_DIVISION_INTEGER);
-        const fraction = numerator / denominator;
-
-        return fraction;
     }
 }

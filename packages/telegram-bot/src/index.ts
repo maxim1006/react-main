@@ -9,11 +9,18 @@ import {
     handleUnknownQueryCallbacksMessages,
 } from './messages/unknown.message';
 import { BotEventsEnum } from './constants/bot-events.constants';
-import { MESSAGE_MAP } from './constants/message.constants';
+import { START_MESSAGE_MAP } from './constants/message.constants';
 import { handleGuessNumberCbQuery } from './callback-queries/guess-number.callback-query';
 import { getUserMode, setUser } from './db/user.db';
 import { MessageEnum } from './models/message.model';
 import { handleClockGameCbQuery } from './callback-queries/clock-game.callback-query';
+import { handleEnglishGameCbQuery } from './callback-queries/english-game.callback-query';
+
+// const server = http.createServer(function (req, res) {
+//     res.writeHead(200, { 'Content-Type': 'text/plain' });
+//     res.end('Hello World!');
+// });
+// server.listen(3000);
 
 async function main() {
     // задаю меню
@@ -27,15 +34,15 @@ async function main() {
         } = msg;
         const firstName = chat.first_name;
 
-        if (!firstName) return console.error('BotEventsEnum.Message Alarm ghost in town!!!');
+        if (!firstName) return console.error('Error BotEventsEnum.Message Alarm ghost in town!!!');
 
         const mode = text as MessageEnum;
 
         // обработка стартовых messages
-        if (MESSAGE_MAP[mode]) {
+        if (START_MESSAGE_MAP[mode]) {
             // создаю пользователя (с проверкой на существование)
             await setUser({ firstName, mode });
-            return await MESSAGE_MAP[mode]({ chat, msg });
+            return await START_MESSAGE_MAP[mode]({ chat, msg });
         }
 
         // обработка messages в ходе игры
@@ -47,22 +54,25 @@ async function main() {
         return await handleUnknownCommandsMessages({ chatId });
     });
 
+    // обработка коллбеков по клику на кнопку (например Играть еще)
     await BOT.on(BotEventsEnum.CallbackQuery, async msg => {
         const chatId = msg.message?.chat.id;
 
-        if (!chatId) return console.error('No chatId in callback_query');
-        if (!msg.message) return console.error('No chatMessage in callback_query');
+        if (!chatId) return console.error('Error No chatId in callback_query');
+        if (!msg.message) return console.error('Error No chatMessage in callback_query');
 
         const chat = msg.message.chat;
         const firstName = chat.first_name;
 
-        if (!firstName) return console.error('BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
+        if (!firstName)
+            return console.error('Error BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
 
         const mode = await getUserMode({ firstName });
 
         if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
         if (mode === MessageEnum.ClockGame) return await handleClockGameCbQuery({ msg });
         if (mode === MessageEnum.MathGame) return await handleMathGameTaskMessages({ chat });
+        if (mode === MessageEnum.EnglishGame) return await handleEnglishGameCbQuery({ msg });
 
         return await handleUnknownQueryCallbacksMessages({ chatId });
     });

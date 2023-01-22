@@ -1,4 +1,4 @@
-import { MathGameModel, MathGamesEnum } from '../../models/math-game.model';
+import { MathGameModel, MathGameEnum } from '../../models/math-game.model';
 import { MATH_GAMES_SIGN_MAP } from '../../constants/math-game.constants';
 import { getRandomItemFromArray } from '../common.utils';
 
@@ -20,21 +20,21 @@ export const getMathMessageData = ({
     };
 
     switch (game.name) {
-        case MathGamesEnum.ConvertToGrams: {
+        case MathGameEnum.ConvertToGrams: {
             res.message = `Пожалуйста переведи в граммы: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
             } ${game.task.part2}, ответ напиши в г (например: 100г)`;
             break;
         }
 
-        case MathGamesEnum.ConvertToCentimeters: {
+        case MathGameEnum.ConvertToCentimeters: {
             res.message = `Переведи в сантиметры: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
             } ${game.task.part2}, ответ напиши в см (например: 100см)`;
             break;
         }
 
-        case MathGamesEnum.SumMeters: {
+        case MathGameEnum.SumMeters: {
             res.message = `Пожалуйста реши пример: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
             } ${game.task.part2}, ответ напиши в ${getRandomItemFromArray([
@@ -63,7 +63,7 @@ export const getMathMessageData = ({
             break;
         }
 
-        case MathGamesEnum.ConvertToKilos: {
+        case MathGameEnum.ConvertToKilos: {
             res.message = `Переведи в килограммы: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
             } ${game.task.part2}, ответ напиши в кг и г (например: 1кг100г)`;
@@ -77,7 +77,7 @@ export const getMathMessageData = ({
             break;
         }
 
-        case MathGamesEnum.SumKilos: {
+        case MathGameEnum.SumKilos: {
             res.message = `Пожалуйста реши пример: ${game.task.part1} ${
                 MATH_GAMES_SIGN_MAP[game.name]
             } ${game.task.part2}, ответ напиши в кг и г (например: 1кг100г)`;
