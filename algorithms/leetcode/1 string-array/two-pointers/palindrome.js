@@ -1,6 +1,6 @@
-import { logFn } from '../../utils/common.utils.js';
+import { logFn } from '../../../utils/common.utils.js';
 
-// Return true if a given string is a palindrome, false otherwise. A string is a palindrome if it reads the same forwards as backwards. That means, after reversing it, it is still the same string. For example: "abcdcba", or "racecar".
+// Возвращает true, если заданная строка является палиндромом, иначе false. Строка является палиндромом, если она читается одинаково вперед и назад. Это означает, что после реверсирования это все та же строка. Например: «abcdcba» или «гоночная машина».
 
 // решаю с помощью two pointers
 function checkIfPalindrome(str) {

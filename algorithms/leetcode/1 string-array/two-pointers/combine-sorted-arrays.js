@@ -1,6 +1,7 @@
-// Given two sorted integer arrays, return an array that combines both of them and is also sorted.
+// Имея два отсортированных целочисленных массива, верните массив, который объединяет их оба и также отсортирован.
 // так как массивы уже отсортированы - нет смысла их комбайнить и затем сортировать тогда будет n*Log n время
-import { logFn } from '../../utils/common.utils.js';
+
+import { logFn } from '../../../utils/common.utils.js';
 
 function combine(arr, arr1) {
     let i = 0;

@@ -1,25 +1,44 @@
-console.log(compress([1, 4, 5, 2, 3, 9, 18, 8, 11, 0])); // '0-5,8-9,11,18' [1,2,3,4,5,8,9,11,18]
-console.log(compress([1, 4, 3, 2])); // '1-4'
-console.log(compress([1, 4])); // '1,4'
+import { logFn } from './utils/common.utils.js';
 
-function compress(arr) {
-    let sorted = arr.sort((a, b) => a - b);
-    let prev = arr[0];
-    let start = prev;
-    let result = '';
+function combine(arr1, arr2) {
+    const l = arr1.length;
+    const l1 = arr2.length;
+    let i = 0;
+    let j = 0;
+    let res = [];
 
-    for (let i = 1; i < sorted.length; i++) {
-        let current = sorted[i];
+    while (i < l && j < l1) {
+        let cur = arr1[i];
+        let cur1 = arr2[j];
 
-        if (current - prev > 1) {
-            result += prev === start ? `,${prev}` : `,${start}-${prev}`;
-            start = current;
+        if (cur > cur1) {
+            res.push(cur1);
+            j++;
+        } else if (cur < cur1) {
+            res.push(cur);
+            i++;
+        } else {
+            res.push(cur);
+            res.push(cur1);
+            i++;
+            j++;
         }
-
-        prev = current;
     }
 
-    result += prev === start ? `,${prev}` : `,${start}-${prev}`;
+    while (i < l) {
+        res.push(arr1[i]);
+        i++;
+    }
 
-    return result.slice(1);
+    while (j < l1) {
+        res.push(arr2[j]);
+        j++;
+    }
+
+    return res;
 }
+
+logFn(combine, [
+    [1, 4, 7, 20],
+    [3, 5, 6],
+]);
