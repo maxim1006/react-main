@@ -5,6 +5,7 @@ import { getTodayDateByUserDataDates } from '../utils/dates.utils';
 import * as crypto from 'crypto';
 import { MessageEnum } from '../models/message.model';
 import { GameType } from '../models/game.model';
+import { setUser } from './user.db';
 
 export const addTodayGameToUser = async ({
     firstName,
@@ -19,7 +20,11 @@ export const addTodayGameToUser = async ({
     const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
-    if (!currentDay) return console.error('Error addTodayGameToUser currentDay error');
+    if (!currentDay) {
+        // кейс когда пользователь овернайт решил продолжить
+        await setUser({ firstName, mode: MessageEnum.Start });
+        return console.error('Error addTodayGameToUser currentDay error');
+    }
 
     const gameId = crypto.randomUUID();
 
