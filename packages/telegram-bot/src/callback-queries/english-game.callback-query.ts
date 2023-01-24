@@ -63,7 +63,9 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
 
     return await BOT.sendMessage(
         chatId,
-        `Неверно, <b>${gameData.task.value.key}</b> переводится как <b>${userAnswer}</b>`,
+        `Неверно, <b>${
+            gameData.task.value.key
+        }</b> переводится как <b>${correctAnswer.toString()}</b>`,
         {
             parse_mode: 'HTML',
             ...getPlayAgainMarkup(CallbackPlayAgainEnum.EnglishGame),
