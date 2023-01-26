@@ -87,19 +87,27 @@ export const getUserGameStatsByGameType = async ({
     });
 
     const gamesByMonthStr = Object.entries(gamesByMonth)
-        .map(([month, value]) => {
-            return `<b>${month}</b>: \n ${Object.entries(value)
+        .sort((a, b) => +new Date(a[0]) - +new Date(b[0]))
+        .slice(0, 3)
+        .map(([date, value]) => {
+            let correctAnswersInMonth = 0;
+
+            return `\n<i>${date}</i>:\n${Object.entries(value)
                 .sort((a, b) => +new Date(a[0]) - +new Date(b[0]))
-                .map(
-                    ([dateDay, value]) =>
-                        `
-${new Date(dateDay).toDateString()}: всего сыграно: <b>${
-                            Object.keys(value).length
-                        }</b>, правильных ответов: <b>${
-                            Object.values(value).filter(i => i.answer?.isCorrect).length
-                        }</b>\n`
-                )
-                .join('')}`;
+                .map(([dateDay, value]) => {
+                    let correctAnswerInDay = Object.values(value).filter(
+                        i => i.answer?.isCorrect
+                    ).length;
+                    correctAnswersInMonth += correctAnswerInDay;
+
+                    // В британском английском используется порядок день-месяц-год
+                    return `${new Intl.DateTimeFormat('en-GB').format(new Date(dateDay))}: <b>${
+                        Object.keys(value).length
+                    } / ${correctAnswerInDay}</b>\n`;
+                })
+                .join('')}--------------------------------
+правильных ответов: <b>${correctAnswersInMonth}</b>
+                `;
         })
         .join(' ');
 

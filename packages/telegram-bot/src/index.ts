@@ -1,3 +1,4 @@
+import './services/log.service';
 import { setBotCommands } from './utils/bot.utils';
 import { BOT } from './constants/bot.constants';
 import {

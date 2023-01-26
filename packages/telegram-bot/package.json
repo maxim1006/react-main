@@ -5,10 +5,10 @@
     "main": "index.js",
     "scripts": {
         "prestart": "mkdir -p ./public && cp -R ./src/admin ./public && cp -R ./src/assets ./public",
-        "start": "NODE_ENV=dev tsc-watch -p ./ --outDir ./public --onSuccess \"node ./public/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
+        "start": "tsc-watch -p ./ --outDir ./public --onSuccess \"node ./public/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
         "dev:js": "nodemon public/index.js",
         "build": "mkdir -p ./public && cp -R ./src/admin ./public && cp -R ./src/assets ./public && NODE_ENV=production tsc",
-        "serve:js": "node public/index.js",
+        "serve": "NODE_ENV=production node public/index.js",
         "prod:start": "pm2 start public/index.js",
         "prod:list": "pm2 list",
         "prod:stop": "pm2 stop index",
@@ -26,7 +26,8 @@
         "firebase": "^9.13.0",
         "firebase-admin": "^11.2.0",
         "node-telegram-bot-api": "^0.59.0",
-        "pm2": "^5.2.2"
+        "pm2": "^5.2.2",
+        "winston": "^3.8.2"
     },
     "devDependencies": {
         "@types/node-telegram-bot-api": "^0.57.6",

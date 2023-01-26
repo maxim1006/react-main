@@ -1,6 +1,7 @@
 ### TODO
 1) payments - сделать бюджет для лили
-2) сделать Английский модуль
+2) добавить еще  Английские игры
+3) сделать статистику графиком
 
 ### Useful links
 [firebase](https://console.firebase.google.com/)
