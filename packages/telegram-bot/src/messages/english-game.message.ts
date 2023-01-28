@@ -53,17 +53,24 @@ function generateAnswers(gameId: string, answer: string) {
     return [
         {
             text: answer,
-            callback_data: `${gameId} ${answer}`,
+            callback_data: `${gameId} correct`,
         },
     ]
         .concat(
             [...Array(5)].map(_ => {
-                const randomWord = getRandomEnglishWord();
+                let randomWord = getRandomEnglishWord();
+
+                while (randomWord.value[0] === answer) {
+                    randomWord = getRandomEnglishWord();
+
+                    if (randomWord.value[0] !== answer) break;
+                }
+
                 const text = randomWord.value[0];
 
                 return {
                     text,
-                    callback_data: `${gameId} ${text}`,
+                    callback_data: `${gameId}`,
                 };
             })
         )

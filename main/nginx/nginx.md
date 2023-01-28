@@ -4,7 +4,7 @@ nginx -s stop
 nginx -s reload
 
 ### nginx -t
-узнать где файл конфигурации
+узнать где файл конфигурации / состояние nginx
 nginx -t (/usr/local/etc/nginx/nginx.conf или /opt/homebrew/etc/nginx/nginx.conf)
 
 // locations from brew

@@ -34,7 +34,7 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     if (!gameData) return console.error('Error handleEnglishGameCbQuery gameData error');
 
     const correctAnswer = ENGLISH_WORDS_DICTIONARY[gameData.task.value.key];
-    const isCorrect = correctAnswer.includes(userAnswer);
+    const isCorrect = !!userAnswer;
 
     await updateTodayLastGameByType({
         gameType: MessageEnum.EnglishGame,
@@ -47,7 +47,7 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
         },
     });
 
-    if (correctAnswer.includes(userAnswer)) {
+    if (isCorrect) {
         await BOT.sendPhoto(chatId, getRandomImagePath('photos'));
         return await BOT.sendMessage(
             chatId,
