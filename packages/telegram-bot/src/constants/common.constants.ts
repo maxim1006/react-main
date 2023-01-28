@@ -17,4 +17,4 @@ export enum CommonEnum {
 
 export const isProd = process.env.NODE_ENV === 'production';
 
-console.log({ isProd });
+console.log({ isProd, pId: process.pid });

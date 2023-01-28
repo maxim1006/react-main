@@ -13,7 +13,15 @@
 
 ### pm2 для бг нод процессов
 [pm2](https://www.npmjs.com/package/pm2)
+https://pm2.keymetrics.io/docs/usage/application-declaration/#log-files
+тут описана команда  pm2 init simple которая создаст файл с настройками pm2 ecosystem.config.js
+https://pm2.keymetrics.io/docs/usage/startup/
+для того чтобы при рестарте сервера снова запускался pm2 нужно вызывать команду 
+pm2 startup (отключить pm2 unstartup)
+найти процессы
+ps -ef | grep "pm2: $NAME"
 
+2 startup ubuntu -u maxim1 --hp /home/m/maxim1
 ### установка firebase
 1) npm i firebase-tools -D
 2) node_modules/.bin/firebase login // вот так прикольно чтобы в глобальные пакеты не лезть а только локально

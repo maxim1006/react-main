@@ -83,8 +83,17 @@ alias pf="ps -e | grep $1" (pf shutter - пример найти PID проце�
 kill pid-of-program 
 
 # ps 
-ps -ef | grep webstorm, затем kill PID
+ps -ef | grep webstorm, затем kill -9 PID
 ps -ax | grep mysql // найти все процессы, выдаст pid
+
+# mds_store spotlight
+spotlight жрет весь cpu
+чтобы отключить
+sudo mdutil -a -i off
+чтобы включить
+sudo mdutil -a -i on
+чтобы найти часто индексируемые папки (а затем их нужно добавить в privacy spotlight)
+sudo fs_usage -w -f filesys mds_stores
 
 # find and kill process on port
 Find:

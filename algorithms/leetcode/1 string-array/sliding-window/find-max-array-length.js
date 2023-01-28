@@ -1,23 +1,22 @@
 import { logFn } from '../../../utils/common.utils.js';
 
 function findLength(arr, sum) {
-    let start = 0;
-    let maxLength = 0;
+    let left = 0;
     let curSum = 0;
-    let res;
+    let res = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        curSum += arr[i];
+    for (let right = 0; right < arr.length; right++) {
+        curSum += arr[right];
 
         while (curSum > sum) {
-            curSum -= arr[start];
-            ++start;
+            curSum -= arr[left];
+            ++left;
         }
 
-        res = Math.max(maxLength, i - start + 1);
+        res = Math.max(res, right - left + 1);
     }
 
     return res;
 }
 
-logFn(findLength, [[3, 1, 2, 7, 4, 2, 1, 1, 5], 8]);
+logFn(findLength, [[3, 1, 2, 7, 4, 2, 1, 1, 5], 8]); // 4

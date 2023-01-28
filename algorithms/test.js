@@ -1,44 +1,36 @@
 import { logFn } from './utils/common.utils.js';
 
-function combine(arr1, arr2) {
-    const l = arr1.length;
-    const l1 = arr2.length;
-    let i = 0;
-    let j = 0;
-    let res = [];
+function flippingZero(str) {
+    let start = 0;
+    let num = 0;
+    let res = 0;
+    let flips = 0;
 
-    while (i < l && j < l1) {
-        let cur = arr1[i];
-        let cur1 = arr2[j];
+    for (let i = 0; i < str.length; i++) {
+        let cur = str[i];
 
-        if (cur > cur1) {
-            res.push(cur1);
-            j++;
-        } else if (cur < cur1) {
-            res.push(cur);
-            i++;
-        } else {
-            res.push(cur);
-            res.push(cur1);
-            i++;
-            j++;
+        if (cur === '1') ++num;
+
+        if (cur === '0' && flips === 1) {
+            while (flips) {
+                let cur = str[start];
+
+                if (cur === '0') --flips;
+
+                ++start;
+                --num;
+            }
         }
-    }
 
-    while (i < l) {
-        res.push(arr1[i]);
-        i++;
-    }
+        if (cur === '0' && flips < 1) {
+            ++num;
+            ++flips;
+        }
 
-    while (j < l1) {
-        res.push(arr2[j]);
-        j++;
+        res = Math.max(res, num);
     }
 
     return res;
 }
 
-logFn(combine, [
-    [1, 4, 7, 20],
-    [3, 5, 6],
-]);
+logFn(flippingZero, ['1101100111']); // 5
