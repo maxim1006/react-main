@@ -17,6 +17,7 @@
         "prod:status": "pm2 status",
         "prod:monit": "pm2 monit",
         "prod:delete": "pm2 delete all",
+        "img": "node ./node-helpers/image-reducer/image-reducer.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
@@ -29,6 +30,7 @@
         "dayjs": "^1.11.6",
         "firebase": "^9.13.0",
         "firebase-admin": "^11.2.0",
+        "jimp": "^0.16.2",
         "node-telegram-bot-api": "^0.59.0",
         "pm2": "^5.2.2"
     },

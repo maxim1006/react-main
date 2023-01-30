@@ -3,7 +3,7 @@ import { getRandomInteger } from './common.utils';
 
 const limits: Record<string, number> = {
     cats: 10,
-    photos: 47,
+    photos: 134,
     clock: 14,
 };
 
