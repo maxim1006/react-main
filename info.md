@@ -147,3 +147,13 @@ Changes of types `feat` and `fix` will be placed in corresponding sections of `C
 You can reference Gitlab users in commit messages by adding `@userId`. In that case link to the user's Gitlab profile will be added to changelog.
 
 > Example: commit message: `feat: TICKET_PREFIX-7 cool stuff @max` will add a [@max](https://git.repository.com/max) link
+
+### origin referer host
+origin - тот кто отсылает
+referer = origin + path
+host - это ресурс на который идет реквест
+
+### deployment
+https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
+https://www.youtube.com/watch?v=oykl1Ih9pMg&t=699s&ab_channel=TraversyMedia
+https://beget.com/ru/kb/how-to/vps/vypusk-i-ustanovka-ssl-sertifikatov-ot-lets-encrypt-na-vps?_ga=2.239763715.1405035485.1674833977-170125771.1674302625#nginx
