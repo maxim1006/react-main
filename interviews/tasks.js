@@ -61,7 +61,7 @@ function curry(f) {
 // function sum(obj, res = 0) {
 //     if (!obj.a) return res;
 //
-//     return res += obj.a.num + sum(obj.a);
+//     return obj.a.num + sum(obj.a);
 // }
 
 // 2
