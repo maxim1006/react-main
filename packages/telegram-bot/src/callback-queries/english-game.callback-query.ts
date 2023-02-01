@@ -51,7 +51,9 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
         await BOT.sendPhoto(chatId, getRandomImagePath('photos'));
         return await BOT.sendMessage(
             chatId,
-            `Молодец, правильно! <b>${gameData.task.value.key}</b> переводится как <b>${userAnswer}</b>`,
+            `Молодец, правильно! <b>${
+                gameData.task.value.key
+            }</b> переводится как <b>${correctAnswer.toString()}</b>`,
             {
                 parse_mode: 'HTML',
                 ...getPlayAgainMarkup(CallbackPlayAgainEnum.EnglishGame),

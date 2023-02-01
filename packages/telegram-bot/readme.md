@@ -39,3 +39,6 @@ ssh localhost -p 222
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
 https://www.youtube.com/watch?v=oykl1Ih9pMg&t=699s&ab_channel=TraversyMedia
 https://beget.com/ru/kb/how-to/vps/vypusk-i-ustanovka-ssl-sertifikatov-ot-lets-encrypt-na-vps?_ga=2.239763715.1405035485.1674833977-170125771.1674302625#nginx
+
+### nginx 
+/etc/nginx/sites-available/default
