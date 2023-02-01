@@ -10,7 +10,7 @@ export default function useGetRequest<T>({ url, cb }: { url: string; cb?: (data:
     const cancelRequest = useRef<CancelTokenSource>();
     const data = useRef<T>();
     const loading = useRef<boolean>();
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    const [, rerender] = useReducer(x => ++x, 0);
     const refetch = useCallback(async () => {
         if (cancelRequest.current) {
             cancelRequest.current?.cancel(`Use get request hook is cancelled ${url}`);
@@ -20,7 +20,7 @@ export default function useGetRequest<T>({ url, cb }: { url: string; cb?: (data:
 
         try {
             loading.current = true;
-            forceUpdate();
+            rerender();
 
             const { data: fetchedData } = await axios.get(url, {
                 cancelToken: cancelRequest.current?.token,
@@ -33,7 +33,7 @@ export default function useGetRequest<T>({ url, cb }: { url: string; cb?: (data:
             console.log(`Get request to ${url} error `, e);
         } finally {
             loading.current = true;
-            forceUpdate();
+            rerender();
         }
     }, [url, cb]);
 

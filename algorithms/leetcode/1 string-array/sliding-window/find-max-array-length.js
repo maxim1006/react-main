@@ -7,6 +7,8 @@ function findLength(arr, sum) {
     let curSum = 0;
     let res = 0;
 
+    if (k <= 1) return 0;
+
     for (let right = 0; right < arr.length; right++) {
         curSum += arr[right];
 
