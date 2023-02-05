@@ -1,4 +1,4 @@
-import React, { FC, lazy, memo, useEffect } from 'react';
+import React, { ComponentType, FC, lazy, memo, useEffect } from 'react';
 import MainMenu from '@app/components/menu/MainMenu';
 import { matchPath, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import RouterExactRoute from '@app/components/router/RouterExactRoute';
@@ -15,7 +15,12 @@ enum RouterStepsEnum {
 }
 
 // просто убился об стол - обязательно передавать React node в component, вариант с         component: lazy(() => import('../components/examples/lazy/examples-lazy.component')), не сработает
-const ROUTER_STEPS = [
+const ROUTER_STEPS: {
+    name: RouterStepsEnum;
+    slug: string;
+    title: RouterStepsEnum;
+    component: JSX.Element | ComponentType;
+}[] = [
     {
         name: RouterStepsEnum.Step1,
         slug: 'step1',

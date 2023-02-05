@@ -1,6 +1,6 @@
 import { FC, memo, useEffect, useRef } from 'react';
 import './mouseover-mouseleave.component.scss';
-import { generateUniqueId } from '@app/common/helpers/helpers';
+import { generateUniqueId } from '@app/common/utils/common.utils';
 
 let currentElem: HTMLElement | null = null;
 

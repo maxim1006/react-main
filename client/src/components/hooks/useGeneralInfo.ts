@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Bowser from 'bowser';
-import { debounce, getDevice } from '../../common/helpers/helpers';
+import { DeviceEnum } from '@app/models/common.model';
+import { debounce, getDevice } from '@app/common/utils/common.utils';
 
 export default function useGeneralInfo() {
-    const [device, setDevice] = useState(null);
-    const [browser, setBrowser] = useState(null);
+    const [device, setDevice] = useState<DeviceEnum>(null);
+    const [browser, setBrowser] = useState<string>(null);
 
     useEffect(() => {
         // getDevice

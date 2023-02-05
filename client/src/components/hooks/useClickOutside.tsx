@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
-export default function useClickOutside(ref, cb) {
-    const handleClick = e => {
-        if (ref.current && !ref.current.contains(e.target)) {
+export default function useClickOutside(ref: MutableRefObject<HTMLElement>, cb: () => void) {
+    const handleClick = (e: Event) => {
+        if (ref.current && !ref.current.contains(e.target as HTMLElement)) {
             cb();
         }
     };

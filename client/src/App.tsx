@@ -7,8 +7,8 @@ import NotFound from './components/NotFound';
 import MainMenu from './components/menu/MainMenu';
 import RouterPage from './pages/RouterPage';
 import GeneralInfo from './components/general-info/GeneralInfo';
-import ContextGeneralInfo from './components/context/ContextGeneralInfo';
 import TestsPage from '@app/pages/TestsPage';
+import { GeneralInfoProvider } from '@app/components/context/general-info.context';
 
 const ReduxToolkit = React.lazy(() => import('./pages/rt.page'));
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
@@ -20,7 +20,7 @@ const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
 
 const App: React.FC = () => {
     return (
-        <ContextGeneralInfo>
+        <GeneralInfoProvider>
             <GeneralInfo />
 
             <div className='app'>
@@ -67,7 +67,7 @@ const App: React.FC = () => {
                     {/* </Router> */}
                 </main>
             </div>
-        </ContextGeneralInfo>
+        </GeneralInfoProvider>
     );
 };
 

@@ -1,6 +1,5 @@
 import { fetchPosts } from './posts';
 import { fetchUserById } from './users';
-import { onlyUnique } from '../../common/helpers/helpers';
 
 // пример общего экшена
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
@@ -9,7 +8,7 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     await dispatch(fetchPosts());
 
     const userIds = getState().posts.map(({ userId }) => userId);
-    const uniqUserIds = userIds.filter(onlyUnique);
+    const uniqUserIds = userIds.filter((i, idx, arr) => arr.indexOf(i) === idx);
 
     // тут без await так как неважно в каком порядке загрузятся комменты
     uniqUserIds.forEach(id => dispatch(fetchUserById(id)));

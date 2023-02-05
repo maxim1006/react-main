@@ -1,5 +1,5 @@
 import { memo, useContext } from 'react';
-import OutsideChangeContext from '../../../context/OutsideChangeContext';
+import OutsideChangeContext from '@app/components/context/OutsideChangeContext';
 
 export default memo(() => {
     const { setValue, value } = useContext(OutsideChangeContext);

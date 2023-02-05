@@ -1,8 +1,8 @@
-import { generateUniqueId } from '../../../../common/helpers/helpers';
 import { TODOS_TYPES } from '../actions';
 import { TodosState } from '../state';
-import { TodoModel } from '../../../../models/todo.model';
 import { TodoActionTypes } from '../actions/todo.action-type';
+import { generateUniqueId } from '@app/common/utils/common.utils';
+import { TodoModel } from '@app/models/todo.model';
 
 const initState: TodosState = [
     {

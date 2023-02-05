@@ -1,6 +1,6 @@
 import { memo, useContext } from 'react';
-import GeneralInfoContext from '../../context/GeneralInfoContext';
 import { StyledGeneralInfo, StyledGeneralInfoList, StyledGeneralInfoListItem } from './StyledGeneralInfo';
+import { GeneralInfoContext } from '@app/components/context/general-info.context';
 
 export default memo(() => {
     const { device, browser } = useContext(GeneralInfoContext);

@@ -10,21 +10,14 @@ graph.e = ['f'];
 graph.f = ['g'];
 
 function bfs(graph, start, end) {
-    let queue = graph[start];
+    let queue = graph[start].slice();
 
     while (queue.length) {
-        console.log(queue);
-
-        if (queue.includes(end)) {
-            console.log('found: ', end);
-            return true;
-        }
-
         let current = queue.shift();
 
-        if (!graph[current] || !Array.isArray(graph[current])) {
-            graph[current] = [];
-        }
+        console.log('bfs', current);
+
+        if (current === end) return true;
 
         queue = [...queue, ...graph[current]];
     }
@@ -34,23 +27,12 @@ function bfs(graph, start, end) {
 }
 
 function dfs(graph, start, end) {
-    let isFound = false;
-
-    if (graph[start].includes(end)) {
-        console.log('dfs found: ', end, 'in', start);
-        return true;
-    }
-
     for (let i of graph[start]) {
-        isFound = dfs(graph, i, end);
-
-        if (isFound) {
-            console.log('dfs found in rec: ', end);
-            return true;
-        }
+        console.log('dfs', i);
+        if (end === i || dfs(graph, i, end)) return true;
     }
 
-    return isFound;
+    return false;
 }
 
 console.log(bfs(graph, 'a', 'g')); // true

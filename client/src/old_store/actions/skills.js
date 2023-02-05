@@ -1,6 +1,6 @@
 import { SKILL_TYPES } from './types';
 import customAxios from '../../common/api/axios';
-import { isFunction } from '../../common/helpers/helpers';
+import { isFunction } from '@app/common/utils/common.utils';
 
 export const fetchSkills = (cancelToken, cb) => async dispatch => {
     dispatch({

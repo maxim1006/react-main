@@ -1,6 +1,6 @@
 import { TODOS_TYPES } from './types';
-import { generateUniqueId } from '../../../../common/helpers/helpers';
 import { TodoActionTypes } from './todo.action-type';
+import { generateUniqueId } from '@app/common/utils/common.utils';
 
 export const toggleTodo = (id: string, completed: boolean): TodoActionTypes => ({
     type: TODOS_TYPES.TOGGLE,
