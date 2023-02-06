@@ -86,9 +86,12 @@ export const getUserGameStatsByGameType = async ({
         gamesByMonth[fullDateStr][key] = value.data?.games[gameType] ?? {};
     });
 
-    const gamesByMonthStr = Object.entries(gamesByMonth)
-        .sort((a, b) => +new Date(a[0]) - +new Date(b[0]))
-        .slice(0, 3)
+    const gamesByMonthSortedArr = Object.entries(gamesByMonth).sort(
+        (a, b) => +new Date(a[0]) - +new Date(b[0])
+    );
+    const gamesByMonthStr = gamesByMonthSortedArr
+        // 3 last month's stats
+        .slice(gamesByMonthSortedArr.length - 3)
         .map(([date, value]) => {
             let correctAnswersInMonth = 0;
 

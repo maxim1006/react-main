@@ -1,6 +1,6 @@
 import { BOT } from '../constants/bot.constants';
 import { CallbackQuery } from 'node-telegram-bot-api';
-import { getTodayUserGameById } from '../db/user.db';
+import { getTodayUserGameById, getTodayUserGameStatsByGameType } from '../db/user.db';
 import { MessageEnum } from '../models/message.model';
 import { CallbackPlayAgainEnum, getPlayAgainMarkup } from '../constants/play-again.constants';
 import { getRandomImagePath } from '../utils/image.utils';
@@ -47,13 +47,19 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
         },
     });
 
+    const stats = await getTodayUserGameStatsByGameType({
+        gameType: MessageEnum.EnglishGame,
+        firstName,
+    });
+
     if (isCorrect) {
         await BOT.sendPhoto(chatId, getRandomImagePath('photos'));
         return await BOT.sendMessage(
             chatId,
             `Молодец, правильно! <b>${
                 gameData.task.value.key
-            }</b> переводится как <b>${correctAnswer.toString()}</b>`,
+            }</b> переводится как <b>${correctAnswer.toString()}</b>
+Сегодня сыграно <b>${stats?.all}</b>, правильных ответов: <b>${stats?.correct}</b>`,
             {
                 parse_mode: 'HTML',
                 ...getPlayAgainMarkup(CallbackPlayAgainEnum.EnglishGame),
