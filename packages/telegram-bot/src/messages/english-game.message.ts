@@ -9,14 +9,15 @@ export const handleEnglishGameTaskMessages = async ({
     chat,
     chat: { id: chatId },
 }: MessageBaseModel) => {
-    const game = new EnglishGameModule().getRandomTask();
+    if (!chat.username)
+        return console.error('Error handleEnglishGameTaskTypeMessages chat.username error');
 
-    if (!chat.first_name)
-        return console.error('Error handleEnglishGameTaskTypeMessages chat.firstName error');
+    const userName = chat.username;
+    const game = new EnglishGameModule().getRandomTask({ userName });
 
     const data = await addTodayGameToUser({
         gameType: MessageEnum.EnglishGame,
-        firstName: chat.first_name,
+        username: userName,
         game,
     });
 
@@ -29,7 +30,7 @@ export const handleEnglishGameTaskMessages = async ({
 
     switch (game.name) {
         case EnglishGameEnum.TranslateToRussian: {
-            const answers = generateAnswers(data.gameId, task.value[0]);
+            const answers = generateAnswers(data.gameId, task.value[0], userName);
 
             await BOT.sendMessage(
                 chatId,
@@ -37,7 +38,7 @@ export const handleEnglishGameTaskMessages = async ({
                 {
                     parse_mode: 'HTML',
                     reply_markup: {
-                        inline_keyboard: [answers.slice(0, 3), answers.slice(3)],
+                        inline_keyboard: [answers.slice(0, 2), answers.slice(2)],
                     },
                 }
             );
@@ -49,7 +50,7 @@ export const handleEnglishGameTaskMessages = async ({
 };
 
 // helpers
-function generateAnswers(gameId: string, answer: string) {
+function generateAnswers(gameId: string, answer: string, userName: string) {
     return [
         {
             text: answer,
@@ -57,15 +58,8 @@ function generateAnswers(gameId: string, answer: string) {
         },
     ]
         .concat(
-            [...Array(5)].map(_ => {
-                let randomWord = getRandomEnglishWord();
-
-                while (randomWord.value[0] === answer) {
-                    randomWord = getRandomEnglishWord();
-
-                    if (randomWord.value[0] !== answer) break;
-                }
-
+            [...Array(3)].map(_ => {
+                const randomWord = getRandomEnglishWordWithAnswer(answer, userName);
                 const text = randomWord.value[0];
 
                 return {
@@ -75,4 +69,16 @@ function generateAnswers(gameId: string, answer: string) {
             })
         )
         .sort(() => 0.5 - Math.random());
+}
+
+function getRandomEnglishWordWithAnswer(answer: string, userName: string) {
+    let randomWord = getRandomEnglishWord({ userName });
+
+    while (randomWord.value[0] === answer) {
+        randomWord = getRandomEnglishWord({ userName });
+
+        if (randomWord.value[0] !== answer) break;
+    }
+
+    return randomWord;
 }

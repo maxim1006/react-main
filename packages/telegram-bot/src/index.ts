@@ -34,21 +34,21 @@ async function main() {
             chat: { id: chatId },
             text,
         } = msg;
-        const firstName = chat.first_name;
+        const username = chat.username;
 
-        if (!firstName) return console.error('Error BotEventsEnum.Message Alarm ghost in town!!!');
+        if (!username) return console.error('Error BotEventsEnum.Message Alarm ghost in town!!!');
 
         const mode = text as MessageEnum;
 
         // обработка стартовых messages
         if (START_MESSAGE_MAP[mode]) {
             // создаю пользователя (с проверкой на существование)
-            await setUser({ firstName, mode });
+            await setUser({ username, mode });
             return await START_MESSAGE_MAP[mode]({ chat, msg });
         }
 
         // обработка messages в ходе игры
-        const currentMode = await getUserMode({ firstName });
+        const currentMode = await getUserMode({ username });
 
         if (currentMode === MessageEnum.MathGame)
             return await handleMathGameResultMessages({ chat, msg });
@@ -63,10 +63,12 @@ async function main() {
         if (!chatId) return console.error('Error No chatId in callback_query');
         if (!msg.message) return console.error('Error No chatMessage in callback_query');
 
-        const chat = msg.message.chat;
-        const firstName = chat.first_name;
+        console.log({ msg });
 
-        if (!firstName)
+        const chat = msg.message.chat;
+        const username = chat.username;
+
+        if (!username)
             return console.error('Error BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
 
         // TODO сделать обработку ошибок при овернайт
@@ -74,7 +76,7 @@ async function main() {
         //     await BOT.sendMessage(chatId, `Пожалуйста выбери игру в меню`);
         // }
 
-        const mode = await getUserMode({ firstName });
+        const mode = await getUserMode({ username });
 
         if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
         if (mode === MessageEnum.ClockGame) return await handleClockGameCbQuery({ msg });

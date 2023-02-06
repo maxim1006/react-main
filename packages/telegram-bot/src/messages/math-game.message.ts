@@ -19,10 +19,10 @@ export const handleMathGameTaskMessages = async ({
 }: MessageBaseModel) => {
     const game = new MathGameModule().getRandomTask();
 
-    if (!chat.first_name)
-        return console.error('Error handleMathGameTaskMessages chat.firstName error');
+    if (!chat.username)
+        return console.error('Error handleMathGameTaskMessages chat.username error');
 
-    await addTodayGameToUser({ gameType: MessageEnum.MathGame, firstName: chat.first_name, game });
+    await addTodayGameToUser({ gameType: MessageEnum.MathGame, username: chat.username, game });
 
     return await BOT.sendMessage(chatId, getMathMessageData({ game }).message);
 };
@@ -32,11 +32,11 @@ export const handleMathGameResultMessages = async ({
     chat: { id: chatId },
     msg,
 }: MessageBaseModel) => {
-    const firstName = chat.first_name;
+    const username = chat.username;
 
-    if (!firstName) return console.error('Error handleMathGameResultMessages no firstName error');
+    if (!username) return console.error('Error handleMathGameResultMessages no username error');
 
-    const game = await getTodayLastGameByType({ firstName, gameType: MessageEnum.MathGame });
+    const game = await getTodayLastGameByType({ username, gameType: MessageEnum.MathGame });
 
     if (!game) return console.error('Error handleMathGameResultMessages no game error');
 
@@ -55,7 +55,7 @@ export const handleMathGameResultMessages = async ({
 
     await updateTodayLastGameByType({
         gameType: MessageEnum.MathGame,
-        firstName,
+        username,
         data: {
             answer: {
                 isCorrect,
@@ -66,7 +66,7 @@ export const handleMathGameResultMessages = async ({
 
     const stats = await getTodayUserGameStatsByGameType({
         gameType: MessageEnum.MathGame,
-        firstName,
+        username,
     });
 
     return sendCbMessage({

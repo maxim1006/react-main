@@ -16,13 +16,13 @@ export const DB = app.firestore();
 async function DBTest() {
     // @ts-ignore
     // const data = await getTodayUserGameStatsByGameType({
-    //     firstName: 'Lili2015',
+    //     username: 'Lili2015',
     //     gameType: MessageEnum.MathGame,
     // });
     // console.log({ data: data });
-    // const firstName = 'maximprosv';
-    // await setUser({ firstName });
-    // await addMathGameToUser({ firstName, game: USER_MATH_GAME_EXAMPLE });
+    // const username = 'maximprosv';
+    // await setUser({ username });
+    // await addMathGameToUser({ username, game: USER_MATH_GAME_EXAMPLE });
 }
 
 void DBTest();

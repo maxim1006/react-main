@@ -13,11 +13,11 @@ export const handleClockGameCbQuery = async ({ msg }: { msg: CallbackQuery }) =>
     const chat = msg.message?.chat;
     const chatId = chat?.id;
     const data = msg.data;
-    const firstName = chat?.first_name;
+    const username = chat?.username;
 
     if (!chat) return console.error('Error handleClockGameCbQuery no chat');
     if (!chatId) return console.error('Error handleClockGameCbQuery no chatId');
-    if (!firstName) return console.error('Error handleClockGameCbQuery no firstName');
+    if (!username) return console.error('Error handleClockGameCbQuery no username');
     if (!data) return console.error('Error handleClockGameCbQuery no message data');
 
     if (data === CallbackPlayAgainEnum.ClockGame)
@@ -26,7 +26,7 @@ export const handleClockGameCbQuery = async ({ msg }: { msg: CallbackQuery }) =>
     const [gameId, userAnswer] = data?.split(' ');
     const gameData = await getTodayUserGameById<GuessNumberGameModel>({
         gameId,
-        firstName,
+        username,
         gameType: MessageEnum.ClockGame,
     });
 

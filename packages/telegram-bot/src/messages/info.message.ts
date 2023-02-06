@@ -4,6 +4,6 @@ import { COMMANDS } from '../constants/common.constants';
 import { MessageBaseModel } from '../models/message.model';
 
 export const handleInfoMessages = async ({ chat, msg }: MessageBaseModel) => {
-    await BOT.sendMessage(chat.id, `Your first name: ${msg?.from?.first_name}`);
+    await BOT.sendMessage(chat.id, `Your username name is: ${msg?.from?.username}`);
     await BOT.sendMessage(chat.id, `Доступные команды ${convertCommandsToStringList(COMMANDS)} `);
 };

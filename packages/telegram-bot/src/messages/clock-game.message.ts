@@ -6,17 +6,17 @@ import { getRandomInteger } from '../utils/common.utils';
 import { CLOCK_ANSWERS } from '../constants/clock-answers.constants';
 
 export const handleClockGameMessage = async ({ msg }: MessageBaseModel) => {
-    const firstName = msg?.chat?.first_name;
+    const username = msg?.chat?.username;
     const chatId = msg?.chat.id;
 
     if (!chatId) return console.error('Error handleClockGameMessage no chatId');
-    if (!firstName) return console.error('Error handleClockGameMessage Alarm ghost in town!!!');
+    if (!username) return console.error('Error handleClockGameMessage Alarm ghost in town!!!');
 
     const path = getRandomClockImagePath();
     const imageNumber = path.match(/(\d*).png/)?.[1] ?? '0';
 
     const data = await addTodayGameToUser({
-        firstName,
+        username,
         gameType: MessageEnum.ClockGame,
         game: { task: imageNumber },
     });

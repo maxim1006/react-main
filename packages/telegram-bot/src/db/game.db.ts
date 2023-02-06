@@ -7,16 +7,16 @@ import { MessageEnum } from '../models/message.model';
 import { GameType } from '../models/game.model';
 
 export const addTodayGameToUser = async ({
-    firstName,
+    username,
     gameType,
     game,
 }: {
-    firstName: string;
+    username: string;
     gameType: MessageEnum;
     game: GameType;
 }) => {
-    const userDocRef = await DB.doc(`users/${firstName}`);
-    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
+    const userDocRef = await DB.doc(`users/${username}`);
+    const userData = await getDataByDocName<UserModel>(`users/${username}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
     if (!currentDay) return console.error('Error addTodayGameToUser currentDay error');
@@ -43,16 +43,16 @@ export const addTodayGameToUser = async ({
 };
 
 export const getTodayLastGameByType = async <T>({
-    firstName,
+    username,
     gameType,
 }: {
-    firstName: string;
+    username: string;
     gameType: MessageEnum;
 }): Promise<{
     gameId: string;
     data: GameType;
 } | void> => {
-    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
+    const userData = await getDataByDocName<UserModel>(`users/${username}`);
     const today = getTodayDateByUserDataDates(userData);
 
     if (!userData.dates) return console.error('Error getTodayLastGameByType no userData.dates');
@@ -80,17 +80,17 @@ export const getTodayLastGameByType = async <T>({
 };
 
 export const updateTodayLastGameByType = async ({
-    firstName,
+    username,
     data,
     gameType,
 }: {
-    firstName: string;
+    username: string;
     gameType: MessageEnum;
     data: Partial<GameType>;
 }) => {
-    const game = await getTodayLastGameByType({ firstName, gameType });
-    const userDocRef = await DB.doc(`users/${firstName}`);
-    const userData = await getDataByDocName<UserModel>(`users/${firstName}`);
+    const game = await getTodayLastGameByType({ username, gameType });
+    const userDocRef = await DB.doc(`users/${username}`);
+    const userData = await getDataByDocName<UserModel>(`users/${username}`);
     const currentDay = getTodayDateByUserDataDates(userData);
 
     if (!currentDay) return console.error('Error updateTodayLastGame currentDay error');

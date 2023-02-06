@@ -28,5 +28,5 @@ export const USER_DATA_EXAMPLE: UserModel = {
             },
         },
     },
-    firstName: 'Max1',
+    username: 'Max1',
 };

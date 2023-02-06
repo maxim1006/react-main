@@ -3,7 +3,7 @@ import { GameType } from './game.model';
 
 export interface UserModel {
     dates?: UserDateModel;
-    firstName?: string;
+    username?: string;
     // текущий месседж в котором находится пользователь
     mode?: MessageEnum;
 }

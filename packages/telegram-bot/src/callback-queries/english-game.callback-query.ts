@@ -7,18 +7,18 @@ import { getRandomImagePath } from '../utils/image.utils';
 import { SAD_EMOJI } from '../constants/emoji.constants';
 import { handleEnglishGameTaskMessages } from '../messages/english-game.message';
 import { EnglishGameModel } from '../models/english-game.model';
-import { ENGLISH_WORDS_DICTIONARY } from '../constants/english.constants';
 import { updateTodayLastGameByType } from '../db/game.db';
+import { getUserEnglishDictionary } from '../utils/user.utils';
 
 export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) => {
     const chat = msg.message?.chat;
     const chatId = chat?.id;
     const data = msg.data;
-    const firstName = chat?.first_name;
+    const username = chat?.username;
 
     if (!chat) return console.error('Error handleEnglishGameCbQuery no chat');
     if (!chatId) return console.error('Error handleEnglishGameCbQuery no chatId');
-    if (!firstName) return console.error('Error handleEnglishGameCbQuery no firstName');
+    if (!username) return console.error('Error handleEnglishGameCbQuery no username');
     if (!data) return console.error('Error handleEnglishGameCbQuery no message data');
 
     if (data === CallbackPlayAgainEnum.EnglishGame)
@@ -27,18 +27,18 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
     const [gameId, userAnswer] = data?.split(' ');
     const gameData = await getTodayUserGameById<EnglishGameModel>({
         gameId,
-        firstName,
+        username,
         gameType: MessageEnum.EnglishGame,
     });
 
     if (!gameData) return console.error('Error handleEnglishGameCbQuery gameData error');
 
-    const correctAnswer = ENGLISH_WORDS_DICTIONARY[gameData.task.value.key];
+    const correctAnswer = getUserEnglishDictionary(username)[gameData.task.value.key];
     const isCorrect = !!userAnswer;
 
     await updateTodayLastGameByType({
         gameType: MessageEnum.EnglishGame,
-        firstName,
+        username,
         data: {
             answer: {
                 isCorrect,
@@ -49,7 +49,7 @@ export const handleEnglishGameCbQuery = async ({ msg }: { msg: CallbackQuery }) 
 
     const stats = await getTodayUserGameStatsByGameType({
         gameType: MessageEnum.EnglishGame,
-        firstName,
+        username,
     });
 
     if (isCorrect) {

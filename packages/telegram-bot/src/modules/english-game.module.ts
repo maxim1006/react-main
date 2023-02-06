@@ -7,11 +7,11 @@ import {
 import { getRandomEnglishWord } from '../utils/english/english.utils';
 
 export class EnglishGameModule {
-    getRandomTask(): EnglishGameModel {
+    getRandomTask({ userName }: { userName: string }): EnglishGameModel {
         const arr = [EnglishGameEnum.TranslateToRussian];
         const name = arr[getRandomInteger(0, arr.length - 1)] as EnglishGameEnum;
 
-        const task = this[name]();
+        const task = this[name]({ userName });
 
         return {
             name,
@@ -20,9 +20,13 @@ export class EnglishGameModule {
         };
     }
 
-    [EnglishGameEnum.TranslateToRussian](): EnglishGameTranslateWordTaskModel {
+    [EnglishGameEnum.TranslateToRussian]({
+        userName,
+    }: {
+        userName: string;
+    }): EnglishGameTranslateWordTaskModel {
         return {
-            value: getRandomEnglishWord(),
+            value: getRandomEnglishWord({ userName }),
         };
     }
 }
