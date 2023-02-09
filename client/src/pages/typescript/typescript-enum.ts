@@ -77,22 +77,34 @@ export type StepsTypePartial = Partial<StepsTypeReadonly>;
 ///////////////////////////
 
 // как вытащить пропсы и засетить энам
-// enum FooKeys {
-//     FOO = 'foo',
-//     BAR = 'bar',
-// }
-//
-// // probably all you need, but it's a type alias
-// type FooType = Record<FooKeys, string>;
-//
-// // if you need an interface instead you can do this
-// interface FooInterface extends FooType {}
-//
-// declare const foo: FooInterface;
-// foo.foo; // okay
-// foo[FooKeys.FOO]; // okay
-//
-// foo.bar; // okay
-// foo[FooKeys.BAR]; // okay
-//
+enum FooKeys {
+    FOO = 'foo',
+    BAR = 'bar',
+}
+
+// probably all you need, but it's a type alias
+type FooType = Record<FooKeys, string>;
+
+// if you need an interface instead you can do this
+interface FooInterface extends FooType {}
+
+declare const foo: FooInterface;
+foo.foo; // okay
+foo[FooKeys.FOO]; // okay
+
+foo.bar; // okay
+foo[FooKeys.BAR]; // okay
+
 // foo.baz; // error
+
+// --------- как использовать не все свойства enum а только некоторые ---------------
+enum ExcludeEnum {
+    P = 'p',
+    P1 = 'p1',
+}
+
+type ExcludeEnumType = Exclude<ExcludeEnum, ExcludeEnum.P>;
+
+const o: Record<ExcludeEnumType, string> = { [ExcludeEnum.P1]: '1' };
+// const o: Record<ExcludeEnumType, string> = {[ExcludeEnum.P]: "1"} // ошибка
+// --------- ------------------------------------------------------------- ---------------

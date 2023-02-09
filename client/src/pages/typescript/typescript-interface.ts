@@ -48,3 +48,19 @@ interface CallOrConstruct {
 function fn(ctor: CallOrConstruct, isFunction: boolean): number | Date {
     return isFunction ? ctor(1) : new ctor('hello');
 }
+
+// приколы с интерфейсами
+interface WierdModel {
+    foo(): number;
+}
+
+interface WierdModel {
+    p: number;
+}
+
+const wierdModelExample: WierdModel = {
+    p: 1,
+    foo() {
+        return 1;
+    },
+};

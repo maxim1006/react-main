@@ -94,3 +94,13 @@ type ReadonlyBook = Readonly<Book>;
 type NonAnonymousBook = Omit<Book, 'author'> & Required<Pick<Book, 'author'>>;
 type NonAnonymousBook1 = Omit<Book, 'id'> & Required<Pick<Book, 'id'>>;
 type NonAnonymousBook2 = Omit<Book, 'id'> & Partial<Pick<Book, 'id'>>;
+
+// exclude, удаляю из unionов все лишние свойства
+const excludeObj = { a: 1, b: '2' };
+enum ExcludeEnum {
+    A = '1',
+    B = '2',
+}
+type ExcludeType1 = Exclude<keyof typeof excludeObj, 'a'>; // будет только b
+type ExcludeType2 = Exclude<ExcludeEnum, ExcludeEnum.A>; // ExcludeEnum.B
+type ExcludeType3 = Exclude<string | number | (() => void), Function>;

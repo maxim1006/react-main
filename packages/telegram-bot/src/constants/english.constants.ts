@@ -1160,9 +1160,11 @@ const EXPERT_WORDS_DICTIONARY = {
     zealot: 'фанатик',
 };
 
-export const ENGLISH_DICTIONARIES: Record<LevelEnum, Record<string, string | string[]>> = {
+export const ENGLISH_DICTIONARIES: Record<
+    Exclude<LevelEnum, LevelEnum.Hard>,
+    Record<string, string | string[]>
+> = {
     [LevelEnum.Easy]: ENGLISH_WORDS_DICTIONARY,
     [LevelEnum.Medium]: MEDIUM_WORDS_DICTIONARY,
-    [LevelEnum.Hard]: MEDIUM_WORDS_DICTIONARY,
     [LevelEnum.Expert]: EXPERT_WORDS_DICTIONARY,
 };
