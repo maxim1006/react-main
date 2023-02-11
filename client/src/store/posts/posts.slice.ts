@@ -79,10 +79,20 @@ export const selectPosts = (state: RootState): PostsStateModel => state.posts;
 // };
 // export const selectTestProp = testProductSelector(testProduct => testProduct.prop);
 
-export const makeSelectPostsByTitle = () =>
-    createSelector([selectPosts, (_: RootState, title: string) => title], (posts, title) => {
+export const makeSelectPostsByTitle = () => {
+    return createSelector([selectPosts, (_: RootState, title: string) => title], (posts, title) => {
+        console.log('memoized selector', { title });
         return posts.entities?.filter(i => i.title.includes(title));
     });
+};
+
+export const makeSelectPostsByTitle1 = createSelector(
+    [selectPosts, (_: RootState, title: string) => title],
+    (posts, title) => {
+        console.log('selector', { title });
+        return posts.entities?.filter(i => i.title.includes(title));
+    }
+);
 
 // thunks redux toolkit не умеет поэтому ручками пишем (хорошие новости что включены из коробки)
 export const fetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => async (dispatch, getState) => {
