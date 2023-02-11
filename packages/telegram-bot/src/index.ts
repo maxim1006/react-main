@@ -16,14 +16,8 @@ import { getUserMode, setUser } from './db/user.db';
 import { MessageEnum } from './models/message.model';
 import { handleClockGameCbQuery } from './callback-queries/clock-game.callback-query';
 import { handleEnglishGameCbQuery } from './callback-queries/english-game.callback-query';
-import * as http from 'http';
 import './db/db-test';
-
-const server = http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World!');
-});
-server.listen(3000);
+import './web/server/server';
 
 async function main() {
     // задаю меню
