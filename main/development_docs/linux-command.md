@@ -44,8 +44,10 @@ The dot at the end searches the current directory. Meaning for each parameter:
 .             Directory for search (current directory)
 
 # cat
+cat __имя-файла__ (смотреть весь)
 cat .bashrc | less (показать файл + использовать less, q - выйти)
 cat somefile > somefile2 (copy and create from file somefile to somefile2)
+cat ./dist{file1, file2, file3}.js | gzip > gulpfile.js.gzip - //собрать все в 1 файл и добавить в gzip
 
 # mkdir
 mkdir some-directory
