@@ -43,12 +43,12 @@ function combine(arr, arr1) {
 logFn(combine, [
     [1, 4, 7, 20],
     [3, 5, 6],
-]);
+]); // [1, 3,  4, 5, 6, 7, 20]
 
 logFn(combineRaw, [
     [1, 4, 7, 20],
     [3, 5, 6],
-]);
+]); // [1, 3,  4, 5, 6, 7, 20]
 
 // Other solutions
 function combineRaw(arr, arr1) {

@@ -1,6 +1,13 @@
 import { LevelEnum } from '../models/common.model';
 
+// внес 20 заданий
 const ENGLISH_WORDS_DICTIONARY: Record<string, string | string[]> = {
+    brave: 'храбрый',
+    kind: 'добрый',
+    friendly: 'дружелюбный',
+    clever: 'умный',
+    funny: 'забавный',
+    helpful: 'отзывчивый',
     fair: 'светлый',
     down: 'пух',
     feather: 'перо',
@@ -91,8 +98,6 @@ const ENGLISH_WORDS_DICTIONARY: Record<string, string | string[]> = {
     ["You're welcome"]: 'пожалуйста',
     sure: 'конечно',
 };
-
-// внес 20 заданий
 
 const MEDIUM_WORDS_DICTIONARY = {
     den: 'Логово/пещера/кабинет',

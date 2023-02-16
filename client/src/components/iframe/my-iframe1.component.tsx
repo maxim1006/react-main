@@ -10,12 +10,12 @@ const MyIframe1: FC<MyIframe1Props> = () => {
         createIframe();
 
         (async () => {
-            const message = await getLatinAddressUnitByLocation();
+            const message = await getMessage();
             console.log({ message });
         })();
     }, []);
 
-    return <div className={cn(styles.host, 'taMyIframe1')}>Iframe1</div>;
+    return <div className={cn(styles.host, 'taMyIframe1')}>parent Iframe1</div>;
 };
 
 export default memo(MyIframe1);
@@ -40,22 +40,25 @@ function createIframe() {
     const iframe = document.createElement('iframe');
     iframe.id = IFRAME1_ID;
     iframe.src = `${process.env.PUBLIC_URL}/iframe1.html`;
-    iframe.style.display = 'none';
+    // iframe.style.display = 'none';
     document.body.appendChild(iframe);
 }
 
-function getLatinAddressUnitByLocation() {
+function getMessage() {
     return new Promise<number>(resolve => {
         const iframe: HTMLIFrameElement | null = document.querySelector(`#${IFRAME1_ID}`);
 
         if (!iframe) return console.error('iframe is not found');
 
+        // тут ловлю эвент из iframe
         function handler(event: MessageEvent) {
             if (event.origin !== window.location.origin)
                 return console.error('Event origin does not match with window origin');
 
             if (event.data.message === Iframe1MessageEnum.Response) {
-                resolve(JSON.parse(event.data.value.message));
+                console.log('handle message in top window');
+
+                resolve(JSON.parse(event.data.value));
                 iframe?.remove();
                 window.removeEventListener('message', handler);
             }
@@ -63,12 +66,16 @@ function getLatinAddressUnitByLocation() {
 
         window.addEventListener('message', handler);
 
-        iframe.contentWindow?.postMessage(
-            {
-                message: Iframe1MessageEnum.Response,
-                value: { location: JSON.stringify({ message: 'Hi mom' }) },
-            },
-            window.location.origin
-        );
+        // обернул в settimeout чтобы iframe успел прогрузиться
+        setTimeout(() => {
+            // тут делаю запрос внутрь айфрейма там его ловлю в event.data
+            iframe.contentWindow?.postMessage(
+                {
+                    message: Iframe1MessageEnum.Request,
+                    value: JSON.stringify({ message: 'Hi mom' }),
+                },
+                window.location.origin
+            );
+        }, 500);
     });
 }

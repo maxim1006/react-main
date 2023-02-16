@@ -2,6 +2,7 @@ import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
 import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
+import MyIframe1 from '@app/components/iframe/my-iframe1.component';
 
 export default function ReactPage() {
     return (
@@ -51,9 +52,9 @@ export default function ReactPage() {
                 {/*    <MyIframe />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='Iframe1'>*/}
-                {/*    <MyIframe1 />*/}
-                {/*</Component>*/}
+                <Component title='Iframe1'>
+                    <MyIframe1 />
+                </Component>
 
                 {/*<Component title='ForwradRefUseImperativeHandle'>*/}
                 {/*    <ForwradRefUseImperativeHandle />*/}

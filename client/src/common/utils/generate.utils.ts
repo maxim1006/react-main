@@ -89,5 +89,5 @@ export function generateId() {
 }
 
 export function generateUUID() {
-    return crypto.randomUUID();
+    return window.crypto.randomUUID();
 }

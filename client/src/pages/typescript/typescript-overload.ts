@@ -60,6 +60,15 @@ const pictures: ProgressiveImageModel[] = [
     },
 ];
 
+function overload(prop: number): boolean;
+function overload(prop: string): boolean;
+function overload(prop: boolean): boolean;
+function overload(prop: () => void): boolean;
+function overload(prop: Record<string, string>): boolean;
+function overload(prop: string | number | boolean | (() => void) | Record<string, string>): boolean {
+    return !!prop;
+}
+
 function useCmsPicture(key: string): ProgressiveImageModel | undefined;
 function useCmsPicture(key: string, ...keys: string[]): ProgressiveImageModel[];
 function useCmsPicture(key: string, ...keys: string[]): ProgressiveImageModel | ProgressiveImageModel[] | undefined {
