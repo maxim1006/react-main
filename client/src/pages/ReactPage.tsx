@@ -1,13 +1,24 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import PictureImageSet from '@app/components/picture-image-set/picture-image-set';
-import MyIframe1 from '@app/components/iframe/my-iframe1.component';
+import MenuBars from '@app/components/menu-bars/menu-bars.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <Component title='menu bars'>
+                    <MenuBars />
+                </Component>
+
+                {/*<Component title='read-calculate-primitives-from-props.component'>*/}
+                {/*    <ReadCalculatePrimitivesFromProps />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='This in sass example'>*/}
+                {/*    <ThisSass />*/}
+                {/*</Component>*/}
+
                 {/*<Component title='Observers'>*/}
                 {/*    <MyObservers />*/}
                 {/*</Component>*/}
@@ -52,9 +63,9 @@ export default function ReactPage() {
                 {/*    <MyIframe />*/}
                 {/*</Component>*/}
 
-                <Component title='Iframe1'>
-                    <MyIframe1 />
-                </Component>
+                {/*<Component title='Iframe1'>*/}
+                {/*    <MyIframe1 />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='ForwradRefUseImperativeHandle'>*/}
                 {/*    <ForwradRefUseImperativeHandle />*/}
@@ -147,9 +158,9 @@ export default function ReactPage() {
                 {/*    <SessionStorageParent />*/}
                 {/* </Component> */}
 
-                <Component title='PictureImageSet'>
-                    <PictureImageSet />
-                </Component>
+                {/*<Component title='PictureImageSet'>*/}
+                {/*    <PictureImageSet />*/}
+                {/*</Component>*/}
 
                 {/* <Component title="Lazy"> */}
                 {/*    <Lazy />*/}
