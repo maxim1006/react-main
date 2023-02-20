@@ -1,15 +1,19 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import MenuBars from '@app/components/menu-bars/menu-bars.component';
+import FunctionAndObjectInUseeffect from '@app/components/function-and-object-in-useeffect/function-and-object-in-useeffect.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='menu bars'>
-                    <MenuBars />
+                <Component title='FunctionAndObjectInUseeffect'>
+                    <FunctionAndObjectInUseeffect />
                 </Component>
+
+                {/*<Component title='menu bars'>*/}
+                {/*    <MenuBars />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='read-calculate-primitives-from-props.component'>*/}
                 {/*    <ReadCalculatePrimitivesFromProps />*/}
