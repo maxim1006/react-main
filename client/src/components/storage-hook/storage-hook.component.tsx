@@ -1,6 +1,6 @@
 import { memo, useRef } from 'react';
 import { useLocalStorage, useSessionStorage } from '@app/hooks/storage';
-import StorageHookProblem from '@app/components/storage/storage-hook-problem.component';
+import StorageHookProblem from '@app/components/storage-hook/storage-hook-problem.component';
 
 type StorageHookProps = {};
 

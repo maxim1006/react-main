@@ -1,12 +1,11 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 import styles from './user-list.module.scss';
 import MyUser from '@app/components/redux-toolkit/user/user.component';
 import { useApiUserList } from '@app/components/redux-toolkit/user/list/api-user-list.hook';
 
-type UsersContainerProps = {};
+type UserListApiContainerProps = {};
 
-const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
-    // eslint-disable-next-line no-empty-pattern
+const UserListApiContainer: FC<UserListApiContainerProps> = () => {
     const {
         ref,
         users,
@@ -23,18 +22,6 @@ const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
         onPollingStart,
         onPollingEnd,
     } = useApiUserList();
-
-    // const {
-    //     ref,
-    //     users,
-    //     usersLoading,
-    //     addUserLoading,
-    //     deleteUserLoading,
-    //     updateUserLoading,
-    //     onAddUser,
-    //     onUpdateUser,
-    //     onDeleteUser,
-    // } = useThunkUserList();
 
     return (
         <>
@@ -73,6 +60,6 @@ const UserListContainer = memo<UsersContainerProps>(function UsersContainer() {
             </div>
         </>
     );
-});
+};
 
-export default UserListContainer;
+export default memo(UserListApiContainer);

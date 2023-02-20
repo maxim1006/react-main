@@ -18,7 +18,15 @@ export function useThunkUserList() {
     const usersLoading = useSelector<RootState>(state => state.thunkUser.loading);
 
     useEffect(() => {
-        dispatch(fetchThunkUserAction());
+        // так обрабатываю ошибки в thunk, как стандартный паттерн
+        dispatch(fetchThunkUserAction())
+            .unwrap()
+            .then(data => {
+                console.log('fetchThunkUserAction data ', data);
+            })
+            .catch(e => {
+                console.log('fetchThunkUserAction error ', e);
+            });
     }, [dispatch]);
 
     const onAddUser = useCallback(() => {

@@ -14,6 +14,7 @@ function findBestSubarray(nums, k) {
 
     // это можно упростить
     // for (let right = k; right < nums.length; right++) {
+    // добавляю справа элемент и удаляю слева, обрати внимание что left = 0 вначале и это индекс sum, который увеличивю когда хочу удалить элемент из sum и добавить right элемент
     //     sum += nums[right] - nums[left];
     //
     //     res = Math.max(res, sum);
