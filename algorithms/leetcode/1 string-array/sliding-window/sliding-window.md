@@ -11,14 +11,14 @@ pseudocode
 ```
 function fn(arr):
     left = 0
-    right = arr.length - 1
+    for right in [0, arr.length - 1]:
+        Do some logic to "add" element at arr[right] to window
 
-    while left < right:
-        Do some logic here depending on the problem
-        Do some more logic here to decide on one of the following:
-            1. left++
-            2. right--
-            3. Both left++ and right--
+        while left < right AND condition from problem not met:
+            Do some logic to "remove" element at arr[left] from window
+            left++
+
+        Do some logic to update the answer
 ```
 
 В нашем примере «сумма меньше k» мы можем использовать переменную curr, которая отслеживает текущую сумму окна. Таким образом, мы знаем, когда сумма превышает k, без необходимости вычислять сумму окна с нуля на каждой итерации. Мы можем «добавить» элементы, выполнив команду curr += arr[right], и «удалить» элементы, выполнив команду curr -= arr[left]. Данные и логика, необходимые для хранения информации об окне, будут различаться в зависимости от задачи.
