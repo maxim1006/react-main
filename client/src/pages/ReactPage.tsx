@@ -1,15 +1,19 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import FunctionAndObjectInUseeffect from '@app/components/function-and-object-in-useeffect/function-and-object-in-useeffect.component';
+import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='FunctionAndObjectInUseeffect'>
-                    <FunctionAndObjectInUseeffect />
+                <Component title='GridRepeat'>
+                    <GridRepeat />
                 </Component>
+
+                {/*<Component title='FunctionAndObjectInUseeffect'>*/}
+                {/*    <FunctionAndObjectInUseeffect />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='menu bars'>*/}
                 {/*    <MenuBars />*/}
