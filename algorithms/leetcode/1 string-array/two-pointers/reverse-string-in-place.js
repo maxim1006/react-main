@@ -10,7 +10,6 @@ function reverseInPlace(arr) {
 
     while (i < j) {
         let curI = arr[i];
-
         arr[i] = arr[j];
         arr[j] = curI;
 

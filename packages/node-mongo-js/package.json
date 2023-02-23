@@ -1,0 +1,27 @@
+{
+    "name": "main",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "nodemon --inspect ./server/app.js",
+        "start:http": "PORT=4001 nodemon ./server/http",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "ejs": "^2.6.1",
+        "fs-extra": "^7.0.1",
+        "nodemon": "^1.18.10"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "clean-css-cli": "^4.3.0",
+        "concat": "^1.0.3",
+        "express": "^4.16.4",
+        "glob": "^7.1.6",
+        "mongodb": "^3.2.3",
+        "shelljs": "^0.8.3"
+    }
+}

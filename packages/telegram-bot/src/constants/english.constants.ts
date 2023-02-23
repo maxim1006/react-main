@@ -1,7 +1,7 @@
 import { LevelEnum } from '../models/common.model';
 
 // внес 20 заданий
-const ENGLISH_WORDS_DICTIONARY: Record<string, string | string[]> = {
+const SIMPLE_ENGLISH_WORDS_DICTIONARY: Record<string, string | string[]> = {
     brave: 'храбрый',
     kind: 'добрый',
     friendly: 'дружелюбный',
@@ -97,9 +97,20 @@ const ENGLISH_WORDS_DICTIONARY: Record<string, string | string[]> = {
     ['word']: 'слово',
     ["You're welcome"]: 'пожалуйста',
     sure: 'конечно',
+    raspberry: 'малина',
 };
 
-const MEDIUM_WORDS_DICTIONARY = {
+const MEDIUM_ENGLISH_WORDS_DICTIONARY = {
+    longitude: 'долгота',
+    concise: 'лаконичный',
+    alumny: 'выпускница',
+    caveat: 'предостережение',
+    apt: 'подходящий',
+    ['insulated jacket']: 'утепленная куртка',
+    corresponding: 'соответствующий',
+    latitude: 'широта',
+    coccyx: 'копчик',
+    altitude: 'высота',
     den: 'Логово/пещера/кабинет',
     capricious: 'капризный',
     exotic: 'экзотичный',
@@ -199,7 +210,7 @@ const MEDIUM_WORDS_DICTIONARY = {
     ['Maintain the status quo']: 'оставлять в текущем состоянии',
 };
 
-const EXPERT_WORDS_DICTIONARY = {
+const EXPERT_ENGLISH_WORDS_DICTIONARY = {
     aberrant: 'аномальный',
     abeyance: 'отсрочка',
     abscond: 'скрыться',
@@ -1169,7 +1180,7 @@ export const ENGLISH_DICTIONARIES: Record<
     Exclude<LevelEnum, LevelEnum.Hard>,
     Record<string, string | string[]>
 > = {
-    [LevelEnum.Easy]: ENGLISH_WORDS_DICTIONARY,
-    [LevelEnum.Medium]: MEDIUM_WORDS_DICTIONARY,
-    [LevelEnum.Expert]: EXPERT_WORDS_DICTIONARY,
+    [LevelEnum.Easy]: SIMPLE_ENGLISH_WORDS_DICTIONARY,
+    [LevelEnum.Medium]: MEDIUM_ENGLISH_WORDS_DICTIONARY,
+    [LevelEnum.Expert]: EXPERT_ENGLISH_WORDS_DICTIONARY,
 };

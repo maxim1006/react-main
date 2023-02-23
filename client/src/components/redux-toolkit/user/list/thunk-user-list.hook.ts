@@ -15,6 +15,7 @@ export function useThunkUserList() {
     const ref = useRef<HTMLInputElement>(null);
 
     const users = useSelector(selectAllThunkUsers);
+
     const usersLoading = useSelector<RootState>(state => state.thunkUser.loading);
 
     useEffect(() => {

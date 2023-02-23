@@ -1,8 +1,8 @@
 ### two pointers 
 time: O(n), space: O(1)
-1. Start one pointer at the first index 0 and the other pointer at the last index input.length - 1.
-2. Use a while loop until the pointers are equal to each other.
-3. At each iteration of the loop, move the pointers towards each other. This means either increment the pointer that started at the first index, decrement the pointer that started at the last index, or both. Deciding which pointers to move will depend on the problem we are trying to solve.
+1. Начните один указатель с первого индекса 0, а другой указатель с последнего индекса input.length - 1.
+2. Используйте цикл while, пока указатели не сравняются друг с другом.
+3. На каждой итерации цикла перемещайте указатели друг к другу. Это означает либо увеличение указателя, начинающегося с первого индекса, либо уменьшение указателя, начинающегося с последнего индекса, либо и то, и другое. Решение о том, какие указатели перемещать, будет зависеть от проблемы, которую мы пытаемся решить.
 
 pseudocode
 ```
@@ -20,10 +20,10 @@ function fn(arr):
 
 ### two pointers two iterables in the input
 time: O(n+m) на 2 массива n + m, space: O(1)
-1. Create two pointers, one for each iterable. Each pointer should start at the first index.
-2. Use a while loop until one of the pointers reaches the end of its iterable.
-3. At each iteration of the loop, move the pointers forwards. This means incrementing either one of the pointers or both of the pointers. Deciding which pointers to move will depend on the problem we are trying to solve.
-4. Because our while loop will stop when one of the pointers reaches the end, the other pointer will not be at the end when the loop finishes. Sometimes, we need to iterate through all elements - if this is the case, you will need to write extra code here to make sure both iterables are exhausted.
+1. Создайте два указателя, по одному для каждого итерируемого объекта. Каждый указатель должен начинаться с первого индекса.
+2. Используйте цикл while, пока один из указателей не достигнет конца своей итерации.
+3. На каждой итерации цикла перемещайте указатели вперед. Это означает увеличение либо одного из указателей, либо обоих указателей. Решение о том, какие указатели перемещать, будет зависеть от проблемы, которую мы пытаемся решить.
+4. Поскольку наш цикл while остановится, когда один из указателей достигнет конца, другой указатель не будет в конце, когда цикл завершится. Иногда нам нужно выполнить итерацию по всем элементам — в этом случае вам нужно будет написать здесь дополнительный код, чтобы убедиться, что обе итерации исчерпаны.
 
 pseudocode
 ```

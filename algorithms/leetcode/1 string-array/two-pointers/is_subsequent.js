@@ -8,27 +8,21 @@ https://leetcode.com/problems/is-subsequence/
 
 import { logFn } from '../../../utils/common.utils.js';
 
-function isSubsequence(str = 'ace', str1 = 'abcde') {
-    let l = str.length;
-    let l1 = str1.length;
-    let i = 0;
-    let j = 0;
+function isSubsequence(str, str1) {
+    let l = 0;
+    let start = 0;
 
-    while (j < l1) {
-        let cur = str[i];
-        let cur1 = str1[j];
+    while (start < str1.length) {
+        if (str[l] === str1[start]) ++l;
+        if (l === str.length) return true;
 
-        if (cur === cur1) i++;
-
-        if (i === l) return true;
-
-        j++;
+        ++start;
     }
 
     // это на случай пустых строк
     return str === str1;
 }
 
-logFn(isSubsequence);
-logFn(isSubsequence, ['ade', 'abcde']);
-logFn(isSubsequence, ['aed', 'abcde']);
+logFn(isSubsequence, ['ace', 'abcde']); // true
+logFn(isSubsequence, ['ade', 'abcde']); // true
+logFn(isSubsequence, ['aed', 'abcde']); // false
