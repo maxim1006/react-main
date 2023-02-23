@@ -38,3 +38,12 @@ async function fseCopy() {
     //     (await getFilesAndDirs()).filter(i => fs.lstatSync(i).isDirectory())
     // );
 })();
+
+async function fseReadAndWriteFile() {
+    const pathRead = path.join(__dirname, '../examples/src/readFile.js');
+    const pathWrite = path.join(__dirname, '../examples/dist/writeFile.js');
+    const mainTsData = await fse.readFile(pathRead, 'utf-8');
+    fse.writeFileSync(pathWrite, mainTsData);
+}
+
+void fseReadAndWriteFile();
