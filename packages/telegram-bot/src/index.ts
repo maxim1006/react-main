@@ -58,8 +58,6 @@ async function main() {
         if (!chatId) return console.error('Error No chatId in callback_query');
         if (!msg.message) return console.error('Error No chatMessage in callback_query');
 
-        console.log({ msg });
-
         const chat = msg.message.chat;
         const username = chat.username;
 

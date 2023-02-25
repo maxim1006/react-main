@@ -36,6 +36,7 @@ ssh root@62.217.181.35
 ssh maxim1@maxim1.beget.tech
 ssh localhost -p 222
 (теперь в докере могу что угодно делать)
+/root/apps/telegram-bot - тут приложение
 
 ### deployment
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
