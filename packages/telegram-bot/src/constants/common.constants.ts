@@ -9,6 +9,8 @@ export const COMMANDS = {
     [MessageEnum.Cheatsheet]: 'подсказки',
     [MessageEnum.Stats]: 'статистика игр',
     [MessageEnum.Info]: 'необходимая информация',
+    [MessageEnum.Form]: 'форма',
+    [MessageEnum.Store]: 'магазин',
 };
 
 export enum CommonEnum {

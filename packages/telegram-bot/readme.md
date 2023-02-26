@@ -6,12 +6,14 @@
 5) Сделать приложение apple/google
 
 ### Useful links
+[telegram webapps](https://core.telegram.org/bots/webapps#implementing-web-apps)
 [firebase](https://console.firebase.google.com/)
 [firestore crud](https://cloud.google.com/nodejs/docs/reference/firestore/latest)
 
 
 ### Installation notes
 - в телеге пишу botfather затем клик на /newbot и вводим название должна прийти сообщенька и токен
+- для webapps пришлось установить типы из нпм пакета telegram-webapps-types а также прописать "typeRoots": ["./node_modules/@types", "./node_modules/telegram-webapps-types"]
 
 ### pm2 для бг нод процессов
 [pm2](https://www.npmjs.com/package/pm2)
@@ -45,3 +47,10 @@ https://beget.com/ru/kb/how-to/vps/vypusk-i-ustanovka-ssl-sertifikatov-ot-lets-e
 
 ### nginx 
 /etc/nginx/sites-available/default
+
+### vite
+// client
+npm create vite@latest . -- --template react-ts
+npm add -D sass      
+
+

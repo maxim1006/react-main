@@ -8,6 +8,8 @@ import { handleStatsMessages } from '../messages/stats.message';
 import { handleCheatSheetMessages } from '../messages/cheatsheet.message';
 import { handleClockGameMessage } from '../messages/clock-game.message';
 import { handleEnglishGameTaskMessages } from '../messages/english-game.message';
+import { handleFormMessages } from '../messages/form.message';
+import { handleStoreMessages } from '../messages/store.message';
 
 export const START_MESSAGE_MAP: Record<
     MessageEnum,
@@ -22,4 +24,6 @@ export const START_MESSAGE_MAP: Record<
     [MessageEnum.EnglishGame]: ({ chat, msg }) => handleEnglishGameTaskMessages({ chat }),
     [MessageEnum.GuessNumber]: ({ chat, msg }) => handleGuessNumberMessage({ chat, msg }),
     [MessageEnum.Stats]: ({ chat, msg }) => handleStatsMessages({ chat }),
+    [MessageEnum.Form]: ({ chat, msg }) => handleFormMessages({ chat }),
+    [MessageEnum.Store]: ({ chat, msg }) => handleStoreMessages({ chat }),
 };

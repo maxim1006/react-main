@@ -20,4 +20,6 @@ export enum MessageEnum {
     EnglishGame = '/english_game',
     ClockGame = '/clock_game',
     Stats = '/stats',
+    Form = '/form',
+    Store = '/store',
 }

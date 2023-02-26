@@ -64,11 +64,6 @@ async function main() {
         if (!username)
             return console.error('Error BotEventsEnum.CallbackQuery Alarm ghost in town!!!');
 
-        // TODO сделать обработку ошибок при овернайт
-        // if () {
-        //     await BOT.sendMessage(chatId, `Пожалуйста выбери игру в меню`);
-        // }
-
         const mode = await getUserMode({ username });
 
         if (mode === MessageEnum.GuessNumber) return await handleGuessNumberCbQuery({ msg });
