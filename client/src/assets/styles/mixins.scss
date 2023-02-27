@@ -1,4 +1,6 @@
+/* stylelint-disable */
 @import "colors";
+@import "svg-encode";
 
 @mixin box-shadow() {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 8%), 0 4px 16px 0 rgba(0, 0, 0, 4%);
@@ -11,3 +13,20 @@
         outline: 5px auto -webkit-focus-ring-color; // for webkit based browsers
     }
 }
+
+// тут проблема именно в url encode stroke у сасс в отличии от лесс нет такой функции из коробки...
+@mixin custom-border($color: "#ccc", $border-width: 2, $border-radius: 10, $pattern: '24,12', $offset: 0) {
+    $escapedColor: svg-encode($color);
+
+    background-image: url("data:image/svg+xml,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='none' stroke='#{$escapedColor}' stroke-width='#{$border-width}' rx='#{$border-radius}' ry='#{$border-radius}' stroke-dasharray='#{$pattern}' stroke-dashoffset='#{$offset}' stroke-linecap='round'/></svg>");
+    border-radius: $border-radius * 1px;
+}
+
+// https://codepen.io/kevinweber/pen/dXWoRw
+// в .less выглядела бы так
+//.custom-border(@color: @secondary-border-color, @border-width: 2, @border-radius: 10, @pattern: '24,12', @offset: 0) {
+//    @escapedColor: escape(@color);
+//
+//    background-image: url("data:image/svg+xml,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='none' stroke='@{escapedColor}' stroke-width='@{border-width}' rx='@{border-radius}' ry='@{border-radius}' stroke-dasharray='@{pattern}' stroke-dashoffset='@{offset}' stroke-linecap='round'/></svg>");
+//    border-radius: @border-radius * 1px;
+//}

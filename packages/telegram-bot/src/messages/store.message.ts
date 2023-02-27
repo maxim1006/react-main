@@ -8,7 +8,8 @@ export const handleStoreMessages = async ({ chat, chat: { id, username } }: Mess
                 [
                     {
                         text: 'Открой магазин',
-                        web_app: { url: 'https://maximprosv.ru/' },
+                        web_app: { url: 'https://235a-91-231-66-120.eu.ngrok.io/' },
+                        // web_app: { url: 'https://lucent-cucurucho-7c0627.netlify.app/' },
                     },
                 ],
             ],

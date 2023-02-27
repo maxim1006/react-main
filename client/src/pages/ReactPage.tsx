@@ -1,15 +1,19 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
+import CustomDashedBorder from '@app/components/custom-dashed-border/custom-dashed-border.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='GridRepeat'>
-                    <GridRepeat />
+                <Component title='CustomDashedBorder'>
+                    <CustomDashedBorder />
                 </Component>
+
+                {/*<Component title='GridRepeat'>*/}
+                {/*    <GridRepeat />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='FunctionAndObjectInUseeffect'>*/}
                 {/*    <FunctionAndObjectInUseeffect />*/}

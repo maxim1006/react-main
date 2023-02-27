@@ -6,6 +6,8 @@
 5) Сделать приложение apple/google
 
 ### Useful links
+[ngrok](https://ngrok.com/docs/getting-started)
+[netlify](https://app.netlify.com/)
 [telegram webapps](https://core.telegram.org/bots/webapps#implementing-web-apps)
 [firebase](https://console.firebase.google.com/)
 [firestore crud](https://cloud.google.com/nodejs/docs/reference/firestore/latest)
@@ -51,6 +53,16 @@ https://beget.com/ru/kb/how-to/vps/vypusk-i-ustanovka-ssl-sertifikatov-ot-lets-e
 ### vite
 // client
 npm create vite@latest . -- --template react-ts
-npm add -D sass      
+npm add -D sass @vitejs/plugin-basic-ssl vite-plugin-svgr     
 
+### ngrock
+Тула для тунеллирования портов на внешнюю ссылку (нужно зарегаться а дальше по getting-started)
+https://ngrok.com/docs/getting-started
+https://dashboard.ngrok.com/get-started/setup
+для запуска
+ngrok http 5173
 
+получаю ссылку, например https://235a-91-231-66-120.eu.ngrok.io
+
+### netlify
+элементарно деплоить сайт с гитхаба

@@ -4,15 +4,16 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite --open --https",
+        "dev": "vite --open",
         "build": "tsc && vite build",
         "preview": "vite preview"
     },
     "dependencies": {
         "@vitejs/plugin-basic-ssl": "^1.0.1",
+        "classnames": "^2.3.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "telegram-webapps-types": "^1.0.5"
+        "react-router-dom": "^6.8.1"
     },
     "devDependencies": {
         "@types/node-telegram-bot-api": "^0.57.6",
