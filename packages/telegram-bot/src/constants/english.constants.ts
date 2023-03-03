@@ -112,6 +112,9 @@ const SIMPLE_ENGLISH_WORDS_DICTIONARY: Record<string, string | string[]> = {
 };
 
 const MEDIUM_ENGLISH_WORDS_DICTIONARY = {
+    forsake: 'оставлять / покидать',
+    obey: 'подчиняться',
+    confine: 'ограничивать',
     dismissal: 'увольнение',
     fatigue: 'усталость',
     discharge: 'увольнять',

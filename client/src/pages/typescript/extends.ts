@@ -45,6 +45,8 @@ interface TestTypeC extends TestTypeB {
     c?: number;
 }
 
+// Сравнение extends vs = в дженерике, extends обязательный а "=" это только начальное значение
+
 // тут TestTypeA должен экстендить TestTypeC иначе ошибка
 export interface TestTypeA extends TestTypeC {
     a?: number;
