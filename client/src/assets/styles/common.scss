@@ -51,11 +51,13 @@ dl {
     padding: 0;
 }
 
-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
+/* stylelint-disable */
+//button {
+//    background-color: transparent;
+//    border: none;
+//    cursor: pointer;
+//}
+/* stylelint-enable */
 
 button,
 a {

@@ -48,6 +48,9 @@ async function main() {
         if (currentMode === MessageEnum.MathGame)
             return await handleMathGameResultMessages({ chat, msg });
 
+        // обработка данных из веб апп с формой
+        if (msg?.web_app_data?.data) await BOT.sendMessage(chatId, msg?.web_app_data?.data);
+
         return await handleUnknownCommandsMessages({ chatId });
     });
 

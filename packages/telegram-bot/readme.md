@@ -65,4 +65,7 @@ ngrok http 5173
 получаю ссылку, например https://235a-91-231-66-120.eu.ngrok.io
 
 ### netlify
-элементарно деплоить сайт с гитхаба
+элементарно деплоить сайт с гитхаба (https://app.netlify.com/teams/maxim1006/overview)
+
+// конфиг для history5 например
+netlify.toml

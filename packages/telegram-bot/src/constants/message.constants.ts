@@ -24,6 +24,6 @@ export const START_MESSAGE_MAP: Record<
     [MessageEnum.EnglishGame]: ({ chat, msg }) => handleEnglishGameTaskMessages({ chat }),
     [MessageEnum.GuessNumber]: ({ chat, msg }) => handleGuessNumberMessage({ chat, msg }),
     [MessageEnum.Stats]: ({ chat, msg }) => handleStatsMessages({ chat }),
-    [MessageEnum.Form]: ({ chat, msg }) => handleFormMessages({ chat }),
-    [MessageEnum.Store]: ({ chat, msg }) => handleStoreMessages({ chat }),
+    [MessageEnum.Form]: ({ chat, msg }) => handleFormMessages({ chat, msg }),
+    [MessageEnum.Store]: ({ chat, msg }) => handleStoreMessages({ chat, msg }),
 };

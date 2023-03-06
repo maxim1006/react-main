@@ -1,15 +1,19 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import CustomDashedBorder from '@app/components/custom-dashed-border/custom-dashed-border.component';
+import MyForm from '@app/components/form/form-uncotrolled.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='CustomDashedBorder'>
-                    <CustomDashedBorder />
+                <Component title='MyForm'>
+                    <MyForm />
                 </Component>
+
+                {/*<Component title='CustomDashedBorder'>*/}
+                {/*    <CustomDashedBorder />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='GridRepeat'>*/}
                 {/*    <GridRepeat />*/}
