@@ -1,15 +1,17 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
+import AAATest from '@app/components/aaa-test/aaa-test.component';
 import Component from '@app/components/component/component.component';
-import MyForm from '@app/components/form/form-uncotrolled.component';
+import MyCssMask from '@app/components/css-mask/css-mask.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <Component title='MyForm'>
-                    <MyForm />
-                </Component>
+                <AAATest />
+                {/*<Component title='MyForm'>*/}
+                {/*    <MyForm />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='CustomDashedBorder'>*/}
                 {/*    <CustomDashedBorder />*/}
@@ -103,9 +105,9 @@ export default function ReactPage() {
                 {/*    <UsersTest />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='Css mask'>*/}
-                {/*    <MyCssMask />*/}
-                {/*</Component>*/}
+                <Component title='Css mask'>
+                    <MyCssMask />
+                </Component>
 
                 {/*<Component title='Aspect ratio'>*/}
                 {/*    <MyAspectRatio />*/}

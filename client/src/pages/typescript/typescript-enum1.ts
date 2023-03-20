@@ -34,6 +34,11 @@ export interface ViewRadioModel extends ViewModel<ViewEnum.Radio> {
 
 export type ViewType = ViewToggleModel | ViewRadioModel;
 
+// чтобы учитывались все айтемы из ViewType
+function exhaustiveCheck(param: never) {
+    console.log('Handle switch please ' + param);
+}
+
 // Тут показываю пример как сделать несколько моделей объеидняющий type и в зависимости от этого наплоидить интерфейсов,
 // аля как в редюсерах
 // eslint-disable-next-line
@@ -52,7 +57,7 @@ function foo(model: ViewType) {
         }
 
         default:
-            break;
+            exhaustiveCheck(model);
     }
 
     console.warn(prop);
@@ -71,3 +76,27 @@ function foo1<T extends ViewType>(model: T) {
 
 let f11 = foo1(viewToggleModel);
 let f111 = foo1(viewRadioModel);
+
+// как сделать из объекта enum
+// const Role = {
+//     ADMIN: 'admin',
+//     USER: 'user',
+// } as const; // не забываю чтобы получить конкретные значения
+//
+// enum RoleEnum {
+//     ADMIN = 'admin',
+//     USER = 'user',
+// }
+//
+// type RoleModel = typeof Role[keyof typeof Role];
+// type ValueOf<T> = T[keyof T];
+// type RoleModel1 = ValueOf<typeof Role> // замена type RoleModel = typeof Role[keyof typeof Role];
+//
+// function ff(arg: RoleModel) {}
+// function ff1(arg: RoleEnum) {}
+//
+// ff(Role.ADMIN);
+// ff('admin');
+//
+// ff1(RoleEnum.ADMIN);
+// // ff1('admin');  // ошбика

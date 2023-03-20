@@ -104,6 +104,14 @@ const foo = <T>(x: T) => x;
 // export type ArrayType<T> = T extends Array<infer V> ? V : never;
 // export type Maybe<T> = T | null;
 
+// тут пример как клево можно расширить массив, так как [<ArrayTestModel & { value: string }>] или <ArrayTestModel & { value: string }>[] не отработает
+type ArrayTestModel = {
+    prop: string;
+};
+type ArrayTestModel1 = Array<ArrayTestModel & { value: string }>;
+// eslint-disable-next-line
+const arrayTestModel1: ArrayTestModel1 = [{ value: '1', prop: '2' }];
+
 // пример с дженериками в типах и интерфейсах
 type AuthSignUpGeneratorContainerProps<T> = {
     prop: T;

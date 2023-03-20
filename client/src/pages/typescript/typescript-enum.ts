@@ -103,7 +103,10 @@ enum ExcludeEnum {
     P1 = 'p1',
 }
 
-type ExcludeEnumType = Exclude<ExcludeEnum, ExcludeEnum.P>;
+type ExcludeEnumType = Exclude<ExcludeEnum, ExcludeEnum.P>; // это исключение
+type ExtractType = Extract<ExcludeEnum, ExcludeEnum.P1>; // это добавление
+
+const o1: Record<ExtractType, string> = { [ExcludeEnum.P1]: '1' };
 
 const o: Record<ExcludeEnumType, string> = { [ExcludeEnum.P1]: '1' };
 // const o: Record<ExcludeEnumType, string> = {[ExcludeEnum.P]: "1"} // ошибка
