@@ -1,14 +1,17 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import AAATest from '@app/components/aaa-test/aaa-test.component';
 import Component from '@app/components/component/component.component';
-import MyCssMask from '@app/components/css-mask/css-mask.component';
+import MyTemplateContainer from '@app/components/template/template.container';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <AAATest />
+                {/*<AAATest />*/}
+                <Component title='MyTemplate'>
+                    <MyTemplateContainer />
+                </Component>
+
                 {/*<Component title='MyForm'>*/}
                 {/*    <MyForm />*/}
                 {/*</Component>*/}
@@ -105,9 +108,9 @@ export default function ReactPage() {
                 {/*    <UsersTest />*/}
                 {/*</Component>*/}
 
-                <Component title='Css mask'>
-                    <MyCssMask />
-                </Component>
+                {/*<Component title='Css mask'>*/}
+                {/*    <MyCssMask />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Aspect ratio'>*/}
                 {/*    <MyAspectRatio />*/}
