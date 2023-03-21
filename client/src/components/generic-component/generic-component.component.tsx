@@ -12,6 +12,7 @@ const GenericComponent: FC<GenericComponentProps> = () => {
             {/*тут ошибка*/}
             {/*<GenericChild prop={{}} />*/}
             <GenericChildMemo<string> prop='1' />
+            <GenericChild1<number> prop={1} />
         </div>
     );
 };
@@ -33,7 +34,16 @@ type GenericChildProps<T extends string | number | boolean> = {
     prop?: T;
 };
 
+type GenericChildProps1<T> = {
+    prop?: T;
+};
+
 const GenericChild = <T extends string | number | boolean>({ prop }: GenericChildProps<T>) => {
+    return <>{prop}</>;
+};
+
+// тут сделал этот пример так как с лямбда функцией не получается просто так прокинуть T = string
+const GenericChild1 = function <T = string>({ prop }: GenericChildProps1<T>) {
     return <>{prop}</>;
 };
 
