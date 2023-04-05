@@ -9,7 +9,7 @@ const CloneElement = memo<CloneElementProps>(function CloneElement({ children, d
     let childrenWithProps;
 
     if (isValidElement(children)) {
-        childrenWithProps = cloneElement(children, { disabled });
+        childrenWithProps = cloneElement<any>(children, { disabled });
     }
 
     return <div {...rest}>{childrenWithProps}</div>;

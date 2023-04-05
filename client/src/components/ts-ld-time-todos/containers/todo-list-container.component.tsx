@@ -3,7 +3,7 @@ import { TodosStoreReactContext, toggleCompleteTodoActionCreator } from '../todo
 import TodoList from '../components/todo-list.component';
 
 const TodoListContainer = () => {
-    const { store, state } = useContext(TodosStoreReactContext);
+    const { store, state } = useContext(TodosStoreReactContext) as any;
 
     return (
         <>

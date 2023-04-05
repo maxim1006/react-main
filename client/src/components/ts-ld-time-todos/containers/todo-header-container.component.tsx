@@ -3,7 +3,7 @@ import { addTodoActionCreator, TodosStoreReactContext } from '../todo-store.comp
 import TodoHeader from '../components/todo-header.component';
 
 const TodoHeaderContainer = () => {
-    const { store } = useContext(TodosStoreReactContext);
+    const { store } = useContext(TodosStoreReactContext) as any;
 
     return (
         <>

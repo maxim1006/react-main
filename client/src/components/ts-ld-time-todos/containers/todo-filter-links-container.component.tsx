@@ -3,7 +3,7 @@ import { setVisibilityFilterActionCreator, TodosStoreReactContext } from '../tod
 import ToDoFilterLinks from '../components/todo-filter-links.component';
 
 const TodoFilterLinksContainer = () => {
-    const { store, state } = useContext(TodosStoreReactContext);
+    const { store, state } = useContext(TodosStoreReactContext) as any;
 
     return (
         <>
