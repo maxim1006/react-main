@@ -1,16 +1,21 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import MyTemplateContainer from '@app/components/template/template.container';
+import DispatchEvent from '@app/components/dispatch-event/dispatch-event.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
                 {/*<AAATest />*/}
-                <Component title='MyTemplate'>
-                    <MyTemplateContainer />
+
+                <Component title='DispatchEvent'>
+                    <DispatchEvent />
                 </Component>
+
+                {/*<Component title='MyTemplate'>*/}
+                {/*    <MyTemplateContainer />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='MyForm'>*/}
                 {/*    <MyForm />*/}
