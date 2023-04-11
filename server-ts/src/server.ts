@@ -18,6 +18,10 @@ if (!isProduction) {
 // Add your mock router here
 const appRouters = [
     {
+        url: '',
+        middleware: routers.loginRouter,
+    },
+    {
         url: 'users',
         middleware: routers.userRouter,
     },
