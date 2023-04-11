@@ -13,6 +13,8 @@ const GenericComponent: FC<GenericComponentProps> = () => {
             {/*<GenericChild prop={{}} />*/}
             <GenericChildMemo<string> prop='1' />
             <GenericChild1<number> prop={1} />
+            <GenericChild1<string> prop='1' />
+            <GenericChild1<boolean> prop />
         </div>
     );
 };

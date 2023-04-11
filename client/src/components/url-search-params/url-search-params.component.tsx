@@ -12,6 +12,7 @@ const UrlSearchParams: FC<UrlSearchParamsProps> = () => {
         console.dir(searchParams);
         let path = window.location.pathname + '?' + searchParams.toString();
         // меняю прямо текущий стейт без перезагрузки
+        // window.history.replaceState(null, document.title, path);
         window.history.pushState(null, document.title, path);
     }, []);
 
