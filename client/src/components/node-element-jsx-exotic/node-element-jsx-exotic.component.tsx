@@ -23,6 +23,7 @@ const NodeElementJsxExotic: FC<NodeElementJsxExoticProps> = () => {
             <NodeElementJsxExoticChild node={null} />
             <NodeElementJsxExoticChild node={1} />
             <NodeElementJsxExoticChild node={undefined} />
+            <NodeElementJsxExoticChild node={<TestMemo />} />
             <NodeElementJsxExoticChild node={<Fragment>1</Fragment>} />
             <NodeElementJsxExoticChild node={memoized} />
             <NodeElementJsxExoticChild node={ReactDOM.createPortal(<div />, document.querySelector('#modal'))} />

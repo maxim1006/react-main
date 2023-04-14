@@ -1,13 +1,13 @@
 import React, { memo, FC } from 'react';
 
-type CustomTagProps = {};
+type CustomSelectorProps = {};
 
-const CustomTag: FC<CustomTagProps> = () => {
-    const titleLevel = 1;
-
-    const CustomHTag = `h${titleLevel}` as keyof JSX.IntrinsicElements;
-
-    return <CustomHTag>CustomTag h1</CustomHTag>;
+const CustomSelector: FC<CustomSelectorProps> = () => {
+    /*
+     * можно только те селекторы которые указаны в
+     *  interface IntrinsicElements {
+     * */
+    return <custom-selector>Custom Selector</custom-selector>;
 };
 
-export default memo(CustomTag);
+export default memo(CustomSelector);
