@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import DispatchEvent from '@app/components/dispatch-event/dispatch-event.component';
+import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
 
 export default function ReactPage() {
     return (
@@ -9,9 +9,9 @@ export default function ReactPage() {
             <div tabName='React'>
                 {/*<AAATest />*/}
 
-                <Component title='DispatchEvent'>
-                    <DispatchEvent />
-                </Component>
+                {/*<Component title='DispatchEvent'>*/}
+                {/*    <DispatchEvent />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='MyTemplate'>*/}
                 {/*    <MyTemplateContainer />*/}
@@ -25,9 +25,9 @@ export default function ReactPage() {
                 {/*    <CustomDashedBorder />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='GridRepeat'>*/}
-                {/*    <GridRepeat />*/}
-                {/*</Component>*/}
+                <Component title='GridRepeat'>
+                    <GridRepeat />
+                </Component>
 
                 {/*<Component title='FunctionAndObjectInUseeffect'>*/}
                 {/*    <FunctionAndObjectInUseeffect />*/}

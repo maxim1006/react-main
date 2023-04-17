@@ -16,6 +16,27 @@ const GridRepeat: FC<GridRepeatProps> = () => {
                     </div>
                 ))}
             </div>
+
+            <h3>Auto-fill</h3>
+            <div className={styles.grid}>
+                {[...Array(3)].map(_ => (
+                    <div key={generateUUID()} className={styles.child}>
+                        Child
+                    </div>
+                ))}
+            </div>
+
+            <h3>Auto-fit</h3>
+            <div className={styles.gridFit}>
+                {[...Array(3)].map(_ => (
+                    <div key={generateUUID()} className={styles.child}>
+                        Child
+                    </div>
+                ))}
+            </div>
+
+            <h3>Place items</h3>
+            <div className={styles.gridPlaceItems}>centered</div>
         </div>
     );
 };

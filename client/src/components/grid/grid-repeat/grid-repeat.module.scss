@@ -1,7 +1,27 @@
+.host {
+    > h3 {
+        margin-top: 20px;
+    }
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 20px;
+}
+
+.gridFit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+.gridPlaceItems {
+    display: grid;
+    place-items: center;
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
 }
 
 .child {

@@ -10,7 +10,15 @@ export function useApiUserList() {
         data: user,
         isLoading: userLoading,
         isFetching: userFetching,
-    } = apiUserApi.useFetchUserQuery({ userId: users[0]?.id ?? null }, { pollingInterval });
+    } = apiUserApi.useFetchUserQuery(
+        { userId: users[0]?.id ?? null },
+        {
+            pollingInterval,
+
+            // skip, // скипнуть при условии
+            // refetchOnMountOrArgChange: true // насильно делать запрос
+        }
+    );
     const [fetchUserLazy, lazyUser] = apiUserApi.useLazyFetchUserQuery();
 
     /*
