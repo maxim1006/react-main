@@ -1,13 +1,17 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
+import CssUnits from '@app/components/css-units/css-units.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
                 {/*<AAATest />*/}
+
+                <Component title='CssUnits'>
+                    <CssUnits />
+                </Component>
 
                 {/*<Component title='DispatchEvent'>*/}
                 {/*    <DispatchEvent />*/}
@@ -25,9 +29,9 @@ export default function ReactPage() {
                 {/*    <CustomDashedBorder />*/}
                 {/*</Component>*/}
 
-                <Component title='GridRepeat'>
-                    <GridRepeat />
-                </Component>
+                {/*<Component title='GridRepeat'>*/}
+                {/*    <GridRepeat />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='FunctionAndObjectInUseeffect'>*/}
                 {/*    <FunctionAndObjectInUseeffect />*/}

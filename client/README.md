@@ -12,6 +12,9 @@ origin - тот кто отсылает
 referer = origin + path
 host - это ресурс на который идет реквест
 
+в страницу которая должна передавать origin нужно вствить 
+<meta name="referrer" content="origin" />
+
 ### install app
 npx create-react-app my-app
 

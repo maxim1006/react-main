@@ -1,0 +1,67 @@
+.host {
+    height: 200vh;
+}
+
+.wrapper {
+    display: flex;
+    gap: 1rem;
+    font-size: clamp(1rem, 2vmin, 3rem);
+}
+
+.box1 {
+    width: 50vw;
+    height: 50vh;
+    background-color: lightgreen;
+}
+
+.box2 {
+    // vmin - 1% of the viewport's smaller dimension (height or width)
+    width: 50vmin;
+    height: 50vmax;
+    background-color: lightblue;
+}
+
+.box3 {
+    // по умолчанию horizontal-tb
+    writing-mode: vertical-lr;
+    // по умолчанию 50vi ширина vb высота, при переключении vertical-lr наоборот vi - высота а vb ширина
+    width: 50vi;
+    height: 50vb;
+    background-color: lightcoral;
+}
+
+.box4 {
+    background-color: lightgrey;
+}
+
+.mobileWrapper {
+    composes: wrapper;
+    margin-top: 30px;
+}
+
+.mobileBox1 {
+    flex: 1;
+    // small viewportHeight
+    height: 50svh;
+    background-color: lightgreen;
+}
+
+// large viewportHeight
+.mobileBox2 {
+    flex: 1;
+    height: 50lvh;
+    background-color: lightblue;
+}
+
+// dynamic viewportHeight
+.mobileBox3 {
+    flex: 1;
+    height: 50dvh;
+    background-color: lightcoral;
+}
+
+.mobileBox4 {
+    flex: 1;
+    height: 50vh;
+    background-color: lightgrey;
+}
