@@ -36,8 +36,8 @@ const NodeElementJsxExotic: FC<NodeElementJsxExoticProps> = () => {
 };
 
 type NodeElementJsxExoticChildProps = {
-    node?: ReactNode;
     element?: JSX.Element;
+    node?: ReactNode;
     exotic?: NamedExoticComponent;
     fc?: FC;
 };

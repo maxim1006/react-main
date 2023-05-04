@@ -57,6 +57,15 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### Chat GPT
+1. explain code
+2. debug
+3. transform from one programming language to another.
+4. get solution or snippets of code on how to do something.
+5. generate unit test
+6. modify existing code
+7. write document and comment our code.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

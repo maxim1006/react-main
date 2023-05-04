@@ -1,0 +1,20 @@
+.accordionHeader {
+    padding: 20px 0 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordionBody {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms;
+}
+
+.accordionBodyOpened {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.accordionBodyInner {
+    overflow: hidden;
+}
