@@ -5,6 +5,11 @@
 4) Сделать механизм для очистки данных старше 2х месяцев
 5) Сделать приложение apple/google
 
+### Start
+- npm run start
+- запустить vite telegram-bot/src/web/client-vite/package.json
+- запустить ngrock (не забыть в .env добавить новую ссылку от него чтобы открывался в тг, порт ngrock соответствует дев серверу vite)
+
 ### Useful links
 [ngrok](https://ngrok.com/docs/getting-started)
 [netlify](https://app.netlify.com/)

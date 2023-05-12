@@ -8,7 +8,7 @@
         "start": "nodemon src/index.ts",
         "dev": "tsc-watch -p ./ --outDir ./public --onSuccess \"node ./public/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler typescript/bin/tsc",
         "dev:js": "nodemon public/index.js",
-        "build": "mkdir -p ./public/web && cp -R ./src/admin ./public && cp -R ./src/assets ./public && cp -R ./src/web/client ./public/web/client && NODE_ENV=production tsc",
+        "build": "mkdir -p ./public/web && cp -R ./src/admin ./public && cp -R ./src/assets ./public && cp -R ./web/client ./public/web/client && NODE_ENV=production tsc",
         "serve": "NODE_ENV=production node public/index.js",
         "prod:start": "pm2 start ecosystem.config.js --env production",
         "prod:logs": "pm2 logs",

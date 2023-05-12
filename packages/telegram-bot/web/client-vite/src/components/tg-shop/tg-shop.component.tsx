@@ -1,12 +1,12 @@
 import React, { memo, FC } from 'react';
-import styles from './product-list.module.scss';
+import styles from './tg-shop.module.scss';
 import cn from 'classnames';
 
-type ProductListProps = {};
+type TgShopProps = {};
 
-const ProductList: FC<ProductListProps> = () => {
+const TgShop: FC<TgShopProps> = () => {
     return (
-        <div className={cn(styles.host, 'taProductList')}>
+        <div className={cn(styles.host, 'taTgShop')}>
             <div className={styles.product}>
                 <div className={styles.product}></div>
             </div>
@@ -14,4 +14,4 @@ const ProductList: FC<ProductListProps> = () => {
     );
 };
 
-export default memo(ProductList);
+export default memo(TgShop);

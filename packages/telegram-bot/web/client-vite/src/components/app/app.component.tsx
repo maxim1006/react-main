@@ -4,9 +4,9 @@ import TgHeaderContainer from '../tg-header/tg-header.container';
 import { tg } from '@app/constants/common.constants';
 import { useTg } from '@app/hooks/tg.hook';
 import TgButton from '@app/components/tg-button/tg-button.component';
-import { Route, Routes } from 'react-router-dom';
-import ProductList from '@app/components/product/list/product-list.component';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import TgForm from '@app/components/tg-form/tg-form.component';
+import TgShop from '@app/components/tg-shop/tg-shop.component';
 
 type AppProps = {};
 
@@ -22,7 +22,8 @@ const App: FC<AppProps> = () => {
             <TgButton onClick={onMainButtonToggle}>Toggle Main Button</TgButton>
             <TgHeaderContainer />
             <Routes>
-                <Route index element={<ProductList />}></Route>
+                <Route index element={<Navigate to='/shop' />} />
+                <Route path='/shop' element={<TgShop />}></Route>
                 <Route path='/form' element={<TgForm />}></Route>
             </Routes>
         </div>
