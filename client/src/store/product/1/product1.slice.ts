@@ -12,6 +12,9 @@ const slice = createSlice({
         setProduct1innerPropAction(state, action: PayloadAction<ProductProp[]>) {
             product1InnerPropAdapter.setMany(state.product1InnerProp, action.payload);
         },
+        setProduct1PropAction(state, action: PayloadAction<string>) {
+            state.prop = action.payload;
+        },
     },
     extraReducers: builder => {
         // тут можно сделать inner state property у которой будет свой reducer
@@ -23,4 +26,4 @@ const slice = createSlice({
 
 export const product1Reducer = slice.reducer;
 
-export const { setProduct1innerPropAction } = slice.actions;
+export const { setProduct1innerPropAction, setProduct1PropAction } = slice.actions;

@@ -29,12 +29,14 @@ const RtPosts = () => {
     useEffect(() => {
         (async () => {
             //  пример thunk возвращает промис с результатом запроса, круто чтобы чейнинг использовать !!!
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const posts = await dispatch(fetchPostsAction());
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const posts1 = await dispatch(fetchPostsAction1());
-            console.log({
-                posts,
-                posts1,
-            });
+            // console.log({
+            //     posts,
+            //     posts1,
+            // });
         })();
     }, [dispatch]);
 
@@ -62,7 +64,7 @@ const RtPosts = () => {
 function Child({ prop }: { prop: string }) {
     const itemsByTitleMemo = useMemoSelector(makeSelectPostsByTitle, prop);
     const itemsByTitleMemo1 = useAppSelector(state => makeSelectPostsByTitle1(state, prop));
-    console.log('Child rerender');
+    // console.log('Child rerender');
     return (
         <>
             {itemsByTitleMemo1.map(i => (
@@ -78,7 +80,7 @@ function Child({ prop }: { prop: string }) {
 function Child1({ prop = 'a' }: { prop?: string }) {
     const itemsByTitleMemo = useMemoSelector(makeSelectPostsByTitle, prop);
     const itemsByTitleMemo1 = useAppSelector(state => makeSelectPostsByTitle1(state, prop));
-    console.log('Child1 rerender');
+    // console.log('Child1 rerender');
     return (
         <>
             {itemsByTitleMemo1.map(i => (

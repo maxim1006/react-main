@@ -81,7 +81,7 @@ export const selectPosts = (state: RootState): PostsStateModel => state.posts;
 
 export const makeSelectPostsByTitle = () => {
     return createSelector([selectPosts, (_: RootState, title: string) => title], (posts, title) => {
-        console.log('memoized selector', { title });
+        // console.log('memoized selector', { title });
         return posts.entities?.filter(i => i.title.includes(title));
     });
 };
@@ -89,7 +89,6 @@ export const makeSelectPostsByTitle = () => {
 export const makeSelectPostsByTitle1 = createSelector(
     [selectPosts, (_: RootState, title: string) => title],
     (posts, title) => {
-        console.log('selector', { title });
         return posts.entities?.filter(i => i.title.includes(title));
     }
 );

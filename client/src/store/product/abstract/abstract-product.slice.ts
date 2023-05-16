@@ -1,8 +1,9 @@
 import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductStateModel, ProductTypeEnum } from '@app/models/product.model';
+import { ProductConfigurationModel, ProductStateModel, ProductTypeEnum } from '@app/models/product.model';
 import { product1Reducer } from '@app/store/product/1/product1.slice';
 import { product2Reducer } from '@app/store/product/2/product2.slice';
 import { product1InnerPropAdapterInitialState } from '@app/store/product/1/product1.adapters';
+import { setProductAction } from '@app/store/product/abstract/abstract-product.actions';
 
 const initialState: ProductStateModel = {
     // тут надо добавить исходный продукт иначе не сработает action из product.container
@@ -32,12 +33,12 @@ const slice = createSlice({
         },
     },
     extraReducers(builder) {
-        // builder.addCase(
-        //     setProductAction,
-        //     (state: ProductStateModel, action: PayloadAction<ProductConfigurationModel>) => {
-        //         return { ...state, ...action.payload } as ProductStateModel;
-        //     }
-        // );
+        builder.addCase(
+            setProductAction,
+            (state: ProductStateModel, action: PayloadAction<ProductConfigurationModel>) => {
+                return { ...state, ...action.payload } as ProductStateModel;
+            }
+        );
         builder.addDefaultCase((state, action) => {
             return callSpecificProductReducer(state, action);
         });

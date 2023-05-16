@@ -1,11 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { UserModel } from '@app/models/user.model';
 import { apiUserApi } from '@app/store/user/api-user.api';
+import { useSelector } from 'react-redux';
+import { apiUserApiFetchUserListLoading } from '@app/store/user/api-user.selectors';
 
 export function useApiUserList() {
     const [pollingInterval, setPollingInterval] = useState(0);
 
     const { data: users = [], isLoading: usersLoading } = apiUserApi.useFetchUserListQuery();
+
+    // тоже что и usersLoading но получается напрямую из api
+    const usersLoading2 = useSelector(apiUserApiFetchUserListLoading);
+
     const {
         data: user,
         isLoading: userLoading,
@@ -92,6 +98,7 @@ export function useApiUserList() {
         ref,
         users,
         usersLoading,
+        usersLoading2,
         addUserLoading,
         deleteUserLoading,
         updateUserLoading,

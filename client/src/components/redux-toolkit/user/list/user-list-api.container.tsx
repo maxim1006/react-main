@@ -9,7 +9,9 @@ const UserListApiContainer: FC<UserListApiContainerProps> = () => {
     const {
         ref,
         users,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         usersLoading,
+        usersLoading2,
         addUserLoading,
         addUserDebouncedLoading,
         deleteUserLoading,
@@ -46,7 +48,11 @@ const UserListApiContainer: FC<UserListApiContainerProps> = () => {
                 </button>
             </div>
             <div className={styles.block}>
-                {usersLoading || addUserLoading || deleteUserLoading || updateUserLoading || addUserDebouncedLoading ? (
+                {usersLoading2 ||
+                addUserLoading ||
+                deleteUserLoading ||
+                updateUserLoading ||
+                addUserDebouncedLoading ? (
                     <>Loading...</>
                 ) : (
                     <ul className={styles.list}>

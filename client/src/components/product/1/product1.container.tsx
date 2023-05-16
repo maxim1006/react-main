@@ -5,7 +5,8 @@ import Product from '@app/components/product/product.component';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProduct } from '@app/store/product/abstract/abstract-product.selectors';
 import { selectAllProduct1InnerProp, selectProduct1InnerPropEntities } from '@app/store/product/1/product1.selector';
-import { setProduct1innerPropAction } from '@app/store/product/1/product1.slice';
+import { setProduct1innerPropAction, setProduct1PropAction } from '@app/store/product/1/product1.slice';
+import { setProductFeatureNameAction } from '@app/store/product/feature/product-feature.slice';
 
 type Product1ContainerProps = {};
 
@@ -19,6 +20,8 @@ const Product1Container: FC<Product1ContainerProps> = () => {
     useEffect(() => {
         // сечу setProduct1innerPropAction
         dispatch(setProduct1innerPropAction([{ id: String(Date.now()), name: 'prop1', value: 'value1' }]));
+        dispatch(setProduct1PropAction('Product1Prop'));
+        dispatch(setProductFeatureNameAction('productFeatureName'));
     }, [dispatch]);
 
     console.log({

@@ -7,6 +7,7 @@ import { setProductTypeAction } from '@app/store/product/abstract/abstract-produ
 import Product1Container from '@app/components/product/1/product1.container';
 import { selectProduct } from '@app/store/product/abstract/abstract-product.selectors';
 import Product2Container from '@app/components/product/2/product2.container';
+import { setProductAction } from '@app/store/product/abstract/abstract-product.actions';
 
 type ProductContainerProps = {};
 
@@ -25,11 +26,19 @@ const ProductContainer: FC<ProductContainerProps> = () => {
     }, [dispatch]);
 
     const changeToProduct2Click = useCallback(() => {
-        dispatch(setProductTypeAction(ProductTypeEnum.Product2));
+        dispatch(setProductAction({ id: '2', name: 'Max', type: ProductTypeEnum.Product2, version: 2 }));
+    }, [dispatch]);
+
+    const setProduct1 = useCallback(() => {
+        dispatch(setProductAction({ id: '1', name: 'Max', type: ProductTypeEnum.Product1, version: 2 }));
     }, [dispatch]);
 
     return (
         <div className={cn(styles.host, 'taProductContainer')}>
+            <button type='button' onClick={setProduct1}>
+                Set product1
+            </button>
+
             <button type='button' onClick={changeToProduct2Click}>
                 Set product2
             </button>
