@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import LodashDebounce from '@app/components/lodash-debounce/lodash-debounce.component';
 import Component from '@app/components/component/component.component';
+import CssVariable from '@app/components/css-variable/css-variable.component';
 
 export default function ReactPage() {
     return (
@@ -10,8 +10,12 @@ export default function ReactPage() {
                 {/*<AAATest />*/}
 
                 <Component title='LodashDebounce'>
-                    <LodashDebounce />
+                    <CssVariable />
                 </Component>
+
+                {/*<Component title='LodashDebounce'>*/}
+                {/*    <LodashDebounce />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='CssAccordion'>*/}
                 {/*    <CssAccordion />*/}
