@@ -1,7 +1,7 @@
 {
     "extends": "./tsconfig-paths.json",
     "compilerOptions": {
-        "target": "ES2017",
+        "target": "ES2022",
         "lib": ["dom", "dom.iterable", "esnext", "DOM"],
         "allowJs": true,
         "skipLibCheck": true,

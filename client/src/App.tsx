@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import './App.scss';
 import './i18n/i18n';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import MaterialLoaderComponent from './components/loader/MaterialLoader';
 import NotFound from './components/NotFound';
 import MainMenu from './components/menu/MainMenu';
@@ -51,6 +51,7 @@ const App: React.FC = () => {
                     <Suspense fallback={<MaterialLoaderComponent />}>
                         {/* покажет только первый найденный роут*/}
                         <Routes>
+                            <Route index element={<Navigate to='/react' />} />
                             <Route path='/react' element={<ReactPage />} />
                             <Route path='/rt' element={<ReduxToolkit />} />
                             <Route path='/typescript' element={<TypescriptPage />} />

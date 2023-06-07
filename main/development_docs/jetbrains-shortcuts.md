@@ -22,6 +22,9 @@ ctrl+shift+r
 ### cmd + y
 quick definition
 
+### ctrl + option + o
+remove redundant imports
+
 ### idea shortcuts
 cmd+option+l - reformat code
 ctrl+shift+r - launch main in class

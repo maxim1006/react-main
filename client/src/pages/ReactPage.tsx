@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import CssVariable from '@app/components/css-variable/css-variable.component';
+import LazyImageNew from '@app/components/lazy/image-new/lazy-image-new.component';
 
 export default function ReactPage() {
     return (
@@ -9,9 +9,25 @@ export default function ReactPage() {
             <div tabName='React'>
                 {/*<AAATest />*/}
 
-                <Component title='LodashDebounce'>
-                    <CssVariable />
+                <Component title='LazyImageNew'>
+                    <LazyImageNew />
                 </Component>
+
+                {/*<Component title='MyImage'>*/}
+                {/*    <MyImage />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='immutableArrayMethods'>*/}
+                {/*    <ImmutableArrayMethods />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='setHTML'>*/}
+                {/*    <SetHtml />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='LodashDebounce'>*/}
+                {/*    <CssVariable />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='LodashDebounce'>*/}
                 {/*    <LodashDebounce />*/}

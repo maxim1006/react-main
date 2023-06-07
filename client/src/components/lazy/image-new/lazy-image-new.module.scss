@@ -1,0 +1,25 @@
+.host {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 1;
+        aspect-ratio: 1/1;
+        transition: opacity 0.4s;
+    }
+
+    :global(.blur-load) {
+        margin: 20px;
+        background-position: center;
+        background-size: cover;
+    }
+
+    :global(.hidden) {
+        visibility: hidden;
+        opacity: 0;
+    }
+}

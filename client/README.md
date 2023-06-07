@@ -15,6 +15,10 @@ host - это ресурс на который идет реквест
 в страницу которая должна передавать origin нужно вствить 
 <meta name="referrer" content="origin" />
 
+### package.json
+если вставить то будет при запуске авто редирект на /react-main route
+"homepage": "https://maxim1006.github.io/react-main",
+
 ### install app
 npx create-react-app my-app
 
