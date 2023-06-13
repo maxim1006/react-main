@@ -2,6 +2,7 @@ import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
 import LazyImageNew from '@app/components/lazy/image-new/lazy-image-new.component';
+import MyImage from '@app/components/image/image.component';
 
 export default function ReactPage() {
     return (
@@ -9,13 +10,13 @@ export default function ReactPage() {
             <div tabName='React'>
                 {/*<AAATest />*/}
 
+                <Component title='MyImage'>
+                    <MyImage />
+                </Component>
+
                 <Component title='LazyImageNew'>
                     <LazyImageNew />
                 </Component>
-
-                {/*<Component title='MyImage'>*/}
-                {/*    <MyImage />*/}
-                {/*</Component>*/}
 
                 {/*<Component title='immutableArrayMethods'>*/}
                 {/*    <ImmutableArrayMethods />*/}

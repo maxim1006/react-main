@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react';
 import imgSrc3 from '/src/assets/images/3.webp';
+import styles from './image.module.scss';
 
 type MyImageProps = {};
 
@@ -21,6 +22,9 @@ const MyImage: FC<MyImageProps> = () => {
             <div className='blur-load'>
                 <img src={imgSrc3} alt='' loading='lazy' />
             </div>
+
+            {/*пример image из стилей*/}
+            <div className={styles.cssImage} />
         </div>
     );
 };
