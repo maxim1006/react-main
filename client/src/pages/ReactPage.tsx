@@ -3,12 +3,17 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
 import LazyImageNew from '@app/components/lazy/image-new/lazy-image-new.component';
 import MyImage from '@app/components/image/image.component';
+import CssScrollbarGutter from '@app/components/css-scrollbar-gutter/css-scrollbar-gutter.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
                 {/*<AAATest />*/}
+
+                <Component title='MyImage'>
+                    <CssScrollbarGutter />
+                </Component>
 
                 <Component title='MyImage'>
                     <MyImage />

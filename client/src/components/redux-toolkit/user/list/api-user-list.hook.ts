@@ -76,7 +76,27 @@ export function useApiUserList() {
         },
         [updateUser]
     );
-    const onDeleteUser = useCallback((user: UserModel) => deleteUser(user), [deleteUser]);
+    const onDeleteUser = useCallback(
+        async (user: UserModel) => {
+            let res;
+
+            res = await deleteUser(user);
+
+            if ('error' in res) {
+                console.error('delete use error');
+            }
+
+            // alternative
+            // try {
+            //     res = await deleteUser(user).unwrap();
+            // } catch (e) {
+            //     console.error('delete use error');
+            // }
+
+            console.log(res);
+        },
+        [deleteUser]
+    );
 
     useEffect(() => {
         console.log({ user, userLoading, userFetching });

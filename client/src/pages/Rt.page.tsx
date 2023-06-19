@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import store, { persistor } from '../store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import RtPosts from '@app/components/redux-toolkit/posts/rt-posts.component';
-import ProductContainer from '@app/components/product/product.container';
 import UserListApiContainer from '@app/components/redux-toolkit/user/list/user-list-api.container';
 
 const Rt = () => {
@@ -11,7 +10,7 @@ const Rt = () => {
         <Provider store={store}>
             {/* должен обернуть в гейт чтобы подгрузилась инфа из локал сторадж*/}
             <PersistGate loading={null} persistor={persistor}>
-                <ProductContainer />
+                {/*<ProductContainer />*/}
                 <UserListApiContainer />
                 {/*<UserListThunkContainer />*/}
                 {/*<RtBooksContainer />*/}
