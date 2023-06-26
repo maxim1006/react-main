@@ -17,6 +17,7 @@ function fn(arr):
             2. right--
             3. Both left++ and right--
 ```
+(palindrome.js, pair-of-numbers-that-sum-to-target.js, reverse-string-in-place.js)
 
 ### two pointers two iterables in the input
 time: O(n+m) на 2 массива n + m, space: O(1)
@@ -45,3 +46,4 @@ function fn(arr1, arr2):
         Do some logic here depending on the problem
         j++
 ```
+(combine-sorted-arrays.js, is_subsequent.js, sorted-squares-array.js)

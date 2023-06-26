@@ -16,7 +16,7 @@ option + shift
 ### multiple cursor
 cmd+option+l
 
-### ctrl+shift+r
+### run file
 ctrl+shift+r
 
 ### cmd + y

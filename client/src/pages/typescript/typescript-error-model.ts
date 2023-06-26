@@ -9,7 +9,6 @@ export enum ErrorCodesEnum {
 }
 
 interface BaseErrorModel {
-    code: ErrorCodesEnum;
     message: string;
 }
 
@@ -35,8 +34,13 @@ let a: RestErrorModel = { code: ErrorCodesEnum.InputValidation, message: 'asd' }
 
 export type ErrorModel = ExtendedErrorModel | RestErrorModel;
 
-function isCustom(model: ErrorModel) {
-    if (model.code === ErrorCodesEnum.Custom) {
-        console.log(model.payload.prop);
+// usage
+function isCustomError(error: ErrorModel) {
+    if (error.code === ErrorCodesEnum.Custom) console.log(error.payload.prop);
+}
+
+function isCustom1Error(error: ErrorModel) {
+    if (error.code === ErrorCodesEnum.Custom1) {
+        console.log(error.payload.prop1);
     }
 }

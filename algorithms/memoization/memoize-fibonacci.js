@@ -1,11 +1,11 @@
 function fibonacci(n) {
-    if (n <= 2) return 1;
+    if (n <= 2) return n;
 
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 function fibonacciMemoized(n, store = {}) {
-    if (n <= 2) return 1;
+    if (n <= 2) return n;
     if (n in store) return store[n];
 
     store[n] = fibonacciMemoized(n - 1, store) + fibonacciMemoized(n - 2, store);

@@ -27,15 +27,13 @@ console.log('factorial ', factorialIter(5)); // 1*2*3*4*5 = 120
 
 // Fibonacci - каждое последующее число равно сумме двух предыдущих 0,1,1,2,3,5,8,13,21
 function fibonacci(n) {
-    if (n === 0) return 0;
-    if (n <= 2) return 1;
+    if (n <= 2) return n;
 
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 function fibonacciIter(n) {
-    if (n === 0) return 0;
-    if (n <= 2) return 1;
+    if (n <= 2) return n;
 
     let result = 1;
     let prev = 1;
