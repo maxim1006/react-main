@@ -29,4 +29,5 @@ remove redundant imports
 cmd+option+l - reformat code
 ctrl+shift+r - launch main in class
 command + option + v - create var
+option+cmd+b - go to method
 

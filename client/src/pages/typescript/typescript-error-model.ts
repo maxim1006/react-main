@@ -44,3 +44,7 @@ function isCustom1Error(error: ErrorModel) {
         console.log(error.payload.prop1);
     }
 }
+
+function isRestError(error: ErrorModel) {
+    if (error.code === ErrorCodesEnum.NotFoundError) console.log(error.message);
+}
