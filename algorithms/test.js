@@ -1,22 +1,23 @@
 import { logFn } from './utils/common.utils.js';
 
-function numberOfArrays(nums, k) {
-    let left = 0;
-    let tempRes = 1;
+//Дан массив целых чисел nums и целое число k. Найдите сумму подмассива с наибольшей суммой, длина которой равна k.
+function findBestSubarray(nums, k) {
     let res = 0;
+    let curSum = 0;
 
-    for (let i = 0; i < nums.length; i++) {
-        tempRes *= nums[i];
+    for (let i = 0; i < k; i++) {
+        curSum += nums[i];
+    }
 
-        while (tempRes >= k) {
-            tempRes /= nums[left];
-            ++left;
-        }
+    res = curSum;
 
-        res += i - left + 1;
+    for (let i = k; i < nums.length; i++) {
+        curSum += nums[i] - nums[i - k];
+
+        res = Math.max(res, curSum);
     }
 
     return res;
 }
 
-logFn(numberOfArrays, [[10, 5, 2, 6], 100]); // 8
+logFn(findBestSubarray, [[3, -1, 4, 12, -8, 5, 6], 4]); // 18

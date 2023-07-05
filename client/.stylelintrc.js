@@ -6,7 +6,7 @@ module.exports = {
         indentation: 4,
         'string-quotes': 'single',
         'selector-attribute-quotes': 'never',
-        'unit-no-unknown': [true, { ignoreUnits: ['vi', 'vb'] }],
+        'unit-no-unknown': [true, { ignoreUnits: ['vi', 'vb', 'x'] }],
         'value-keyword-case': [
             'lower',
             {
@@ -31,7 +31,7 @@ module.exports = {
         'declaration-block-no-duplicate-properties': [
             true,
             {
-                ignoreProperties: ['mask-image', 'outline'],
+                ignoreProperties: ['mask-image', 'outline', 'type'],
             },
         ],
         'declaration-block-no-redundant-longhand-properties': [

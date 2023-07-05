@@ -1,9 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import LazyImageNew from '@app/components/lazy/image-new/lazy-image-new.component';
-import MyImage from '@app/components/image/image.component';
-import CssScrollbarGutter from '@app/components/css-scrollbar-gutter/css-scrollbar-gutter.component';
+import PictureImageSet from '@app/components/image/picture-image-set/picture-image-set';
 
 export default function ReactPage() {
     return (
@@ -11,16 +9,20 @@ export default function ReactPage() {
             <div tabName='React'>
                 {/*<AAATest />*/}
 
-                <Component title='MyImage'>
-                    <CssScrollbarGutter />
-                </Component>
+                {/*<Component title='MyImage'>*/}
+                {/*    <CssScrollbarGutter />*/}
+                {/*</Component>*/}
 
-                <Component title='MyImage'>
-                    <MyImage />
-                </Component>
+                {/*<Component title='MyImage'>*/}
+                {/*    <MyImage />*/}
+                {/*</Component>*/}
 
-                <Component title='LazyImageNew'>
-                    <LazyImageNew />
+                {/*<Component title='LazyImageNew'>*/}
+                {/*    <LazyImageNew />*/}
+                {/*</Component>*/}
+
+                <Component title='PictureImageSet'>
+                    <PictureImageSet />
                 </Component>
 
                 {/*<Component title='immutableArrayMethods'>*/}
@@ -221,10 +223,6 @@ export default function ReactPage() {
                 {/* <Component title="SessionStorage"> */}
                 {/*    <SessionStorageParent />*/}
                 {/* </Component> */}
-
-                {/*<Component title='PictureImageSet'>*/}
-                {/*    <PictureImageSet />*/}
-                {/*</Component>*/}
 
                 {/* <Component title="Lazy"> */}
                 {/*    <Lazy />*/}
