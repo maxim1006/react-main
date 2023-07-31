@@ -17,11 +17,11 @@ export const fetchTodoPlans = (cancelToken: any) => async (dispatch: any) => {
                 plans,
             },
         });
-    } catch ({ message }) {
+    } catch (error) {
         dispatch({
             type: PLANS_TYPES.FETCH_ERROR,
             payload: {
-                error: message,
+                error,
             },
         });
     }

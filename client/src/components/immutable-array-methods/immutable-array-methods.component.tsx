@@ -12,11 +12,11 @@ const ImmutableArrayMethods: FC<ImmutableArrayMethodsProps> = () => {
     console.log({ arr, oldArr });
 
     // new
-    const newArr = arr.with(0, 'Maxim');
-    const sortedArr = arr.toSorted();
-    const reversedArr = arr.toReversed();
-    const splicedArr = arr.toSpliced(0, 2, 'New');
-    console.log({ arr, newArr, sortedArr, reversedArr, splicedArr });
+    // const newArr = arr.with(0, 'Maxim');
+    // const sortedArr = arr.toSorted();
+    // const reversedArr = arr.toReversed();
+    // const splicedArr = arr.toSpliced(0, 2, 'New');
+    // console.log({ arr, newArr, sortedArr, reversedArr, splicedArr });
 
     return <div className={cn('taImmutableArrayMethods')}>ImmutableArrayMethods</div>;
 };
