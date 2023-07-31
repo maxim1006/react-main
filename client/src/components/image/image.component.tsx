@@ -1,6 +1,7 @@
 import React, { FC, memo } from 'react';
 import imgSrc3 from '/src/assets/images/3.webp';
 import styles from './image.module.scss';
+// import { ReactComponent as InfoSvg } from '@app/assets/icons/info.svg';
 
 type MyImageProps = {};
 

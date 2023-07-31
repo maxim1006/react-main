@@ -1,23 +1,25 @@
 import { logFn } from './utils/common.utils.js';
 
-//Дан массив целых чисел nums и целое число k. Найдите сумму подмассива с наибольшей суммой, длина которой равна k.
-function findBestSubarray(nums, k) {
-    let res = 0;
-    let curSum = 0;
+function answerQueries(nums, queries, limit) {
+    let sums = nums.reduce((acc, i, idx) => {
+        if (idx === 0) {
+            acc.push(i);
+        } else {
+            acc.push(i + acc.at(-1));
+        }
 
-    for (let i = 0; i < k; i++) {
-        curSum += nums[i];
-    }
+        return acc;
+    }, []);
 
-    res = curSum;
-
-    for (let i = k; i < nums.length; i++) {
-        curSum += nums[i] - nums[i - k];
-
-        res = Math.max(res, curSum);
-    }
-
-    return res;
+    return queries.map(([start, end]) => sums[end] - sums[start] + nums[start] < limit);
 }
 
-logFn(findBestSubarray, [[3, -1, 4, 12, -8, 5, 6], 4]); // 18
+logFn(answerQueries, [
+    [1, 6, 3, 2, 7, 2],
+    [
+        [0, 3],
+        [2, 5],
+        [2, 4],
+    ],
+    13,
+]); // 18

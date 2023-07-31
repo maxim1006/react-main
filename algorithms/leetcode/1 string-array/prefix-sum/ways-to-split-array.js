@@ -19,4 +19,24 @@ function waysToSplitArray(nums = [10, 4, -8, 7]) {
     return res;
 }
 
+/*
+ * Упрощенная версия с space complexity O(1)
+ * */
+function waysToSplitArray1(nums = [10, 4, -8, 7]) {
+    let left = 0,
+        max = 0,
+        res = 0;
+
+    for (let num of nums) max += num;
+
+    for (let i = 0; i < nums.length - 1; i++) {
+        left += nums[i];
+
+        if (left >= max - left) res++;
+    }
+
+    return res;
+}
+
 logFn(waysToSplitArray); // 2
+logFn(waysToSplitArray1); // 2

@@ -36,6 +36,7 @@ const RtBooksContainer: FC<RtBooksContainerProps> = () => {
 
     const onFormSubmit: FormEventHandler<HTMLFormElement> = e => {
         e.preventDefault();
+        //
         e.persist();
         const target = e.target as typeof e.target & {
             title: { value: string };

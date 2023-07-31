@@ -144,6 +144,8 @@ store.dispatch(action4);
 // store.subscribe(() => {
 //    console.log(store.getState())
 // });
+
+// store.replaceReducer(ourDepartments);
 ```
 
 ### operations

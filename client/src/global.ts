@@ -12,6 +12,11 @@ declare global {
             'custom-selector': DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
         }
     }
+    namespace React {
+        interface ImgHTMLAttributes<T> extends HTMLAttributes<T> {
+            fetchpriority?: 'high' | 'low' | 'auto';
+        }
+    }
 }
 
 export {};

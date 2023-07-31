@@ -43,4 +43,19 @@ function minStartValue(nums = [-3, 2, -3, 4, 2]) {
     }
 }
 
+// тут подход в том что нахожу минимальное значение между отдельным элементом и суммой и после +1 чтобы удовлетворить условию
+function minStartValue1(nums = [-3, 2, -3, 4, 2]) {
+    let sum = 0,
+        min = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+
+        min = Math.min(min, sum);
+    }
+
+    return Math.abs(min) + 1;
+}
+
 logFn(minStartValue); // 5
+logFn(minStartValue1); // 5
