@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <!--    https://stackoverflow.com/questions/39658737/origin-header-is-null-in-xhr-requests-in-iframe-->
+        <!--    https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy-->
+        <!--    этот мета тег нужен чтобы стаба отдавала origin в localhost-->
+        <meta name="referrer" content="origin" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Iframe 1</title>
+    </head>
+    <body>
+        Контент из Iframe 1
+
+        <script>
+            window.addEventListener('message', event => {
+                console.log('handle message in iframe');
+                if (event.origin !== window.top.location.origin) return;
+
+                if (event.data.message === 'Iframe1Request') {
+                    const data = JSON.parse(event.data.value);
+                    trigger(data);
+                }
+            });
+
+            function trigger(data) {
+                console.log('trigger message from iframe');
+                window.top.postMessage(
+                    {
+                        message: 'Iframe1Response',
+
+                        value: JSON.stringify(data),
+                    },
+                    window.top.location.origin
+                );
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <base href="/example-base/"/>
+
+<!--        {!Атрибут rel=canonical тега <link> сообщает поисковой системе, что некоторые страницы сайта являются одинаковыми, несмотря на разные URL-адреса.!}-->
+<!--        {!https://vc.ru/seo/72710-atribut-rel-canonical!}-->
+<!--        {!<link rel=”canonical” href=”https:// site.ru/catalog/brands/gucci/kovta-s-printom-gucci/”>!}-->
+
+        <link rel="manifest" href="/manifest.json">
+
+        <link rel="stylesheet" href="/main.css"><!--http://localhost:63343/main.css такой будет путь, это для примеров с base-->
+        <link rel="stylesheet" href="main1.css"><!--http://localhost:63343/example-base/main1.css-->
+        <link rel="stylesheet" href="./main2.css"><!--http://localhost:63343/example-base/main2.css-->
+
+        <link rel="icon" href="/documents/20123/65419/favicon.ico" sizes="any">
+        <link rel="icon" href="/documents/20123/65419/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/documents/20123/65419/favicon-180x180.png">
+
+        <title>Global React</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+        <script>
+            // const Person = props => {
+            //   return React.createElement('div', {}, [
+            //     React.createElement('h3', {}, props.name),
+            //     React.createElement('p', {}, props.occupation),
+            //   ]);
+            // };
+
+            class Person extends React.Component {
+                render() {
+                    const { name, occupation } = this.props;
+                    return React.createElement('div', {}, [
+                        React.createElement('h3', {}, name),
+                        React.createElement('p', {}, occupation),
+                    ]);
+                }
+            }
+
+            // const App = () => {
+            //   return React.createElement('div', {}, [
+            //     React.createElement('h1', {}, 'React is rendered'),
+            //     React.createElement(Person, {name: 'Max', occupation: 'programming'}, 'React is rendered'),
+            //     React.createElement(Person, {name: 'Aliya', occupation: 'bank worker'}),
+            //   ]);
+            // };
+
+            class App extends React.Component {
+                render() {
+                    return React.createElement('div', {}, [
+                        React.createElement('h1', {}, 'React is rendered'),
+                        React.createElement(Person, { name: 'Max', occupation: 'programming' }, 'React is rendered'),
+                        React.createElement(Person, { name: 'Aliya', occupation: 'bank worker' }),
+                    ]);
+                }
+            }
+
+            ReactDOM.render(React.createElement(App), document.getElementById('root'));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_main=self.webpackChunkreact_main||[]).push([[586],{9586:function(n,e,u){u.r(e),u.d(e,{default:function(){return t}});u(2791);var r=u(184);function t(){return(0,r.jsx)("div",{children:"Lazy module"})}}}]);
+//# sourceMappingURL=586.95f1125a.chunk.js.map
