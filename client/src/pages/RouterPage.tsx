@@ -14,6 +14,13 @@ enum RouterStepsEnum {
     Step2 = 'step2',
 }
 
+export enum PathEnum {
+    SelectSimType = '/:offerSlug',
+    Devices = '/:offerSlug/devices',
+    DeviceDetails = '/:offerSlug/devices/:equipmentSlug/*',
+    Checkout = '/:offerSlug/checkout',
+}
+
 // просто убился об стол - обязательно передавать React node в component, вариант с         component: lazy(() => import('../components/examples/lazy/examples-lazy.component')), не сработает
 const ROUTER_STEPS: {
     name: RouterStepsEnum;
@@ -48,6 +55,8 @@ const RouterPage: FC<RouterPageProps> = () => {
         location: { search },
     } = history;
 
+    // const navigate = useNavigate();
+
     let location = useLocation();
     let historyFromUseNavigate = useNavigate();
     let params = useParams();
@@ -72,6 +81,16 @@ const RouterPage: FC<RouterPageProps> = () => {
     //     // go back
     //     // navigate(-1);
     // }
+
+    // пример как сгенерировать из path путь
+    // navigate(
+    //     generatePath(PathEnum.DeviceDetails, {
+    //         offerSlug: "offerSlug",
+    //         equipmentSlug: "equipmentSlug",
+    //         '*': "other",
+    //     }),
+    //     { state: true, replace: true }
+    // );
 
     return (
         <>

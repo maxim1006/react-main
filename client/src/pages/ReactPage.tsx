@@ -2,6 +2,7 @@ import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
 import PictureImageSet from '@app/components/image/picture-image-set/picture-image-set';
+import LazyImageNew from '@app/components/image/lazy-new/lazy-image-new.component';
 
 export default function ReactPage() {
     return (
@@ -17,9 +18,9 @@ export default function ReactPage() {
                 {/*    <MyImage />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='LazyImageNew'>*/}
-                {/*    <LazyImageNew />*/}
-                {/*</Component>*/}
+                <Component title='LazyImageNew'>
+                    <LazyImageNew />
+                </Component>
 
                 <Component title='PictureImageSet'>
                     <PictureImageSet />

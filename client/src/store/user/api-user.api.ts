@@ -28,6 +28,8 @@ export const apiUserApi = commonApi.injectEndpoints({
 
                 return { data };
             },
+            // disable cache
+            // keepUnusedDataFor: 0,
         }),
         addUser: build.mutation<UserModel, { user: Partial<UserModel> }>({
             query: ({ user }) => ({
