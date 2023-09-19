@@ -138,6 +138,21 @@ export function throttle(func: any, ms: number) {
     return wrapper;
 }
 
+// eslint-disable-next-line
+export function makePromiseCancelable<T>(promise: Promise<T>) {
+    let isCanceled = false;
+    const wrappedPromise: Promise<T> = new Promise((resolve, reject) => {
+        promise.then(val => !isCanceled && resolve(val)).catch(error => !isCanceled && reject(error));
+    });
+
+    return {
+        promise: wrappedPromise,
+        cancel() {
+            isCanceled = true;
+        },
+    };
+}
+
 export function debounce(func: any, time = 0) {
     let timeout: number;
 

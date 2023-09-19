@@ -5,6 +5,7 @@ import RouterExactRoute from '@app/components/router/RouterExactRoute';
 import RouterRoute1 from '@app/components/router/RouterRoute1';
 import NotFound from '@app/components/NotFound';
 import history from '@app/history';
+import RouterIndex from '@app/components/router/index/router-index.component';
 
 const RouterLazyRoute = React.lazy(() => import('../components/router/RouterLazyRoute'));
 const ExamplesLazyComponent = lazy(() => import('../components/examples/lazy/examples-lazy.component'));
@@ -41,10 +42,6 @@ const ROUTER_STEPS: {
         component: <ExamplesLazyComponent />,
     },
 ];
-
-function IndexComp() {
-    return <>u'll see me on index)))</>;
-}
 
 type RouterPageProps = {};
 
@@ -139,7 +136,7 @@ const RouterPage: FC<RouterPageProps> = () => {
             {/*<Router1 basename='/router'>*/}
             <NavigationBar />
             <Routes>
-                <Route index element={<IndexComp />} />
+                <Route index element={<RouterIndex />} />
                 {ROUTER_STEPS.map(({ slug, component }) => (
                     // в path={`/${slug}`} неважно с / или без
                     <Route key={slug} path={`/${slug}`} element={<>{component}</>} />

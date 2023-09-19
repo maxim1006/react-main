@@ -1,0 +1,5 @@
+mutation CreateCat($createCatInput: CreateCatInput!) {
+    createCat(createCatInput: $createCatInput) {
+        ...CatFragment
+    }
+}

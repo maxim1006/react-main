@@ -87,6 +87,7 @@ kill pid-of-program
 # ps 
 ps -ef | grep webstorm, затем kill -9 PID
 ps -ax | grep mysql // найти все процессы, выдаст pid
+ps aux | grep node // найти все процессы, выдаст node
 
 # mds_store spotlight
 spotlight жрет весь cpu

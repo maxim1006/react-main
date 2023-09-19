@@ -1,0 +1,5 @@
+mutation DeleteCat($id: String!) {
+    deleteCat(id: $id) {
+        ...CatFragment
+    }
+}

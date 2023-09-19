@@ -6,5 +6,6 @@ src/test/javascript/jest.conf.js
 webpack/
 target/
 build/
+dist/
 node/
 postcss.config.js
