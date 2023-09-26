@@ -10,6 +10,7 @@ async function bootstrap() {
         credentials: true,
     });
 
+    // http://localhost:3000/graphql
     await app.listen(3000);
 }
 bootstrap();

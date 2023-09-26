@@ -13,7 +13,7 @@ const viewEnumTTest1: ViewEnumT1 = {
 };
 
 type ViewEnumT = {
-    [key in keyof typeof ViewEnum]?: typeof ViewEnum[key];
+    [key in keyof typeof ViewEnum]?: (typeof ViewEnum)[key];
 };
 
 const viewEnumTTest: ViewEnumT = {
@@ -83,6 +83,7 @@ let f111 = foo1(viewRadioModel);
 //     USER: 'user',
 // } as const; // не забываю чтобы получить конкретные значения
 //
+// как забрать тип объекта который сделал из enum
 // enum RoleEnum {
 //     ADMIN = 'admin',
 //     USER = 'user',
