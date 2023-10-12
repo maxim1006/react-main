@@ -3,6 +3,7 @@ import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
 import PictureImageSet from '@app/components/image/picture-image-set/picture-image-set';
 import LazyImageNew from '@app/components/image/lazy-new/lazy-image-new.component';
+import CustomTag from '@app/components/custom-selector/custom-selector.component';
 
 export default function ReactPage() {
     return (
@@ -106,9 +107,9 @@ export default function ReactPage() {
                     <CommonErrorsUseEffect />
                 </Component>*/}
 
-                {/*<Component title='Custom tag'>*/}
-                {/*    <CustomTag />*/}
-                {/*</Component>*/}
+                <Component title='Custom tag'>
+                    <CustomTag>text child </CustomTag>
+                </Component>
 
                 {/*<Component title='External Accordion'>*/}
                 {/*    <ExternalAccordionContainer />*/}

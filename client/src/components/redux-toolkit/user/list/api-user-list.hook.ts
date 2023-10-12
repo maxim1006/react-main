@@ -3,6 +3,7 @@ import { UserModel } from '@app/models/user.model';
 import { apiUserApi } from '@app/store/user/api-user.api';
 import { useSelector } from 'react-redux';
 import { apiUserApiFetchUserListLoading } from '@app/store/user/api-user.selectors';
+import { QueryActionCreatorResult } from '@reduxjs/toolkit/src/query/core/buildInitiate';
 
 export function useApiUserList() {
     const [pollingInterval, setPollingInterval] = useState(0);
@@ -26,6 +27,8 @@ export function useApiUserList() {
         }
     );
     const [fetchUserLazy, lazyUser] = apiUserApi.useLazyFetchUserQuery();
+
+    const fetchUserLazyReq = useRef<QueryActionCreatorResult<any>>();
 
     /*
     RTK Query provides an option to share results across mutation hook instances using the fixedCacheKey option. Any useMutation hooks with the same fixedCacheKey string will share results between each other when any of the trigger functions are called. This should be a unique string shared between each mutation hook instance you wish to share results.
@@ -62,7 +65,10 @@ export function useApiUserList() {
     }, [addUserDebounced]);
 
     const onFetchUserLazy = useCallback(async () => {
-        const lazyUser = await fetchUserLazy({ userId: users[0]?.id ?? null });
+        fetchUserLazyReq.current?.abort();
+        fetchUserLazyReq.current = fetchUserLazy({ userId: users[0]?.id ?? null });
+        const lazyUser = await fetchUserLazyReq.current;
+
         console.log({ lazyUser });
     }, [fetchUserLazy, users]);
 

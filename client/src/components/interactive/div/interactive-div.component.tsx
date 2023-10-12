@@ -1,6 +1,6 @@
 import React, { memo, FC, useCallback } from 'react';
 import cn from 'classnames';
-import styles from './interactive-div.module.less';
+import styles from './interactive-div.module.scss';
 
 /**
  * InteractiveDivProps redefines onClick event handler

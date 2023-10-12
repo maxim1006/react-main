@@ -51,8 +51,13 @@ export const apiUserApi = commonApi.injectEndpoints({
                 }
             },
         }),
-        addUserDebounced: build.mutation<UserModel, { user: Partial<UserModel> }>({
-            async queryFn({ user }, { dispatch, getState }, __, fetchWithBQ) {
+        addUserDebounced: build.mutation<UserModel, { user: Partial<UserModel> } & { cancelDebounce?: boolean }>({
+            async queryFn({ user, cancelDebounce }, { dispatch, getState }, __, fetchWithBQ) {
+                // если вдруг захочу сбросить pending debounce
+                // if (cancelDebounce) {
+                //     debouncedAddUser.cancel();
+                // }
+
                 // Pessimistic Updates
                 const data = (await debouncedAddUser(user, dispatch, fetchWithBQ)) ?? null;
 
@@ -134,5 +139,6 @@ const debouncedAddUser = debounce(
 
         return data;
     },
-    1000
+    1000,
+    { leading: true }
 );
