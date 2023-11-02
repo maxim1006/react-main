@@ -14,6 +14,7 @@ import books from './books/books.slice';
 import thunkUser from './thunk-user/thunk-user.slice';
 import { abstractProductReducer } from '@app/store/product/abstract/abstract-product.slice';
 import { rtkQueryErrorLogger } from '@app/store/store.utils';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
@@ -89,14 +90,16 @@ export const persistor = persistStore(store);
 //     });
 // }
 
+setupListeners(store.dispatch);
+
 export default store;
 
 // можно и так
 // export type RootState = ReturnType<typeof rootReducer>;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
 
 // пара хуков для работы (необязательно так как обычно использую AppDispatch в дженерике диспатч но все же)
+export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 

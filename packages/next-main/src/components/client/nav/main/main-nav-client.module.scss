@@ -1,0 +1,18 @@
+@import '@/common/styles/colors.scss';
+
+.navList {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style-type: none;
+}
+
+.link {
+    color: $primary-link-color;
+    opacity: 0.5;
+    transition: all 0.2s;
+}
+
+.linkActive {
+    opacity: 1;
+}

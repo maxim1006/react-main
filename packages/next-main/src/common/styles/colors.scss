@@ -1,0 +1,95 @@
+$main-color: var(--main-color, #333);
+
+$primary-color: var(--primary-color, #fff);
+
+$secondary-color: var(--secondary-color, #000);
+
+$additional-color: var(--additional-color, #7585a1);
+
+$primary-text-color: var(--primary-text-color, #626d82);
+
+$secondary-text-color: var(--secondary-text-color, #353c4e);
+
+$additional-text-color: var(--additional-text-color, #8f9eb4);
+
+$pinky-text-color: var(--pinky-text-color, #ff70bd);
+
+$dark-banner-additional-text-color: var(--dark-banner-text-color, #1087b3);
+
+$special-text-color: var(--special-text-color, #222);
+
+$primary-background-color: var(--primary-background-color, #f5f5fa);
+
+$secondary-background-color: var(--secondary-background-color, #e76daf);
+
+$additional-background-color: var(--additional-background-color, #fafafa);
+
+$additional-background-color-counter: var(--additional-background-color-counter, #e8eaf1);
+
+$additional-background-color-first: var(--additional-background-color-first, rgba(255, 176, 46, 0.15));
+
+$secondary-background-color-counter: var(--additional-background-color-counter, #eb87c4);
+
+$background-light-color: var(--background-light-color, #d6edff);
+
+$primary-activity-color: var(--primary-activity-color, #cc0070);
+
+$secondary-activity-color: var(--primary-activity-color, #162ae1);
+
+$primary-link-color: var(--primary-link-color, #0068ff);
+
+$primary-border-color: var(--primary-border-color, #d5dce3);
+
+$secondary-border-color: var(--secondary-border-color, #b4bfcf);
+
+$additional-border-color: var(--additional-border-color, #edf1f5);
+
+$additional-second-border-color: var(--additional-second-border-color, rgba(180, 191, 207, 0.8));
+
+$primary-first-layer-box-shadow-color: var(--primary-first-layer-box-shadow-color, rgba(4, 11, 23, 0.04));
+
+$primary-second-layer-box-shadow-color: var(--primary-second-layer-box-shadow-color, rgba(0, 0, 0, 0.06));
+
+$primary-third-layer-box-shadow-color: var(--primary-third-layer-box-shadow-color, rgba(0, 0, 0, 0.09));
+
+$secondary-first-layer-box-shadow-color: var(--secondary-first-layer-box-shadow-color, rgba(4, 10, 21, 0.04));
+
+$secondary-second-layer-box-shadow-color: var(--secondary-second-layer-box-shadow-color, rgba(4, 12, 29, 0.09));
+
+$secondary-third-layer-box-shadow-color: var(--secondary-third-layer-box-shadow-color, rgba(7, 13, 26, 0.27));
+
+$primary-inset-box-shadow-color: var(--primary-inset-box-shadow-color, rgba(0, 0, 0, 0.08));
+
+$additional-first-layer-box-shadow-color: var(--additional-first-layer-box-shadow-color, rgba(0, 0, 0, 0.2));
+
+$additional-second-layer-box-shadow-color: var(--additional-second-layer-box-shadow-color, rgba(0, 0, 0, 0.15));
+
+$additional-box-shadow-color: var(--additional-box-shadow-color, rgba(43, 83, 155, 0.12));
+
+$special-box-shadow-color: var(--special-box-shadow-color, rgba(0, 0, 0, 0.05));
+
+$primary-warning-message-background-color: var(--primary-warning-message-background-color, #fff6e6);
+
+$primary-warning-message-border-color: var(--primary-warning-message-border-color, rgba(255, 176, 46, 0.3));
+
+$secondary-switch-color: var(--secondary-switch-color, #edf1f5);
+
+$additional-switch-color: var(--additional-switch-color, #c1c9d4);
+
+$primary-circle-inner-stroke-color: var(--primary-circle-inner-stroke-color, #eef1f4);
+
+$button-link-color: var(--button-link-color, #005dcf);
+
+$success-color: var(--success-color, #00bb5b);
+
+$error-color: var(--error-color, #ff4d4f);
+
+$error-light-color: var(--error-color, #ff5260);
+
+$notification-icon-color: var(--error-color, #ffb02e);
+
+$diagram-color: var(--diagram-color, #61c6f9);
+
+$whitesmoke-color: var(--whitesmoke-color, #f5f5f5);
+
+$disabled-input-text-color: var(--disabled-input-text-color, rgba(0,0,0, 0.25));

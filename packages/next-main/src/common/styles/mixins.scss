@@ -1,0 +1,22 @@
+@mixin hidden($position: absolute) {
+  position: $position;
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin pageLimiter() {
+  margin: 0 auto;
+  max-width: 1200px;
+}

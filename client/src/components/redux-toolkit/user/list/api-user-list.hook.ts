@@ -2,16 +2,20 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { UserModel } from '@app/models/user.model';
 import { apiUserApi } from '@app/store/user/api-user.api';
 import { useSelector } from 'react-redux';
-import { apiUserApiFetchUserListLoading } from '@app/store/user/api-user.selectors';
+import { selectApiUserListIsLoading } from '@app/store/user/api-user.selectors';
 import { QueryActionCreatorResult } from '@reduxjs/toolkit/src/query/core/buildInitiate';
 
 export function useApiUserList() {
     const [pollingInterval, setPollingInterval] = useState(0);
 
-    const { data: users = [], isLoading: usersLoading } = apiUserApi.useFetchUserListQuery();
+    const { data: users = [], isLoading: usersLoading } = apiUserApi.useFetchUserListQuery(null, {
+        // класс - отработает когда снова подключусь к сети
+        // https://redux-toolkit.js.org/rtk-query/api/setupListeners
+        refetchOnReconnect: true,
+    });
 
     // тоже что и usersLoading но получается напрямую из api
-    const usersLoading2 = useSelector(apiUserApiFetchUserListLoading);
+    const usersLoading2 = useSelector(selectApiUserListIsLoading);
 
     const {
         data: user,
