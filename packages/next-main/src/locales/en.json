@@ -1,0 +1,12 @@
+{
+    "language": {
+        "ar": "Ara",
+        "en": "Eng"
+    },
+    "common": {
+        "loading": "Loading",
+        "welcome": "Welcome",
+        "next": "Next",
+        "back": "Back"
+    }
+}

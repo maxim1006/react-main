@@ -1,3 +1,9 @@
+- собираю образ
+docker-compose up --build
+
+- остановить postgresql
+brew services stop postgresql
+
 1) start app
 docker-compose -up обязательно в терминале а то в идее почему то не работает
 

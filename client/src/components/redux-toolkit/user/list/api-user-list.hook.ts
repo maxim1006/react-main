@@ -70,7 +70,8 @@ export function useApiUserList() {
 
     const onFetchUserLazy = useCallback(async () => {
         fetchUserLazyReq.current?.abort();
-        fetchUserLazyReq.current = fetchUserLazy({ userId: users[0]?.id ?? null });
+        // второй аргумент это cache для lazy // https://redux-toolkit.js.org/rtk-query/api/created-api/hooks#uselazyquerysubscription
+        fetchUserLazyReq.current = fetchUserLazy({ userId: users[0]?.id ?? null }, true);
         const lazyUser = await fetchUserLazyReq.current;
 
         console.log({ lazyUser });
