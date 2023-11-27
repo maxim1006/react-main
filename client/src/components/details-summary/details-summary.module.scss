@@ -1,0 +1,25 @@
+.host {
+    details {
+        transition: 0.2s all;
+    }
+
+    summary {
+        //user-select: none;
+        cursor: pointer;
+    }
+
+    // работает через жопу
+    details summary ~ * {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s;
+    }
+
+    details[open] summary ~ * {
+        grid-template-rows: 1fr;
+    }
+
+    .pInner {
+        overflow: hidden;
+    }
+}

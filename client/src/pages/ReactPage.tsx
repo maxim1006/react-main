@@ -4,6 +4,8 @@ import Component from '@app/components/component/component.component';
 import PictureImageSet from '@app/components/image/picture-image-set/picture-image-set';
 import LazyImageNew from '@app/components/image/lazy-new/lazy-image-new.component';
 import CustomTag from '@app/components/custom-selector/custom-selector.component';
+import DetailsSummary from '@app/components/details-summary/details-summary.component';
+import CssAccordion from '@app/components/css-accordion/css-accordion.component';
 
 export default function ReactPage() {
     return (
@@ -18,6 +20,14 @@ export default function ReactPage() {
                 {/*<Component title='MyImage'>*/}
                 {/*    <MyImage />*/}
                 {/*</Component>*/}
+
+                <Component title='CssAccordion'>
+                    <CssAccordion />
+                </Component>
+
+                <Component title='DetailsSummary'>
+                    <DetailsSummary />
+                </Component>
 
                 <Component title='LazyImageNew'>
                     <LazyImageNew />
@@ -41,10 +51,6 @@ export default function ReactPage() {
 
                 {/*<Component title='LodashDebounce'>*/}
                 {/*    <LodashDebounce />*/}
-                {/*</Component>*/}
-
-                {/*<Component title='CssAccordion'>*/}
-                {/*    <CssAccordion />*/}
                 {/*</Component>*/}
 
                 {/*<Component title='CssUnits'>*/}
