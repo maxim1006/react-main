@@ -13,6 +13,7 @@ generated/
 /devops
 /server/admin
 __generated__
+docs/
 
 # testing
 /coverage

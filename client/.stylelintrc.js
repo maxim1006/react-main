@@ -17,7 +17,13 @@ module.exports = {
         'selector-pseudo-class-no-unknown': [
             true,
             {
-                ignorePseudoClasses: ['global', 'local'],
+                ignorePseudoClasses: [
+                    'global',
+                    'local',
+                    'view-transition-name',
+                    'view-transition-old',
+                    'view-transition-new',
+                ],
             },
         ],
         'selector-class-pattern': null,

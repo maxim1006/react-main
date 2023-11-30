@@ -4,11 +4,11 @@
     }
 
     summary {
-        //user-select: none;
         cursor: pointer;
+        user-select: none;
     }
 
-    // работает через жопу
+    // работает через жопу только при селекте текста иногда отрабатывает анимация
     details summary ~ * {
         display: grid;
         grid-template-rows: 0fr;

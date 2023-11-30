@@ -20,13 +20,13 @@ export default {
         {
             file: packageJson.main,
             format: 'cjs',
-            sourcemap: true
+            sourcemap: true,
         },
         {
             file: packageJson.module,
             format: 'esm',
-            sourcemap: true
-        }
+            sourcemap: true,
+        },
     ],
     plugins: [
         resolve(),
@@ -38,28 +38,25 @@ export default {
                     'babel-plugin-styled-components',
                     {
                         minify: true,
-                        transpileTemplateLiterals: false
-                    }
-                ]
-            ]
+                        transpileTemplateLiterals: false,
+                    },
+                ],
+            ],
         }),
         commonjs(),
-        typescript({
-            useTsconfigDeclarationDir: true,
-            tsconfig: 'tsconfig.prod.json'
-        }),
+        typescript(),
         postcss({
             extract: false,
             modules: true,
-            use: ['less']
+            use: ['less'],
         }),
         url(),
         svgr(),
         terser({
             compress: {
-                passes: 2
-            }
+                passes: 2,
+            },
         }),
-        visualizer()
-    ]
+        visualizer(),
+    ],
 };

@@ -146,8 +146,19 @@
 #greet "Max" "33"
 
 
-# create folder and file
-mkdir test
-touch "test/test.txt"
-echo "Hello world" >> "test/test.txt"
-echo "Created test/test.txt"
+# start.sh from CMD ["/bin/sh", "./start.sh"] from Dockerfile
+#mkdir test
+#touch "test/test.txt"
+#echo "Hello world" >> "test/test.txt"
+#echo "Created test/test.txt"
+#
+#echo "--- npm run build"
+#npm run build
+#
+#if [[ "${GENERATE_DOC_ENABLE}" == "true" ]]; then
+#    echo "--- npm run generate:doc:html"
+#    npm run generate:doc:html
+#fi
+#
+#echo "--- npm start"
+#npm start
