@@ -14,6 +14,7 @@ generated/
 /server/admin
 __generated__
 docs/
+.next
 
 # testing
 /coverage

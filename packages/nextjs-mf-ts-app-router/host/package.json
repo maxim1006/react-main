@@ -1,0 +1,24 @@
+{
+    "name": "host",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 3200",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@module-federation/nextjs-mf": "^7.0.8",
+        "next": "14.0.3",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "webpack": "5.89.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.3",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "typescript": "^5"
+    }
+}
