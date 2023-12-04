@@ -11,9 +11,9 @@ import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
 import visualizer from 'rollup-plugin-visualizer';
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 
-const LIBRARY_PATH = path.resolve('./src/widgets');
-console.log(LIBRARY_PATH);
+const LIBRARY_PATH = 'src/widgets';
 
 const production = process.env.production;
 
@@ -25,8 +25,43 @@ const globals = {
     'react/jsx-dev-runtime': 'ReactJsxDevRuntime',
     'react/jsx-runtime': 'ReactJsxRuntime',
     classnames: 'Classnames',
-    'style-inject': 'styleInjectEs',
 };
+
+const plugins = [
+    postcss({
+        plugins: [],
+        minimize: true,
+        extract: false,
+        autoModules: true,
+        use: ['sass'],
+        modules: true,
+    }),
+    typescript({
+        sourceMap: true,
+        tsconfig: `tsconfig.lib.json`,
+    }),
+    peerDepsExternal(),
+    preserveDirectives(),
+    resolve(),
+    url(),
+    svgr(),
+    commonjs(),
+    // modify({
+    //     find: /@netcracker\/ux-assets\/icons.*\.svg/gim,
+    //     replace: (match) =>
+    //         `${match.replace('@netcracker/ux-assets/icons', '@netcracker/ux-assets/lib/icons')}.js`,
+    // }),
+
+    // terser(),
+    // uncomment when need to check bundle
+    // visualizer(),
+];
+
+const external = [...Object.keys(globals)];
+// external: id => {
+//     console.log({ id });
+//     return Object.keys(globals).some(el => id.includes(el));
+// },
 
 export default [
     {
@@ -45,25 +80,22 @@ export default [
         ],
     },
     {
-        input: [path.resolve('./src/widgets/index.ts')],
+        input: [`${LIBRARY_PATH}/footer/client/index.ts`],
         // remove node modules from dist
-        external: [...Object.keys(globals)],
-        // external: id => {
-        //     console.log({ id });
-        //     return Object.keys(globals).some(el => id.includes(el));
-        // },
+        external,
         output: [
             {
                 dir: 'dist',
-                format: 'es',
+                format: 'esm',
                 preserveModules: true,
                 preserveModulesRoot: LIBRARY_PATH,
+                sourcemap: true,
             },
             {
                 format: 'umd',
                 exports: 'named',
-                name: 'FooterUmd',
-                file: 'dist/FooterUmd.js',
+                name: 'FooterClientUmd',
+                file: 'dist/FooterClientUmd.js',
                 globals,
             },
             // {
@@ -76,47 +108,37 @@ export default [
             //     interop: 'auto',
             // },
         ],
-        plugins: [
-            postcss({
-                plugins: [],
-                minimize: true,
-                extract: false,
-                autoModules: true,
-                use: ['sass'],
-                modules: {
-                    /* https://github.com/css-modules/css-modules/issues/363
-                     * https://github.com/webpack-contrib/css-loader/issues/1282
-                     *
-                     * When building new library version hashes of selectors doesn't change,
-                     * so it can lead to style conflicts when 2 or more versions of library is on the page.
-                     * Here we manually calculate selector's hash - when content changes, selector changes too.
-                     */
-                    generateScopedName: (name, filename, css) => {
-                        const hash = crypto.createHash('md5').update(css).digest('hex');
-                        const moduleName = path.basename(filename, '.scss').replace('.', '-');
-
-                        return `${moduleName}_${name}__${hash.slice(0, 6)}`;
-                    },
-                },
-            }),
-            typescript({
-                sourceMap: true,
-                tsconfig: `tsconfig.lib.json`,
-            }),
-            peerDepsExternal(),
-            resolve(),
-            url(),
-            svgr(),
-            commonjs(),
-            // modify({
-            //     find: /@netcracker\/ux-assets\/icons.*\.svg/gim,
-            //     replace: (match) =>
-            //         `${match.replace('@netcracker/ux-assets/icons', '@netcracker/ux-assets/lib/icons')}.js`,
-            // }),
-
-            terser(),
-            // uncomment when need to check bundle
-            // visualizer(),
+        plugins,
+    },
+    {
+        input: [`${LIBRARY_PATH}/footer/server/index.ts`],
+        // remove node modules from dist
+        external,
+        output: [
+            {
+                dir: 'dist',
+                format: 'esm',
+                preserveModules: true,
+                preserveModulesRoot: LIBRARY_PATH,
+                sourcemap: true,
+            },
+            {
+                format: 'umd',
+                exports: 'named',
+                name: 'FooterServerUmd',
+                file: 'dist/FooterServerUmd.js',
+                globals,
+            },
+            // {
+            //     dir: 'dist',
+            //     format: 'cjs',
+            //     sourcemap: true,
+            //     preserveModulesRoot: LIBRARY_PATH,
+            //     exports: 'named',
+            //     // preserveModules: true,
+            //     interop: 'auto',
+            // },
         ],
+        plugins,
     },
 ];
