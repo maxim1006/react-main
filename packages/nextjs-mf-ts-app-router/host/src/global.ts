@@ -7,7 +7,7 @@ declare global {
 
     namespace JSX {
         interface IntrinsicElements {
-            'zain-accordion': DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+            'accordion': DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
             'swiper-slide': React.DetailedHTMLProps<
                 React.HTMLAttributes<HTMLElement> & { lazy?: string | boolean },
                 HTMLElement
