@@ -2,9 +2,6 @@ import React, { lazy } from 'react';
 import Head from 'next/head';
 import ClientProxy from '@/components/client-proxy/client-proxy/client-proxy.component';
 
-const RemoteServerTitle = lazy(() => import('widget/titleServer' as string));
-const RemoteClientTitle = lazy(() => import('widget/titleClient' as string));
-
 const Home = () => {
     if (process.browser) {
         // useCustomHook();
@@ -18,8 +15,6 @@ const Home = () => {
             </Head>
 
             <ClientProxy />
-            <RemoteServerTitle />
-            <RemoteClientTitle />
         </div>
     );
 };
