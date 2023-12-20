@@ -1,6 +1,7 @@
 const NextFederationPlugin = require('@module-federation/nextjs-mf');
 const { dependencies } = require('./package.json');
 
+// не нужны с динамической подгрузкой с injectScript
 const remotes = isServer => {
     const location = isServer ? 'ssr' : 'chunks';
     return {

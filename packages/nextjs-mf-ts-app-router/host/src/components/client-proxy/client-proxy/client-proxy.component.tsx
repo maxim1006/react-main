@@ -38,6 +38,52 @@ const RemoteCraTitleServer1 = dynamic(
     }
 );
 
+export const loadRemoteMFModule = async ({
+    url,
+    global,
+    exposeKey,
+}: {
+    global: string;
+    url: string;
+    exposeKey: string;
+}) => {
+    const versionedUrl = url + '?v=' + Date.now(); //to invalidate cache
+    const remoteContainer = await injectScript({ global, url: versionedUrl });
+    const factory = await remoteContainer.get(exposeKey);
+    return factory();
+};
+
+// пример подключения через функцию и редакс
+//
+// const widget = dynamic<any>(
+//     async () => {
+//         // Store initialize
+//
+//         const storeModule = await loadRemoteMFModule({
+//             url: 'http://localhost:3302/remoteEntryWidget.js',
+//             global: 'checkoutSample',
+//             exposeKey: './CheckoutStoreWidget',
+//         });
+//
+//         // @ts-ignore
+//         store.replaceReducer(
+//             combineReducers({ ...hostReducers, checkoutSteps: storeModule.default })
+//         );
+//
+//         const exportedModule = await loadRemoteMFModule({
+//             url: 'http://localhost:3302/remoteEntryWidget.js',
+//             global: 'checkoutSample',
+//             exposeKey: './CheckoutWidget',
+//         });
+//
+//         return exportedModule.NcCheckoutProviderClient;
+//     },
+//     {
+//         loading: () => <CircularProgress />,
+//         ssr: false,
+//     }
+// );
+
 const RemoteCraTitleClient1 = dynamic(
     async () => {
         const remoteContainer = await injectScript({
