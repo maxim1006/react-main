@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "commonjs",
+        "lib": ["dom", "es6", "es2017", "esnext.asynciterable", "ES2015"],
+        "sourceMap": false,
+        "outDir": "./public",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
+        "noEmitOnError": false,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "baseUrl": "."
+    },
+    "exclude": ["node_modules", "public"],
+    "include": ["./src/index.ts", "src/db/db.ts"]
+}
