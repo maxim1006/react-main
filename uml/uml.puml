@@ -1,0 +1,53 @@
+@startuml
+actor User as u
+participant App as p
+participant BE as t
+
+autonumber "<b>(<u>##</u>)"
+
+u -> p: Open the Product with url: .../{slug}
+
+activate p
+== Some operation ==
+p -> t: Search TLO by slug (from URL)
+activate t
+t --> p: Return TLO
+deactivate t
+
+p -> p: Prepare view model for ... page
+note right
+    Category cache to be used
+end note
+
+p --> u: Show ... step
+deactivate p
+        u -> p: Select Package
+        activate p
+        p -> t: Get price via ... API
+		activate t
+		t --> p: Return prices for the selected package and the default SIM option
+		deactivate t          
+	p --> u: Show updated ...
+	deactivate p
+        u -> p: Proceed
+        p -> p: Save selected Package in Configuration
+p --> u: Show next step
+deactivate p
+u -> p: Select SIM
+activate p
+p -> t: Get price via ... API
+activate t
+t --> p: Return prices for the selected package and the selected SIM option
+deactivate t    
+p --> u: Show updated ...
+deactivate p
+u -> p: Proceed
+activate p
+p -> p: Save SIM in Configuration
+p -> p: Create new Order Configuration
+note right
+the rest steps see in next DDS
+end note
+p --> u: Show first step of checkout
+deactivate p
+@enduml

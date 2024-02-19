@@ -8,8 +8,7 @@
     border: 1px solid;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: both mandatory;
-    scroll-snap-points-y: repeat(400px);
-    scroll-snap-points-x: repeat(400px);
+    scroll-padding: 1rem 0; // 1rem такой же как и margin у чайлда
 
     &__item {
         position: relative;
@@ -18,7 +17,7 @@
         justify-content: center;
         width: 400px;
         height: 400px;
-        margin: 50px 0;
+        margin: 1rem 0;
         scroll-snap-stop: normal;
         scroll-snap-align: start;
 

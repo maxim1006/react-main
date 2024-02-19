@@ -33,9 +33,17 @@ app.use(cors());
 app.use(
     helmet({
         // чтобы не ругался на cdn и разрешил eval
-        contentSecurityPolicy: false,
+        // contentSecurityPolicy: false,
     })
 );
+
+app.use((req, res, next) => {
+    res.setHeader(
+        'Permissions-Policy',
+        'camera=(), fullscreen=(self), geolocation=(self), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()'
+    );
+    next();
+});
 
 // serve static
 const root = path.join(__dirname, '../client/build');

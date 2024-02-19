@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+    title: Title
+    description: Title
+    version: 1.0.0
+servers:
+    -   url: 'https://maximprosv.ru'
+paths:
+    /talk:
+        get:
+            parameters:
+                -   name: text
+                    in: query
+                    required: true
+                    description: Text to search for.
+                    schema:
+                        type: string
+            responses:
+                '200':
+                    description: Search results matching criteria
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+

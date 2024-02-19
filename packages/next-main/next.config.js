@@ -17,6 +17,10 @@ module.exports = withBundleAnalyzer(
 
             return config;
         },
+        logging: {
+            fullUrl: true,
+            level: 'verbose',
+        },
         experimental: {
             logging: {
                 fullUrl: true,

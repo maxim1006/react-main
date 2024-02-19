@@ -1,11 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import Component from '@app/components/component/component.component';
-import PictureImageSet from '@app/components/image/picture-image-set/picture-image-set';
-import LazyImageNew from '@app/components/image/lazy-new/lazy-image-new.component';
-import CustomTag from '@app/components/custom-selector/custom-selector.component';
-import DetailsSummary from '@app/components/details-summary/details-summary.component';
-import CssAccordion from '@app/components/css-accordion/css-accordion.component';
+import ScrollSnapAlign from '@app/components/scroll-snap-align/scroll-snap-align.component';
 
 export default function ReactPage() {
     return (
@@ -21,21 +17,21 @@ export default function ReactPage() {
                 {/*    <MyImage />*/}
                 {/*</Component>*/}
 
-                <Component title='CssAccordion'>
-                    <CssAccordion />
-                </Component>
+                {/*<Component title='CssAccordion'>*/}
+                {/*    <CssAccordion />*/}
+                {/*</Component>*/}
 
-                <Component title='DetailsSummary'>
-                    <DetailsSummary />
-                </Component>
+                {/*<Component title='DetailsSummary'>*/}
+                {/*    <DetailsSummary />*/}
+                {/*</Component>*/}
 
-                <Component title='LazyImageNew'>
-                    <LazyImageNew />
-                </Component>
+                {/*<Component title='LazyImageNew'>*/}
+                {/*    <LazyImageNew />*/}
+                {/*</Component>*/}
 
-                <Component title='PictureImageSet'>
-                    <PictureImageSet />
-                </Component>
+                {/*<Component title='PictureImageSet'>*/}
+                {/*    <PictureImageSet />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='immutableArrayMethods'>*/}
                 {/*    <ImmutableArrayMethods />*/}
@@ -113,9 +109,9 @@ export default function ReactPage() {
                     <CommonErrorsUseEffect />
                 </Component>*/}
 
-                <Component title='Custom tag'>
-                    <CustomTag>text child </CustomTag>
-                </Component>
+                {/*<Component title='Custom tag'>*/}
+                {/*    <CustomTag>text child </CustomTag>*/}
+                {/*</Component>*/}
 
                 {/*<Component title='External Accordion'>*/}
                 {/*    <ExternalAccordionContainer />*/}
@@ -276,9 +272,9 @@ export default function ReactPage() {
                 {/*    <MouseoverMouseleave />*/}
                 {/* </Component> */}
 
-                {/* <Component title="Scroll snap align">*/}
-                {/*    <ScrollSnapAlign />*/}
-                {/* </Component>*/}
+                <Component title='Scroll snap align'>
+                    <ScrollSnapAlign />
+                </Component>
 
                 {/* <Component title="Drag'n'drop">*/}
                 {/*    <DragNDrop />*/}

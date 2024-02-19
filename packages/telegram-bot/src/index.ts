@@ -17,7 +17,7 @@ import { MessageEnum } from './models/message.model';
 import { handleClockGameCbQuery } from './callback-queries/clock-game.callback-query';
 import { handleEnglishGameCbQuery } from './callback-queries/english-game.callback-query';
 import './db/db-test';
-import './web/server/server';
+import '../web/server/server';
 
 async function main() {
     // задаю меню
