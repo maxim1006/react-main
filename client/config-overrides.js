@@ -129,6 +129,9 @@ module.exports = {
         //     publicPath: '/',
         // };
 
+        // пример как убрать CaseSensitivePathsPlugin
+        // config.plugins = config.plugins.filter(p=>["CaseSensitivePathsPlugin"].includes(p.constructor.name))
+
         return config;
     },
 };

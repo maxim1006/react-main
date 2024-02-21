@@ -1,6 +1,9 @@
 - собираю образ
 docker-compose up --build
 
+- запустить postgresql
+  brew services start postgresql
+- 
 - остановить postgresql
 brew services stop postgresql
 

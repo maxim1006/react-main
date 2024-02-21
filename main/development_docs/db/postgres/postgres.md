@@ -5,7 +5,8 @@
 
 - запускаю postgres командой
   brew services start postgresql
-- подключаюсь к ней с помощью psql: psql postgres
+- подключаюсь к ней с помощью psql: 
+  psql postgres
   \conninfo
   \q: Exit psql connection
   \c: Connect to a new database
