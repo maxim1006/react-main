@@ -1,0 +1,59 @@
+version: '0.1'
+
+services:
+  frontend:
+    image: nginx-frontend
+    build:
+      context: ./frontend
+      args:
+        - REACT_APP_SERVICES_HOST=/services/m
+    ports:
+      - "80:80"
+    # networks - разделение доступа, имя сервиса = хост по которому к нему можно обращаться
+    # в рамках хостового env всего docker-compose, а так раздаю кто из сервисов с кем может общаться
+    networks:
+      - frontend
+      - backend
+
+# вот тут связка между хостом нджинкса и этим именем поэтому в nginx proxy_pass http://backend:3000;
+  backend:
+    image: node-backend
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+# так указываю файл для прокидывания переменных окружения (по дефолту .env надо положить на уровень docker-compose), но
+# если несколько то можно указать где его брать
+    env_file: ./backend/.env
+    volumes:
+        - node_db:/app/node_db
+
+ # могу в pg admin посмотреть теперь на эту базу
+  db:
+      #      название контейнера
+    container_name: db-frontend
+    ports:
+      - "5432:5432"
+    restart: always
+    command: [ "postgres", "-c", "log_statement=all" ]
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    image: postgres
+    volumes:
+         - docker_db:/var/lib/postgresql/data
+    networks:
+        - backend
+
+networks:
+  frontend:
+  backend:
+  db:
+
+volumes:
+    docker_db:
+        name: "docker_db"
+    node_db:
+        name: "node_db"

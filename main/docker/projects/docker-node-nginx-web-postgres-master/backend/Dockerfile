@@ -8,4 +8,6 @@ RUN npm ci
 
 COPY . .
 
-CMD ["node", "server.js"]
+RUN npm run build
+
+CMD ["node", "./public/server.js"]
