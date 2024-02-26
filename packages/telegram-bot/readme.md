@@ -41,19 +41,31 @@ ps -ef | grep "pm2: $NAME"
 3) node_modules/.bin/firebase init functions
 
 ### beget
-ssh root@62.217.181.35
+ssh root@62.217.181.35 (чаще всего подключение по ssh будет root + @ + ip)
 (теперь в докере могу что угодно делать в nginx)
 /root/apps/telegram-bot - тут приложение
+
+sudo apt update - обновление пакетов через apt
 
 ### deployment
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
 https://www.youtube.com/watch?v=oykl1Ih9pMg&t=699s&ab_channel=TraversyMedia
 https://beget.com/ru/kb/how-to/vps/vypusk-i-ustanovka-ssl-sertifikatov-ot-lets-encrypt-na-vps?_ga=2.239763715.1405035485.1674833977-170125771.1674302625#nginx
+https://www.youtube.com/watch?v=8OHe6chCWTE&t=11s&ab_channel=UlbiTV
 
 npm run build => deploy to beget
 далее через терминал (или бегет терминал и запускаю pm2)
 npm run prod:start
 а nginx проксирует на этот server.ts 
+
+80 порт - http трафик
+22 порт - для ssh
+443 порт - https
+
+### node
+https://www.youtube.com/watch?v=8OHe6chCWTE&t=11s&ab_channel=UlbiTV
+
+на ubuntu устанавливаю через [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 
 ### nginx 
 /etc/nginx/sites-available/default
