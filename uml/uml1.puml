@@ -1,0 +1,209 @@
+@startuml
+|User|
+start
+note right
+The user is navigated
+to the page
+end note
+
+|System|
+:[1] Validates URL structure;
+if (or) is (General URL) then
+
+:[2] Renders step of the page;
+
+|User|
+
+:[3] Chooses document;
+:[4] Clicks Next button;
+|System|
+else (URL includes query parameters)
+:[5] Retrieves data from URL query parameters;
+endif
+
+
+
+|System|
+
+/'fork используется для распараллеливания активностей'/
+fork
+:[6] Searches customer;
+
+forkagain
+:[7] Get SO by number;
+partition #peachpuff adaptation to page 1
+partition #peachpuff adaptation to page 2
+ if (SO exists?) then (No)
+  :[8] Displays warning message;
+ else (Yes)
+  #palegreen:if ([9] SO contains device?) then (Yes)
+   #palegreen:[10] Displays warning message;
+   end
+  else (No)
+   if(SO status is 'E') then (No)
+    if (Order includes MSISDNs) then (No)
+     :[11] Displays warning message that SO was not found;
+     end
+    else (Yes)
+    endif
+   else (Yes)
+    #palegreen:[12] Searches last TransRec;
+    if (TransRec exists AND its status is 'failed') is (No) then
+      #orange:[13] Displays warning message that SO was not found;
+      end
+    else (Yes)
+    endif
+   endif
+  endif
+ endif
+}
+}
+endfork
+
+:[14] Validates if customer;
+
+note right
+warning
+end note
+if () is (no) then
+:[15] Displays warning that
+Doc ID doesn’t match SO;
+end
+else (yes)
+endif
+
+
+:[16] Searches last TransRec;
+:[17] Validates SO status
+and last TransRec status;
+
+partition #peachpuff adaptation" {
+#orange:[18] Creates activation;
+}
+switch (Depending on SO status)
+case (1)
+partition #peachpuff adaptation {
+#palegreen:[19] Renders Payment
+failed page;
+note left
+last TransRec status is 'failed'
+end note
+end
+}
+case (2)
+if (Depending on) is ('Failed') then
+:[20] Renders Payment
+failed page;
+end
+else ('Uncertain' OR 'Created')
+partition #peachpuff adaptation {
+#orange:[21] Renders Payment
+on hold page;
+}
+end
+endif
+case (3)
+partition #peachpuff adaptation {
+#orange:[22] Renders Order
+ Cancelled page;
+}
+end
+
+
+case (4)
+
+If () is ('SO status 'Processing') then
+:[23] Validate;
+
+If () is (Pending) then
+#palegreen :[24] Validates ;
+ If () is (Condition) then
+ #palegreen :[25]Validates;
+  If () is (empty) then
+  #palegreen :[26]Validates;
+switch ()
+case (5)
+case (6)
+
+#palegreen :[27] Validates Delivery;
+If () is (Shipped) then
+#palegreen :[28] Renders screen;
+|User|
+#palegreen :[29] Presses button to proceed to Activation;
+|System|
+else (Other statuses)
+#palegreen :[30] Renders screen;
+If (Configurable) then (Rendered)
+|User|
+#palegreen :[31] User presses button to confirm;
+|System|
+else (unrendered)
+end
+endif
+
+endif
+endswitch
+:[32] Renders screen to
+capture;
+|User|
+:[33] Enters;
+:[34] Clicks next button;
+else (filled in)
+endif
+
+|System|
+#palegreen:[35] Validates product;
+if (smth) is (one) then
+#palegreen:[36]Validates if is required;
+#palegreen:[37]Displays a screen;
+|User|
+#palegreen:[38] Clicks next button;
+|System|
+else (everything else)
+:[39] Searches SimCard;
+
+If (Found?) is (Yes) then
+else (No)
+:[40] Displays message;
+end
+endif
+
+:[41] Validates SimCard
+logical status;
+switch (Depending on SimCard)
+case ('Available')
+:[42] Screen;
+
+:[43] Updates context;
+case ('Sold')
+case (Neither)
+:[44] Displays message;
+end
+endswitch
+
+endif
+else (eSimCard)
+endif
+:[45] Renders confirmation screen;
+|User|
+:[46] Clicks proceed button;
+end
+note right
+Use case #2
+end note
+
+|System|
+
+else (activation is fullfilled)
+endif
+
+else (SO status 'Completed')
+endif
+
+(1)
+note right
+Reference to use case #3.
+end note
+
+end
+@enduml
