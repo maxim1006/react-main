@@ -62,6 +62,28 @@ npm run prod:start
 22 порт - для ssh
 443 порт - https
 
+(чтобы их подключить)
+sudo ufw enable
+sudo ufw status
+sudo ufw allow ssh (Port 22)
+sudo ufw allow http (Port 80)
+sudo ufw allow https (Port 443)
+
+### https
+https://letsencrypt.org/getting-started/
+https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+
+### prod start
+npm run build
+npm run prod:start
+nginx
+
+# Check NGINX config
+sudo nginx -t
+
+# Restart NGINX
+sudo service nginx restart
+
 ### node
 https://www.youtube.com/watch?v=8OHe6chCWTE&t=11s&ab_channel=UlbiTV
 

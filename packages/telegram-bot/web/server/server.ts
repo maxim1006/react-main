@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 });
 
 // serve static
-const root = path.join(__dirname, '../client/build');
+const root = path.join(__dirname, '../client/src');
 app.use(express.static(root));
 app.get('*', (req, res) => {
     res.sendFile(root + '/index.html');
