@@ -17,7 +17,7 @@
             "experimentalObjectRestSpread": true
         }
     },
-    "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js", "**/tests/**/*"],
+    "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js"],
     "plugins": [
         //        "jsx-a11y",
         //        "@typescript-eslint"
