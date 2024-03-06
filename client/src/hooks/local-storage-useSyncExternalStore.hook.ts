@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useSyncExternalStore } from 'react';
-import { MonstersListModel } from '@app/models/monsters.model';
 
 /**
  * Hook for working with the localeStorage
