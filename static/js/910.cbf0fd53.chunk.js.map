@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/910.cbf0fd53.chunk.js","mappings":"0JAEe,SAASA,IACpB,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,eAChB,C","sources":["pages/LazyPage.js"],"sourcesContent":["import React from 'react';\n\nexport default function LazyPage() {\n    return <div>Lazy module</div>;\n}\n"],"names":["LazyPage","_jsx","children"],"sourceRoot":""}
