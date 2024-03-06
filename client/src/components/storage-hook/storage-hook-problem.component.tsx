@@ -2,6 +2,7 @@ import React, { memo, FC, Dispatch } from 'react';
 import { useLocalStorage } from '@app/hooks/storage';
 import { useLocalStorageService } from '@app/hooks/local-storage-service.hook';
 import styles from './storage-hook-problem.module.scss';
+import { useLocalStorageUseSyncExternalStore } from '@app/hooks/local-storage-useSyncExternalStore.hook';
 
 type StorageHookProblemProps = {};
 
@@ -22,7 +23,10 @@ const StorageHookProblem: FC<StorageHookProblemProps> = () => {
 function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispatch<any> }) {
     const [valueInner, setValueInner] = useLocalStorage('prop1');
     const [valueService, setValueService] = useLocalStorageService<string>('service');
-    const [valueServiceObj, setValueService1] = useLocalStorageService<{ prop?: string }>('service1');
+    const [valueServiceObj, setValueService1] = useLocalStorageService<{ prop?: string }>('serviceObj');
+    // тут еще прикольно что он в соседней вкладке тоже сработает за счет storage эвента
+    const [useLocalStorageUseSyncExternalStoreState, setUseLocalStorageUseSyncExternalStoreState] =
+        useLocalStorageUseSyncExternalStore('useLocalStorageUseSyncExternalStore', '');
 
     return (
         <section className={styles.childHost}>
@@ -41,13 +45,22 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
                 <input value={valueInner} onChange={e => setValueInner(e.target.value)} type='text' />
             </article>
             <article>
+                <h4>useSyncExternalStoreState solves the problem:</h4>
+                <p>Правильный пример c useSyncExternalStoreState</p>
+                <input
+                    value={useLocalStorageUseSyncExternalStoreState || ''}
+                    onChange={e => setUseLocalStorageUseSyncExternalStoreState(e.target.value)}
+                    type='text'
+                />
+            </article>
+            <article>
                 <h4>valueService solves the problem:</h4>
-                <p>Это правильный пример c valueService</p>
+                <p>Правильный пример c valueService</p>
                 <input value={valueService || ''} onChange={e => setValueService(e.target.value)} type='text' />
             </article>
             <article>
                 <h4>valueServiceObj:</h4>
-                <p>Это правильный пример c объектом в valueService</p>
+                <p>Правильный пример c объектом в valueService</p>
                 <input
                     value={valueServiceObj?.prop}
                     onChange={e => setValueService1({ prop: e.target.value })}
@@ -61,7 +74,9 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
 function Child2({ parentProp, setValue }: { parentProp: string; setValue: Dispatch<any> }) {
     const [valueInner, setValueInner] = useLocalStorage('prop1');
     const [valueService, setValueService] = useLocalStorageService<string>('service');
-    const [valueServiceObj, setValueService1] = useLocalStorageService<{ prop?: string }>('service1');
+    const [valueServiceObj, setValueService1] = useLocalStorageService<{ prop?: string }>('serviceObj');
+    const [useLocalStorageUseSyncExternalStoreState, setUseLocalStorageUseSyncExternalStoreState] =
+        useLocalStorageUseSyncExternalStore('useLocalStorageUseSyncExternalStore', '');
 
     return (
         <section className={styles.childHost}>
@@ -79,13 +94,22 @@ function Child2({ parentProp, setValue }: { parentProp: string; setValue: Dispat
                 <input value={valueInner} onChange={e => setValueInner(e.target.value)} type='text' />
             </article>
             <article>
+                <h4>useSyncExternalStoreState solves the problem:</h4>
+                <p>Правильный пример c useSyncExternalStoreState</p>
+                <input
+                    value={useLocalStorageUseSyncExternalStoreState || ''}
+                    onChange={e => setUseLocalStorageUseSyncExternalStoreState(e.target.value)}
+                    type='text'
+                />
+            </article>
+            <article>
                 <h4>valueService solves the problem:</h4>
-                <p>Это правильный пример c valueService</p>
+                <p>Правильный пример c valueService</p>
                 <input value={valueService || ''} onChange={e => setValueService(e.target.value)} type='text' />
             </article>
             <article>
                 <h4>valueServiceObj:</h4>
-                <p>Это правильный пример c объектом в valueService</p>
+                <p>Правильный пример c объектом в valueService</p>
                 <input
                     value={valueServiceObj?.prop}
                     onChange={e => setValueService1({ prop: e.target.value })}

@@ -6,15 +6,15 @@ import { Dispatch, SetStateAction, useCallback, useEffect, useSyncExternalStore 
  * Usage:
  *
  * 1) Easy to use
- * const [state, setState] = useLocalStorage('key', 'defaultValue');
+ * const [state, setState] = useLocalStorageUseSyncExternalStore('key', 'defaultValue');
  *
  * 2) Example of deleting a value from a store
  * setState(undefined)
  *
  */
-export function useLocalStorage<T>(
+export function useLocalStorageUseSyncExternalStore<T>(
     key: string,
-    initialValue: T
+    initialValue: T,
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>] {
     const getSnapshot = () => readFromLocalStorage<T>(key);
 
@@ -30,7 +30,7 @@ export function useLocalStorage<T>(
                 setLocalStorageItem(key, nextState);
             }
         },
-        [key, store]
+        [key, store],
     );
 
     useEffect(() => {
@@ -62,7 +62,9 @@ const readFromLocalStorage = <T>(itemKey: string): T | undefined => {
     }
 
     try {
-        return JSON.parse(window.localStorage.getItem(itemKey) || 'null');
+        const value = JSON.parse(window.localStorage.getItem(itemKey) || 'null');
+
+        return value ?? '';
     } catch (e) {
         console.error('Error while retrieving from the LocalStorage ', e);
     }
