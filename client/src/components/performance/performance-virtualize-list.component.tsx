@@ -17,8 +17,11 @@ const PerformanceVirtualizeList: FC = () => {
         const ref = useRef<HTMLDivElement>(null!);
         useEffect(() => {
             if (ref.current) {
-                ref.current.style.height = null;
-                sizes[index] = ref.current.offsetHeight;
+                ref.current.style.height = '';
+
+                if (index !== undefined) {
+                    sizes[index] = ref.current.offsetHeight;
+                }
             }
         }, [index]);
 

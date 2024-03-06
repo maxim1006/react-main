@@ -26,8 +26,8 @@ class FamilyMember implements FamilyMemberModel {
         return this._id;
     }
 
-    private _age: number;
-    private _name: string;
+    private _age: number = 0;
+    private _name: string = '';
     private readonly _id;
 
     constructor(name: string, age: number) {
@@ -50,7 +50,7 @@ class Person {
 }
 
 class Worker extends Person {
-    private _age: number;
+    private _age: number = 0;
 
     // не забываем что если есть указатель видимости то тс свойство сразу положит в объект
     constructor(name: string, public occupation: string) {

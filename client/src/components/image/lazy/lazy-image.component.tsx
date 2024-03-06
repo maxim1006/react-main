@@ -3,7 +3,7 @@ import React, { FC, memo, useCallback, useRef, useState } from 'react';
 type LazyImageProps = {};
 
 const LazyImage: FC<LazyImageProps> = () => {
-    const ref = useRef<HTMLInputElement>(null);
+    const ref = useRef<HTMLInputElement>(null!);
     const [imgSrc, setImgSrc] = useState('');
 
     const loadImage = useCallback(async () => {

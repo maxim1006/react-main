@@ -2,17 +2,17 @@ import { FC, memo, useState } from 'react';
 import MonsterSearch from './MonsterSearch';
 import MonsterList from './MonsterList';
 import useGetRequest from '../hooks/useGetRequest';
-import { MonstersListModel } from '@app/models/monsters.model';
+import { MonsterModel } from '@app/models/monsters.model';
 
 type MonstersProps = {};
 
 const Monsters: FC<MonstersProps> = () => {
     const [searchValue, setSearchValue] = useState('');
-    const monsterList: MonstersListModel = useGetRequest({ url: '/monsters' } as { url: string; cb: any });
+    const monsterList = useGetRequest({ url: '/monsters', cb: () => {} }) as any as MonsterModel[];
 
     let filteredMonsterList;
 
-    if (Array.isArray(monsterList)) {
+    if (monsterList && Array.isArray(monsterList)) {
         filteredMonsterList = monsterList.filter(item =>
             item.name.toLowerCase().includes(searchValue.trim().toLowerCase())
         );

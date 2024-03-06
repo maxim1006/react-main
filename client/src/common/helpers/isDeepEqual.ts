@@ -14,7 +14,7 @@ export function isDeepEqual(value: any, other: any): boolean {
     if (valueLen !== otherLen) return false;
 
     // Compare two items
-    const compare = (item1: any, item2: any): boolean => {
+    const compare = (item1: any, item2: any): any => {
         // Get the object type
         const itemType = Object.prototype.toString.call(item1);
 

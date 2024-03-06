@@ -5,8 +5,8 @@ type CommonErrorsRefInsteadStateProps = {};
 // смысл в том что вместо setState для email/password достаточно сделать useRef так как ререндеринги не нужны лишние
 // и только на сабмит стоит их использовать
 const CommonErrorsRefInsteadState: FC<CommonErrorsRefInsteadStateProps> = () => {
-    const emailRef = useRef<HTMLInputElement>();
-    const passwordRef = useRef<HTMLInputElement>();
+    const emailRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

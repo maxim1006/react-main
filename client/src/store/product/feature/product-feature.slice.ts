@@ -1,7 +1,7 @@
 import { ProductFeatureStateModel } from '@app/models/product.model';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: ProductFeatureStateModel = null;
+const initialState: ProductFeatureStateModel = null!;
 
 const slice = createSlice({
     name: 'product/feature',

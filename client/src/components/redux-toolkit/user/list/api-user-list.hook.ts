@@ -8,7 +8,7 @@ import { QueryActionCreatorResult } from '@reduxjs/toolkit/src/query/core/buildI
 export function useApiUserList() {
     const [pollingInterval, setPollingInterval] = useState(0);
 
-    const { data: users = [], isLoading: usersLoading } = apiUserApi.useFetchUserListQuery(null, {
+    const { data: users = [], isLoading: usersLoading } = apiUserApi.useFetchUserListQuery(undefined, {
         // класс - отработает когда снова подключусь к сети
         // https://redux-toolkit.js.org/rtk-query/api/setupListeners
         refetchOnReconnect: true,

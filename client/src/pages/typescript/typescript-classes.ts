@@ -89,7 +89,9 @@ class Test {
     name: string = 'Max';
 
     constructor(name?: string) {
-        this.name = name;
+        if (name) {
+            this.name = name;
+        }
     }
 
     getName() {

@@ -23,7 +23,7 @@ const eventBus: EventBusModel = {
 
         eventBus.subscribers[name].delete(cb);
 
-        if (!eventBus.subscribers[name].size) eventBus.subscribers[name] = null;
+        if (!eventBus.subscribers[name].size) delete eventBus.subscribers[name];
     },
 };
 

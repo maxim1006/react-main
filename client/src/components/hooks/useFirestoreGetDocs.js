@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { firestore } from '@app/firebase/firebase.utils';
 
 export default function useFirestoreGetDocs(collectionName) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState();
 
     useEffect(() => {
         const getData = async () => {

@@ -96,7 +96,7 @@ export function isFunction(f: () => unknown) {
     return typeof f === 'function';
 }
 
-export function getDevice(documentWidth: number): DeviceEnum {
+export function getDevice(documentWidth: number): DeviceEnum | undefined {
     if (documentWidth > 1024) {
         return DeviceEnum.Desktop;
     }

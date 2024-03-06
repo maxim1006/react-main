@@ -32,7 +32,7 @@ const RouterIndex: FC<RouterIndexProps> = () => {
         );
     };
 
-    const name = searchParams.get('name');
+    const name = searchParams.get('name') || '';
     const can = searchParams.get('can') === 'true';
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {

@@ -50,7 +50,15 @@ const LazyImageNew: FC<LazyImageNewProps> = () => {
                             backgroundImage: `url(/images/1-blurred.png)`,
                         }}
                     >
-                        <img className='hidden' ref={el => (ref.current[idx] = el)} loading='lazy' src={i} alt='' />
+                        <img
+                            className='hidden'
+                            ref={el => {
+                                if (el) ref.current[idx] = el;
+                            }}
+                            loading='lazy'
+                            src={i}
+                            alt=''
+                        />
                     </div>
                 );
             })}

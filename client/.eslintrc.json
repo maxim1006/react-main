@@ -10,7 +10,6 @@
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json",
-        "tsconfigRootDir": "./",
         "ecmaVersion": 6,
         "sourceType": "module",
         "ecmaFeatures": {
@@ -18,10 +17,10 @@
             "experimentalObjectRestSpread": true
         }
     },
-    "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js"],
+    "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js", "**/tests/**/*"],
     "plugins": [
         //        "jsx-a11y",
-//        "@typescript-eslint"
+        //        "@typescript-eslint"
     ],
     // add new rules here
     "rules": {
@@ -41,6 +40,7 @@
     "overrides": [
         {
             "files": ["**/*.(j|t)s?(x)"],
+            "excludedFiles": "./src/tests/**/*",
             "rules": {
                 "array-callback-return": "off"
             }

@@ -17,9 +17,9 @@ class StorageService {
         );
     }
 
-    public read<T>(itemKey: string): T | undefined {
+    public read<T>(itemKey: string): T | null | undefined {
         try {
-            return JSON.parse(window.localStorage.getItem(itemKey) || null);
+            return JSON.parse(window.localStorage.getItem(itemKey) || 'null');
         } catch (e) {
             console.error('Reading LocalStorage error ', e);
         }

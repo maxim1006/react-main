@@ -82,7 +82,7 @@ let b: keyof typeof obj = 'name'; // let b: "name" | "age
 // getProperty(obj, 'name');
 
 // K extends keyof T - K является сабтипом ключей объекта T
-function getProperty<T, K extends keyof T>(obj: T, key?: K) {
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
     return obj[key];
 }
 

@@ -1,0 +1,7 @@
+.childHost {
+    margin-top: 20px;
+
+    & > article {
+        margin-bottom: 20px;
+    }
+}

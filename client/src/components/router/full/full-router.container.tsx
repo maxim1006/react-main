@@ -27,6 +27,8 @@ const FullRouterContainer: FC<FullRouterContainerProps> = () => {
 
     const FullRouterRouteContainer = FULL_ROUTER_DESCRIPTORS[type]?.component;
 
+    if (!FullRouterRouteContainer) return null;
+
     return (
         <div className={cn('taFullRouterContainer')}>
             <Router basename={ROUTE_FULL}>

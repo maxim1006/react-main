@@ -15,6 +15,8 @@ export const COMPONENTS_DESCRIPTORS: Record<ComponentTypeEnum, { component: FC |
 const ChildContainer: FC<{}> = () => {
     const Child = COMPONENTS_DESCRIPTORS.test.component;
 
+    if (!Child) return null;
+
     return <Child />;
 };
 

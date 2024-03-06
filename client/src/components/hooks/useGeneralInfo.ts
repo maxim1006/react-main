@@ -4,8 +4,8 @@ import { DeviceEnum } from '@app/models/common.model';
 import { debounce, getDevice } from '@app/common/utils/common.utils';
 
 export default function useGeneralInfo() {
-    const [device, setDevice] = useState<DeviceEnum>(null);
-    const [browser, setBrowser] = useState<string>(null);
+    const [device, setDevice] = useState<DeviceEnum>();
+    const [browser, setBrowser] = useState<string>();
 
     useEffect(() => {
         // getDevice

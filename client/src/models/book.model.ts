@@ -1,4 +1,4 @@
 export interface BookModel {
-    id?: string;
+    id: string;
     title: string;
 }

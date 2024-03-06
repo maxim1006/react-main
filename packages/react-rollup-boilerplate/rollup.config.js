@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const LIBRARY_PATH = 'src';
 const EXTERNAL_MODULES = ['node_modules', 'react', '@mui/icons-material', '@mui/lab', '@mui/material', 'style-inject'];
@@ -31,6 +32,7 @@ export default [
                 use: ['sass'],
             }),
             typescript(),
+            preserveDirectives.default(),
             peerDepsExternal(),
             commonjs(),
             url(),
@@ -42,5 +44,12 @@ export default [
         //     console.log(id);
         //     return EXTERNAL_MODULES.some((el) => id.includes(el));
         // },
+        // https://github.com/Ephem/rollup-plugin-preserve-directives
+        // убираю ненужные warnings
+        onwarn(warning, handler) {
+            if (warning.code !== 'MODULE_LEVEL_DIRECTIVE') {
+                handler(warning);
+            }
+        }
     },
 ];

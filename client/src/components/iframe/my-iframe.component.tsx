@@ -17,7 +17,7 @@ const MyIframe: FC<MyIframeProps> = () => {
             .then(res => res.json())
             .then(res => {
                 console.log('fetch', { res });
-                window.top.postMessage(
+                window.top?.postMessage(
                     {
                         message: 'iframeResponse',
                         value: {

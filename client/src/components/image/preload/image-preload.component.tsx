@@ -4,10 +4,10 @@ import styles from './image-preload.module.scss';
 type ImagePreloadProps = {};
 
 const ImagePreload = memo<ImagePreloadProps>(function ImagePreload() {
-    const [previewSrc, setPreviewSrc] = useState(null);
+    const [previewSrc, setPreviewSrc] = useState('');
 
     const showPreview = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files.length > 0) {
+        if (e.target.files && e.target.files.length > 0) {
             setPreviewSrc(URL.createObjectURL(e.target.files[0]));
         }
     };

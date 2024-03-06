@@ -8,7 +8,6 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
-        "strictNullChecks": false,
         "forceConsistentCasingInFileNames": true,
         "module": "esnext",
         "moduleResolution": "node",
@@ -20,5 +19,5 @@
         "types": ["react/next", "react-dom/next"]
     },
     "include": ["src/**/*"],
-    "exclude": ["node_modules", "build", "scripts"]
+    "exclude": ["node_modules", "build", "scripts", "src/tests/**/*"]
 }

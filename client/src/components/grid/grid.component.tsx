@@ -45,7 +45,7 @@ const Grid: FC<GridProps> = () => {
 export default memo(Grid);
 
 function DomRefImageHooks({ className, ...restProps }: any): JSX.Element {
-    const ref = useRef(null!);
+    const ref = useRef<HTMLImageElement>(null!);
     const currentClassName = `dom-ref-image ${className || ''}`;
 
     useEffect(() => {

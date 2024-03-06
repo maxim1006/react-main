@@ -5,8 +5,8 @@ import ThemeSelector from '@app/components/theme/ThemeSelector';
 import { DeviceEnum } from '@app/models/common.model';
 
 interface GeneralInfoContextModel {
-    device: DeviceEnum;
-    browser: string;
+    device?: DeviceEnum;
+    browser?: string;
 }
 
 export const GeneralInfoContext = createContext({} as GeneralInfoContextModel);

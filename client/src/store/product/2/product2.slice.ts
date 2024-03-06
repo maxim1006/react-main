@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { productFeatureReducer } from '@app/store/product/feature/product-feature.slice';
 import { product2InnerPropAdapter } from '@app/store/product/2/product2.adapters';
 
-const initialState: Product2StateModel = null;
+const initialState: Product2StateModel = null!;
 
 const slice = createSlice({
     name: 'product/product2',

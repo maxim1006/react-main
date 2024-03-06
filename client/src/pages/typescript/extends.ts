@@ -53,7 +53,7 @@ export interface TestTypeA extends TestTypeC {
 }
 
 class TestTypeClass<T extends TestTypeC> {
-    cc: T;
+    cc: T | undefined;
 }
 
 let testTypeClass = new TestTypeClass<TestTypeA>();
@@ -77,7 +77,7 @@ interface TestTypeCC extends TestTypeBB {
 
 // тут уже не могу написать extends так как TestTypeAA не наследует TestTypeCC
 class TestTypeClasss<T = TestTypeCC> {
-    cc: T;
+    cc: T | undefined;
 }
 
 let testTypeClasss = new TestTypeClasss<TestTypeAA>();

@@ -13,13 +13,13 @@ type ForwradRefUseImperativeHandleProps = {};
 
 const ForwradRefUseImperativeHandle: FC<ForwradRefUseImperativeHandleProps> = () => {
     const [value, setValue] = useState('red');
-    const ref = useRef(null);
-    const customRef = useRef<CustomRefModel>(null);
+    const ref = useRef<HTMLInputElement>(null!);
+    const customRef = useRef<CustomRefModel>(null!);
 
     return (
         <div>
             <CustomInput customRef={customRef} ref={ref} value={value} onChange={e => setValue(e.target.value)} />
-            <button onClick={() => ref.current.focus()}>Click</button>
+            <button onClick={() => ref.current?.focus()}>Click</button>
             <button
                 onClick={() => {
                     customRef.current.log();

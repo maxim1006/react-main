@@ -17,7 +17,7 @@ enum ActionEventEnum {
 const AnimateAndTransition: FC<AnimateAndTransitionProps> = () => {
     const runAction = (type: ActionEventEnum) => (e: MouseEvent) => {
         const target = e.target as HTMLDivElement;
-        const dataStyle = styles[target.dataset.action];
+        const dataStyle = target.dataset.action ? styles[target.dataset.action] : '';
         e.persist();
         target.classList.add(dataStyle);
         target.addEventListener(type, _ => target.classList.remove(dataStyle), {

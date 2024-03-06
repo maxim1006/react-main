@@ -6,16 +6,17 @@ type NodeElementJsxExoticProps = {};
 const NodeElementJsxExotic: FC<NodeElementJsxExoticProps> = () => {
     const memoized = useMemo(() => <div />, []);
 
+    const portalElement = document.querySelector('#modal');
+
     return (
         <div>
             <NodeElementJsxExoticChild element={<>asd</>} />
             <NodeElementJsxExoticChild element={<Test />} />
             <NodeElementJsxExoticChild element={<TestMemo />} />
-            <NodeElementJsxExoticChild element={null} />
             <NodeElementJsxExoticChild element={undefined} />
             <NodeElementJsxExoticChild element={<Fragment>1</Fragment>} />
             <NodeElementJsxExoticChild element={memoized} />
-            <NodeElementJsxExoticChild element={ReactDOM.createPortal(<div />, document.querySelector('#modal'))} />
+            {portalElement && <NodeElementJsxExoticChild element={ReactDOM.createPortal(<div />, portalElement)} />}
 
             <NodeElementJsxExoticChild node={<>asd</>} />
             <NodeElementJsxExoticChild node='asd' />
@@ -26,7 +27,7 @@ const NodeElementJsxExotic: FC<NodeElementJsxExoticProps> = () => {
             <NodeElementJsxExoticChild node={<TestMemo />} />
             <NodeElementJsxExoticChild node={<Fragment>1</Fragment>} />
             <NodeElementJsxExoticChild node={memoized} />
-            <NodeElementJsxExoticChild node={ReactDOM.createPortal(<div />, document.querySelector('#modal'))} />
+            {portalElement && <NodeElementJsxExoticChild node={ReactDOM.createPortal(<div />, portalElement)} />}
 
             <NodeElementJsxExoticChild exotic={TestMemo} />
 

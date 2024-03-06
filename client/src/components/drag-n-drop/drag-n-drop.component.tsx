@@ -5,16 +5,16 @@ const DragNDrop = () => {
     const dragRef = useRef<HTMLDivElement>(null!);
     const dragParentRef = useRef<HTMLDivElement>(null!);
     let isDraggerDragged = useRef<boolean>();
-    let startX = useRef<number>();
-    let startY = useRef<number>();
-    let startOffsetX = useRef<number>();
-    let startOffsetY = useRef<number>();
+    let startX = useRef<number>(null!);
+    let startY = useRef<number>(null!);
+    let startOffsetX = useRef<number>(null!);
+    let startOffsetY = useRef<number>(null!);
     let startDragElementBCR = useRef<{
         left: number;
         top: number;
         width: number;
         height: number;
-    }>();
+    }>(null!);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let documentElementInfo = useRef<{ width: number; height: number }>();
 

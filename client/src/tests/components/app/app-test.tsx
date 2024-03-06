@@ -1,4 +1,4 @@
-import React, { memo, FC, useState, useEffect } from 'react';
+import { memo, FC, useState, useEffect } from 'react';
 
 type AppTestProps = {};
 

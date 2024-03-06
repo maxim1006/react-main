@@ -5,7 +5,7 @@ import { ExampleContext } from '@app/components/hooks/use-context/example.contex
 type UseContextContainerProps = {};
 
 const UseContextContainer = memo<UseContextContainerProps>(() => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null!);
     const { result, getInfo, loading } = useContext(ExampleContext);
 
     return (
@@ -15,7 +15,7 @@ const UseContextContainer = memo<UseContextContainerProps>(() => {
                 <MaterialLoaderComponent />
             ) : (
                 <>
-                    Title: {result?.name}, Completed: {result?.completed.toString()}
+                    Title: {result?.name}, Completed: {result?.completed?.toString()}
                 </>
             )}
 
@@ -26,7 +26,7 @@ const UseContextContainer = memo<UseContextContainerProps>(() => {
                     const value = inputRef.current.value;
 
                     if (value.trim()) {
-                        getInfo(parseFloat(value));
+                        getInfo?.(parseFloat(value));
                     }
                 }}
             >

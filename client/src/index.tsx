@@ -25,7 +25,7 @@ import FullRouterContainer from '@app/components/router/full/full-router.contain
 // );
 
 // 18
-const container = document.getElementById('root');
+const container = document.getElementById('root')!;
 const root = createRoot(container);
 root.render(
     <Provider store={store}>

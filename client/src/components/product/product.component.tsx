@@ -23,11 +23,19 @@ const Product: FC<ProductProps> = ({ name, type, items, entities }) => {
                 ))}
             </div>
             <div>
-                {Object.entries(entities).map(([key, { value, name }]) => (
-                    <div key={key}>
-                        {name}: {value}
-                    </div>
-                ))}
+                {Object.entries(entities).map(([key, val]) => {
+                    if (val) {
+                        const { value, name } = val;
+
+                        return (
+                            <div key={key}>
+                                {name}: {value}
+                            </div>
+                        );
+                    }
+
+                    return val;
+                })}
             </div>
         </div>
     );

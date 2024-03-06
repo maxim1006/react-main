@@ -11,7 +11,7 @@ export type InferredTypeFragment = {
 };
 
 export type MyType = ArrayType<NonNullable<InferredTypeFragment['localizedData']>>;
-export type MyTypeInner = ArrayType<NonNullable<InferredTypeFragment['localizedData'][0]['innerArr']>>;
+// export type MyTypeInner = ArrayType<NonNullable<InferredTypeFragment['localizedData'][0]['innerArr']>>;
 
 // еще пример
 const array: number[] = [1, 2, 3, 4];

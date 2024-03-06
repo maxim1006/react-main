@@ -5,8 +5,8 @@ import StorageHookProblem from '@app/components/storage-hook/storage-hook-proble
 type StorageHookProps = {};
 
 const StorageHook = memo<StorageHookProps>(function StorageHook() {
-    const ref = useRef<HTMLInputElement>();
-    const ref1 = useRef<HTMLInputElement>();
+    const ref = useRef<HTMLInputElement>(null!);
+    const ref1 = useRef<HTMLInputElement>(null!);
     const [value, setSessionStorageValue, removeSessionStorageValue] = useSessionStorage('name');
     const [value1, setLocalStorageValue, removeLocalStorageValue] = useLocalStorage('age');
 

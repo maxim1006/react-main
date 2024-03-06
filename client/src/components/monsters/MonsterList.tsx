@@ -5,7 +5,7 @@ import { FC, memo } from 'react';
 import { MonstersListModel } from '@app/models/monsters.model';
 
 type MonsterListPros = {
-    list: MonstersListModel;
+    list?: MonstersListModel;
 };
 
 const MonsterList: FC<MonsterListPros> = ({ list }) => {

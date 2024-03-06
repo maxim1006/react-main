@@ -15,7 +15,7 @@ const TypescriptHooks = () => {
 
     useEffect(() => {
         console.log(ref1.current, ref2.current);
-        inputEl.current.focus();
+        inputEl.current?.focus();
     }, []);
 
     return (
