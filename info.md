@@ -118,7 +118,7 @@ jobs:
 ## origin / referer / host
 origin - тот кто отсылает
 referer = origin + path
-host - куда делается request (host из Request URL)
+host - куда делается request (host из Request URL) (nginx проверяет его относительно server_name чтобы перенаправить запрос)
 
 # Version Control (Git) Conventions
 

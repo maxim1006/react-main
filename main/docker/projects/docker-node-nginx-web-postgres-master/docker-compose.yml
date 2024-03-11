@@ -27,6 +27,8 @@ services:
 # так указываю файл для прокидывания переменных окружения (по дефолту .env надо положить на уровень docker-compose), но
 # если несколько то можно указать где его брать
     env_file: ./backend/.env
+#    volume - persisted storage, не меняется когда перезагружается докер
+#    создай volume node_db по пути /app/node_db (https://docs.docker.com/storage/volumes/)
     volumes:
         - node_db:/app/node_db
 

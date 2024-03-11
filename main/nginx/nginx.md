@@ -2,6 +2,8 @@
 nginx
 nginx -s stop
 nginx -s reload
+или
+sudo service nginx restart
 
 ### nginx -t
 узнать где файл конфигурации / состояние nginx (правильно ли заполнил файл)

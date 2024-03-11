@@ -6,6 +6,20 @@ curl --location --request POST https://google.com
 
 -I - head; -k - insecure; -X - request
 
+# посмотреть загрузку проца
+top
+
+# посмотреть файлы в папке и их размер
+ls -lah
+
+# посмотреть размер папок 
+du -h
+
+и то и другое 
+sudo apt-get install ncdu 
+затем
+ncdu [path]
+
 # clean RAM
 sudo purge
 
@@ -78,11 +92,16 @@ sudo find / -type d -name "*shared-docker*"
 mv somefile /to/some/other/path
 mv ~/Documents/Ukulele/Apache.pdf . (from ~/Documents/Ukulele/Apache.pdf to current folder)
 
-# alias
-alias pf="ps -e | grep $1" (pf shutter - пример найти PID процесса shutter)
-
 # kill
 kill pid-of-program 
+
+# ping
+посмотреть работает ли сайт (а также его ip)
+ping maximprosv.ru
+
+тоже что и 
+
+host -t a maximprosv.ru
 
 # ps 
 ps -ef | grep webstorm, затем kill -9 PID
@@ -104,19 +123,28 @@ sudo lsof -i :3000 // найти процесс на порту
 Kill:
 kill -9 <PID>
 
+# найти процесс по PID найти PID
+ps -p <pid> -o command
+или
+ls -la /proc/<pid>/exe
+
 # get all PATH
 echo $PATH
 
 # get username
 whoami
 
-# add permission to folder for user (have to open terminal inside folder)
+# nslookup
+посмотреть ip по dns пример
+nslookup ya.ru
+
+# chown (change owner) add permission to folder for user (have to open terminal inside folder)
 sudo chown __use-name__ .
 sudo  chown mysql:mysql mysql-files // дать права пользователю mysql и группе mysql на папку mysql-files
 
 sudo chown -R mysql /usr/local/var/mysql/
 -R - recursively
-# chmod
+# chmod (change mode)
 http://linuxcommand.org/lc3_lts0090.php
 
 chmod 600 some_file // для файла только оунер может менять
@@ -222,6 +250,9 @@ tail -f logs/app/application.log
 
 # узнать свои ip
 ifconfig | grep inet (последняя строка ipv4 inet 10.236.135.175 --> 10.236.135.175 netmask 0xffffe000, также можно посмотреть в cisko: details -> statistics)
+
+последний раз отработал
+curl ifconfig.me
 
 
 
