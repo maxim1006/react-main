@@ -1,0 +1,41 @@
+{
+    "name": "react-rollup-library",
+    "version": "0.0.1",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "scripts": {
+        "build": "rollup --config --bundleConfigAsCjs",
+        "dev": "npm run build -- --watch",
+        "lint": "eslint . --max-warnings 0",
+        "echo": "echo 'from-library'"
+    },
+    "peerDependencies": {
+        "@mui/icons-material": "^5.15.3",
+        "@mui/lab": "^5.0.0-alpha.145",
+        "@mui/material": "^5.14.10",
+        "react": ">=18.2.0"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "25.0.7",
+        "@rollup/plugin-node-resolve": "15.2.3",
+        "@rollup/plugin-terser": "0.4.4",
+        "@rollup/plugin-typescript": "11.1.6",
+        "@rollup/plugin-url": "8.0.2",
+        "@svgr/rollup": "6.5.1",
+        "@types/eslint": "^8.56.1",
+        "@types/react": "^18.2.56",
+        "@types/react-dom": "^18.2.19",
+        "eslint": "8.56.0",
+        "node-sass": "^9.0.0",
+        "rollup": "4.9.2",
+        "rollup-plugin-dts": "^6.1.0",
+        "rollup-plugin-peer-deps-external": "2.2.4",
+        "rollup-plugin-postcss": "4.0.2",
+        "rollup-plugin-preserve-directives": "^0.4.0",
+        "typescript": "5.3.3"
+    },
+    "dependencies": {
+        "classnames": "^2.5.1"
+    }
+}

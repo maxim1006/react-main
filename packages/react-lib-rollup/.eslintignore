@@ -1,6 +1,0 @@
-build/
-node_modules/
-rollup.config.js
-custom.d.ts
-lint.js
-scripts/
