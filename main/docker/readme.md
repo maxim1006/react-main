@@ -25,7 +25,7 @@ docker run -it --rm -d -p 8080:8080 --name web maxim1006/demoapp:1.0
 
 
 ### https://hub.docker.com/
-храниище всех докер образов
+хранилище всех докер образов
 
 мой dockerid maxim1006
 

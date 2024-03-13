@@ -173,7 +173,9 @@ mkdir -p /data/db
 sudo mongod
 
 # echo
+// > перезаписать файл (и создать если его нет)
 echo "export VAR_NAME='VAR_VALUE''" > var-file.env
+// >> добавить в конец файла
 echo "var-file" >> .gitignore
 source ./var-file.env
 

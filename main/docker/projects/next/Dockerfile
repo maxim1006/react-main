@@ -1,8 +1,8 @@
-FROM node:17.0.1-alpine
+FROM node:20.11.1-alpine3.18
 ARG NODE_EXTRA_CA_CERTS
 WORKDIR /app
 
-COPY .npmrc package.json package-lock.json ./
+COPY . .
 # на каждую команду RUN создается копия предыдущего слоя образа
 # те первый ран докер сделает копию npm ci и ее типо будет сохранять и брать из кеша
 # а остальные будет проверять на изменение кода и новые делать
@@ -10,9 +10,10 @@ COPY .npmrc package.json package-lock.json ./
 RUN mkdir .npm-cache  \
  && chown -R 10001:10001 .npm-cache \
  && npm config set cache /app/.npm-cache --global \
- && npm ci
+ && npm ci --loglevel warn                              \
+ && npm cache clean --force
 
-COPY . .
+#COPY . .
 RUN chmod a+x ./start.sh            \
  && chown 10001:10001 ./start.sh    \
  && chmod 777 ./                    \

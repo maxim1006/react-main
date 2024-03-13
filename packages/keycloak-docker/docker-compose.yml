@@ -4,10 +4,11 @@ services:
   frontend:
     image: nginx-frontend
     build:
-      context: ./frontend
+      context: ./fe
       args:
+#        https://docs.docker.com/build/guide/build-args/ это аргументы которые могу использовать как ${REACT_APP_SERVICES_HOST}
+# в докере
         - REACT_APP_SERVICES_HOST=/services/m
-# ports: xx:yy xx - порт на моей машине yy порт внутри контейнера
     ports:
       - "80:80"
     # networks - разделение доступа, имя сервиса = хост по которому к нему можно обращаться
@@ -20,23 +21,24 @@ services:
   backend:
     image: node-backend
     build:
-      context: ./backend
+      context: ./be
     ports:
       - "3000:3000"
-    networks:
-      - backend
 # так указываю файл для прокидывания переменных окружения (по дефолту .env надо положить на уровень docker-compose), но
 # если несколько то можно указать где его брать
-    env_file: ./backend/.env
+    env_file: ./be/.env
 #    volume - persisted storage, не меняется когда перезагружается докер
 #    создай volume node_db по пути /app/node_db (https://docs.docker.com/storage/volumes/)
     volumes:
         - node_db:/app/node_db
+    networks:
+        - backend
+        - db
 
  # могу в pg admin посмотреть теперь на эту базу
   db:
       #      название контейнера
-    container_name: db-frontend
+    container_name: db
     ports:
       - "5432:5432"
     restart: always
@@ -44,11 +46,31 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+# так указываю название бд которая создастся автоматически при старте имаджа
+      - POSTGRES_DB=keycloak
     image: postgres
     volumes:
          - docker_db:/var/lib/postgresql/data
     networks:
-        - backend
+        - db
+
+  keycloak:
+      container_name: keycloak
+      build:
+          context: ./keycloak
+      command: ["start", "--optimized", "--verbose"]
+      ports:
+          - "8443:8443"
+      environment:
+          - KEYCLOAK_ADMIN=admin
+          - KEYCLOAK_ADMIN_PASSWORD=admin
+          - KC_HTTPS_CERTIFICATE_FILE=/opt/keycloak/local/certs/localhostcert.pem
+          - KC_HTTPS_CERTIFICATE_KEY_FILE=/opt/keycloak/local/certs/localhostkey.pem
+      networks:
+          - db
+      volumes:
+#  локальная папка ./keycloak/certs смотрит на /opt/keycloak/local/certs в вольюме
+          - ./keycloak/certs:/opt/keycloak/local/certs
 
 networks:
   frontend:

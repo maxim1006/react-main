@@ -5,6 +5,8 @@ import './global';
 import App from './components/app/app.component';
 import { BrowserRouter } from 'react-router-dom';
 
+console.log(import.meta.env.VITE_SOME_KEY); // "123"
+
 // все энвы которые прокидывает vite
 // console.log(import.meta.env);
 // глобально задекларированные переменные
@@ -15,5 +17,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </React.StrictMode>
+    </React.StrictMode>,
 );
