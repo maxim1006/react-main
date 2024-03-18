@@ -28,7 +28,7 @@ app.use(helmet({}));
 app.use((req, res, next) => {
     res.setHeader(
         'Permissions-Policy',
-        'camera=(), fullscreen=(self), geolocation=(self), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()'
+        'camera=(), fullscreen=(self), geolocation=(self), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()',
     );
     next();
 });
@@ -41,7 +41,12 @@ app.get('/api/v1/health/status', (req, res) => {
 });
 
 app.get('/api/v1/node-db', async (req, res) => {
-    res.send(await readFile('./node_db/text.txt'));
+    try {
+        let text = await readFile('./node_db/text.txt');
+        res.send(text);
+    } catch (e) {
+        res.send('No text.txt, please create it in a volume');
+    }
 });
 
 app.get('*', (req, res) => {

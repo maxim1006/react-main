@@ -10,7 +10,7 @@
 
 на выходе получаю id (Successfully built 48a305f17997) который затем использую в docker run
 
-### docker compose down -v
+### docker-compose down -v
 удалить докер контейнеры и вольюмы
 
 

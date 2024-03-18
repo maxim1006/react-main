@@ -11,6 +11,7 @@ services:
         - REACT_APP_SERVICES_HOST=/services/m
     ports:
       - "80:80"
+      - "443:443"
     # networks - разделение доступа, имя сервиса = хост по которому к нему можно обращаться
     # в рамках хостового env всего docker-compose, а так раздаю кто из сервисов с кем может общаться
     networks:
@@ -66,11 +67,14 @@ services:
           - KEYCLOAK_ADMIN_PASSWORD=admin
           - KC_HTTPS_CERTIFICATE_FILE=/opt/keycloak/local/certs/localhostcert.pem
           - KC_HTTPS_CERTIFICATE_KEY_FILE=/opt/keycloak/local/certs/localhostkey.pem
-      networks:
-          - db
       volumes:
 #  локальная папка ./keycloak/certs смотрит на /opt/keycloak/local/certs в вольюме
           - ./keycloak/certs:/opt/keycloak/local/certs
+# depends_on: - надо писать именно название сервиса
+      depends_on:
+          - db
+      networks:
+          - db
 
 networks:
   frontend:

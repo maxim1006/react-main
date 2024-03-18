@@ -1,8 +1,9 @@
 ### signals
+запустить
 nginx
+остановить
 nginx -s stop
-nginx -s reload
-или
+перезагрузить
 sudo service nginx restart
 
 ### nginx -t

@@ -22,6 +22,7 @@ FROM nginx:stable-alpine
 
 COPY ./nginx/nginx.conf /etc/nginx
 COPY ./nginx/confs /etc/nginx/confs
+COPY ./nginx/certs /etc/nginx/ssl/localhost
 
 # в /usr/share/nginx/html лежат файлы которые nginx сервит
 COPY --from=build /app/dist /usr/share/nginx/html
