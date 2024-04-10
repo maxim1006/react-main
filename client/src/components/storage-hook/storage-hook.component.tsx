@@ -1,6 +1,7 @@
 import { memo, useRef } from 'react';
 import { useLocalStorage, useSessionStorage } from '@app/hooks/storage';
 import StorageHookProblem from '@app/components/storage-hook/storage-hook-problem.component';
+import cn from 'classnames';
 
 type StorageHookProps = {};
 
@@ -11,7 +12,7 @@ const StorageHook = memo<StorageHookProps>(function StorageHook() {
     const [value1, setLocalStorageValue, removeLocalStorageValue] = useLocalStorage('age');
 
     return (
-        <div>
+        <div className={cn('class class1')}>
             <section style={{ marginBottom: '30px' }}>
                 <h3>Session storage</h3>
                 <p>Value: {value}</p>

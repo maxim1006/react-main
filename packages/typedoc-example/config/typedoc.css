@@ -1,0 +1,8 @@
+code {
+    /* important because custom css is added above the material ui styles */
+    font-family: monospace !important;
+}
+
+h5, h6 {
+    font-weight: 500 !important;
+}

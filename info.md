@@ -153,6 +153,9 @@ origin - тот кто отсылает
 referer = origin + path
 host - это ресурс на который идет реквест
 
+### перейти на https без сертификата
+thisisunsafe
+
 ### deployment
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
 https://www.youtube.com/watch?v=oykl1Ih9pMg&t=699s&ab_channel=TraversyMedia

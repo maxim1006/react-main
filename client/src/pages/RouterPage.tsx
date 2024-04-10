@@ -1,6 +1,6 @@
 import React, { ComponentType, FC, lazy, memo, useEffect } from 'react';
 import MainMenu from '@app/components/menu/MainMenu';
-import { matchPath, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { generatePath, matchPath, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import RouterExactRoute from '@app/components/router/RouterExactRoute';
 import RouterRoute1 from '@app/components/router/RouterRoute1';
 import NotFound from '@app/components/NotFound';
@@ -52,7 +52,7 @@ const RouterPage: FC<RouterPageProps> = () => {
         location: { search },
     } = history;
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     let location = useLocation();
     let historyFromUseNavigate = useNavigate();
@@ -80,18 +80,24 @@ const RouterPage: FC<RouterPageProps> = () => {
     // }
 
     // пример как сгенерировать из path путь
-    // navigate(
-    //     generatePath(PathEnum.DeviceDetails, {
-    //         offerSlug: "offerSlug",
-    //         equipmentSlug: "equipmentSlug",
-    //         '*': "other",
-    //     }),
-    //     { state: true, replace: true }
-    // );
+    // Specifying replace: true will cause the navigation to replace the current entry in the history stack instead of adding a new one.
+    // You may include an optional state value to store in history state, which you can then access on the destination route via useLocation. https://reactrouter.com/en/main/hooks/use-navigate#optionsstate
+    const handleNavigate = function () {
+        navigate(
+            generatePath(PathEnum.DeviceDetails, {
+                offerSlug: 'offerSlug',
+                equipmentSlug: 'equipmentSlug',
+                '*': 'other',
+            }),
+            { state: true, replace: true },
+        );
+    };
 
     return (
         <>
             <h3>Router examples</h3>
+
+            <div onClick={handleNavigate}>Handle navigate</div>
 
             <MainMenu
                 routes={[
