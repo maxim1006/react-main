@@ -1,4 +1,6 @@
 // factorial
+import { logFn } from '../utils/common.utils.js';
+
 function factorial(n) {
     if (n === 1) {
         return 1;
@@ -22,18 +24,18 @@ function factorialIter(n) {
     return result;
 }
 
-console.log('factorial ', factorial(5)); // 1*2*3*4*5 = 120
-console.log('factorial ', factorialIter(5)); // 1*2*3*4*5 = 120
+logFn(factorial, [5]); // 1*2*3*4*5 = 120
+logFn(factorialIter, [5]); // 1*2*3*4*5 = 120
 
-// Fibonacci - каждое последующее число равно сумме двух предыдущих 0,1,1,2,3,5,8,13,21
+// Fibonacci - каждое последующее число равно сумме двух предыдущих 0,1,1,2,3,5,8,13,21 (Fn = Fn-1 + Fn-2)
 function fibonacci(n) {
-    if (n <= 2) return n;
+    if (n <= 1) return n;
 
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 function fibonacciIter(n) {
-    if (n <= 2) return n;
+    if (n <= 1) return n;
 
     let result = 1;
     let prev = 1;
@@ -46,6 +48,5 @@ function fibonacciIter(n) {
 
     return result;
 }
-
-console.log('fibonacci ', fibonacci(3)); // 21
-console.log('fibonacciIter ', fibonacciIter(3)); // 21
+logFn(fibonacci, [3]); // 2
+logFn(fibonacciIter, [3]); // 2

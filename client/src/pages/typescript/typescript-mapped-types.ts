@@ -21,6 +21,17 @@ let obj1: ToBooleanSwitch<typeof obj> = {
     name: true,
 };
 
+interface KeyOfTestModel {
+    documentId: string;
+    phoneNumber: string;
+}
+
+type KeyOfTestType = {
+    [key in keyof KeyOfTestModel]?: string;
+};
+
+let keyOfTestType: KeyOfTestType = { documentId: 'asd', phoneNumber: 'asdf' };
+
 // Removes 'readonly' attributes from a type's properties
 type CreateMutable<Type> = {
     -readonly [T in keyof Type]: Type[T];

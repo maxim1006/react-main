@@ -3,7 +3,7 @@
 
 import { logFn } from '../../../utils/common.utils.js';
 
-function combine(arr, arr1) {
+function combine1(arr, arr1) {
     let i = 0;
     let j = 0;
     let length = arr.length;

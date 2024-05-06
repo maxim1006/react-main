@@ -4,6 +4,7 @@ import * as routers from './routers';
 import compression from 'compression';
 import shouldCompress from './helpers/server.helper';
 import cors from 'cors';
+import './examples/streaming/straming';
 
 const app = express(),
     port = process.env.NODEJS_PORT || 3005,
@@ -33,7 +34,7 @@ app.use(
         credentials: !isProduction,
         preflightContinue: false,
         maxAge: 86400,
-    })
+    }),
 );
 
 app.use(bodyParser.json());

@@ -1,3 +1,5 @@
+import { logFn } from '../utils/common.utils.js';
+
 function collectOdd(nums) {
     let result = [];
 
@@ -39,5 +41,5 @@ function collectOddPure(nums) {
     return [...arr, ...collectOddPure(nums.slice(1))];
 }
 
-console.log(collectOdd([1, 2, 3, 4, 5, 6, 7, 8, 9]));
-console.log(collectOddPure([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+logFn(collectOdd, [[1, 2, 3, 4, 5, 6, 7, 8, 9]]);
+logFn(collectOddPure, [[1, 2, 3, 4, 5, 6, 7, 8, 9]]);

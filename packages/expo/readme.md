@@ -8,3 +8,16 @@
 - iOS Simulator: Hit Ctrl-Cmd-Z on a Mac in the emulator to simulate the shake gesture, or press Cmd+D.
 - Android Device: Shake the device vertically a little bit, or run adb shell input keyevent 82 in your terminal window if your device is connected via USB.
 - Android Emulator: Either hit Cmd+M, or run adb shell input keyevent 82 in your terminal window.
+
+### прокинуть postMessage из webView в мобильную аппу
+```ts
+    useEffect(() => {
+        setTimeout(() => {
+            (window as any).ReactNativeWebView.postMessage(
+                JSON.stringify({
+                    eventType: 'onClose',
+                })
+            );
+        }, 500);
+    }, []);
+```

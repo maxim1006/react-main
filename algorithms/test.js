@@ -1,25 +1,13 @@
 import { logFn } from './utils/common.utils.js';
 
-function answerQueries(nums, queries, limit) {
-    let sums = nums.reduce((acc, i, idx) => {
-        if (idx === 0) {
-            acc.push(i);
-        } else {
-            acc.push(i + acc.at(-1));
-        }
+function collectOdd(nums) {
+    if (nums.length <= 0) return [];
 
-        return acc;
-    }, []);
+    let num = nums.shift();
+    let res = num % 2 !== 0 ? [num] : [];
 
-    return queries.map(([start, end]) => sums[end] - sums[start] + nums[start] < limit);
+    return [...res, ...collectOdd(nums)];
 }
 
-logFn(answerQueries, [
-    [1, 6, 3, 2, 7, 2],
-    [
-        [0, 3],
-        [2, 5],
-        [2, 4],
-    ],
-    13,
-]); // 18
+logFn(collectOdd, [[1, 2, 3, 4, 5, 6, 7, 8, 9]]);
+logFn(collectOdd, [[1, 2, 3, 4, 5, 6, 7, 8, 9]]);
