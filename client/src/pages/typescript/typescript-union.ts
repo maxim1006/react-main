@@ -52,3 +52,74 @@ function f(arg: ComparisonModel) {
             exhaustiveCheck(arg);
     }
 }
+
+// примеры с несколькими закастованными объектами
+interface BaseObject {
+    type: string;
+    name: string;
+}
+
+interface FirstObject extends BaseObject {
+    type: 'first';
+    first: string;
+}
+
+interface SecondObject extends BaseObject {
+    type: 'second';
+    second: string;
+}
+
+type AllObject = FirstObject | SecondObject;
+
+// approach1
+export type FindByType<Union, Type> = Union extends { type: Type } ? Union : undefined;
+
+export function castObject<T extends AllObject['type']>(
+    expectedType: T,
+    obj: AllObject,
+): FindByType<AllObject, T> | undefined {
+    if (obj.type !== expectedType) {
+        console.warn(`expected type ${expectedType} but was ${obj.type}`);
+        return;
+    }
+    return obj as FindByType<AllObject, T>;
+}
+
+function hello(obj: AllObject) {
+    const firstObject = castObject('first', obj);
+    return firstObject?.first;
+}
+
+// approach2
+export enum ObjectTypeEnum {
+    First = 'first',
+    Second = 'second',
+}
+
+function castObject1<T extends AllObject>(type: ObjectTypeEnum, arg: AllObject): arg is T {
+    return arg.type === type;
+}
+
+function getCastedObject<T extends AllObject>(type: ObjectTypeEnum, arg: AllObject): T | null {
+    if (castObject1<T>(type, arg)) {
+        return arg as T;
+    }
+
+    return null;
+}
+
+function hello1(obj: AllObject) {
+    if (castObject1<FirstObject>(ObjectTypeEnum.First, obj)) {
+        console.log(obj.first);
+    }
+
+    if (castObject1<SecondObject>(ObjectTypeEnum.Second, obj)) {
+        console.log(obj.second);
+    }
+
+    const firstObj = getCastedObject<FirstObject>(ObjectTypeEnum.Second, obj);
+    console.log(firstObj?.first);
+
+    const secondObj = getCastedObject<FirstObject>(ObjectTypeEnum.Second, obj);
+    console.log(firstObj?.first);
+}
