@@ -1,4 +1,4 @@
-import { memo, FC, useActionState, useOptimistic, useRef } from 'react';
+import { FC, memo, useActionState, useOptimistic, useRef } from 'react';
 import { delay } from '../../utils/common.utils.ts';
 import { useFormStatus } from 'react-dom';
 
@@ -21,7 +21,7 @@ const UseActionState: FC<UseActionStateProps> = () => {
         (_state: string, newName: string) => newName,
     );
 
-    // setOptimisticName сразу поменяем стейт, а потом когда доедет асинк то либо вернется назад либо будет новый
+    // setOptimisticName сразу поменяем стейт, а потом когда доедет асинк то либо вернется назад либо будет новый и все это работает в action от формы, если в useEffect применить setOptimisticName(newName); - не отработает
     const onOptimisticAction = async (formData: FormData) => {
         const newName = formData.get('name') + '';
         setOptimisticName(newName);
@@ -49,9 +49,8 @@ const UseActionState: FC<UseActionStateProps> = () => {
     );
 
     // интересно что форма не перезагружается и аргументом сразу будет formData
-    const onFormAction = async (formData: unknown) => {
-        console.log(formData);
-        await delay(1000);
+    const onFormAction = async (formData: FormData) => {
+        console.log(Object.fromEntries(formData.entries()));
     };
 
     return (
@@ -86,6 +85,14 @@ const UseActionState: FC<UseActionStateProps> = () => {
                 </button>
                 {formState && <p>{formState.name}</p>}
             </form>
+            {/*можно и так но тут будет проблема что action={submitAction} submitAction принимает в payload FormData*/}
+            {/*<form action={submitAction}>*/}
+            {/*    <input type='text' name='name' />*/}
+            {/*    <button type='submit' disabled={isPending}>*/}
+            {/*        Update*/}
+            {/*    </button>*/}
+            {/*    {formState && <p>{formState.name}</p>}*/}
+            {/*</form>*/}
         </>
     );
 };
