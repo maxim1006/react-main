@@ -34,7 +34,7 @@ module.exports = {
                     directories: [path.join(__dirname, './src')],
                     exclude: ['*.test.js'],
                     root: __dirname,
-                })
+                }),
             );
 
         // add aliases
@@ -67,7 +67,7 @@ module.exports = {
                             copy: [{ source: 'from', destination: `$to` }],
                         },
                     },
-                })
+                }),
             );
         }
 
@@ -133,5 +133,9 @@ module.exports = {
         // config.plugins = config.plugins.filter(p=>["CaseSensitivePathsPlugin"].includes(p.constructor.name))
 
         return config;
+    },
+    paths: function (paths, env) {
+        // ...add your paths config
+        return paths;
     },
 };

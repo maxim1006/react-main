@@ -85,6 +85,9 @@ rmdir some-directory (removes empty directory)
 find path -name filename
 find . -name "*.js"
 
+// найти файл/папку
+find . -name '*parallels*'
+
 // найти папку
 sudo find / -type d -name "*shared-docker*"
 

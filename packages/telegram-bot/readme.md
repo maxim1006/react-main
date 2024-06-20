@@ -45,7 +45,8 @@ ssh root@62.217.181.35 (чаще всего подключение по ssh бу
 (теперь в докере могу что угодно делать в nginx)
 /root/apps/telegram-bot - тут приложение
 
-sudo apt update - обновление пакетов через apt
+sudo apt update - обновление индексы пакетов через apt
+sudo apt upgrade - обновленяет пакеты
 
 ### deployment
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
