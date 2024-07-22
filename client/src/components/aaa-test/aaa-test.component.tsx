@@ -8,7 +8,11 @@ const AAATest: FC<AAATestProps> = () => {
     const ids = useMemo(() => [generateUUID(), generateUUID(), generateUUID()], []);
     // const idsUuid = [uuidv4(), uuidv4(), uuidv4()];
 
-    const [value, refresh] = useReducer(i => ++i, 0);
+    const [value, refresh] = useReducer(
+        i => ++i,
+        0,
+        i => i,
+    );
 
     return (
         <div className={cn('taAAATest')}>

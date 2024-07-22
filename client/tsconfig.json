@@ -16,8 +16,8 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "noFallthroughCasesInSwitch": true,
-        "types": ["react/next", "react-dom/next"]
+        "noUncheckedIndexedAccess": true
     },
-    "include": ["src/**/*"],
+    "include": ["src"],
     "exclude": ["node_modules", "build", "scripts", "src/tests/**/*"]
 }

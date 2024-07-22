@@ -259,6 +259,16 @@ ifconfig | grep inet (последняя строка ipv4 inet 10.236.135.175 -
 последний раз отработал
 curl ifconfig.me
 
+# crontab
+добавить задачу
+crontab -e 
 
+пример задачи
+10 14 * * * /usr/local/bin/node /Users/maxmaximov/Projects/react-main/packages/telegram-bot-happy-birthday/index.js >> /Users/maxmaximov/Projects/daily_script.log 2>&1
 
+посмотреть все задачи
+crontab -l
+
+удалить задачу
+crontab -r
 

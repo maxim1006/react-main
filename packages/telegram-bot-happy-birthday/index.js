@@ -31,6 +31,8 @@ function congratulate(cb) {
     const todayDay = date.getDate();
     const todayMonth = date.getMonth() + 1;
 
+    console.log('birthday script triggered', new Date());
+
     birthdays.forEach(([name, date]) => {
         const [birthdayDay, birthdayMonth] = date.split('/');
         const birthdayDayNum = +birthdayDay;
