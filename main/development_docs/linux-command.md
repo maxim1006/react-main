@@ -6,6 +6,9 @@ curl --location --request POST https://google.com
 
 -I - head; -k - insecure; -X - request
 
+# сделать запрос и посмотреть скорость загрузки
+curl --connect-to ::speedtest.selectel.ru https://manifest.googlevideo.com/100MB -k -o/dev/null
+
 # посмотреть загрузку проца
 top
 
@@ -271,4 +274,16 @@ crontab -l
 
 удалить задачу
 crontab -r
+
+# как проверить пинг и доступ к серверу провайдера
+traceroute ya.ru
+
+покажет 2 ip (1ый до твоего роутера, 2ой до сервера провайдера)
+
+далее в 2х окошках запускаем
+ping 192.168.68.1 (до твоего роутера)
+
+ping 100.65.0.1 (до сервера провайдера)
+
+в случае ошибок на стороне провайдера - звоним ему
 

@@ -18,8 +18,9 @@ console.log(__dirname);
     for (let file of files) {
         const curFile = await Jimp.read(`${inputFolder}/${file}`);
 
-        const fileWithoutExt = path.parse(file).name;
-
+        const parsedFilePath = path.parse(file);
+        const fileWithoutExt = parsedFilePath.name;
+console.log({parsedFilePath});
         /*
          * чтобы нормально заработал JIMP нужно тут
          *  \node_modules@jimp\core\dist\utils\image-bitmap.js:196 line
@@ -29,8 +30,8 @@ console.log(__dirname);
          * */
         await curFile
             .resize(300, Jimp.AUTO) // resize
-            .quality(80) // set JPEG quality
+            .quality(30) // set JPEG quality
             // .greyscale() // set greyscale
-            .write(`${outputFolder}/${fileWithoutExt}.jpg`); // save
+            .write(`${outputFolder}/${fileWithoutExt}${parsedFilePath.ext}`); // save
     }
 })();
