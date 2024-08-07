@@ -12,7 +12,6 @@ compress_images(INPUT_path_to_your_images, OUTPUT_path, { compress_force: false,
     { png: { engine: "pngquant", command: ["--quality=50-60", "-o"] } },
     { svg: { engine: "svgo", command: "--multipass" } },
     { gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
-    { webp: { engine: false, command: false } },
     function (error, completed, statistic) {
         console.log("-------------");
         console.log(error);
