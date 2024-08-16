@@ -1,15 +1,16 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 const mode = process.env.NODE_ENV;
-const isProd = mode === "production";
+const isProd = mode === 'production';
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: './src/index.ts',
     mode,
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist')
     },
 
     devtool: isProd ? false : 'inline-source-map',
@@ -20,14 +21,14 @@ module.exports = {
 
     devServer: {
         port: 8081,
-        compress: true,
+        compress: true
     },
 
     module: {
         rules: [
             {
                 test: /\.(sa|sc|c)ss$/i,
-                use: [ isProd ? MiniCssExtractPlugin.loader: "style-loader", 'css-loader', "postcss-loader", "sass-loader",]
+                use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
                 test: /\.(ts|tsx|js|jsx)$/,
@@ -38,12 +39,21 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[hash].[ext]',
+                            outputPath: 'assets/images/',
+                            publicPath: 'assets/images/'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
-            },
+                type: 'asset/resource'
+            }
         ]
     },
 
@@ -52,7 +62,12 @@ module.exports = {
             template: './src/index.html'
         }),
         ...[].concat(isProd ? [new MiniCssExtractPlugin({
-            filename: "[name].css",
-        })]: []),
+            filename: '[name].css'
+        })] : []),
+        new CopyPlugin({
+            patterns: [
+                { from: "./public", to: "" } //to the dist root directory
+            ],
+        }),
     ]
 };

@@ -5,7 +5,8 @@
     "main": "image-minifier.js",
     "scripts": {
         "start": "node ./image-minifier.js",
-        "start:compress": "node ./image-minifier1.js"
+        "start:compress": "node ./image-minifier1.js",
+        "rm": "rm -rf ./input/* & rm -rf ./output/*"
     },
     "author": "",
     "license": "ISC",
