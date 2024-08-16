@@ -6,6 +6,8 @@ const isProd = mode === 'production';
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+    // Это базовая директория для разрешения точек входа (entry points) в Webpack. По умолчанию это текущая рабочая директория.
+    context: path.resolve(__dirname, './'),
     entry: './src/index.ts',
     mode,
     output: {
@@ -39,16 +41,7 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[hash].[ext]',
-                            outputPath: 'assets/images/',
-                            publicPath: 'assets/images/'
-                        }
-                    }
-                ]
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -64,9 +57,10 @@ module.exports = {
         ...[].concat(isProd ? [new MiniCssExtractPlugin({
             filename: '[name].css'
         })] : []),
+        // to the dist root directory
         new CopyPlugin({
             patterns: [
-                { from: "./public", to: "" } //to the dist root directory
+                { from: "./public", to: "" }
             ],
         }),
     ]
