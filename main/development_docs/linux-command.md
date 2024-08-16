@@ -150,6 +150,10 @@ sudo  chown mysql:mysql mysql-files // дать права пользовате�
 
 sudo chown -R mysql /usr/local/var/mysql/
 -R - recursively
+
+// поменять рекурсивно для ./ ownership для текущего юзера
+sudo chown -R $(whoami) ./
+
 # chmod (change mode)
 http://linuxcommand.org/lc3_lts0090.php
 
