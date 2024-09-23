@@ -321,6 +321,9 @@ function curry(f) {
 //     delay(50).then(() => 42),
 //     delay(75).then(() => { throw 'nope'; })
 // ];
+// напишите функцию которая вернет
+// function getResult(promises) {} // [{"status": "resolved", "value": 42}, {"status": "rejected", "reason": "nope"}]
+
 //
 // function getResult(promises) {
 //     return Promise.all(promises.map((promise)=>{

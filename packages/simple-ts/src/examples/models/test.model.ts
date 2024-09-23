@@ -1,0 +1,3 @@
+interface TestModel {
+    prop: string;
+}

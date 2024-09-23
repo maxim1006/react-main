@@ -19,8 +19,8 @@ const AnimateAndTransition: FC<AnimateAndTransitionProps> = () => {
         const target = e.target as HTMLDivElement;
         const dataStyle = target.dataset.action ? styles[target.dataset.action] : '';
         e.persist();
-        target.classList.add(dataStyle);
-        target.addEventListener(type, _ => target.classList.remove(dataStyle), {
+        target.classList.add(dataStyle || '');
+        target.addEventListener(type, _ => target.classList.remove(dataStyle || ''), {
             once: true,
         });
     };

@@ -13,7 +13,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                 url: `users`,
             }),
         }),
-        fetchUser: build.query<UserModel, { userId: string }>({
+        fetchUser: build.query<UserModel, { userId: string | undefined | null }>({
             async queryFn({ userId }, { dispatch, getState }, __, fetchWithBQ) {
                 const result = await fetchWithBQ({
                     url: `users/${userId}`,
@@ -44,7 +44,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                     dispatch(
                         apiUserApi.util.updateQueryData('fetchUserList', undefined, userList => {
                             userList.push(newUser);
-                        })
+                        }),
                     );
                 } catch {
                     console.error('addUser onQueryStarted error');
@@ -76,7 +76,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                     apiUserApi.util.updateQueryData('fetchUserList', undefined, userList => {
                         const userIndex = userList.findIndex(item => item.id === user.id);
                         userList[userIndex] = user;
-                    })
+                    }),
                 );
                 try {
                     await queryFulfilled;
@@ -103,7 +103,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                 dispatch(
                     apiUserApi.util.updateQueryData('fetchUserList', undefined, userList => {
                         return userList.filter(userFromList => userFromList.id !== user.id);
-                    })
+                    }),
                 );
 
                 return { data };
@@ -117,8 +117,8 @@ const debouncedAddUser = debounce(
         user: Partial<UserModel>,
         dispatch: ThunkDispatch<any, any, any>,
         fetchWithBQ: (
-            arg: string | FetchArgs
-        ) => MaybePromise<QueryReturnValue<unknown, FetchBaseQueryError, FetchBaseQueryMeta>>
+            arg: string | FetchArgs,
+        ) => MaybePromise<QueryReturnValue<unknown, FetchBaseQueryError, FetchBaseQueryMeta>>,
     ) => {
         // Pessimistic Updates
         const result = await fetchWithBQ({
@@ -134,11 +134,11 @@ const debouncedAddUser = debounce(
         dispatch(
             apiUserApi.util.updateQueryData('fetchUserList', undefined, userList => {
                 userList.push(data);
-            })
+            }),
         );
 
         return data;
     },
     1000,
-    { leading: true }
+    { leading: true },
 );

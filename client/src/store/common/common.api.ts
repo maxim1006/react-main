@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { v4 as uuidv4 } from 'uuid';
 import { API_BASE_URL, API_PATH } from '@app/constants/common.constants';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 
 export const commonApi = createApi({
     reducerPath: 'api',

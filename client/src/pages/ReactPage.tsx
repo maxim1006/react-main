@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import StorageHook from '@app/components/storage-hook/storage-hook.component';
+import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
+import Component from '@app/components/component/component.component';
 
 export default function ReactPage() {
     return (
@@ -68,9 +69,9 @@ export default function ReactPage() {
                 {/*    <CustomDashedBorder />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='GridRepeat'>*/}
-                {/*    <GridRepeat />*/}
-                {/*</Component>*/}
+                <Component title='GridRepeat'>
+                    <GridRepeat />
+                </Component>
 
                 {/*<Component title='FunctionAndObjectInUseeffect'>*/}
                 {/*    <FunctionAndObjectInUseeffect />*/}
@@ -204,7 +205,7 @@ export default function ReactPage() {
                 {/*<ScriptHook />*/}
                 {/*<PreviousHook />*/}
                 {/*<UpdateEffectHook />*/}
-                <StorageHook />
+                {/*<StorageHook />*/}
                 {/*</Component>*/}
 
                 {/* <Component title="Image preload"> */}
