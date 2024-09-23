@@ -4,7 +4,9 @@
     "description": "",
     "main": "image-minifier.js",
     "scripts": {
-        "start": "node ./image-minifier.js"
+        "start": "node ./image-minifier.js",
+        "start:compress": "node ./image-minifier1.js",
+        "rm": "rm -rf ./input/* & rm -rf ./output/*"
     },
     "author": "",
     "license": "ISC",
@@ -12,7 +14,12 @@
         "@types/fs-extra": "9.0.13",
         "@types/glob": "^8.1.0",
         "@types/node": "18.6.5",
+        "compress-images": "^2.0.5",
         "fs-extra": "^11.1.0",
         "jimp": "^0.22.7"
+    },
+    "dependencies": {
+        "gifsicle": "^5.2.1",
+        "pngquant-bin": "^6.0.1"
     }
 }

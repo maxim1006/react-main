@@ -6,6 +6,9 @@ curl --location --request POST https://google.com
 
 -I - head; -k - insecure; -X - request
 
+# сделать запрос и посмотреть скорость загрузки
+curl --connect-to ::speedtest.selectel.ru https://manifest.googlevideo.com/100MB -k -o/dev/null
+
 # посмотреть загрузку проца
 top
 
@@ -147,6 +150,10 @@ sudo  chown mysql:mysql mysql-files // дать права пользовате�
 
 sudo chown -R mysql /usr/local/var/mysql/
 -R - recursively
+
+// поменять рекурсивно для ./ ownership для текущего юзера
+sudo chown -R $(whoami) ./
+
 # chmod (change mode)
 http://linuxcommand.org/lc3_lts0090.php
 
