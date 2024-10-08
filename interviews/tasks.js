@@ -1,27 +1,27 @@
 /*********** Task currying ***********/
-function sum(a, b, c) {
-    return a + b + c;
-}
-
-let curriedSum = curry(sum);
-let curriedSum1 = curry(sum);
-let curriedSum2 = curry(sum);
-
-console.log(curriedSum(1, 2, 3)); // 6
-console.log(curriedSum1(1)(2, 3)); // 6
-console.log(curriedSum2(1)(2)(3)); // 6
+// function sum(a, b, c) {
+//     return a + b + c;
+// }
+//
+// let curriedSum = curry(sum);
+// let curriedSum1 = curry(sum);
+// let curriedSum2 = curry(sum);
+//
+// console.log(curriedSum(1, 2, 3)); // 6
+// console.log(curriedSum1(1)(2, 3)); // 6
+// console.log(curriedSum2(1)(2)(3)); // 6
 /*********** Answer ***********/
-function curry(f) {
-    return function curried(...args) {
-        if (args.length >= f.length) {
-            return f.apply(this, args);
-        } else {
-            return function pass(...args2) {
-                return curried.apply(this, args.concat(args2));
-            };
-        }
-    };
-}
+// function curry(f) {
+//     return function curried(...args) {
+//         if (args.length >= f.length) {
+//             return f.apply(this, args);
+//         } else {
+//             return function pass(...args2) {
+//                 return curried.apply(this, args.concat(args2));
+//             };
+//         }
+//     };
+// }
 
 /*********** Task currying2 ***********/
 // console.log(sum(0)(1)(2)(3)(4)(5) + "");
@@ -203,6 +203,28 @@ function curry(f) {
 //     }
 //
 //     return res;
+// }
+
+// через массив
+// function RLE(str) {
+//     let res = [];
+//     let count = 1;
+//     let prev = str[0];
+//
+//     for (let i = 1; i < str.length; i++) {
+//         if (str[i] === prev) {
+//             count++;
+//             continue;
+//         }
+//
+//         res.push(count > 1 ? `${prev}${count}` : prev);
+//         prev = str[i];
+//         count = 1;
+//     }
+//
+//     res.push(count > 1 ? `${prev}${count}` : prev);
+//
+//     return res.join('');
 // }
 
 /*********** Task Дан набор отрезков - пожалуйста напишите функцию convert() которая объеденяет вхождения ***********/
@@ -457,3 +479,37 @@ function curry(f) {
 // // raf // отработает requestAnimationFrame
 // // setTimeout // отработает таймаут
 ///////////////////////////////////////////////////////////////////// End
+
+///////////////////////////////////////////////////////////////////// Task
+// посчитайте сумму чисел и того что чисел + строка, но не строка + число
+// const a = [1, 'b', '1b', 'b1', ['b', '1b', 'b1']];
+//
+// function sum(nums) {
+//     let res = 0;
+//
+//     if (Array.isArray(nums)) {
+//         for (let i = 0; i < nums.length; i++) {
+//             res += sum(nums[i]); // sum('b1') + sum('1b') + sum('b')
+//         }
+//     } else {
+//         res += getNumber(nums);
+//     }
+//
+//     return res;
+// }
+//
+// function getNumber(num) {
+//     if (isNumber(num)) return num;
+//
+//     const currentNum = +parseFloat(num);
+//
+//     if (isNumber(currentNum)) return currentNum;
+//
+//     return 0;
+// }
+//
+// const isNumber = num => {
+//     return Number.isFinite(num);
+// };
+//
+// console.log(sum(a));

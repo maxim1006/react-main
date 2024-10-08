@@ -14,7 +14,7 @@ function dfs(menuItems, val) {
 
     for (let i of menuItems) {
         // тут вся соль в вызове функции dfs(i.menuItems, val если она вернет тру то вверх кака раз всплывет тру и второго пробега в L1 не будет так как на верхнем уровне на 1м пробеге сработает return
-        if (val === i.link || dfs(i.menuItems, val)) return true;
+        if (val === i.link || dfs(i.menuItems, val)) return true; // dfs([{ link: 'link11' }, { link: 'link12' }], val) -> dfs(i.menuItems, val)
     }
 
     return false;
