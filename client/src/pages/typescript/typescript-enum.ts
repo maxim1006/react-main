@@ -69,7 +69,7 @@ let stepsType2: StepsType2 = { [StepNameEnum.Delivery1]: 'str' };
 
 // а вот так уже могу забрать propName у enum
 export type StepsTypeReadonly = {
-    [key in keyof typeof StepNameEnum]: typeof StepNameEnum[key];
+    [key in keyof typeof StepNameEnum]: (typeof StepNameEnum)[key];
 };
 let stepsTypeReadonly: StepsTypeReadonly = { Delivery: StepNameEnum.Delivery, Delivery1: StepNameEnum.Delivery1 };
 
@@ -111,3 +111,12 @@ const o1: Record<ExtractType, string> = { [ExcludeEnum.P1]: '1' };
 const o: Record<ExcludeEnumType, string> = { [ExcludeEnum.P1]: '1' };
 // const o: Record<ExcludeEnumType, string> = {[ExcludeEnum.P]: "1"} // ошибка
 // --------- ------------------------------------------------------------- ---------------
+
+// как найти value в enum
+enum TestEnum {
+    A = '123',
+}
+let val = '123';
+if (Object.values(TestEnum).includes(val as TestEnum)) {
+    console.log('includes');
+}

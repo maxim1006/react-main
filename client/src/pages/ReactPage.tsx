@@ -2,12 +2,17 @@ import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
 import Component from '@app/components/component/component.component';
+import CatchError from '@app/components/catch-error/catch-error.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
                 {/*<AAATest />*/}
+
+                <Component title='MyImage'>
+                    <CatchError />
+                </Component>
 
                 {/*<Component title='MyImage'>*/}
                 {/*    <CssScrollbarGutter />*/}
@@ -69,9 +74,9 @@ export default function ReactPage() {
                 {/*    <CustomDashedBorder />*/}
                 {/*</Component>*/}
 
-                <Component title='GridRepeat'>
-                    <GridRepeat />
-                </Component>
+                {/*<Component title='GridRepeat'>*/}
+                {/*    <GridRepeat />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='FunctionAndObjectInUseeffect'>*/}
                 {/*    <FunctionAndObjectInUseeffect />*/}

@@ -82,19 +82,23 @@
 // }
 
 /*********** Task Обход дерева / объекта 2 ***********/
-// const obj = {
-//     a: {
-//         b: {
-//             c: 'd',
-//         },
-//         e: 'f',
-//     },
-// };
-//
-// console.log(get(obj, 'a.b')); // { c : 'd' }
-// console.log(get(obj, 'a.b.c')); // 'd'
-// console.log(get(obj, 'a.e')); // 'f'
-// console.log(get(obj, 'a.x.e')); // undefined
+const obj = {
+    a: {
+        b: {
+            c: 'd',
+        },
+        e: 'f',
+    },
+};
+
+function get(obj, str) {
+    return str.split('.').reduce((acc, i) => acc?.[i], obj);
+}
+
+console.log(get(obj, 'a.b')); // { c : 'd' }
+console.log(get(obj, 'a.b.c')); // 'd'
+console.log(get(obj, 'a.e')); // 'f'
+console.log(get(obj, 'a.x.e')); // undefined
 /*********** Answer ***********/
 // 1
 // function get(obj, str) {
@@ -152,7 +156,7 @@
 
 /*********** Task RLE ***********/
 // Дана строка, состоящая из букв A-Z:
-// AAAABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB
+// ABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB
 //
 // Нужно написать функцию RLE, которая на выходе даст строку вида:
 //     A4B3C2XYZD4E3F3A6B28

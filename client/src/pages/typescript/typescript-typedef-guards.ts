@@ -2,7 +2,7 @@
 type Fish = { swim: () => void };
 type Bird = { fly: () => void };
 
-function isFish(pet: Fish | Bird): pet is Fish {
+function isFishGuard(pet: Fish | Bird): pet is Fish {
     return 'swim' in pet;
 }
 
@@ -12,7 +12,7 @@ function getSmallPet(): Fish | Bird {
 
 let pet = getSmallPet();
 
-if (isFish(pet)) {
+if (isFishGuard(pet)) {
     pet.swim();
 } else {
     pet.fly();
