@@ -25,7 +25,7 @@ let cachedEtag: string;
 userRouter.get('/big', async (req: Request, res: Response) => {
     let ifNoneMatchHeader = req.headers['if-none-match'];
 
-    console.log(ifNoneMatchHeader, cachedEtag);
+    console.log({ ifNoneMatchHeader, cachedEtag });
 
     if (cachedEtag && ifNoneMatchHeader && cachedEtag === ifNoneMatchHeader) {
         res.status(304).end();
