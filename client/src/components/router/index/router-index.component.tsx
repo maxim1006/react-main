@@ -18,7 +18,7 @@ const RouterIndex: FC<RouterIndexProps> = () => {
                 return prev;
             },
             // чтобы каждый раз при клике на кнопку назад ходить не по 1 символу а на предыдущий роут
-            { replace: true }
+            { replace: true },
         );
     };
 
@@ -28,7 +28,7 @@ const RouterIndex: FC<RouterIndexProps> = () => {
                 prev.set('can', e.target.checked + '');
                 return prev;
             },
-            { replace: true }
+            { replace: true },
         );
     };
 
@@ -38,6 +38,9 @@ const RouterIndex: FC<RouterIndexProps> = () => {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
+
+        // formData.entries() - FormData Iterator
+        console.log({ formData: [...formData.entries()] }); // [['name', 'max']]
 
         setSearchParams(prev => {
             const formDataObj = Object.fromEntries(formData.entries()) as unknown as FormDataValues;

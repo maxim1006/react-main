@@ -49,10 +49,9 @@ function binarySearch(array, target) {
 
 function binarySearchClearer(array, target) {
     let s = 0;
-    // let e = array.length - 1; // это неверно, так как не учитывает последний элемент в массиве
     let e = array.length - 1;
 
-    while (s < e) {
+    while (s <= e) {
         // console.log(array.slice(start, end));
         ++countClearer;
         let pivot = Math.floor((s + e) / 2);
@@ -65,11 +64,32 @@ function binarySearchClearer(array, target) {
         if (target > cur) {
             s = pivot + 1;
         } else {
-            e = pivot;
+            e = pivot - 1;
         }
     }
 
     return -1;
+}
+
+function binarySearch1(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        const middle = Math.floor((left + right) / 2);
+
+        if (arr[middle] === target) {
+            return middle; // Возвращаем индекс, если элемент найден
+        }
+
+        if (arr[middle] < target) {
+            left = middle + 1; // Ищем в правой половине
+        } else {
+            right = middle - 1; // Ищем в левой половине
+        }
+    }
+
+    return -1; // Элемент не найден
 }
 
 function recursiveBinarySearch(array, item, start, end) {
