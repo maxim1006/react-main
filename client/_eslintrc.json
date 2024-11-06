@@ -10,7 +10,7 @@
             "experimentalObjectRestSpread": true
         }
     },
-    "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js"],
+    "ignorePatterns": ["/src/pages/typescript/**/*", "/src/**/*.js", "**/*.*.js", "**/node_modules/"],
     // add new rules here
     "rules": {},
     "plugins": ["jsx-a11y"],

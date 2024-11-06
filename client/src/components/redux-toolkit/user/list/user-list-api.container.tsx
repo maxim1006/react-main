@@ -23,11 +23,15 @@ const UserListApiContainer: FC<UserListApiContainerProps> = () => {
         onFetchUserLazy,
         onPollingStart,
         onPollingEnd,
+        customInitiateFetchUserList,
     } = useApiUserList();
 
     return (
         <>
             <div>
+                <button type='button' onClick={customInitiateFetchUserList}>
+                    custom trigger initiate
+                </button>
                 <button type='button' className={styles.button} onClick={onPollingStart}>
                     Start Polling
                 </button>
@@ -69,4 +73,3 @@ const UserListApiContainer: FC<UserListApiContainerProps> = () => {
 };
 
 export default memo(UserListApiContainer);
-//

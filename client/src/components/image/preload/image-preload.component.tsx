@@ -8,7 +8,7 @@ const ImagePreload = memo<ImagePreloadProps>(function ImagePreload() {
 
     const showPreview = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
-            setPreviewSrc(URL.createObjectURL(e.target.files[0]));
+            setPreviewSrc(URL.createObjectURL(e.target.files[0] as any));
         }
     };
 

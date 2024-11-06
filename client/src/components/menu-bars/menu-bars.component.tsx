@@ -8,7 +8,7 @@ const MenuBars: FC<MenuBarsProps> = () => {
     const [open, setOpen] = useState<boolean>();
 
     return (
-        <div onClick={() => setOpen(i => !i)} className={cn(styles.host, 'taMenuBars', { [styles._open]: open })}>
+        <div onClick={() => setOpen(i => !i)} className={cn(styles.host, 'taMenuBars', { [`${styles._open}`]: open })}>
             {[...Array(3)].map((_, idx) => (
                 // если не поставить будет ругань на ключи - индексы
                 // eslint-disable-next-line

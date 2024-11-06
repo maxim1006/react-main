@@ -6,14 +6,6 @@
     overflow-y: hidden;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    -webkit-mask-image:
-        linear-gradient(
-            to left,
-            transparent,
-            black var(--right-gradient),
-            black var(--left-gradient),
-            transparent 100%
-        );
     mask-image:
         linear-gradient(
             to left,
@@ -54,14 +46,6 @@
     overflow-y: scroll;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    -webkit-mask-image:
-        linear-gradient(
-            to bottom,
-            transparent,
-            black var(--top-gradient),
-            black var(--bottom-gradient),
-            transparent 100%
-        );
     mask-image:
         linear-gradient(
             to bottom,

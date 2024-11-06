@@ -1,10 +1,11 @@
 import { UserModel } from '@app/models/user.model';
 import { commonApi } from '../common/common.api';
-import { MaybePromise } from '@reduxjs/toolkit/dist/query/tsHelpers';
 import { debounce } from 'lodash';
 import { ThunkDispatch } from 'redux-thunk';
-import { FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
-import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
+import { FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query/react';
+import { QueryReturnValue } from '@reduxjs/toolkit/query/react';
+
+type MaybePromise<T> = T | PromiseLike<T>;
 
 export const apiUserApi = commonApi.injectEndpoints({
     endpoints: build => ({
@@ -110,6 +111,7 @@ export const apiUserApi = commonApi.injectEndpoints({
             },
         }),
     }),
+    overrideExisting: true,
 });
 
 const debouncedAddUser = debounce(

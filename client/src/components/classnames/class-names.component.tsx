@@ -19,10 +19,10 @@ const ClassNames = memo<ClassNamesProps>(() => {
 
     // via css-modules 2
     let className2 = cn({
-        [styles.base]: true,
-        [styles.accept]: state === 'accept',
-        [styles.error]: state === 'error',
-        [styles.disabled]: state === 'disabled',
+        [`${styles.base}`]: true,
+        [`${styles.accept}`]: state === 'accept',
+        [`${styles.error}`]: state === 'error',
+        [`${styles.disabled}`]: state === 'disabled',
     });
 
     // via css-modules 3
@@ -30,7 +30,7 @@ const ClassNames = memo<ClassNamesProps>(() => {
         `${styles.base}`,
         state === 'accept' && styles.accept,
         state === 'error' && styles.error,
-        state === 'disabled' && styles.disabled
+        state === 'disabled' && styles.disabled,
     );
 
     return (

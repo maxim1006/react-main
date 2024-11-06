@@ -4,14 +4,17 @@ const defaultObserverConfig: IntersectionObserverInit = {};
 
 export default function useIntersectionObserver<T extends HTMLElement>(
     intersectionCallback: (entry: IntersectionObserverEntry) => void,
-    observerConfig: IntersectionObserverInit = defaultObserverConfig
+    observerConfig: IntersectionObserverInit = defaultObserverConfig,
 ): (element: T) => void {
     const [elementToObserve, setElementToObserve] = useState<T>();
 
     useEffect(() => {
         if (!elementToObserve) return;
 
-        const observer = new IntersectionObserver(entries => intersectionCallback(entries[0]), observerConfig);
+        const observer = new IntersectionObserver(
+            entries => entries[0] && intersectionCallback(entries[0]),
+            observerConfig,
+        );
 
         observer.observe(elementToObserve);
 

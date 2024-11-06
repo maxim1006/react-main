@@ -13,7 +13,7 @@ export function generateICCID(): string {
 export function generateCountryCode(): string {
     //Country code is 1 - 3 digits according https://ru.wikipedia.org/wiki/Mobile_Country_Code
     let codes = ['7', '375', '380'];
-    return codes[generateNumberFromRange(0, codes.length - 1)];
+    return codes[generateNumberFromRange(0, codes.length - 1)] ?? '';
 }
 
 // randomArrayItem(['lol', 'a', 2, 'foo', 52, 'Jhon', 'hello', 57]);
@@ -40,14 +40,14 @@ export function generateCheckSumByLuhn(value: string) {
     let arr = [];
     for (let i = 0; i < value.length; i++) {
         if (i % 2 === 0) {
-            let m = parseInt(value[i]) * 2;
+            let m = Number.parseInt(value[i] || '0') * 2;
             if (m > 9) {
                 arr.push(m - 9);
             } else {
                 arr.push(m);
             }
         } else {
-            let n = parseInt(value[i]);
+            let n = parseInt(value[i] || '0');
             arr.push(n);
         }
     }

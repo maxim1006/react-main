@@ -12,12 +12,6 @@ export const userApi = commonApi.injectEndpoints({
                     limit,
                 },
             }),
-            // tagTypes2
-            providesTags: result => {
-                // тут результат запроса
-                // console.log(result);
-                return ['User'];
-            },
         }),
         // в дженерике указываю что вернется а вторым что передаю (<ResultType, QueryArg>)
         createUser: build.mutation<UserModel, UserModel & { limit: number }>({
@@ -36,7 +30,7 @@ export const userApi = commonApi.injectEndpoints({
                     dispatch(
                         userApi.util.updateQueryData('fetchAllUsers', user.limit, draft => {
                             Array.isArray(draft) && draft.unshift(data);
-                        })
+                        }),
                     );
                 } catch (e) {
                     console.error('userApi createUser error', e);
@@ -51,16 +45,12 @@ export const userApi = commonApi.injectEndpoints({
                 method: 'PUT',
                 body: user,
             }),
-            // tagTypes3
-            invalidatesTags: ['User'],
         }),
         deleteUser: build.mutation<UserModel, string>({
             query: id => ({
                 url: `/users/${id}`,
                 method: 'DELETE',
             }),
-            // tagTypes3
-            invalidatesTags: ['User'],
         }),
     }),
 });

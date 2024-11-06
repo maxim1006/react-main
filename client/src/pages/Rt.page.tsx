@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { Provider } from 'react-redux';
 import store, { persistor } from '../store/store';
-import { PersistGate } from 'redux-persist/integration/react';
 import RtPosts from '@app/components/redux-toolkit/posts/rt-posts.component';
 import UserListApiContainer from '@app/components/redux-toolkit/user/list/user-list-api.container';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const Rt = () => {
     return (

@@ -1,8 +1,6 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { reduxBatch } from '@manaflair/redux-batch';
+import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { combineReducers } from 'redux';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { commonApi } from '@app/store/common/common.api';
 import counter from './counter/counter.slice';
@@ -14,7 +12,7 @@ import books from './books/books.slice';
 import thunkUser from './thunk-user/thunk-user.slice';
 import { abstractProductReducer } from '@app/store/product/abstract/abstract-product.slice';
 import { rtkQueryErrorLogger } from '@app/store/store.utils';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { setupListeners } from '@reduxjs/toolkit/query/react';
 
 const DEFAULT_FETCH_POLICY_FROM_GQL = 'cache-first';
 
@@ -37,22 +35,23 @@ const persistConfig = {
     whitelist: ['todos'],
 };
 
+// TODO сделать все персистом
+const persistedReducer = persistReducer(persistConfig, books);
+
 const rootReducer = combineReducers({
     counter,
     todos,
     visibilityFilter,
+    books: persistedReducer,
     issuesDisplay,
     posts,
-    books,
     thunkUser,
     product: abstractProductReducer,
     [commonApi.reducerPath]: commonApi.reducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     preloadedState,
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
@@ -69,10 +68,7 @@ const store = configureStore({
             // тут обязательно надо через конкат иначе ругается на него тайпскрипт, причем тупо на type в AppThunk почемуто
             .concat(commonApi.middleware, rtkQueryErrorLogger),
     devTools: process.env.NODE_ENV !== 'production',
-    enhancers: [reduxBatch],
 });
-
-export const persistor = persistStore(store);
 
 // через слайсы без persist
 // const store = configureStore({
@@ -108,3 +104,5 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 // export type appThunk = ThunkAction<void, RootState, unknown, Action<string>>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, { fetchPolicy: {} }, Action<string>>;
 // export type EnhancedAction<T, R> = (id: string) => (payload: T) => AppThunk<Promise<R>>;
+
+export const persistor = persistStore(store);

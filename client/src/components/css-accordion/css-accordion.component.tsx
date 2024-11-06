@@ -12,12 +12,14 @@ const stubData = {
 
 const CssAccordion: FC<CssAccordionProps> = () => {
     const [data, setData] = useState(() =>
-        [...Array(3).keys()].map(i => ({ ...stubData, header: stubData.header + i }))
+        [...Array(3).keys()].map(i => ({ ...stubData, header: stubData.header + i })),
     );
 
     const handleClick = (idx: number) => () =>
         setData(i => {
-            i[idx].opened = !i[idx].opened;
+            if (i[idx]) {
+                i[idx].opened = !i[idx].opened;
+            }
 
             return [...i];
         });
@@ -30,7 +32,7 @@ const CssAccordion: FC<CssAccordionProps> = () => {
                         <div className={styles.accordionHeader} onClick={handleClick(idx)}>
                             {header}
                         </div>
-                        <div className={cn(styles.accordionBody, { [styles.accordionBodyOpened]: opened })}>
+                        <div className={cn(styles.accordionBody, { [`${styles.accordionBodyOpened}`]: opened })}>
                             <div className={styles.accordionBodyInner}>{body}</div>
                         </div>
                     </div>

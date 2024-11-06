@@ -29,21 +29,21 @@ const ProTabs = memo<ProTabsProps>(function ProTabs() {
     const [searchString, setSearchString] = useState('');
     const [menuItems] = useState<ShowcaseComponentItem[]>(showcaseComponentItems);
     const [filteredMenuItems, setFilteredMenuItems] = useState<ShowcaseComponentItem[]>(menuItems);
-    const [selectedKeys, setSelectedKeys] = useState<ShowcaseComponentsEnum[]>([0]);
+    const [selectedKeys, setSelectedKeys] = useState<ShowcaseComponentsEnum>(ShowcaseComponentsEnum.Component1);
 
     const handleSearchChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
         event => {
             setSearchString(event.target.value);
             setFilteredMenuItems(
                 menuItems.filter(item =>
-                    item.name.trim().toLowerCase().includes(event.target.value.trim().toLowerCase())
-                )
+                    item.name.trim().toLowerCase().includes(event.target.value.trim().toLowerCase()),
+                ),
             );
         },
-        [setSearchString, setFilteredMenuItems, menuItems]
+        [setSearchString, setFilteredMenuItems, menuItems],
     );
 
-    const handleItemSelection = (idx: ShowcaseComponentsEnum) => setSelectedKeys([idx]);
+    const handleItemSelection = (idx: ShowcaseComponentsEnum) => setSelectedKeys(idx);
 
     const componentMap: Record<ShowcaseComponentsEnum, JSX.Element> = {
         [ShowcaseComponentsEnum.Component1]: <Component1 />,
@@ -62,7 +62,7 @@ const ProTabs = memo<ProTabsProps>(function ProTabs() {
                     ))}
                 </ul>
             </div>
-            <div className='right'>{componentMap[selectedKeys[0]]}</div>
+            <div className='right'>{componentMap[selectedKeys]}</div>
         </div>
     );
 });

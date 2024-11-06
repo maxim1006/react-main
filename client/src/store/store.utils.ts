@@ -1,5 +1,4 @@
-import { Middleware, MiddlewareAPI } from 'redux';
-import { AnyAction, isRejected } from '@reduxjs/toolkit';
+import { AnyAction, isRejected, Middleware, MiddlewareAPI } from '@reduxjs/toolkit';
 import { HeadersEnum } from '@app/models/header.model';
 
 export enum RequestErrorNameEnum {
@@ -9,10 +8,10 @@ export enum RequestErrorNameEnum {
 const NOTIFICATION_BLACK_LIST: string[] = [];
 
 export const rtkQueryErrorLogger: Middleware = (api: MiddlewareAPI) => next => action => {
-    let headersReq = action.meta?.baseQueryMeta?.request?.headers;
-    let headersRes = action.meta?.baseQueryMeta?.response?.headers;
-
     if (isRejected(action)) {
+        let headersReq = (action.meta as any)?.baseQueryMeta?.request?.headers;
+        let headersRes = (action.meta as any)?.baseQueryMeta?.response?.headers;
+
         if (headersReq) {
             for (let i of headersReq) {
                 console.log('headersReq', i);
@@ -28,7 +27,7 @@ export const rtkQueryErrorLogger: Middleware = (api: MiddlewareAPI) => next => a
         // RequestErrorNameEnum.ConditionError - RTK Query internal error, that just means that another request was skipped because there was either already a request in flight or already a value in cache, so no request needs to be made. This is an internal rejection that RTK-Query uses to track component subscriptions and not an error.
         if (
             action.error.name !== RequestErrorNameEnum.ConditionError &&
-            !NOTIFICATION_BLACK_LIST.includes(action.meta.arg?.endpointName)
+            !NOTIFICATION_BLACK_LIST.includes((action.meta.arg as any).arg?.endpointName)
         ) {
             // тут можно вызывать нотификашку например
             logRequestError(action);

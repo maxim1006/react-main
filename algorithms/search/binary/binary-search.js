@@ -25,7 +25,7 @@ for (let i of testArr) {
 
 function binarySearch(array, target) {
     let s = 0;
-    let e = array.length;
+    let e = array.length - 1;
 
     while (s <= e) {
         // console.log(array.slice(start, end));

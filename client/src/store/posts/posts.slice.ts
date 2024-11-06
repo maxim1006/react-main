@@ -42,21 +42,21 @@ const postsSlice = createSlice({
             state.loading = false;
         },
     },
-    extraReducers: {
-        // это тоже самое что и builder.addCase в books
-        [fetchPostsAction1.pending.type]: (state, { payload }: PayloadAction<Error>) => {
-            state.error = payload;
-            state.loading = true;
-        },
-        [fetchPostsAction1.fulfilled.type]: (state, { payload }: PayloadAction<PostModel[]>) => {
-            state.entities = payload;
-            state.loading = false;
-        },
-        [fetchPostsAction1.rejected.type]: (state, { payload }: PayloadAction<Error>) => {
-            state.error = payload;
-            state.loading = false;
-        },
-    },
+    // extraReducers: {
+    //     // это тоже самое что и builder.addCase в books
+    //     [fetchPostsAction1.pending.type]: (state: PostsStateModel, { payload }: PayloadAction<Error>) => {
+    //         state.error = payload;
+    //         state.loading = true;
+    //     },
+    //     [fetchPostsAction1.fulfilled.type]: (state: PostsStateModel, { payload }: PayloadAction<PostModel[]>) => {
+    //         state.entities = payload;
+    //         state.loading = false;
+    //     },
+    //     [fetchPostsAction1.rejected.type]: (state: PostsStateModel, { payload }: PayloadAction<Error>) => {
+    //         state.error = payload;
+    //         state.loading = false;
+    //     },
+    // } as any,
 });
 
 export const { fetchPostsSuccess, fetchPostsError, fetchPostsStart } = postsSlice.actions;
@@ -90,7 +90,7 @@ export const makeSelectPostsByTitle1 = createSelector(
     [selectPosts, (_: RootState, title: string) => title],
     (posts, title) => {
         return posts.entities?.filter(i => i.title.includes(title));
-    }
+    },
 );
 
 // thunks redux toolkit не умеет поэтому ручками пишем (хорошие новости что включены из коробки)

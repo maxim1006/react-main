@@ -1,13 +1,12 @@
 import React, { memo, FC } from 'react';
 import cn from 'classnames';
 import { ProductProp, ProductTypeEnum } from '@app/models/product.model';
-import { Dictionary } from '@reduxjs/toolkit';
 
 type ProductProps = {
     name: string;
     type: ProductTypeEnum;
     items: ProductProp[];
-    entities: Dictionary<ProductProp>;
+    entities: Record<string, ProductProp>;
 };
 
 const Product: FC<ProductProps> = ({ name, type, items, entities }) => {

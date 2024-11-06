@@ -21,7 +21,7 @@ export interface AbstractProductStateModel {
 export interface Product1StateModel extends AbstractProductStateModel {
     type: ProductTypeEnum.Product1;
     // спецом так назвал так как это проперти через доп редюсер делается причем заполняется в родительском редюсере
-    product1InnerProp: EntityState<ProductProp>;
+    product1InnerProp: EntityState<ProductProp, string>;
     prop: string;
     uniqueProduct1Prop: string;
     productFeature: ProductFeatureStateModel;
@@ -30,7 +30,7 @@ export interface Product1StateModel extends AbstractProductStateModel {
 export interface Product2StateModel extends AbstractProductStateModel {
     type: ProductTypeEnum.Product2;
     uniqueProduct2Prop: string;
-    product2InnerProp: EntityState<ProductProp>;
+    product2InnerProp: EntityState<ProductProp, string>;
     prop: string;
 }
 

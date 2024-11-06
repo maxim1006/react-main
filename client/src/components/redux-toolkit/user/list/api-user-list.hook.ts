@@ -3,9 +3,12 @@ import { UserModel } from '@app/models/user.model';
 import { apiUserApi } from '@app/store/user/api-user.api';
 import { useSelector } from 'react-redux';
 import { selectApiUserListIsLoading } from '@app/store/user/api-user.selectors';
-import { QueryActionCreatorResult } from '@reduxjs/toolkit/src/query/core/buildInitiate';
+import { QueryActionCreatorResult } from '@reduxjs/toolkit/query/react';
+import { useAppDispatch } from '@app/store/store';
 
 export function useApiUserList() {
+    const dispatch = useAppDispatch();
+
     const [pollingInterval, setPollingInterval] = useState(0);
 
     const { data: users = [], isLoading: usersLoading } = apiUserApi.useFetchUserListQuery(undefined, {
@@ -28,7 +31,7 @@ export function useApiUserList() {
 
             // skip, // скипнуть при условии
             // refetchOnMountOrArgChange: true // насильно делать запрос
-        }
+        },
     );
     const [fetchUserLazy, lazyUser] = apiUserApi.useLazyFetchUserQuery();
 
@@ -85,7 +88,7 @@ export function useApiUserList() {
 
             console.log({ updatedUser });
         },
-        [updateUser]
+        [updateUser],
     );
     const onDeleteUser = useCallback(
         async (user: UserModel) => {
@@ -106,7 +109,7 @@ export function useApiUserList() {
 
             console.log(res);
         },
-        [deleteUser]
+        [deleteUser],
     );
 
     useEffect(() => {
@@ -125,6 +128,11 @@ export function useApiUserList() {
     const onPollingStart = useCallback(async () => setPollingInterval(1000), []);
     const onPollingEnd = useCallback(async () => setPollingInterval(0), []);
 
+    const customInitiateFetchUserList = useCallback(async () => {
+        const res = await dispatch(apiUserApi.endpoints.fetchUserList.initiate());
+        console.log({ res });
+    }, [dispatch]);
+
     return {
         ref,
         users,
@@ -141,5 +149,6 @@ export function useApiUserList() {
         onFetchUserLazy,
         onPollingStart,
         onPollingEnd,
+        customInitiateFetchUserList,
     };
 }

@@ -46,6 +46,6 @@ export default function MaterialLoaderComponent({ customStyles, message, delay =
 }
 
 // Так задаю дефолтные проперти для компоненты (класса или функции)
-MaterialLoaderComponent.defaultProps = {
-    message: 'Loading...',
-};
+// MaterialLoaderComponent.defaultProps = {
+//     message: 'Loading...',
+// };

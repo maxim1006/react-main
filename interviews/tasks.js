@@ -82,23 +82,19 @@
 // }
 
 /*********** Task Обход дерева / объекта 2 ***********/
-const obj = {
-    a: {
-        b: {
-            c: 'd',
-        },
-        e: 'f',
-    },
-};
-
-function get(obj, str) {
-    return str.split('.').reduce((acc, i) => acc?.[i], obj);
-}
-
-console.log(get(obj, 'a.b')); // { c : 'd' }
-console.log(get(obj, 'a.b.c')); // 'd'
-console.log(get(obj, 'a.e')); // 'f'
-console.log(get(obj, 'a.x.e')); // undefined
+// const obj = {
+//     a: {
+//         b: {
+//             c: 'd',
+//         },
+//         e: 'f',
+//     },
+// };
+//
+// console.log(get(obj, 'a.b')); // { c : 'd' }
+// console.log(get(obj, 'a.b.c')); // 'd'
+// console.log(get(obj, 'a.e')); // 'f'
+// console.log(get(obj, 'a.x.e')); // undefined
 /*********** Answer ***********/
 // 1
 // function get(obj, str) {
@@ -517,3 +513,94 @@ console.log(get(obj, 'a.x.e')); // undefined
 // };
 //
 // console.log(sum(a));
+
+///////////////////////////////////////////////////////////////////// Task
+// [
+//     { from: 'London', to: 'Moscow' },
+//     { from: 'NY', to: 'London' },
+//     { from: 'Moscow', to: 'SPb' },
+// ];
+//
+// Дана последовательность билетов, образующих непрерывный, уникальный маршрут. Маршрут не содержит петель и повторений.
+//     Нужно создать программу, которая принимает эти билеты и возвращает их в порядке, соответствующем маршруту.
+
+// function findRoutes(
+//     routes = [
+//         { from: 'London', to: 'Moscow' },
+//         { from: 'NY', to: 'London' },
+//         { from: 'Moscow', to: 'SPb' },
+//     ],
+// ) {
+//     let res = [];
+//     let map = {};
+//     let mapSet = new Set();
+//     let startRoute;
+//
+//     for (let route of routes) {
+//         map[route.from] = route.to;
+//         mapSet.add(route.to);
+//     }
+//
+//     for (let route of routes) {
+//         if (!mapSet.has(route.from)) {
+//             startRoute = route.from;
+//         }
+//     }
+//
+//     while (startRoute) {
+//         let to = map[startRoute];
+//         if (!to) return res;
+//         res.push({ from: startRoute, to });
+//         startRoute = to;
+//     }
+//
+//     return res;
+// }
+//
+// console.log(findRoutes());
+
+function typeWriter(ms, fn) {
+    let queue = [];
+    let isFirst = true;
+    let isProgress = false;
+
+    return function (str) {
+        queue.unshift(...Array.from(str).reverse());
+
+        if (isFirst) {
+            fn.call(this, queue.pop());
+            isFirst = false;
+        }
+
+        if (!isProgress) {
+            isProgress = true;
+
+            function tick() {
+                if (queue.length === 0) return;
+
+                setTimeout(() => {
+                    fn.call(this, queue.pop());
+                    isProgress = false;
+
+                    if (queue.length !== 0) tick();
+                }, ms);
+            }
+
+            tick();
+        }
+    };
+}
+
+let writeText = typeWriter(100, char => {
+    console.log(`${char} ${new Date().toISOString()}`);
+});
+
+// Напишите функцию typeWriter для посимвольного вывода текста
+// let writeText = typeWriter(...);
+writeText('ab'); // a через 100мс б
+writeText('cd'); // через 100мс после б -> c, затем d
+setTimeout(() => {
+    writeText('ef'); // через 600мс e -> f
+}, 500);
+
+// a->b->c->d->e->f

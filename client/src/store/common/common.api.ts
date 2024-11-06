@@ -1,6 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 import { API_BASE_URL, API_PATH } from '@app/constants/common.constants';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+
+// !!!!!!!!!!!!!!!!!!!! https://stackoverflow.com/questions/69502501/redux-rtk-not-auto-generating-react-hooks
+// охренеть обязательно @reduxjs/toolkit/query/react вместо @reduxjs/toolkit/query
+//https://github.com/reduxjs/redux-toolkit/issues/4537#issuecomment-2260938954
+// все надо импортить из @reduxjs/toolkit/query/react
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const commonApi = createApi({
     reducerPath: 'api',
@@ -15,6 +20,6 @@ export const commonApi = createApi({
         },
     }),
     // tagTypes1  это таг тип за которым при инвалидации будет следить кеш rtk query, типо как кеш ГКЛ
-    tagTypes: ['User'],
+    // tagTypes: ['User'],
     endpoints: _ => ({}),
 });

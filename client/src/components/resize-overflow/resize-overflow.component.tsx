@@ -17,8 +17,8 @@ const ResizeOverflow = memo<ResizeOverflowProps>(function ResizeOverflow() {
             <h3>Horizontal</h3>
             <ul
                 className={cn(styles.wrapper, {
-                    [styles.withRightGradient]: isRightSideOverflown,
-                    [styles.withLeftGradient]: isLeftSideOverflown,
+                    [String(styles.withRightGradient)]: isRightSideOverflown,
+                    [String(styles.withLeftGradient)]: isLeftSideOverflown,
                 })}
                 ref={ref}
             >
@@ -32,8 +32,8 @@ const ResizeOverflow = memo<ResizeOverflowProps>(function ResizeOverflow() {
             <h3>Vertical</h3>
             <ul
                 className={cn(styles.wrapperVertical, {
-                    [styles.withTopGradient]: isTopSideOverflown,
-                    [styles.withBottomGradient]: isBottomSideOverflown,
+                    [String(styles.withTopGradient)]: isTopSideOverflown,
+                    [String(styles.withBottomGradient)]: isBottomSideOverflown,
                 })}
                 ref={refVertical}
             >
