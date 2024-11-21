@@ -559,48 +559,93 @@
 //
 // console.log(findRoutes());
 
-function typeWriter(ms, fn) {
-    let queue = [];
-    let isFirst = true;
-    let isProgress = false;
-
-    return function (str) {
-        queue.unshift(...Array.from(str).reverse());
-
-        if (isFirst) {
-            fn.call(this, queue.pop());
-            isFirst = false;
-        }
-
-        if (!isProgress) {
-            isProgress = true;
-
-            function tick() {
-                if (queue.length === 0) return;
-
-                setTimeout(() => {
-                    fn.call(this, queue.pop());
-                    isProgress = false;
-
-                    if (queue.length !== 0) tick();
-                }, ms);
-            }
-
-            tick();
-        }
-    };
-}
-
-let writeText = typeWriter(100, char => {
-    console.log(`${char} ${new Date().toISOString()}`);
-});
+///////////////////////////////////////////////////////////////////// Task
+// function typeWriter(ms, fn) {
+//     let queue = [];
+//     let isFirst = true;
+//     let isProgress = false;
+//
+//     return function (str) {
+//         queue.unshift(...Array.from(str).reverse());
+//
+//         if (isFirst) {
+//             fn.call(this, queue.pop());
+//             isFirst = false;
+//         }
+//
+//         if (!isProgress) {
+//             isProgress = true;
+//
+//             function tick() {
+//                 if (queue.length === 0) return;
+//
+//                 setTimeout(() => {
+//                     fn.call(this, queue.pop());
+//                     isProgress = false;
+//
+//                     if (queue.length !== 0) tick();
+//                 }, ms);
+//             }
+//
+//             tick();
+//         }
+//     };
+// }
+//
+// let writeText = typeWriter(100, char => {
+//     console.log(`${char} ${new Date().toISOString()}`);
+// });
 
 // Напишите функцию typeWriter для посимвольного вывода текста
 // let writeText = typeWriter(...);
-writeText('ab'); // a через 100мс б
-writeText('cd'); // через 100мс после б -> c, затем d
-setTimeout(() => {
-    writeText('ef'); // через 600мс e -> f
-}, 500);
+// writeText('ab'); // a через 100мс б
+// writeText('cd'); // через 100мс после б -> c, затем d
+// setTimeout(() => {
+//     writeText('ef'); // через 600мс e -> f
+// }, 500);
 
 // a->b->c->d->e->f
+
+///////////////////////////////////////////////////////////////////// Task
+// console.log(1);
+//
+// Promise.resolve(2).then(v => console.log(v));
+//
+// setTimeout(() => console.log(14));
+//
+// const p = new Promise(r => {
+//     console.log(3);
+//     r();
+// });
+//
+// async function inner() {
+//     console.log(9);
+//
+//     Promise.resolve(10).then(v => console.log(v));
+//
+//     const p = new Promise(r => {
+//         console.log(11);
+//         r(12);
+//     });
+//
+//     p.then(v => console.log(v));
+// }
+//
+// async function queue() {
+//     console.log(5);
+//
+//     Promise.resolve(6).then(v => console.log(v));
+//
+//     const p = new Promise(r => {
+//         console.log(7);
+//         r(8);
+//     });
+//
+//     await inner();
+//     console.log(13);
+//
+//     p.then(v => console.log(v));
+// }
+//
+// queue();
+// setTimeout(() => console.log(4));
