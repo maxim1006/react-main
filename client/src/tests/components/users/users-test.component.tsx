@@ -17,9 +17,9 @@ const UsersTest: FC<UsersTestProps> = () => {
     return (
         !!users.length && (
             <ul data-testid='user-list'>
-                {users.map(i => (
-                    <li key={i.id} data-testid='user-item'>
-                        {i.name}
+                {users.map(({ id, name }) => (
+                    <li key={id} data-testid='user-item'>
+                        {name}
                     </li>
                 ))}
             </ul>

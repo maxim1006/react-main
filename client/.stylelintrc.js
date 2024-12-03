@@ -7,11 +7,12 @@ module.exports = {
         'string-quotes': 'single',
         'selector-attribute-quotes': 'never',
         'unit-no-unknown': [true, { ignoreUnits: ['vi', 'vb', 'x'] }],
+        'property-no-unknown': [true, { ignoreProperties: ['exportedvalue', 'interpolate-size', 'composes'] }],
         'value-keyword-case': [
             'lower',
             {
                 // If css-variable is used and has value in camelCase, we need to turn off this rule
-                ignoreProperties: ['composes', /^--zain.*grid-area.*$/, 'grid-area', 'vi', 'vb'],
+                ignoreProperties: ['composes', /^--zain.*grid-area.*$/, 'grid-area', 'vi', 'vb', 'allow-keywords'],
             },
         ],
         'selector-pseudo-class-no-unknown': [
@@ -23,6 +24,7 @@ module.exports = {
                     'view-transition-name',
                     'view-transition-old',
                     'view-transition-new',
+                    'export',
                 ],
             },
         ],

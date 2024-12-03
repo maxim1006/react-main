@@ -170,3 +170,6 @@ https://beget.com/ru/kb/how-to/vps/vypusk-i-ustanovka-ssl-sertifikatov-ot-lets-e
 https://youtu.be/oykl1Ih9pMg
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
 
+origin - тот кто отсылает
+referrer = origin + path
+host - это ресурс на который идет реквест

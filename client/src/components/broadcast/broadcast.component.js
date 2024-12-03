@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { TextField, Button } from '@mui/material';
 
+// чтобы проверить открываю 2 вкладки и смотрю логи / жму кнопки чтобы прокинуть сообщение из окна в другое окно
 const bc = new BroadcastChannel('test_channel');
 
 const BroadcastComponent = () => {
@@ -25,6 +25,7 @@ const BroadcastComponent = () => {
         window.addEventListener('storage', onLocalStorageChanged);
 
         bc.onmessage = ({ data }) => {
+            console.log('broadcasted message', { data });
             setBroadCastedValue(data);
         };
 

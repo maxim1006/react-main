@@ -1,8 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import GridRepeat from '@app/components/grid/grid-repeat/grid-repeat.component';
 import Component from '@app/components/component/component.component';
-import CatchError from '@app/components/catch-error/catch-error.component';
+import CssFeatures from '@app/components/css/features/css-features.component';
 
 export default function ReactPage() {
     return (
@@ -10,9 +9,17 @@ export default function ReactPage() {
             <div tabName='React'>
                 {/*<AAATest />*/}
 
-                <Component title='MyImage'>
-                    <CatchError />
+                <Component title='Align Content by vertical in any block layout'>
+                    <CssFeatures />
                 </Component>
+
+                {/*<Component title='Proxy components with props'>*/}
+                {/*    <ComponentProxyContainer />*/}
+                {/*</Component>*/}
+
+                {/*<Component title='Custom catch Error'>*/}
+                {/*    <CatchError />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='MyImage'>*/}
                 {/*    <CssScrollbarGutter />*/}
@@ -249,9 +256,9 @@ export default function ReactPage() {
                 {/*    <ExamplesComponent />*/}
                 {/* </Component>*/}
 
-                {/* <Component title="BroadcastComponent">*/}
+                {/*<Component title='BroadcastComponent'>*/}
                 {/*    <BroadcastComponent />*/}
-                {/* </Component>*/}
+                {/*</Component>*/}
 
                 {/* <Component title="Performance"> */}
                 {/*    <UploadComponent />*/}

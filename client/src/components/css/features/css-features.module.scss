@@ -1,0 +1,59 @@
+@import 'src/assets/styles/colors';
+
+.host {
+    height: 140px;
+    align-content: center;
+    border: 1px solid;
+    opacity: 1;
+    transition: opacity 1s;
+
+    // отработает при первом показе дом ноды
+    @starting-style {
+        opacity: 0;
+    }
+}
+
+.textInput {
+    border: 2px solid $main-color;
+
+    &:invalid {
+        border: 2px solid red;
+    }
+
+    &:user-invalid {
+        border: 2px solid orange;
+    }
+}
+
+h3:has(+ p) {
+    color: green;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 0;
+    overflow: clip;
+    transition: height 500ms ease-in-out;
+}
+
+// эта штука позволяет делать анимацию на height: max-content;
+:root {
+    interpolate-size: allow-keywords;
+}
+
+.dropdownHeader {
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdownOpened {
+    & .dropdownContent {
+        height: max-content;
+    }
+}

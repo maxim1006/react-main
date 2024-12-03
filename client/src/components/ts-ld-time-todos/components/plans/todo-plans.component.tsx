@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { IPlans } from '@app/models/plans.model';
+import { getIndexedReactKey } from '@app/common/utils/common.utils';
 
 const TodoPlans = ({ plans }: IPlans) => (
     <ul>
@@ -8,7 +9,7 @@ const TodoPlans = ({ plans }: IPlans) => (
             const { name, completed } = plan ?? {};
 
             return (
-                <li key={crypto.randomUUID()}>
+                <li key={getIndexedReactKey(index)}>
                     Name: {name} Completed: {completed}
                 </li>
             );

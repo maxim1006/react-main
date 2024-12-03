@@ -55,9 +55,9 @@ const ProTabs = memo<ProTabsProps>(function ProTabs() {
             <div className='left'>
                 <input value={searchString} type='text' onChange={e => handleSearchChange(e)} />
                 <ul>
-                    {filteredMenuItems.map(i => (
-                        <li onClick={() => handleItemSelection(i.id)} key={i.id}>
-                            {i.name}
+                    {filteredMenuItems.map(({ id, name }) => (
+                        <li onClick={() => handleItemSelection(id)} key={id}>
+                            {name}
                         </li>
                     ))}
                 </ul>

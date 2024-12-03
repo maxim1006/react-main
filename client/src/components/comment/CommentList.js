@@ -4,6 +4,7 @@ import './CommentList.scss';
 import ContentProjectionContentComponent from '../content-projection/ContentProjectionContent';
 import ContentProjectionComponent from '../content-projection/ContentProjection';
 import customAxios from '../../common/api/axios';
+import { getIndexedReactKey } from '@app/common/utils/common.utils';
 
 export class CommentListComponent extends Component {
     state = {
@@ -11,10 +12,10 @@ export class CommentListComponent extends Component {
     };
 
     render() {
-        const comments = this.state.comments.map(comment => {
+        const comments = this.state.comments.map((comment, idx) => {
             return (
                 <ContentProjectionComponent
-                    key={crypto.randomUUID()}
+                    key={getIndexedReactKey(idx)}
                     projectFromProp={<ContentProjectionContentComponent content={comment.occupation} />}
                 >
                     <CommentComponent {...comment} />
