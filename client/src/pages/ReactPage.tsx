@@ -1,17 +1,18 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import Component from '@app/components/component/component.component';
-import CssFeatures from '@app/components/css/features/css-features.component';
+import MobxContainer from '@app/components/mobx/mobx.container';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <MobxContainer />
+
                 {/*<AAATest />*/}
 
-                <Component title='Align Content by vertical in any block layout'>
-                    <CssFeatures />
-                </Component>
+                {/*<Component title='Align Content by vertical in any block layout'>*/}
+                {/*    <CssFeatures />*/}
+                {/*</Component>*/}
 
                 {/*<Component title='Proxy components with props'>*/}
                 {/*    <ComponentProxyContainer />*/}

@@ -2,6 +2,7 @@ import React, { FC, memo, useLayoutEffect, useRef } from 'react';
 import styles from './lazy-image-new.module.scss';
 import cn from 'classnames';
 
+// https://www.youtube.com/watch?v=hJ7Rg1821Q0&ab_channel=WebDevSimplified
 type LazyImageNewProps = {};
 
 const images = [

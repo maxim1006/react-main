@@ -33,5 +33,18 @@ function bfs(menuItems, val) {
     return false;
 }
 
+// function bruteforceDfs(nums = [1,2,3], amount = 1) {
+//     console.log("amount ", amount);
+//     if (amount < 0) return;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         let cur = nums[i];
+//         dfs(nums, amount - cur);
+//         console.log("cur ", cur)
+//     }
+// }
+//
+// bruteforceDfs();
+
 console.log(dfs(menuItems, 'link22'));
 console.log(bfs(menuItems, 'link21'));

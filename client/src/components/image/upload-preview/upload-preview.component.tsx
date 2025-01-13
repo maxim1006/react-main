@@ -1,9 +1,9 @@
 import { ChangeEvent, memo, useState } from 'react';
-import styles from './image-preload.module.scss';
+import styles from './upload-preview.module.scss';
 
-type ImagePreloadProps = {};
+type UploadPreviewProps = {};
 
-const ImagePreload = memo<ImagePreloadProps>(function ImagePreload() {
+const UploadPreview = memo<UploadPreviewProps>(function UploadPreview() {
     const [previewSrc, setPreviewSrc] = useState('');
 
     const showPreview = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,4 +27,4 @@ const ImagePreload = memo<ImagePreloadProps>(function ImagePreload() {
     );
 });
 
-export default ImagePreload;
+export default UploadPreview;
