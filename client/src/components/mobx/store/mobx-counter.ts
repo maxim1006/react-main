@@ -3,6 +3,7 @@ import { makeAutoObservable } from 'mobx';
 class MobxCounter {
     count = 0;
     timer = 60;
+    random = 0;
 
     constructor() {
         // автоматически настраивает наш класс
@@ -17,6 +18,10 @@ class MobxCounter {
     decrement() {
         // стейт мутабельный
         this.count = this.count - 1;
+    }
+
+    randomize() {
+        this.random = Math.random();
     }
 
     // будет вызываться только тогда когда изменится либо count либо timer
