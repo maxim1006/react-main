@@ -1,0 +1,15 @@
+@import 'src/assets/styles/media';
+
+.host {
+    @media #{$desktop} {
+        font-size: 60px;
+    }
+
+    @media #{$tablet} {
+        font-size: 40px;
+    }
+
+    @media #{$mobile} {
+        font-size: 20px;
+    }
+}

@@ -78,10 +78,10 @@ let f11 = foo1(viewToggleModel);
 let f111 = foo1(viewRadioModel);
 
 // как сделать из объекта enum
-// const Role = {
-//     ADMIN: 'admin',
-//     USER: 'user',
-// } as const; // не забываю чтобы получить конкретные значения
+const Role = {
+    ADMIN: 'admin',
+    USER: 'user',
+} as const; // не забываю чтобы получить конкретные значения
 //
 // как забрать тип объекта который сделал из enum
 // enum RoleEnum {
@@ -89,14 +89,14 @@ let f111 = foo1(viewRadioModel);
 //     USER = 'user',
 // }
 //
-// type RoleModel = typeof Role[keyof typeof Role];
+type RoleModel = (typeof Role)[keyof typeof Role];
 // type ValueOf<T> = T[keyof T];
 // type RoleModel1 = ValueOf<typeof Role> // замена type RoleModel = typeof Role[keyof typeof Role];
 //
-// function ff(arg: RoleModel) {}
+function ff(arg: RoleModel) {}
 // function ff1(arg: RoleEnum) {}
 //
-// ff(Role.ADMIN);
+ff(Role.ADMIN);
 // ff('admin');
 //
 // ff1(RoleEnum.ADMIN);

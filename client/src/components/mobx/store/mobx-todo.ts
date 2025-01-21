@@ -15,7 +15,7 @@ class MobxTodo {
     constructor() {
         // для глубокого отслеживания объектов
         // makeAutoObservable(this, {}, { deep: true });
-        makeAutoObservable(this, {}, { deep: true });
+        makeAutoObservable(this);
     }
 
     addTodo(todo: MobxTodoModel) {

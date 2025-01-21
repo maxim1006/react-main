@@ -1,12 +1,13 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import MobxContainer from '@app/components/mobx/mobx.container';
+import MediaQueryCss from '@app/components/css/media-queries/media-queries.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <MobxContainer />
+                <MediaQueryCss />
+                {/*<MobxContainer />*/}
 
                 {/*<AAATest />*/}
 
