@@ -1,5 +1,5 @@
 {
-  "name": "@max/browserlist-config",
+  "name": "@max/browserslist-config",
   "version": "1.0.0",
   "main": "index.js",
   "author": "",
@@ -16,7 +16,7 @@
   "repository": {
     "directory": "packages/browserslist-config",
     "type": "git",
-    "url": "git+https://github.com/maxim1006/react-main.git"
+    "url": "https://github.com/maxim1006/config.git"
   },
   "scripts": {
     "semantic-release": "semantic-release"
