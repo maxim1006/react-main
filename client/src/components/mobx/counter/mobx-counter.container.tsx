@@ -7,36 +7,48 @@ type MobxCounterContainerProps = {};
 
 const MobxCounterContainer: FC<MobxCounterContainerProps> = () => {
     useEffect(() => {
-        // сработает на изменение любого из свойств которое внутри него, если внутри не будет свойств закоторыми autorun не следит то он не будет вызываться
-        autorun(() => {
-            console.log('autorun triggered');
-            if (mobxCounter.random > 0.5) {
-                console.log('Its > 0.5');
-            } else {
-                console.log('Its <= 0.5');
-            }
+        // autorun, reaction and when всегда диспозим
+        // https://mobx.js.org/reactions.html#always-dispose-of-reactions
+        const disposeArr: any[] = [];
 
-            // если разкомментировать то autorun будет вызываться на increment/decrement, а так нет
-            // console.log(mobxCounter.count);
-        });
-
-        // то что прокинул в первую функцию, на то и реагирует reaction
-        reaction(
-            // отреагирует на count и random
-            // () => ({ count: mobxCounter.count, random: mobxCounter.random }),
-            // отреагирует только на count
-            () => ({ count: mobxCounter.count }),
-            ({ count }) => {
-                console.log('reaction triggered');
+        disposeArr.push(
+            // сработает на изменение любого из свойств которое внутри него, если внутри не будет свойств закоторыми autorun не следит то он не будет вызываться
+            autorun(() => {
+                console.log('autorun triggered');
                 if (mobxCounter.random > 0.5) {
                     console.log('Its > 0.5');
                 } else {
                     console.log('Its <= 0.5');
                 }
 
-                console.log(count);
-            },
+                // если разкомментировать то autorun будет вызываться на increment/decrement, а так нет
+                // console.log(mobxCounter.count);
+            }),
         );
+
+        // то что прокинул в первую функцию, на то и реагирует reaction
+        disposeArr.push(
+            reaction(
+                // отреагирует на count и random
+                // () => ({ count: mobxCounter.count, random: mobxCounter.random }),
+                // отреагирует только на count
+                () => ({ count: mobxCounter.count }),
+                ({ count }) => {
+                    console.log('reaction triggered');
+                    if (mobxCounter.random > 0.5) {
+                        console.log('Its > 0.5');
+                    } else {
+                        console.log('Its <= 0.5');
+                    }
+
+                    console.log(count);
+                },
+            ),
+        );
+
+        return () => {
+            disposeArr.forEach(i => i());
+        };
     }, []);
 
     return (

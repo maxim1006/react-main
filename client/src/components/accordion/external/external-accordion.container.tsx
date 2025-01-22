@@ -32,7 +32,7 @@ const ExternalAccordionContainer: FC<ExternalAccordionProps> = ({
             if (!activeElement) return;
 
             const previousActiveElement = externalAccordionRef.current.querySelector(
-                `[${ExternalAccordionDataAttrEnum.DataSectionActive}]`
+                `[${ExternalAccordionDataAttrEnum.DataSectionActive}]`,
             );
             previousActiveElement?.removeAttribute(ExternalAccordionDataAttrEnum.DataSectionActive);
             activeElement.setAttribute(ExternalAccordionDataAttrEnum.DataSectionActive, '');
@@ -68,7 +68,7 @@ const ExternalAccordionContainer: FC<ExternalAccordionProps> = ({
             () => {
                 htmlElement.scrollIntoView({ behavior: 'smooth' });
             },
-            { once: true }
+            { once: true },
         );
 
         const activeDataSectionValue = htmlElement.getAttribute(ExternalAccordionDataAttrEnum.DataSectionActive);
