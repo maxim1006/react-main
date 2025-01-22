@@ -1,0 +1,28 @@
+{
+  "name": "configs",
+  "private": "true",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/babel index.js --out-dir ./dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "browserslist": [
+    "Chrome 130",
+    ">0.2% in RU",
+    "not dead",
+    "iOS >= 14"
+  ],
+  "workspaces": [
+    "./packages/*"
+  ],
+  "devDependencies": {
+    "@max/prettier-config": "latest",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1"
+  }
+}

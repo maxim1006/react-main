@@ -1,0 +1,30 @@
+{
+  "name": "@max/browserlist-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "directory": "packages/browserslist-config",
+    "type": "git",
+    "url": "git+https://github.com/maxim1006/react-main.git"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "semantic-release": "^19.0.2",
+    "semantic-release-monorepo": "^7.0.5"
+  },
+  "dependencies": {}
+}
