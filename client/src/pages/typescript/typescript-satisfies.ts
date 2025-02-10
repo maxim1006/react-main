@@ -10,10 +10,10 @@ interface SatisfiesVarModel {
 }
 
 // bad
-// const variable: SatisfiesVarModel = { prop: '1' };
+const variable: SatisfiesVarModel = { prop: '1' };
 
 // good
-// const variable1 = { prop: "1" } satisfies SatisfiesVarModel;
+const variable1 = { prop: '1' } satisfies SatisfiesVarModel;
 
 // без satisfies будет только toString() и valueOf() методы (это норм так как toString есть в обоих string | SatisfiesModel), если сделать satisfies то появятся остальные методы стринги и тс поймет что это стринга
 // variable1.prop = "asd";
@@ -31,18 +31,19 @@ type Person = {
 };
 
 // так будет ошибка
-// const applicant: Person = {
-//     myInfo: 'John',
-//     myOtherInfo: { id: 123, age: 22 },
-// };
+const applicant: Person = {
+    myInfo: 'John',
+    myOtherInfo: { id: 123, age: 22 },
+};
 
 // так отработает
-const applicant = {
+const applicant1 = {
     myInfo: 'John',
     myOtherInfo: { id: 123, age: 22 },
 } satisfies Person;
 
-// так будет ошибка так как applicant.myInfo может и не быть строкой
-applicant.myInfo.toUpperCase();
+// так будет ошибка так как applicant.myInfo.toUpperCase() может и не быть строкой
+// applicant.myInfo.toUpperCase();
+applicant1.myInfo.toUpperCase();
 
 export {};

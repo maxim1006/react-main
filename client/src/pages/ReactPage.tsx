@@ -1,15 +1,16 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import MediaQueryCss from '@app/components/css/media-queries/media-queries.component';
+import AAATest from '@app/components/aaa-test/aaa-test.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <MediaQueryCss />
+                {/*<MediaQueryCss />*/}
                 {/*<MobxContainer />*/}
 
-                {/*<AAATest />*/}
+                <AAATest />
 
                 {/*<Component title='Align Content by vertical in any block layout'>*/}
                 {/*    <CssFeatures />*/}
