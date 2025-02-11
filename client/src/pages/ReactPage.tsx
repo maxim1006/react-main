@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import MediaQueryCss from '@app/components/css/media-queries/media-queries.component';
 import AAATest from '@app/components/aaa-test/aaa-test.component';
+import ChildrenFaac from '@app/components/children-faac/children-faac.component';
 
 export default function ReactPage() {
     return (
@@ -11,6 +11,8 @@ export default function ReactPage() {
                 {/*<MobxContainer />*/}
 
                 <AAATest />
+
+                <ChildrenFaac />
 
                 {/*<Component title='Align Content by vertical in any block layout'>*/}
                 {/*    <CssFeatures />*/}
