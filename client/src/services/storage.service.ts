@@ -1,43 +1,67 @@
-class StorageService {
+import { v4 as uuidv4 } from 'uuid';
+
+class LocalStorageService {
     private listeners: {
+        id: string;
         itemKey: string;
         callback: (item: any) => void;
     }[] = [];
 
-    public addListener(itemKey: string, callback: (item: any) => void): void {
+    public addStorageChangesListener(itemKey: string, callback: (item: any) => void): string {
+        const id = uuidv4();
         this.listeners.push({
+            id,
             itemKey,
             callback,
         });
+
+        return id;
     }
 
-    public removeListener(itemKey: string, callback: (item: any) => void): void {
-        this.listeners = this.listeners.filter(
-            listener => listener.itemKey !== itemKey && listener.callback !== callback
-        );
+    public removeStorageChangesListener(id: string): void {
+        this.listeners = this.listeners.filter(listener => listener.id !== id);
     }
 
-    public read<T>(itemKey: string): T | null | undefined {
-        try {
-            return JSON.parse(window.localStorage.getItem(itemKey) || 'null');
-        } catch (e) {
-            console.error('Reading LocalStorage error ', e);
-        }
+    public readFromStorage<T>(itemKey: string): T | undefined {
+        return readFromLocalStorage(itemKey);
     }
 
-    public write<T>(itemKey: string, item: T): void {
+    public removeFromStorage(itemKey: string): void {
+        removeFromLocalStorage(itemKey);
+    }
+
+    public writeToStorage<T>(itemKey: string, item: T): void {
         try {
             localStorage.setItem(itemKey, JSON.stringify(item));
         } catch (e) {
-            console.error('Writing LocalStorage error ', e);
+            console.error('Error while writing to the LocalStorage ', e);
         }
 
-        this.listeners.forEach(listener => {
-            if (listener.itemKey === itemKey) listener.callback(item);
+        this.listeners.forEach(listenerConfig => {
+            if (listenerConfig.itemKey === itemKey) listenerConfig.callback(item);
         });
     }
 }
 
-const service = new StorageService();
+const localStorageService = new LocalStorageService();
 
-export default service;
+export { localStorageService };
+
+// helpers
+function readFromLocalStorage<T>(itemKey: string | number): T | undefined {
+    try {
+        return JSON.parse(window.localStorage.getItem(itemKey.toString()) || '{}');
+    } catch (e) {
+        console.error('Error while retrieving from the LocalStorage ', e);
+        return;
+    }
+}
+
+function removeFromLocalStorage(itemKey: string | number): void {
+    try {
+        return window.localStorage.removeItem(itemKey.toString());
+    } catch (e) {
+        console.error('Error while retrieving from the LocalStorage ', e);
+        return;
+    }
+}

@@ -2,8 +2,9 @@ import { UserModel } from '@app/models/user.model';
 import { commonApi } from '../common/common.api';
 import { debounce } from 'lodash';
 import { ThunkDispatch } from 'redux-thunk';
-import { FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query/react';
-import { QueryReturnValue } from '@reduxjs/toolkit/query/react';
+import { FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, QueryReturnValue } from '@reduxjs/toolkit/query/react';
+import { RootState } from '@app/store/store';
+import { useSelector } from 'react-redux';
 
 type MaybePromise<T> = T | PromiseLike<T>;
 
@@ -16,6 +17,8 @@ export const apiUserApi = commonApi.injectEndpoints({
         }),
         fetchUser: build.query<UserModel, { userId: string | undefined | null }>({
             async queryFn({ userId }, { dispatch, getState }, __, fetchWithBQ) {
+                const state = getState() as RootState;
+
                 const result = await fetchWithBQ({
                     url: `users/${userId}`,
                     method: 'GET',
@@ -26,6 +29,9 @@ export const apiUserApi = commonApi.injectEndpoints({
                 if (result.error) return result;
 
                 const data = result.data as UserModel;
+
+                // получить статус запроса в сторе
+                // console.log('fetchUser status from store ', apiUserApi.endpoints.fetchUser.select({ userId })(state));
 
                 return { data };
             },

@@ -13,4 +13,5 @@ type Values<T> = T[keyof T];
 const o = { prop: 'Prop1' } as const;
 
 export type oNames = keyof typeof o;
+// если без as const; то value string, с ним 'Prop1'
 export type oValues = Values<typeof o>;

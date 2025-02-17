@@ -31,3 +31,6 @@ ex.: related:javascript.info
 
 ### cache:cache_for_site_in_google
 ex.: cache:grinz.ru
+
+### открыть хром без cors
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security

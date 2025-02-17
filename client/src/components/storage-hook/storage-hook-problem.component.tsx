@@ -1,6 +1,6 @@
 import React, { memo, FC, Dispatch } from 'react';
 import { useLocalStorage } from '@app/hooks/storage';
-import { useLocalStorageService } from '@app/hooks/local-storage-service.hook';
+import { useLocalStorage as useLocalStorageService } from '@app/hooks/local-storage-service.hook';
 import styles from './storage-hook-problem.module.scss';
 import { useLocalStorageUseSyncExternalStore } from '@app/hooks/local-storage-useSyncExternalStore.hook';
 
@@ -28,6 +28,11 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
     const [useLocalStorageUseSyncExternalStoreState, setUseLocalStorageUseSyncExternalStoreState] =
         useLocalStorageUseSyncExternalStore('useLocalStorageUseSyncExternalStore', '');
 
+    // https://react.dev/reference/react/useSyncExternalStore#im-getting-an-error-the-result-of-getsnapshot-should-be-cached
+    // значение, возвращаемое getSnapshot, должно быть иммутабельным. Это означает, что мы не может возвращать, например, массивы или объекты.
+    // const [useLocalStorageUseSyncExternalStoreStateObj, setUseLocalStorageUseSyncExternalStoreStateObj] =
+    //     useLocalStorageUseSyncExternalStore('useLocalStorageUseSyncExternalStoreObj', { prop: '' });
+
     return (
         <section className={styles.childHost}>
             <h4>Props in Child1</h4>
@@ -53,6 +58,15 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
                     type='text'
                 />
             </article>
+            {/*<article>*/}
+            {/*    <h4>useSyncExternalStoreState:</h4>*/}
+            {/*    <p>Правильный пример c объектом в useSyncExternalStoreState</p>*/}
+            {/*    <input*/}
+            {/*        value={useLocalStorageUseSyncExternalStoreStateObj?.prop}*/}
+            {/*        onChange={e => setUseLocalStorageUseSyncExternalStoreStateObj({ prop: e.target.value })}*/}
+            {/*        type='text'*/}
+            {/*    />*/}
+            {/*</article>*/}
             <article>
                 <h4>valueService solves the problem:</h4>
                 <p>Правильный пример c valueService</p>
@@ -74,9 +88,15 @@ function Child1({ parentProp, setValue }: { parentProp: string; setValue: Dispat
 function Child2({ parentProp, setValue }: { parentProp: string; setValue: Dispatch<any> }) {
     const [valueInner, setValueInner] = useLocalStorage('prop1');
     const [valueService, setValueService] = useLocalStorageService<string>('service');
+    console.log({ valueServiceChild2: valueService });
     const [valueServiceObj, setValueService1] = useLocalStorageService<{ prop?: string }>('serviceObj');
     const [useLocalStorageUseSyncExternalStoreState, setUseLocalStorageUseSyncExternalStoreState] =
         useLocalStorageUseSyncExternalStore('useLocalStorageUseSyncExternalStore', '');
+
+    // https://react.dev/reference/react/useSyncExternalStore#im-getting-an-error-the-result-of-getsnapshot-should-be-cached
+    // значение, возвращаемое getSnapshot, должно быть иммутабельным. Это означает, что мы не может возвращать, например, массивы или объекты.
+    // const [useLocalStorageUseSyncExternalStoreStateObj, setUseLocalStorageUseSyncExternalStoreStateObj] =
+    //     useLocalStorageUseSyncExternalStore('useLocalStorageUseSyncExternalStoreObj', { prop: '' });
 
     return (
         <section className={styles.childHost}>
@@ -102,6 +122,15 @@ function Child2({ parentProp, setValue }: { parentProp: string; setValue: Dispat
                     type='text'
                 />
             </article>
+            {/*<article>*/}
+            {/*    <h4>useSyncExternalStoreState:</h4>*/}
+            {/*    <p>Правильный пример c объектом в useSyncExternalStoreState</p>*/}
+            {/*    <input*/}
+            {/*        value={useLocalStorageUseSyncExternalStoreStateObj?.prop}*/}
+            {/*        onChange={e => setUseLocalStorageUseSyncExternalStoreStateObj({ prop: e.target.value })}*/}
+            {/*        type='text'*/}
+            {/*    />*/}
+            {/*</article>*/}
             <article>
                 <h4>valueService solves the problem:</h4>
                 <p>Правильный пример c valueService</p>

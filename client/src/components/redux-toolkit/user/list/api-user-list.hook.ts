@@ -33,6 +33,14 @@ export function useApiUserList() {
             // refetchOnMountOrArgChange: true // насильно делать запрос
         },
     );
+
+    // получить статус запроса в компоненте
+    // const fetchUserStatus = useSelector(
+    //     (state: RootState) => apiUserApi.endpoints.fetchUser.select({ userId: users[0]?.id })(state).status,
+    // );
+    //
+    // console.log(`fetchUserStatus ${users[0]?.id} `, { fetchUserStatus });
+
     const [fetchUserLazy, lazyUser] = apiUserApi.useLazyFetchUserQuery();
 
     const fetchUserLazyReq = useRef<QueryActionCreatorResult<any>>();

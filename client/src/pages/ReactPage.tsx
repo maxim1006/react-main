@@ -2,11 +2,13 @@ import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import AAATest from '@app/components/aaa-test/aaa-test.component';
 import ChildrenFaac from '@app/components/children-faac/children-faac.component';
+import StorageHook from '@app/components/storage-hook/storage-hook.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                {/*<SyncExternalStore />*/}
                 {/*<MediaQueryCss />*/}
                 {/*<MobxContainer />*/}
 
@@ -222,7 +224,7 @@ export default function ReactPage() {
                 {/*<ScriptHook />*/}
                 {/*<PreviousHook />*/}
                 {/*<UpdateEffectHook />*/}
-                {/*<StorageHook />*/}
+                <StorageHook />
                 {/*</Component>*/}
 
                 {/* <Component title="Image preload"> */}

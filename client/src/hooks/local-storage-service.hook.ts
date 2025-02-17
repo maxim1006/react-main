@@ -1,26 +1,28 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import storageService from '@app/services/storage.service';
+import { localStorageService } from '@app/services/storage.service';
 
-export const useLocalStorageService = <T>(
-    propName: string
-): [T | undefined | null, React.Dispatch<T | undefined | null>] => {
-    const [value, setValue] = useState<T | undefined | null>(() => storageService.read(propName));
+export const useLocalStorage = <T>(
+    propName: string,
+): [T | undefined | null, React.Dispatch<React.SetStateAction<T | undefined | null>>] => {
+    const [currentLocalStorage, setCurrentLocalStorage] = useState<T | undefined | null>(() =>
+        localStorageService.readFromStorage(propName),
+    );
 
-    const setCurrentValue = useCallback(
-        (val: T | null | undefined) => {
-            const valueToStore = typeof val === 'function' ? val(value) : val;
-            storageService.write(propName, valueToStore);
+    const setValue = useCallback(
+        (value: React.SetStateAction<T | null | undefined>) => {
+            const valueToStore = value instanceof Function ? value(currentLocalStorage) : value;
+            localStorageService.writeToStorage(propName, valueToStore);
         },
-        [propName, value]
+        [propName, currentLocalStorage],
     );
 
     useEffect(() => {
-        const listener = (propValue: T) => setValue(propValue);
+        const listener = (propValue: T) => setCurrentLocalStorage(propValue);
 
-        storageService.addListener(propName, listener);
+        const id = localStorageService.addStorageChangesListener(propName, listener);
 
-        return () => storageService.removeListener(propName, listener);
-    }, [propName]);
+        return () => localStorageService.removeStorageChangesListener(id);
+    }, [setCurrentLocalStorage, propName]);
 
-    return [value, setCurrentValue];
+    return [currentLocalStorage, setValue];
 };
