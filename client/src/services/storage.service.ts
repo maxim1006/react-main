@@ -7,7 +7,7 @@ class LocalStorageService {
         callback: (item: any) => void;
     }[] = [];
 
-    public addStorageChangesListener(itemKey: string, callback: (item: any) => void): string {
+    public addStorageChangesListener<T>(itemKey: string, callback: (item: T) => void): (id?: string) => void {
         const id = uuidv4();
         this.listeners.push({
             id,
@@ -15,7 +15,7 @@ class LocalStorageService {
             callback,
         });
 
-        return id;
+        return this.removeFromStorage.bind(this, id) as (id?: string) => void;
     }
 
     public removeStorageChangesListener(id: string): void {
@@ -34,7 +34,7 @@ class LocalStorageService {
         try {
             localStorage.setItem(itemKey, JSON.stringify(item));
         } catch (e) {
-            console.error('Error while writing to the LocalStorage ', e);
+            return console.error('Error while writing to the LocalStorage ', e);
         }
 
         this.listeners.forEach(listenerConfig => {
@@ -50,9 +50,9 @@ export { localStorageService };
 // helpers
 function readFromLocalStorage<T>(itemKey: string | number): T | undefined {
     try {
-        return JSON.parse(window.localStorage.getItem(itemKey.toString()) || '{}');
+        return JSON.parse(window.localStorage.getItem(itemKey.toString()) || '');
     } catch (e) {
-        console.error('Error while retrieving from the LocalStorage ', e);
+        console.error('Error while removing from the LocalStorage ', e);
         return;
     }
 }

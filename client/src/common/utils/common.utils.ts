@@ -242,6 +242,23 @@ export const getIndexedReactKey = (index: number = 0, prop?: string): string => 
     return index + (prop ?? '');
 };
 
+export function defaultMemoize(func: any, equalityCheck = (a: any, b: any) => a === b) {
+    let lastArgs: any = null;
+    let lastResult: any = null;
+
+    return function (...args: any[]) {
+        if (
+            lastArgs === null ||
+            lastArgs.length !== args.length ||
+            !args.every((arg, index) => equalityCheck(arg, lastArgs[index]))
+        ) {
+            lastResult = func(...args);
+        }
+        lastArgs = args;
+        return lastResult;
+    };
+}
+
 // Helpers
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getRandomSymbols4() {

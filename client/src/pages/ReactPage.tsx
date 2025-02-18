@@ -1,8 +1,5 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import AAATest from '@app/components/aaa-test/aaa-test.component';
-import ChildrenFaac from '@app/components/children-faac/children-faac.component';
-import StorageHook from '@app/components/storage-hook/storage-hook.component';
 
 export default function ReactPage() {
     return (
@@ -12,9 +9,11 @@ export default function ReactPage() {
                 {/*<MediaQueryCss />*/}
                 {/*<MobxContainer />*/}
 
-                <AAATest />
+                {/*<AAATest />*/}
+                {/*<LocalStorageUseSyncExternalStoreState />*/}
+                {/*<LocalStorageService />*/}
 
-                <ChildrenFaac />
+                {/*<ChildrenFaac />*/}
 
                 {/*<Component title='Align Content by vertical in any block layout'>*/}
                 {/*    <CssFeatures />*/}
@@ -224,7 +223,7 @@ export default function ReactPage() {
                 {/*<ScriptHook />*/}
                 {/*<PreviousHook />*/}
                 {/*<UpdateEffectHook />*/}
-                <StorageHook />
+                {/*<StorageHook />*/}
                 {/*</Component>*/}
 
                 {/* <Component title="Image preload"> */}

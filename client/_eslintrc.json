@@ -18,7 +18,16 @@
         {
             "files": ["**/*.(j|t)s?(x)"],
             "rules": {
-                "array-callback-return": "off"
+                "array-callback-return": "off",
+                "@typescript-eslint/no-unused-vars": [
+                    "error",
+                    {
+                        "args": "all",
+                        "ignoreRestSiblings": true,
+                        "argsIgnorePattern": "^_",
+                        "destructuredArrayIgnorePattern": "^_"
+                    }
+                ]
             }
         }
     ]

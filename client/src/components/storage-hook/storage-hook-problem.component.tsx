@@ -1,4 +1,4 @@
-import React, { memo, FC, Dispatch } from 'react';
+import React, { Dispatch, FC, memo } from 'react';
 import { useLocalStorage } from '@app/hooks/storage';
 import { useLocalStorage as useLocalStorageService } from '@app/hooks/local-storage-service.hook';
 import styles from './storage-hook-problem.module.scss';

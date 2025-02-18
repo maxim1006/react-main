@@ -19,10 +19,10 @@ export const useLocalStorage = <T>(
     useEffect(() => {
         const listener = (propValue: T) => setCurrentLocalStorage(propValue);
 
-        const id = localStorageService.addStorageChangesListener(propName, listener);
+        const unsubscribe = localStorageService.addStorageChangesListener<T>(propName, listener);
 
-        return () => localStorageService.removeStorageChangesListener(id);
-    }, [setCurrentLocalStorage, propName]);
+        return () => unsubscribe();
+    }, [propName]);
 
     return [currentLocalStorage, setValue];
 };
