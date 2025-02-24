@@ -13,7 +13,7 @@ const Rt = () => {
             <PersistGate loading={null} persistor={persistor}>
                 {/*<ProductContainer />*/}
                 <UserListApiContainer />
-                <LocalStorageRtk />
+                {/*<LocalStorageRtk />*/}
                 {/*<UserListThunkContainer />*/}
                 {/*<RtBooksContainer />*/}
                 {/*<RtUsersContainer />*/}

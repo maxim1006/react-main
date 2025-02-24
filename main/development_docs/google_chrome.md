@@ -5,7 +5,9 @@ chrome://inspect#devices
 найти ровно по словам
 
 ### site:site_name request_string
+ex.: site:https://stroi-maks.su/servises/santexnicheskie-rabotyi/ustanovka-vodoschetchikov.html
 ex.: site:javascript.info window
+Посмотреть есть ли сайт в поиске
 
 ### -what_to_exclude
 ex.: javascript -jquery

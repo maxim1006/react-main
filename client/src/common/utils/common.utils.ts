@@ -266,3 +266,17 @@ function getRandomSymbols4() {
         .toString(16)
         .substring(1);
 }
+
+export function getOwnKeys(obj: Record<string, unknown>) {
+    return Reflect.ownKeys(obj);
+}
+
+export function detectAdBlock(): Promise<boolean> {
+    return fetch('https://yandex.ru/ads/system/context.js', {
+        method: 'HEAD',
+        mode: 'no-cors',
+        cache: 'no-store',
+    })
+        .then(() => false)
+        .catch(() => true);
+}
