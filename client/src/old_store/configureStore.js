@@ -38,7 +38,7 @@ function configureStore(preloadedState) {
         createRootReducer(history),
         preloadedState,
         // должен все enhancers объединять в один, так как createStore может принимать только 1 аргумент enhancers
-        composedEnhancers
+        composedEnhancers,
     );
 
     // run saga
@@ -54,7 +54,7 @@ function configureStore(preloadedState) {
                 songs: state.songs,
                 shopCart: state.shopCart,
             });
-        }, 1000)
+        }, 1000),
     );
 
     return store;

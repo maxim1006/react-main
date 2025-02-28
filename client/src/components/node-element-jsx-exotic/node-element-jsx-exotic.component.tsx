@@ -1,6 +1,8 @@
 import React, { FC, Fragment, memo, NamedExoticComponent, ReactNode, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 
+// ReactNode vs JSX.Element
+
 type NodeElementJsxExoticProps = {};
 
 const NodeElementJsxExotic: FC<NodeElementJsxExoticProps> = () => {

@@ -1,10 +1,12 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
+import RenderProp from '@app/components/render-prop/render-prop.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <RenderProp />
                 {/*<SyncExternalStore />*/}
                 {/*<MediaQueryCss />*/}
                 {/*<MobxContainer />*/}

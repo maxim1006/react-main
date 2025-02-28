@@ -1,3 +1,5 @@
+// {} vs object
+
 // это валидно так как {} это все кроме null и undefined
 const a: {} = 'string';
 

@@ -40,7 +40,7 @@ export const updateBookAsyncAction = createAsyncThunk<BookModel, BookModel>(
     async (book, thunkApi) => {
         const response = await Promise.resolve<BookModel>(book);
         return response;
-    }
+    },
 );
 
 const initialState = booksAdapter.getInitialState({ loading: false }); // { entities: {} ids: [] loading: false }
