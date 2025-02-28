@@ -2,17 +2,16 @@ import React, { memo } from 'react';
 import { Provider } from 'react-redux';
 import store, { persistor } from '../store/store';
 import RtPosts from '@app/components/redux-toolkit/posts/rt-posts.component';
-import UserListApiContainer from '@app/components/redux-toolkit/user/list/user-list-api.container';
 import { PersistGate } from 'redux-persist/integration/react';
-import LocalStorageRtk from '@app/components/local-storage/rtk/local-storage-rtk.component';
-import ReduxContextContainer from '@app/components/redux-context/redux-context.container';
+import ReduxCustomContextContainer from '@app/components/redux-custom-context/redux-custom-context.container';
 
 const Rt = () => {
     return (
         <Provider store={store}>
             {/* должен обернуть в гейт чтобы подгрузилась инфа из локал сторадж*/}
             <PersistGate loading={null} persistor={persistor}>
-                <ReduxContextContainer />
+                <ReduxCustomContextContainer />
+                {/*<ReduxContextContainer />*/}
                 {/*<ProductContainer />*/}
                 {/*<UserListApiContainer />*/}
                 {/*<LocalStorageRtk />*/}
