@@ -60,10 +60,14 @@ type ReactNode =
 
 Examples
 
-```html
-<div> // <- ReactElement / JSX.IntrinsicElement
-    <Component> // <- ReactElement / FC 
-        {condition && 'text'} // <- ReactNode
+```typescript jsx
+let a1: JSX.Element = <Component />;
+let a2: ReactNode = <Component />;
+let a3: () => ReactNode = Component;
+
+<div> // ReactElement / JSX.IntrinsicElement
+    <Component> // ReactElement / FC / JSX.Element / ReactNode
+        {condition && 'text'} // ReactNode
     </Component>
 </div>
 ```

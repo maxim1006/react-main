@@ -1,4 +1,4 @@
-import React, { memo, FC, ReactNode, useState, useCallback, MemoExoticComponent, useMemo } from 'react';
+import React, { memo, FC, ReactNode, useState, useCallback, MemoExoticComponent, useMemo, StrictMode } from 'react';
 import cn from 'classnames';
 
 type RenderPropProps = {};
@@ -32,6 +32,7 @@ const RenderProp: FC<RenderPropProps> = () => {
                 Component={SimpleChildImplView}
                 ComponentMemo={SimpleChild}
                 componentNode={componentNodeView}
+                ComponentFoo={TestNonReactFunction}
             />
         </div>
     );
@@ -42,11 +43,13 @@ function ChildImpl({
     Component,
     ComponentMemo,
     componentNode,
+    ComponentFoo,
 }: {
     render: (i: boolean) => ReactNode;
     Component: FC<{}>;
     ComponentMemo: MemoExoticComponent<(props: {}) => JSX.Element>;
     componentNode: ReactNode;
+    ComponentFoo: () => any;
 }) {
     const [childState, setChildState] = useState(false);
 
@@ -58,6 +61,9 @@ function ChildImpl({
                 Click Child
             </button>
             <Component />
+            {/*Если просто прокинуть функцию и у нее внутри будет стейт реакт будет ругаться Rendered more hooks than during the previous render. Так как нельзя хуки в обычную функцию, надо <ComponentFoo />*/}
+            {/*{childState && ComponentFoo()}*/}
+            {childState && <ComponentFoo />}
             <ComponentMemo />
             {componentNode}
             {render(childState)}
@@ -78,6 +84,12 @@ function RenderedViewImpl({ parent, child }: { parent: boolean; child: boolean }
 
 function SimpleChildImpl() {
     return <>Simple Child</>;
+}
+
+function TestNonReactFunction() {
+    const [childState, setChildState] = useState(false);
+    console.log('TestNonReactFunction', childState);
+    return <>TestNonReactFunction</>;
 }
 
 const SimpleChild = memo(SimpleChildImpl);
