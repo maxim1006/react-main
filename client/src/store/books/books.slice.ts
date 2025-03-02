@@ -4,9 +4,9 @@ import { RootState } from '@app/store/store';
 
 // Тут пример с createEntityAdapter
 // https://redux-toolkit.js.org/api/createEntityAdapter
-const booksAdapter = createEntityAdapter<BookModel>({
+const booksAdapter = createEntityAdapter<BookModel, BookModel['id']>({
     // Assume IDs are stored in a field other than `book.id` в моем случае есть id
-    // selectId: (book) => book.bookId,
+    selectId: book => book.id,
     // Keep the "all IDs" array sorted based on book titles
     sortComparer: (a, b) => a.title.localeCompare(b.title),
 });

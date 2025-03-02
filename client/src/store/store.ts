@@ -5,6 +5,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { commonApi } from '@app/store/common/common.api';
 import counter from './counter/counter.slice';
 import todos from './todos/todos.slice';
+import users from './user/api-user.slice';
 import visibilityFilter from './visibility-filters/visibility-filters.slice';
 import issuesDisplay from './issues-display/issues-display.slice';
 import posts from './posts/posts.slice';
@@ -41,6 +42,7 @@ const persistedReducer = persistReducer(persistConfig, books);
 const rootReducer = combineReducers({
     counter,
     todos,
+    users,
     visibilityFilter,
     books: persistedReducer,
     issuesDisplay,

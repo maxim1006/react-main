@@ -2,6 +2,7 @@
 import { UserModel } from '@app/models/user.model';
 import { commonApi } from '@app/store/common/common.api';
 
+// Это чисто для примеров все что в апп используется лежит в api-user.api.ts
 export const userApi = commonApi.injectEndpoints({
     endpoints: build => ({
         // в дженерике вторым параметром передаю тип аргумента который ожидает этот хук тут void
