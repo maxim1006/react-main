@@ -1,11 +1,10 @@
-import { all, delay, takeLatest, takeEvery, put } from 'redux-saga/effects';
+import { all, delay, takeLatest, takeEvery, put, take } from 'redux-saga/effects';
 import { SAGA_TYPES } from '../actions/types';
-import { take } from 'lodash';
 
 // take
 export function* incrementSaga() {
     const incrementPayload = yield take(SAGA_TYPES.INCREMENT_COUNTER);
-    console.log(incrementPayload);
+    console.log({ incrementPayload });
     // остальной код будет ждать выполнения
 }
 
