@@ -1,16 +1,17 @@
-import { all, delay, takeLatest } from 'redux-saga/effects';
+import { all, delay, takeLatest, takeEvery, put } from 'redux-saga/effects';
 import { SAGA_TYPES } from '../actions/types';
+import { take } from 'lodash';
 
 // take
-// export function* incrementSaga() {
-//     const incrementPayload = yield take(SAGA_TYPES.INCREMENT_COUNTER);
-//     console.log(incrementPayload); // выведется 1 раз с {type: "[SagaCounterComponent] Increment counter"},
-//     // остальной код будет ждать выполнения
-// }
+export function* incrementSaga() {
+    const incrementPayload = yield take(SAGA_TYPES.INCREMENT_COUNTER);
+    console.log(incrementPayload);
+    // остальной код будет ждать выполнения
+}
 
 // takeEvery
 // export function* incrementSaga() {
-//     const incrementPayload = yield takeEvery(SAGA_TYPES.INCREMENT_COUNTER, () => console.log("takeEvery log"));
+//     const incrementPayload = yield takeEvery(SAGA_TYPES.INCREMENT_COUNTER, () => console.log('takeEvery log'));
 //     console.log(incrementPayload); // выведется 1 раз с {type: "[SagaCounterComponent] Increment counter"},
 //     // остальной код будет ждать выполнения
 // }
@@ -29,10 +30,10 @@ import { SAGA_TYPES } from '../actions/types';
 
 // takeEvery doesnt block
 // function* onIncrement() {
-//     yield console.log("onIncrement");
+//     yield console.log('onIncrement');
 //     yield delay(3000);
 //     yield put({ type: SAGA_TYPES.INCREMENT_AFTER_DELAY_COUNTER });
-//     console.log("after delay");
+//     console.log('after delay');
 // }
 // export function* incrementSaga() {
 //     yield takeEvery(SAGA_TYPES.INCREMENT_COUNTER, onIncrement);
@@ -42,22 +43,22 @@ import { SAGA_TYPES } from '../actions/types';
 // и вызовет только последний (кликнул много раз но console.log("after delay") сработает только 1 раз)
 // при этом синхоронные вызовы типо yield console.log("onIncrement"); будут вызыватья сколько накликал
 // function* onIncrement() {
-//     yield console.log("onIncrement");
+//     yield console.log('onIncrement');
 //     yield delay(3000);
 //     yield put({ type: SAGA_TYPES.INCREMENT_AFTER_DELAY_COUNTER });
-//     console.log("after delay");
+//     console.log('after delay');
 // }
 // export function* incrementSaga() {
 //     yield takeLatest(SAGA_TYPES.INCREMENT_COUNTER, onIncrement);
 // }
 
 // all
-function* task() {
-    yield delay(2000);
-    console.log('task after delay');
-}
-
-// последовательно
+// function* task() {
+//     yield delay(2000);
+//     console.log('task after delay');
+// }
+//
+// // последовательно
 // function* onIncrement() {
 //     yield task();
 //     yield task();
@@ -65,12 +66,12 @@ function* task() {
 // }
 
 // параллельно
-function* onIncrement() {
-    yield all([task(), task(), task()]);
-}
+// function* onIncrement() {
+//     yield all([task(), task(), task()]);
+// }
 
-export function* incrementSaga() {
-    yield takeLatest(SAGA_TYPES.INCREMENT_COUNTER, onIncrement);
-}
+// export function* incrementSaga() {
+//     yield takeLatest(SAGA_TYPES.INCREMENT_COUNTER, incrementSagaTake);
+// }
 
 export default incrementSaga;

@@ -82,7 +82,11 @@ const Role = {
     ADMIN: 'admin',
     USER: 'user',
 } as const; // не забываю чтобы получить конкретные значения
-//
+
+type Values<T> = T[keyof T];
+type RoleNames = keyof typeof Role;
+type RoleValues = Values<typeof Role>;
+
 // как забрать тип объекта который сделал из enum
 // enum RoleEnum {
 //     ADMIN = 'admin',

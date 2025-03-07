@@ -124,6 +124,9 @@ host - куда делается request (host из Request URL) (nginx пров
 
 ## Commits
 
+feat: Увеличивает минорную версию (например, 1.0.0 → 1.1.0).
+fix: Увеличивает патч-версию (например, 1.0.0 → 1.0.1).
+
 ❗️ **Commit messages will be used to generate `CHANGELOG.md`.**
 So you must write commit messages according to [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 

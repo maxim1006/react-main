@@ -15,9 +15,12 @@ let valKeyofType: PersonKeyofType = 'name';
 
 // keyof typeof
 const person = { name: 'Max', age: 35 } as const;
+
+type Values<T> = T[keyof T];
 // type PersonKeyof = keyof person; // error person is not a type
 type PersonKeyofTypeOfType = keyof typeof person; // ("name" | "age")
 type PersonKeyofTypeOfTypeValues = (typeof person)[keyof typeof person]; // ("name" | "age")
+type PersonKeyofTypeOfTypeValues1 = Values<typeof person>;
 
 let valKeyofTypeOfType: PersonKeyofTypeOfType = 'name';
 // let valKeyofTypeOfType1: PersonKeyofTypeOfType = "name1"; // error

@@ -12,6 +12,7 @@ export class ReduxComponent extends Component {
     render() {
         return (
             <>
+                <ReduxSaga />
                 <MainMenu
                     exact
                     routes={[

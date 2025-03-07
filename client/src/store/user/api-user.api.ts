@@ -4,7 +4,6 @@ import { debounce } from 'lodash';
 import { ThunkDispatch } from 'redux-thunk';
 import { FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, QueryReturnValue } from '@reduxjs/toolkit/query/react';
 import { RootState } from '@app/store/store';
-import { useSelector } from 'react-redux';
 
 type MaybePromise<T> = T | PromiseLike<T>;
 

@@ -85,3 +85,11 @@ testTypeClasss.cc = { a: 1 };
 
 let testTypeClasss1 = new TestTypeClasss();
 testTypeClasss1.cc = { b: 1, c: 1 };
+
+// прикольный пример с Object.assign
+interface INonFunction {
+    a: string;
+    (): void;
+}
+
+let _a: INonFunction = Object.assign(function () {}, { a: 'test' });
