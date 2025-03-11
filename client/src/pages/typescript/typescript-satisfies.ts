@@ -36,14 +36,15 @@ const applicant: Person = {
     myOtherInfo: { id: 123, age: 22 },
 };
 
+// applicant.myInfo.toUpperCase(); // так ошибка так как ts не знает PersonInfo это PersonName | OtherDetails;
+
 // так отработает
 const applicant1 = {
     myInfo: 'John',
     myOtherInfo: { id: 123, age: 22 },
 } satisfies Person;
 
-// так будет ошибка так как applicant.myInfo.toUpperCase() может и не быть строкой
-// applicant.myInfo.toUpperCase();
+// applicant.myInfo.toUpperCase(); а так норм
 applicant1.myInfo.toUpperCase();
 
 export {};

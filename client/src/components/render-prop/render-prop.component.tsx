@@ -29,10 +29,11 @@ const RenderProp: FC<RenderPropProps> = () => {
 
             <Child
                 render={renderCb}
+                componentNode={componentNodeView}
                 Component={SimpleChildImplView}
                 ComponentMemo={SimpleChild}
-                componentNode={componentNodeView}
-                ComponentFoo={TestNonReactFunction}
+                ComponentNonReactFoo={TestNonReactFunction}
+                ComponentNonReactFooProxy={Proxy['TestNonReactFunction']}
             />
         </div>
     );
@@ -40,16 +41,18 @@ const RenderProp: FC<RenderPropProps> = () => {
 
 function ChildImpl({
     render,
+    componentNode,
     Component,
     ComponentMemo,
-    componentNode,
-    ComponentFoo,
+    ComponentNonReactFoo,
+    ComponentNonReactFooProxy,
 }: {
     render: (i: boolean) => ReactNode;
     Component: FC<{}>;
     ComponentMemo: MemoExoticComponent<(props: {}) => JSX.Element>;
     componentNode: ReactNode;
-    ComponentFoo: () => any;
+    ComponentNonReactFoo: ({ childState }: { childState: boolean }) => any;
+    ComponentNonReactFooProxy: ({ childState }: { childState: boolean }) => any;
 }) {
     const [childState, setChildState] = useState(false);
 
@@ -61,12 +64,22 @@ function ChildImpl({
                 Click Child
             </button>
             <Component />
-            {/*Если просто прокинуть функцию и у нее внутри будет стейт реакт будет ругаться Rendered more hooks than during the previous render. Так как нельзя хуки в обычную функцию, надо <ComponentFoo />*/}
-            {/*{childState && ComponentFoo()}*/}
-            {childState && <ComponentFoo />}
+            {/*Если просто прокинуть функцию и у нее внутри будет стейт реакт будет ругаться Rendered more hooks than during the previous render. Так как нельзя хуки в обычную функцию, надо <ComponentFoo />
+            разница с render что ComponentNonReactFoo с хуком и она не заработает*/}
+            {/*{childState && ComponentNonReactFoo()}*/}
+            {/*а так хуки нормально отработают*/}
+            {childState && <ComponentNonReactFoo childState={childState} />}
             <ComponentMemo />
             {componentNode}
             {render(childState)}
+            {/*так будет ошибка с хуками*/}
+            {/*{childState && Proxy['TestNonReactFunction']({ childState })}*/}
+            {/*так будет ошибка с хуками*/}
+            {/*{childState && ComponentNonReactFooProxy({ childState })}*/}
+            {/*так норм*/}
+            <ComponentNonReactFooProxy childState={childState} />
+            {/*еще можно так использовать, чисто для примера*/}
+            {ProxyNode['TestNonReactFunction']}
         </>
     );
 }
@@ -86,11 +99,19 @@ function SimpleChildImpl() {
     return <>Simple Child</>;
 }
 
-function TestNonReactFunction() {
-    const [childState, setChildState] = useState(false);
-    console.log('TestNonReactFunction', childState);
-    return <>TestNonReactFunction</>;
+function TestNonReactFunction({ childState }: { childState: boolean }) {
+    const [testNonReactState, setTestNonReactState] = useState(false);
+    console.log('TestNonReactFunction', testNonReactState, { childState });
+    return <p>TestNonReactFunction</p>;
 }
+
+const Proxy = {
+    TestNonReactFunction,
+};
+
+const ProxyNode = {
+    TestNonReactFunction: <TestNonReactFunction childState />,
+};
 
 const SimpleChild = memo(SimpleChildImpl);
 
