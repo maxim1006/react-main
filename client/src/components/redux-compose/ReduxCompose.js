@@ -3,7 +3,7 @@
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import WithMaterialLoader from '../HOC/WithMaterialLoader';
+import WithMaterialLoader from '../HOC/with-loader/with-material-loader.hoc';
 
 // компонент только для примера
 const SongsList = ({ songs }) => (

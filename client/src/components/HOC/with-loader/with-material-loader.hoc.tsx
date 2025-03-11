@@ -1,5 +1,5 @@
 import { ComponentType, FC } from 'react';
-import MaterialLoader from '../loader/MaterialLoader';
+import MaterialLoader from '../../loader/MaterialLoader';
 
 // type BannersListContainerProps = {
 // wrapperTag?: keyof JSX.IntrinsicElements;

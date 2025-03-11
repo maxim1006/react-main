@@ -1,12 +1,13 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import RenderProp from '@app/components/render-prop/render-prop.component';
+import { HocWithPropsContainer } from '@app/components/HOC/with-props/hoc-with-props.container';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <RenderProp />
+                <HocWithPropsContainer />
+                {/*<RenderProp />*/}
                 {/*<SyncExternalStore />*/}
                 {/*<MediaQueryCss />*/}
                 {/*<MobxContainer />*/}
