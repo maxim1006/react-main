@@ -1,9 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { wrapPromise } from '@app/common/utils/promise.utils';
-
-// function suspenseData<T>(task: () => Promise<T>): () => T {
-//     return wrapPromise(task());
-// }
+import React, { useRef } from 'react';
+import { suspenseData } from '@app/common/utils/promise.utils';
 
 function InnerHocComponent<R>(
     props: Readonly<{
@@ -13,13 +9,18 @@ function InnerHocComponent<R>(
 ) {
     const { children, task } = props;
 
-    const [result, setResult] = useState<R>(null as R);
+    // можно так но лучше в suspense
+    // const [result, setResult] = useState<R>(null as R);
+    //
+    // useEffect(() => {
+    //     (async () => {
+    //         setResult(await task());
+    //     })();
+    // }, [task]);
 
-    useEffect(() => {
-        (async () => {
-            setResult(await task());
-        })();
-    }, [task]);
+    const result = suspenseData('withPropsId', async () => {
+        return await task();
+    })();
 
     return <div>{children({ result })}</div>;
 }
@@ -42,7 +43,7 @@ function withProps<R, Props>(options: THocWithPropsOptions<R, Props>) {
         const { ms, task } = options;
 
         return (
-            <React.Suspense fallback={fallback ?? <>Fallback</>}>
+            <React.Suspense fallback={fallback ?? <>withProps Fallback</>}>
                 <InnerHocComponent task={() => task(ms as unknown as Props)}>{children}</InnerHocComponent>
             </React.Suspense>
         );

@@ -31,6 +31,7 @@ function wrapPromise<T>(promise: Promise<T>): () => T {
 function suspenseData<T>(key: string, task: () => Promise<T>): () => T {
     const _cached = wrapPromiseCacheMap.get(key);
 
+    // suspenseData отработает 2 раза 1ый и когда выполнится промис, после его выполнения сработает if (_cached) так как wrapPromiseCacheMap.set(key, r); выполнится после резолва прамиса
     if (_cached) {
         if (typeof _cached === 'function') {
             return _cached as () => T;
