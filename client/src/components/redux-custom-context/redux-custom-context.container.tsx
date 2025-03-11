@@ -1,7 +1,7 @@
-import React, { FC, memo, PropsWithChildren, ReactNode } from 'react';
+import React, { FC, memo, ReactNode } from 'react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider, useSelector } from 'react-redux';
-import { Provider as Provider1, useStore, useSelector as useSelector1 } from './redux-custom-context.helper';
+import { Provider1, useSelector1, useStore1 } from './redux-custom-context.helper';
 
 type ReduxCustomContextProps = {};
 
@@ -29,7 +29,7 @@ const StoreComponent = () => {
 };
 
 const StoreComponent1 = () => {
-    const store = useStore();
+    const store = useStore1();
     console.log({ state: store.getState() });
     const storeProp = useSelector1((state: RootStateUnion) => state.prop);
     return <h4>StoreComponent1 I am using store {storeProp}</h4>;

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { wrapPromise } from '@app/common/utils/promise.utils';
 
-function suspenseData<T>(task: () => Promise<T>): () => T {
-    return wrapPromise(task());
-}
+// function suspenseData<T>(task: () => Promise<T>): () => T {
+//     return wrapPromise(task());
+// }
 
 function InnerHocComponent<R>(
     props: Readonly<{

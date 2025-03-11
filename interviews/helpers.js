@@ -1,5 +1,5 @@
 // delay
-export const delay = (time, args) =>
+export const delay = (time, ...args) =>
     new Promise(res =>
         setTimeout(
             args => {
@@ -7,8 +7,8 @@ export const delay = (time, args) =>
                 console.log('delay', { time, args });
             },
             time,
-            args
-        )
+            args,
+        ),
     );
 
 export const delayWithError = (time, ...args) =>
@@ -19,8 +19,8 @@ export const delayWithError = (time, ...args) =>
                 console.log('delay', { time, args });
             },
             time,
-            args
-        )
+            args,
+        ),
     );
 
 // getInteger

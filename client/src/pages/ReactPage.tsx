@@ -1,12 +1,14 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import { HocWithPropsContainer } from '@app/components/HOC/with-props/hoc-with-props.container';
+import { CustomSuspense } from '@app/components/suspense/suspense.component';
+import RenderProp from '@app/components/render-prop/render-prop.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <HocWithPropsContainer />
+                <CustomSuspense />
+                {/*<HocWithPropsContainer />*/}
                 {/*<RenderProp />*/}
                 {/*<SyncExternalStore />*/}
                 {/*<MediaQueryCss />*/}

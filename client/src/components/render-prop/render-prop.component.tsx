@@ -66,7 +66,7 @@ function ChildImpl({
             <Component />
             {/*Если просто прокинуть функцию и у нее внутри будет стейт реакт будет ругаться Rendered more hooks than during the previous render. Так как нельзя хуки в обычную функцию, надо <ComponentFoo />
             разница с render что ComponentNonReactFoo с хуком и она не заработает*/}
-            {/*{childState && ComponentNonReactFoo()}*/}
+            {/*{childState && ComponentNonReactFoo({ childState })}*/}
             {/*а так хуки нормально отработают*/}
             {childState && <ComponentNonReactFoo childState={childState} />}
             <ComponentMemo />

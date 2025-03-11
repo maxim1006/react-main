@@ -16,24 +16,24 @@ const {
 
 const ctx = React.createContext({}) as unknown as React.ComponentProps<typeof OriginProvider>['context'];
 
-const Provider = ({ context, ...rest }: React.ComponentProps<typeof OriginProvider>) =>
+const Provider1 = ({ context, ...rest }: React.ComponentProps<typeof OriginProvider>) =>
     React.createElement(OriginProvider, { context: ctx, ...rest });
 
-const useSelector = createSelectorHook(ctx);
+const useSelector1 = createSelectorHook(ctx);
 
 const useDispatch = createDispatchHook(ctx);
 
-const useStore = createStoreHook(ctx);
+const useStore1 = createStoreHook(ctx);
 
 export {
     ReactReduxContext,
-    Provider,
+    Provider1,
     createStoreHook,
     shallowEqual,
     batch,
     useDispatch,
-    useSelector,
-    useStore,
+    useSelector1,
+    useStore1,
     marker,
     ctx,
 };

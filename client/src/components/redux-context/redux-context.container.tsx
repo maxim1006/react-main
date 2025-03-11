@@ -5,6 +5,8 @@ import { useSelector, Provider } from 'react-redux';
 
 type ReduxContextContainerProps = {};
 
+// client/src/components/redux-custom-context/redux-custom-context.container.tsx тут 2ой вариант как оставить контекст
+
 const storeA = configureStore({
     reducer: () => ({
         prop: 'A',
