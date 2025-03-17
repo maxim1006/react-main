@@ -3,17 +3,18 @@ import { Provider } from 'react-redux';
 import store, { persistor } from '../store/store';
 import RtPosts from '@app/components/redux-toolkit/posts/rt-posts.component';
 import { PersistGate } from 'redux-persist/integration/react';
-import UserListApiContainer from '@app/components/redux-toolkit/user/list/user-list-api.container';
+import { StoreWithProtectedAction } from '@app/components/store-with-protected-actions/store-with-protected-actions.component';
 
 const Rt = () => {
     return (
         <Provider store={store}>
             {/* должен обернуть в гейт чтобы подгрузилась инфа из локал сторадж*/}
             <PersistGate loading={null} persistor={persistor}>
+                <StoreWithProtectedAction />
                 {/*<ReduxCustomContextContainer />*/}
                 {/*<ReduxContextContainer />*/}
                 {/*<ProductContainer />*/}
-                <UserListApiContainer />
+                {/*<UserListApiContainer />*/}
                 {/*<LocalStorageRtk />*/}
                 {/*<UserListThunkContainer />*/}
                 {/*<RtBooksContainer />*/}
@@ -22,7 +23,7 @@ const Rt = () => {
                 {/*<RtCounter />*/}
                 {/*<RtTodos />*/}
                 {/*<RtIssuesDisplay />*/}
-                <RtPosts />
+                {/*<RtPosts />*/}
             </PersistGate>
         </Provider>
     );

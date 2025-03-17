@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode } from 'react';
+import React, { ComponentType, FC, memo, ReactNode } from 'react';
 import cn from 'classnames';
 import { configureStore } from '@reduxjs/toolkit';
 import { useSelector, Provider } from 'react-redux';
@@ -58,7 +58,8 @@ function Child({
     renderA,
 }: {
     render: () => ReactNode;
-    Component: () => JSX.Element;
+    // ComponentType === () => JSX.Element, также JSX.Element — подмножество React.ReactNode, React.ReactNode включает JSX.Element плюс примитивы (string, number, boolean), null, undefined и массивы.
+    Component: (() => JSX.Element) | ComponentType;
     componentNode: ReactNode;
     renderA: () => ReactNode;
 }) {

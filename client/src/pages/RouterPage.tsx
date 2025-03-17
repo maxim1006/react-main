@@ -10,6 +10,31 @@ import RouterIndex from '@app/components/router/index/router-index.component';
 const RouterLazyRoute = React.lazy(() => import('../components/router/RouterLazyRoute'));
 const ExamplesLazyComponent = lazy(() => import('../components/examples/lazy/examples-lazy.component'));
 
+// это пример для 5ой версии (внизу роуты)
+// export type ReactRouteComponent = ComponentType<RouteComponentProps>;
+//
+// type TRouteComponents<T extends string> = { [key in T]: ReactRouteComponent };
+//
+// export type RouteComponents = TRouteComponents<'RouterLazyRoute' | 'ExamplesLazyComponent'>;
+//
+// const COMPONENTS: RouteComponents = {
+//     RouterLazyRoute,
+//     ExamplesLazyComponent,
+// };
+//
+// const KNOWN_COMPONENTS = [
+//     {
+//         componentName: 'RouterLazyRoute',
+//         path: '/routerLazyRoute',
+//         exact: true,
+//     },
+//     {
+//         componentName: 'ExamplesLazyComponent',
+//         path: '/examplesLazyComponent',
+//         exact: true,
+//     },
+// ];
+
 enum RouterStepsEnum {
     Step1 = 'step1',
     Step2 = 'step2',
@@ -152,6 +177,12 @@ const RouterPage: FC<RouterPageProps> = () => {
                 {/*    <Redirect to={{ pathname: `/${ROUTER_STEPS[0].slug}`, search }} />*/}
                 {/*</Route>*/}
             </Routes>
+
+            {/*так было в 5 версии*/}
+            {/*{KNOWN_COMPONENTS.map(({ path, componentName, exact }) => {*/}
+            {/*    const RouteComponent = COMPONENTS[componentName] as any;*/}
+            {/*    return <Route key={path} path={path} exact={exact} render={props => <RouteComponent {...props} />} />;*/}
+            {/*})}*/}
 
             <FooterBar />
             {/*</Router1>*/}

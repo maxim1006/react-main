@@ -1,4 +1,14 @@
-import React, { memo, FC, ReactNode, useState, useCallback, MemoExoticComponent, useMemo, StrictMode } from 'react';
+import React, {
+    memo,
+    FC,
+    ReactNode,
+    useState,
+    useCallback,
+    MemoExoticComponent,
+    useMemo,
+    StrictMode,
+    ComponentType,
+} from 'react';
 import cn from 'classnames';
 
 type RenderPropProps = {};
@@ -14,7 +24,7 @@ const RenderProp: FC<RenderPropProps> = () => {
         [parentState],
     );
 
-    const SimpleChildImplView = useMemo(() => SimpleChildImpl, []);
+    const SimpleChildImplView: ComponentType<{ prop?: string }> = useMemo(() => SimpleChildImpl, []);
     const componentNodeView = useMemo(() => <SimpleChild />, []);
 
     return (
@@ -48,7 +58,8 @@ function ChildImpl({
     ComponentNonReactFooProxy,
 }: {
     render: (i: boolean) => ReactNode;
-    Component: FC<{}>;
+    // и FC<{}> и ComponentType<{ prop?: string }> подойдет, ComponentType описывает как функциональный так и классовый компонент
+    Component: FC<{}> | ComponentType<{ prop?: string }>;
     ComponentMemo: MemoExoticComponent<(props: {}) => JSX.Element>;
     componentNode: ReactNode;
     ComponentNonReactFoo: ({ childState }: { childState: boolean }) => any;
@@ -95,8 +106,8 @@ function RenderedViewImpl({ parent, child }: { parent: boolean; child: boolean }
     );
 }
 
-function SimpleChildImpl() {
-    return <>Simple Child</>;
+function SimpleChildImpl({ prop }: { prop?: string }) {
+    return <>Simple Child {prop}</>;
 }
 
 function TestNonReactFunction({ childState }: { childState: boolean }) {
