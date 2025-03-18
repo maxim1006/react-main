@@ -4,10 +4,11 @@ const path = require('path');
 const mode = process.env.NODE_ENV;
 const isProd = mode === 'production';
 const CopyPlugin = require('copy-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const entries = [
     {
-        name: 'simpleWebpack',
+        name: 'mainModule',
         entryPoint: {
             main: ['./src/index.ts'],
         },
@@ -31,12 +32,14 @@ module.exports = entries.map(entry => ({
     output: {
         filename: '[name].js',
         path: path.join(path.resolve(__dirname, 'dist'), 'web', entry.distSubFolder),
+        publicPath: '/',
     },
 
     devtool: isProd ? false : 'inline-source-map',
 
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+        plugins: [new TsconfigPathsPlugin()],
     },
 
     devServer: {
