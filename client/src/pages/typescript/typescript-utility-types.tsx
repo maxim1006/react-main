@@ -58,6 +58,7 @@ function foo(bar: string) {
 type FooReturn = ReturnType<typeof foo>; // { baz: number }
 
 console.log(window.customProp);
+console.log(window.customFoo);
 
 // Как убрать пару свойств из типа и добавить новые
 interface BaseOmitModel {

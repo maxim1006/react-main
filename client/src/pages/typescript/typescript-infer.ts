@@ -5,13 +5,15 @@ export type Maybe<T> = T | null;
 
 export type InnerArrType = { [key: string]: number }[];
 
+// как залезть в объект и получить типы на несколько уровней вложенности, даже если они опциональные
 export type InferredTypeFragment = {
     __typename?: 'InferredTypeFragment';
     localizedData?: Maybe<Array<{ __typename?: 'LocalizedData'; innerArr: Maybe<InnerArrType> }>>;
 };
 
 export type MyType = ArrayType<NonNullable<InferredTypeFragment['localizedData']>>;
-// export type MyTypeInner = ArrayType<NonNullable<InferredTypeFragment['localizedData'][0]['innerArr']>>;
+// export type MyTypeInner = ArrayType<NonNullable<InferredTypeFragment['localizedData'][0]['innerArr']>>; // так не отработает
+export type MyTypeInner1 = ArrayType<NonNullable<MyType['innerArr']>>; // а так норм
 
 // еще пример
 const array: number[] = [1, 2, 3, 4];

@@ -19,6 +19,10 @@ const ContextPage = React.lazy(() => import('./pages/ContextPage'));
 const ReduxPage = React.lazy(() => import('./pages/ReduxPage'));
 
 const App: React.FC = () => {
+    // пример импортов из global.ts и custom.d.ts - и так и так сработает
+    // console.log(window.customProp);
+    // console.log(window.customFoo);
+
     return (
         <GeneralInfoProvider>
             <GeneralInfo />

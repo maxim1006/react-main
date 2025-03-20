@@ -1,4 +1,5 @@
-// прмер ConvertType как убирает значения и добавляет вместо второго аргумента то что надо переделать в UnFormalizedParams
+// прмер ConvertType - убирает eventType из TCounterReachGoalPayload
+// и меняет тип 'params' на UnFormalizedParams
 const REQUIRED_PARAMS_KEYS = ['uuid', 'uuid1', 'event_json'] as const;
 
 type TPossibleParamsKeys = (typeof REQUIRED_PARAMS_KEYS)[number];
@@ -8,6 +9,7 @@ type TFormalizedParams = {
 };
 
 type TCounterReachGoalPayload = {
+    prop: string;
     eventType: 'reachGoal';
     params: Record<string, TFormalizedParams>;
 };
@@ -27,6 +29,8 @@ type TReachGoalGroupPayload = ConvertType<Omit<TCounterReachGoalPayload, 'eventT
 type ConvertType<T, K extends keyof T, N> = Pick<T, Exclude<keyof T, K>> & { [Key in K]: N };
 
 const _a: TReachGoalGroupPayload = {
+    prop: 'params',
+    // eventType: "213", // ошибка
     params: {
         uuid: 1,
         event_json: {

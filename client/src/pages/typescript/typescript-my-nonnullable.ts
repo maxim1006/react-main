@@ -18,5 +18,23 @@ interface NonFunctionPropertiesObject {
 }
 
 type OnlyNonFunctions = NonFunctionProperties<NonFunctionPropertiesObject>;
-// const obj: OnlyNonFunctions = { name: 'a', foo: () => {} }; // так будет ошибка так как never исключит функции
+// const obj: OnlyNonFunctions = { name: 'a', foo: () => {} }; // так будет ошибка так как never исключит функции, по сути never является ограничителем свойств которые не нужны в extends
 const obj: OnlyNonFunctions = { name: 'a' }; // ок
+
+// пример с исключением undefined c помощью never
+type ExcludeUndefined<T> = T extends undefined ? never : T;
+
+interface ExcludeUndefinedExample {
+    id: number;
+    name?: string;
+    age?: number;
+}
+
+type NameType = ExcludeUndefined<ExcludeUndefinedExample['name']>; // string
+type AgeType = ExcludeUndefined<ExcludeUndefinedExample['age']>; // number
+
+const example1: NameType = 'John';
+const example2: AgeType = 30;
+
+// const example4: NameType = undefined; // ошибка
+// const example5: AgeType = undefined; // ошибка
