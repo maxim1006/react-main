@@ -20,16 +20,26 @@ function* getFamily(action) {
     }
 }
 
+function* getFamilyTakeWhileTrueSaga(action) {
+    while (true) {
+        yield take(action);
+        console.log({ action });
+        yield call(getFamily, action);
+    }
+}
+
 function* getFamilyStartSaga() {
     // take вызовется только 1 раз и только после него вызовется консоль лог
     // const res = yield take(FAMILY_TYPES.GET_FAMILY_START);
     // console.log({ res });
-    // пока не выполнится первый второй не запустится, последовательно вызовет запросы
+    // это пример с take который отработает как takeLeading, последовательно будет вызывать запросы причем пока предыдущий не прошел следующий не вызовется
+    yield call(getFamilyTakeWhileTrueSaga, FAMILY_TYPES.GET_FAMILY_START);
+    // пока не выполнится первый второй не запустится, последовательно вызовет запросы, причем пока предыдущий не прошел следующий не вызовется
     // yield takeLeading(FAMILY_TYPES.GET_FAMILY_START, getFamily);
     // все вызовы параллельно
     // yield takeEvery(FAMILY_TYPES.GET_FAMILY_START, getFamily);
     // закенселит все вызовы кроме последнего
-    yield takeLatest(FAMILY_TYPES.GET_FAMILY_START, getFamily);
+    // yield takeLatest(FAMILY_TYPES.GET_FAMILY_START, getFamily);
 }
 
 export default getFamilyStartSaga;
