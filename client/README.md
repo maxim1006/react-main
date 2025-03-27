@@ -21,6 +21,15 @@ IMEI - уникальное 15-значное число, которое при�
 в страницу которая должна передавать origin нужно вствить 
 <meta name="referrer" content="origin" />
 
+### static server
+https://www.npmjs.com/package/http-server
+
+npx http-server ./
+npx http-server ./ -S -C cert.pem
+
+### Создать самоподписной сертификат 
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+
 ### package.json
 если вставить то будет при запуске авто редирект на /react-main route
 "homepage": "https://maxim1006.github.io/react-main",
