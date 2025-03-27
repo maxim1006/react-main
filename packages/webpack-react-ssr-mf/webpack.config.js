@@ -169,6 +169,7 @@ module.exports = (_, argv) => {
                     },
                 },
             }),
+            // проставит содержимое banner.txt в remoteEntry и main.js
             new webpack.BannerPlugin({
                 banner: template(fs.readFileSync(path.resolve(__dirname, 'banner.txt'), 'utf-8'))({
                     version: process.env.VERSION ?? 'local',

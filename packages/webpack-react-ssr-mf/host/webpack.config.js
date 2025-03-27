@@ -119,11 +119,16 @@ const getConfig = isServer => {
                       },
                       setupMiddlewares(middlewares, devServer) {
                           let stats;
-                          devServer.compiler.hooks.done.tap('Render', () => {
+
+                          function clear() {
                               delete require.cache[
                                   path.resolve(__dirname, './dist/node/node-main.js')
                               ];
                               performReload(true);
+                          }
+
+                          devServer.compiler.hooks.done.tap('Render', () => {
+                              console.log('Render');
                               stats = undefined;
                           });
                           middlewares.unshift({
@@ -131,8 +136,11 @@ const getConfig = isServer => {
                               // `path` is optional
                               path: '/',
                               middleware: (req, res, next) => {
+                                  console.log('middleware render');
+
                                   stats =
                                       stats ?? devServer.middleware.context.stats.stats[1].toJson();
+
                                   try {
                                       delete require.cache[
                                           path.resolve(__dirname, './dist/node/node-main.js')
@@ -252,6 +260,7 @@ const nativeRequire = () =>
 
 const requireCacheRegex = /(remote|runtime|server|hot-reload|react-loadable-manifest)/;
 
+// сброс кеша вебпак для очистки динамически загружаемых MF модулей
 function performReload(shouldReload) {
     if (!shouldReload) {
         return false;

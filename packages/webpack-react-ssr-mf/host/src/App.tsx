@@ -2,6 +2,7 @@ import React from 'react';
 
 import './index.module.sass';
 
+// тоже что и remote
 // const TestMf = React.lazy(
 //     () => import('max_mf_test/TestMf' as any) as Promise<{ default: React.FC }>,
 // );

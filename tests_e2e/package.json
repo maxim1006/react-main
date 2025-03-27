@@ -18,6 +18,7 @@
     "author": "Max Maximov",
     "license": "ISC",
     "devDependencies": {
+        "@types/node": "^22.13.14",
         "@playwright/test": "^1.51.1"
     }
 }
