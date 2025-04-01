@@ -21,7 +21,7 @@ IMEI - уникальное 15-значное число, которое при�
 в страницу которая должна передавать origin нужно вствить 
 <meta name="referrer" content="origin" />
 
-### static server
+### static server (Статический сервер)
 https://www.npmjs.com/package/http-server
 
 npx http-server ./

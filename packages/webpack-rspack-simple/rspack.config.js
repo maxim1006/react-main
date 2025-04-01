@@ -1,12 +1,10 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { rspack } = require('@rspack/core');
 const path = require('path');
 const mode = process.env.NODE_ENV;
 const isProd = mode === 'production';
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    // Это базовая директория для разрешения точек входа (entry points) в Webpack. По умолчанию это текущая рабочая директория.
+    // Это базовая директория для разрешения точек входа (entry points) в rspack. По умолчанию это текущая рабочая директория.
     context: path.resolve(__dirname, './'),
     entry: './src/index.ts',
     mode,
@@ -31,7 +29,7 @@ module.exports = {
             {
                 test: /\.(sa|sc|c)ss$/i,
                 use: [
-                    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+                    isProd ? rspack.CssExtractRspackPlugin.loader : 'style-loader',
                     'css-loader',
                     'postcss-loader',
                     'sass-loader',
@@ -56,20 +54,20 @@ module.exports = {
     },
 
     plugins: [
-        new HtmlWebPackPlugin({
+        new rspack.HtmlRspackPlugin({
             template: './src/index.html',
         }),
         ...[].concat(
             isProd
                 ? [
-                      new MiniCssExtractPlugin({
+                      new rspack.CssExtractRspackPlugin({
                           filename: '[name].css',
                       }),
                   ]
                 : [],
         ),
         // to the dist root directory
-        new CopyPlugin({
+        new rspack.CopyRspackPlugin({
             patterns: [{ from: './public', to: '' }],
         }),
     ],
