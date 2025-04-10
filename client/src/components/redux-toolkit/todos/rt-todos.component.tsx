@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useEffect, useState } from 'react';
+import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodoAction, addTodoPreparedAction, toggleTodoAction } from '@app/store/todos/todos.slice';
 import { setVisibilityFilterAction, visibilityFilters } from '@app/store/visibility-filters/visibility-filters.slice';
@@ -21,9 +21,18 @@ const RtTodos = () => {
         dispatch(setVisibilityFilterAction(filter));
     };
 
-    const onTodoClick = (id: string) => () => {
-        dispatch(toggleTodoAction(id));
-    };
+    // const onTodoClick = (id: string) => () => {
+    //     dispatch(toggleTodoAction(id));
+    // };
+
+    const onTodoClick = useCallback(
+        (id: string) => {
+            return () => {
+                dispatch(toggleTodoAction(id));
+            };
+        },
+        [dispatch],
+    );
 
     const addTodoAsObject = () => {
         if (todoText.trim()) {
@@ -31,7 +40,7 @@ const RtTodos = () => {
                 addTodoAction({
                     text: todoText,
                     id: `${Math.random() * Date.now()}`,
-                })
+                }),
             );
         }
     };

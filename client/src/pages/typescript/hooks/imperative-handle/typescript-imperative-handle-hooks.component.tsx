@@ -1,6 +1,6 @@
 import { useImperativeHandle } from 'react';
 
-// https://reactjs.org/docs/hooks-reference.html#useimperativehandle
+// https://react.dev/reference/react/useImperativeHandle
 type ListProps<ItemType> = {
     items: ItemType[];
     innerRef?: React.Ref<{ scrollToItem(item: ItemType): void }>;

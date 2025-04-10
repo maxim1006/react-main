@@ -7,7 +7,10 @@
 
 // Плохой пример
 class BadWeapon {
-    constructor(public type: string, public damage: number) {}
+    constructor(
+        public type: string,
+        public damage: number,
+    ) {}
 
     attack() {
         console.log('удар мечом ' + this.damage);
@@ -23,10 +26,15 @@ void new BadWeapon('crossbow', 30).attack(); // удар мечом 30
 // надо создать базовый класс
 interface GoodAttacker {
     attack: () => void;
+    // тоже что и выше
+    // attack(): void;
 }
 
 abstract class GoodWeapon implements GoodAttacker {
-    protected constructor(public type: string, public damage: number) {}
+    protected constructor(
+        public type: string,
+        public damage: number,
+    ) {}
     attack() {}
 }
 

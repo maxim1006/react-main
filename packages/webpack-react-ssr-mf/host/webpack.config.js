@@ -9,6 +9,7 @@ const API_HOST = '';
 const API_ORIGIN = `https://${API_HOST}`;
 
 const pkg = require('../package.json');
+const Websocket = require('ws');
 
 const proxy_headers = {
     Host: API_HOST,
@@ -107,7 +108,7 @@ const getConfig = isServer => {
                       static: {
                           directory: path.join(__dirname, 'public'),
                       },
-                      hot: false,
+                      hot: true,
                       compress: true,
                       port: 8009,
                       historyApiFallback: true,
@@ -129,8 +130,42 @@ const getConfig = isServer => {
 
                           devServer.compiler.hooks.done.tap('Render', () => {
                               console.log('Render');
+                              clear();
                               stats = undefined;
                           });
+
+                          // подключаюсь к дев серверу mf
+                          const ws = new Websocket('ws://localhost:8007/ws', {
+                              origin: 'http://localhost:8080',
+                          });
+
+                          ws.on('error', e => console.error(`[Host ws] error: ${e}`));
+
+                          ws.on('open', function open() {
+                              console.log('[Host ws] connected to short mf dev server');
+                          });
+
+                          ws.on('message', function message(data) {
+                              console.log('ws message', data.toString());
+                              try {
+                                  const msg = JSON.parse(data.toString());
+                                  if (msg.type === 'invalid') {
+                                      console.log('Invalid message ', { msg });
+                                  }
+                                  if (msg.type === 'warnings' || msg.type === 'ok') {
+                                      if (devServer.middleware.context.state) {
+                                          console.log(
+                                              'devServer.middleware.context.state',
+                                              devServer.middleware.context.state,
+                                          );
+                                          clear();
+                                      }
+                                  }
+                              } catch (e) {
+                                  console.log(e);
+                              }
+                          });
+
                           middlewares.unshift({
                               name: 'render',
                               // `path` is optional
@@ -142,10 +177,7 @@ const getConfig = isServer => {
                                       stats ?? devServer.middleware.context.stats.stats[1].toJson();
 
                                   try {
-                                      delete require.cache[
-                                          path.resolve(__dirname, './dist/node/node-main.js')
-                                      ];
-                                      performReload(true);
+                                      clear();
                                       require(path.resolve(__dirname, './dist/node/node-main'))
                                           .bootstrap(stats)
                                           .then(render => render(req, res, next));
@@ -191,7 +223,7 @@ const getConfig = isServer => {
         name: !isServer ? 'web' : 'node',
         entry: !isServer
             ? {
-                  main: path.join(__dirname, '/src/bootstrap.ts'),
+                  main: path.join(__dirname, '/src/client.bootstrap.ts'),
               }
             : path.join(__dirname, '/src/server.bootstrap.tsx'),
         target: !isServer ? 'web' : false,
@@ -226,7 +258,6 @@ const getConfig = isServer => {
                         (isServer ? '/node/' : '/web/') +
                         'remoteEntry.js',
                 },
-                filename: 'test-host.js',
                 exposes: {},
                 shared: {
                     react: {
