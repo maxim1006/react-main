@@ -14,12 +14,14 @@ export async function bootstrap(stats: import('webpack').StatsCompilation) {
             const { App } = await import('./components/app/app.component');
             const { StaticRouter: Router } = await import('react-router-dom');
 
+            // так вытаскиваю из изветсного чанка (в данном случае main-client) css файлы
             const cssChunks = (stats.assetsByChunkName?.['main-client'] ?? [])
                 .filter(p => p.endsWith('.css'))
                 .map(p => path.join(stats?.publicPath ?? '', p));
 
             let html = await new Promise<string>((resolve, reject) => {
                 const passThrough = new PassThrough();
+                // нужно чтобы в renderToPipeableStream было тоже что и в hydrateRoot
                 const { pipe } = ReactDOMServer.renderToPipeableStream(
                     <html lang='ru'>
                         <head>
@@ -33,11 +35,13 @@ export async function bootstrap(stats: import('webpack').StatsCompilation) {
                             <script defer src='/main.js'></script>
                         </head>
                         <body>
+                            {/*одинаково с hydrateRoot*/}
                             <div id='app'>
                                 <Router location={req.url}>
                                     <App />
                                 </Router>
                             </div>
+                            {/**************************/}
                         </body>
                     </html>,
                     {
@@ -52,7 +56,12 @@ export async function bootstrap(stats: import('webpack').StatsCompilation) {
                 );
             });
 
-            res.send(html);
+            if (global.redirectTo) {
+                res.redirect(global.redirectTo);
+                global.redirectTo = undefined;
+            } else {
+                res.send(html);
+            }
         })();
     };
 

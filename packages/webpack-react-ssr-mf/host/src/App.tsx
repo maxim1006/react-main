@@ -2,16 +2,33 @@ import React from 'react';
 
 import './index.module.sass';
 
-// тоже что и remote
-// const TestMf = React.lazy(
-//     () => import('max_mf_test/TestMf' as any) as Promise<{ default: React.FC }>,
-// );
+import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/runtime';
+
+const entry =
+    'http://localhost:8007/test-public-path' +
+    (typeof window === 'undefined' ? '/node/' : '/web/') +
+    'remoteEntry.js';
+
+init({
+    name: 'hostApp',
+    remotes: [
+        {
+            name: 'max_mf_test',
+            entry,
+        },
+    ],
+});
+
+registerRemotes([
+    {
+        name: 'max_mf_test',
+        entry,
+    },
+]);
 
 const TestMf = remote('max_mf_test/TestMf', () =>
-    import('max_mf_test/TestMf' as any).then(mod => ({ default: mod.TestMf })),
+    loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({ default: mod.TestMf })),
 );
-
-console.log({ TestMf });
 
 export const App = () => {
     return (
@@ -21,6 +38,14 @@ export const App = () => {
         </div>
     );
 };
+
+// примеры подключения
+// const TestMf = remote('max_mf_test/TestMf', () =>
+//     import('max_mf_test/TestMf' as any).then(mod => ({ default: mod.TestMf })),
+// );
+// const TestMf = React.lazy(
+//     () => import('max_mf_test/TestMf' as any) as Promise<{ default: React.FC }>,
+// );
 
 export function remote<P extends NonNullable<unknown>>(
     scope: string,

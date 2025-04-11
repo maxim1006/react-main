@@ -10,6 +10,7 @@ const API_ORIGIN = `https://${API_HOST}`;
 
 const pkg = require('../package.json');
 const Websocket = require('ws');
+const React = require('react');
 
 const proxy_headers = {
     Host: API_HOST,
@@ -108,7 +109,7 @@ const getConfig = isServer => {
                       static: {
                           directory: path.join(__dirname, 'public'),
                       },
-                      hot: true,
+                      hot: false,
                       compress: true,
                       port: 8009,
                       historyApiFallback: true,
@@ -146,7 +147,6 @@ const getConfig = isServer => {
                           });
 
                           ws.on('message', function message(data) {
-                              console.log('ws message', data.toString());
                               try {
                                   const msg = JSON.parse(data.toString());
                                   if (msg.type === 'invalid') {
@@ -154,10 +154,6 @@ const getConfig = isServer => {
                                   }
                                   if (msg.type === 'warnings' || msg.type === 'ok') {
                                       if (devServer.middleware.context.state) {
-                                          console.log(
-                                              'devServer.middleware.context.state',
-                                              devServer.middleware.context.state,
-                                          );
                                           clear();
                                       }
                                   }
@@ -171,8 +167,6 @@ const getConfig = isServer => {
                               // `path` is optional
                               path: '/',
                               middleware: (req, res, next) => {
-                                  console.log('middleware render');
-
                                   stats =
                                       stats ?? devServer.middleware.context.stats.stats[1].toJson();
 
@@ -230,7 +224,7 @@ const getConfig = isServer => {
         output: !isServer
             ? {
                   filename: '[name].js',
-                  path: path.join(__dirname, 'dist'),
+                  path: path.join(__dirname, 'dist/client'),
                   publicPath: '/',
               }
             : {
@@ -238,6 +232,7 @@ const getConfig = isServer => {
                   path: path.join(__dirname, 'dist/node'),
                   globalObject: 'this',
                   libraryTarget: 'umd',
+                  publicPath: '/',
               },
         plugins: [
             ...commonPlugins,
@@ -253,10 +248,15 @@ const getConfig = isServer => {
                 ...(isServer ? { library: { type: 'commonjs-module' } } : {}),
                 isServer, // or false
                 remotes: {
-                    max_mf_test:
-                        'max_mf_test@http://localhost:8007/test-public-path' +
-                        (isServer ? '/node/' : '/web/') +
-                        'remoteEntry.js',
+                    // это стандартный подход, сделал runtime
+                    // чтобы отработало нужна версия "@module-federation/node": "1.0.7" либо надо подключать так
+                    // const TestMf = remote('max_mf_test/TestMf', () =>
+                    //     loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({ default: mod.TestMf })),
+                    // );
+                    // max_mf_test:
+                    //     'max_mf_test@http://localhost:8007/test-public-path' +
+                    //     (isServer ? '/node/' : '/web/') +
+                    //     'remoteEntry.js',
                 },
                 exposes: {},
                 shared: {

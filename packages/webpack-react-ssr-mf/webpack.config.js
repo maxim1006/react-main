@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const pkg = require('./package.json');
 const { UniversalFederationPlugin } = require('@module-federation/node');
@@ -147,8 +148,11 @@ module.exports = (_, argv) => {
                     filename: 'css/[name].css',
                     chunkFilename: 'css/[id].css',
                 }),
+            !isServer && process.env.REPORT_ENV && new BundleAnalyzerPlugin(),
             new UniversalFederationPlugin({
                 name: 'max_mf_test', // это будет имя модуля под которым он будет доступен для других приложений
+                // name должен быть такой же как name и mf будет доступен по window.max_mf_test
+                // Если ты пропустишь library, Webpack сам подставит { type: 'var', name: <name> } по умолчанию.
                 ...(isServer ? { library: { type: 'commonjs-module' } } : {}),
                 isServer, // or false
                 remotes: {},
@@ -166,6 +170,11 @@ module.exports = (_, argv) => {
                         import: false,
                         singleton: true,
                         requiredVersion: pkg.dependencies.react,
+                    },
+                    '@module-federation': {
+                        import: false,
+                        singleton: true,
+                        requiredVersion: pkg.dependencies['@module-federation/node'],
                     },
                 },
             }),
