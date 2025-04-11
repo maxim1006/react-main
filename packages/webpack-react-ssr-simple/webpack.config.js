@@ -39,7 +39,7 @@ const getConfig = isServer => {
               },
 
         mode,
-        devtool: 'source-map',
+        devtool: isProd ? false : 'source-map',
         stats: 'none',
 
         resolve: {
@@ -128,7 +128,8 @@ const getConfig = isServer => {
                 {
                     test: /\.(sa|sc|c)ss$/i,
                     use: [
-                        isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+                        MiniCssExtractPlugin.loader,
+                        'css-modules-typescript-loader',
                         'css-loader',
                         'postcss-loader',
                         'sass-loader',
@@ -153,15 +154,11 @@ const getConfig = isServer => {
         },
 
         plugins: [
-            ...[].concat(
-                isProd
-                    ? [
-                          new MiniCssExtractPlugin({
-                              filename: '[name].css',
-                          }),
-                      ]
-                    : [],
-            ),
+            ...[].concat([
+                new MiniCssExtractPlugin({
+                    filename: '[name].css',
+                }),
+            ]),
         ],
     };
 };

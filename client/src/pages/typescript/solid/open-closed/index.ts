@@ -88,9 +88,9 @@ class BadMusicListList {
 // после создания класса который захендлит сортировку и использовать его
 class SortClient {
     public static sort<T>(arr: T[]): T[] | undefined {
-        if (1) return arr;
-        if (2) return arr;
-        if (3) return arr;
+        if (arr.length === 0) return arr;
+        if (arr.length === 1) return arr;
+        if (arr.length) return arr;
     }
 }
 
