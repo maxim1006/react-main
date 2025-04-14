@@ -260,8 +260,7 @@ export function defaultMemoize(func: any, equalityCheck = (a: any, b: any) => a 
 }
 
 // Helpers
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function getRandomSymbols4() {
+function _getRandomSymbols4() {
     return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);

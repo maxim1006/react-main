@@ -6,7 +6,7 @@ type CatchErrorProps = {};
 const CatchError: FC<CatchErrorProps> = () => {
     useEffect(() => {
         (async () => {
-            async function wait(ms: number) {
+            async function _wait(ms: number) {
                 return new Promise(res => setTimeout(res, ms));
             }
 

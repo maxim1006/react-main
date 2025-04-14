@@ -24,7 +24,7 @@ const AAATest: FC<AAATestProps> = ({ ...rest }) => {
                 value: {value}
             </button>
             <ul>
-                {ids.map((id, idx) => (
+                {ids.map((id, _idx) => (
                     <li key={id}>{id}</li>
                 ))}
             </ul>

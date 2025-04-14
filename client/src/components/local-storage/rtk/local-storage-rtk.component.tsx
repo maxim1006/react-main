@@ -6,7 +6,7 @@ import { localStorageApi } from '@app/store/local-storage/local-storage.api';
 type LocalStorageRtkProps = {};
 
 const LocalStorageRtk: FC<LocalStorageRtkProps> = () => {
-    const { remove, value: val, set } = useLocalStorageRtk<string>('_rtk-local-storage_');
+    const { value: val, set } = useLocalStorageRtk<string>('_rtk-local-storage_');
     const { value: val2 } = useLocalStorageRtk<string>('_rtk-local-storage_');
 
     useEffect(() => {

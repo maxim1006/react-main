@@ -7,7 +7,7 @@ export enum RequestErrorNameEnum {
 
 const NOTIFICATION_BLACK_LIST: string[] = [];
 
-export const rtkQueryErrorLogger: Middleware = (api: MiddlewareAPI) => next => action => {
+export const rtkQueryErrorLogger: Middleware = (_api: MiddlewareAPI) => next => action => {
     if (isRejected(action)) {
         let headersReq = (action.meta as any)?.baseQueryMeta?.request?.headers;
         let headersRes = (action.meta as any)?.baseQueryMeta?.response?.headers;

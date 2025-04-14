@@ -27,7 +27,7 @@ const CounterWithMapDispatchToProps = ({ counter, incrementCounter, decrementCou
     );
 };
 
-const mapStateToProps = (state: any, ownProps: any) => ({
+const mapStateToProps = (state: any, _ownProps: any) => ({
     counter: state.counter,
 });
 

@@ -1,14 +1,4 @@
-import React, {
-    memo,
-    FC,
-    ReactNode,
-    useState,
-    useCallback,
-    MemoExoticComponent,
-    useMemo,
-    StrictMode,
-    ComponentType,
-} from 'react';
+import React, { memo, FC, ReactNode, useState, useCallback, MemoExoticComponent, useMemo, ComponentType } from 'react';
 import cn from 'classnames';
 
 type RenderPropProps = {};
@@ -111,7 +101,7 @@ function SimpleChildImpl({ prop }: { prop?: string }) {
 }
 
 function TestNonReactFunction({ childState }: { childState: boolean }) {
-    const [testNonReactState, setTestNonReactState] = useState(false);
+    const [testNonReactState, _setTestNonReactState] = useState(false);
     console.log('TestNonReactFunction', testNonReactState, { childState });
     return <p>TestNonReactFunction</p>;
 }

@@ -45,7 +45,7 @@ export default memo(React18Concurrent);
 
 // helpers
 function generateData(length = 10000) {
-    return new Array(length).fill(0).map((i, idx) => ({
+    return new Array(length).fill(0).map((_i, idx) => ({
         id: idx,
         title: generateRandomString(),
     }));

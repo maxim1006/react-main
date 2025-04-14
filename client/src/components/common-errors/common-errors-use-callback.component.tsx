@@ -11,7 +11,7 @@ const CommonErrorsUseCallback: FC<CommonErrorsUseCallbackProps> = () => {
         console.log(state);
     }, [state]);
 
-    const adjustState = (num: number) => (e: MouseEvent<HTMLButtonElement>) => {
+    const adjustState = (num: number) => (_e: MouseEvent<HTMLButtonElement>) => {
         // bad
         // setState(state + num);
 

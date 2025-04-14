@@ -54,11 +54,11 @@ const MouseoverMouseleave: FC = () => {
     }, []);
 
     const tableView = {
-        rows: Array.from({ length: 5 }, (row, index) => {
+        rows: Array.from({ length: 5 }, (_row, index) => {
             const rowKey = generateUniqueId();
             return (
                 <tr className='mouseover-mouseleave__row' key={rowKey}>
-                    {Array.from({ length: 5 }, (cell, cellIndex) => {
+                    {Array.from({ length: 5 }, (_cell, cellIndex) => {
                         const cellKey = generateUniqueId();
                         return (
                             <td className='mouseover-mouseleave__cell' key={cellKey}>

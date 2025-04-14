@@ -21,7 +21,7 @@
         "envs": "HTTPS=true node envs-examples.js --headed --server --port 5000 -sr",
         "postenvs": "NODE_ENV=postlog node envs-examples.js",
         "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
-        "lint:no-warnings": "eslint ./src --ext .js,.ts,.jsx,.tsx --max-warnings 0",
+        "lint:check": "eslint ./src --max-warnings 0 --ext .js,.jsx,.ts,.tsx",
         "lint:fix": "npm run lint -- --fix",
         "prettier": "prettier ./ --write",
         "stylelint": "stylelint src/**/*{.css,.less,.scss}",

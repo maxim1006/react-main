@@ -37,4 +37,6 @@ class MobxTodo {
     }
 }
 
-export default new MobxTodo();
+const mobxTodo = new MobxTodo();
+
+export default mobxTodo;

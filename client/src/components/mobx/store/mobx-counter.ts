@@ -31,4 +31,6 @@ class MobxCounter {
     }
 }
 
-export default new MobxCounter();
+const mobxCounter = new MobxCounter();
+
+export default mobxCounter;

@@ -26,7 +26,7 @@ export { HocWithPropsContainer };
 
 // helpers
 async function delay(ms: number): Promise<string> {
-    return new Promise((res, rej) => {
+    return new Promise((res, _rej) => {
         setTimeout(() => {
             console.log('delay is done in ', ms);
             res('Hello world');

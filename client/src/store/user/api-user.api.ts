@@ -15,8 +15,8 @@ export const apiUserApi = commonApi.injectEndpoints({
             }),
         }),
         fetchUser: build.query<UserModel, { userId: string | undefined | null }>({
-            async queryFn({ userId }, { dispatch, getState }, __, fetchWithBQ) {
-                const state = getState() as RootState;
+            async queryFn({ userId }, { dispatch: _dispatch, getState }, __, fetchWithBQ) {
+                const _state = getState() as RootState;
 
                 const result = await fetchWithBQ({
                     url: `users/${userId}`,
@@ -43,7 +43,7 @@ export const apiUserApi = commonApi.injectEndpoints({
                 method: 'POST',
                 body: user,
             }),
-            async onQueryStarted({ user }, { dispatch, queryFulfilled }) {
+            async onQueryStarted({ user: _user }, { dispatch, queryFulfilled }) {
                 // Pessimistic Updates
                 try {
                     const { data: newUser } = await queryFulfilled;
@@ -58,7 +58,12 @@ export const apiUserApi = commonApi.injectEndpoints({
             },
         }),
         addUserDebounced: build.mutation<UserModel, { user: Partial<UserModel> } & { cancelDebounce?: boolean }>({
-            async queryFn({ user, cancelDebounce }, { dispatch, getState }, __, fetchWithBQ) {
+            async queryFn(
+                { user, cancelDebounce: _cancelDebounce },
+                { dispatch, getState: _getState },
+                __,
+                fetchWithBQ,
+            ) {
                 // если вдруг захочу сбросить pending debounce
                 // if (cancelDebounce) {
                 //     debouncedAddUser.cancel();
@@ -92,7 +97,7 @@ export const apiUserApi = commonApi.injectEndpoints({
             },
         }),
         deleteUser: build.mutation<UserModel, UserModel>({
-            async queryFn(user, { dispatch, getState }, __, fetchWithBQ) {
+            async queryFn(user, { dispatch, getState: _getState }, __, fetchWithBQ) {
                 // const state = getState() as RootState;
 
                 const result = await fetchWithBQ({

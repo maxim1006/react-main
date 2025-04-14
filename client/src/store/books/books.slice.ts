@@ -37,7 +37,7 @@ export const fetchBooksAction = createAsyncThunk<BookModel[]>('books/fetchAll', 
 // пример с асинхронным апдейтом, есть с синхронным, первый аргумент в дженерике что вернет, второй что на вход
 export const updateBookAsyncAction = createAsyncThunk<BookModel, BookModel>(
     'books/updateOne',
-    async (book, thunkApi) => {
+    async (book, _thunkApi) => {
         const response = await Promise.resolve<BookModel>(book);
         return response;
     },
@@ -54,7 +54,7 @@ const slice = createSlice({
         updateBookAction: booksAdapter.updateOne,
     },
     extraReducers: builder => {
-        builder.addCase(fetchBooksAction.pending, (state, action) => {
+        builder.addCase(fetchBooksAction.pending, (state, _action) => {
             state.loading = true;
         });
         builder.addCase(fetchBooksAction.fulfilled, (state, { payload }) => {

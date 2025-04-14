@@ -9,8 +9,6 @@ const UserListApiContainer: FC<UserListApiContainerProps> = () => {
     const {
         ref,
         users,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        usersLoading,
         usersLoading2,
         addUserLoading,
         addUserDebouncedLoading,

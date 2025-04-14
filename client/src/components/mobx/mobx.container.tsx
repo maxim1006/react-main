@@ -8,7 +8,7 @@ const MobxContainer: FC<MobxContainerProps> = () => {
     return (
         <div className='taMobxContainer'>
             <MobxCounterContainer />
-            <h2 />
+            <hr />
             <MobxTodoContainer />
         </div>
     );

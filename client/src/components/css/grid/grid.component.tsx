@@ -33,7 +33,7 @@ const Grid: FC<GridProps> = () => {
                 {counter}
             </div>
             <div className='grid'>
-                {images.map((img, index) => {
+                {images.map((img, _index) => {
                     // return <DomRefImageComponent image={img} key={index} onLoad={onLoad}/>
                     return <DomRefImageHooks src={img} key={generateUUID()} onLoad={onLoad} />;
                 })}

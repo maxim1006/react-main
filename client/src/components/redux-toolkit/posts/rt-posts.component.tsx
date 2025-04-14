@@ -29,10 +29,8 @@ const RtPosts = () => {
     useEffect(() => {
         (async () => {
             //  пример thunk возвращает промис с результатом запроса, круто чтобы чейнинг использовать !!!
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const posts = await dispatch(fetchPostsAction());
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const posts1 = await dispatch(fetchPostsAction1());
+            const _posts = await dispatch(fetchPostsAction());
+            const _posts1 = await dispatch(fetchPostsAction1());
             // console.log({
             //     posts,
             //     posts1,

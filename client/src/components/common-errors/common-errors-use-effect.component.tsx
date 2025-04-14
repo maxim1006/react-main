@@ -4,7 +4,7 @@ type CommonErrorsUseEffectProps = {};
 
 const CommonErrorsUseEffect: FC<CommonErrorsUseEffectProps> = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [state, setState] = useState<string>();
+    const [_state, setState] = useState<string>();
 
     useEffect(() => {
         fetch('#')

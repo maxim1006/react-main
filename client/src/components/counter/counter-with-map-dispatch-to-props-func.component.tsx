@@ -27,11 +27,11 @@ const CounterWithMapDispatchToPropsFunc = ({ counter, incrementCounter, decremen
     );
 };
 
-const mapStateToProps = (state: any, ownProps: any) => ({
+const mapStateToProps = (state: any, _ownProps: any) => ({
     counter: state.counter,
 });
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+const mapDispatchToProps = (dispatch: any, _ownProps: any) => ({
     incrementCounter: () => dispatch(incrementCounter()),
     decrementCounter: () => dispatch(decrementCounter()),
 });

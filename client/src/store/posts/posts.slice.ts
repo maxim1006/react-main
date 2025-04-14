@@ -94,7 +94,7 @@ export const makeSelectPostsByTitle1 = createSelector(
 );
 
 // thunks redux toolkit не умеет поэтому ручками пишем (хорошие новости что включены из коробки)
-export const fetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => async (dispatch, getState) => {
+export const fetchPostsAction = (): AppThunk<Promise<PostModel[] | never>> => async (dispatch, _getState) => {
     dispatch(fetchPostsStart());
     // console.log(getState());
     try {
