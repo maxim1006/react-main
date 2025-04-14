@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import MaterialLoader from '../../loader/MaterialLoader';
-import useGetLazyRequest from '../../hooks/useGetLazyRequest';
+import useGetLazyRequest from '../../hooks-components/useGetLazyRequest';
 
 const AxiosFamily = memo(() => {
     const { data: family, refetch, loading } = useGetLazyRequest({ url: 'family' });

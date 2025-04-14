@@ -1,6 +1,6 @@
 import { FC, memo, useEffect, useRef } from 'react';
 import { FixedSizeList, VariableSizeList } from 'react-window';
-import useFetch from '../hooks/useFetch';
+import useFetch from '@app/components/hooks-components/useFetch';
 
 type PostType = { id: string; title: string; body: string; style: any; index: number };
 

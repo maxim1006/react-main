@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode } from 'react';
-import useGeneralInfo from '@app/components/hooks/useGeneralInfo';
+import useGeneralInfo from '@app/components/hooks-components/useGeneralInfo';
 import { ThemeContextStore } from '@app/components/theme/ThemeContextStore';
 import ThemeSelector from '@app/components/theme/ThemeSelector';
 import { DeviceEnum } from '@app/models/common.model';

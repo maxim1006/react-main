@@ -1,13 +1,22 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import { HocWithPropsContainer } from '@app/components/HOC/with-props/hoc-with-props.container';
+import { UseToggle } from '@app/components/hooks-components/use-toggle/use-toggle.component';
+import { UseHover } from '@app/components/hooks-components/use-hover/use-hover.component';
+import { UseDeriveState } from '@app/components/hooks-components/use-derived-state/use-derived-state.component';
+import { UseEventCallback } from '@app/components/hooks-components/use-event-callback/use-event-callback.component';
+import { UseDebouncedCallback } from '@app/components/hooks-components/use-debounced-callback/use-debounced-callback.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <UseDebouncedCallback />
+                <UseEventCallback />
+                <UseDeriveState />
+                <UseHover />
+                <UseToggle />
                 {/*<CustomSuspense />*/}
-                <HocWithPropsContainer />
+                {/*<HocWithPropsContainer />*/}
                 {/*<RenderProp />*/}
                 {/*<SyncExternalStore />*/}
                 {/*<MediaQueryCss />*/}

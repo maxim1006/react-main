@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { withMaterialLoader } from '@app/components/HOC/with-loader/with-material-loader.hoc';
-import useFirestoreGetDocs from '@app/components/hooks/useFirestoreGetDocs';
+import useFirestoreGetDocs from '@app/components/hooks-components/useFirestoreGetDocs';
 import FamilyList from '@app/components/family/FamilyList';
 import { FamilyMemberModel } from '@app/models/family.model';
 

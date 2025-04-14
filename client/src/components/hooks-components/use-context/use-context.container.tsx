@@ -1,6 +1,6 @@
 import { memo, useContext, useRef } from 'react';
 import MaterialLoaderComponent from '../../loader/MaterialLoader';
-import { ExampleContext } from '@app/components/hooks/use-context/example.context';
+import { ExampleContext } from '@app/components/hooks-components/use-context/example.context';
 
 type UseContextContainerProps = {};
 

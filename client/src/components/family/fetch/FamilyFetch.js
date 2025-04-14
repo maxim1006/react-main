@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import MaterialLoader from '../../loader/MaterialLoader';
-import useFetch from '../../hooks/useFetch';
+import useFetch from '../../hooks-components/useFetch';
 
 const FamilyFetch = memo(() => {
     const { data, refetch } = useFetch({ url: 'http://localhost:3001/api/family' });

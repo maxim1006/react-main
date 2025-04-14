@@ -9,6 +9,13 @@ const entry =
     (typeof window === 'undefined' ? '/node/' : '/web/') +
     'remoteEntry.js';
 
+registerRemotes([
+    {
+        name: 'max_mf_test',
+        entry,
+    },
+]);
+
 init({
     name: 'hostApp',
     remotes: [
@@ -19,21 +26,16 @@ init({
     ],
 });
 
-registerRemotes([
-    {
-        name: 'max_mf_test',
-        entry,
-    },
-]);
-
-const TestMf = remote('max_mf_test/TestMf', () =>
-    loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({ default: mod.TestMf })),
+const TestMf = remote<{
+    prop: string;
+}>('max_mf_test/TestMf', () =>
+    loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({ default: mod['TestMf'] })),
 );
 
 export const App = () => {
     return (
         <div className='App'>
-            <TestMf />
+            <TestMf prop='prop' />
             Hello world
         </div>
     );

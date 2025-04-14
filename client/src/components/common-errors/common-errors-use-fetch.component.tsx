@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import useFetch from '@app/components/hooks/useFetch';
+import useFetch from '@app/components/hooks-components/useFetch';
 
 type CommonErrorsUseFetchProps = {};
 

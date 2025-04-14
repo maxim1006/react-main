@@ -1,8 +1,8 @@
 import { FC, memo, useState } from 'react';
 import MonsterSearch from './MonsterSearch';
 import MonsterList from './MonsterList';
-import useGetRequest from '../hooks/useGetRequest';
 import { MonsterModel } from '@app/models/monsters.model';
+import useGetRequest from '@app/components/hooks-components/useGetRequest';
 
 type MonstersProps = {};
 
@@ -14,7 +14,7 @@ const Monsters: FC<MonstersProps> = () => {
 
     if (monsterList && Array.isArray(monsterList)) {
         filteredMonsterList = monsterList.filter(item =>
-            item.name.toLowerCase().includes(searchValue.trim().toLowerCase())
+            item.name.toLowerCase().includes(searchValue.trim().toLowerCase()),
         );
     }
 

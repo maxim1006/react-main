@@ -11,7 +11,7 @@ import MaterialLoaderComponent from '../../loader/MaterialLoader';
 import { selectShopCurrentUser } from '@app/old_store/selectors';
 import { selectShopCartQuantity, selectShopCartVisibleDropdown } from '@app/old_store/selectors';
 import ShopCartDropdownHooks from '../cart-dropdown/ShopCartDropdownHooks';
-import useClickOutside from '../../hooks/useClickOutside';
+import useClickOutside from '@app/components/hooks-components/useClickOutside';
 
 export default function ShopHeaderHooks() {
     // аля mapStateToProps

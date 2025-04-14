@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import useFirestoreFamily from '../../hooks/useFirestoreFamily';
+import useFirestoreFamily from '../../hooks-components/useFirestoreFamily';
 import MaterialLoader from '../../loader/MaterialLoader';
 import { StyledFirestoreFamilyList } from './StyledFirestoreFamily';
 
