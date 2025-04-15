@@ -3,6 +3,8 @@ const path = require('path');
 const mode = process.env.NODE_ENV;
 const isProd = mode === 'production';
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { UniversalFederationPlugin } = require('@module-federation/node');
+const pkg = require('./package.json');
 
 const API_HOST = '';
 const API_ORIGIN = `https://${API_HOST}`;
@@ -58,7 +60,7 @@ const getConfig = isServer => {
                       },
                       hot: true,
                       compress: true,
-                      port: 8009,
+                      port: 8007,
                       historyApiFallback: true,
                       headers: {
                           'Access-Control-Allow-Origin': '*',
@@ -157,6 +159,33 @@ const getConfig = isServer => {
             ...[].concat([
                 new MiniCssExtractPlugin({
                     filename: '[name].css',
+                }),
+                new UniversalFederationPlugin({
+                    name: 'shell', // это будет имя модуля под которым он будет доступен для других приложений
+                    ...(isServer ? { library: { type: 'commonjs-module' } } : {}),
+                    isServer, // or false
+                    remotes: {
+                        // это стандартный подход, сделал runtime
+                        // чтобы отработало нужна версия "@module-federation/node": "1.0.7" либо надо подключать так
+                        // const TestMf = remote('max_mf_test/TestMf', () =>
+                        //     loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({ default: mod.TestMf })),
+                        // );
+                        Remote1Module:
+                            'Remote1Module@http://localhost:8009' +
+                            (isServer ? '/node/' : '/web/') +
+                            'remoteEntry.js',
+                    },
+                    exposes: {},
+                    shared: {
+                        react: {
+                            singleton: true,
+                            requiredVersion: pkg.dependencies.react,
+                        },
+                        'react-dom': {
+                            singleton: true,
+                            requiredVersion: pkg.dependencies.react,
+                        },
+                    },
                 }),
             ]),
         ],

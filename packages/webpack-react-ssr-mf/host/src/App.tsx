@@ -34,7 +34,7 @@ const TestMf = remote<{
     prop: string;
 }>('max_mf_test/TestMf', () =>
     loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({
-        default: mod['TestMf'],
+        default: mod['TestMfContainer'],
     })),
 );
 

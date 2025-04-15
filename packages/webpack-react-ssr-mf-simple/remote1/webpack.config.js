@@ -1,128 +1,208 @@
+const fs = require('node:fs');
+const path = require('node:path');
+
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const template = require('lodash/template');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
-const mode = process.env.NODE_ENV;
-const isProd = mode === 'production';
+const TerserPlugin = require('terser-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const API_HOST = '';
-const API_ORIGIN = `https://${API_HOST}`;
+const pkg = require('./package.json');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 
-const proxy_headers = {
-    Host: API_HOST,
-    Origin: API_ORIGIN,
-    Referer: API_ORIGIN,
-};
+const rootDir = process.cwd();
 
-const getConfig = isServer => {
+const distDir = path.resolve(rootDir, 'dist');
+
+const sourceCodeDir = path.resolve(__dirname, 'src');
+
+function getModules(isProd, isServer) {
     return {
-        // Это базовая директория для разрешения точек входа (entry points) в Webpack. По умолчанию это текущая рабочая директория.
-        context: path.resolve(__dirname, './'),
-        // при сборке webpack укажет что конкретно собралось (например [web] Compiled successfully)
+        rules: [
+            {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.sass$/,
+                oneOf: [
+                    {
+                        test: /\.module\.sass$/,
+                        use: [
+                            !isServer && MiniCssExtractPlugin.loader,
+                            !isServer && 'css-modules-typescript-loader',
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: {
+                                        localIdentName: '[name]__[local]___[hash:base64:5]',
+                                        ...(!isServer
+                                            ? {}
+                                            : {
+                                                  exportOnlyLocals: true,
+                                              }),
+                                    },
+                                    sourceMap: !isProd,
+                                },
+                            },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    postcssOptions: {
+                                        plugins: [require('autoprefixer')],
+                                    },
+                                },
+                            },
+
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    sassOptions: {
+                                        silenceDeprecations: ['legacy-js-api'],
+                                    },
+                                },
+                            },
+                        ].filter(Boolean),
+                    },
+                    {
+                        use: [
+                            !isServer && MiniCssExtractPlugin.loader,
+                            'css-loader',
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    postcssOptions: {
+                                        plugins: [require('autoprefixer')],
+                                    },
+                                },
+                            },
+                            'sass-loader',
+                        ],
+                    },
+                ],
+                exclude: /node_modules/,
+            },
+        ],
+    };
+}
+
+module.exports = (_, argv) => {
+    const isProd = argv.mode === 'production';
+
+    const getConfig = isServer => ({
         name: isServer ? 'node' : 'web',
-        target: isServer ? 'node' : 'web',
-        output: isServer
+        context: sourceCodeDir,
+        entry: './empty.tsx',
+        target: isServer ? false : 'web',
+        ...(isServer
             ? {
-                  filename: 'node-[name].js',
-                  path: path.join(__dirname, 'dist/node'),
-                  globalObject: 'this',
-                  libraryTarget: 'umd',
+                  externalsPresets: { node: true },
               }
-            : {
-                  filename: '[name].js',
-                  path: path.join(__dirname, 'dist/web'),
-                  publicPath: '/',
-              },
+            : {}),
+        output: {
+            filename: 'js/[name].js',
+            chunkFilename: 'js/[id].js',
+            path: path.join(distDir, isServer ? 'node' : 'web'),
+            uniqueName: 'max-test',
+        },
+        mode: isProd ? 'production' : 'development',
 
-        mode,
-        devtool: isProd ? false : 'source-map',
-        stats: 'none',
-
+        optimization: {
+            minimize: isProd,
+            minimizer: [
+                new TerserPlugin({
+                    terserOptions: {
+                        ecma: 5,
+                        compress: {},
+                        format: {
+                            comments: /^!#/,
+                        },
+                    },
+                    extractComments: false,
+                }),
+                new CssMinimizerPlugin({
+                    minimizerOptions: {
+                        preset: [
+                            'default',
+                            {
+                                discardComments: { removeAll: true },
+                            },
+                        ],
+                    },
+                }),
+            ],
+        },
         resolve: {
-            extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+            extensions: ['.tsx', '.ts', '.js'],
             plugins: [new TsconfigPathsPlugin()],
         },
-
+        devtool: isProd ? undefined : 'source-map',
+        stats: 'errors-warnings',
+        module: getModules(isProd, isServer),
+        plugins: [
+            !isServer &&
+                new MiniCssExtractPlugin({
+                    filename: 'css/[name].css',
+                    chunkFilename: 'css/[id].css',
+                }),
+            !isServer && process.env.REPORT_ENV && new BundleAnalyzerPlugin(),
+            new UniversalFederationPlugin({
+                name: 'Remote1Module', // это будет имя модуля под которым он будет доступен для других приложений
+                // name должен быть такой же как name и mf будет доступен по window.max_mf_test
+                // Если ты пропустишь library, Webpack сам подставит { type: 'var', name: <name> } по умолчанию.
+                ...(isServer ? { library: { type: 'commonjs-module' } } : {}),
+                isServer, // or false
+                remotes: {},
+                filename: 'remoteEntry.js',
+                exposes: {
+                    './Remote1Mf': './remote1.mf',
+                },
+                shared: {
+                    react: {
+                        import: false,
+                        singleton: true,
+                        requiredVersion: pkg.dependencies.react,
+                    },
+                    'react-dom': {
+                        import: false,
+                        singleton: true,
+                        requiredVersion: pkg.dependencies.react,
+                    },
+                    '@module-federation': {
+                        import: false,
+                        singleton: true,
+                        requiredVersion: pkg.dependencies['@module-federation/node'],
+                    },
+                },
+            }),
+            // проставит содержимое banner.txt в remoteEntry и main.js
+            new webpack.BannerPlugin({
+                banner: template(fs.readFileSync(path.resolve(__dirname, 'banner.txt'), 'utf-8'))({
+                    version: process.env.VERSION ?? 'local',
+                }), // the banner as string or function, it will be wrapped in a comment
+                raw: true, // if true, banner will not be wrapped in a comment
+                entryOnly: true,
+            }),
+        ].filter(Boolean),
         ...(isServer
             ? {
                   devServer: {
                       static: {
-                          directory: path.join(__dirname, 'public'),
+                          directory: distDir,
                       },
                       devMiddleware: {
                           writeToDisk: true,
                       },
                       compress: true,
-                      port: 8010,
+                      port: 8009,
                       historyApiFallback: true,
                   },
               }
             : {}),
+    });
 
-        optimization: {
-            minimize: false,
-        },
-
-        module: {
-            rules: [
-                {
-                    test: /\.(sa|sc|c)ss$/i,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        'css-modules-typescript-loader',
-                        'css-loader',
-                        'postcss-loader',
-                        'sass-loader',
-                    ],
-                },
-                {
-                    test: /\.(ts|tsx|js|jsx)$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'ts-loader',
-                    },
-                },
-                {
-                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                    type: 'asset/resource',
-                },
-                {
-                    test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                    type: 'asset/resource',
-                },
-            ],
-        },
-
-        plugins: [
-            ...[].concat([
-                new MiniCssExtractPlugin({
-                    filename: '[name].css',
-                }),
-                new UniversalFederationPlugin({
-                    name: 'Remote1MfModule',
-                    ...(isServer ? { library: { type: 'commonjs-module' } } : {}),
-                    isServer, // or false
-                    remotes: {},
-                    filename: 'remoteEntry.js',
-                    // './TestMf' это название сущности которая будет
-                    exposes: {
-                        './Remote1Mf': './src/test.mf',
-                    },
-                    shared: {
-                        react: {
-                            import: false,
-                            singleton: true,
-                            requiredVersion: pkg.dependencies.react,
-                        },
-                        'react-dom': {
-                            import: false,
-                            singleton: true,
-                            requiredVersion: pkg.dependencies.react,
-                        },
-                    },
-                }),
-            ]),
-        ],
-    };
+    return [true, false].map(getConfig);
 };
-
-module.exports = [true, false].map(getConfig);
