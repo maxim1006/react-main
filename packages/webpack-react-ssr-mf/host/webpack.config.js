@@ -121,18 +121,24 @@ const getConfig = isServer => {
                       },
                       setupMiddlewares(middlewares, devServer) {
                           let stats;
+                          let serverEntry;
 
                           function clear() {
+                              console.log('clear');
                               delete require.cache[
                                   path.resolve(__dirname, './dist/node/node-main.js')
                               ];
                               performReload(true);
+                              stats = devServer.middleware.context.stats.stats[1].toJson();
+                              serverEntry = require(
+                                  path.resolve(__dirname, './dist/node/node-main'),
+                              ).bootstrap(stats);
                           }
 
+                          // отработает когда в host будут изменения
                           devServer.compiler.hooks.done.tap('Render', () => {
-                              console.log('Render');
+                              console.log('compiler hooks tap render');
                               clear();
-                              stats = undefined;
                           });
 
                           // подключаюсь к дев серверу mf
@@ -153,6 +159,8 @@ const getConfig = isServer => {
                                       console.log('Invalid message ', { msg });
                                   }
                                   if (msg.type === 'warnings' || msg.type === 'ok') {
+                                      console.log('Valid message ', { msg });
+
                                       if (devServer.middleware.context.state) {
                                           clear();
                                       }
@@ -167,19 +175,16 @@ const getConfig = isServer => {
                               // `path` is optional
                               path: '/',
                               middleware: (req, res, next) => {
-                                  stats =
-                                      stats ?? devServer.middleware.context.stats.stats[1].toJson();
-
-                                  try {
-                                      clear();
-                                      require(path.resolve(__dirname, './dist/node/node-main'))
-                                          .bootstrap(stats)
-                                          .then(render => render(req, res, next));
-                                  } catch (e) {
-                                      console.error(e);
-                                  }
+                                  console.log('from middleware');
+                                  serverEntry
+                                      .then(render => {
+                                          console.log('serverEntry render');
+                                          return render(req, res, next);
+                                      })
+                                      .catch(console.error);
                               },
                           });
+
                           return middlewares;
                       },
                       proxy: [

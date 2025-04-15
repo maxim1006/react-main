@@ -7,7 +7,8 @@ type TestMfProps = {
 };
 
 const TestMf = ({ prop }: TestMfProps) => {
-    return <div className={cn(styles.host, 'taTestMf')}>TestMf {prop}</div>;
+    console.log('From Test mf');
+    return <div className={cn(styles.host, 'taTestMf')}>TestMf 11 {prop}</div>;
 };
 
 export { TestMf };

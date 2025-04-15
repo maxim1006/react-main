@@ -7,14 +7,18 @@ import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/r
 const entry =
     'http://localhost:8007/test-public-path' +
     (typeof window === 'undefined' ? '/node/' : '/web/') +
-    'remoteEntry.js';
+    'remoteEntry.js' +
+    `?${Date.now()}`;
 
-registerRemotes([
-    {
-        name: 'max_mf_test',
-        entry,
-    },
-]);
+registerRemotes(
+    [
+        {
+            name: 'max_mf_test',
+            entry,
+        },
+    ],
+    { force: true },
+);
 
 init({
     name: 'hostApp',
@@ -29,7 +33,9 @@ init({
 const TestMf = remote<{
     prop: string;
 }>('max_mf_test/TestMf', () =>
-    loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({ default: mod['TestMf'] })),
+    loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({
+        default: mod['TestMf'],
+    })),
 );
 
 export const App = () => {

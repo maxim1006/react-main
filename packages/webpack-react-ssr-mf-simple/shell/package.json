@@ -1,14 +1,14 @@
 {
-    "name": "webpack-react-ssr-simple",
+    "name": "webpack-react-ssr-mf-simple-shell",
     "version": "1.0.0",
     "description": "",
     "main": "webpack.config.js",
     "scripts": {
         "start": "rm -rf ./dist && NODE_ENV=development webpack serve",
         "build": "rm -rf ./dist && NODE_ENV=production webpack",
-        "build:serve": "ws --spa --compress --open --static.maxage -1 --directory ./dist",
-        "ts": "tsc-watch -p ./ --outDir ./dist --compiler ./node_modules/typescript/bin/tsc",
-        "ts:node": "tsc-watch -p ./ --outDir ./dist --onSuccess \"node ./dist/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler ./node_modules/typescript/bin/tsc"
+        "build:serve": "../node_modules/.bin/ws --spa --compress --open --static.maxage -1 --directory ./dist",
+        "ts": "../node_modules/.bin/tsc-watch -p ./ --outDir ./dist --compiler ./node_modules/typescript/bin/tsc",
+        "ts:node": "../node_modules/.bin/tsc-watch -p ./ --outDir ./dist --onSuccess \"node ./dist/index.js\" --onFailure \"echo Beep! Compilation Failed\" --compiler ./node_modules/typescript/bin/tsc"
     },
     "author": "Max Maximov",
     "license": "ISC",
