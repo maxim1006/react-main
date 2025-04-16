@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { PassThrough } from 'node:stream';
 import { text } from 'node:stream/consumers';
+import Helmet from 'react-helmet';
 
 export async function bootstrap(stats: import('webpack').StatsCompilation) {
     // TODO Зачем?
@@ -22,6 +23,7 @@ export async function bootstrap(stats: import('webpack').StatsCompilation) {
                 const ReactDOMServer = await import('react-dom/server');
                 const { App } = await import('./App');
                 const { StaticRouter: Router } = await import('react-router-dom');
+                const helmet = Helmet.renderStatic();
 
                 const cssChunks = (stats.assetsByChunkName['main-client'] ?? [])
                     .filter(p => p.endsWith('.css'))
@@ -38,10 +40,11 @@ export async function bootstrap(stats: import('webpack').StatsCompilation) {
                                     name='viewport'
                                 />
                                 <meta content='ie=edge' httpEquiv='X-UA-Compatible' />
+                                {helmet.title.toComponent() ?? <title>TEST title</title>}
+                                {helmet.meta.toComponent()}
                                 {cssChunks.map(c => (
                                     <link key={c} rel={'stylesheet'} href={c} />
                                 ))}
-                                <title>TEST title</title>
                                 {/*передаю env переменные*/}
                                 <script
                                     type='application/javascript'

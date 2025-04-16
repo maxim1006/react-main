@@ -8,7 +8,7 @@ const { UniversalFederationPlugin } = require('@module-federation/node');
 const API_HOST = '';
 const API_ORIGIN = `https://${API_HOST}`;
 
-const pkg = require('../package.json');
+const pkg = require('./package.json');
 const Websocket = require('ws');
 const React = require('react');
 
@@ -264,16 +264,22 @@ const getConfig = isServer => {
                     //     'remoteEntry.js',
                 },
                 exposes: {},
-                shared: {
-                    react: {
-                        singleton: true,
-                        requiredVersion: pkg.dependencies.react,
-                    },
-                    'react-dom': {
-                        singleton: true,
-                        requiredVersion: pkg.dependencies.react,
-                    },
-                },
+                // это тоже указывается внутри App.tsx
+                // если тут оставить и указать там то будет ошибка
+                // shared: {
+                //     react: {
+                //         singleton: true,
+                //         requiredVersion: pkg.dependencies.react,
+                //     },
+                //     'react-dom': {
+                //         singleton: true,
+                //         requiredVersion: pkg.dependencies.react,
+                //     },
+                //     '@module-federation': {
+                //         singleton: true,
+                //         requiredVersion: pkg.dependencies['@module-federation/node'],
+                //     },
+                // },
             }),
             new webpack.DefinePlugin({
                 'process.env.PLATFORM_COMPOSE_URL': 'window.__env__.PLATFORM_COMPOSE_URL',

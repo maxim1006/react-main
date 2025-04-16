@@ -176,6 +176,11 @@ module.exports = (_, argv) => {
                         singleton: true,
                         requiredVersion: pkg.dependencies['@module-federation/node'],
                     },
+                    'react-helmet': {
+                        import: false,
+                        singleton: true,
+                        requiredVersion: pkg.dependencies['react-helmet'],
+                    },
                 },
             }),
             // проставит содержимое banner.txt в remoteEntry и main.js

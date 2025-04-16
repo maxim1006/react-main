@@ -3,6 +3,8 @@ import React from 'react';
 import './index.module.sass';
 
 import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/runtime';
+import ReactDOM from 'react-dom';
+import Helmet from 'react-helmet';
 
 const entry =
     'http://localhost:8007/test-public-path' +
@@ -28,10 +30,31 @@ init({
             entry,
         },
     ],
+    shared: {
+        react: {
+            version: '^18.2.0',
+            scope: 'default',
+            lib: () => React,
+            shareConfig: {
+                singleton: true,
+                requiredVersion: '^18.2.0',
+            },
+        },
+        'react-dom': {
+            version: '^18.2.0',
+            scope: 'default',
+            lib: () => ReactDOM,
+            shareConfig: {
+                singleton: true,
+                requiredVersion: '^18.2.0',
+            },
+        },
+    },
 });
 
 const TestMf = remote<{
     prop: string;
+    Meta: typeof Helmet;
 }>('max_mf_test/TestMf', () =>
     loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({
         default: mod['TestMfContainer'],
@@ -41,7 +64,7 @@ const TestMf = remote<{
 export const App = () => {
     return (
         <div className='App'>
-            <TestMf prop='prop' />
+            <TestMf prop='prop' Meta={Helmet} />
             Hello world
         </div>
     );
