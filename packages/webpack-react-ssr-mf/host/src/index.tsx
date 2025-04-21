@@ -17,4 +17,11 @@ hydrateRoot(
     <Router>
         <App />
     </Router>,
+    {
+        onRecoverableError: error => {
+            if (error instanceof Error && error.message === '[skip ssr]') {
+                return;
+            }
+        },
+    },
 );

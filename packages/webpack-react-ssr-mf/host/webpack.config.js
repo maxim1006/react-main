@@ -38,50 +38,14 @@ const getConfig = isServer => {
                     type: 'asset',
                 },
                 {
-                    test: /\.sass$/,
-                    oneOf: [
-                        {
-                            test: /\.module\.sass$/,
-                            use: [
-                                MiniCssExtractPlugin.loader,
-                                'css-modules-typescript-loader',
-                                {
-                                    loader: 'css-loader',
-                                    options: {
-                                        modules: {
-                                            localIdentName: '[name]__[local]___[hash:base64:5]',
-                                        },
-                                        sourceMap: true,
-                                    },
-                                },
-                                {
-                                    loader: 'postcss-loader',
-                                    options: {
-                                        postcssOptions: {
-                                            plugins: [require('autoprefixer')],
-                                        },
-                                    },
-                                },
-                                'sass-loader',
-                            ],
-                        },
-                        {
-                            use: [
-                                MiniCssExtractPlugin.loader,
-                                'css-loader',
-                                {
-                                    loader: 'postcss-loader',
-                                    options: {
-                                        postcssOptions: {
-                                            plugins: [require('autoprefixer')],
-                                        },
-                                    },
-                                },
-                                'sass-loader',
-                            ],
-                        },
+                    test: /\.(sa|sc|c)ss$/i,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-modules-typescript-loader',
+                        'css-loader',
+                        'postcss-loader',
+                        'sass-loader',
                     ],
-                    exclude: /node_modules/,
                 },
                 {
                     test: /\.css$/i,

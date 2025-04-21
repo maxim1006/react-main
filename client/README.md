@@ -27,6 +27,10 @@ https://www.npmjs.com/package/http-server
 npx http-server ./
 npx http-server ./ -S -C cert.pem
 
+или
+
+npx serve dist/ -p 3001
+
 ### Создать самоподписной сертификат 
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 

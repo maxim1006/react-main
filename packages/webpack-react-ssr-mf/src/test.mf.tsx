@@ -16,7 +16,7 @@ const TestMfContainer = ({ prop, Meta }: TestMfProps) => {
                 <title>Custom title</title>
                 <meta name='description' content='Custom description' />
             </Meta>
-            TestMf 11 {prop}
+            TestMf 15 {prop}
         </div>
     );
 };
