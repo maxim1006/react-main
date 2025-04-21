@@ -20,5 +20,5 @@ export const HostAPIProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export function useHost<C extends HostContext.IBaseContext>(): C {
-    return useContext(ctx) as C;
+    return useContext?.(ctx) as C;
 }

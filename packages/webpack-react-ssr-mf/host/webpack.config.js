@@ -77,7 +77,7 @@ const getConfig = isServer => {
                       },
                       hot: false,
                       compress: true,
-                      port: 8009,
+                      port: 8010,
                       historyApiFallback: true,
                       headers: {
                           'Access-Control-Allow-Origin': '*',
@@ -105,6 +105,10 @@ const getConfig = isServer => {
                           devServer.compiler.hooks.done.tap('Render', () => {
                               console.log('compiler hooks tap render');
                               clear();
+                              stats = devServer.middleware.context.stats.stats[1].toJson();
+                              serverEntry = require(
+                                  path.resolve(__dirname, './dist/node/node-main'),
+                              ).bootstrap(stats);
                           });
 
                           // подключаюсь к дев серверу mf

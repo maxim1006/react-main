@@ -3,7 +3,7 @@ import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/r
 import ReactDOM from 'react-dom';
 import { remote } from '../utils/mf.utils';
 import * as HostShared from '../host-shared';
-import { HostAPIProvider } from '@max-test-mf/federated-host/host-context';
+import { HostAPIProvider } from '../host-shared/host-context';
 
 type TestMfContainerProps = {};
 

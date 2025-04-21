@@ -168,7 +168,7 @@ module.exports = (_, argv) => {
                     'react-dom': {
                         import: false,
                         singleton: true,
-                        requiredVersion: pkg.dependencies.react,
+                        requiredVersion: pkg.dependencies['react-dom'],
                     },
                     '@module-federation': {
                         import: false,

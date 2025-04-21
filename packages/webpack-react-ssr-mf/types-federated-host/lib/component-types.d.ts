@@ -1,4 +1,4 @@
-import React, { ComponentProps, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 export namespace HostComponentTypes {
     export type ContentTypeValues = 'value1' | 'value2';
