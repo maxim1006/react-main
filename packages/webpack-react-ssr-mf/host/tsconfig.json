@@ -2,8 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-    }
+      "paths": {
+          "@max-test-mf/federated-host/*": ["./src/host-shared/*"]
+      }
   },
   "include": ["./src/**/*"]
 }

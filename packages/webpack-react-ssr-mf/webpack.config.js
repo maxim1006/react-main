@@ -175,10 +175,11 @@ module.exports = (_, argv) => {
                         singleton: true,
                         requiredVersion: pkg.dependencies['@module-federation/node'],
                     },
-                    'react-helmet': {
+                    '@max-test-mf/federated-host': {
                         import: false,
                         singleton: true,
-                        requiredVersion: pkg.dependencies['react-helmet'],
+                        requiredVersion: require('@types/max-test-mf__federated-host/package.json')
+                            .version,
                     },
                 },
             }),

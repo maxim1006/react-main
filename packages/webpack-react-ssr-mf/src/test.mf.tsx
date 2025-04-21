@@ -1,22 +1,29 @@
 import React from 'react';
 import styles from './test-mf.module.sass';
 import cn from 'classnames';
-import Helmet from 'react-helmet';
+import { HostComponents, useHost, KNOWN_ENVS } from '@max-test-mf/federated-host';
 
 type TestMfProps = {
     prop: string;
-    Meta: typeof Helmet;
 };
 
-const TestMfContainer = ({ prop, Meta }: TestMfProps) => {
-    console.log('From Test mf');
+const TestMfContainer = ({ prop }: TestMfProps) => {
+    console.log('From Test mf', {
+        KNOWN_ENVS,
+        them: useHost().themeType,
+    });
+
     return (
         <div className={cn(styles.host, 'taTestMf')}>
-            <Meta>
+            <HostComponents.Meta>
                 <title>Custom title</title>
                 <meta name='description' content='Custom description' />
-            </Meta>
+            </HostComponents.Meta>
             TestMf 15 {prop}
+            <p>
+                <HostComponents.HostComponent1 prop='1' />
+                <HostComponents.HostComponent2 prop='2' />
+            </p>
         </div>
     );
 };

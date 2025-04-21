@@ -62,6 +62,8 @@ const getConfig = isServer => {
             alias: {
                 react: path.resolve('./node_modules/react'),
                 'react-dom': path.resolve('./node_modules/react-dom'),
+                // обязательно нужен алиас на shared module
+                '@max-test-mf/federated-host': path.resolve(__dirname, 'src/host-shared/'),
             },
         },
         ...(isServer

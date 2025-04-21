@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/runtime';
 import ReactDOM from 'react-dom';
-import Helmet from 'react-helmet';
 import { remote } from '../utils/mf.utils';
+import * as HostShared from '../host-shared';
+import { HostAPIProvider } from '@max-test-mf/federated-host/host-context';
 
 type TestMfContainerProps = {};
 
@@ -49,6 +50,15 @@ init({
                 requiredVersion: '^18.2.0',
             },
         },
+        '@max-test-mf/federated-host': {
+            version: '^0.0.1',
+            scope: 'default',
+            lib: () => HostShared,
+            shareConfig: {
+                singleton: true,
+                requiredVersion: '^0.0.1',
+            },
+        },
     },
 });
 
@@ -63,7 +73,9 @@ const TestMf = remote<import('@max-test-mf/mf-types/TestMf').TestMfProps>(
 const TestMfContainer = memo<TestMfContainerProps>(() => {
     return (
         <div className={'taTestMfContainer'}>
-            <TestMf prop='prop1' Meta={Helmet} />
+            <HostAPIProvider>
+                <TestMf prop='prop1' />
+            </HostAPIProvider>
         </div>
     );
 });
