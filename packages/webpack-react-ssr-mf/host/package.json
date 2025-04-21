@@ -16,6 +16,8 @@
       "react-helmet": "6.1.0"
   },
   "devDependencies": {
+      "@types/max-test-mf__federated-host": "file:../types-federated-host",
+      "@types/max-test-mf__mf-types": "file:../types-test-mf",
     "@babel/core": "^7.22.10",
     "@babel/helper-plugin-utils": "^7.22.5",
     "@babel/plugin-proposal-decorators": "^7.24.7",

@@ -52,19 +52,18 @@ init({
     },
 });
 
-const TestMf = remote<{
-    prop: string;
-    Meta: typeof Helmet;
-}>('max_mf_test/TestMf', () =>
-    loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({
-        default: mod['TestMfContainer'],
-    })),
+const TestMf = remote<import('@max-test-mf/mf-types/TestMf').TestMfProps>(
+    'max_mf_test/TestMf',
+    () =>
+        loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({
+            default: mod['TestMfContainer'],
+        })),
 );
 
 const TestMfContainer = memo<TestMfContainerProps>(() => {
     return (
         <div className={'taTestMfContainer'}>
-            <TestMf prop='prop' Meta={Helmet} />
+            <TestMf prop='prop1' Meta={Helmet} />
         </div>
     );
 });

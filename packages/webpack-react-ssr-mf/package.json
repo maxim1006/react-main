@@ -11,6 +11,10 @@
         "build:prod": "rm -rf dist && webpack --mode=production -c ./webpack.config.js",
         "build-analyze:web": "REPORT_ENV=true npm run build:prod"
     },
+    "workspaces": [
+        "./types-federated-host",
+        "./types-test-mf"
+    ],
     "dependencies": {
         "@module-federation/enhanced": "^0.11.4",
         "@module-federation/node": "2.6.33",
@@ -23,6 +27,8 @@
         "webpack-bundle-analyzer": "^4.10.2"
     },
     "devDependencies": {
+        "@types/max-test-mf__federated-host": "file:./types-federated-host",
+        "@types/max-test-mf__mf-types": "file:./types-test-mf",
         "@babel/core": "^7.22.10",
         "@babel/helper-plugin-utils": "^7.22.5",
         "@babel/plugin-proposal-decorators": "^7.24.7",

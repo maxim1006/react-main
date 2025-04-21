@@ -11,6 +11,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const pkg = require('./package.json');
 const { UniversalFederationPlugin } = require('@module-federation/node');
+const MfExposes = require('./mf-exposes');
 
 const rootDir = process.cwd();
 
@@ -157,9 +158,7 @@ module.exports = (_, argv) => {
                 isServer, // or false
                 remotes: {},
                 filename: 'remoteEntry.js',
-                exposes: {
-                    './TestMf': './test.mf',
-                },
+                exposes: MfExposes,
                 shared: {
                     react: {
                         import: false,

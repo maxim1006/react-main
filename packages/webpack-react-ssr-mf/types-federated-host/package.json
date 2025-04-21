@@ -1,0 +1,37 @@
+{
+  "name": "@types/max-test-mf__federated-host",
+  "version": "0.0.1",
+  "description": "declarations for shared host module",
+  "types": "./lib/types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types.d.ts"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    }
+  },
+  "author": "maxim1006",
+  "license": "ISC",
+  "private": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "scripts": {
+  },
+  "peerDependencies": {
+  },
+  "devDependencies": {
+    "react-dom": "^18.0.0",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.2.2"
+  },
+  "dependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0"
+  }
+}

@@ -5,14 +5,8 @@ import { text } from 'node:stream/consumers';
 import Helmet from 'react-helmet';
 
 export async function bootstrap(stats: import('webpack').StatsCompilation) {
-    // TODO Зачем?
-    // global.__platform_discovery_config__ = jsonData.applications.reduce((acc, it) => {
-    //     acc[it.name] = { url: it.urls.server, global: it.exposed_container };
-    //     return acc;
-    // }, {});
-
     const render: import('express').RequestHandler = function (req, res, next) {
-        if (!(req.url === '/')) {
+        if (!(req.url === '/' || /\/test-mf(\/.*)?/.test(req.url))) {
             return next();
         }
         console.log(`[RENDER]: ${req.url}`);

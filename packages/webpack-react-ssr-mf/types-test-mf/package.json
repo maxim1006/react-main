@@ -1,0 +1,44 @@
+{
+  "name": "@types/max-test-mf__mf-types",
+  "version": "0.0.1",
+  "description": "max-test-mf types definitions",
+  "scripts": {
+    "build-types": "rimraf -g './[!index]*.d.ts' && rollup --config rollup.config.ts --configPlugin 'typescript={ tsconfig: \"tsconfig.rollup.json\" }'",
+    "prepublish": "npm run build-types"
+  },
+  "keywords": [],
+  "author": "maxim1006",
+  "license": "ISC",
+  "files": [
+    "*.d.ts"
+  ],
+  "peerDependencies": {
+    "@types/react": "^18.2.63",
+    "@types/max-test-mf__federated-host": "*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.0",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "rollup": "^3.29.0",
+    "rollup-plugin-api-extractor": "^0.2.5",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-node-externals": "^5.1.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-svg": "^2.0.0",
+    "typescript": "~5.4.4",
+    "typescript-transform-paths": "^3.4.6",
+    "rimraf": "^6.0.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts"
+    },
+    "./TestMf": {
+      "types": "./TestMf.d.ts"
+    }
+  }
+}

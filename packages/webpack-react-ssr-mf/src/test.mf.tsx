@@ -21,4 +21,4 @@ const TestMfContainer = ({ prop, Meta }: TestMfProps) => {
     );
 };
 
-export { TestMfContainer };
+export { TestMfContainer, type TestMfProps };
