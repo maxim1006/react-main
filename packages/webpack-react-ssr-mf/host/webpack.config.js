@@ -63,8 +63,6 @@ const getConfig = isServer => {
             extensions: ['.tsx', '.ts', '.js'],
             plugins: [new TsconfigPathsPlugin()],
             alias: {
-                react: path.resolve('./node_modules/react'),
-                'react-dom': path.resolve('./node_modules/react-dom'),
                 // обязательно нужен алиас на shared module без него Cannot access 'App' before initialization
                 '@max-test-mf/federated-host': path.resolve(__dirname, 'src/host-shared/'),
             },
@@ -99,20 +97,16 @@ const getConfig = isServer => {
                               ];
                               performReload(true);
                               // stats — объект статистики Webpack (Stats), содержащий информацию о последней сборке: какие модули были собраны, сколько времени заняло, были ли ошибки/предупреждения и т.д. в devServer.middleware.context.stats.stats[1] лежит инфо о 'main-client' модуле с его зависимостями (используется для вставки стилей в server.bootstrap)
-                              // stats = devServer.middleware.context.stats.stats[1].toJson();
-                              // serverEntry = require(
-                              //     path.resolve(__dirname, './dist/node/node-main'),
-                              // ).bootstrap(stats);
+                              stats = devServer.middleware.context.stats.stats[1].toJson();
+                              serverEntry = require(
+                                  path.resolve(__dirname, './dist/node/node-main'),
+                              ).bootstrap(stats);
                           }
 
                           // отработает когда в host будут изменения
                           devServer.compiler.hooks.done.tap('Render', () => {
                               console.log('compiler hooks tap render');
                               clear();
-                              stats = devServer.middleware.context.stats.stats[1].toJson();
-                              serverEntry = require(
-                                  path.resolve(__dirname, './dist/node/node-main'),
-                              ).bootstrap(stats);
                           });
 
                           // подключаюсь к дев серверу mf
@@ -295,5 +289,9 @@ function performReload(shouldReload) {
             delete req.cache[key];
         }
     });
+
+    delete globalThis['max_mf_test'];
+    globalThis.__FEDERATION__ = {};
+
     return true;
 }

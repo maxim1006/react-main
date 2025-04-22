@@ -13,7 +13,8 @@
     },
     "workspaces": [
         "./types-federated-host",
-        "./types-test-mf"
+        "./types-test-mf",
+        "./host"
     ],
     "dependencies": {
         "@module-federation/enhanced": "^0.11.4",

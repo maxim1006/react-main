@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/runtime';
+import { init, loadRemote, registerRemotes } from '@module-federation/enhanced/runtime';
 import ReactDOM from 'react-dom';
 import { remote } from '../utils/mf.utils';
 import * as HostShared from '@max-test-mf/federated-host';
@@ -74,7 +74,7 @@ const TestMfContainer = memo<TestMfContainerProps>(() => {
     return (
         <div className={'taTestMfContainer'}>
             <HostAPIProvider>
-                <TestMf prop='prop3' />
+                <TestMf prop='prop2' />
             </HostAPIProvider>
         </div>
     );
@@ -86,6 +86,13 @@ export { TestMfContainer };
 // const TestMf = remote('max_mf_test/TestMf', () =>
 //     import('max_mf_test/TestMf' as any).then(mod => ({ default: mod.TestMf })),
 // );
+
 // const TestMf = React.lazy(
 //     () => import('max_mf_test/TestMf' as any) as Promise<{ default: React.FC }>,
+// );
+
+// const TestMf = React.lazy(() =>
+//     loadRemote<React.ComponentType>('max_mf_test/TestMf').then(mod => ({
+//         default: mod['TestMfContainer'],
+//     })),
 // );

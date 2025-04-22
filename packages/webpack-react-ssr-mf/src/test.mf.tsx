@@ -21,7 +21,7 @@ const TestMfContainer = ({ prop }: TestMfProps) => {
                 <title>Custom title</title>
                 <meta name='description' content='Custom description' />
             </HostComponents.Meta>
-            TestMf 11 {prop}
+            TestMf 8 {prop}
             <p>
                 <HostComponents.HostComponent1 prop='1' />
                 <HostComponents.HostComponent2 prop='2' />
