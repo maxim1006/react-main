@@ -1,4 +1,4 @@
-import { HostModuleExports } from '@max-test-mf/federated-host';
+import type { HostModuleExports } from '@max-test-mf/federated-host';
 import * as context from './host-context';
 import Helmet from 'react-helmet';
 import { MfErrorClass } from './mf-error';

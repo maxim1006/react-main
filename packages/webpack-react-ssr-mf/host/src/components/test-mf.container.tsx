@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { loadRemote, registerRemotes, init } from '@module-federation/enhanced/runtime';
 import ReactDOM from 'react-dom';
 import { remote } from '../utils/mf.utils';
-import * as HostShared from '../host-shared';
+import * as HostShared from '@max-test-mf/federated-host';
 import { HostAPIProvider } from '../host-shared/host-context';
 
 type TestMfContainerProps = {};
@@ -33,7 +33,7 @@ init({
     ],
     shared: {
         react: {
-            version: '^18.2.0',
+            version: '18.3.1',
             scope: 'default',
             lib: () => React,
             shareConfig: {
@@ -42,7 +42,7 @@ init({
             },
         },
         'react-dom': {
-            version: '^18.2.0',
+            version: '18.3.1',
             scope: 'default',
             lib: () => ReactDOM,
             shareConfig: {
@@ -51,7 +51,7 @@ init({
             },
         },
         '@max-test-mf/federated-host': {
-            version: '^0.0.1',
+            version: '0.0.1',
             scope: 'default',
             lib: () => HostShared,
             shareConfig: {
@@ -74,7 +74,7 @@ const TestMfContainer = memo<TestMfContainerProps>(() => {
     return (
         <div className={'taTestMfContainer'}>
             <HostAPIProvider>
-                <TestMf prop='prop1' />
+                <TestMf prop='prop3' />
             </HostAPIProvider>
         </div>
     );

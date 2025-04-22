@@ -2,7 +2,7 @@ import React, { createContext, ReactNode, useContext, useMemo, useState } from '
 
 import type { HostContext } from '@max-test-mf/federated-host';
 
-const ctx = createContext<HostContext.IBaseContext | null>(null);
+export const ctx = createContext<HostContext.IBaseContext | null>(null);
 
 export const HostAPIProvider = ({ children }: { children: ReactNode }) => {
     const [themeType, setThemeType] = useState<'light' | 'dark'>('light');
@@ -20,5 +20,5 @@ export const HostAPIProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export function useHost<C extends HostContext.IBaseContext>(): C {
-    return useContext?.(ctx) as C;
+    return useContext(ctx) as C;
 }

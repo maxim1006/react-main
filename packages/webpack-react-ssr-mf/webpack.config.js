@@ -170,11 +170,6 @@ module.exports = (_, argv) => {
                         singleton: true,
                         requiredVersion: pkg.dependencies['react-dom'],
                     },
-                    '@module-federation': {
-                        import: false,
-                        singleton: true,
-                        requiredVersion: pkg.dependencies['@module-federation/node'],
-                    },
                     '@max-test-mf/federated-host': {
                         import: false,
                         singleton: true,

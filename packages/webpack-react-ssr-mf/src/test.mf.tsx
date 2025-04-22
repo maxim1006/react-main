@@ -8,7 +8,7 @@ type TestMfProps = {
 };
 
 const TestMfContainer = ({ prop }: TestMfProps) => {
-    const ctx = useHost();
+    const ctx = useHost?.();
 
     console.log('From Test mf', {
         KNOWN_ENVS,
@@ -21,7 +21,7 @@ const TestMfContainer = ({ prop }: TestMfProps) => {
                 <title>Custom title</title>
                 <meta name='description' content='Custom description' />
             </HostComponents.Meta>
-            TestMf 24 {prop}
+            TestMf 11 {prop}
             <p>
                 <HostComponents.HostComponent1 prop='1' />
                 <HostComponents.HostComponent2 prop='2' />

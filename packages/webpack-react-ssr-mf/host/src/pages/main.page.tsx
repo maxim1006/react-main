@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { HomeContainer } from '../components/home.container';
 import { TestMfContainer } from '../components/test-mf.container';
 
