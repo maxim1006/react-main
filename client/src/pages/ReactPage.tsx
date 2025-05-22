@@ -1,20 +1,17 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import { UseToggle } from '@app/components/hooks-components/use-toggle/use-toggle.component';
-import { UseHover } from '@app/components/hooks-components/use-hover/use-hover.component';
-import { UseDeriveState } from '@app/components/hooks-components/use-derived-state/use-derived-state.component';
-import { UseEventCallback } from '@app/components/hooks-components/use-event-callback/use-event-callback.component';
-import { UseDebouncedCallback } from '@app/components/hooks-components/use-debounced-callback/use-debounced-callback.component';
+import { AnimatedCounterCompound } from '@app/components/animated-counter/animated-counter.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <UseDebouncedCallback />
-                <UseEventCallback />
-                <UseDeriveState />
-                <UseHover />
-                <UseToggle />
+                <AnimatedCounterCompound.Wrapper count={10} />
+                {/*<UseDebouncedCallback />*/}
+                {/*<UseEventCallback />*/}
+                {/*<UseDeriveState />*/}
+                {/*<UseHover />*/}
+                {/*<UseToggle />*/}
                 {/*<CustomSuspense />*/}
                 {/*<HocWithPropsContainer />*/}
                 {/*<RenderProp />*/}

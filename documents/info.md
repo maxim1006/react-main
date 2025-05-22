@@ -118,7 +118,18 @@ jobs:
 ## origin / referer / host
 origin - тот кто отсылает
 referer = origin + path
-host - куда делается request (host из Request URL) (nginx проверяет его относительно server_name чтобы перенаправить запрос)
+host - куда делается request (host из Request URL) (nginx проверяет его относительно server_name чтобы перенаправить запрос) 
+
+Если пользователь кликает по ссылке https://target.com со страницы https://example.com/page:
+то
+Origin: https://example.com
+Указывает, откуда исходит запрос (протокол + домен).
+
+Referer: https://example.com/page
+Указывает полный путь источника перехода.
+
+Host: target.com
+Указывает, к какому хосту направлен запрос — то есть тот, кто принимает запрос.
 
 # Version Control (Git) Conventions
 
@@ -167,11 +178,6 @@ You can reference Gitlab users in commit messages by adding `@userId`. In that c
 
 > Example: commit message: `feat: TICKET_PREFIX-7 cool stuff @max` will add a [@max](https://git.repository.com/max) link
 
-### origin referer host
-origin - тот кто отсылает
-referer = origin + path
-host - это ресурс на который идет реквест
-
 ### перейти на https без сертификата
 thisisunsafe
 
@@ -199,3 +205,10 @@ ssh-keygen -o
 cat ~/.ssh/id_rsa.pub
 ```
 и вставляем в профиль на Gitlab в список ssh-ключей
+
+### Акронимы по частям света
+EMEA (Europe, the Middle East and Africa) NA (North America) LATAM (Latin America) APAC (Asia-Pacific)
+
+### Тикет
+ER — Expected Result (ОР: Ожидаемый результат) 
+AR — Actual Result (ФР: Фактический результат)

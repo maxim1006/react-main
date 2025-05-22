@@ -10,6 +10,10 @@
 
 на выходе получаю id (Successfully built 48a305f17997) который затем использую в docker run
 
+Еще пример
+docker build -t my-test-image -f .gitlab/e2e/host-app.Dockerfile .
+(. в конце это директория откуда запускаю команду, значит, Docker будет искать src/, .npmrc, package.json и любые другие файлы относительно этой директории.)
+
 ### docker-compose down -v
 удалить докер контейнеры и вольюмы
 
@@ -22,7 +26,14 @@ docker run -it --rm -d -p 8080:8080 --name web maxim1006/demoapp:1.0
 
 (https://docs.docker.com/engine/reference/commandline/run/)
 
+Еще пример
+docker run --rm -it -p 3000:3000 my-test-image
 
+Пример с тем как спрятать npmrc - в одном слое его добавляю и удаляю
+RUN --mount=type=secret,id=npmrc \
+cp /admin/.npmrc .npmrc \
+&& npm ci \
+&& rm .npmrc
 
 ### https://hub.docker.com/
 хранилище всех докер образов
