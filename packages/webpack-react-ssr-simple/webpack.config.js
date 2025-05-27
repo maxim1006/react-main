@@ -56,7 +56,7 @@ const getConfig = isServer => {
                       static: {
                           directory: path.join(__dirname, 'public'),
                       },
-                      hot: false,
+                      hot: true,
                       compress: true,
                       port: 8009,
                       historyApiFallback: true,
