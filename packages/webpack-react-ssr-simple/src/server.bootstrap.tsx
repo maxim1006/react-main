@@ -15,7 +15,7 @@ export async function bootstrap(stats: import('webpack').StatsCompilation) {
             const { StaticRouter: Router } = await import('react-router-dom');
 
             // так вытаскиваю из изветсного чанка (в данном случае main-client) css файлы
-            const cssChunks = (stats.assetsByChunkName?.['main-client'] ?? [])
+            const cssChunks = (stats?.assetsByChunkName?.['main-client'] ?? [])
                 .filter(p => p.endsWith('.css'))
                 .map(p => path.join(stats?.publicPath ?? '', p));
 

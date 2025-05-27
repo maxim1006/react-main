@@ -56,7 +56,7 @@ const getConfig = isServer => {
                       static: {
                           directory: path.join(__dirname, 'public'),
                       },
-                      hot: true,
+                      hot: false,
                       compress: true,
                       port: 8009,
                       historyApiFallback: true,
@@ -68,32 +68,37 @@ const getConfig = isServer => {
                       },
                       setupMiddlewares(middlewares, devServer) {
                           let stats;
+                          let serverEntry;
 
                           // без удаления кеша ноды - будет ошибка в регидрации
                           function clear() {
-                              delete require.cache[
-                                  path.resolve(__dirname, './dist/node/node-main.js')
-                              ];
+                              clearWebpackCache('./dist/node');
+
+                              stats =
+                                  stats ?? devServer.middleware.context?.stats?.stats[1].toJson();
+
+                              serverEntry = require(
+                                  path.resolve(__dirname, './dist/node/node-main'),
+                              ).bootstrap(stats);
                           }
+
+                          // отработает когда в host будут изменения
+                          devServer.compiler.hooks.done.tap('Render', () => {
+                              console.log('compiler hooks tap render');
+                              clear();
+                          });
 
                           middlewares.unshift({
                               name: 'render',
                               // `path` is optional
                               path: '/',
                               middleware: (req, res, next) => {
-                                  console.log('middleware render');
-
-                                  stats =
-                                      stats ?? devServer.middleware.context.stats.stats[1].toJson();
-
-                                  try {
-                                      clear();
-                                      require(path.resolve(__dirname, './dist/node/node-main'))
-                                          .bootstrap(stats)
-                                          .then(render => render(req, res, next));
-                                  } catch (e) {
-                                      console.error(e);
-                                  }
+                                  serverEntry
+                                      .then(render => {
+                                          // console.log('render middleware');
+                                          return render(req, res, next);
+                                      })
+                                      .catch('render middleware error ', console.error);
                               },
                           });
                           return middlewares;
@@ -164,3 +169,13 @@ const getConfig = isServer => {
 };
 
 module.exports = [true, false].map(getConfig);
+
+// helpers
+function clearWebpackCache(dir) {
+    const resolved = path.resolve(__dirname, dir);
+    for (const key in require.cache) {
+        if (key.startsWith(resolved)) {
+            delete require.cache[key];
+        }
+    }
+}

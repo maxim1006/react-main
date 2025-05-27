@@ -59,6 +59,8 @@ function ChildImpl({
 
     console.log('Child rerender');
 
+    const ProxyTestNonReactFunctionErrorComponent = ProxyFoo()['TestNonReactFunctionError'];
+
     return (
         <>
             <button type='button' onClick={() => setChildState(i => !i)}>
@@ -73,7 +75,7 @@ function ChildImpl({
             <ComponentMemo />
             {componentNode}
             {render(childState)}
-            {/*так будет ошибка с хуками*/}
+            {/*так будет ошибка с хуками, потому что вызываю функцию напрямую, а не использую как реакт компонент*/}
             {/*{childState && Proxy['TestNonReactFunction']({ childState })}*/}
             {/*так будет ошибка с хуками*/}
             {/*{childState && ComponentNonReactFooProxy({ childState })}*/}
@@ -81,6 +83,12 @@ function ChildImpl({
             <ComponentNonReactFooProxy childState={childState} />
             {/*еще можно так использовать, чисто для примера*/}
             {ProxyNode['TestNonReactFunction']}
+            {childState && ProxyFoo()['TestNonReactFunction']}
+            {/*так ошибка  Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it. Error Component Stack */}
+            {/*{childState && ProxyFoo()['TestNonReactFunctionError']}*/}
+
+            {/*а так отработает, так как в переменной ProxyTestNonReactFunctionErrorComponent референс на компонент*/}
+            {childState && <ProxyTestNonReactFunctionErrorComponent childState />}
         </>
     );
 }
@@ -88,11 +96,16 @@ function ChildImpl({
 const Child = memo(ChildImpl);
 
 function RenderedViewImpl({ parent, child }: { parent: boolean; child: boolean }) {
+    const [state, setState] = useState(0);
     console.log('RenderedView rerendered');
     return (
-        <>
-            RenderedView {String(parent)} {String(child)}
-        </>
+        <div
+            onClick={() => {
+                setState(i => ++i);
+            }}
+        >
+            RenderedView {state} {String(parent)} {String(child)}
+        </div>
     );
 }
 
@@ -101,13 +114,20 @@ function SimpleChildImpl({ prop }: { prop?: string }) {
 }
 
 function TestNonReactFunction({ childState }: { childState: boolean }) {
-    const [testNonReactState, _setTestNonReactState] = useState(false);
+    const [testNonReactState, setTestNonReactState] = useState(0);
     console.log('TestNonReactFunction', testNonReactState, { childState });
-    return <p>TestNonReactFunction</p>;
+    return <p onClick={() => setTestNonReactState(i => ++i)}>TestNonReactFunction</p>;
 }
 
 const Proxy = {
     TestNonReactFunction,
+};
+
+const ProxyFoo = () => {
+    return {
+        TestNonReactFunction: <TestNonReactFunction childState />,
+        TestNonReactFunctionError: TestNonReactFunction,
+    };
 };
 
 const ProxyNode = {
