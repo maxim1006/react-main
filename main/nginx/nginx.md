@@ -4,6 +4,8 @@ nginx
 остановить
 nginx -s stop
 перезагрузить
+nginx -s reload
+или
 sudo service nginx restart
 
 ### nginx -t
