@@ -1,61 +1,86 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './animated-counter.module.scss';
 
+const ONE_COUNT = 1;
+const TranslateStylesMap = {
+    FIRST: 0,
+    SECOND: -100,
+    THIRD: -200,
+} as const;
+
+const getDrumNumbers = (count: number): number[] => [count - ONE_COUNT, count, count + ONE_COUNT];
+
 const AnimatedCounter = ({ count = 0 }: { count: number }) => {
-    const [values, setValues] = useState([count, count + 1, count + 2]);
-    const [active, setActiveElement] = useState(count);
+    const [currentCount, setCurrentCount] = useState(count);
+    const [translate, setTranslate] = useState<number>(TranslateStylesMap.SECOND);
+    const [values, setValues] = useState(() => getDrumNumbers(count));
+    const nextCountRef = useRef<number | null>(null);
 
-    const getTranslateValue = () => {
-        const index = values.indexOf(active);
+    useEffect(() => {
+        if (count === currentCount) return;
 
-        if (index === 0) {
-            return 0;
+        if (count > currentCount) {
+            setTranslate(TranslateStylesMap.THIRD);
+        } else {
+            setTranslate(TranslateStylesMap.FIRST);
         }
-        if (index === 1) {
-            return -100;
-        }
-        return index * -100;
+
+        nextCountRef.current = count;
+    }, [count, currentCount]);
+
+    const handleTransitionEnd = () => {
+        if (nextCountRef.current === null) return;
+
+        const newCount = nextCountRef.current;
+        setCurrentCount(newCount);
+        setValues(getDrumNumbers(newCount));
+        setTranslate(TranslateStylesMap.SECOND);
+        nextCountRef.current = null;
     };
 
-    useEffect(() => {
-        setActiveElement(count);
-        if (values.includes(count)) {
-            return;
-        }
-        setValues(prev => prev.concat(count));
-    }, [count, values]);
-
-    const drumElements = values.map(value => (
-        <div
-            key={value}
-            style={{
-                transform: `translateY(${getTranslateValue()}%)`,
-                transition: 'transform 0.5s ease-in-out',
-                height: '18px',
-            }}
-        >
-            {value === 0 ? '' : value}
+    return (
+        <div className={styles.drumContainer} onTransitionEnd={handleTransitionEnd}>
+            {values.map(value => (
+                <div
+                    key={`${value}-idx`}
+                    className={styles.drum}
+                    style={{
+                        transform: `translateY(${translate}%)`,
+                        transition: translate !== TranslateStylesMap.SECOND ? 'transform 1s ease-in-out' : 'none',
+                    }}
+                >
+                    {value}
+                </div>
+            ))}
         </div>
-    ));
-
-    return <div className={styles.drumContainer}>{drumElements}</div>;
+    );
 };
 
-const AnimatedCounterWrapper = ({ count }: { count: number }) => {
-    const [additional, setAdditional] = useState(count === 0 ? 0 : 1);
+const AnimatedCounterWrapper = () => {
+    const [count, setCount] = useState(0);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setAdditional(0);
-        }, 1000);
-
-        return () => {
-            clearTimeout(timer);
-        };
-    }, []);
-
-    return <AnimatedCounter count={count - additional} />;
+    return (
+        <>
+            <button
+                onClick={() => {
+                    setCount(i => ++i);
+                }}
+                type='button'
+            >
+                Up
+            </button>
+            <button
+                onClick={() => {
+                    setCount(i => --i);
+                }}
+                type='button'
+            >
+                Down
+            </button>
+            <AnimatedCounter count={count} />
+        </>
+    );
 };
 
 export const AnimatedCounterCompound = Object.assign(AnimatedCounter, {

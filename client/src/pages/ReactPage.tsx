@@ -1,12 +1,12 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
-import RenderProp from '@app/components/render-prop/render-prop.component';
+import { AnimatedCounterCompound } from '@app/components/animated-counter/animated-counter.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                {/*<AnimatedCounterCompound.Wrapper count={10} />*/}
+                <AnimatedCounterCompound.Wrapper />
                 {/*<UseDebouncedCallback />*/}
                 {/*<UseEventCallback />*/}
                 {/*<UseDeriveState />*/}
@@ -14,7 +14,7 @@ export default function ReactPage() {
                 {/*<UseToggle />*/}
                 {/*<CustomSuspense />*/}
                 {/*<HocWithPropsContainer />*/}
-                <RenderProp />
+                {/*<RenderProp />*/}
                 {/*<SyncExternalStore />*/}
                 {/*<MediaQueryCss />*/}
                 {/*<MobxContainer />*/}
