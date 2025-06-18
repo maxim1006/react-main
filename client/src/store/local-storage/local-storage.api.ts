@@ -48,4 +48,7 @@ const setLocalStorageItem = (key: string, value: string) =>
 
 const setJsonLocalStorageItem = <T>(key: string, value: T) => setLocalStorageItem(key, JSON.stringify(value));
 
+// сбросить кеши
+const invalidateStorageTag = (key: string) => localStorageApi.util.invalidateTags([{ type: 'localStorage', id: key }]);
+
 export { localStorageApi, setLocalStorageItem, setJsonLocalStorageItem };

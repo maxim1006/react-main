@@ -8,6 +8,9 @@ nginx -s reload
 или
 sudo service nginx restart
 
+### посмотреть запущен ли nginx на 80 порту
+sudo lsof -i :80
+
 ### nginx -t
 узнать где файл конфигурации / состояние nginx (правильно ли заполнил файл)
 nginx -t (/usr/local/etc/nginx/nginx.conf или /opt/homebrew/etc/nginx/nginx.conf)

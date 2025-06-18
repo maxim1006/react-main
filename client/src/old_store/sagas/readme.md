@@ -5,6 +5,12 @@
 
 ### call(fn, args)
 
+Когда использовать call?
+•	Всегда, когда хочешь делегировать вызов какой-либо функции и хочешь, чтобы redux-saga могла:
+•	обработать ошибку (try/catch);
+•	подождать завершения (в случае Promise);
+•	мокать во время тестов.
+
 Creates an Effect description that instructs the middleware to call the function fn with args as arguments.
 делает defer fn в саге если fn возвращает прамис
 const user = yield call(getUserApi, action.payload);

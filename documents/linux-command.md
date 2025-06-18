@@ -141,8 +141,9 @@ echo $PATH
 whoami
 
 # nslookup
-посмотреть ip по dns пример
+посмотреть ip по dns пример и наоборот днс по ip
 nslookup ya.ru
+nslookup 8.8.8.8
 
 # chown (change owner) add permission to folder for user (have to open terminal inside folder)
 sudo chown __use-name__ .
@@ -291,3 +292,13 @@ ping 100.65.0.1 (до сервера провайдера)
 
 в случае ошибок на стороне провайдера - звоним ему
 
+
+# Посмотреть сколько процесс использует памяти
+ps -o pid,ppid,comm,%mem,rss,args | grep [n]pm
+
+	•	%MEM — процент использования RAM.
+	•	RSS — реально используемая физическая память в КБ.
+	•	args — полный запуск команды.
+
+ps -o pid,ppid,comm,%mem,rss,args | grep eslint
+ps -o pid,ppid,comm,%mem,rss,args | grep webpack
