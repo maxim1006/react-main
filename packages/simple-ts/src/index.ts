@@ -1,3 +1,6 @@
+// обязательно надо указать .js файл
+import { FROM_EXPORT3 } from './examples/imports/export3.js';
+
 if (typeof window !== 'undefined') {
     window.document.addEventListener('click', async (): Promise<any> => {
         const { default: export1 } = await import('./examples/imports/export1.js');
@@ -6,3 +9,5 @@ if (typeof window !== 'undefined') {
         console.log(export1, export2);
     });
 }
+
+console.log(FROM_EXPORT3);
