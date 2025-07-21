@@ -17,6 +17,11 @@ docker build -t my-test-image -f .gitlab/e2e/host-app.Dockerfile .
 ### docker-compose down -v
 удалить докер контейнеры и вольюмы
 
+### docker stop $(docker ps -q)
+остановить все докер контейнеры
+
+### docker-compose up -d
+запустить docker-compose
 
 ### docker run
 // так запускаю (пример проекта из текущей папки)

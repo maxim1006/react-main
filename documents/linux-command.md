@@ -1,3 +1,8 @@
+# обновить систему
+apt update && apt full-upgrade -y
+
+apt install docker.io docker-compose git curl bash openssl -y
+
 # посмотреть хедеры при запросе
 curl -I https://google.com
 curl -Ik https://google.com
