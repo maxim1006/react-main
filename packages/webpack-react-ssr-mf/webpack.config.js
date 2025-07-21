@@ -158,6 +158,8 @@ module.exports = (_, argv) => {
                 isServer, // or false
                 remotes: {},
                 filename: 'remoteEntry.js',
+                // тут то что возвращает этот модуль TestMf, чтобы можно было
+                // loadRemote<React.ComponentType>('max_mf_test/TestMf')
                 exposes: MfExposes,
                 shared: {
                     react: {

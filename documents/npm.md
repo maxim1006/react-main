@@ -1,30 +1,33 @@
-#npm list package__name
+# npm list package__name
 посмотреть версии пакета установленного в проекте
 
-#npm view package__name
+# npm view package__name
 посмотреть все версии пакета
 
-#npm audit fix
+# npm audit fix
 если в проекте есть package.lock файл, то команда проверит все пакеты на секьюрити уязвимости
 
-#npm audit 
+# npm audit 
 Проверка на пакеты с vulnerability
 
-#npm i --package-lock-only
+# npm i --package-lock-only
 проинсталлить только package.lock (нужно для npm audit)
 
-#npm show
+# npm show
  npm view __package_name__ versions  --json //посмотреть все версии пакета
 
-#npm config
+# npm config
 npm config set package-lock false - удалить package.lock глобально
 
-#npm commands
+# npm commands
 npm s имя_того_что_ищу - поиск модулей
 npm i имя_модуля - инсталляция модуля, чтобы проинсталлить конкретную версию делаю так npm i имя_модуля@версия_модуля
 npm -g i express - поставить модуль глобально
 npm up имя_модуля - апдейт модуля всех модулей если не указывать конкретный
 npm r имя_модуля - удалить модуль
+
+# npm pack --dry-run
+посмотреть что попадет в npm publish
 
 # Чтобы опубликовать модуль npm
 npm init (создает package.json)
@@ -36,31 +39,31 @@ npm unpublish
 ~ - будет грузить 1.2.3 вместо 1.2.2 
 ^ -  1.3.2 вместо 1.2.2
 
-#чтобы исправить ошибку гит
+# чтобы исправить ошибку гит
 git config --global url."https://github.com/".insteadOf git@github.com:
 git config --global url."https://".insteadOf git://
 
 git config --system core.longpaths true
 
-#npm repo (Чтобы посмотреть проект на гитхаб)
+# npm repo (Чтобы посмотреть проект на гитхаб)
 npm repo имя_пакета
 
-#npm list (Посмотреть версии пакетов)
+# npm list (Посмотреть версии пакетов)
 npm list --depth=0
 
-#npm uninstall
+# npm uninstall
 npm uninstall имя_пакета
 
-#Обновить npm
+# Обновить npm
 npm install npm@latest -g
 
-#Посмотреть устаревшие модули
+# Посмотреть устаревшие модули
 npm outdated
 
 # посмотреть все peerdeps пакета
 npm info name-of-module peerDependencies
 
-#Обновить все пакеты
+# Обновить все пакеты
 // List security breaches
 npm audit
 // проверить старые модули
@@ -95,3 +98,5 @@ sudo npm rm --global __package-name__
 // list of all global packages
 npm ls --global --depth 0
  
+// как линковать модули из других проектов к модулю в текущем
+sudo ln -sf __путь_к_оригинальному_модулю__ node_modules/__путь_к_модулю_в_текущем_проекте__

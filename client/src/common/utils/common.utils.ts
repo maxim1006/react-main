@@ -259,6 +259,10 @@ export function defaultMemoize(func: any, equalityCheck = (a: any, b: any) => a 
     };
 }
 
+const isStandalone = () => window?.matchMedia('(display-mode: standalone)').matches;
+
+export const getAppPlatform = () => (isStandalone() ? 'pwa' : 'web');
+
 // Helpers
 function _getRandomSymbols4() {
     return Math.floor((1 + Math.random()) * 0x10000)
