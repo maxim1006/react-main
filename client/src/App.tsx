@@ -10,6 +10,8 @@ import GeneralInfo from './components/general-info/GeneralInfo';
 import TestsPage from '@app/pages/TestsPage';
 import { GeneralInfoProvider } from '@app/components/context/general-info.context';
 
+console.log(process.env.MY_ARG);
+
 const ReduxToolkit = React.lazy(() => import('./pages/Rt.page'));
 const ReactPage = React.lazy(() => import('./pages/ReactPage'));
 const TypescriptPage = React.lazy(() => import('./pages/typescript/typescript.page'));

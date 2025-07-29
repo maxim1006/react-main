@@ -1,6 +1,8 @@
 import React from 'react';
 import { TabsComponent } from '../components/tabs/Tabs';
 import { AnimatedCounterCompound } from '@app/components/animated-counter/animated-counter.component';
+import UrlSearchParams from '@app/components/url-search-params/url-search-params.component';
+import Component from '@app/components/component/component.component';
 
 export default function ReactPage() {
     return (
@@ -173,9 +175,9 @@ export default function ReactPage() {
                 {/*    <TestsReduxContainer />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='URLSearchParamsTest'>*/}
-                {/*    <UrlSearchParams />*/}
-                {/*</Component>*/}
+                <Component title='URLSearchParamsTest'>
+                    <UrlSearchParams />
+                </Component>
 
                 {/*<Component title='RouterTestsContainer'>*/}
                 {/*    <RouterTestContainer />*/}

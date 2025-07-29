@@ -23,7 +23,7 @@ console.log(args); // args === [1,2]
 2
 );
 
-    вызывает функцию с заданными атрибутами
+вызывает функцию с заданными атрибутами
 
 const user = yield call(getUserApi, { payload: action.payload, cancelToken });
 тоже что и

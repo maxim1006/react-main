@@ -16,3 +16,10 @@ declare module '*.less' {
 // declare module "*.png";
 
 declare module 'redux-persist/lib/storage';
+
+// теперь могу использовать как process.env.MY_ARG
+declare namespace NodeJS {
+    interface ProcessEnv {
+        readonly MY_ARG: 'development' | 'production';
+    }
+}
