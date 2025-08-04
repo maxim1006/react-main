@@ -23,7 +23,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-#    клонирую свой репозиторий
+#    клонирую свой репозиторий:
     - uses: actions/checkout@v3
     - name: Cache multiple paths
       uses: actions/cache@v3
