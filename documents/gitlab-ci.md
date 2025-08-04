@@ -17,8 +17,8 @@ cat ~/.ssh/id_rsa.pub
 3.Go to properties.
 4.Set password to correct user password
 
-### For registration runner go to 
+### For registration runner go to
 https://docs.gitlab.com/runner/register/#windows
 
-GitLab Runner — это агент (процесс), который запускает джобы CI/CD
-Executor — Executor — это “движок” внутри Runner’а. Он определяет, где и как будет исполняться код. (бывают shell docker k8s)
+GitLab Runner — это сервер (процесс), который запускает джобы CI/CD
+Executor — Executor — это программа которая исполняет команды внутри Runner’а. Он определяет, где и как будет исполняться код. (бывают shell docker k8s и тд)

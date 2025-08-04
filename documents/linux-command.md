@@ -17,11 +17,11 @@ curl --connect-to ::speedtest.selectel.ru https://manifest.googlevideo.com/100MB
 # посмотреть файлы в папке и их размер
 ls -lah
 
-# посмотреть размер папок 
+# посмотреть размер папок
 du -h
 
-и то и другое 
-sudo apt-get install ncdu 
+и то и другое
+sudo apt-get install ncdu
 затем
 ncdu [path]
 
@@ -101,17 +101,17 @@ mv somefile /to/some/other/path
 mv ~/Documents/Ukulele/Apache.pdf . (from ~/Documents/Ukulele/Apache.pdf to current folder)
 
 # kill
-kill pid-of-program 
+kill pid-of-program
 
 # ping
 посмотреть работает ли сайт (а также его ip)
 ping maximprosv.ru
 
-тоже что и 
+тоже что и
 
 host -t a maximprosv.ru
 
-# ps 
+# ps
 ps -ef | grep webstorm, затем kill -9 PID
 ps -ax | grep mysql // найти все процессы, выдаст pid
 ps aux | grep node // найти все процессы, выдаст node
@@ -180,7 +180,7 @@ export PATH=$PATH:~/mongodb/bin (inside user directory)
 
 # mongo
 (create folder for mongo to store its data)
-mkdir -p /data/db 
+mkdir -p /data/db
 
 (launch mongo)
 sudo mongod
@@ -205,11 +205,11 @@ cat ./dist{file1, file2, file3}.js | gzip > gulpfile.js.gzip - //собрать 
 -чтобы выполнить команду из истории (работает и с отрицательными номерами)
 !__номер_команды__
 - команда будет выведена но не запущена
-!__номер_команды__:p 
+  !__номер_команды__:p
 - найти в history
-history | grep __слово-которое-ищем__
+  history | grep __слово-которое-ищем__
 - выполнить последнюю команду с sudo
-sudo !!
+  sudo !!
 
 # Горячие клавиши
 курсор в начало
@@ -258,7 +258,7 @@ tail -n + __кол-во-строк__ __имя-файла__
 
 # просмотр информации о команде
 чтобы выйти shift + q
-man __имя-команды__ 
+man __имя-команды__
 
 # просмотр логов с tail
 tail -f logs/app/application.log
@@ -271,7 +271,7 @@ curl ifconfig.me
 
 # crontab
 добавить задачу
-crontab -e 
+crontab -e
 
 пример задачи
 10 14 * * * /usr/local/bin/node /Users/maxmaximov/Projects/react-main/packages/telegram-bot-happy-birthday/index.js >> /Users/maxmaximov/Projects/daily_script.log 2>&1
@@ -304,6 +304,25 @@ ps -o pid,ppid,comm,%mem,rss,args | grep [n]pm
 
 ps -o pid,ppid,comm,%mem,rss,args | grep eslint
 ps -o pid,ppid,comm,%mem,rss,args | grep webpack
+
+# Посмотреть статус программы
+sudo systemctl status docker
+
+Еще можно использовать как:
+
+| Описание действия                | Команда                                 | Пояснение                                                        |
+|----------------------------------|-----------------------------------------|------------------------------------------------------------------|
+| Запустить сервис                 | `systemctl start nginx`                 | Запускает nginx (если он установлен и активен)                   |
+| Остановить сервис                | `systemctl stop nginx`                  | Останавливает сервис                                             |
+| Перезапустить сервис             | `systemctl restart nginx`               | Перезапускает сервис                                             |
+| Перезагрузить конфиг (reload)    | `systemctl reload nginx`                | Перезагружает конфиг без остановки (если поддерживается)         |
+| Проверить статус                 | `systemctl status nginx`                | Показывает активность, логи, PID                                 |
+| Включить автозапуск              | `systemctl enable nginx`                | Включает автозапуск при старте системы                           |
+| Отключить автозапуск             | `systemctl disable nginx`               | Убирает из автозапуска                                           |
+| Список активных сервисов         | `systemctl list-units --type=service`   | Показывает все активные сервисы                                  |
+| Перезагрузка системы             | `systemctl reboot`                      | Перезагружает весь компьютер                                     |
+| Выключение системы               | `systemctl poweroff`                    | Выключает машину                                                 |
+
 
 # посмотреть версию ubuntu
 cat /etc/os-release
