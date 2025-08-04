@@ -164,5 +164,6 @@
         "react-scripts": {
             "typescript": "^5.5.4"
         }
-    }
+    },
+    "homepage": "https://maxim1006.github.io/react-main"
 }
