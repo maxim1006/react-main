@@ -14,9 +14,6 @@ curl --location --request POST https://google.com
 # сделать запрос и посмотреть скорость загрузки
 curl --connect-to ::speedtest.selectel.ru https://manifest.googlevideo.com/100MB -k -o/dev/null
 
-# посмотреть загрузку проца
-top
-
 # посмотреть файлы в папке и их размер
 ls -lah
 
@@ -307,3 +304,15 @@ ps -o pid,ppid,comm,%mem,rss,args | grep [n]pm
 
 ps -o pid,ppid,comm,%mem,rss,args | grep eslint
 ps -o pid,ppid,comm,%mem,rss,args | grep webpack
+
+# посмотреть версию ubuntu
+cat /etc/os-release
+
+# Проверить использование диска HDD
+df -h
+
+# Проверить оперативную память
+free -h
+
+# Проверить процессы / посмотреть загрузку проца
+top

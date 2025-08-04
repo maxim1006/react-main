@@ -1,3 +1,9 @@
+### Настройка кастомного гитлаб у себя на сервере
+https://docs.gitlab.com/install/package/ubuntu/?tab=Community+Edition
+https://www.youtube.com/watch?v=TftSa_xJKXM&list=PLg5SS_4L6LYuJxTrdU5vzBaVGlZko8Hsy&index=8&ab_channel=ADV-IT
+
+
+
 ### Настройка двухфакторную аутентификацию в Gitlab
 ```yaml
 ssh-keygen -o
@@ -14,4 +20,5 @@ cat ~/.ssh/id_rsa.pub
 ### For registration runner go to 
 https://docs.gitlab.com/runner/register/#windows
 
-> install docker
+GitLab Runner — это агент (процесс), который запускает джобы CI/CD
+Executor — Executor — это “движок” внутри Runner’а. Он определяет, где и как будет исполняться код. (бывают shell docker k8s)
