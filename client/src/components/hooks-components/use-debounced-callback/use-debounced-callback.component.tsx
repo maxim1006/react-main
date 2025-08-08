@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { useDebouncedCallback } from '@app/hooks/use-debounced-callbacl.hook';
+import { useDebouncedCallback } from '@app/hooks/use-debounced-callback.hook';
 
 type UseDebouncedCallbackProps = {};
 

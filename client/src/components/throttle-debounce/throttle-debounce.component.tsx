@@ -1,4 +1,4 @@
-import React, { memo, FC, useMemo, useCallback } from 'react';
+import React, { memo, FC, useMemo, useCallback, useState, useRef } from 'react';
 import { throttle, debounce } from 'lodash';
 
 type ThrottleDebounceProps = {};
@@ -6,19 +6,23 @@ type ThrottleDebounceProps = {};
 const DELAY = 1000;
 
 const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
-    const throttleMemo = useMemo(
-        () =>
-            throttle(
-                () => {
-                    console.log('throttleMemo', new Date().toUTCString());
-                },
-                DELAY,
-                {
-                    leading: false,
-                }
-            ),
-        []
-    );
+    const [count, setCount] = useState(0);
+    const countRef = useRef(count);
+    countRef.current = count;
+
+    const throttleMemo = useMemo(() => {
+        return throttle(
+            () => {
+                console.log('throttleMemo', new Date().toUTCString());
+                setCount(countRef.current + 1);
+                console.log('count', countRef.current);
+            },
+            DELAY,
+            {
+                leading: false,
+            },
+        );
+    }, []);
 
     /* eslint-disable */ // так делать не надо но просто для примера
     const throttleCb = useCallback(
@@ -29,9 +33,9 @@ const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
             DELAY,
             {
                 leading: false,
-            }
+            },
         ),
-        []
+        [],
     );
 
     const debounceMemo = useMemo(
@@ -39,7 +43,7 @@ const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
             debounce(() => {
                 console.log('debounceMemo ', new Date().toUTCString());
             }, DELAY),
-        []
+        [],
     );
 
     /* eslint-disable */ // так делать не надо но просто для примера что тоже работает
@@ -47,7 +51,7 @@ const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
         debounce(() => {
             console.log('debounceCb ', new Date().toUTCString());
         }, DELAY),
-        []
+        [],
     );
 
     return (
@@ -55,8 +59,8 @@ const ThrottleDebounce: FC<ThrottleDebounceProps> = () => {
             onPointerMove={() => {
                 throttleMemo();
                 throttleCb();
-                debounceMemo();
-                debounceCb();
+                // debounceMemo();
+                // debounceCb();
             }}
             style={{ width: 300, height: 300, background: 'blue' }}
         >

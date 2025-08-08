@@ -1,14 +1,13 @@
-import React from 'react';
-import { TabsComponent } from '../components/tabs/Tabs';
-import { AnimatedCounterCompound } from '@app/components/animated-counter/animated-counter.component';
-import UrlSearchParams from '@app/components/url-search-params/url-search-params.component';
 import Component from '@app/components/component/component.component';
+import UrlSearchParams from '@app/components/url-search-params/url-search-params.component';
+import { TabsComponent } from '../components/tabs/Tabs';
+import ThrottleDebounce from '@app/components/throttle-debounce/throttle-debounce.component';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
-                <AnimatedCounterCompound.Wrapper />
+                {/* <AnimatedCounterCompound.Wrapper /> */}
                 {/*<UseDebouncedCallback />*/}
                 {/*<UseEventCallback />*/}
                 {/*<UseDeriveState />*/}
@@ -155,9 +154,9 @@ export default function ReactPage() {
                 {/*    <ExamplesComponent />*/}
                 {/*</Component>*/}
 
-                {/*<Component title='ThrottleDebounce'>*/}
-                {/*    <ThrottleDebounce />*/}
-                {/*</Component>*/}
+                <Component title='ThrottleDebounce'>
+                    <ThrottleDebounce />
+                </Component>
 
                 {/*<Component title='Iframe'>*/}
                 {/*    <MyIframe />*/}
