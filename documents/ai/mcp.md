@@ -56,3 +56,6 @@ https://www.youtube.com/watch?v=KnN3u1vugfA&ab_channel=%D0%9E%D0%BB%D0%B5%D0%B3%
 
 2. Пример простого MCP для управления Telegram ботом:
 — https://github.com/coderroleggg/telegram-bot-mcp
+
+### MCP для генерации изображений
+https://github.com/SureScaleAI/openai-gpt-image-mcp
