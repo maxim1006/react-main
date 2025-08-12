@@ -52,6 +52,22 @@ userRouter.get('/big', async (req: Request, res: Response) => {
     }
 });
 
+userRouter.get('/long', async (req: Request, res: Response) => {
+    const { duration } = req.query;
+
+    console.log(duration);
+
+    try {
+        let users = await fsExtra.readJson(userPath);
+
+        setTimeout(() => {
+            res.status(200).json(users);
+        }, Number(duration));
+    } catch (e) {
+        res.status(500).json({ error: 'business error' });
+    }
+});
+
 userRouter.get('/:id', async (req: Request, res: Response) => {
     const { id } = req.params;
 
