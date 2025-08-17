@@ -1,6 +1,6 @@
 // find all modules in ./dist and change imports to pre/...
 const glob = require('glob');
-const path = require('path');
+const path = require('main/node/src/scripts/path.js');
 const fse = require('fs-extra');
 
 glob(path.resolve(__dirname, '../examples/') + '/**/*.?(js|ts)', {}, (er, filePaths) => {
@@ -15,7 +15,7 @@ glob(path.resolve(__dirname, '../examples/') + '/**/*.?(js|ts)', {}, (er, filePa
             fileContent
                 .split(/\r?\n/)
                 .filter(i => !!i)
-                .map(item => item.trim())
+                .map(item => item.trim()),
         );
     });
 });

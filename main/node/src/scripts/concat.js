@@ -1,7 +1,7 @@
 const concat = require('concat');
 const shell = require('shelljs');
-const path = require('path');
-const { checkAndCreateFolder } = require('./fs');
+const path = require('main/node/src/scripts/path.js');
+const { checkAndCreateFolder } = require('./fs.js');
 
 const srcPath1 = path.resolve(__dirname, '../examples/src/concat/concat1.css');
 const srcPath2 = path.resolve(__dirname, '../examples/src/concat/concat2.css');
@@ -20,7 +20,7 @@ const cleanCssPath = path.resolve(__dirname, '../node_modules/.bin/cleancss');
         `${cleanCssPath} --inline 'none' -o ${concatDistFolderPath}/main.min.css ${concatDistPath}`,
         () => {
             console.log('concatenated and minified');
-        }
+        },
     );
 })();
 

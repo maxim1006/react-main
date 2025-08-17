@@ -283,3 +283,9 @@ export function detectAdBlock(): Promise<boolean> {
         .then(() => false)
         .catch(() => true);
 }
+
+export async function fetchCached(url: string, cacheTime: number = 600000) {
+    const t = Math.floor(Date.now() / cacheTime) * cacheTime;
+    const res = await fetch(`${url}?t=${t}`);
+    return res;
+}

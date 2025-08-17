@@ -1,6 +1,5 @@
-const fs = require('fs');
-const path = require('path');
-const fse = require('fs-extra');
+import fs from 'fs';
+import path from 'path';
 
 // проверить есть ли папки, если нет - создать
 async function checkAndCreateFolder(name = `../examples/dist/test`) {
@@ -24,7 +23,7 @@ async function readAndWriteFileSync() {
 // скопировать файл
 async function copyFile(
     from = path.join(__dirname, '../examples/src/copyFile.js'),
-    to = path.join(__dirname, '../examples/dist/copyFileDist.js')
+    to = path.join(__dirname, '../examples/dist/copyFileDist.js'),
 ) {
     fs.copyFile(from, to, err => {
         if (err) throw err;
@@ -94,7 +93,7 @@ async function replaceInFilePromises(filePath, searchRegex, replaceString) {
 // переместить файл
 async function moveFile(
     from = path.join(__dirname, '../examples/src/moveFile.js'),
-    to = path.join(__dirname, '../examples/dist/moveFile.js')
+    to = path.join(__dirname, '../examples/dist/moveFile.js'),
 ) {
     return new Promise((resolve, reject) => {
         fs.rename(path.resolve(from), path.resolve(to), err => {
@@ -106,7 +105,7 @@ async function moveFile(
 
 async function moveFilePromises(
     from = path.join(__dirname, '../examples/src/moveFile.js'),
-    to = path.join(__dirname, '../examples/dist/moveFile.js')
+    to = path.join(__dirname, '../examples/dist/moveFile.js'),
 ) {
     fs.promises
         .rename(path.resolve(from), path.resolve(to))
@@ -143,4 +142,4 @@ async function moveFilePromises(
     // );
 })();
 
-module.exports = { checkAndCreateFolder };
+export { checkAndCreateFolder };

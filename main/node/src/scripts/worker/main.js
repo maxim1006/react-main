@@ -1,6 +1,13 @@
 // main.js - Non-blocking delegation
 import { Worker } from 'node:worker_threads';
 import { fileURLToPath } from 'node:url';
+import { dirname } from 'path';
+
+console.log({
+    'import.meta.url': import.meta.url,
+    __filename: fileURLToPath(import.meta.url),
+    __dirname: dirname(fileURLToPath(import.meta.url)),
+});
 
 async function calculateFibonacci(number) {
     return new Promise((resolve, reject) => {

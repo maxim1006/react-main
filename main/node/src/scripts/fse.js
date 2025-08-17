@@ -1,6 +1,5 @@
-const fse = require('fs-extra');
-const fs = require('fs');
-const path = require('path');
+import fse from 'fs-extra';
+import path from 'path';
 
 async function fseCopy() {
     const src = path.resolve(__dirname, '../examples/src');
