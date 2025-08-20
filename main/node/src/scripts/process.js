@@ -20,5 +20,13 @@ process.on('exit', function (code) {
     );
 });
 
+const cleanup = () => {
+    process.exit();
+  }; 
+  
+process.on('SIGINT', cleanup); // Пользователь нажимает Ctrl+C в терминале
+process.on('SIGTERM', cleanup); // Система или другой процесс (например, systemd, Docker, Kubernetes) Стандартный сигнал для завершения процесса
+
 // завершить процесс принудительно
 process.exit();
+  

@@ -9,9 +9,10 @@
     },
     "scripts": {
         "dev": "node --inspect --watch --env-file=.env src/scripts/http.js",
-        "test:watch": "node --test --watch",
         "start": "node src/app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "test:watch": "node --test --watch",
+        "test:echo": "echo \"Test echo\""
     },
     "devDependencies": {
         "@types/fs-extra": "11.0.4",
