@@ -1,5 +1,9 @@
 # обновить систему
-apt update && apt full-upgrade -y
+apt update
+apt upgrade -y
+
+// если прямо полностью то full-upgrade но это небезопасно
+apt full-upgrade -y
 
 apt install docker.io docker-compose git curl bash openssl -y
 
@@ -335,3 +339,8 @@ free -h
 
 # Проверить процессы / посмотреть загрузку проца
 top
+
+# удалить fingerprint после переустановки системы
+ssh-keygen -R __server_ip__
+
+или вручную удалить строку с ip из  ~/.ssh/known_hosts

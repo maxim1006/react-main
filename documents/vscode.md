@@ -12,3 +12,13 @@ code --install-extension stylelint.vscode-stylelint
 code --install-extension formulahendry.auto-rename-tag // авто переименование тегов как в идее
 code --install-extension shd101wyy.markdown-preview-enhanced // превьюшка для md файлов
 code --install-extension kamikillerto.vscode-colorize // подсвечивает цвета в коде (CSS, LESS etc)
+
+### Prettier
+
+установить расширение и задать в настройках
+Default Formatter = Prettier
+
+### Shortcuts
+
+Shift + Option + A - многострочный коммент
+cmd + p - открыть поиск по файлам
