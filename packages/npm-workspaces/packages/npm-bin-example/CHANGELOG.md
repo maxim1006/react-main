@@ -1,3 +1,10 @@
+# [@max/npm-bin-example-v1.1.0](https://github.com/maxim1006/react-main/compare/@max/npm-bin-example-v1.0.0...@max/npm-bin-example-v1.1.0) (2025-08-20)
+
+
+### Features
+
+* **TICKET-01155:** updated workspaces ([444e96f](https://github.com/maxim1006/react-main/commit/444e96f5ddc89f4bdc2598a8cc8a4b2eea078987))
+
 # @max/npm-bin-example-v1.0.0 (2025-08-20)
 
 
