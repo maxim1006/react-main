@@ -1,0 +1,28 @@
+{
+  "name": "@max/prettier-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Test prettier config",
+  "files": [
+    "index.js",
+    "package.json",
+    "CHANGELOG.md"
+  ],
+  "peerDependencies": {
+    "prettier": "2.x || 3.x"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.2",
+    "semantic-release-monorepo": "^7.0.5"
+  }
+}

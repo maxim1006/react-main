@@ -1,0 +1,16 @@
+{
+  "name": "@max/npm-bin-example-host",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx npm-bin-example",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "devDependencies": {
+    "@max/npm-bin-example-package": "file:../package"
+  },
+  "license": "ISC",
+  "description": ""
+}

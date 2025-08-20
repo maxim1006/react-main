@@ -1,0 +1,11 @@
+{
+  "name": "@max/eslint-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

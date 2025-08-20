@@ -1,0 +1,23 @@
+{
+  "name": "@max/npm-bin-example-package",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prepublishOnly": "chmod +x ./index*",
+    "test": "echo \"Hello from package\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "files": [
+    "dev/*",
+    "prod/*",
+    "package.json",
+    "index",
+    "README.md"
+  ],
+  "bin": {
+    "npm-bin-example": "./index"
+  }
+}

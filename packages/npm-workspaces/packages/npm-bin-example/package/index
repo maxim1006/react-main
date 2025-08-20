@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+/*  Это строка-хэшбанг (shebang). Она нужна, чтобы операционные системы на базе Unix понимали, каким интерпретатором запускать файл напрямую как исполняемый, без явного вызова node */
+
+import { spawn } from 'child_process';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const spawnProcess = spawn('npm', ['run', 'test'], {
+  cwd: __dirname,
+  stdio: 'inherit',
+});
+
+const cleanup = () => {
+  spawnProcess.kill();
+  process.exit();
+};
+
+process.on('SIGINT', cleanup);
+process.on('SIGTERM', cleanup);
