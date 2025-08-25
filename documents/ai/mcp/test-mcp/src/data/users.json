@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Alice Johnson",
+        "email": "alice@test.com",
+        "address": "123 Maple St, Springfield, IL",
+        "phoneNumber": "555-1234"
+    },
+    {
+        "id": 2,
+        "name": "Bob Smith",
+        "email": "bob@test.com",
+        "address": "456 Oak St, Springfield, IL",
+        "phoneNumber": "555-5678"
+    }
+]
