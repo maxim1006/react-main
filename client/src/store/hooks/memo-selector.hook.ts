@@ -35,24 +35,6 @@ const memoMediaQueryMatchSelector = useMemo(() => mediaQueryMatchSelector(query)
 
 const memoSelector = useSelector(memoMediaQueryMatchSelector);*/
 
-// пример использования с useMemo обычного селектора (тоже если несколько компонент)
-/*Вынести вне компонента
-const makeShortsItemSelector = (videoId?: string) => (state: AppState) =>
-    videoId ? shortsItemByIdSelector(state, videoId) : undefined;
-
-const selectCompletedTodosCount = createSelector(
-    (state) => state.todos,
-    (_, id) => id,
-    (todos, id) =>
-        todos.filter((todo) => todo.id === id),
-)
-
-// В компоненте
-export const useShortsItemById = (videoId?: string) => {
-    const selector = useMemo(() => makeShortsItemSelector(videoId), [videoId]);
-    useSelector(selector);
-};*/
-
 /* Пример c  LRU-кешем (Least Recently Used) - более масштабируемое и надёжное решение, особенно когда:
 	•	компонент перерисовывается часто,
 	•	аргументы приходят из списка или динамики,

@@ -118,8 +118,16 @@ Unlike useEffect, the function passed to the useLayoutEffect Hook is fired synch
 ## Redux hooks
 
 ### useSelector
+https://react-redux.js.org/api/hooks#useselector
+useSelector не мемоизирует сам селектор-функцию, он мемоизирует только результат её выполнения и сравнивает его с предыдущим.
+поэтому можно писать useSelector((state) => shortsItemByIdSelector(state, videoId))
 
-на 1 селектор 1 конст
+useSelector требует возвращать одно и тоже значение из функции переданной в useSelector((state) => selector(state, videoId)), функция selector будет вызываться !всегда! и возвращать значение, поэтому стоит использовать createSelector, чтобы не вызывать ее лишний раз, а закешировать на основании входных пропертей. Весь цимес именно в лишнем вызове функции селектора, если она не обернута в createSelector
+
+Вот эта дурость из доков вводит в заблуждение:
+The selector will be run whenever the function component renders (unless its reference hasn't changed since a previous render of the component so that a cached result can be returned by the hook without re-running the selector).
+❌ Нет, useSelector не пропускает выполнение селектора, даже если ссылка на функцию та же.
+✅ Он всегда выполняет селектор, но не перерисовывает компонент, если результат не изменился.
 
 ### useDispatch
 
