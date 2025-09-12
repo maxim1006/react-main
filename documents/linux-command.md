@@ -129,7 +129,7 @@ sudo mdutil -a -i on
 чтобы найти часто индексируемые папки (а затем их нужно добавить в privacy spotlight)
 sudo fs_usage -w -f filesys mds_stores
 
-# find and kill process on port
+# find and kill process on port убить процесс
 Find:
 sudo lsof -i :3000 // найти процесс на порту
 Kill:

@@ -3,6 +3,7 @@
 docker build -t webserver .
 2) Запускаю докер
 docker run -it --rm -d -p 8080:80 --name web webserver
+(-p <host_port>:<container_port> (8080) — порт на моей машине (host) (80) — порт внутри контейнера)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

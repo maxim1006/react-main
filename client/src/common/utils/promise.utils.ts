@@ -1,6 +1,14 @@
 const wrapPromiseCacheMap = new Map();
 
-// нужно для оборачивания в <Susense смотри примеры в
+/*
+*  Это стандартный паттерн для обертки промиса, чтобы можно было его подвесить на suspense
+*
+* Соответствие статусов suspense к промису
+*   1. progress / pending – промис ещё не завершился, компонент должен “подвеситься”.
+	2. done / fulfilled – промис успешно завершился, данные готовы, можно возвращать.
+	3. failed / rejected – промис завершился с ошибкой, нужно кинуть её, чтобы ErrorBoundary поймал.
+*
+* */
 function wrapPromise<T>(promise: Promise<T>): () => T {
     let result: T;
     let status = 'progress';

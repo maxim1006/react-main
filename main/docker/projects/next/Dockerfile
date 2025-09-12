@@ -13,6 +13,7 @@ RUN mkdir .npm-cache  \
  && npm ci --loglevel warn                              \
  && npm cache clean --force
 
+# копирую текущую папку в рут докер образа (первый путь на моем компе, второй в имадже)
 #COPY . .
 RUN chmod a+x ./start.sh            \
  && chown 10001:10001 ./start.sh    \

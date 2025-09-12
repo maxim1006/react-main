@@ -1,5 +1,6 @@
 ### Build in docker
 
+-p <host_port>:<container_port> (8080) — порт на моей машине (host) (80) — порт внутри контейнера
 ```
 docker build . -t nginx-react-prod
 docker run -d -p 8080:8080 -e "GENERATE_DOC_ENABLE=true" -e "CONTENT_SECURITY_POLICY=default-src 'self' 'unsafe-inline' 'unsafe-eval' *;" nginx-react-prod
