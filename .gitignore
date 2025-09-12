@@ -55,6 +55,8 @@ admin
 /playwright/.cache/
 
 #interim
-test.html
-test.json
-test.txt
+/temp/*
+/oleg
+*.temp.*
+
+
