@@ -80,6 +80,12 @@ const makeSelectUserById = lruMemoize(
 // 2. Используем в компоненте
 const user = useSelector((state) => makeSelectUserById(userId)(state));*/
 
+// Общая информация
+// При вызове makeSelectUserById('123') — если такой селектор уже был, он берётся из кэша.
+// Один и тот же селектор переиспользуется в разных местах, даже в разных компонентах.
+// Внутренний createSelector сохраняет кэш на уровне id.
+// И ты не пересоздаёшь селектор при каждом рендере или вызове.
+
 // пример неверной  мемоизации селектора
 /*export const useShortsItemById = (videoId?: string) => {
     return useSelector(
@@ -91,8 +97,24 @@ const user = useSelector((state) => makeSelectUserById(userId)(state));*/
         )
     );
 };*/
+/*
+ * вот исправленный вариант*/
+/*Вынести вне компонента
+/* export const shortsItemByIdSelector = createSelector(
+    [(state: AppState) => state.shorts.items, (state: AppState, videoId?: string) => videoId],
+    (items, videoId) => {
+        return videoId ? items[videoId] : undefined;
+    }
+);
 
-// При вызове makeSelectUserById('123') — если такой селектор уже был, он берётся из кэша.
-// Один и тот же селектор переиспользуется в разных местах, даже в разных компонентах.
-// Внутренний createSelector сохраняет кэш на уровне id.
-// И ты не пересоздаёшь селектор при каждом рендере или вызове.
+// В компоненте
+export const useShortsItemById = (videoId?: string) => {
+    return useSelector((state: AppState) => shortsItemByIdSelector(state, videoId));
+};
+ */
+//  Объяснение
+// Анонимная функция (state) => ... — действительно новая при каждом рендере.
+//     Но! Главное — shortsItemByIdSelector — это мемоизированная функция из createSelector.
+//     Она кэширует результат на основе своих входов: state и videoId.
+//     Если state.shorts.items и videoId не изменились → возвращает ту же самую ссылку на объект (кешированный результат).
+// useSelector сравнивает результаты по значению (или ссылке) → видит, что не изменились → не вызывает перерисовку.
