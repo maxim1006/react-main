@@ -1,4 +1,4 @@
-### build -t arg-app . 
+### docker build -t arg-app . 
 сбилдить докер docker 
 
 ### docker build --no-cache --build-arg CUSTOM_ARG="my arg" -t arg-app .

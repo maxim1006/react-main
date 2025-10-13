@@ -26,6 +26,8 @@ import fallback from 'express-history-api-fallback';
 
 // const cors = require('cors');
 
+console.log('process.env.MY_VAR ', process.env.MY_VAR);
+
 const app = express(),
     port = process.env.PORT || 3001,
     gqlPport = process.env.GQL_PORT || 3002,
@@ -36,7 +38,10 @@ const app = express(),
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS, PATCH');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    );
     res.header('Access-Control-Max-Age', 600);
     res.header('Access-Control-Expose-Headers', '*');
     next();
@@ -184,7 +189,9 @@ httpServer.listen(port, error => {
     if (error) throw error;
     console.log(`Mock server is listening on port ${port}`);
     console.log(`ApolloServer on http://localhost:${port}${server.graphqlPath}`);
-    console.log(`ApolloServer Subscriptions ready at ws://localhost:${port}${server.subscriptionsPath}`);
+    console.log(
+        `ApolloServer Subscriptions ready at ws://localhost:${port}${server.subscriptionsPath}`,
+    );
 });
 
 // firestore

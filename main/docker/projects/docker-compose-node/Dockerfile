@@ -26,7 +26,7 @@ EXPOSE 8080
 
 # хорошая практика создавать юзера и задавать ему права
 # пример создания юзера
-#RUN groupadd -r max && useradd -g max max
+#RUN groupadd -r users && useradd -g users max
 
 # в пакете node уже есть созданный юзер: node, ограничиваю его права на папку апп
 RUN chown -R node:node /app
