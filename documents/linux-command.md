@@ -267,7 +267,7 @@ man __имя-команды__
 # просмотр логов с tail
 tail -f logs/app/application.log
 
-# узнать свои ip
+# узнать свои ip 
 ifconfig | grep inet (последняя строка ipv4 inet 10.236.135.175 --> 10.236.135.175 netmask 0xffffe000, также можно посмотреть в cisko: details -> statistics)
 
 последний раз отработал
