@@ -9,15 +9,17 @@ const userRouter = express.Router();
 const userPath = path.join(__dirname, '../../data', 'user.json');
 
 userRouter.get('/', async (req: Request, res: Response) => {
-    const { limit } = req.query;
+    // const { limit } = req.query;
 
-    try {
-        let users = await fsExtra.readJson(userPath);
+    res.status(500).json({ error: 'business error' });
 
-        res.status(200).json(users.slice(0, Number.isInteger(limit) ? limit : users.length));
-    } catch (e) {
-        res.status(500).json({ error: 'business error' });
-    }
+    // try {
+    //     let users = await fsExtra.readJson(userPath);
+    //
+    //     res.status(200).json(users.slice(0, Number.isInteger(limit) ? limit : users.length));
+    // } catch (e) {
+    //     res.status(500).json({ error: 'business error' });
+    // }
 });
 
 let cachedEtag: string;
