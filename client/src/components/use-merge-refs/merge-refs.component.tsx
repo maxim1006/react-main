@@ -13,6 +13,8 @@ const MyInput = forwardRef<HTMLInputElement, MyInputProps>(function MyInput(prop
 export default function MergeRefs(props: MyInputProps) {
     const parentRef = useRef<HTMLInputElement | null>(null);
 
+    console.log('MergeRefs props ', { props });
+
     return (
         <div>
             <MyInput ref={parentRef} placeholder='Введите текст' />

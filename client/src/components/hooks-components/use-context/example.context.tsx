@@ -22,8 +22,9 @@ export const ExampleProvider = ({ initData, children }: ExampleProviderProps) =>
 
             try {
                 const { data }: { data: TodoModel } = await customAxios.get(
-                    `https://jsonplaceholder.typicode.com/todos/${number ?? initData.number}`
+                    `https://jsonplaceholder.typicode.com/todos/${number ?? initData.number}`,
                 );
+                console.log({ data });
                 setResult(data);
             } catch (e) {
                 console.error('UseHookProvider getInfo error ', e);
@@ -31,7 +32,7 @@ export const ExampleProvider = ({ initData, children }: ExampleProviderProps) =>
                 setLoading(false);
             }
         },
-        [initData]
+        [initData],
     );
 
     useEffect(() => {

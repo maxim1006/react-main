@@ -3,11 +3,13 @@ import UrlSearchParams from '@app/components/url-search-params/url-search-params
 import { TabsComponent } from '../components/tabs/Tabs';
 import MergeRefs from '@app/components/use-merge-refs/merge-refs.component';
 import React from 'react';
+import { ExampleProvider } from '@app/components/hooks-components/use-context/example.context';
 
 export default function ReactPage() {
     return (
         <TabsComponent>
             <div tabName='React'>
+                <ExampleProvider initData={{ number: 1 }} />
                 <MergeRefs />
                 {/* <AnimatedCounterCompound.Wrapper /> */}
                 {/*<UseDebouncedCallback />*/}
