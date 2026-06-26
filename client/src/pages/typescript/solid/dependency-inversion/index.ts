@@ -29,18 +29,20 @@ interface MusicApi {
     getTracks: () => void;
 }
 
-class YandexMusic implements MusicApi {
+class YandexMusicProvider implements MusicApi {
     getTracks(): void {
         // get ya music
     }
 }
 
-class SpotifyMusic implements MusicApi {
+// Provider скрывает детали того, как это реализовано технически за его пределами.
+class SpotifyMusicProvider implements MusicApi {
     getTracks(): void {
         // get spotify music
     }
 }
 
+// он же MusicService
 class MusicClient implements MusicApi {
     constructor(public client: MusicApi) {}
 
@@ -51,7 +53,7 @@ class MusicClient implements MusicApi {
 }
 
 const MusicApp = () => {
-    const API = new MusicClient(new YandexMusic());
+    const API = new MusicClient(new YandexMusicProvider());
     API.getTracks();
 };
 
@@ -77,7 +79,7 @@ class LocalStorageApi implements StorageApi {
     }
 }
 
-class DBApi implements StorageApi {
+class DBApiProvider implements StorageApi {
     getAll() {
         // get all from DB
     }

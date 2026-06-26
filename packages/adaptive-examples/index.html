@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            /* Premier part */
+            :root {
+                font-size: 100%;
+
+                --fhd-font-size: calc((100vw / 780) * 16);
+            }
+
+            @media screen and (min-width: 780px) {
+                :root {
+                    font-size: var(--fhd-font-size);
+                    --scale-size: calc((1 / 780px) * 100vw);
+                }
+            }
+
+            .div1 {
+                width: 20rem;
+                border: 2px solid;
+                display: flex;
+                height: 1.875rem;
+            }
+
+            /* Rutube part */
+
+            .div2 {
+                margin-top: calc(20px * var(--scale-size, 1));
+                width: calc(320px * var(--scale-size, 1));
+                border: 2px solid green;
+                display: flex;
+                height: calc(30px * var(--scale-size, 1));
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1">Premier scale</div>
+        <div class="div2">Rutube scale</div>
+
+        <script>
+            window.addEventListener('resize', () => {
+                document.documentElement.style.setProperty(
+                    '--scale-size',
+                    Math.max(1, window.innerWidth / 780),
+                );
+            });
+        </script>
+    </body>
+</html>

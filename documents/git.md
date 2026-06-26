@@ -1,3 +1,6 @@
+# Искать по всей истории git вхождение фрагмента кода
+git log -S "фрагмент_вашего_кода" --all --full-history
+
 #add github project
 git remote add origin git@github.com:maxim1006/react-main.git
 
