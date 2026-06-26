@@ -1,2 +1,0 @@
-"use strict";(globalThis.webpackChunkreact_main=globalThis.webpackChunkreact_main||[]).push([[971],{6971(a,e,t){t.r(e),t.d(e,{default:()=>s});var c=t(5043),h=t(579);const r=()=>(0,h.jsx)("h4",{children:"RouterLazyRoute"}),s=(0,c.memo)(r)}}]);
-//# sourceMappingURL=971.fc996f99.chunk.js.map

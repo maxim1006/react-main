@@ -1,2 +1,0 @@
-"use strict";(globalThis.webpackChunkreact_main=globalThis.webpackChunkreact_main||[]).push([[189],{2189(t,e,a){a.r(e),a.d(e,{default:()=>h});var o=a(5043),l=a(4600),u=a.n(l),n=a(579);const r=t=>{let{routePath:e}=t;return console.log("FullRouterRoute1Path2Container, "+e),(0,n.jsx)("div",{className:u()("taFullRouterRoute1Path2Container"),children:"FullRouterRoute1Path2Container"})},h=(0,o.memo)(r)}}]);
-//# sourceMappingURL=189.d05f06a3.chunk.js.map
