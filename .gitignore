@@ -16,6 +16,9 @@ __generated__
 docs/
 .next
 
+# ai
+documents/ai
+
 # testing
 /coverage
 
