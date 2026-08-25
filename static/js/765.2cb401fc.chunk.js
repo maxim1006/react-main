@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_main=self.webpackChunkreact_main||[]).push([[765],{3765:(e,a,n)=>{n.r(a),n.d(a,{default:()=>s});var t=n(5043),c=n(579);const r=()=>(0,c.jsx)(c.Fragment,{children:"LazyComponent"}),s=(0,t.memo)(r)}}]);
+//# sourceMappingURL=765.2cb401fc.chunk.js.map
