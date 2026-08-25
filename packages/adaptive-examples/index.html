@@ -19,7 +19,8 @@
             @media screen and (min-width: 780px) {
                 :root {
                     font-size: var(--fhd-font-size);
-                    --scale-size: calc((1 / 780px) * 100vw);
+                    /*--scale-size: calc((1 / 780px) * 100vw);*/
+                    --scale-size: 1;
                 }
             }
 
@@ -28,16 +29,17 @@
                 border: 2px solid;
                 display: flex;
                 height: 1.875rem;
+                font-size: 1rem;
             }
 
             /* Rutube part */
-
             .div2 {
                 margin-top: calc(20px * var(--scale-size, 1));
                 width: calc(320px * var(--scale-size, 1));
                 border: 2px solid green;
                 display: flex;
                 height: calc(30px * var(--scale-size, 1));
+                font-size: calc(16px * var(--scale-size, 1));
             }
         </style>
     </head>
