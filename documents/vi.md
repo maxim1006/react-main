@@ -1,6 +1,8 @@
 ### hosts
 sudo vi /etc/hosts
 
+chrome://net-internals/#dns - очистить днс
+
 ### начать редактировать
 i
 
